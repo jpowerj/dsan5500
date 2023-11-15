@@ -5,15 +5,16 @@ project:
 website:
   title: ""
   sidebar:
-    title: "DSAN 5500<br>Mon, 12:30-3:00pm, Car Barn 204"
+    title: "DSAN 5500<br><span class='subtitle'>Mon, 12:30-3:00pm, Car Barn 204</span>"
     contents:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "<i class='bi bi-house pe-1'></i> Home"
+        href: index.qmd
+      - text: "Syllabus"
+        href: syllabus.qmd
 
 format:
   html:
-    theme: cosmo
+    theme: default
     css: styles.css
     toc: true
 

@@ -1,16 +1,23 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
     "section": "",
-    "text": "About this site"
+    "text": "Welcome to DSAN 5500: Data Structures, Objects, and Algorithms in Python!"
+  },
+  {
+    "objectID": "syllabus.html#course-description",
+    "href": "syllabus.html#course-description",
+    "title": "Syllabus",
+    "section": "Course Description",
+    "text": "Course Description\nThe Data Structures, Objects, and Algorithms in Python course will look at built-in data structures, such as dictionaries, lists, tuples, sets, strings, and frozen sets. The course will also cover objects and classes in Python, as well as building new structures and objects. The class will cover algorithms including runtime, recurrence, and development. Applications will include data science problems. Prerequisite: A working or intermediate knowledge of Python. 3 credits."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "DSAN 5500",
+    "title": "DSAN 5500: Data Structures, Objects, and Algorithms in Python",
     "section": "",
-    "text": "Homepage for DSAN 5500: Data Structures, Georgetown University, Spring 2024.\nMondays from 12:30-3:00pm in Car Barn 204."
+    "text": "Homepage for DSAN 5500: Data Structures, Georgetown University, Spring 2024.\nMondays from 12:30-3:00pm in Car Barn 204.\nCourse Description:\nThe Data Structures, Objects, and Algorithms in Python course will look at built-in data structures, such as dictionaries, lists, tuples, sets, strings, and frozen sets. The course will also cover objects and classes in Python, as well as building new structures and objects. The class will cover algorithms including runtime, recurrence, and development. Applications will include data science problems. Prerequisite: A working or intermediate knowledge of Python. 3 credits."
   }
 ]

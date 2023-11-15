@@ -1,0 +1,9 @@
+---
+title: "Syllabus"
+---
+
+**Welcome to DSAN 5500: Data Structures, Objects, and Algorithms in Python!**
+
+## Course Description
+
+The Data Structures, Objects, and Algorithms in Python course will look at built-in data structures, such as dictionaries, lists, tuples, sets, strings, and frozen sets. The course will also cover objects and classes in Python, as well as building new structures and objects. The class will cover algorithms including runtime, recurrence, and development. Applications will include data science problems. *Prerequisite: A working or intermediate knowledge of Python. 3 credits.*
