@@ -5,9 +5,15 @@ author: "Jeff Jacobs<br><a href='mailto:jj1088@georgetown.edu' target='_blank'>`
 institute: "Georgetown University<br>Spring 2024"
 ---
 
-Homepage for DSAN 5500: Data Structures, Georgetown University, Spring 2024.
+Welcome to the homepage for DSAN 5500: Data Structures, Georgetown University, Spring 2024! The course takes place on Mondays from 12:30-3:00pm in Car Barn room 204.
 
-Mondays from 12:30-3:00pm in Car Barn 204.
+More details are provided on the [syllabus](syllabus.qmd), but as an overview, the only **graded materials** for the course will be:
+
+* **Four** problem sets, evenly spaced throughout the semester,
+* **One** in-class midterm exam, and
+* **One** final project, due at the end of the semester (instead of a final exam)
+
+The course does not have any "official" prerequisites, but a general comfort with **Python** is strongly recommended. If you have never used Python before, however (or if you haven't used it in a while and feel like your skills are rusty), I will be releasing a set of preparation materials over winter break, to help make sure that everyone is on the same page coming into class in the Spring!
 
 **Course Description:**
 
