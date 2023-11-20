@@ -5,6 +5,8 @@ author: "Jeff Jacobs<br><a href='mailto:jj1088@georgetown.edu' target='_blank'>`
 institute: "Georgetown University<br>Spring 2024"
 ---
 
+{{< include _draft-notice.qmd >}}
+
 Welcome to the homepage for DSAN 5500: Data Structures, Georgetown University, Spring 2024! The course takes place on Mondays from 12:30-3:00pm in Car Barn room 204.
 
 More details are provided on the [syllabus](syllabus.qmd), but as an overview, the only **graded materials** for the course will be:
@@ -14,6 +16,8 @@ More details are provided on the [syllabus](syllabus.qmd), but as an overview, t
 * **One** final project, due at the end of the semester (instead of a final exam)
 
 The course does not have any "official" prerequisites, but a general comfort with **Python** is strongly recommended. If you have never used Python before, however (or if you haven't used it in a while and feel like your skills are rusty), I will be releasing a set of preparation materials over winter break, to help make sure that everyone is on the same page coming into class in the Spring!
+
+My goal, in creating the course, is to take the general, *language-agnostic* data science concepts you've learned in (e.g.) DSAN 5000 and work through how to **implement** these concepts **efficiently** in Python, where we can define "efficient" in different ways based on different **goals** that we may have in different settings while working as Data Scientists.
 
 **Course Description:**
 

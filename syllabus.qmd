@@ -2,8 +2,148 @@
 title: "Syllabus"
 ---
 
+{{< include _draft-notice.qmd >}}
+
 **Welcome to DSAN 5500: Data Structures, Objects, and Algorithms in Python!**
 
-## Course Description
+## Course Overview
+
+My goal, in creating the course, is to take the general, *language-agnostic* data science concepts you've learned in (e.g.) DSAN 5000 and work through how to **implement** these concepts **efficiently** in Python, where we can define "efficient" in different ways based on different **goals** that we may have in different settings while working as Data Scientists.
+
+The graded components for the course consist of **four** problem sets, an in-class **midterm**, and a **final project**. Grades will be allocated as follows:
+
+| Assignment | Percent of Final Grade |
+| - | - |
+| **Problem Set 1**: Python Fundamentals | 8% |
+| **Problem Set 2**: Computational Complexity | 8% |
+| In-Class **Midterm** | 34% |
+| **Problem Set 3**: Data Structures | 8% |
+| **Problem Set 4**: Algorithms | 8% |
+| **Final Project** | 34% |
+
+The course does not have any "official" prerequisites, but a general comfort with **Python** is strongly recommended. If you have never used Python before, however (or if you haven't used it in a while and feel like your skills are rusty), I will be releasing a set of preparation materials over winter break, to help make sure that everyone is on the same page coming into class in the Spring!
+
+## Course Topics
+
+The following is a rough map of what we will work through together throughout the semester; given that **everyone learns at a different pace**, my aim is to leave us with a good amount of **flexibility** in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!
+
+```{=html}
+<table>
+<thead>
+<tr>
+    <th>Unit</th>
+    <th>Week</th>
+    <th>Date</th>
+    <th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td><span data-qmd="**Unit 1**: Python Fundamentals"></span></td>
+    <td>1</td>
+    <td><span data-qmd="Jan 10 (**Wednesday**)"></span></td>
+    <td>Python Fundamentals</td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td>Jan 15</td>
+    <td>No Class (Martin Luther King, Jr. Day)</td>
+</tr>
+<tr>
+    <td></td>
+    <td>2</td>
+    <td>Jan 22</td>
+    <td>Object-Oriented Programming (OOP)</td>
+</tr>
+<tr>
+    <td></td>
+    <td>3</td>
+    <td>Jan 29</td>
+    <td>OOP in Data Science</td>
+</tr>
+<tr>
+    <td><span data-qmd="**Unit 2**: Computational Complexity"></span></td>
+    <td>4</td>
+    <td>Feb 5</td>
+    <td>Computational Complexity Basics</td>
+</tr>
+<tr>
+    <td></td>
+    <td>5</td>
+    <td>Feb 12</td>
+    <td>Complexity of Common Data Science Operations</td>
+</tr>
+<tr>
+    <td><span data-qmd="**Unit 3**: Data Structures"></span></td>
+    <td>6</td>
+    <td>Feb 19</td>
+    <td>Sequences, Sets, and Maps</td>
+</tr>
+<tr>
+    <td></td>
+    <td>7</td>
+    <td>Feb 26</td>
+    <td>Heaps and Stacks</td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td>Mar 4</td>
+    <td>No Class (Spring Break)</td>
+</tr>
+<tr>
+    <td></td>
+    <td>8</td>
+    <td>Mar 11</td>
+    <td>Trees and Graphs</td>
+</tr>
+<tr>
+    <td><span data-qmd="**Unit 4**: Algorithms"></span></td>
+    <td>9</td>
+    <td>Mar 18</td>
+    <td>Search Trees</td>
+</tr>
+<tr>
+    <td></td>
+    <td>10</td>
+    <td>Mar 25</td>
+    <td>Sorting Algorithms</td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td>Apr 1</td>
+    <td>No Class (Easter Break)</td>
+</tr>
+<tr>
+    <td></td>
+    <td>11</td>
+    <td>Apr 8</td>
+    <td>Graph Algorithms</td>
+</tr>
+<tr>
+    <td><span data-qmd="**Unit 5**: Advanced Topics and Applications"></span></td>
+    <td>12</td>
+    <td>Apr 15</td>
+    <td>Geographic Informatin Systems (GIS)</td>
+</tr>
+<tr>
+    <td></td>
+    <td>13</td>
+    <td>Apr 22</td>
+    <td>Applications in Bioinformatics</td>
+</tr>
+<tr>
+    <td></td>
+    <td>14</td>
+    <td>Apr 29</td>
+    <td>Applications in NLP</td>
+</tr>
+</tbody>
+</table>
+```
+
+## Official Course Description
 
 The Data Structures, Objects, and Algorithms in Python course will look at built-in data structures, such as dictionaries, lists, tuples, sets, strings, and frozen sets. The course will also cover objects and classes in Python, as well as building new structures and objects. The class will cover algorithms including runtime, recurrence, and development. Applications will include data science problems. *Prerequisite: A working or intermediate knowledge of Python. 3 credits.*
