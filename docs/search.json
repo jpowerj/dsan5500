@@ -1,5 +1,33 @@
 [
   {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "Note\n\n\n\nYou are viewing a draft version of the DSAN 5500 webpage for Spring 2024 – materials here are subject to change, before being finalized at the start of the Spring 2024 semester!"
+  },
+  {
+    "objectID": "resources.html#textbooks",
+    "href": "resources.html#textbooks",
+    "title": "Resources",
+    "section": "Textbooks",
+    "text": "Textbooks\nFor those looking to get a head start on the course material, you can look over the following two textbooks, which cover the course topics in the same general order that we will cover them (although with very different approaches: the target audience for these tends to be software engineers, who have slightly different needs from us data scientists!)\n\nGoodrich, Michael T., Roberto Tamassia, and Michael H. Goldwasser. 2013. Data Structures and Algorithms in Python. [PDF] [EPUB]\nLee, Kent D., and Steve Hubbard. 2015. Data Structures and Algorithms with Python. [PDF] [a href=‘https://www.dropbox.com/s/v5msmc0cs415l54/Data%20Structures%20and%20Algorithms%20with%20Python.epub?dl=1’ target=’_blank’&gt;EPUB]"
+  },
+  {
+    "objectID": "resources.html#online-resources",
+    "href": "resources.html#online-resources",
+    "title": "Resources",
+    "section": "Online Resources",
+    "text": "Online Resources\nIn terms of resources specifically aimed at data scientists, Datacamp has the following sequence of Python-based courses:\n\nIntroduction to Python for Data Science\nPython Data Science Toolbox (Part 1)\nPython Data Science Toolbox (Part 2)\nObject-Oriented Programming in Python"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DSAN 5500: Data Structures, Objects, and Algorithms in Python",
+    "section": "",
+    "text": "Note\n\n\n\nYou are viewing a draft version of the DSAN 5500 webpage for Spring 2024 – materials here are subject to change, before being finalized at the start of the Spring 2024 semester!\n\n\nWelcome to the homepage for DSAN 5500: Data Structures, Georgetown University, Spring 2024! The course takes place on Mondays from 12:30-3:00pm in Car Barn room 204.\nMore details are provided on the syllabus, but as an overview, the only graded materials for the course will be:\n\nFour problem sets, evenly spaced throughout the semester,\nOne in-class midterm exam, and\nOne final project, due at the end of the semester (instead of a final exam)\n\nThe course does not have any “official” prerequisites, but a general comfort with Python is strongly recommended. If you have never used Python before, however (or if you haven’t used it in a while and feel like your skills are rusty), I will be releasing a set of preparation materials over winter break, to help make sure that everyone is on the same page coming into class in the Spring!\nMy goal, in creating the course, is to take the general, language-agnostic data science concepts you’ve learned in (e.g.) DSAN 5000 and work through how to implement these concepts efficiently in Python, where we can define “efficient” in different ways based on different goals that we may have in different settings while working as Data Scientists.\nCourse Description:\nThe Data Structures, Objects, and Algorithms in Python course will look at built-in data structures, such as dictionaries, lists, tuples, sets, strings, and frozen sets. The course will also cover objects and classes in Python, as well as building new structures and objects. The class will cover algorithms including runtime, recurrence, and development. Applications will include data science problems. Prerequisite: A working or intermediate knowledge of Python. 3 credits."
+  },
+  {
     "objectID": "syllabus.html",
     "href": "syllabus.html",
     "title": "Syllabus",
@@ -26,12 +54,5 @@
     "title": "Syllabus",
     "section": "Official Course Description",
     "text": "Official Course Description\nThe Data Structures, Objects, and Algorithms in Python course will look at built-in data structures, such as dictionaries, lists, tuples, sets, strings, and frozen sets. The course will also cover objects and classes in Python, as well as building new structures and objects. The class will cover algorithms including runtime, recurrence, and development. Applications will include data science problems. Prerequisite: A working or intermediate knowledge of Python. 3 credits."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DSAN 5500: Data Structures, Objects, and Algorithms in Python",
-    "section": "",
-    "text": "Note\n\n\n\nYou are viewing a draft version of the DSAN 5500 webpage for Spring 2024 – materials here are subject to change, before being finalized at the start of the Spring 2024 semester!\n\n\nWelcome to the homepage for DSAN 5500: Data Structures, Georgetown University, Spring 2024! The course takes place on Mondays from 12:30-3:00pm in Car Barn room 204.\nMore details are provided on the syllabus, but as an overview, the only graded materials for the course will be:\n\nFour problem sets, evenly spaced throughout the semester,\nOne in-class midterm exam, and\nOne final project, due at the end of the semester (instead of a final exam)\n\nThe course does not have any “official” prerequisites, but a general comfort with Python is strongly recommended. If you have never used Python before, however (or if you haven’t used it in a while and feel like your skills are rusty), I will be releasing a set of preparation materials over winter break, to help make sure that everyone is on the same page coming into class in the Spring!\nMy goal, in creating the course, is to take the general, language-agnostic data science concepts you’ve learned in (e.g.) DSAN 5000 and work through how to implement these concepts efficiently in Python, where we can define “efficient” in different ways based on different goals that we may have in different settings while working as Data Scientists.\nCourse Description:\nThe Data Structures, Objects, and Algorithms in Python course will look at built-in data structures, such as dictionaries, lists, tuples, sets, strings, and frozen sets. The course will also cover objects and classes in Python, as well as building new structures and objects. The class will cover algorithms including runtime, recurrence, and development. Applications will include data science problems. Prerequisite: A working or intermediate knowledge of Python. 3 credits."
   }
 ]

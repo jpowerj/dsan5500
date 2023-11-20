@@ -11,6 +11,8 @@ website:
         href: index.qmd
       - text: "Syllabus"
         href: syllabus.qmd
+      - text: "Resources"
+        href: resources.qmd
 
 format:
   html:
