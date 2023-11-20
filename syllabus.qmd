@@ -126,7 +126,7 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="**Unit 5**: Advanced Topics and Applications"></span></td>
     <td>12</td>
     <td>Apr 15</td>
-    <td>Geographic Informatin Systems (GIS)</td>
+    <td>Geographic Information Systems (GIS)</td>
 </tr>
 <tr>
     <td></td>
