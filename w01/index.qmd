@@ -13,6 +13,14 @@ format:
     echo: true
     code-fold: show
     scrollable: true
+    slide-number: true
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
   html:
     df-print: kable
     output-file: "index.html"
@@ -28,9 +36,9 @@ format:
 
 :::
 
-# Welcome to DSAN 5500!
+# Welcome to DSAN 5500! {data-name="Welcome"}
 
-# Part 1: Coding in General
+# Part 1: Coding in General {data-stack-name="Coding"}
 
 ## Types of Languages
 
@@ -80,7 +88,7 @@ country_df
 :::
 :::
 
-# Part 2: Python Specifically
+# Part 2: Python Specifically {data-stack-name="Python"}
 
 ## \#1 Sanity-Preserving Tip!
 
