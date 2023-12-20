@@ -1,0 +1,35 @@
+
+```{dot}
+//| fig-align: center
+//| echo: false
+//| height: 4
+//| width: 4
+digraph g {
+    rankdir=LR
+    concentrate=True
+	subgraph clusterG0 {
+		label="Memory (After Code Execution)"
+		subgraph clusterG1 {
+				label="Stack"
+                stvars[label = "{{<name0>country_df|<name1>pop_col|num_rows|filled|alg_row|num_cols|username|cur_date|i|j|z}|{<addr0>0x03a80afc|<addr1>0x10ba8|<f1>13|<f2>TRUE|<f4>0xf7fc4380|<f5>2|<f6>0xf7fc43e0|<f7>8ec3d9889|<f8>0|<f9>NULL|<f10>314}}",shape = "record",fontname="Courier"]
+		}
+		subgraph clusterG2 {
+				label="Heap"
+                subgraph clusterG20 {
+                    #label="DataFrame object"
+                    label=""
+                    nodesep=0.002
+                    h0[label="<d0>DataFrame object",penwidth=0,shape="record"]
+                    h1[label="{{<g0>|0|<g2>1|<g3>2}|{<g1>name|Albania|Algeria|<g4>Angola}|{<g5>pop|2.8|44.2|34.5}}",shape="record"]
+                }
+    	    h3 [label="\"Jeff\"",fontname="Courier",penwidth=0]
+	        h4 [label="Date[2023-07-22]",fontname="Courier",penwidth=0]
+		}
+        "stvars":addr0 -> "h0":d0[constraint=True]
+        "stvars":addr1 -> "h1":g5[style="dashed",constraint=True] #,xlabel="View"]
+        "stvars":f4 -> "h1":g2[style="dashed",constraint=True] #,xlabel="View"]
+        "stvars":f6 -> h3
+        "stvars":f7 -> h4
+	}
+}
+```

@@ -10,5 +10,9 @@
   },
   "resources.qmd": {
     "resources.html": "671e3b1a"
+  },
+  "w01/index.qmd": {
+    "slides.html": "ae01131d",
+    "index.html": "cd247e21"
   }
 }

@@ -21,6 +21,83 @@
     "text": "Online Resources\nIn terms of resources specifically aimed at data scientists, Datacamp has the following sequence of Python-based courses:\n\nIntroduction to Python for Data Science\nPython Data Science Toolbox (Part 1)\nPython Data Science Toolbox (Part 2)\nObject-Oriented Programming in Python"
   },
   {
+    "objectID": "w01/slides.html#types-of-languages",
+    "href": "w01/slides.html#types-of-languages",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Types of Languages",
+    "text": "Types of Languages\n\nCompiled\nInterpreted"
+  },
+  {
+    "objectID": "w01/slides.html#primitive-types",
+    "href": "w01/slides.html#primitive-types",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Primitive Types",
+    "text": "Primitive Types\n\nBoolean (True or False)\nNumbers (Integers, Decimals)\nStrings\nNone"
+  },
+  {
+    "objectID": "w01/slides.html#stacks-and-heaps",
+    "href": "w01/slides.html#stacks-and-heaps",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Stacks and Heaps",
+    "text": "Stacks and Heaps\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
+  },
+  {
+    "objectID": "w01/slides.html#sanity-preserving-tip",
+    "href": "w01/slides.html#sanity-preserving-tip",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "#1 Sanity-Preserving Tip!",
+    "text": "#1 Sanity-Preserving Tip!\n\n(For our purposes) the answer to “what is Python?” is: an executable file that runs .py files!\n\ne.g., we can run python mycode.py in Terminal/PowerShell\n\nEverything else: pip, Jupyter, Pandas, etc., is an add-on to this basic functionality!"
+  },
+  {
+    "objectID": "w01/slides.html#code-blocks-via-indentation",
+    "href": "w01/slides.html#code-blocks-via-indentation",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Code Blocks via Indentation",
+    "text": "Code Blocks via Indentation\n\n\nCode\nfor i in range(5):\n    print(i)\n\n\n0\n1\n2\n3\n4\n\n\n\n\nCode\nfor i in range(5):\nprint(i)\n\n\nIndentationError: expected an indented block after 'for' statement on line 1 (3695896917.py, line 2)\n\n\n\n\nDSAN 5500 W01: Coding and Python"
+  },
+  {
+    "objectID": "w01/index.html",
+    "href": "w01/index.html",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "",
+    "text": "Open slides in new window →"
+  },
+  {
+    "objectID": "w01/index.html#types-of-languages",
+    "href": "w01/index.html#types-of-languages",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Types of Languages",
+    "text": "Types of Languages\n\nCompiled\nInterpreted"
+  },
+  {
+    "objectID": "w01/index.html#primitive-types",
+    "href": "w01/index.html#primitive-types",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Primitive Types",
+    "text": "Primitive Types\n\nBoolean (True or False)\nNumbers (Integers, Decimals)\nStrings\nNone"
+  },
+  {
+    "objectID": "w01/index.html#stacks-and-heaps",
+    "href": "w01/index.html#stacks-and-heaps",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Stacks and Heaps",
+    "text": "Stacks and Heaps\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
+  },
+  {
+    "objectID": "w01/index.html#sanity-preserving-tip",
+    "href": "w01/index.html#sanity-preserving-tip",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "#1 Sanity-Preserving Tip!",
+    "text": "#1 Sanity-Preserving Tip!\n\n(For our purposes) the answer to “what is Python?” is: an executable file that runs .py files!\n\ne.g., we can run python mycode.py in Terminal/PowerShell\n\nEverything else: pip, Jupyter, Pandas, etc., is an add-on to this basic functionality!"
+  },
+  {
+    "objectID": "w01/index.html#code-blocks-via-indentation",
+    "href": "w01/index.html#code-blocks-via-indentation",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Code Blocks via Indentation",
+    "text": "Code Blocks via Indentation\n\n\nCode\nfor i in range(5):\n    print(i)\n\n\n0\n1\n2\n3\n4\n\n\n\n\nCode\nfor i in range(5):\nprint(i)\n\n\nIndentationError: expected an indented block after 'for' statement on line 1 (3695896917.py, line 2)"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "DSAN 5500: Data Structures, Objects, and Algorithms in Python",
