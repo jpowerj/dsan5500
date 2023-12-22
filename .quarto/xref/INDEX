@@ -14,5 +14,9 @@
   "w01/index.qmd": {
     "slides.html": "ae01131d",
     "index.html": "cd247e21"
+  },
+  "w02/index.qmd": {
+    "slides.html": "e47402a4",
+    "index.html": "c3951e55"
   }
 }

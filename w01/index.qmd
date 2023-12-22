@@ -14,6 +14,7 @@ format:
     code-fold: show
     scrollable: true
     slide-number: true
+    theme: ["../_jjslides.scss"]
     simplemenu:
       flat: true
       barhtml:
@@ -110,4 +111,40 @@ for i in range(5):
 #| error: true
 for i in range(5):
 print(i)
+```
+
+## Type Hints {.smaller .crunch-title .crunch-ul}
+
+* **Not** a "standard" Python feature, **not** enforced by the Python interpreter, but can help you **maintain sanity**!
+
+::: columns
+::: {.column width="50%"}
+
+```{python}
+#| label: type-hints
+def multiply(thing1, thing2):
+  return thing1 * thing2
+print(multiply(5, 3))
+print(multiply("fiveee", 3))
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+#| label: type-hints-safe
+from numbers import Number
+def multiply(thing1: Number, thing2: Number) -> Number:
+  return thing1 * thing2
+print(multiply(5, 3))
+print(multiply("fiveee", 3))
+```
+
+:::
+:::
+
+```{python}
+from mypy import api
+result = api.run(['-c',_i])
+print(result[0])
 ```

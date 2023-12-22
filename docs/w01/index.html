@@ -184,6 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#sanity-preserving-tip" id="toc-sanity-preserving-tip" class="nav-link" data-scroll-target="#sanity-preserving-tip">#1 Sanity-Preserving Tip!</a></li>
   <li><a href="#code-blocks-via-indentation" id="toc-code-blocks-via-indentation" class="nav-link" data-scroll-target="#code-blocks-via-indentation">Code Blocks via Indentation</a></li>
+  <li><a href="#type-hints" id="toc-type-hints" class="nav-link" data-scroll-target="#type-hints">Type Hints</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
@@ -352,6 +353,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-error">
 <pre><code>IndentationError: expected an indented block after 'for' statement on line 1 (3695896917.py, line 2)</code></pre>
+</div>
+</div>
+</section>
+<section id="type-hints" class="level2 smaller crunch-title crunch-ul">
+<h2 class="smaller crunch-title crunch-ul anchored" data-anchor-id="type-hints">Type Hints</h2>
+<ul>
+<li><strong>Not</strong> a “standard” Python feature, <strong>not</strong> enforced by the Python interpreter, but can help you <strong>maintain sanity</strong>!</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="type-hints" class="cell" data-execution_count="4">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> multiply(thing1, thing2):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> thing1 <span class="op">*</span> thing2</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(multiply(<span class="dv">5</span>, <span class="dv">3</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(multiply(<span class="st">"fiveee"</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>15
+fiveeefiveeefiveee</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="type-hints-safe" class="cell" data-execution_count="5">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numbers <span class="im">import</span> Number</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> multiply(thing1: Number, thing2: Number) <span class="op">-&gt;</span> Number:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> thing1 <span class="op">*</span> thing2</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(multiply(<span class="dv">5</span>, <span class="dv">3</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(multiply(<span class="st">"fiveee"</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>15
+fiveeefiveeefiveee</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mypy <span class="im">import</span> api</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> api.run([<span class="st">'-c'</span>,_i])</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;string&gt;:3: error: Unsupported left operand type for * ("Number")  [operator]
+&lt;string&gt;:4: error: Argument 1 to "multiply" has incompatible type "int"; expected "Number"  [arg-type]
+&lt;string&gt;:4: note: Types from "numbers" aren't supported for static type checking
+&lt;string&gt;:4: note: See https://peps.python.org/pep-0484/#the-numeric-tower
+&lt;string&gt;:4: note: Consider using a protocol instead, such as typing.SupportsFloat
+&lt;string&gt;:4: error: Argument 2 to "multiply" has incompatible type "int"; expected "Number"  [arg-type]
+&lt;string&gt;:5: error: Argument 1 to "multiply" has incompatible type "str"; expected "Number"  [arg-type]
+&lt;string&gt;:5: note: Types from "numbers" aren't supported for static type checking
+&lt;string&gt;:5: note: See https://peps.python.org/pep-0484/#the-numeric-tower
+&lt;string&gt;:5: note: Consider using a protocol instead, such as typing.SupportsFloat
+&lt;string&gt;:5: error: Argument 2 to "multiply" has incompatible type "int"; expected "Number"  [arg-type]
+Found 5 errors in 1 file (checked 1 source file)
+</code></pre>
 </div>
 </div>
 

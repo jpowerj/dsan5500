@@ -1,0 +1,117 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.caption {
+    text-align: center !important;
+}
+figcaption {
+    text-align: center !important;
+}
+.caption-left .caption {
+    text-align: left !important;
+}
+.caption-left figcaption {
+    text-align: left !important;
+}
+
+// figcaption
+
+.crunch-figcaption figcaption {
+    margin: 0px !important;
+}
+
+// images
+.crunch-images img {
+    margin: 0px !important;
+}
+
+// lists
+.crunch-ul-0 ul {
+    margin-bottom: 0px !important;
+}
+
+// math
+.crunch-math-3 mjx-container {
+    margin: 3px !important;
+}
+
+// p
+
+.crunch-p p {
+    margin: 0px !important;
+}
+
+// quarto-figure
+
+.crunch-quarto-figure .quarto-figure {
+    margin: 0px !important;
+}
+
+// quarto-layout-panel
+.crunch-quarto-layout-panel .quarto-layout-panel {
+    margin-bottom: 0px !important;
+}
+
+// title
+.crunch-title h2 {
+    margin-bottom: 0px !important;
+}
+
+.crunch-ul ul {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+
+// math smaller
+.math-09 mjx-container {
+    font-size: 90% !important;
+}
+
+.not-title-slide {
+    display: block !important;
+    top: 0px !important;
+}
+
+.subsubtitle {
+    font-size: 70% !important;
+    line-height: 0.5em !important;
+}
+
+// title smaller
+
+.title-08 h2 {
+    font-size: calc(0.8*var(--r-heading2-size)) !important;
+}
+
+.title-08 h1 {
+    font-size: calc(0.8*var(--r-heading2-size)) !important;
+}
+
+.title-09 h2 {
+    font-size: calc(0.9*var(--r-heading2-size)) !important;
+}
+
+.title-09 h1 {
+    font-size: calc(0.9*var(--r-heading2-size)) !important;
+}
+
+.title-10 h2 {
+    font-size: calc(1.0*var(--r-heading2-size)) !important;
+}
+
+.title-10 h1 {
+    font-size: calc(1.0*var(--r-heading2-size)) !important;
+}
+
+.title-11 h2 {
+    font-size: calc(1.1*var(--r-heading2-size)) !important;
+}
+
+.title-11 h1 {
+    font-size: calc(1.1*var(--r-heading2-size)) !important;
+}
+
+.title-12 h2 {
+    font-size: calc(1.2*var(--r-heading2-size)) !important;
+}
