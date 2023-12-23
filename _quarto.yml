@@ -19,6 +19,8 @@ website:
         href: "w01/index.qmd"
       - text: "Week 2: Jan 22"
         href: "w02/index.qmd"
+      - text: "Week 3: Jan 29"
+        href: "w03/index.qmd"
 
 format:
   html:
