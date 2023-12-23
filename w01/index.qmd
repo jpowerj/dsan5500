@@ -39,6 +39,86 @@ format:
 
 # Welcome to DSAN 5500! {data-name="Welcome"}
 
+* Principles for the Course
+* Coding in General
+* Coding in Python
+
+# Course Principles {data-name="Principles"}
+
+* *Comparative* Understanding
+* Learning Data Structures and Complexity *Simultaneously*
+
+## Developing a *Comparative* Understanding {.full-width-callout}
+
+<!-- https://css-tricks.com/left-align-and-right-align-text-on-the-same-line/ -->
+
+::: {.callout-note icon="false" appearance="minimal"}
+
+::: {.container style="width: 100%; clear: both;"}
+::: {style="float: left;"}
+*"We hardly know ourselves, if we know nobody else"*
+:::
+
+::: {style="float: right;"}
+--(Blue Scholars, <a href='https://www.youtube.com/watch?v=vbziavrLrds' target='_blank'>"Sagaba"</a>)
+:::
+
+:::
+:::
+
+* The course focuses on **Python**, but part of understanding Python is understanding how Python **does things differently from other languages!**
+* Just as C was "overtaken" by Java, then Java was "overtaken" by Python, Python will someday be overtaken
+
+## The Numbers
+
+```{python}
+#| label: plot-langs
+#| code-fold: true
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.io as pio
+pio.renderers.default = "notebook"
+lang_df = pd.read_csv("assets/gh_issues.csv")
+# The data for 2022 is essentially useless
+lang_df = lang_df[lang_df['year'] <= 2021].copy()
+lang_df['time'] = lang_df['year'].astype(str) + "_" + lang_df['quarter'].astype(str)
+lang_df['prop'] = lang_df['count'] / lang_df.groupby('time')['count'].transform('sum')
+lang_df.head()
+#sns.lineplot(data=lang_df, x='year', y='count', color='name')
+# Keep only most popular languages
+keep_langs = ['Python','JavaScript','C','C++','C#','Java','Ruby']
+pop_df = lang_df[lang_df['name'].isin(keep_langs)].copy()
+fig = px.line(pop_df,
+  x='time', y='prop', color='name',
+  template='simple_white', title='Programming Language Popularity Since 2012',
+  labels = {
+    'time': 'Year',
+    'prop': 'Proportion of GitHub Issues'
+  }
+)
+fig.update_layout(
+  xaxis = dict(
+    tickmode = 'array',
+    tickvals = [f"{year}_1" for year in range(2012,2022)],
+    ticktext = [f"{year}" for year in range(2012,2022)]
+  )
+)
+fig.show()
+```
+
+## Avoid Analysis Paralysis
+
+* *(Easier said than done, admittedly...)*
+
+![Image source: <a href='https://xkcd.com/1445/' target='_blank'>XKCD</a>](images/efficiency_2x.png){fig-align="center"}
+
+## Tie Yourself to the Mast
+
+* The 3am, exhausted, brain-barely-working version of you will thank **present you** for writing useful **exceptions** and **type hints**!
+
+![<a href="https://commons.wikimedia.org/wiki/File:John_William_Waterhouse_-_Ulysses_and_the_Sirens_(1891).jpg" target='_blank'>John William Waterhouse</a>, Public domain, via Wikimedia Commons](images/ulysses.jpg){fig-align="center"}
+
 # Part 1: Coding in General {data-stack-name="Coding"}
 
 ## Types of Languages

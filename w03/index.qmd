@@ -1,0 +1,49 @@
+---
+title: "Week 3: Data Structures and Computational Complexity"
+subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
+date: "Monday, January 29, 2024"
+date-format: "full"
+author: "Jeff Jacobs"
+institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
+format:
+  revealjs:
+    df-print: kable
+    output-file: "slides.html"
+    footer: "DSAN 5500 Week 3: Data Structures, Computational Complexity"
+    echo: true
+    code-fold: show
+    scrollable: true
+    slide-number: true
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    echo: true
+    code-fold: show
+---
+
+# Why We Can't Learn These Topics Separately
+
+## Data Structure Choice $\Leftrightarrow$ Efficiency for Task
+
+* Do we need to be able to **insert** quickly?
+* Do we need to be able to **sort** quickly?
+* Do we need to be able to **search** quickly?
+* Are we searching for **individual items** or for **ranges**?
+
+## Sequences
+
+* **In General**: Mapping of integer **indices** to objects
+  * `x = ['a','b','c']` $\implies$ `x[0] = 'a'`, `x[1] = 'b'`, `x[2] = 'c'`
+* In Python: `list`
+
+## Sets
+
+## Maps
+

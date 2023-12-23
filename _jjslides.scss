@@ -63,6 +63,14 @@ figcaption {
     margin-bottom: 2px !important;
 }
 
+.full-width-callout .callout-body {
+    width: 100% !important;
+}
+
+.full-width-callout .callout-content {
+    width: 100% !important;
+}
+
 // math smaller
 .math-09 mjx-container {
     font-size: 90% !important;

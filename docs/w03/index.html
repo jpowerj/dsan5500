@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jeff Jacobs">
 
-<title>DSAN 5500 - Syllabus</title>
+<title>DSAN 5500 - Week 3: Data Structures and Computational Complexity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -60,10 +61,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script><script src="./jjcustom.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script><script src="../jjcustom.js"></script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -75,7 +78,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./syllabus.html">Syllabus</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      DSAN 5500
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -90,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">DSAN 5500</a> 
+      <a href="../">DSAN 5500</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -102,32 +107,32 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><i class="bi bi-house pe-1"></i> Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./syllabus.html" class="sidebar-item-text sidebar-link active">
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./w01/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../w01/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1: Jan 10</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./w02/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../w02/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2: Jan 22</span></a>
   </div>
 </li>
@@ -141,25 +146,49 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-overview" id="toc-course-overview" class="nav-link active" data-scroll-target="#course-overview">Course Overview</a></li>
-  <li><a href="#course-topics" id="toc-course-topics" class="nav-link" data-scroll-target="#course-topics">Course Topics</a></li>
-  <li><a href="#official-course-description" id="toc-official-course-description" class="nav-link" data-scroll-target="#official-course-description">Official Course Description</a></li>
+  <li><a href="#why-we-cant-learn-these-topics-separately" id="toc-why-we-cant-learn-these-topics-separately" class="nav-link active" data-scroll-target="#why-we-cant-learn-these-topics-separately">Why We Can’t Learn These Topics Separately</a>
+  <ul class="collapse">
+  <li><a href="#data-structure-choice-leftrightarrow-efficiency-for-task" id="toc-data-structure-choice-leftrightarrow-efficiency-for-task" class="nav-link" data-scroll-target="#data-structure-choice-leftrightarrow-efficiency-for-task">Data Structure Choice <span class="math inline">\(\Leftrightarrow\)</span> Efficiency for Task</a></li>
+  <li><a href="#sequences" id="toc-sequences" class="nav-link" data-scroll-target="#sequences">Sequences</a></li>
+  <li><a href="#sets" id="toc-sets" class="nav-link" data-scroll-target="#sets">Sets</a></li>
+  <li><a href="#maps" id="toc-maps" class="nav-link" data-scroll-target="#maps">Maps</a></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Syllabus</h1>
+<h1 class="title">Week 3: Data Structures and Computational Complexity</h1>
+<p class="subtitle lead"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Jeff Jacobs </p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a>
+          </p>
+      </div>
+    </div>
 
 <div class="quarto-title-meta">
 
-    
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Monday, January 29, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -167,183 +196,35 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You are viewing a <strong>draft version</strong> of the DSAN 5500 webpage for Spring 2024 – materials here are subject to change, before being finalized at the start of the Spring 2024 semester!</p>
-</div>
-</div>
-<p><strong>Welcome to DSAN 5500: Data Structures, Objects, and Algorithms in Python!</strong></p>
-<section id="course-overview" class="level2">
-<h2 class="anchored" data-anchor-id="course-overview">Course Overview</h2>
-<p>My goal, in creating the course, is to take the general, <em>language-agnostic</em> data science concepts you’ve learned in (e.g.) DSAN 5000 and work through how to <strong>implement</strong> these concepts <strong>efficiently</strong> in Python, where we can define “efficient” in different ways based on different <strong>goals</strong> that we may have in different settings while working as Data Scientists.</p>
-<p>The graded components for the course consist of <strong>four</strong> problem sets, an in-class <strong>midterm</strong>, and a <strong>final project</strong>. Grades will be allocated as follows:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Assignment</th>
-<th>Percent of Final Grade</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Problem Set 1</strong>: Python Fundamentals</td>
-<td>8%</td>
-</tr>
-<tr class="even">
-<td><strong>Problem Set 2</strong>: Computational Complexity</td>
-<td>8%</td>
-</tr>
-<tr class="odd">
-<td>In-Class <strong>Midterm</strong></td>
-<td>34%</td>
-</tr>
-<tr class="even">
-<td><strong>Problem Set 3</strong>: Data Structures</td>
-<td>8%</td>
-</tr>
-<tr class="odd">
-<td><strong>Problem Set 4</strong>: Algorithms</td>
-<td>8%</td>
-</tr>
-<tr class="even">
-<td><strong>Final Project</strong></td>
-<td>34%</td>
-</tr>
-</tbody>
-</table>
-<p>The course does not have any “official” prerequisites, but a general comfort with <strong>Python</strong> is strongly recommended. If you have never used Python before, however (or if you haven’t used it in a while and feel like your skills are rusty), I will be releasing a set of preparation materials over winter break, to help make sure that everyone is on the same page coming into class in the Spring!</p>
+<section id="why-we-cant-learn-these-topics-separately" class="level1">
+<h1>Why We Can’t Learn These Topics Separately</h1>
+<section id="data-structure-choice-leftrightarrow-efficiency-for-task" class="level2">
+<h2 class="anchored" data-anchor-id="data-structure-choice-leftrightarrow-efficiency-for-task">Data Structure Choice <span class="math inline">\(\Leftrightarrow\)</span> Efficiency for Task</h2>
+<ul>
+<li>Do we need to be able to <strong>insert</strong> quickly?</li>
+<li>Do we need to be able to <strong>sort</strong> quickly?</li>
+<li>Do we need to be able to <strong>search</strong> quickly?</li>
+<li>Are we searching for <strong>individual items</strong> or for <strong>ranges</strong>?</li>
+</ul>
 </section>
-<section id="course-topics" class="level2">
-<h2 class="anchored" data-anchor-id="course-topics">Course Topics</h2>
-<p>The following is a rough map of what we will work through together throughout the semester; given that <strong>everyone learns at a different pace</strong>, my aim is to leave us with a good amount of <strong>flexibility</strong> in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!</p>
-<table class="sticky-table table" data-quarto-postprocess="true">
-<thead>
-<tr class="header sticky-head">
-<th data-quarto-table-cell-role="th">Unit</th>
-<th data-quarto-table-cell-role="th">Week</th>
-<th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th">Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Unit 1</strong>: Python Fundamentals</td>
-<td>1</td>
-<td>Jan 10 (<strong>Wednesday</strong>)</td>
-<td>Python Fundamentals</td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td>Jan 15</td>
-<td>No Class (Martin Luther King, Jr. Day)</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>2</td>
-<td>Jan 22</td>
-<td>Software Design Patterns and Object-Oriented Programming (OOP)</td>
-</tr>
-<tr class="even new-unit">
-<td><strong>Unit 2</strong>: Data Structures</td>
-<td>3</td>
-<td>Jan 29</td>
-<td>Data Structures and Computational Complexity</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>4</td>
-<td>Feb 5</td>
-<td>Heaps, Stacks, Trees, Graphs</td>
-</tr>
-<tr class="even new-unit">
-<td><strong>Unit 3</strong>: Basic Algorithms</td>
-<td>5</td>
-<td>Feb 12</td>
-<td>Search Trees</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>6</td>
-<td>Feb 19</td>
-<td>Sorting Algorithms</td>
-</tr>
-<tr class="even">
-<td><strong>Midterm</strong></td>
-<td>7</td>
-<td>Feb 26</td>
-<td>In-Class Midterm</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td>Mar 4</td>
-<td>No Class (Spring Break)</td>
-</tr>
-<tr class="even new-unit">
-<td><strong>Unit 4</strong>: Advanced Algorithms</td>
-<td>8</td>
-<td>Mar 11</td>
-<td>Graph Algorithms</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>9</td>
-<td>Mar 18</td>
-<td>Algorithms for Spatial Data</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>10</td>
-<td>Mar 25</td>
-<td>Building Efficient Data Pipelines</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td>Apr 1</td>
-<td>No Class (Easter Break)</td>
-</tr>
-<tr class="even new-unit">
-<td><strong>Unit 5</strong>: Parallel Computing</td>
-<td>11</td>
-<td>Apr 8</td>
-<td>Parallel Computing and MapReduce</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>12</td>
-<td>Apr 15</td>
-<td>Parallel Computing Part 2</td>
-</tr>
-<tr class="even new-unit">
-<td><strong>Unit 6</strong>: Advanced Topics and Applications</td>
-<td>13</td>
-<td>Apr 22</td>
-<td>Applications in Bioinformatics</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>14</td>
-<td>Apr 29</td>
-<td>Applications in NLP</td>
-</tr>
-</tbody>
-</table>
+<section id="sequences" class="level2">
+<h2 class="anchored" data-anchor-id="sequences">Sequences</h2>
+<ul>
+<li><strong>In General</strong>: Mapping of integer <strong>indices</strong> to objects
+<ul>
+<li><code>x = ['a','b','c']</code> <span class="math inline">\(\implies\)</span> <code>x[0] = 'a'</code>, <code>x[1] = 'b'</code>, <code>x[2] = 'c'</code></li>
+</ul></li>
+<li>In Python: <code>list</code></li>
+</ul>
 </section>
-<section id="official-course-description" class="level2">
-<h2 class="anchored" data-anchor-id="official-course-description">Official Course Description</h2>
-<p>The Data Structures, Objects, and Algorithms in Python course will look at built-in data structures, such as dictionaries, lists, tuples, sets, strings, and frozen sets. The course will also cover objects and classes in Python, as well as building new structures and objects. The class will cover algorithms including runtime, recurrence, and development. Applications will include data science problems. <em>Prerequisite: A working or intermediate knowledge of Python. 3 credits.</em></p>
+<section id="sets" class="level2">
+<h2 class="anchored" data-anchor-id="sets">Sets</h2>
+</section>
+<section id="maps" class="level2">
+<h2 class="anchored" data-anchor-id="maps">Maps</h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

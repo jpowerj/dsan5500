@@ -21,6 +21,34 @@
     "text": "Online Resources\nIn terms of resources specifically aimed at data scientists, Datacamp has the following sequence of Python-based courses:\n\nIntroduction to Python for Data Science\nPython Data Science Toolbox (Part 1)\nPython Data Science Toolbox (Part 2)\nObject-Oriented Programming in Python"
   },
   {
+    "objectID": "w01/slides.html#developing-a-comparative-understanding",
+    "href": "w01/slides.html#developing-a-comparative-understanding",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Developing a Comparative Understanding",
+    "text": "Developing a Comparative Understanding\n\n\n\n\n\n\n“We hardly know ourselves, if we know nobody else”\n\n\n–(Blue Scholars, “Sagaba”)\n\n\n\n\n\n\nThe course focuses on Python, but part of understanding Python is understanding how Python does things differently from other languages!\nJust as C was “overtaken” by Java, then Java was “overtaken” by Python, Python will someday be overtaken"
+  },
+  {
+    "objectID": "w01/slides.html#the-numbers",
+    "href": "w01/slides.html#the-numbers",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "The Numbers",
+    "text": "The Numbers\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport plotly.express as px\nimport plotly.io as pio\npio.renderers.default = \"notebook\"\nlang_df = pd.read_csv(\"assets/gh_issues.csv\")\n# The data for 2022 is essentially useless\nlang_df = lang_df[lang_df['year'] &lt;= 2021].copy()\nlang_df['time'] = lang_df['year'].astype(str) + \"_\" + lang_df['quarter'].astype(str)\nlang_df['prop'] = lang_df['count'] / lang_df.groupby('time')['count'].transform('sum')\nlang_df.head()\n#sns.lineplot(data=lang_df, x='year', y='count', color='name')\n# Keep only most popular languages\nkeep_langs = ['Python','JavaScript','C','C++','C#','Java','Ruby']\npop_df = lang_df[lang_df['name'].isin(keep_langs)].copy()\nfig = px.line(pop_df,\n  x='time', y='prop', color='name',\n  template='simple_white', title='Programming Language Popularity Since 2012',\n  labels = {\n    'time': 'Year',\n    'prop': 'Proportion of GitHub Issues'\n  }\n)\nfig.update_layout(\n  xaxis = dict(\n    tickmode = 'array',\n    tickvals = [f\"{year}_1\" for year in range(2012,2022)],\n    ticktext = [f\"{year}\" for year in range(2012,2022)]\n  )\n)\nfig.show()"
+  },
+  {
+    "objectID": "w01/slides.html#avoid-analysis-paralysis",
+    "href": "w01/slides.html#avoid-analysis-paralysis",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Avoid Analysis Paralysis",
+    "text": "Avoid Analysis Paralysis\n\n(Easier said than done, admittedly…)\n\n\nImage source: XKCD"
+  },
+  {
+    "objectID": "w01/slides.html#tie-yourself-to-the-mast",
+    "href": "w01/slides.html#tie-yourself-to-the-mast",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Tie Yourself to the Mast",
+    "text": "Tie Yourself to the Mast\n\nThe 3am, exhausted, brain-barely-working version of you will thank present you for writing useful exceptions and type hints!\n\n\nJohn William Waterhouse, Public domain, via Wikimedia Commons"
+  },
+  {
     "objectID": "w01/slides.html#types-of-languages",
     "href": "w01/slides.html#types-of-languages",
     "title": "Week 1: Coding in General and Python Specifically",
@@ -70,6 +98,34 @@
     "text": "Open slides in new window →"
   },
   {
+    "objectID": "w01/index.html#developing-a-comparative-understanding",
+    "href": "w01/index.html#developing-a-comparative-understanding",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Developing a Comparative Understanding",
+    "text": "Developing a Comparative Understanding\n\n\n\n\n\n\n\n\n\n“We hardly know ourselves, if we know nobody else”\n\n\n–(Blue Scholars, “Sagaba”)\n\n\n\n\n\n\nThe course focuses on Python, but part of understanding Python is understanding how Python does things differently from other languages!\nJust as C was “overtaken” by Java, then Java was “overtaken” by Python, Python will someday be overtaken"
+  },
+  {
+    "objectID": "w01/index.html#the-numbers",
+    "href": "w01/index.html#the-numbers",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "The Numbers",
+    "text": "The Numbers\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport plotly.express as px\nimport plotly.io as pio\npio.renderers.default = \"notebook\"\nlang_df = pd.read_csv(\"assets/gh_issues.csv\")\n# The data for 2022 is essentially useless\nlang_df = lang_df[lang_df['year'] &lt;= 2021].copy()\nlang_df['time'] = lang_df['year'].astype(str) + \"_\" + lang_df['quarter'].astype(str)\nlang_df['prop'] = lang_df['count'] / lang_df.groupby('time')['count'].transform('sum')\nlang_df.head()\n#sns.lineplot(data=lang_df, x='year', y='count', color='name')\n# Keep only most popular languages\nkeep_langs = ['Python','JavaScript','C','C++','C#','Java','Ruby']\npop_df = lang_df[lang_df['name'].isin(keep_langs)].copy()\nfig = px.line(pop_df,\n  x='time', y='prop', color='name',\n  template='simple_white', title='Programming Language Popularity Since 2012',\n  labels = {\n    'time': 'Year',\n    'prop': 'Proportion of GitHub Issues'\n  }\n)\nfig.update_layout(\n  xaxis = dict(\n    tickmode = 'array',\n    tickvals = [f\"{year}_1\" for year in range(2012,2022)],\n    ticktext = [f\"{year}\" for year in range(2012,2022)]\n  )\n)\nfig.show()"
+  },
+  {
+    "objectID": "w01/index.html#avoid-analysis-paralysis",
+    "href": "w01/index.html#avoid-analysis-paralysis",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Avoid Analysis Paralysis",
+    "text": "Avoid Analysis Paralysis\n\n(Easier said than done, admittedly…)\n\n\n\n\nImage source: XKCD"
+  },
+  {
+    "objectID": "w01/index.html#tie-yourself-to-the-mast",
+    "href": "w01/index.html#tie-yourself-to-the-mast",
+    "title": "Week 1: Coding in General and Python Specifically",
+    "section": "Tie Yourself to the Mast",
+    "text": "Tie Yourself to the Mast\n\nThe 3am, exhausted, brain-barely-working version of you will thank present you for writing useful exceptions and type hints!\n\n\n\n\nJohn William Waterhouse, Public domain, via Wikimedia Commons"
+  },
+  {
     "objectID": "w01/index.html#types-of-languages",
     "href": "w01/index.html#types-of-languages",
     "title": "Week 1: Coding in General and Python Specifically",
@@ -114,65 +170,114 @@
   {
     "objectID": "w02/slides.html#creating-classes",
     "href": "w02/slides.html#creating-classes",
-    "title": "Week 2: Object-Oriented Programming",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Creating Classes",
     "text": "Creating Classes\n\nUse case: Creating an inventory system for a Bookstore\n\n\n\n\n\nCode\nclass Bookstore:\n    def __init__(self, name, location):\n        self.name = name\n        self.location = location\n        self.books = []\n\n    def __getitem__(self, index):\n        return self.books[index]\n\n    def __repr__(self):\n        return self.__str__()\n\n    def __str__(self):\n        return f\"Bookstore[{self.get_num_books()} books]\"\n\n    def add_books(self, book_list):\n        self.books.extend(book_list)\n\n    def get_books(self):\n        return self.books\n\n    def get_inventory(self):\n        book_lines = []\n        for book_index, book in enumerate(self.get_books()):\n            cur_book_line = f\"{book_index}. {str(book)}\"\n            book_lines.append(cur_book_line)\n        return \"\\n\".join(book_lines)\n\n    def get_num_books(self):\n        return len(self.get_books())\n\n    def sort_books(self, sort_key):\n        self.books.sort(key=sort_key)\n\nclass Book:\n    def __init__(self, title, authors, num_pages):\n        self.title = title\n        self.authors = authors\n        self.num_pages = num_pages\n\n    def __str__(self):\n        return f\"Book[title={self.get_title()}, authors={self.get_authors()}, pages={self.get_num_pages()}]\"\n\n    def get_authors(self):\n        return self.authors\n\n    def get_first_author(self):\n        return self.authors[0]\n\n    def get_num_pages(self):\n        return self.num_pages\n\n    def get_title(self):\n        return self.title\n\nclass Person:\n    def __init__(self, family_name, given_name):\n        self.family_name = family_name\n        self.given_name = given_name\n\n    def __repr__(self):\n        return self.__str__()\n\n    def __str__(self):\n        return f\"Person[{self.get_family_name()}, {self.get_given_name()}]\"\n\n    def get_family_name(self):\n        return self.family_name\n\n    def get_given_name(self):\n        return self.given_name\n\n\n\n\n\nCode\nmy_bookstore = Bookstore(\"Bookland\", \"Washington, DC\")\nplath = Person(\"Plath\", \"Sylvia\")\nbell_jar = Book(\"The Bell Jar\", [plath], 244)\nmarx = Person(\"Marx\", \"Karl\")\nengels = Person(\"Engels\", \"Friedrich\")\nmanifesto = Book(\"The Communist Manifesto\", [marx, engels], 43)\nelster = Person(\"Elster\", \"Jon\")\ncement = Book(\"The Cement of Society\", [elster], 311)\nmy_bookstore.add_books([bell_jar, manifesto, cement])\nprint(my_bookstore)\nprint(my_bookstore[0])\nprint(\"Inventory:\")\nprint(my_bookstore.get_inventory())\n\n\nBookstore[3 books]\nBook[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]\nInventory:\n0. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]\n1. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]\n2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]"
   },
   {
     "objectID": "w02/slides.html#doing-things-with-classes",
     "href": "w02/slides.html#doing-things-with-classes",
-    "title": "Week 2: Object-Oriented Programming",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Doing Things With Classes",
     "text": "Doing Things With Classes\n\nNow we can use our OOP structure, for example to sort the inventory in different ways!\n\n\n\n\nAlphabetical (By First Author)\n\n\n\nCode\nsort_alpha = lambda x: x.get_first_author().get_family_name()\nmy_bookstore.sort_books(sort_key = sort_alpha)\nprint(my_bookstore.get_inventory())\n\n\n0. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]\n1. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]\n2. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]\n\n\n\n\nBy Page Count\n\n\n\nCode\nsort_pages = lambda x: x.get_num_pages()\nmy_bookstore.sort_books(sort_key = sort_pages)\nprint(my_bookstore.get_inventory())\n\n\n0. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]\n1. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]\n2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]"
   },
   {
     "objectID": "w02/slides.html#in-pictures",
     "href": "w02/slides.html#in-pictures",
-    "title": "Week 2: Object-Oriented Programming",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "In Pictures",
     "text": "In Pictures\n\n\n\n\n\n\n\nG\n\n Bookstore Relational Diagram  \n\nBookstore\n\n Bookstore  Name  Location  Booklist  Get_Inventory()  Sort_Inventory()   \n\nPlace\n\n Place  City  State  Country  Print_Map()   \n\nBookstore:loc-&gt;Place:placehead\n\n  Has One   \n\nBook\n\n Book  Title  Authors  Num Pages  Preview()   \n\nBookstore:bl-&gt;Book:bookhead\n\n  Has Multiple   \n\nPerson\n\n Person  Family Name  Given Name   \n\nBook:auths-&gt;Person:personhead\n\n  Has Multiple"
   },
   {
     "objectID": "w02/slides.html#design-choices",
     "href": "w02/slides.html#design-choices",
-    "title": "Week 2: Object-Oriented Programming",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Design Choices",
-    "text": "Design Choices\n\nThe goal is to encapsulate as best as possible: which objects should have which properties, and which methods?\nExample: Fiction vs. Non-Fiction. How important is this distinction for your use case?\n\n\n\n\nOption 1: As Property of Book\n\n\n\nCode\nfrom enum import Enum\nclass BookType(Enum):\n    NONFICTION = 0\n    FICTION = 1\n\nclass Book:\n    def __init__(self, title: str, authors: list[Person], num_pages: int, type: BookType):\n        self.title = title\n        self.authors = authors\n        self.num_pages = num_pages\n        self.type = type\n\n    def __str__(self):\n        return f\"Book[title={self.title}, authors={self.authors}, pages={self.num_pages}, type={self.type}]\"\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = Book(\"Ulysses\", [joyce], 732, BookType.FICTION)\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = Book(\"Micromotives and Macrobehavior\", [schelling], 252, BookType.NONFICTION)\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252, type=BookType.NONFICTION]\n\n\n\n\nOption 2: Separate Classes\n\n\n\nCode\n# class Book defined as earlier\nclass FictionBook(Book):\n    def __init__(self, title, authors, num_pages, characters):\n        super().__init__(title, authors, num_pages)\n        self.characters = characters\n\nclass NonfictionBook(Book):\n    def __init__(self, title, authors, num_pages, topic):\n        super().__init__(title, authors, num_pages)\n        self.topic = topic\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = FictionBook(\"Ulysses\", [joyce], 732, [\"Daedalus\"])\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = NonfictionBook(\"Micromotives and Macrobehavior\", [schelling], 252, \"Economics\")\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]\n\n\n\n\n\n\nDSAN 5500 Week 2: Object-Oriented Programming"
+    "text": "Design Choices\n\nThe goal is to encapsulate as best as possible: which objects should have which properties, and which methods?\nExample: Fiction vs. Non-Fiction. How important is this distinction for your use case?\n\n\n\n\nOption 1: As Property of Book\n\n\n\nCode\nfrom enum import Enum\nclass BookType(Enum):\n    NONFICTION = 0\n    FICTION = 1\n\nclass Book:\n    def __init__(self, title: str, authors: list[Person], num_pages: int, type: BookType):\n        self.title = title\n        self.authors = authors\n        self.num_pages = num_pages\n        self.type = type\n\n    def __str__(self):\n        return f\"Book[title={self.title}, authors={self.authors}, pages={self.num_pages}, type={self.type}]\"\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = Book(\"Ulysses\", [joyce], 732, BookType.FICTION)\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = Book(\"Micromotives and Macrobehavior\", [schelling], 252, BookType.NONFICTION)\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252, type=BookType.NONFICTION]\n\n\n\n\nOption 2: Separate Classes\n\n\n\nCode\n# class Book defined as earlier\nclass FictionBook(Book):\n    def __init__(self, title, authors, num_pages, characters):\n        super().__init__(title, authors, num_pages)\n        self.characters = characters\n\nclass NonfictionBook(Book):\n    def __init__(self, title, authors, num_pages, topic):\n        super().__init__(title, authors, num_pages)\n        self.topic = topic\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = FictionBook(\"Ulysses\", [joyce], 732, [\"Daedalus\"])\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = NonfictionBook(\"Micromotives and Macrobehavior\", [schelling], 252, \"Economics\")\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]\n\n\n\n\n\n\nDSAN 5500 Week 2: Software Design Patterns and OOP"
   },
   {
     "objectID": "w02/index.html",
     "href": "w02/index.html",
-    "title": "Week 2: Object-Oriented Programming",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "",
     "text": "Open slides in new window →"
   },
   {
     "objectID": "w02/index.html#creating-classes",
     "href": "w02/index.html#creating-classes",
-    "title": "Week 2: Object-Oriented Programming",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Creating Classes",
     "text": "Creating Classes\n\nUse case: Creating an inventory system for a Bookstore\n\n\n\n\n\nCode\nclass Bookstore:\n    def __init__(self, name, location):\n        self.name = name\n        self.location = location\n        self.books = []\n\n    def __getitem__(self, index):\n        return self.books[index]\n\n    def __repr__(self):\n        return self.__str__()\n\n    def __str__(self):\n        return f\"Bookstore[{self.get_num_books()} books]\"\n\n    def add_books(self, book_list):\n        self.books.extend(book_list)\n\n    def get_books(self):\n        return self.books\n\n    def get_inventory(self):\n        book_lines = []\n        for book_index, book in enumerate(self.get_books()):\n            cur_book_line = f\"{book_index}. {str(book)}\"\n            book_lines.append(cur_book_line)\n        return \"\\n\".join(book_lines)\n\n    def get_num_books(self):\n        return len(self.get_books())\n\n    def sort_books(self, sort_key):\n        self.books.sort(key=sort_key)\n\nclass Book:\n    def __init__(self, title, authors, num_pages):\n        self.title = title\n        self.authors = authors\n        self.num_pages = num_pages\n\n    def __str__(self):\n        return f\"Book[title={self.get_title()}, authors={self.get_authors()}, pages={self.get_num_pages()}]\"\n\n    def get_authors(self):\n        return self.authors\n\n    def get_first_author(self):\n        return self.authors[0]\n\n    def get_num_pages(self):\n        return self.num_pages\n\n    def get_title(self):\n        return self.title\n\nclass Person:\n    def __init__(self, family_name, given_name):\n        self.family_name = family_name\n        self.given_name = given_name\n\n    def __repr__(self):\n        return self.__str__()\n\n    def __str__(self):\n        return f\"Person[{self.get_family_name()}, {self.get_given_name()}]\"\n\n    def get_family_name(self):\n        return self.family_name\n\n    def get_given_name(self):\n        return self.given_name\n\n\n\n\n\nCode\nmy_bookstore = Bookstore(\"Bookland\", \"Washington, DC\")\nplath = Person(\"Plath\", \"Sylvia\")\nbell_jar = Book(\"The Bell Jar\", [plath], 244)\nmarx = Person(\"Marx\", \"Karl\")\nengels = Person(\"Engels\", \"Friedrich\")\nmanifesto = Book(\"The Communist Manifesto\", [marx, engels], 43)\nelster = Person(\"Elster\", \"Jon\")\ncement = Book(\"The Cement of Society\", [elster], 311)\nmy_bookstore.add_books([bell_jar, manifesto, cement])\nprint(my_bookstore)\nprint(my_bookstore[0])\nprint(\"Inventory:\")\nprint(my_bookstore.get_inventory())\n\n\nBookstore[3 books]\nBook[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]\nInventory:\n0. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]\n1. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]\n2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]"
   },
   {
     "objectID": "w02/index.html#doing-things-with-classes",
     "href": "w02/index.html#doing-things-with-classes",
-    "title": "Week 2: Object-Oriented Programming",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Doing Things With Classes",
     "text": "Doing Things With Classes\n\nNow we can use our OOP structure, for example to sort the inventory in different ways!\n\n\n\n\nAlphabetical (By First Author)\n\n\n\nCode\nsort_alpha = lambda x: x.get_first_author().get_family_name()\nmy_bookstore.sort_books(sort_key = sort_alpha)\nprint(my_bookstore.get_inventory())\n\n\n0. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]\n1. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]\n2. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]\n\n\n\n\nBy Page Count\n\n\n\nCode\nsort_pages = lambda x: x.get_num_pages()\nmy_bookstore.sort_books(sort_key = sort_pages)\nprint(my_bookstore.get_inventory())\n\n\n0. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]\n1. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]\n2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]"
   },
   {
     "objectID": "w02/index.html#in-pictures",
     "href": "w02/index.html#in-pictures",
-    "title": "Week 2: Object-Oriented Programming",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "In Pictures",
     "text": "In Pictures\n\n\n\n\n\n\n\nG\n\n Bookstore Relational Diagram  \n\nBookstore\n\n Bookstore  Name  Location  Booklist  Get_Inventory()  Sort_Inventory()   \n\nPlace\n\n Place  City  State  Country  Print_Map()   \n\nBookstore:loc-&gt;Place:placehead\n\n  Has One   \n\nBook\n\n Book  Title  Authors  Num Pages  Preview()   \n\nBookstore:bl-&gt;Book:bookhead\n\n  Has Multiple   \n\nPerson\n\n Person  Family Name  Given Name   \n\nBook:auths-&gt;Person:personhead\n\n  Has Multiple"
   },
   {
     "objectID": "w02/index.html#design-choices",
     "href": "w02/index.html#design-choices",
-    "title": "Week 2: Object-Oriented Programming",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Design Choices",
     "text": "Design Choices\n\nThe goal is to encapsulate as best as possible: which objects should have which properties, and which methods?\nExample: Fiction vs. Non-Fiction. How important is this distinction for your use case?\n\n\n\n\nOption 1: As Property of Book\n\n\n\nCode\nfrom enum import Enum\nclass BookType(Enum):\n    NONFICTION = 0\n    FICTION = 1\n\nclass Book:\n    def __init__(self, title: str, authors: list[Person], num_pages: int, type: BookType):\n        self.title = title\n        self.authors = authors\n        self.num_pages = num_pages\n        self.type = type\n\n    def __str__(self):\n        return f\"Book[title={self.title}, authors={self.authors}, pages={self.num_pages}, type={self.type}]\"\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = Book(\"Ulysses\", [joyce], 732, BookType.FICTION)\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = Book(\"Micromotives and Macrobehavior\", [schelling], 252, BookType.NONFICTION)\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252, type=BookType.NONFICTION]\n\n\n\n\nOption 2: Separate Classes\n\n\n\nCode\n# class Book defined as earlier\nclass FictionBook(Book):\n    def __init__(self, title, authors, num_pages, characters):\n        super().__init__(title, authors, num_pages)\n        self.characters = characters\n\nclass NonfictionBook(Book):\n    def __init__(self, title, authors, num_pages, topic):\n        super().__init__(title, authors, num_pages)\n        self.topic = topic\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = FictionBook(\"Ulysses\", [joyce], 732, [\"Daedalus\"])\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = NonfictionBook(\"Micromotives and Macrobehavior\", [schelling], 252, \"Economics\")\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]"
+  },
+  {
+    "objectID": "w03/index.html",
+    "href": "w03/index.html",
+    "title": "Week 3: Data Structures and Computational Complexity",
+    "section": "",
+    "text": "Do we need to be able to insert quickly?\nDo we need to be able to sort quickly?\nDo we need to be able to search quickly?\nAre we searching for individual items or for ranges?\n\n\n\n\n\nIn General: Mapping of integer indices to objects\n\nx = ['a','b','c'] \\(\\implies\\) x[0] = 'a', x[1] = 'b', x[2] = 'c'\n\nIn Python: list"
+  },
+  {
+    "objectID": "w03/index.html#data-structure-choice-leftrightarrow-efficiency-for-task",
+    "href": "w03/index.html#data-structure-choice-leftrightarrow-efficiency-for-task",
+    "title": "Week 3: Data Structures and Computational Complexity",
+    "section": "",
+    "text": "Do we need to be able to insert quickly?\nDo we need to be able to sort quickly?\nDo we need to be able to search quickly?\nAre we searching for individual items or for ranges?"
+  },
+  {
+    "objectID": "w03/index.html#sequences",
+    "href": "w03/index.html#sequences",
+    "title": "Week 3: Data Structures and Computational Complexity",
+    "section": "",
+    "text": "In General: Mapping of integer indices to objects\n\nx = ['a','b','c'] \\(\\implies\\) x[0] = 'a', x[1] = 'b', x[2] = 'c'\n\nIn Python: list"
+  },
+  {
+    "objectID": "w03/slides.html#data-structure-choice-leftrightarrow-efficiency-for-task",
+    "href": "w03/slides.html#data-structure-choice-leftrightarrow-efficiency-for-task",
+    "title": "Week 3: Data Structures and Computational Complexity",
+    "section": "Data Structure Choice \\(\\Leftrightarrow\\) Efficiency for Task",
+    "text": "Data Structure Choice \\(\\Leftrightarrow\\) Efficiency for Task\n\nDo we need to be able to insert quickly?\nDo we need to be able to sort quickly?\nDo we need to be able to search quickly?\nAre we searching for individual items or for ranges?"
+  },
+  {
+    "objectID": "w03/slides.html#sequences",
+    "href": "w03/slides.html#sequences",
+    "title": "Week 3: Data Structures and Computational Complexity",
+    "section": "Sequences",
+    "text": "Sequences\n\nIn General: Mapping of integer indices to objects\n\nx = ['a','b','c'] \\(\\implies\\) x[0] = 'a', x[1] = 'b', x[2] = 'c'\n\nIn Python: list"
+  },
+  {
+    "objectID": "w03/slides.html#sets",
+    "href": "w03/slides.html#sets",
+    "title": "Week 3: Data Structures and Computational Complexity",
+    "section": "Sets",
+    "text": "Sets"
+  },
+  {
+    "objectID": "w03/slides.html#maps",
+    "href": "w03/slides.html#maps",
+    "title": "Week 3: Data Structures and Computational Complexity",
+    "section": "Maps",
+    "text": "Maps\n\n\nDSAN 5500 Week 3: Data Structures, Computational Complexity"
   },
   {
     "objectID": "index.html",
@@ -200,7 +305,7 @@
     "href": "syllabus.html#course-topics",
     "title": "Syllabus",
     "section": "Course Topics",
-    "text": "Course Topics\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: Python Fundamentals\n1\nJan 10 (Wednesday)\nPython Fundamentals\n\n\n\n\nJan 15\nNo Class (Martin Luther King, Jr. Day)\n\n\n\n2\nJan 22\nObject-Oriented Programming (OOP)\n\n\n\n3\nJan 29\nOOP in Data Science\n\n\nUnit 2: Computational Complexity\n4\nFeb 5\nComputational Complexity Basics\n\n\n\n5\nFeb 12\nComplexity of Common Data Science Operations\n\n\nUnit 3: Data Structures\n6\nFeb 19\nSequences, Sets, and Maps\n\n\n\n7\nFeb 26\nHeaps and Stacks\n\n\n\n\nMar 4\nNo Class (Spring Break)\n\n\n\n8\nMar 11\nTrees and Graphs\n\n\nUnit 4: Algorithms\n9\nMar 18\nSearch Trees\n\n\n\n10\nMar 25\nSorting Algorithms\n\n\n\n\nApr 1\nNo Class (Easter Break)\n\n\n\n11\nApr 8\nGraph Algorithms\n\n\nUnit 5: Advanced Topics and Applications\n12\nApr 15\nGeographic Information Systems (GIS)\n\n\n\n13\nApr 22\nApplications in Bioinformatics\n\n\n\n14\nApr 29\nApplications in NLP"
+    "text": "Course Topics\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: Python Fundamentals\n1\nJan 10 (Wednesday)\nPython Fundamentals\n\n\n\n\nJan 15\nNo Class (Martin Luther King, Jr. Day)\n\n\n\n2\nJan 22\nSoftware Design Patterns and Object-Oriented Programming (OOP)\n\n\nUnit 2: Data Structures\n3\nJan 29\nData Structures and Computational Complexity\n\n\n\n4\nFeb 5\nHeaps, Stacks, Trees, Graphs\n\n\nUnit 3: Basic Algorithms\n5\nFeb 12\nSearch Trees\n\n\n\n6\nFeb 19\nSorting Algorithms\n\n\nMidterm\n7\nFeb 26\nIn-Class Midterm\n\n\n\n\nMar 4\nNo Class (Spring Break)\n\n\nUnit 4: Advanced Algorithms\n8\nMar 11\nGraph Algorithms\n\n\n\n9\nMar 18\nAlgorithms for Spatial Data\n\n\n\n10\nMar 25\nBuilding Efficient Data Pipelines\n\n\n\n\nApr 1\nNo Class (Easter Break)\n\n\nUnit 5: Parallel Computing\n11\nApr 8\nParallel Computing and MapReduce\n\n\n\n12\nApr 15\nParallel Computing Part 2\n\n\nUnit 6: Advanced Topics and Applications\n13\nApr 22\nApplications in Bioinformatics\n\n\n\n14\nApr 29\nApplications in NLP"
   },
   {
     "objectID": "syllabus.html#official-course-description",
