@@ -29,6 +29,14 @@ format:
     code-fold: show
 ---
 
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
 # Why We Can't Learn These Topics Separately {data-stack-name="Overview"}
 
 ## Data Structure Choice $\Leftrightarrow$ Efficiency for Task
