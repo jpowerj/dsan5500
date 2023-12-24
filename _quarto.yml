@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  post-render:
+    - _post_fix_figures.py
 
 website:
   title: "DSAN 5500"
