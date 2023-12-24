@@ -88,6 +88,14 @@ figcaption {
 
 // title smaller
 
+.title-07 h2 {
+    font-size: calc(0.7*var(--r-heading2-size)) !important;
+}
+
+.title-07 h1 {
+    font-size: calc(0.8*var(--r-heading2-size)) !important;
+}
+
 .title-08 h2 {
     font-size: calc(0.8*var(--r-heading2-size)) !important;
 }

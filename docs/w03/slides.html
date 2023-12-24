@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -345,7 +410,7 @@ Jeff Jacobs
   <p class="date">Monday, January 29, 2024</p>
 </section>
 <section>
-<section id="why-we-cant-learn-these-topics-separately" class="title-slide slide level1 center">
+<section id="why-we-cant-learn-these-topics-separately" class="title-slide slide level1 center" data-stack-name="Overview">
 <h1>Why We Can’t Learn These Topics Separately</h1>
 
 </section>
@@ -357,22 +422,620 @@ Jeff Jacobs
 <li>Do we need to be able to <strong>search</strong> quickly?</li>
 <li>Are we searching for <strong>individual items</strong> or for <strong>ranges</strong>?</li>
 </ul>
+</section></section>
+<section>
+<section id="basic-data-structures" class="title-slide slide level1 center" data-stack-name="Structures">
+<h1>Basic Data Structures</h1>
+
+</section>
+<section id="recall-primitives" class="slide level2">
+<h2>Recall: Primitives</h2>
+<ul>
+<li><code>boolean</code></li>
+<li><code>int</code></li>
+<li><code>float</code></li>
+<li><code>string</code></li>
+<li><code>None</code></li>
+<li>Now we want to put these together, to form… <strong>structures!</strong> 👀</li>
+</ul>
+</section>
+<section id="tuples" class="slide level2">
+<h2>Tuples</h2>
+<ul>
+<li><strong>Fixed-size</strong> collection of <span class="math inline">\(N\)</span> objects</li>
+<li>Unless otherwise specified, we’re talking about <span class="math inline">\(2\)</span>-tuples</li>
+<li>Example: We can locate something on the Earth by specifying two <code>floats</code>: latitude and longitude!</li>
+</ul>
+<div class="cell" data-execution_count="1">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>gtown_loc <span class="op">=</span> (<span class="fl">38.9076</span>, <span class="op">-</span><span class="fl">77.0723</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>gtown_loc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(38.9076, -77.0723)</code></pre>
+</div>
+</div>
+<ul>
+<li>But what if we don’t know in advance how many items we want to store? Ex: how can we store users for a new app?</li>
+</ul>
 </section>
 <section id="sequences" class="slide level2">
 <h2>Sequences</h2>
 <ul>
-<li><strong>In General</strong>: Mapping of integer <strong>indices</strong> to objects
+<li><strong>In General</strong>: Mapping of integer <strong>indices</strong> to objects</li>
+<li><code>x = ['a','b','c']</code>
 <ul>
-<li><code>x = ['a','b','c']</code> <span class="math inline">\(\implies\)</span> <code>x[0] = 'a'</code>, <code>x[1] = 'b'</code>, <code>x[2] = 'c'</code></li>
+<li><span class="math inline">\(\implies\)</span> <code>x[0] = 'a'</code></li>
+<li><span class="math inline">\(\implies\)</span> <code>x[1] = 'b'</code></li>
+<li><span class="math inline">\(\implies\)</span> <code>x[2] = 'c'</code></li>
 </ul></li>
 <li>In Python: <code>list</code></li>
+<li>Nice built-in language constructs for <strong>looping</strong> over lists, and especially for <strong>performing operations on each element</strong></li>
 </ul>
 </section>
-<section id="sets" class="slide level2">
-<h2>Sets</h2>
+<section id="looping-over-sequences" class="slide level2">
+<h2>Looping Over Sequences</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>C/C++/Java:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">List</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> myList <span class="op">=</span> <span class="bu">Arrays</span><span class="op">.</span><span class="fu">asList</span><span class="op">(</span><span class="st">"a"</span><span class="op">,</span> <span class="st">"b"</span><span class="op">,</span> <span class="st">"c"</span><span class="op">);</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> x<span class="op">.</span><span class="fu">size</span><span class="op">();</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>myList<span class="op">.</span><span class="fu">get</span><span class="op">(</span>i<span class="op">));</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<br>
+<pre>a
+b
+c
+</pre>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Python:</li>
+</ul>
+<div class="cell" data-execution_count="2">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>my_list <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>]</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="cf">for</span> list_element <span class="kw">in</span> my_list:</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="bu">print</span>(list_element)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>a
+b
+c</code></pre>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="maps" class="slide level2">
-<h2>Maps</h2>
+<section id="list-comprehensions-apply-function-to-each-element" class="slide level2 crunch-title title-07">
+<h2><em>List Comprehensions</em>: Apply Function to Each Element</h2>
+<ul>
+<li>Construct <strong>new</strong> list by applying operation to each element:</li>
+</ul>
+<div class="cell" data-execution_count="3">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>my_nums <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
+<span id="cb6-2"><a href="#cb6-2"></a>my_squares <span class="op">=</span> [num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> my_nums]</span>
+<span id="cb6-3"><a href="#cb6-3"></a>my_squares</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>[16, 25, 36, 49]</code></pre>
+</div>
+</div>
+<ul>
+<li>Can also <strong>filter</strong> the elements of the list with <code>if</code>:</li>
+</ul>
+<div class="cell" data-execution_count="4">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>my_odd_squares <span class="op">=</span> [num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> my_nums <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb8-2"><a href="#cb8-2"></a>my_odd_squares</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>[25, 49]</code></pre>
+</div>
+</div>
+</section>
+<section id="sets" class="slide level2 smaller crunch-title">
+<h2>Sets</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Extremely helpful + efficient for finding <strong>unique</strong> elements:</li>
+</ul>
+<div class="cell" data-execution_count="5">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>animals_i_saw <span class="op">=</span> [<span class="st">'bird'</span>,<span class="st">'bird'</span>,<span class="st">'fish'</span>,<span class="st">'bird'</span>,<span class="st">'cat'</span>,<span class="st">'bird'</span>,<span class="st">'lizard'</span>]</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="bu">print</span>(<span class="ss">f"Number of animals I saw: </span><span class="sc">{</span><span class="bu">len</span>(animals_i_saw)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of animals I saw: 7</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>unique_animals_me <span class="op">=</span> <span class="bu">set</span>(animals_i_saw)</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="bu">print</span>(<span class="ss">f"Set of unique animals: </span><span class="sc">{</span>unique_animals_me<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="bu">print</span>(<span class="ss">f"Number of unique animals: </span><span class="sc">{</span><span class="bu">len</span>(unique_animals_me)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Set of unique animals: {'lizard', 'bird', 'cat', 'fish'}
+Number of unique animals: 4</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Supports all set operators from math:</li>
+</ul>
+<div class="cell" data-execution_count="7">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>animals_you_saw <span class="op">=</span> [<span class="st">'lizard'</span>,<span class="st">'dog'</span>,<span class="st">'bird'</span>,<span class="st">'bird'</span>,<span class="st">'bird'</span>]</span>
+<span id="cb14-2"><a href="#cb14-2"></a>unique_animals_you <span class="op">=</span> <span class="bu">set</span>(animals_you_saw)</span>
+<span id="cb14-3"><a href="#cb14-3"></a>unique_animals_both <span class="op">=</span> unique_animals_me.intersection(unique_animals_you)</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="bu">print</span>(<span class="ss">f"Animals we both saw: </span><span class="sc">{</span>unique_animals_both<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Animals we both saw: {'bird', 'lizard'}</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>unique_animals_either <span class="op">=</span> unique_animals_me.union(unique_animals_you)</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="bu">print</span>(<span class="ss">f"Animals either of us saw: </span><span class="sc">{</span>unique_animals_either<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Animals either of us saw: {'fish', 'lizard', 'dog', 'bird', 'cat'}</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>unique_animals_meonly <span class="op">=</span> unique_animals_me <span class="op">-</span> unique_animals_you</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="bu">print</span>(<span class="ss">f"Animals I saw that you didn't see: </span><span class="sc">{</span>unique_animals_meonly<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3"></a>unique_animals_youonly <span class="op">=</span> unique_animals_you <span class="op">-</span> unique_animals_me</span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="bu">print</span>(<span class="ss">f"Animals you saw that I didn't see: </span><span class="sc">{</span>unique_animals_youonly<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Animals I saw that you didn't see: {'cat', 'fish'}
+Animals you saw that I didn't see: {'dog'}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="maps-dictionaries" class="slide level2 smaller crunch-title">
+<h2>Maps / Dictionaries</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>While other language like Java have lots of fancy types of Map, Python has a single type, the <strong>dictionary</strong>:</li>
+</ul>
+<div class="cell" data-execution_count="10">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>gtown_data <span class="op">=</span> {</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="st">'name'</span>: <span class="st">'Georgetown University'</span>,</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="st">'founded'</span>: <span class="dv">1789</span>,</span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="st">'coordinates'</span>: (<span class="fl">38.9076</span>, <span class="op">-</span><span class="fl">77.0723</span>),</span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="st">'location'</span>: {</span>
+<span id="cb20-6"><a href="#cb20-6"></a>    <span class="st">'city'</span>: <span class="st">'Washington'</span>,</span>
+<span id="cb20-7"><a href="#cb20-7"></a>    <span class="st">'state'</span>: <span class="st">'DC'</span>, <span class="co"># &lt;__&lt;</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a>    <span class="st">'country'</span>: <span class="st">'USA'</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a>  }</span>
+<span id="cb20-10"><a href="#cb20-10"></a>}</span>
+<span id="cb20-11"><a href="#cb20-11"></a><span class="bu">print</span>(gtown_data.keys())</span>
+<span id="cb20-12"><a href="#cb20-12"></a><span class="bu">print</span>(gtown_data.values())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>dict_keys(['name', 'founded', 'coordinates', 'location'])
+dict_values(['Georgetown University', 1789, (38.9076, -77.0723), {'city': 'Washington', 'state': 'DC', 'country': 'USA'}])</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Be careful when looping! Default behavior is iteration over <strong>keys</strong>:</li>
+</ul>
+<div class="cell" data-execution_count="11">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="cf">for</span> k <span class="kw">in</span> gtown_data:</span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="bu">print</span>(k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>name
+founded
+coordinates
+location</code></pre>
+</div>
+</div>
+<ul>
+<li>For <strong>key-value pairs</strong> use <code>.items()</code>:</li>
+</ul>
+<div class="cell" data-execution_count="12">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> gtown_data.items():</span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="bu">print</span>(k, v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>name Georgetown University
+founded 1789
+coordinates (38.9076, -77.0723)
+location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="analyzing-computational-complexity" class="title-slide slide level1 center" data-stack-name="Complexity">
+<h1>Analyzing Computational Complexity</h1>
+
+</section>
+<section id="looking-under-the-hood" class="slide level2">
+<h2>Looking Under the Hood</h2>
+<ul>
+<li>We want to understand these structures <strong>independently</strong> of the specifics of their implementation in Python, for now</li>
+<li>So, let’s construct our own <strong>simplified versions</strong> of the basic structures</li>
+</ul>
+</section>
+<section id="tuples-1" class="slide level2">
+<h2>Tuples</h2>
+<div class="cell" data-execution_count="13">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">class</span> MyTuple:</span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, thing1, thing2):</span>
+<span id="cb26-3"><a href="#cb26-3"></a>    <span class="va">self</span>.thing1 <span class="op">=</span> thing1</span>
+<span id="cb26-4"><a href="#cb26-4"></a>    <span class="va">self</span>.thing2 <span class="op">=</span> thing2</span>
+<span id="cb26-5"><a href="#cb26-5"></a></span>
+<span id="cb26-6"><a href="#cb26-6"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb26-7"><a href="#cb26-7"></a>    <span class="cf">return</span> <span class="ss">f"(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>thing1<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>thing2<span class="sc">}</span><span class="ss">)"</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a></span>
+<span id="cb26-9"><a href="#cb26-9"></a>  <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb26-10"><a href="#cb26-10"></a>    <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__repr__</span>()</span>
+<span id="cb26-11"><a href="#cb26-11"></a></span>
+<span id="cb26-12"><a href="#cb26-12"></a>t1 <span class="op">=</span> MyTuple(<span class="st">'a'</span>,<span class="st">'b'</span>)</span>
+<span id="cb26-13"><a href="#cb26-13"></a>t2 <span class="op">=</span> MyTuple(<span class="dv">111</span>, <span class="dv">222</span>)</span>
+<span id="cb26-14"><a href="#cb26-14"></a><span class="bu">print</span>(t1, t2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>(a, b) (111, 222)</code></pre>
+</div>
+</div>
+</section>
+<section id="lists" class="slide level2 crunch-title smaller">
+<h2>Lists</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>The list itself just points to a root item:</li>
+</ul>
+<div class="cell" data-execution_count="14">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">class</span> MyList:</span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb28-3"><a href="#cb28-3"></a>    <span class="va">self</span>.root <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a></span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="kw">def</span> append(<span class="va">self</span>, new_item):</span>
+<span id="cb28-6"><a href="#cb28-6"></a>    <span class="cf">if</span> <span class="va">self</span>.root <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb28-7"><a href="#cb28-7"></a>      <span class="va">self</span>.root <span class="op">=</span> MyListItem(new_item)</span>
+<span id="cb28-8"><a href="#cb28-8"></a>    <span class="cf">else</span>:</span>
+<span id="cb28-9"><a href="#cb28-9"></a>      <span class="va">self</span>.root.append(new_item)</span>
+<span id="cb28-10"><a href="#cb28-10"></a></span>
+<span id="cb28-11"><a href="#cb28-11"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb28-12"><a href="#cb28-12"></a>    <span class="cf">return</span> <span class="va">self</span>.root.<span class="fu">__repr__</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>An item has contents, pointer to next item:</li>
+</ul>
+<div class="cell" data-execution_count="15">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw">class</span> MyListItem:</span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, content):</span>
+<span id="cb29-3"><a href="#cb29-3"></a>    <span class="va">self</span>.content <span class="op">=</span> content</span>
+<span id="cb29-4"><a href="#cb29-4"></a>    <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a></span>
+<span id="cb29-6"><a href="#cb29-6"></a>  <span class="kw">def</span> append(<span class="va">self</span>, new_item):</span>
+<span id="cb29-7"><a href="#cb29-7"></a>    <span class="cf">if</span> <span class="va">self</span>.<span class="bu">next</span> <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb29-8"><a href="#cb29-8"></a>      <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> MyListItem(new_item)</span>
+<span id="cb29-9"><a href="#cb29-9"></a>    <span class="cf">else</span>:</span>
+<span id="cb29-10"><a href="#cb29-10"></a>      <span class="va">self</span>.<span class="bu">next</span>.append(new_item)</span>
+<span id="cb29-11"><a href="#cb29-11"></a></span>
+<span id="cb29-12"><a href="#cb29-12"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb29-13"><a href="#cb29-13"></a>    my_content <span class="op">=</span> <span class="va">self</span>.content</span>
+<span id="cb29-14"><a href="#cb29-14"></a>    <span class="cf">return</span> my_content <span class="cf">if</span> <span class="va">self</span>.<span class="bu">next</span> <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> <span class="ss">f"</span><span class="sc">{</span>my_content<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">next</span><span class="sc">.</span><span class="fu">__repr__</span>()<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>users <span class="op">=</span> MyList()</span>
+<span id="cb30-2"><a href="#cb30-2"></a>users.append(<span class="st">'Jeff'</span>)</span>
+<span id="cb30-3"><a href="#cb30-3"></a>users.append(<span class="st">'Alma'</span>)</span>
+<span id="cb30-4"><a href="#cb30-4"></a>users.append(<span class="st">'Bo'</span>)</span>
+<span id="cb30-5"><a href="#cb30-5"></a><span class="bu">print</span>(users)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Jeff, Alma, Bo</code></pre>
+</div>
+</div>
+</section>
+<section id="so-how-many-steps-are-required" class="slide level2">
+<h2>So, How Many “Steps” Are Required…</h2>
+<ul>
+<li>To retrieve the <strong>first</strong> element in a <code>MyTuple</code>?</li>
+<li>To retrieve the <strong>last</strong> element in a <code>MyTuple</code>?</li>
+<li>To retrieve the <strong>first</strong> element in a <code>MyList</code>?</li>
+<li>To retrieve the <strong>last</strong> element in a <code>MyList</code>?</li>
+</ul>
+</section>
+<section id="how-many-steps" class="slide level2 smaller">
+<h2>How Many Steps?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>With a <code>MyTuple</code>:</li>
+</ul>
+<div class="cell" data-execution_count="17">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>t1.thing1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>'a'</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(\implies\)</span> 1 step</li>
+</ul>
+<div class="cell" data-execution_count="18">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>t1.thing2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>'b'</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(\implies\)</span> 1 step</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>With a <code>MyList</code>:</li>
+</ul>
+<div class="cell" data-execution_count="19">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="bu">print</span>(users.root.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Jeff</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(\implies\)</span> 1 step</li>
+</ul>
+<div class="cell" data-execution_count="20">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>current_node <span class="op">=</span> users.root</span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="cf">while</span> current_node.<span class="bu">next</span> <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb38-3"><a href="#cb38-3"></a>  current_node <span class="op">=</span> current_node.<span class="bu">next</span></span>
+<span id="cb38-4"><a href="#cb38-4"></a><span class="bu">print</span>(current_node.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bo</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(\implies\)</span> (3 steps)</li>
+<li>…But why 3? How many steps if the list contained 5 elements? <span class="math inline">\(N\)</span> elements?</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="pairwise-concatenating-list-elements" class="slide level2 smaller crunch-title">
+<h2>Pairwise-Concatenating List Elements</h2>
+<ul>
+<li>Now rather than just printing, let’s pairwise concatenate:</li>
+</ul>
+<div class="cell" data-execution_count="21">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>cur_pointer1 <span class="op">=</span> users.root</span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="cf">while</span> cur_pointer1 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb40-3"><a href="#cb40-3"></a>  cur_pointer2 <span class="op">=</span> users.root</span>
+<span id="cb40-4"><a href="#cb40-4"></a>  <span class="cf">while</span> cur_pointer2 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb40-5"><a href="#cb40-5"></a>    <span class="bu">print</span>(cur_pointer1.content <span class="op">+</span> cur_pointer2.content)</span>
+<span id="cb40-6"><a href="#cb40-6"></a>    cur_pointer2 <span class="op">=</span> cur_pointer2.<span class="bu">next</span></span>
+<span id="cb40-7"><a href="#cb40-7"></a>  cur_pointer1 <span class="op">=</span> cur_pointer1.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>JeffJeff
+JeffAlma
+JeffBo
+AlmaJeff
+AlmaAlma
+AlmaBo
+BoJeff
+BoAlma
+BoBo</code></pre>
+</div>
+</div>
+<ul>
+<li>How many steps did this take? How about for a list with <span class="math inline">\(5\)</span> elements? <span class="math inline">\(N\)</span> elements?</li>
+</ul>
+</section>
+<section id="last-example-pairwise-concatenation-with-end-check" class="slide level2 smaller">
+<h2>Last Example: Pairwise-Concatenation with End Check</h2>
+<div class="cell" data-execution_count="22">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>printed_items <span class="op">=</span> []</span>
+<span id="cb42-2"><a href="#cb42-2"></a>cur_pointer1 <span class="op">=</span> users.root</span>
+<span id="cb42-3"><a href="#cb42-3"></a><span class="cf">while</span> cur_pointer1 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb42-4"><a href="#cb42-4"></a>  cur_pointer2 <span class="op">=</span> users.root</span>
+<span id="cb42-5"><a href="#cb42-5"></a>  <span class="cf">while</span> cur_pointer2 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb42-6"><a href="#cb42-6"></a>    <span class="bu">print</span>(cur_pointer1.content <span class="op">+</span> cur_pointer2.content)</span>
+<span id="cb42-7"><a href="#cb42-7"></a>    printed_items.append(cur_pointer1.content)</span>
+<span id="cb42-8"><a href="#cb42-8"></a>    printed_items.append(cur_pointer2.content)</span>
+<span id="cb42-9"><a href="#cb42-9"></a>    cur_pointer2 <span class="op">=</span> cur_pointer2.<span class="bu">next</span></span>
+<span id="cb42-10"><a href="#cb42-10"></a>  cur_pointer1 <span class="op">=</span> cur_pointer1.<span class="bu">next</span></span>
+<span id="cb42-11"><a href="#cb42-11"></a>check_pointer <span class="op">=</span> users.root</span>
+<span id="cb42-12"><a href="#cb42-12"></a><span class="cf">while</span> check_pointer <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb42-13"><a href="#cb42-13"></a>  <span class="cf">if</span> check_pointer.content <span class="kw">in</span> printed_items:</span>
+<span id="cb42-14"><a href="#cb42-14"></a>    <span class="bu">print</span>(<span class="ss">f"Phew. </span><span class="sc">{</span>check_pointer<span class="sc">.</span>content<span class="sc">}</span><span class="ss"> printed at least once."</span>)</span>
+<span id="cb42-15"><a href="#cb42-15"></a>  <span class="cf">else</span>:</span>
+<span id="cb42-16"><a href="#cb42-16"></a>    <span class="bu">print</span>(<span class="ss">f"Oh no! </span><span class="sc">{</span>check_pointer<span class="sc">.</span>content<span class="sc">}</span><span class="ss"> was never printed!!!"</span>)</span>
+<span id="cb42-17"><a href="#cb42-17"></a>  check_pointer <span class="op">=</span> check_pointer.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>JeffJeff
+JeffAlma
+JeffBo
+AlmaJeff
+AlmaAlma
+AlmaBo
+BoJeff
+BoAlma
+BoBo
+Phew. Jeff printed at least once.
+Phew. Alma printed at least once.
+Phew. Bo printed at least once.</code></pre>
+</div>
+</div>
+</section>
+<section id="generalizing" class="slide level2">
+<h2>Generalizing</h2>
+<ul>
+<li>Algorithms are <strong>“efficient”</strong> relative to how their runtime <strong>scales</strong> as the <strong>objects</strong> grow larger and larger!</li>
+<li>Tuple operations take 1 step no matter what</li>
+<li>For lists, retrieving the <strong>first</strong> element takes 1 step no matter what, but retrieving the <strong>last</strong> element takes <span class="math inline">\(n\)</span> steps!</li>
+<li>Pairwise concatenation requires <span class="math inline">\(n^2\)</span> steps!</li>
+<li>We write the complexity of an algorithm as <span class="math inline">\(O(f(n))\)</span>, where <span class="math inline">\(f(n)\)</span> is a “complexity class” representing how long it takes to run, <strong>in the limit</strong>, as <span class="math inline">\(n \rightarrow \infty\)</span></li>
+</ul>
+</section>
+<section id="the-complexity-of-our-examples" class="slide level2">
+<h2>The Complexity of Our Examples</h2>
+<ul>
+<li>Tuple operations: <span class="math inline">\(O(1)\)</span></li>
+<li>Retrieving the first element of a list: <span class="math inline">\(O(1)\)</span></li>
+<li>Retrieving the last element of a list: <span class="math inline">\(O(n)\)</span></li>
+<li>Pairwise concatenation: <span class="math inline">\(O(n^2)\)</span></li>
+<li>Pairwise concatenation+check: <span class="math inline">\(O(n^2 + n) = O(n^2) \leftarrow !!!\)</span></li>
+<li>Crucial to think <strong>asymptotically</strong> to wrap our heads around this!</li>
+</ul>
+</section>
+<section id="the-figure-you-should-make-in-your-brain-every-time" class="slide level2 smaller crunch-title title-10 crunch-quarto-figure">
+<h2>The Figure You Should Make In Your Brain Every Time</h2>
+<div class="cell" data-execution_count="23">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb44-3"><a href="#cb44-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb44-4"><a href="#cb44-4"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb44-5"><a href="#cb44-5"></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="fl">2.75</span>, <span class="fl">0.25</span>)]</span>
+<span id="cb44-6"><a href="#cb44-6"></a>runtime_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
+<span id="cb44-7"><a href="#cb44-7"></a>runtime_df[<span class="st">'$n^2 + 50n$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">50</span><span class="op">*</span>x)</span>
+<span id="cb44-8"><a href="#cb44-8"></a>runtime_df[<span class="st">'$n^2 + 10000$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">10000</span>)</span>
+<span id="cb44-9"><a href="#cb44-9"></a>runtime_df[<span class="st">'$O(n)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].copy()</span>
+<span id="cb44-10"><a href="#cb44-10"></a>runtime_df[<span class="st">'$O(nlogn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">*</span> np.log(x))</span>
+<span id="cb44-11"><a href="#cb44-11"></a>runtime_df[<span class="st">'$O(n^2)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>))</span>
+<span id="cb44-12"><a href="#cb44-12"></a>runtime_df[<span class="st">'$O(n^2logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.log(x))</span>
+<span id="cb44-13"><a href="#cb44-13"></a>runtime_df[<span class="st">'$O(n^3)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>))</span>
+<span id="cb44-14"><a href="#cb44-14"></a>runtime_df[<span class="st">'$O(n^3logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>) <span class="op">*</span> np.log(x))</span>
+<span id="cb44-15"><a href="#cb44-15"></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
+<span id="cb44-16"><a href="#cb44-16"></a>max_vals <span class="op">=</span> runtime_df.<span class="bu">max</span>().to_dict()</span>
+<span id="cb44-17"><a href="#cb44-17"></a>plot_df <span class="op">=</span> runtime_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
+<span id="cb44-18"><a href="#cb44-18"></a><span class="co">#print(plot_df)</span></span>
+<span id="cb44-19"><a href="#cb44-19"></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (col <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> runtime_df.columns}</span>
+<span id="cb44-20"><a href="#cb44-20"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
+<span id="cb44-21"><a href="#cb44-21"></a>sns.lineplot(plot_df, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
+<span id="cb44-22"><a href="#cb44-22"></a><span class="co">#plt.xscale('log')</span></span>
+<span id="cb44-23"><a href="#cb44-23"></a>plt.yscale(<span class="st">'log'</span>)</span>
+<span id="cb44-24"><a href="#cb44-24"></a><span class="co"># extract the existing handles and labels</span></span>
+<span id="cb44-25"><a href="#cb44-25"></a>h, l <span class="op">=</span> ax.get_legend_handles_labels()</span>
+<span id="cb44-26"><a href="#cb44-26"></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
+<span id="cb44-27"><a href="#cb44-27"></a>ax.legend(h[<span class="dv">0</span>:<span class="dv">2</span>], l[<span class="dv">0</span>:<span class="dv">2</span>])</span>
+<span id="cb44-28"><a href="#cb44-28"></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
+<span id="cb44-29"><a href="#cb44-29"></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>):</span>
+<span id="cb44-30"><a href="#cb44-30"></a>    <span class="cf">continue</span></span>
+<span id="cb44-31"><a href="#cb44-31"></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
+<span id="cb44-32"><a href="#cb44-32"></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'\log(n)'</span>)</span>
+<span id="cb44-33"><a href="#cb44-33"></a>  ax.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">2</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb44-34"><a href="#cb44-34"></a><span class="co"># Hide the right and top spines</span></span>
+<span id="cb44-35"><a href="#cb44-35"></a>ax.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb44-36"><a href="#cb44-36"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/cell-24-output-1.png" width="932" height="429"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Takeaway: As <span class="math inline">\(n \rightarrow \infty\)</span>, <strong>highest-degree terms dominate!</strong></li>
+</ul>
+</section>
+<section id="constants-on-highest-degree-terms-also-go-away" class="slide level2 smaller crunch-title title-10">
+<h2>Constants On Highest-Degree Terms Also Go Away</h2>
+<ul>
+<li>(Though this is harder to see, without a log-log plot:)</li>
+</ul>
+<div class="cell" data-execution_count="24">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>
+<span id="cb45-2"><a href="#cb45-2"></a>rt_const_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
+<span id="cb45-3"><a href="#cb45-3"></a>rt_const_df[<span class="st">'$20n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">20</span><span class="op">*</span>np.power(x,<span class="dv">2</span>))</span>
+<span id="cb45-4"><a href="#cb45-4"></a>rt_const_df[<span class="st">'$n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>))</span>
+<span id="cb45-5"><a href="#cb45-5"></a>rt_const_df[<span class="st">'$n^2logn$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.power(np.log(x),<span class="dv">2</span>))</span>
+<span id="cb45-6"><a href="#cb45-6"></a>rt_const_df[<span class="st">'$n^3$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">3</span>))</span>
+<span id="cb45-7"><a href="#cb45-7"></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
+<span id="cb45-8"><a href="#cb45-8"></a>max_vals <span class="op">=</span> rt_const_df.<span class="bu">max</span>().to_dict()</span>
+<span id="cb45-9"><a href="#cb45-9"></a>plot_df_const <span class="op">=</span> rt_const_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
+<span id="cb45-10"><a href="#cb45-10"></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$20n^2$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> rt_const_df.columns}</span>
+<span id="cb45-11"><a href="#cb45-11"></a>fig_const, ax_const <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
+<span id="cb45-12"><a href="#cb45-12"></a>sns.lineplot(plot_df_const, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
+<span id="cb45-13"><a href="#cb45-13"></a>plt.xscale(<span class="st">'log'</span>)</span>
+<span id="cb45-14"><a href="#cb45-14"></a>plt.yscale(<span class="st">'log'</span>)</span>
+<span id="cb45-15"><a href="#cb45-15"></a><span class="co"># extract the existing handles and labels</span></span>
+<span id="cb45-16"><a href="#cb45-16"></a>h_const, l_const <span class="op">=</span> ax_const.get_legend_handles_labels()</span>
+<span id="cb45-17"><a href="#cb45-17"></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
+<span id="cb45-18"><a href="#cb45-18"></a>ax_const.legend(h_const[<span class="dv">0</span>:<span class="dv">1</span>], l_const[<span class="dv">0</span>:<span class="dv">1</span>])</span>
+<span id="cb45-19"><a href="#cb45-19"></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
+<span id="cb45-20"><a href="#cb45-20"></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$20n^2$'</span>):</span>
+<span id="cb45-21"><a href="#cb45-21"></a>    <span class="cf">continue</span></span>
+<span id="cb45-22"><a href="#cb45-22"></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
+<span id="cb45-23"><a href="#cb45-23"></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'\log(n)'</span>)</span>
+<span id="cb45-24"><a href="#cb45-24"></a>  ax_const.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">10</span><span class="op">**</span><span class="dv">4</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb45-25"><a href="#cb45-25"></a><span class="co"># Hide the right and top spines</span></span>
+<span id="cb45-26"><a href="#cb45-26"></a>ax_const.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb45-27"><a href="#cb45-27"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img data-src="index_files/figure-revealjs/cell-25-output-1.png" width="914" height="431"></p>
+</div>
+</div>
 
 <div class="footer footer-default">
 <p>DSAN 5500 Week 3: Data Structures, Computational Complexity</p>
