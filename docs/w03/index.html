@@ -55,7 +55,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -127,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">DSAN 5500</a> 
+      <a href="../">DSAN 5500: Data Structures, Objects, and Algorithms in Python</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -211,6 +230,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-complexity-of-our-examples" id="toc-the-complexity-of-our-examples" class="nav-link" data-scroll-target="#the-complexity-of-our-examples">The Complexity of Our Examples</a></li>
   <li><a href="#the-figure-you-should-make-in-your-brain-every-time" id="toc-the-figure-you-should-make-in-your-brain-every-time" class="nav-link" data-scroll-target="#the-figure-you-should-make-in-your-brain-every-time">The Figure You Should Make In Your Brain Every Time</a></li>
   <li><a href="#constants-on-highest-degree-terms-also-go-away" id="toc-constants-on-highest-degree-terms-also-go-away" class="nav-link" data-scroll-target="#constants-on-highest-degree-terms-also-go-away">Constants On Highest-Degree Terms Also Go Away</a></li>
+  <li><a href="#formalizing-big-o-notation" id="toc-formalizing-big-o-notation" class="nav-link" data-scroll-target="#formalizing-big-o-notation">Formalizing Big-O Notation</a></li>
+  <li><a href="#intuition-rightarrow-proof" id="toc-intuition-rightarrow-proof" class="nav-link" data-scroll-target="#intuition-rightarrow-proof">Intuition <span class="math inline">\(\rightarrow\)</span> Proof</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
@@ -409,7 +431,7 @@ c</code></pre>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of unique animals: </span><span class="sc">{</span><span class="bu">len</span>(unique_animals_me)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Set of unique animals: {'cat', 'bird', 'lizard', 'fish'}
+<pre><code>Set of unique animals: {'cat', 'lizard', 'bird', 'fish'}
 Number of unique animals: 4</code></pre>
 </div>
 </div>
@@ -436,7 +458,7 @@ Number of unique animals: 4</code></pre>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Animals either of us saw: </span><span class="sc">{</span>unique_animals_either<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Animals either of us saw: {'cat', 'bird', 'dog', 'lizard', 'fish'}</code></pre>
+<pre><code>Animals either of us saw: {'dog', 'cat', 'lizard', 'bird', 'fish'}</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="9">
@@ -876,6 +898,39 @@ Phew. Bo printed at least once.</code></pre>
 </details>
 <div class="cell-output cell-output-display">
 <p><img src="index_files/figure-revealjs/cell-25-output-1.png" width="914" height="431"></p>
+</div>
+</div>
+</section>
+<section id="formalizing-big-o-notation" class="level2">
+<h2 class="anchored" data-anchor-id="formalizing-big-o-notation">Formalizing Big-O Notation</h2>
+<ul>
+<li>Let <span class="math inline">\(f, g: \mathbb{N} \rightarrow \mathbb{N}\)</span>. Then we write <span class="math inline">\(f(n) = O(g(n))\)</span> when there exists a <strong>threshold</strong> <span class="math inline">\(n_0 &gt; 0\)</span> and a <strong>constant</strong> <span class="math inline">\(K &gt; 0\)</span> such that <span class="math display">\[
+\forall n \geq n_0 \left[ f(n) \leq K\cdot g(n) \right]
+\]</span></li>
+<li>In words: beyond a certain point <span class="math inline">\(n_0\)</span>, <span class="math inline">\(f(n)\)</span> is <strong>bounded above</strong> by <span class="math inline">\(K\cdot g(n)\)</span>.</li>
+<li><em>Definition from <span class="citation" data-cites="savage_models_1998">Savage (<a href="#ref-savage_models_1998" role="doc-biblioref">1998</a>, pg. 13)</span></em></li>
+</ul>
+</section>
+<section id="intuition-rightarrow-proof" class="level2 crunch-title crunch-ul">
+<h2 class="crunch-title crunch-ul anchored" data-anchor-id="intuition-rightarrow-proof">Intuition <span class="math inline">\(\rightarrow\)</span> Proof</h2>
+<ul>
+<li>Using this definition, we can now <strong>prove</strong> <span class="math inline">\(f(n) = n^2 + 50n = O(n^2)\)</span>!</li>
+<li>Here <span class="math inline">\(f(n) = n^2 + 50n\)</span>, <span class="math inline">\(g(n) = n^2\)</span></li>
+<li><strong>Theorem</strong>: <span class="math inline">\(\exists \; n_0 \; \text{ s.t. } \forall n \geq n_0 \left[ n^2 + 50n \leq Kn^2 \right]\)</span></li>
+<li><strong>Proof</strong>: Let <span class="math inline">\(K = 50\)</span>. Then <span class="math display">\[
+\begin{align*}
+&amp;n^2 + 50n \leq 50n^2 \iff n + 50 \leq 50n \\
+&amp;\iff 49n \geq 50 \iff n \geq \frac{50}{49}.
+\end{align*}
+\]</span></li>
+<li>So if we choose <span class="math inline">\(n_0 = 2\)</span>, the chain of statements holds. <span class="math inline">\(\blacksquare\)</span></li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-savage_models_1998" class="csl-entry" role="listitem">
+Savage, John E. 1998. <em>Models of <span>Computation</span>: <span>Exploring</span> the <span>Power</span> of <span>Computing</span></em>. <span>Addison-Wesley</span>.
 </div>
 </div>
 

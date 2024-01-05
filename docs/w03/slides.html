@@ -95,7 +95,26 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -565,7 +584,7 @@ c</code></pre>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="bu">print</span>(<span class="ss">f"Number of unique animals: </span><span class="sc">{</span><span class="bu">len</span>(unique_animals_me)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Set of unique animals: {'bird', 'lizard', 'cat', 'fish'}
+<pre><code>Set of unique animals: {'cat', 'fish', 'bird', 'lizard'}
 Number of unique animals: 4</code></pre>
 </div>
 </div>
@@ -592,7 +611,7 @@ Number of unique animals: 4</code></pre>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="bu">print</span>(<span class="ss">f"Animals either of us saw: </span><span class="sc">{</span>unique_animals_either<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Animals either of us saw: {'dog', 'lizard', 'cat', 'bird', 'fish'}</code></pre>
+<pre><code>Animals either of us saw: {'fish', 'dog', 'bird', 'cat', 'lizard'}</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="9">
@@ -1036,6 +1055,39 @@ Phew. Bo printed at least once.</code></pre>
 <p><img data-src="index_files/figure-revealjs/cell-25-output-1.png" width="914" height="431"></p>
 </div>
 </div>
+</section>
+<section id="formalizing-big-o-notation" class="slide level2">
+<h2>Formalizing Big-O Notation</h2>
+<ul>
+<li>Let <span class="math inline">\(f, g: \mathbb{N} \rightarrow \mathbb{N}\)</span>. Then we write <span class="math inline">\(f(n) = O(g(n))\)</span> when there exists a <strong>threshold</strong> <span class="math inline">\(n_0 &gt; 0\)</span> and a <strong>constant</strong> <span class="math inline">\(K &gt; 0\)</span> such that <span class="math display">\[
+\forall n \geq n_0 \left[ f(n) \leq K\cdot g(n) \right]
+\]</span></li>
+<li>In words: beyond a certain point <span class="math inline">\(n_0\)</span>, <span class="math inline">\(f(n)\)</span> is <strong>bounded above</strong> by <span class="math inline">\(K\cdot g(n)\)</span>.</li>
+<li><em>Definition from <span class="citation" data-cites="savage_models_1998">Savage (<a href="#/references" role="doc-biblioref" onclick="">1998</a>, pg. 13)</span></em></li>
+</ul>
+</section>
+<section id="intuition-rightarrow-proof" class="slide level2 crunch-title crunch-ul">
+<h2>Intuition <span class="math inline">\(\rightarrow\)</span> Proof</h2>
+<ul>
+<li>Using this definition, we can now <strong>prove</strong> <span class="math inline">\(f(n) = n^2 + 50n = O(n^2)\)</span>!</li>
+<li>Here <span class="math inline">\(f(n) = n^2 + 50n\)</span>, <span class="math inline">\(g(n) = n^2\)</span></li>
+<li><strong>Theorem</strong>: <span class="math inline">\(\exists \; n_0 \; \text{ s.t. } \forall n \geq n_0 \left[ n^2 + 50n \leq Kn^2 \right]\)</span></li>
+<li><strong>Proof</strong>: Let <span class="math inline">\(K = 50\)</span>. Then <span class="math display">\[
+\begin{align*}
+&amp;n^2 + 50n \leq 50n^2 \iff n + 50 \leq 50n \\
+&amp;\iff 49n \geq 50 \iff n \geq \frac{50}{49}.
+\end{align*}
+\]</span></li>
+<li>So if we choose <span class="math inline">\(n_0 = 2\)</span>, the chain of statements holds. <span class="math inline">\(\blacksquare\)</span></li>
+</ul>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-savage_models_1998" class="csl-entry" role="listitem">
+Savage, John E. 1998. <em>Models of <span>Computation</span>: <span>Exploring</span> the <span>Power</span> of <span>Computing</span></em>. <span>Addison-Wesley</span>.
+</div>
+</div>
 
 <div class="footer footer-default">
 <p>DSAN 5500 Week 3: Data Structures, Computational Complexity</p>
@@ -1228,7 +1280,7 @@ Phew. Bo printed at least once.</code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],

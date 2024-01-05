@@ -5,6 +5,7 @@ date: "Monday, January 29, 2024"
 date-format: "full"
 author: "Jeff Jacobs"
 institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
+bibliography: "../_DSAN5500.bib"
 format:
   revealjs:
     df-print: kable
@@ -15,6 +16,7 @@ format:
     scrollable: true
     slide-number: true
     theme: ["../_jjslides.scss"]
+    html-math-method: mathjax
     simplemenu:
       flat: true
       barhtml:
@@ -27,6 +29,7 @@ format:
     output-file: "index.html"
     echo: true
     code-fold: show
+    html-math-method: mathjax
 ---
 
 ::: {.content-visible unless-format="revealjs"}
@@ -483,3 +486,31 @@ for label, val in max_vals.items():
 ax_const.spines[['right', 'top']].set_visible(False)
 plt.show()
 ```
+
+## Formalizing Big-O Notation
+
+* Let $f, g: \mathbb{N} \rightarrow \mathbb{N}$. Then we write $f(n) = O(g(n))$ when there exists a **threshold** $n_0 > 0$ and a **constant** $K > 0$ such that
+$$
+\forall n \geq n_0 \left[ f(n) \leq K\cdot g(n) \right]
+$$
+* In words: beyond a certain point $n_0$, $f(n)$ is **bounded above** by $K\cdot g(n)$.
+* *Definition from @savage_models_1998[pg. 13]*
+
+## Intuition $\rightarrow$ Proof {.crunch-title .crunch-ul}
+
+* Using this definition, we can now **prove** $f(n) = n^2 + 50n = O(n^2)$!
+* Here $f(n) = n^2 + 50n$, $g(n) = n^2$
+* **Theorem**: $\exists \; n_0 \; \text{ s.t. } \forall n \geq n_0 \left[ n^2 + 50n \leq Kn^2 \right]$
+* **Proof**: Let $K = 50$. Then
+$$
+\begin{align*}
+&n^2 + 50n \leq 50n^2 \iff n + 50 \leq 50n \\
+&\iff 49n \geq 50 \iff n \geq \frac{50}{49}.
+\end{align*}
+$$
+* So if we choose $n_0 = 2$, the chain of statements holds. $\blacksquare$
+
+## References
+
+::: {#refs}
+:::
