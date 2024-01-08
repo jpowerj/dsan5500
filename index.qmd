@@ -3,22 +3,17 @@ title: "DSAN 5500: Data Structures, Objects, and Algorithms in Python"
 subtitle: "Mondays, 12:30-3pm, Car Barn 204"
 author: "Jeff Jacobs<br><a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
 institute: "Georgetown University<br>Spring 2024"
+listing:
+  sort-ui: false
+  filter-ui: false
+  type: table
+  include:
+    categories: "{Class Sessions}"
+  fields: [title,date]
+  sort: "lecnum asc"
+  table-hover: true
+#  date-format: full
+  date-format: "MMMM D"
 ---
 
-{{< include _draft-notice.qmd >}}
-
-Welcome to the homepage for DSAN 5500: Data Structures, Georgetown University, Spring 2024! The course takes place on Mondays from 12:30-3:00pm in Car Barn room 204.
-
-More details are provided on the [syllabus](syllabus.qmd), but as an overview, the only **graded materials** for the course will be:
-
-* **Four** problem sets, evenly spaced throughout the semester,
-* **One** in-class midterm exam, and
-* **One** final project, due at the end of the semester (instead of a final exam)
-
-The course does not have any "official" prerequisites, but a general comfort with **Python** is strongly recommended. If you have never used Python before, however (or if you haven't used it in a while and feel like your skills are rusty), I will be releasing a set of preparation materials over winter break, to help make sure that everyone is on the same page coming into class in the Spring!
-
-My goal, in creating the course, is to take the general, *language-agnostic* data science concepts you've learned in (e.g.) DSAN 5000 and work through how to **implement** these concepts **efficiently** in Python, where we can define "efficient" in different ways based on different **goals** that we may have in different settings while working as Data Scientists.
-
-**Course Description:**
-
-The Data Structures, Objects, and Algorithms in Python course will look at built-in data structures, such as dictionaries, lists, tuples, sets, strings, and frozen sets. The course will also cover objects and classes in Python, as well as building new structures and objects. The class will cover algorithms including runtime, recurrence, and development. Applications will include data science problems. *Prerequisite: A working or intermediate knowledge of Python. 3 credits.*
+Welcome to the homepage for DSAN 5500: Data Structures, Georgetown University, Spring 2024! The course takes place on Mondays from 12:30-3:00pm in Car Barn room 204. More details are provided on the [syllabus](syllabus.qmd)

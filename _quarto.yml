@@ -16,6 +16,8 @@ website:
         href: syllabus.qmd
       - text: "Resources"
         href: resources.qmd
+      - text: "Google Classroom <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://classroom.google.com/c/NjM5MzE2MTE4NTgx?cjc=r4pzugi"
       - "---"
       - text: "Week 1: Jan 10"
         href: "w01/index.qmd"
@@ -23,6 +25,22 @@ website:
         href: "w02/index.qmd"
       - text: "Week 3: Jan 29"
         href: "w03/index.qmd"
+      - text: "Week 4: Feb 5"
+        href: "w04/index.qmd"
+      # - text: "Week 5: Feb 12"
+      #   href: "w05/index.qmd"
+      # - text: "Week 6: Feb 20"
+      #   href: "w06/index.qmd"
+      # - text: "Week 7: Feb 26"
+      #   href: "w07/index.qmd"
+      # - text: "Week 8: Mar 11"
+      #   href: "w08/index.qmd"
+      # - text: "Week 9: Mar 18"
+      #   href: "w09/index.qmd"
+      # - text: "Week 10: Mar 25"
+      #   href: "w10/index.qmd"
+      # - text: "Week 11"
+      
 
 format:
   html:

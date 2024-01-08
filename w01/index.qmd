@@ -1,15 +1,18 @@
 ---
-title: "Week 1: Coding in General and Python Specifically"
+title: "Week 1: Python Fundamentals"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: "Wednesday, January 10, 2024"
-date-format: "full"
+date-format: full
+lecnum: 1
+categories:
+  - "Class Sessions"
 author: "Jeff Jacobs"
 institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
 format:
   revealjs:
     df-print: kable
     output-file: "slides.html"
-    footer: "DSAN 5500 W01: Coding and Python"
+    footer: "DSAN 5500 Week 1: Python Fundamentals"
     echo: true
     code-fold: show
     scrollable: true

@@ -1,0 +1,41 @@
+---
+title: "Week 4: Heaps, Stacks, Trees, Graphs"
+subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
+date: "Wednesday, January 10, 2024"
+date-format: full
+author: "Jeff Jacobs"
+institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
+lecnum: 4
+categories:
+  - "Class Sessions"
+format:
+  revealjs:
+    df-print: kable
+    output-file: "slides.html"
+    footer: "DSAN 5500 Week 4: Heaps, Stacks, Trees, Graphs"
+    echo: true
+    code-fold: show
+    scrollable: true
+    slide-number: true
+    theme: ["../_jjslides.scss"]
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    echo: true
+    code-fold: show
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::

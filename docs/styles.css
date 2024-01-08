@@ -13,6 +13,10 @@ a.disabled {
     pointer-events: none;
 }
 
+.greyed-out {
+    background-color: rgb(230,230,230) !important;
+}
+
 .new-unit {
     border-top: 2px solid gray !important;
 }
