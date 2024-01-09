@@ -18,15 +18,50 @@ My goal, in creating the course, is to take the general, *language-agnostic* dat
 
 The graded components for the course consist of **five** homework assignments, an in-class **midterm**, and a **final project**. Grades will be allocated as follows:
 
-| Assignment | Percent of Final Grade |
-| - | - |
-| **HW1**: Python Fundamentals | 8% |
-| **HW2**: Data Structures | 8% |
-| **HW3**: Basic Algorithms | 8% |
-| In-Class **Midterm** | 30% |
-| **HW4**: Advanced Algorithms | 8% |
-| **HW5**: Algorithms | 8% |
-| **Final Project** | 30% |
+```{=html}
+<table>
+<thead>
+<tr>
+    <th>Category</th>
+    <th>Percent of Final Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>In-Class Midterm</td>
+    <td>30%</td>
+</tr>
+<tr>
+    <td>Final Project</td>
+    <td>30%</td>
+</tr>
+<tr>
+    <td>Homeworks</td>
+    <td>40%</td>
+</tr>
+<tr>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW1**: Python Fundamentals"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>8%"></span></td>
+</tr>
+<tr>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW2**: Data Structures"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>8%"></span></td>
+</tr>
+<tr>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW3**: Basic Algorithms"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>8%"></span></td>
+</tr>
+<tr>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW4**: Advanced Algorithms"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>8%"></span></td>
+</tr>
+<tr>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW5**: Parallel Computing"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>8%"></span></td>
+</tr>
+</tbody>
+</table>
+```
 
 The course does not have any "official" prerequisites, but a general comfort with **Python** is strongly recommended. If you have never used Python before, however (or if you haven't used it in a while and feel like your skills are rusty), you can browse the materials on the <a href='./resources.html' target='_blank'>Resources page</a>, to help make sure that everyone is on the same page coming into class in the Spring!
 
