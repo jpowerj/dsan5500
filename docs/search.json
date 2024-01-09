@@ -63,11 +63,18 @@
     "text": "Primitive Types\n\nBoolean (True or False)\nNumbers (Integers, Decimals)\nStrings\nNone"
   },
   {
-    "objectID": "w01/slides.html#stacks-and-heaps",
-    "href": "w01/slides.html#stacks-and-heaps",
+    "objectID": "w01/slides.html#stack-and-heap",
+    "href": "w01/slides.html#stack-and-heap",
     "title": "Week 1: Python Fundamentals",
-    "section": "Stacks and Heaps",
-    "text": "Stacks and Heaps\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
+    "section": "Stack and Heap",
+    "text": "Stack and Heap\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
+  },
+  {
+    "objectID": "w01/slides.html#algorithmic-thinking",
+    "href": "w01/slides.html#algorithmic-thinking",
+    "title": "Week 1: Python Fundamentals",
+    "section": "Algorithmic Thinking",
+    "text": "Algorithmic Thinking\n\nWhat are the inputs?\nWhat are the outputs?\nStandard cases vs. edge cases\nAdversarial development: brainstorm all of the ways an evil hacker might break your code!"
   },
   {
     "objectID": "w01/slides.html#sanity-preserving-tip",
@@ -140,11 +147,18 @@
     "text": "Primitive Types\n\nBoolean (True or False)\nNumbers (Integers, Decimals)\nStrings\nNone"
   },
   {
-    "objectID": "w01/index.html#stacks-and-heaps",
-    "href": "w01/index.html#stacks-and-heaps",
+    "objectID": "w01/index.html#stack-and-heap",
+    "href": "w01/index.html#stack-and-heap",
     "title": "Week 1: Python Fundamentals",
-    "section": "Stacks and Heaps",
-    "text": "Stacks and Heaps\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
+    "section": "Stack and Heap",
+    "text": "Stack and Heap\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
+  },
+  {
+    "objectID": "w01/index.html#algorithmic-thinking",
+    "href": "w01/index.html#algorithmic-thinking",
+    "title": "Week 1: Python Fundamentals",
+    "section": "Algorithmic Thinking",
+    "text": "Algorithmic Thinking\n\nWhat are the inputs?\nWhat are the outputs?\nStandard cases vs. edge cases\nAdversarial development: brainstorm all of the ways an evil hacker might break your code!"
   },
   {
     "objectID": "w01/index.html#sanity-preserving-tip",
@@ -277,7 +291,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'lizard', 'bird', 'fish', 'cat'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'lizard', 'bird', 'fish', 'dog', 'cat'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'lizard', 'bird', 'cat'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'lizard', 'bird', 'dog', 'cat', 'fish'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -438,7 +452,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'cat', 'fish', 'bird', 'lizard'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'bird', 'cat', 'fish', 'dog', 'lizard'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'cat', 'bird', 'lizard', 'fish'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'dog', 'cat', 'lizard', 'fish', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/index.html#maps-dictionaries",
