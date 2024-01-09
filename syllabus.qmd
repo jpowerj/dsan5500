@@ -7,7 +7,7 @@ title: "Syllabus"
 ## Course Staff
 
 * Prof. Jeff Jacobs, <a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>
-  * Office hours (Click to reserve): <a href='https://calendar.app.google/ENpvjNxd5WVm6Rvq6' target='_blank'>Monday, Tuesday 3:30-6pm</a>, Car Barn Room 207-04A
+  * Office hours (Click to reserve): <a href='https://calendar.app.google/ENpvjNxd5WVm6Rvq6' target='_blank'>Monday, Tuesday 3:30-6pm</a>, held in Car Barn Room 207-04A
 * TA Yihan Bian, <a href='mailto:yb214@georgetown.edu' target='_blank'>`yb214@georgetown.edu`</a>
 * TA Binhui Chen, <a href='mailto:bc928@georgetown.edu' target='_blank'>`bc928@georgetown.edu`</a>
 * TA Brian Kwon, <a href='mailto:sk2338@georgetown.edu' target='_blank'>`sk2338@georgetown.edu`</a>
@@ -63,7 +63,7 @@ The graded components for the course consist of **five** homework assignments, a
 </table>
 ```
 
-The course does not have any "official" prerequisites, but a general comfort with **Python** is strongly recommended. If you have never used Python before, however (or if you haven't used it in a while and feel like your skills are rusty), you can browse the materials on the <a href='./resources.html' target='_blank'>Resources page</a>, to help make sure that everyone is on the same page coming into class in the Spring!
+The course does not have any "official" prerequisites, but a general comfort with **Python** is strongly recommended. If you have never used Python before, however (or if you haven't used it in a while and feel like your skills are rusty), you can browse the materials on the <a href='./resources.html' target='_blank'>Resources page</a>!
 
 ## Course Topics / Calendar
 
@@ -232,6 +232,82 @@ The following is a rough map of what we will work through together throughout th
 </table>
 ```
 
+## Final Letter Grade Determination
+
+Once all assignments have been graded, we will compute your final **numeric grade** according to the above weighting, rounded to two decimal places. The **letter grade** that we report to Georgetown on the basis of this numeric grade will then follow the DSAN letter grade policy as follows, where the start and end points for each range are **inclusive**:
+
+```{=html}
+<table>
+<thead>
+<tr>
+    <th align="right">Range Start</th>
+    <th align="right">Range End</th>
+    <th align="left">Letter Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td align="right">92.50</td>
+    <td align="right">100.00</td>
+    <td align="left">A</td>
+</tr>
+<tr>
+    <td>89.50</td>
+    <td>92.49</td>
+    <td>A-</td>
+</tr>
+<tr>
+    <td>87.99</td>
+    <td>89.49</td>
+    <td>B+</td>
+</tr>
+<tr>
+    <td>81.50</td>
+    <td>87.98</td>
+    <td>B</td>
+</tr>
+<tr>
+    <td>79.50</td>
+    <td>81.49</td>
+    <td>B-</td>
+</tr>
+<tr>
+    <td>69.50</td>
+    <td>79.49</td>
+    <td>C</td>
+</tr>
+<tr>
+    <td>59.50</td>
+    <td>69.49</td>
+    <td>D</td>
+</tr>
+<tr>
+    <td>0.00</td>
+    <td>59.49</td>
+    <td>F</td>
+</tr>
+</tbody>
+</table>
+```
+
 ## Official Course Description
 
 The Data Structures, Objects, and Algorithms in Python course will look at built-in data structures, such as dictionaries, lists, tuples, sets, strings, and frozen sets. The course will also cover objects and classes in Python, as well as building new structures and objects. The class will cover algorithms including runtime, recurrence, and development. Applications will include data science problems. *Prerequisite: A working or intermediate knowledge of Python. 3 credits.*
+
+## Title IX/Sexual Misconduct Statement
+
+Georgetown University and its faculty are committed to supporting survivors and those impacted by sexual misconduct, which includes sexual assault, sexual harassment, relationship violence, and stalking. Georgetown requires faculty members, unless otherwise designated as confidential, to report all disclosures of sexual misconduct to the University Title IX Coordinator or a Deputy Title IX Coordinator.
+
+If you disclose an incident of sexual misconduct to a professor in or outside of the classroom (with the exception of disclosures in papers), that faculty member must report the incident to the Title IX Coordinator, or Deputy Title IX Coordinator. The coordinator will, in turn, reach out to the student to provide support, resources, and the option to meet. [Please note that the student is not required to meet with the Title IX coordinator.]. More information about reporting options and resources can be found in the <a href='https://sexualassault.georgetown.edu/get-help/resourcecenter/#' target='_blank'>Sexual Misconduct Resource Center</a>.
+
+If you would prefer to speak to someone confidentially, Georgetown has a number of fully confidential professional resources that can provide support and assistance. These resources include:
+
+* *Health Education Services for Sexual Assault Response and Prevention*: Confidential email <a href='mailto:sarp@georgetown.edu' target='_blank'>`sarp@georgetown.edu`</a>
+* *Counseling and Psychiatric Services (CAPS)*: 202-687-6985
+  * After hours you can call 833-960-3006 to reach Fonemed, a telehealth service, and ask for the on-call CAPS clinician
+
+## GSAS Resources and Policies for Students
+
+You can find a collection of relevant resources and policies for students on the <a href='https://grad.georgetown.edu/academics/current-students/' target='_blank'>GSAS website</a>, and the Provost's policy on accommodating students' religious observances on the <a href='https://campusministry.georgetown.edu/faith-traditions/religious_holy_days/#' target='_blank'>Campus Ministry website</a>.
+
+You can also make use of the <a href='http://academicsupport.georgetown.edu/' target='_blank'>Student Academic Resource Center</a>. In particular, within the Resource Center there is a link to Georgetown's <a href='http://academicsupport.georgetown.edu/disability/' target='_blank'>Disability Support page</a>. If you believe you have a disability, you can contact the Academic Resource Center (<a href='mailto:arc@georgetown.edu' target='_blank'>`arc@georgetown.edu`</a>) for further information. The ARC is located in the Leavey Center, Suite 335 (202-687-8354), and it is the campus office responsible for reviewing documentation provided by students with disabilities and for determining reasonable accommodations in accordance with the Americans with Disabilities Act (ADA) and University policies.
