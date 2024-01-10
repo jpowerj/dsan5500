@@ -56,6 +56,16 @@ format:
 * *Comparative* Understanding
 * Learning Data Structures and Complexity *Simultaneously*
 
+## Before and After {.smaller .crunch-title .crunch-quarto-layout-panel}
+
+::: {layout="[1,1]"}
+
+![Python before taking DSAN 5500](images/scary.jpeg){fig-align="center" width="460"}
+
+![Python after taking DSAN 5500](images/snek.jpg){fig-align="center" width="310"}
+
+:::
+
 ## Developing a *Comparative* Understanding {.full-width-callout}
 
 <!-- https://css-tricks.com/left-align-and-right-align-text-on-the-same-line/ -->
@@ -77,7 +87,7 @@ format:
 * The course focuses on **Python**, but part of understanding Python is understanding how Python **does things differently from other languages!**
 * Just as C was "overtaken" by Java, then Java was "overtaken" by Python, Python will someday be overtaken
 
-## The Numbers
+## The Numbers {.smaller}
 
 ```{python}
 #| label: plot-langs
@@ -143,6 +153,8 @@ fig.show()
 
 * Compiled
 * Interpreted
+
+![](images/this-is-a-compact-disc.gif){fig-align="center"}
 
 ## Primitive Types
 
