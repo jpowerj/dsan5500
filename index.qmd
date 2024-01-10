@@ -16,4 +16,4 @@ listing:
   date-format: "MMMM D"
 ---
 
-Welcome to the homepage for DSAN 5500: Data Structures, Georgetown University, Spring 2024! The course takes place on Mondays from 12:30-3:00pm in Car Barn room 204. More details are provided on the [syllabus](syllabus.qmd)
+Welcome to the homepage for **DSAN 5500: Data Structures, Objects, and Algorithms in Python**, Spring 2024, at Georgetown University! The course takes place on **Mondays** from **12:30 to 3:00pm** in **Car Barn Room 204**. More details are provided on the [syllabus](syllabus.qmd).

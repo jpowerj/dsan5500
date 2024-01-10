@@ -16,7 +16,6 @@ website:
         href: syllabus.qmd
       - text: "Resources"
         href: resources.qmd
-      # - text: "<a href='https://classroom.google.com/c/NjM5MzE2MTE4NTgx?cjc=r4pzugi' target='_blank'>Google Classroom <i class='bi bi-box-arrow-up-right ps-1'></i></a>"
       - "---"
       - text: "Week 1: Jan 10"
         href: "w01/index.qmd"
@@ -39,6 +38,10 @@ website:
       # - text: "Week 10: Mar 25"
       #   href: "w10/index.qmd"
       # - text: "Week 11"
+      - "---"
+      - text: "<a href='https://classroom.google.com/c/NjM5MzE2MTE4NTgx?cjc=r4pzugi' target='_blank'>Google Classroom <i class='bi bi-box-arrow-up-right ps-1'></i></a>"
+      - text: "<a href='https://chat.google.com/room/AAAAy61nvA8?cls=7' target='_blank'>Google Spaces <i class='bi bi-box-arrow-up-right ps-1'></i></a>"
+      - text: "<a href='https://georgetown.instructure.com/courses/183034' target='_blank'>Canvas <i class='bi bi-box-arrow-up-right ps-1'></i></a>"
       
 
 format:

@@ -232,6 +232,16 @@ The following is a rough map of what we will work through together throughout th
 </table>
 ```
 
+## Assignment Distribution, Submission, and Grading
+
+The programming assignments for the course will be managed through Google Classroom. This means that, to work on and submit the assignments, you will use the following workflow:
+
+1. Open the `.ipynb` file for the assignment from within Google Classroom
+2. Work on the problems within the file, saving your progress early and often! You can **try things out** or **create drafts** of your solutions however you'd like (for example, in VSCode or JupyterLab or any other IDE), but your final submission for each assignment must be submitted through the Google Classroom interface!
+3. Submit the completed version of the assignment by clicking the blue "Hand in" button on the assignment page.
+
+The interface allows you to **unsubmit** and continue working on an assignment, for example if you find a mistake, but be careful and make sure you **resubmit** once you've fixed the mistake, since submissions will **not be accepted** after the grace period for late submission has ended.
+
 ## Final Letter Grade Determination
 
 Once all assignments have been graded, we will compute your final **numeric grade** according to the above weighting, rounded to two decimal places. The **letter grade** that we report to Georgetown on the basis of this numeric grade will then follow the DSAN letter grade policy as follows, where the start and end points for each range are **inclusive**:
