@@ -26,5 +26,8 @@
   "w04/index.qmd": {
     "index.html": "9f6bb1a4",
     "slides.html": "592729f2"
+  },
+  "recordings/index.qmd": {
+    "index.html": "ab1a5d07"
   }
 }

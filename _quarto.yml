@@ -16,6 +16,8 @@ website:
         href: syllabus.qmd
       - text: "Resources"
         href: resources.qmd
+      - text: "Recordings"
+        href: recordings/index.qmd
       - "---"
       - text: "Week 1: Jan 10"
         href: "w01/index.qmd"
