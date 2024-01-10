@@ -21,6 +21,11 @@ figcaption {
     margin: 0px !important;
 }
 
+// iframe
+.crunch-iframe iframe {
+    margin-bottom: 0px !important;
+}
+
 // images
 .crunch-images img {
     margin: 0px !important;
@@ -32,6 +37,10 @@ figcaption {
 }
 
 // math
+.crunch-math mjx-container {
+    margin: 3px !important;
+}
+
 .crunch-math-3 mjx-container {
     margin: 3px !important;
 }

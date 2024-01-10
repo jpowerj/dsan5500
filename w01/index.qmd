@@ -1,5 +1,5 @@
 ---
-title: "Week 1: Python Fundamentals"
+title: "Week 1: Course Intro and Motivation"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: "Wednesday, January 10, 2024"
 date-format: full
@@ -12,12 +12,15 @@ format:
   revealjs:
     df-print: kable
     output-file: "slides.html"
-    footer: "DSAN 5500 Week 1: Python Fundamentals"
+    footer: "DSAN 5500 Week 1: Course Intro, Motivation"
     echo: true
     code-fold: show
     scrollable: true
     slide-number: true
+    html-math-method: mathjax
     theme: ["../_jjslides.scss"]
+    include-in-header:
+      text: "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous'><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css'>"
     simplemenu:
       flat: true
       barhtml:
@@ -30,6 +33,7 @@ format:
     output-file: "index.html"
     echo: true
     code-fold: show
+    html-math-method: mathjax
 ---
 
 ::: {.content-visible unless-format="revealjs"}
@@ -43,8 +47,9 @@ format:
 # Welcome to DSAN 5500! {data-name="Welcome"}
 
 * Principles for the Course
-* Coding in General
-* Coding in Python
+* Algorithmic Thinking vs. Coding
+* Data Structures: Motivation
+* Algorithms and Complexity: Motivation
 
 # Course Principles {data-name="Principles"}
 
@@ -111,6 +116,15 @@ fig.update_layout(
 fig.show()
 ```
 
+## Research Particular Subfields! {.crunch-title}
+
+* For example, if you're interested in pursuing **Economics**, you'll want to learn **Stata**
+* **Physics**? You may want to learn **MATLAB**
+* For **pure mathematics**: Julia / Mathematica
+* **Statistics**, sociology, psychology, political science: **R**
+* **Web development**: JavaScript / TypeScript
+* The holy grail: you're comfortable with Python but can also think in **general, language-agnostic terms** about algorithmic and data-structural efficiency!
+
 ## Avoid Analysis Paralysis
 
 * *(Easier said than done, admittedly...)*
@@ -119,7 +133,7 @@ fig.show()
 
 ## Tie Yourself to the Mast
 
-* The 3am, exhausted, brain-barely-working version of you will thank **present you** for writing useful **exceptions** and **type hints**!
+* The exhausted 3am version of you will thank **present you** for writing useful **comments**, **exceptions/errors**, and **type hints**!
 
 ![<a href="https://commons.wikimedia.org/wiki/File:John_William_Waterhouse_-_Ulysses_and_the_Sirens_(1891).jpg" target='_blank'>John William Waterhouse</a>, Public domain, via Wikimedia Commons](images/ulysses.jpg){fig-align="center"}
 
@@ -180,6 +194,12 @@ country_df
 * **Standard** cases vs. **edge cases**
 * **Adversarial** development: brainstorm all of the ways an evil hacker might break your code!
 
+## Example: Finding An Item Within A List {.smaller}
+
+* Seems straightforward, right? Given a list `l`, and a value `v`, return the index of `l` which contains `v`
+* Corner cases galore...
+* What if `l` contains `v` more than once? What if it doesn't contain `v` at all? What if `l` is `None`? What if `v` is `None`? What if `l` isn't a list at all? What if `v` is itself a list?
+
 # Part 2: Python Specifically {data-stack-name="Python"}
 
 ## \#1 Sanity-Preserving Tip!
@@ -239,3 +259,135 @@ from mypy import api
 result = api.run(['-c',_i])
 print(result[0])
 ```
+
+## Unit Testing
+
+* For your life: test-driven development
+  * If you're coding a duck, you should test that it **looks like a duck**, **quacks like a duck**, etc.
+* For this class:
+  * Public tests: Fully visible, see result plus full code
+  * Hidden tests: See result + description of test, but no code
+  * Secret tests: We run these after you submit, as a major portion of the total grade
+
+# Data Structures: Motivation {data-stack-name="Data Structures"}
+
+## Why Does The NYC Subway Have Express Lines? {.smaller .title-11}
+
+![From <a href='https://www.centralpark.com/visitor-info/get-directions/' target='_blank'>NYC Central Park website</a>](images/subway_map_nyc.jpg){fig-align="center"}
+
+## How TF Does Google Maps Work? {.smaller .crunch-iframe .crunch-title .crunch-ul}
+
+* A (mostly) full-on answer: soon to come! Data structures for spatial data
+* A step in that direction: **Quadtrees**! (**Fractal DC**)
+
+```{=html}
+<iframe src="https://jimkang.com/quadtreevis/" width="100%" height="450"></iframe>
+```
+<a href='https://jimkang.com/quadtreevis/' target='_blank'>Jim Kang's Quadtree Visualizations <i class='bi bi-box-arrow-up-right'></i></a>
+
+# Algorithmic Complexity: Motivation {data-stack-name="Complexity"}
+
+## The Secretly Exciting World of Matrix Multiplication
+
+* Fun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations
+* Fun Fact 2: The way we've all learned how to multiply matrices requires $O(N^3)$ operations, for two $N \times N$ matrices $A$ and $B$
+* Fun Fact 3: $\underbrace{x^2 - y^2}_{\mathclap{\times\text{ twice, }\pm\text{ once}}} = \underbrace{(x+y)(x-y)}_{\times\text{once, }\pm\text{ twice}}$
+* Fun Fact 4: These are not very fun facts at all
+
+## Why Is Jeff Rambling About Matrix Math From 300 Years Ago? {.smaller}
+
+* The way we all learned it in school (for $N = 2$):
+
+$$
+AB = \begin{bmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & b_{12} \\
+b_{21} & b_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\
+a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}
+\end{bmatrix}
+$$
+
+* 12 operations: 8 multiplications, 4 additions $\implies O(N^3) = O(2^3) = O(8)$
+* Are we trapped? Like... what is there to do besides performing these $N^3$ operations, if we want to multiply two $N \times N$ matrices? Why are we about to move onto yet another slide about this?
+
+## Block-Partitioning Matrices {.smaller}
+
+* Now let's consider **big** matrices, whose dimensions are a power of 2 (for ease of illustration): $A$ and $B$ are now $N \times N = 2^n \times 2^n$ matrices
+* We can "decompose" the matrix product $AB$ as:
+
+$$
+AB = \begin{bmatrix}
+A_{11} & A_{12} \\
+A_{21} & A_{22}
+\end{bmatrix}
+\begin{bmatrix}
+B_{11} & B_{12} \\
+B_{21} & B_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+A_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\
+A_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}
+\end{bmatrix}
+$$
+
+* Which gives us a **recurrence relation** representing the total number of computations required for this big-matrix multiplication: $T(N) = \underbrace{8T(N/2)}_{\text{Multiplications}} + \underbrace{\Theta(1)}_{\text{Additions}}$
+* It turns out that (using a method we'll learn in Week 3), given this recurrence relation and our **base case** from the previous slide, this divide-and-conquer approach via block-partitioning doesn't help us: we still get $T(n) = O(n^3)$...
+* So why is Jeff still torturing us with this example?
+
+## Time For Some 🪄🔥MATRIX MAGIC!🔥🪄 {.smaller .crunch-title .crunch-ul .crunch-math .crunch-li .title-12}
+
+::: {#matrix-magic-defn}
+
+* If we define
+
+$$
+\begin{align*}
+m_1 &= (a_{11}+a_{22})(b_{11}+b_{22}) \\
+m_2 &= (a_{21}+a_{22})b_{11} \\
+m_3 &= a_{11}(b_{12}-b_{22}) \\
+m_4 &= a_{22}(b_{21}-b_{11}) \\
+m_5 &= (a_{11}+a_{12})b_{22} \\
+m_6 &= (a_{21}-a_{11})(b_{11}+b_{12}) \\
+m_7 &= (a_{12}-a_{22})(b_{21}+b_{22})
+\end{align*}
+$$
+
+:::
+::: {#matrix-magic-result}
+
+* Then we can combine these **seven** scalar products to obtain our matrix product:
+
+$$
+AB = \begin{bmatrix}
+m_1 + m_4 - m_5 + m_7 & m_3 + m_5 \\
+m_2 + m_4 & m_1 - m_2 + m_3 + m_6
+\end{bmatrix}
+$$
+
+:::
+
+* Total operations: 7 multiplications, 18 additions
+
+## Block-Partitioned Matrix Magic {.smaller}
+
+* Using the previous slide as our **base case** and applying this same method to the block-paritioned big matrices, we get the same result, but where the four entries in $AB$ here are now **matrices** rather than scalars:
+
+$$
+AB = \begin{bmatrix}
+M_1 + M_4 - M_5 + M_7 & M_3 + M_5 \\
+M_2 + M_4 & M_1 - M_2 + M_3 + M_6
+\end{bmatrix}
+$$
+
+* We now have a **different recurrence relation**: $T(N) = \underbrace{7T(N/2)}_{\text{Multiplications}} + \underbrace{\Theta(N^2)}_{\text{Additions}}$
+* And it turns out, somewhat miraculously, that the additional time required for the **increased number of additions** is **significantly less** than the **time savings** we obtain by doing 7 instead of 8 multiplications, since this method now runs in $T(N) = O(N^{\log_2(7)}) \approx O(N^{2.807}) < O(N^3)$ 🤯
+
+# Lab: Assignment Workflow {data-name="Lab (HW0)"}
+
+* <a href='https://classroom.google.com/c/NjM5MzE2MTE4NTgx' target='_blank'>Google Classroom <i class='bi bi-box-arrow-up-right ps-1'></i></a>

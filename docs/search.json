@@ -23,163 +23,303 @@
   {
     "objectID": "w01/slides.html#developing-a-comparative-understanding",
     "href": "w01/slides.html#developing-a-comparative-understanding",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Developing a Comparative Understanding",
     "text": "Developing a Comparative Understanding\n\n\n\n\n\n\n“We hardly know ourselves, if we know nobody else”\n\n\n–(Blue Scholars, “Sagaba”)\n\n\n\n\n\n\nThe course focuses on Python, but part of understanding Python is understanding how Python does things differently from other languages!\nJust as C was “overtaken” by Java, then Java was “overtaken” by Python, Python will someday be overtaken"
   },
   {
     "objectID": "w01/slides.html#the-numbers",
     "href": "w01/slides.html#the-numbers",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "The Numbers",
     "text": "The Numbers\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport plotly.express as px\nimport plotly.io as pio\npio.renderers.default = \"notebook\"\nlang_df = pd.read_csv(\"assets/gh_issues.csv\")\n# The data for 2022 is essentially useless\nlang_df = lang_df[lang_df['year'] &lt;= 2021].copy()\nlang_df['time'] = lang_df['year'].astype(str) + \"_\" + lang_df['quarter'].astype(str)\nlang_df['prop'] = lang_df['count'] / lang_df.groupby('time')['count'].transform('sum')\nlang_df.head()\n#sns.lineplot(data=lang_df, x='year', y='count', color='name')\n# Keep only most popular languages\nkeep_langs = ['Python','JavaScript','C','C++','C#','Java','Ruby']\npop_df = lang_df[lang_df['name'].isin(keep_langs)].copy()\nfig = px.line(pop_df,\n  x='time', y='prop', color='name',\n  template='simple_white', title='Programming Language Popularity Since 2012',\n  labels = {\n    'time': 'Year',\n    'prop': 'Proportion of GitHub Issues'\n  }\n)\nfig.update_layout(\n  xaxis = dict(\n    tickmode = 'array',\n    tickvals = [f\"{year}_1\" for year in range(2012,2022)],\n    ticktext = [f\"{year}\" for year in range(2012,2022)]\n  )\n)\nfig.show()"
   },
   {
+    "objectID": "w01/slides.html#research-particular-subfields",
+    "href": "w01/slides.html#research-particular-subfields",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Research Particular Subfields!",
+    "text": "Research Particular Subfields!\n\nFor example, if you’re interested in pursuing Economics, you’ll want to learn Stata\nPhysics? You may want to learn MATLAB\nFor pure mathematics: Julia / Mathematica\nStatistics, sociology, psychology, political science: R\nWeb development: JavaScript / TypeScript\nThe holy grail: you’re comfortable with Python but can also think in general, language-agnostic terms about algorithmic and data-structural efficiency!"
+  },
+  {
     "objectID": "w01/slides.html#avoid-analysis-paralysis",
     "href": "w01/slides.html#avoid-analysis-paralysis",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Avoid Analysis Paralysis",
     "text": "Avoid Analysis Paralysis\n\n(Easier said than done, admittedly…)\n\n\nImage source: XKCD"
   },
   {
     "objectID": "w01/slides.html#tie-yourself-to-the-mast",
     "href": "w01/slides.html#tie-yourself-to-the-mast",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Tie Yourself to the Mast",
-    "text": "Tie Yourself to the Mast\n\nThe 3am, exhausted, brain-barely-working version of you will thank present you for writing useful exceptions and type hints!\n\n\nJohn William Waterhouse, Public domain, via Wikimedia Commons"
+    "text": "Tie Yourself to the Mast\n\nThe exhausted 3am version of you will thank present you for writing useful comments, exceptions/errors, and type hints!\n\n\nJohn William Waterhouse, Public domain, via Wikimedia Commons"
   },
   {
     "objectID": "w01/slides.html#types-of-languages",
     "href": "w01/slides.html#types-of-languages",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Types of Languages",
     "text": "Types of Languages\n\nCompiled\nInterpreted"
   },
   {
     "objectID": "w01/slides.html#primitive-types",
     "href": "w01/slides.html#primitive-types",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Primitive Types",
     "text": "Primitive Types\n\nBoolean (True or False)\nNumbers (Integers, Decimals)\nStrings\nNone"
   },
   {
     "objectID": "w01/slides.html#stack-and-heap",
     "href": "w01/slides.html#stack-and-heap",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Stack and Heap",
     "text": "Stack and Heap\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
   },
   {
     "objectID": "w01/slides.html#algorithmic-thinking",
     "href": "w01/slides.html#algorithmic-thinking",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Algorithmic Thinking",
     "text": "Algorithmic Thinking\n\nWhat are the inputs?\nWhat are the outputs?\nStandard cases vs. edge cases\nAdversarial development: brainstorm all of the ways an evil hacker might break your code!"
   },
   {
+    "objectID": "w01/slides.html#example-finding-an-item-within-a-list",
+    "href": "w01/slides.html#example-finding-an-item-within-a-list",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Example: Finding An Item Within A List",
+    "text": "Example: Finding An Item Within A List\n\nSeems straightforward, right? Given a list l, and a value v, return the index of l which contains v\nCorner cases galore…\nWhat if l contains v more than once? What if it doesn’t contain v at all? What if l is None? What if v is None? What if l isn’t a list at all? What if v is itself a list?"
+  },
+  {
     "objectID": "w01/slides.html#sanity-preserving-tip",
     "href": "w01/slides.html#sanity-preserving-tip",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "#1 Sanity-Preserving Tip!",
     "text": "#1 Sanity-Preserving Tip!\n\n(For our purposes) the answer to “what is Python?” is: an executable file that runs .py files!\n\ne.g., we can run python mycode.py in Terminal/PowerShell\n\nEverything else: pip, Jupyter, Pandas, etc., is an add-on to this basic functionality!"
   },
   {
     "objectID": "w01/slides.html#code-blocks-via-indentation",
     "href": "w01/slides.html#code-blocks-via-indentation",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Code Blocks via Indentation",
     "text": "Code Blocks via Indentation\n\n\nCode\nfor i in range(5):\n    print(i)\n\n\n0\n1\n2\n3\n4\n\n\n\n\nCode\nfor i in range(5):\nprint(i)\n\n\nIndentationError: expected an indented block after 'for' statement on line 1 (3695896917.py, line 2)"
   },
   {
     "objectID": "w01/slides.html#type-hints",
     "href": "w01/slides.html#type-hints",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Type Hints",
-    "text": "Type Hints\n\nNot a “standard” Python feature, not enforced by the Python interpreter, but can help you maintain sanity!\n\n\n\n\n\nCode\ndef multiply(thing1, thing2):\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee\n\n\n\n\n\nCode\nfrom numbers import Number\ndef multiply(thing1: Number, thing2: Number) -&gt; Number:\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee\n\n\n\n\n\n\nCode\nfrom mypy import api\nresult = api.run(['-c',_i])\nprint(result[0])\n\n\n&lt;string&gt;:3: error: Unsupported left operand type for * (\"Number\")  [operator]\n&lt;string&gt;:4: error: Argument 1 to \"multiply\" has incompatible type \"int\"; expected \"Number\"  [arg-type]\n&lt;string&gt;:4: note: Types from \"numbers\" aren't supported for static type checking\n&lt;string&gt;:4: note: See https://peps.python.org/pep-0484/#the-numeric-tower\n&lt;string&gt;:4: note: Consider using a protocol instead, such as typing.SupportsFloat\n&lt;string&gt;:4: error: Argument 2 to \"multiply\" has incompatible type \"int\"; expected \"Number\"  [arg-type]\n&lt;string&gt;:5: error: Argument 1 to \"multiply\" has incompatible type \"str\"; expected \"Number\"  [arg-type]\n&lt;string&gt;:5: note: Types from \"numbers\" aren't supported for static type checking\n&lt;string&gt;:5: note: See https://peps.python.org/pep-0484/#the-numeric-tower\n&lt;string&gt;:5: note: Consider using a protocol instead, such as typing.SupportsFloat\n&lt;string&gt;:5: error: Argument 2 to \"multiply\" has incompatible type \"int\"; expected \"Number\"  [arg-type]\nFound 5 errors in 1 file (checked 1 source file)\n\n\n\n\n\nDSAN 5500 Week 1: Python Fundamentals"
+    "text": "Type Hints\n\nNot a “standard” Python feature, not enforced by the Python interpreter, but can help you maintain sanity!\n\n\n\n\n\nCode\ndef multiply(thing1, thing2):\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee\n\n\n\n\n\nCode\nfrom numbers import Number\ndef multiply(thing1: Number, thing2: Number) -&gt; Number:\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee\n\n\n\n\n\n\nCode\nfrom mypy import api\nresult = api.run(['-c',_i])\nprint(result[0])\n\n\n&lt;string&gt;:3: error: Unsupported left operand type for * (\"Number\")  [operator]\n&lt;string&gt;:4: error: Argument 1 to \"multiply\" has incompatible type \"int\"; expected \"Number\"  [arg-type]\n&lt;string&gt;:4: note: Types from \"numbers\" aren't supported for static type checking\n&lt;string&gt;:4: note: See https://peps.python.org/pep-0484/#the-numeric-tower\n&lt;string&gt;:4: note: Consider using a protocol instead, such as typing.SupportsFloat\n&lt;string&gt;:4: error: Argument 2 to \"multiply\" has incompatible type \"int\"; expected \"Number\"  [arg-type]\n&lt;string&gt;:5: error: Argument 1 to \"multiply\" has incompatible type \"str\"; expected \"Number\"  [arg-type]\n&lt;string&gt;:5: note: Types from \"numbers\" aren't supported for static type checking\n&lt;string&gt;:5: note: See https://peps.python.org/pep-0484/#the-numeric-tower\n&lt;string&gt;:5: note: Consider using a protocol instead, such as typing.SupportsFloat\n&lt;string&gt;:5: error: Argument 2 to \"multiply\" has incompatible type \"int\"; expected \"Number\"  [arg-type]\nFound 5 errors in 1 file (checked 1 source file)"
+  },
+  {
+    "objectID": "w01/slides.html#unit-testing",
+    "href": "w01/slides.html#unit-testing",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Unit Testing",
+    "text": "Unit Testing\n\nFor your life: test-driven development\n\nIf you’re coding a duck, you should test that it looks like a duck, quacks like a duck, etc.\n\nFor this class:\n\nPublic tests: Fully visible, see result plus full code\nHidden tests: See result + description of test, but no code\nSecret tests: We run these after you submit, as a major portion of the total grade"
+  },
+  {
+    "objectID": "w01/slides.html#why-does-the-nyc-subway-have-express-lines",
+    "href": "w01/slides.html#why-does-the-nyc-subway-have-express-lines",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Why Does The NYC Subway Have Express Lines?",
+    "text": "Why Does The NYC Subway Have Express Lines?\n\nFrom NYC Central Park website"
+  },
+  {
+    "objectID": "w01/slides.html#how-tf-does-google-maps-work",
+    "href": "w01/slides.html#how-tf-does-google-maps-work",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "How TF Does Google Maps Work?",
+    "text": "How TF Does Google Maps Work?\n\nA (mostly) full-on answer: soon to come! Data structures for spatial data\nA step in that direction: Quadtrees! (Fractal DC)\n\n\nJim Kang’s Quadtree Visualizations"
+  },
+  {
+    "objectID": "w01/slides.html#the-secretly-exciting-world-of-matrix-multiplication",
+    "href": "w01/slides.html#the-secretly-exciting-world-of-matrix-multiplication",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "The Secretly Exciting World of Matrix Multiplication",
+    "text": "The Secretly Exciting World of Matrix Multiplication\n\nFun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations\nFun Fact 2: The way we’ve all learned how to multiply matrices requires \\(O(N^3)\\) operations, for two \\(N \\times N\\) matrices \\(A\\) and \\(B\\)\nFun Fact 3: \\(\\underbrace{x^2 - y^2}_{\\mathclap{\\times\\text{ twice, }\\pm\\text{ once}}} = \\underbrace{(x+y)(x-y)}_{\\times\\text{once, }\\pm\\text{ twice}}\\)\nFun Fact 4: These are not very fun facts at all"
+  },
+  {
+    "objectID": "w01/slides.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
+    "href": "w01/slides.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Why Is Jeff Rambling About Matrix Math From 300 Years Ago?",
+    "text": "Why Is Jeff Rambling About Matrix Math From 300 Years Ago?\n\nThe way we all learned it in school (for \\(N = 2\\)):\n\n\\[\nAB = \\begin{bmatrix}\na_{11} & a_{12} \\\\\na_{21} & a_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nb_{11} & b_{12} \\\\\nb_{21} & b_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\na_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\\\\na_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}\n\\end{bmatrix}\n\\]\n\n12 operations: 8 multiplications, 4 additions \\(\\implies O(N^3) = O(2^3) = O(8)\\)\nAre we trapped? Like… what is there to do besides performing these \\(N^3\\) operations, if we want to multiply two \\(N \\times N\\) matrices? Why are we about to move onto yet another slide about this?"
+  },
+  {
+    "objectID": "w01/slides.html#block-partitioning-matrices",
+    "href": "w01/slides.html#block-partitioning-matrices",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Block-Partitioning Matrices",
+    "text": "Block-Partitioning Matrices\n\nNow let’s consider big matrices, whose dimensions are a power of 2 (for ease of illustration): \\(A\\) and \\(B\\) are now \\(N \\times N = 2^n \\times 2^n\\) matrices\nWe can “decompose” the matrix product \\(AB\\) as:\n\n\\[\nAB = \\begin{bmatrix}\nA_{11} & A_{12} \\\\\nA_{21} & A_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nB_{11} & B_{12} \\\\\nB_{21} & B_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\nA_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\\\\nA_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}\n\\end{bmatrix}\n\\]\n\nWhich gives us a recurrence relation representing the total number of computations required for this big-matrix multiplication: \\(T(N) = \\underbrace{8T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(1)}_{\\text{Additions}}\\)\nIt turns out that (using a method we’ll learn in Week 3), given this recurrence relation and our base case from the previous slide, this divide-and-conquer approach via block-partitioning doesn’t help us: we still get \\(T(n) = O(n^3)\\)…\nSo why is Jeff still torturing us with this example?"
+  },
+  {
+    "objectID": "w01/slides.html#time-for-some-matrix-magic",
+    "href": "w01/slides.html#time-for-some-matrix-magic",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Time For Some 🪄🔥MATRIX MAGIC!🔥🪄",
+    "text": "Time For Some 🪄🔥MATRIX MAGIC!🔥🪄\n\n\nIf we define\n\n\\[\n\\begin{align*}\nm_1 &= (a_{11}+a_{22})(b_{11}+b_{22}) \\\\\nm_2 &= (a_{21}+a_{22})b_{11} \\\\\nm_3 &= a_{11}(b_{12}-b_{22}) \\\\\nm_4 &= a_{22}(b_{21}-b_{11}) \\\\\nm_5 &= (a_{11}+a_{12})b_{22} \\\\\nm_6 &= (a_{21}-a_{11})(b_{11}+b_{12}) \\\\\nm_7 &= (a_{12}-a_{22})(b_{21}+b_{22})\n\\end{align*}\n\\]\n\n\n\nThen we can combine these seven scalar products to obtain our matrix product:\n\n\\[\nAB = \\begin{bmatrix}\nm_1 + m_4 - m_5 + m_7 & m_3 + m_5 \\\\\nm_2 + m_4 & m_1 - m_2 + m_3 + m_6\n\\end{bmatrix}\n\\]\n\n\nTotal operations: 7 multiplications, 18 additions"
+  },
+  {
+    "objectID": "w01/slides.html#block-partitioned-matrix-magic",
+    "href": "w01/slides.html#block-partitioned-matrix-magic",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Block-Partitioned Matrix Magic",
+    "text": "Block-Partitioned Matrix Magic\n\nUsing the previous slide as our base case and applying this same method to the block-paritioned big matrices, we get the same result, but where the four entries in \\(AB\\) here are now matrices rather than scalars:\n\n\\[\nAB = \\begin{bmatrix}\nM_1 + M_4 - M_5 + M_7 & M_3 + M_5 \\\\\nM_2 + M_4 & M_1 - M_2 + M_3 + M_6\n\\end{bmatrix}\n\\]\n\nWe now have a different recurrence relation: \\(T(N) = \\underbrace{7T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(N^2)}_{\\text{Additions}}\\)\nAnd it turns out, somewhat miraculously, that the additional time required for the increased number of additions is significantly less than the time savings we obtain by doing 7 instead of 8 multiplications, since this method now runs in \\(T(N) = O(N^{\\log_2(7)}) \\approx O(N^{2.807}) &lt; O(N^3)\\) 🤯"
   },
   {
     "objectID": "w01/index.html",
     "href": "w01/index.html",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "",
     "text": "Open slides in new window →"
   },
   {
     "objectID": "w01/index.html#developing-a-comparative-understanding",
     "href": "w01/index.html#developing-a-comparative-understanding",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Developing a Comparative Understanding",
     "text": "Developing a Comparative Understanding\n\n\n\n\n\n\n\n\n\n“We hardly know ourselves, if we know nobody else”\n\n\n–(Blue Scholars, “Sagaba”)\n\n\n\n\n\n\nThe course focuses on Python, but part of understanding Python is understanding how Python does things differently from other languages!\nJust as C was “overtaken” by Java, then Java was “overtaken” by Python, Python will someday be overtaken"
   },
   {
     "objectID": "w01/index.html#the-numbers",
     "href": "w01/index.html#the-numbers",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "The Numbers",
     "text": "The Numbers\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport plotly.express as px\nimport plotly.io as pio\npio.renderers.default = \"notebook\"\nlang_df = pd.read_csv(\"assets/gh_issues.csv\")\n# The data for 2022 is essentially useless\nlang_df = lang_df[lang_df['year'] &lt;= 2021].copy()\nlang_df['time'] = lang_df['year'].astype(str) + \"_\" + lang_df['quarter'].astype(str)\nlang_df['prop'] = lang_df['count'] / lang_df.groupby('time')['count'].transform('sum')\nlang_df.head()\n#sns.lineplot(data=lang_df, x='year', y='count', color='name')\n# Keep only most popular languages\nkeep_langs = ['Python','JavaScript','C','C++','C#','Java','Ruby']\npop_df = lang_df[lang_df['name'].isin(keep_langs)].copy()\nfig = px.line(pop_df,\n  x='time', y='prop', color='name',\n  template='simple_white', title='Programming Language Popularity Since 2012',\n  labels = {\n    'time': 'Year',\n    'prop': 'Proportion of GitHub Issues'\n  }\n)\nfig.update_layout(\n  xaxis = dict(\n    tickmode = 'array',\n    tickvals = [f\"{year}_1\" for year in range(2012,2022)],\n    ticktext = [f\"{year}\" for year in range(2012,2022)]\n  )\n)\nfig.show()"
   },
   {
+    "objectID": "w01/index.html#research-particular-subfields",
+    "href": "w01/index.html#research-particular-subfields",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Research Particular Subfields!",
+    "text": "Research Particular Subfields!\n\nFor example, if you’re interested in pursuing Economics, you’ll want to learn Stata\nPhysics? You may want to learn MATLAB\nFor pure mathematics: Julia / Mathematica\nStatistics, sociology, psychology, political science: R\nWeb development: JavaScript / TypeScript\nThe holy grail: you’re comfortable with Python but can also think in general, language-agnostic terms about algorithmic and data-structural efficiency!"
+  },
+  {
     "objectID": "w01/index.html#avoid-analysis-paralysis",
     "href": "w01/index.html#avoid-analysis-paralysis",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Avoid Analysis Paralysis",
     "text": "Avoid Analysis Paralysis\n\n(Easier said than done, admittedly…)\n\n\n\n\nImage source: XKCD"
   },
   {
     "objectID": "w01/index.html#tie-yourself-to-the-mast",
     "href": "w01/index.html#tie-yourself-to-the-mast",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Tie Yourself to the Mast",
-    "text": "Tie Yourself to the Mast\n\nThe 3am, exhausted, brain-barely-working version of you will thank present you for writing useful exceptions and type hints!\n\n\n\n\nJohn William Waterhouse, Public domain, via Wikimedia Commons"
+    "text": "Tie Yourself to the Mast\n\nThe exhausted 3am version of you will thank present you for writing useful comments, exceptions/errors, and type hints!\n\n\n\n\nJohn William Waterhouse, Public domain, via Wikimedia Commons"
   },
   {
     "objectID": "w01/index.html#types-of-languages",
     "href": "w01/index.html#types-of-languages",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Types of Languages",
     "text": "Types of Languages\n\nCompiled\nInterpreted"
   },
   {
     "objectID": "w01/index.html#primitive-types",
     "href": "w01/index.html#primitive-types",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Primitive Types",
     "text": "Primitive Types\n\nBoolean (True or False)\nNumbers (Integers, Decimals)\nStrings\nNone"
   },
   {
     "objectID": "w01/index.html#stack-and-heap",
     "href": "w01/index.html#stack-and-heap",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Stack and Heap",
     "text": "Stack and Heap\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
   },
   {
     "objectID": "w01/index.html#algorithmic-thinking",
     "href": "w01/index.html#algorithmic-thinking",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Algorithmic Thinking",
     "text": "Algorithmic Thinking\n\nWhat are the inputs?\nWhat are the outputs?\nStandard cases vs. edge cases\nAdversarial development: brainstorm all of the ways an evil hacker might break your code!"
   },
   {
+    "objectID": "w01/index.html#example-finding-an-item-within-a-list",
+    "href": "w01/index.html#example-finding-an-item-within-a-list",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Example: Finding An Item Within A List",
+    "text": "Example: Finding An Item Within A List\n\nSeems straightforward, right? Given a list l, and a value v, return the index of l which contains v\nCorner cases galore…\nWhat if l contains v more than once? What if it doesn’t contain v at all? What if l is None? What if v is None? What if l isn’t a list at all? What if v is itself a list?"
+  },
+  {
     "objectID": "w01/index.html#sanity-preserving-tip",
     "href": "w01/index.html#sanity-preserving-tip",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "#1 Sanity-Preserving Tip!",
     "text": "#1 Sanity-Preserving Tip!\n\n(For our purposes) the answer to “what is Python?” is: an executable file that runs .py files!\n\ne.g., we can run python mycode.py in Terminal/PowerShell\n\nEverything else: pip, Jupyter, Pandas, etc., is an add-on to this basic functionality!"
   },
   {
     "objectID": "w01/index.html#code-blocks-via-indentation",
     "href": "w01/index.html#code-blocks-via-indentation",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Code Blocks via Indentation",
     "text": "Code Blocks via Indentation\n\n\nCode\nfor i in range(5):\n    print(i)\n\n\n0\n1\n2\n3\n4\n\n\n\n\nCode\nfor i in range(5):\nprint(i)\n\n\nIndentationError: expected an indented block after 'for' statement on line 1 (3695896917.py, line 2)"
   },
   {
     "objectID": "w01/index.html#type-hints",
     "href": "w01/index.html#type-hints",
-    "title": "Week 1: Python Fundamentals",
+    "title": "Week 1: Course Intro and Motivation",
     "section": "Type Hints",
     "text": "Type Hints\n\nNot a “standard” Python feature, not enforced by the Python interpreter, but can help you maintain sanity!\n\n\n\n\n\nCode\ndef multiply(thing1, thing2):\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee\n\n\n\n\n\nCode\nfrom numbers import Number\ndef multiply(thing1: Number, thing2: Number) -&gt; Number:\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee\n\n\n\n\n\n\nCode\nfrom mypy import api\nresult = api.run(['-c',_i])\nprint(result[0])\n\n\n&lt;string&gt;:3: error: Unsupported left operand type for * (\"Number\")  [operator]\n&lt;string&gt;:4: error: Argument 1 to \"multiply\" has incompatible type \"int\"; expected \"Number\"  [arg-type]\n&lt;string&gt;:4: note: Types from \"numbers\" aren't supported for static type checking\n&lt;string&gt;:4: note: See https://peps.python.org/pep-0484/#the-numeric-tower\n&lt;string&gt;:4: note: Consider using a protocol instead, such as typing.SupportsFloat\n&lt;string&gt;:4: error: Argument 2 to \"multiply\" has incompatible type \"int\"; expected \"Number\"  [arg-type]\n&lt;string&gt;:5: error: Argument 1 to \"multiply\" has incompatible type \"str\"; expected \"Number\"  [arg-type]\n&lt;string&gt;:5: note: Types from \"numbers\" aren't supported for static type checking\n&lt;string&gt;:5: note: See https://peps.python.org/pep-0484/#the-numeric-tower\n&lt;string&gt;:5: note: Consider using a protocol instead, such as typing.SupportsFloat\n&lt;string&gt;:5: error: Argument 2 to \"multiply\" has incompatible type \"int\"; expected \"Number\"  [arg-type]\nFound 5 errors in 1 file (checked 1 source file)"
+  },
+  {
+    "objectID": "w01/index.html#unit-testing",
+    "href": "w01/index.html#unit-testing",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Unit Testing",
+    "text": "Unit Testing\n\nFor your life: test-driven development\n\nIf you’re coding a duck, you should test that it looks like a duck, quacks like a duck, etc.\n\nFor this class:\n\nPublic tests: Fully visible, see result plus full code\nHidden tests: See result + description of test, but no code\nSecret tests: We run these after you submit, as a major portion of the total grade"
+  },
+  {
+    "objectID": "w01/index.html#why-does-the-nyc-subway-have-express-lines",
+    "href": "w01/index.html#why-does-the-nyc-subway-have-express-lines",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Why Does The NYC Subway Have Express Lines?",
+    "text": "Why Does The NYC Subway Have Express Lines?\n\n\n\nFrom NYC Central Park website"
+  },
+  {
+    "objectID": "w01/index.html#how-tf-does-google-maps-work",
+    "href": "w01/index.html#how-tf-does-google-maps-work",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "How TF Does Google Maps Work?",
+    "text": "How TF Does Google Maps Work?\n\nA (mostly) full-on answer: soon to come! Data structures for spatial data\nA step in that direction: Quadtrees! (Fractal DC)\n\n\nJim Kang’s Quadtree Visualizations"
+  },
+  {
+    "objectID": "w01/index.html#the-secretly-exciting-world-of-matrix-multiplication",
+    "href": "w01/index.html#the-secretly-exciting-world-of-matrix-multiplication",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "The Secretly Exciting World of Matrix Multiplication",
+    "text": "The Secretly Exciting World of Matrix Multiplication\n\nFun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations\nFun Fact 2: The way we’ve all learned how to multiply matrices requires \\(O(N^3)\\) operations, for two \\(N \\times N\\) matrices \\(A\\) and \\(B\\)\nFun Fact 3: \\(\\underbrace{x^2 - y^2}_{\\mathclap{\\times\\text{ twice, }\\pm\\text{ once}}} = \\underbrace{(x+y)(x-y)}_{\\times\\text{once, }\\pm\\text{ twice}}\\)\nFun Fact 4: These are not very fun facts at all"
+  },
+  {
+    "objectID": "w01/index.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
+    "href": "w01/index.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Why Is Jeff Rambling About Matrix Math From 300 Years Ago?",
+    "text": "Why Is Jeff Rambling About Matrix Math From 300 Years Ago?\n\nThe way we all learned it in school (for \\(N = 2\\)):\n\n\\[\nAB = \\begin{bmatrix}\na_{11} & a_{12} \\\\\na_{21} & a_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nb_{11} & b_{12} \\\\\nb_{21} & b_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\na_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\\\\na_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}\n\\end{bmatrix}\n\\]\n\n12 operations: 8 multiplications, 4 additions \\(\\implies O(N^3) = O(2^3) = O(8)\\)\nAre we trapped? Like… what is there to do besides performing these \\(N^3\\) operations, if we want to multiply two \\(N \\times N\\) matrices? Why are we about to move onto yet another slide about this?"
+  },
+  {
+    "objectID": "w01/index.html#block-partitioning-matrices",
+    "href": "w01/index.html#block-partitioning-matrices",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Block-Partitioning Matrices",
+    "text": "Block-Partitioning Matrices\n\nNow let’s consider big matrices, whose dimensions are a power of 2 (for ease of illustration): \\(A\\) and \\(B\\) are now \\(N \\times N = 2^n \\times 2^n\\) matrices\nWe can “decompose” the matrix product \\(AB\\) as:\n\n\\[\nAB = \\begin{bmatrix}\nA_{11} & A_{12} \\\\\nA_{21} & A_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nB_{11} & B_{12} \\\\\nB_{21} & B_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\nA_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\\\\nA_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}\n\\end{bmatrix}\n\\]\n\nWhich gives us a recurrence relation representing the total number of computations required for this big-matrix multiplication: \\(T(N) = \\underbrace{8T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(1)}_{\\text{Additions}}\\)\nIt turns out that (using a method we’ll learn in Week 3), given this recurrence relation and our base case from the previous slide, this divide-and-conquer approach via block-partitioning doesn’t help us: we still get \\(T(n) = O(n^3)\\)…\nSo why is Jeff still torturing us with this example?"
+  },
+  {
+    "objectID": "w01/index.html#time-for-some-matrix-magic",
+    "href": "w01/index.html#time-for-some-matrix-magic",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Time For Some 🪄🔥MATRIX MAGIC!🔥🪄",
+    "text": "Time For Some 🪄🔥MATRIX MAGIC!🔥🪄\n\n\nIf we define\n\n\\[\n\\begin{align*}\nm_1 &= (a_{11}+a_{22})(b_{11}+b_{22}) \\\\\nm_2 &= (a_{21}+a_{22})b_{11} \\\\\nm_3 &= a_{11}(b_{12}-b_{22}) \\\\\nm_4 &= a_{22}(b_{21}-b_{11}) \\\\\nm_5 &= (a_{11}+a_{12})b_{22} \\\\\nm_6 &= (a_{21}-a_{11})(b_{11}+b_{12}) \\\\\nm_7 &= (a_{12}-a_{22})(b_{21}+b_{22})\n\\end{align*}\n\\]\n\n\n\nThen we can combine these seven scalar products to obtain our matrix product:\n\n\\[\nAB = \\begin{bmatrix}\nm_1 + m_4 - m_5 + m_7 & m_3 + m_5 \\\\\nm_2 + m_4 & m_1 - m_2 + m_3 + m_6\n\\end{bmatrix}\n\\]\n\n\nTotal operations: 7 multiplications, 18 additions"
+  },
+  {
+    "objectID": "w01/index.html#block-partitioned-matrix-magic",
+    "href": "w01/index.html#block-partitioned-matrix-magic",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Block-Partitioned Matrix Magic",
+    "text": "Block-Partitioned Matrix Magic\n\nUsing the previous slide as our base case and applying this same method to the block-paritioned big matrices, we get the same result, but where the four entries in \\(AB\\) here are now matrices rather than scalars:\n\n\\[\nAB = \\begin{bmatrix}\nM_1 + M_4 - M_5 + M_7 & M_3 + M_5 \\\\\nM_2 + M_4 & M_1 - M_2 + M_3 + M_6\n\\end{bmatrix}\n\\]\n\nWe now have a different recurrence relation: \\(T(N) = \\underbrace{7T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(N^2)}_{\\text{Additions}}\\)\nAnd it turns out, somewhat miraculously, that the additional time required for the increased number of additions is significantly less than the time savings we obtain by doing 7 instead of 8 multiplications, since this method now runs in \\(T(N) = O(N^{\\log_2(7)}) \\approx O(N^{2.807}) &lt; O(N^3)\\) 🤯"
   },
   {
     "objectID": "w02/slides.html#creating-classes",
@@ -291,7 +431,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'cat', 'lizard', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'bird', 'fish', 'dog', 'lizard', 'cat'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'lizard', 'cat', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'cat', 'dog', 'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -452,7 +592,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'cat', 'lizard', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'lizard', 'dog', 'cat', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'bird', 'cat', 'lizard', 'fish'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'cat', 'fish', 'bird', 'lizard', 'dog'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/index.html#maps-dictionaries",
@@ -571,7 +711,7 @@
     "href": "index.html",
     "title": "DSAN 5500: Data Structures, Objects, and Algorithms in Python",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5500: Data Structures, Objects, and Algorithms in Python, Spring 2024, at Georgetown University! The course takes place on Mondays from 12:30 to 3:00pm in Car Barn Room 204. More details are provided on the syllabus.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Python Fundamentals\n\n\nJanuary 10\n\n\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nJanuary 22\n\n\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nJanuary 29\n\n\n\n\nWeek 4: Heaps, Stacks, Trees, Graphs\n\n\nJanuary 10\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to the homepage for DSAN 5500: Data Structures, Objects, and Algorithms in Python, Spring 2024, at Georgetown University! The course takes place on Mondays from 12:30 to 3:00pm in Car Barn Room 204. More details are provided on the syllabus.\n\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Course Intro and Motivation\n\n\nJanuary 10\n\n\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nJanuary 22\n\n\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nJanuary 29\n\n\n\n\nWeek 4: Heaps, Stacks, Trees, Graphs\n\n\nJanuary 10\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "syllabus.html",
