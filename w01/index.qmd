@@ -206,7 +206,7 @@ country_df
 * **Standard** cases vs. **edge cases**
 * **Adversarial** development: brainstorm all of the ways an evil hacker might break your code!
 
-## Example: Finding An Item Within A List {.smaller}
+## Example: Finding An Item Within A List {.title-09}
 
 * Seems straightforward, right? Given a list `l`, and a value `v`, return the index of `l` which contains `v`
 * Corner cases galore...
@@ -286,6 +286,10 @@ print(result[0])
 ## Why Does The NYC Subway Have Express Lines? {.smaller .title-11}
 
 ![From <a href='https://www.centralpark.com/visitor-info/get-directions/' target='_blank'>NYC Central Park website</a>](images/subway_map_nyc.jpg){fig-align="center"}
+
+## Why Stop At Two Levels? {.smaller}
+
+![From <a href='https://blog.reachsumit.com/posts/2020/07/skip-list/' target='_blank'>Skip List Data Structure Explained</a>, Sumit's Diary blog](images/nyc-7.png){fig-align="center"}
 
 ## How TF Does Google Maps Work? {.smaller .crunch-iframe .crunch-title .crunch-ul}
 
