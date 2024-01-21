@@ -97,6 +97,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"><script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script><script src="../jjcustom.js"></script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -204,14 +206,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#object-oriented-programming-in-general" id="toc-object-oriented-programming-in-general" class="nav-link active" data-scroll-target="#object-oriented-programming-in-general">Object-Oriented Programming in General</a></li>
-  <li><a href="#object-oriented-programming-in-python" id="toc-object-oriented-programming-in-python" class="nav-link" data-scroll-target="#object-oriented-programming-in-python">Object-Oriented Programming in Python</a>
+  <li><a href="#data-structures-motivation" id="toc-data-structures-motivation" class="nav-link active" data-scroll-target="#data-structures-motivation">Data Structures: Motivation</a>
   <ul class="collapse">
+  <li><a href="#why-does-the-nyc-subway-have-express-lines" id="toc-why-does-the-nyc-subway-have-express-lines" class="nav-link" data-scroll-target="#why-does-the-nyc-subway-have-express-lines">Why Does The NYC Subway Have Express Lines?</a></li>
+  <li><a href="#why-stop-at-two-levels" id="toc-why-stop-at-two-levels" class="nav-link" data-scroll-target="#why-stop-at-two-levels">Why Stop At Two Levels?</a></li>
+  <li><a href="#how-tf-does-google-maps-work" id="toc-how-tf-does-google-maps-work" class="nav-link" data-scroll-target="#how-tf-does-google-maps-work">How TF Does Google Maps Work?</a></li>
+  </ul></li>
+  <li><a href="#algorithmic-complexity-motivation" id="toc-algorithmic-complexity-motivation" class="nav-link" data-scroll-target="#algorithmic-complexity-motivation">Algorithmic Complexity: Motivation</a>
+  <ul class="collapse">
+  <li><a href="#the-secretly-exciting-world-of-matrix-multiplication" id="toc-the-secretly-exciting-world-of-matrix-multiplication" class="nav-link" data-scroll-target="#the-secretly-exciting-world-of-matrix-multiplication">The Secretly Exciting World of Matrix Multiplication</a></li>
+  <li><a href="#why-is-jeff-rambling-about-matrix-math-from-300-years-ago" id="toc-why-is-jeff-rambling-about-matrix-math-from-300-years-ago" class="nav-link" data-scroll-target="#why-is-jeff-rambling-about-matrix-math-from-300-years-ago">Why Is Jeff Rambling About Matrix Math From 300 Years Ago?</a></li>
+  <li><a href="#block-partitioning-matrices" id="toc-block-partitioning-matrices" class="nav-link" data-scroll-target="#block-partitioning-matrices">Block-Partitioning Matrices</a></li>
+  <li><a href="#time-for-some-matrix-magic" id="toc-time-for-some-matrix-magic" class="nav-link" data-scroll-target="#time-for-some-matrix-magic">Time For Some 🪄MATRIX MAGIC!🪄</a></li>
+  <li><a href="#block-partitioned-matrix-magic" id="toc-block-partitioned-matrix-magic" class="nav-link" data-scroll-target="#block-partitioned-matrix-magic">Block-Partitioned Matrix Magic</a></li>
+  </ul></li>
+  <li><a href="#sorting" id="toc-sorting" class="nav-link" data-scroll-target="#sorting">Sorting</a>
+  <ul class="collapse">
+  <li><a href="#insertion-sort" id="toc-insertion-sort" class="nav-link" data-scroll-target="#insertion-sort">Insertion Sort</a></li>
+  <li><a href="#merge-sort" id="toc-merge-sort" class="nav-link" data-scroll-target="#merge-sort">Merge Sort</a></li>
+  <li><a href="#complexity-analysis" id="toc-complexity-analysis" class="nav-link" data-scroll-target="#complexity-analysis">Complexity Analysis</a></li>
+  </ul></li>
+  <li><a href="#object-oriented-programming" id="toc-object-oriented-programming" class="nav-link" data-scroll-target="#object-oriented-programming">Object-Oriented Programming</a>
+  <ul class="collapse">
+  <li><a href="#breaking-a-problem-into-interacting-parts" id="toc-breaking-a-problem-into-interacting-parts" class="nav-link" data-scroll-target="#breaking-a-problem-into-interacting-parts">Breaking a Problem into (Interacting) Parts</a></li>
+  <li><a href="#how-does-a-calculator-work" id="toc-how-does-a-calculator-work" class="nav-link" data-scroll-target="#how-does-a-calculator-work">How Does A Calculator Work?</a></li>
+  <li><a href="#key-oop-feature-1-encapsulation" id="toc-key-oop-feature-1-encapsulation" class="nav-link" data-scroll-target="#key-oop-feature-1-encapsulation">Key OOP Feature #1: <em>Encapsulation</em></a></li>
+  <li><a href="#use-case-bookstore-inventory-management" id="toc-use-case-bookstore-inventory-management" class="nav-link" data-scroll-target="#use-case-bookstore-inventory-management">Use Case: Bookstore Inventory Management</a></li>
+  <li><a href="#in-pictures" id="toc-in-pictures" class="nav-link" data-scroll-target="#in-pictures">In Pictures</a></li>
   <li><a href="#creating-classes" id="toc-creating-classes" class="nav-link" data-scroll-target="#creating-classes">Creating Classes</a></li>
   <li><a href="#doing-things-with-classes" id="toc-doing-things-with-classes" class="nav-link" data-scroll-target="#doing-things-with-classes">Doing Things With Classes</a></li>
-  <li><a href="#in-pictures" id="toc-in-pictures" class="nav-link" data-scroll-target="#in-pictures">In Pictures</a></li>
+  <li><a href="#key-oop-feature-2-polymorphism" id="toc-key-oop-feature-2-polymorphism" class="nav-link" data-scroll-target="#key-oop-feature-2-polymorphism">Key OOP Feature #2: <em>Polymorphism</em></a></li>
+  <li><a href="#or-is-this-better" id="toc-or-is-this-better" class="nav-link" data-scroll-target="#or-is-this-better">Or… Is This Better?</a></li>
   <li><a href="#design-choices" id="toc-design-choices" class="nav-link" data-scroll-target="#design-choices">Design Choices</a></li>
   </ul></li>
+  <li><a href="#hw1-python-fundamentals" id="toc-hw1-python-fundamentals" class="nav-link" data-scroll-target="#hw1-python-fundamentals">HW1: Python Fundamentals</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
@@ -261,13 +289,265 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <center>
 <a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
 </center>
-<section id="object-oriented-programming-in-general" class="level1" data-name="OOP">
-<h1 data-name="OOP">Object-Oriented Programming in General</h1>
+<section id="data-structures-motivation" class="level1" data-stack-name="Data Structures">
+<h1 data-stack-name="Data Structures">Data Structures: Motivation</h1>
+<section id="why-does-the-nyc-subway-have-express-lines" class="level2 smaller title-11">
+<h2 class="smaller title-11 anchored" data-anchor-id="why-does-the-nyc-subway-have-express-lines">Why Does The NYC Subway Have Express Lines?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/subway_map_nyc.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">From <a href="https://www.centralpark.com/visitor-info/get-directions/" target="_blank">NYC Central Park website</a></figcaption>
+</figure>
+</div>
 </section>
-<section id="object-oriented-programming-in-python" class="level1" data-name="OOP in Python">
-<h1 data-name="OOP in Python">Object-Oriented Programming in Python</h1>
-<section id="creating-classes" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="creating-classes">Creating Classes</h2>
+<section id="why-stop-at-two-levels" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="why-stop-at-two-levels">Why Stop At Two Levels?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/nyc-7.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">From <a href="https://blog.reachsumit.com/posts/2020/07/skip-list/" target="_blank">Skip List Data Structure Explained</a>, Sumit’s Diary blog</figcaption>
+</figure>
+</div>
+</section>
+<section id="how-tf-does-google-maps-work" class="level2 smaller crunch-iframe crunch-title crunch-ul">
+<h2 class="smaller crunch-iframe crunch-title crunch-ul anchored" data-anchor-id="how-tf-does-google-maps-work">How TF Does Google Maps Work?</h2>
+<ul>
+<li>A (mostly) full-on answer: soon to come! Data structures for spatial data</li>
+<li>A step in that direction: <strong>Quadtrees</strong>! (<strong>Fractal DC</strong>)</li>
+</ul>
+<iframe src="https://jimkang.com/quadtreevis/" width="100%" height="450"></iframe>
+<p><a href="https://jimkang.com/quadtreevis/" target="_blank">Jim Kang’s Quadtree Visualizations <i class="bi bi-box-arrow-up-right"></i></a></p>
+</section>
+</section>
+<section id="algorithmic-complexity-motivation" class="level1" data-stack-name="Complexity">
+<h1 data-stack-name="Complexity">Algorithmic Complexity: Motivation</h1>
+<section id="the-secretly-exciting-world-of-matrix-multiplication" class="level2">
+<h2 class="anchored" data-anchor-id="the-secretly-exciting-world-of-matrix-multiplication">The Secretly Exciting World of Matrix Multiplication</h2>
+<ul>
+<li>Fun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations</li>
+<li>Fun Fact 2: The way we’ve all learned how to multiply matrices requires <span class="math inline">\(O(N^3)\)</span> operations, for two <span class="math inline">\(N \times N\)</span> matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></li>
+<li>Fun Fact 3: <span class="math inline">\(\underbrace{x^2 - y^2}_{\mathclap{\times\text{ twice, }\pm\text{ once}}} = \underbrace{(x+y)(x-y)}_{\times\text{once, }\pm\text{ twice}}\)</span></li>
+<li>Fun Fact 4: These are not very fun facts at all</li>
+</ul>
+</section>
+<section id="why-is-jeff-rambling-about-matrix-math-from-300-years-ago" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="why-is-jeff-rambling-about-matrix-math-from-300-years-ago">Why Is Jeff Rambling About Matrix Math From 300 Years Ago?</h2>
+<ul>
+<li>The way we all learned it in school (for <span class="math inline">\(N = 2\)</span>):</li>
+</ul>
+<p><span class="math display">\[
+AB = \begin{bmatrix}
+a_{11} &amp; a_{12} \\
+a_{21} &amp; a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} &amp; b_{12} \\
+b_{21} &amp; b_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+a_{11}b_{11} + a_{12}b_{21} &amp; a_{11}b_{12} + a_{12}b_{22} \\
+a_{21}b_{11} + a_{22}b_{21} &amp; a_{21}b_{12} + a_{22}b_{22}
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li>12 operations: 8 multiplications, 4 additions <span class="math inline">\(\implies O(N^3) = O(2^3) = O(8)\)</span></li>
+<li>Are we trapped? Like… what is there to do besides performing these <span class="math inline">\(N^3\)</span> operations, if we want to multiply two <span class="math inline">\(N \times N\)</span> matrices? Why are we about to move onto yet another slide about this?</li>
+</ul>
+</section>
+<section id="block-partitioning-matrices" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="block-partitioning-matrices">Block-Partitioning Matrices</h2>
+<ul>
+<li>Now let’s consider <strong>big</strong> matrices, whose dimensions are a power of 2 (for ease of illustration): <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are now <span class="math inline">\(N \times N = 2^n \times 2^n\)</span> matrices</li>
+<li>We can “decompose” the matrix product <span class="math inline">\(AB\)</span> as:</li>
+</ul>
+<p><span class="math display">\[
+AB = \begin{bmatrix}
+A_{11} &amp; A_{12} \\
+A_{21} &amp; A_{22}
+\end{bmatrix}
+\begin{bmatrix}
+B_{11} &amp; B_{12} \\
+B_{21} &amp; B_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+A_{11}B_{11} + A_{12}B_{21} &amp; A_{11}B_{12} + A_{12}B_{22} \\
+A_{21}B_{11} + A_{22}B_{21} &amp; A_{21}B_{12} + A_{22}B_{22}
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li>Which gives us a <strong>recurrence relation</strong> representing the total number of computations required for this big-matrix multiplication: <span class="math inline">\(T(N) = \underbrace{8T(N/2)}_{\text{Multiplications}} + \underbrace{\Theta(1)}_{\text{Additions}}\)</span></li>
+<li>It turns out that (using a method we’ll learn in Week 3), given this recurrence relation and our <strong>base case</strong> from the previous slide, this divide-and-conquer approach via block-partitioning doesn’t help us: we still get <span class="math inline">\(T(n) = O(n^3)\)</span>…</li>
+<li>So why is Jeff still torturing us with this example?</li>
+</ul>
+</section>
+<section id="time-for-some-matrix-magic" class="level2 smaller crunch-title crunch-ul crunch-math crunch-li title-12">
+<h2 class="smaller crunch-title crunch-ul crunch-math crunch-li title-12 anchored" data-anchor-id="time-for-some-matrix-magic">Time For Some 🪄MATRIX MAGIC!🪄</h2>
+<div id="matrix-magic-defn">
+<ul>
+<li>If we define</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+m_1 &amp;= (a_{11}+a_{22})(b_{11}+b_{22}) \\
+m_2 &amp;= (a_{21}+a_{22})b_{11} \\
+m_3 &amp;= a_{11}(b_{12}-b_{22}) \\
+m_4 &amp;= a_{22}(b_{21}-b_{11}) \\
+m_5 &amp;= (a_{11}+a_{12})b_{22} \\
+m_6 &amp;= (a_{21}-a_{11})(b_{11}+b_{12}) \\
+m_7 &amp;= (a_{12}-a_{22})(b_{21}+b_{22})
+\end{align*}
+\]</span></p>
+</div>
+<div id="matrix-magic-result">
+<ul>
+<li>Then we can combine these <strong>seven</strong> scalar products to obtain our matrix product:</li>
+</ul>
+<p><span class="math display">\[
+AB = \begin{bmatrix}
+m_1 + m_4 - m_5 + m_7 &amp; m_3 + m_5 \\
+m_2 + m_4 &amp; m_1 - m_2 + m_3 + m_6
+\end{bmatrix}
+\]</span></p>
+</div>
+<ul>
+<li>Total operations: 7 multiplications, 18 additions</li>
+</ul>
+</section>
+<section id="block-partitioned-matrix-magic" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="block-partitioned-matrix-magic">Block-Partitioned Matrix Magic</h2>
+<ul>
+<li>Using the previous slide as our <strong>base case</strong> and applying this same method to the block-paritioned big matrices, we get the same result, but where the four entries in <span class="math inline">\(AB\)</span> here are now <strong>matrices</strong> rather than scalars:</li>
+</ul>
+<p><span class="math display">\[
+AB = \begin{bmatrix}
+M_1 + M_4 - M_5 + M_7 &amp; M_3 + M_5 \\
+M_2 + M_4 &amp; M_1 - M_2 + M_3 + M_6
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li>We now have a <strong>different recurrence relation</strong>: <span class="math inline">\(T(N) = \underbrace{7T(N/2)}_{\text{Multiplications}} + \underbrace{\Theta(N^2)}_{\text{Additions}}\)</span></li>
+<li>And it turns out, somewhat miraculously, that the additional time required for the <strong>increased number of additions</strong> is <strong>significantly less</strong> than the <strong>time savings</strong> we obtain by doing 7 instead of 8 multiplications, since this method now runs in <span class="math inline">\(T(N) = O(N^{\log_2(7)}) \approx O(N^{2.807}) &lt; O(N^3)\)</span> 🤯</li>
+</ul>
+</section>
+</section>
+<section id="sorting" class="level1" data-stack-name="Sorting">
+<h1 data-stack-name="Sorting">Sorting</h1>
+<ul>
+<li>Your first “use case” for both <strong>using a data structure</strong> and <strong>analyzing the complexity</strong> of an operation on it!</li>
+<li>We’ll start with simple approach (<strong>insertion sort</strong>), then more complicated approach (<strong>merge sort</strong>)</li>
+<li>Using complexity analysis, we’ll see how (much like the matrix-multiplication example) simplest isn’t always best D:</li>
+</ul>
+<section id="insertion-sort" class="level2">
+<h2 class="anchored" data-anchor-id="insertion-sort">Insertion Sort</h2>
+<ul>
+<li>Think of how you might sort a deck of cards in your hand</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/insertion_sort_cards.jpeg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="merge-sort" class="level2">
+<h2 class="anchored" data-anchor-id="merge-sort">Merge Sort</h2>
+</section>
+<section id="complexity-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="complexity-analysis">Complexity Analysis</h2>
+</section>
+</section>
+<section id="object-oriented-programming" class="level1" data-stack-name="OOP">
+<h1 data-stack-name="OOP">Object-Oriented Programming</h1>
+<section id="breaking-a-problem-into-interacting-parts" class="level2 title-08 crunch-title">
+<h2 class="title-08 crunch-title anchored" data-anchor-id="breaking-a-problem-into-interacting-parts">Breaking a Problem into (Interacting) Parts</h2>
+<ul>
+<li><strong>Python so far</strong>: “Data science mode”
+<ul>
+<li>Start at top of file with raw data</li>
+<li>Write lines of code until problem solved</li>
+</ul></li>
+<li><strong>Python in this class</strong>: “Software engineering mode”
+<ul>
+<li>Break system down into parts</li>
+<li>Write each part separately</li>
+<li>Link parts together to create the whole</li>
+</ul></li>
+<li><em>(One implication: <code>.py</code> files may be easier than <code>.ipynb</code> for development!)</em></li>
+</ul>
+</section>
+<section id="how-does-a-calculator-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-does-a-calculator-work">How Does A Calculator Work?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Calculator.drawio.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">(Calculator image from <a href="//commons.wikimedia.org/wiki/User:LoMit" title="User:LoMit">Wikimedia Commons</a>)</figcaption>
+</figure>
+</div>
+</section>
+<section id="key-oop-feature-1-encapsulation" class="level2">
+<h2 class="anchored" data-anchor-id="key-oop-feature-1-encapsulation">Key OOP Feature #1: <em>Encapsulation</em></h2>
+<ul>
+<li>Imagine you’re on a <strong>team</strong> trying to make a calculator</li>
+<li>One person can write the <code>Screen</code> class, another person can write the <code>Button</code> class, and so on</li>
+<li>Natural division of labor! (May seem silly for a calculator, but imagine as your app <strong>scales up</strong>)</li>
+</ul>
+</section>
+<section id="use-case-bookstore-inventory-management" class="level2 smaller title-12">
+<h2 class="smaller title-12 anchored" data-anchor-id="use-case-bookstore-inventory-management">Use Case: Bookstore Inventory Management</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/spencerbeck_exterior-of-capitol-hill-books_yesmydccool.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><a href="https://washington.org/visit-dc/bookstores-sure-charm-you-washington-dc" target="_blank">Image source</a></figcaption>
+</figure>
+</div>
+</section>
+<section id="in-pictures" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="in-pictures">In Pictures</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="bookstore-diagram">
+<div>
+<svg width="672" height="480" viewbox="0.00 0.00 594.24 317.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 313.4)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-313.4 590.24,-313.4 590.24,4 -4,4"></polygon> <text text-anchor="middle" x="293.12" y="-292.8" font-family="Times,serif" font-size="14.00">Bookstore Relational Diagram</text> <!-- Bookstore --> <g id="node1" class="node">
+<title>
+Bookstore
+</title>
+<polygon fill="none" stroke="black" points="0,-135.3 0,-284.1 150.42,-284.1 150.42,-135.3 0,-135.3"></polygon> <text text-anchor="middle" x="75.21" y="-267.5" font-family="Courier,monospace" font-size="14.00">Bookstore</text> <polyline fill="none" stroke="black" points="0,-259.3 150.42,-259.3 "></polyline> <text text-anchor="start" x="8" y="-242.7" font-family="Courier,monospace" font-size="14.00">Name</text> <polyline fill="none" stroke="black" points="0,-234.5 150.42,-234.5 "></polyline> <text text-anchor="start" x="8" y="-217.9" font-family="Courier,monospace" font-size="14.00">Location</text> <polyline fill="none" stroke="black" points="0,-209.7 150.42,-209.7 "></polyline> <text text-anchor="start" x="8" y="-193.1" font-family="Courier,monospace" font-size="14.00">Booklist</text> <polyline fill="none" stroke="black" points="0,-184.9 150.42,-184.9 "></polyline> <text text-anchor="start" x="8" y="-168.3" font-family="Courier,monospace" font-size="14.00">Get_Inventory()</text> <polyline fill="none" stroke="black" points="0,-160.1 150.42,-160.1 "></polyline> <text text-anchor="start" x="8" y="-143.5" font-family="Courier,monospace" font-size="14.00">Sort_Inventory()</text> </g> <!-- Place --> <g id="node2" class="node">
+<title>
+Place
+</title>
+<polygon fill="none" stroke="black" points="259.92,-143.7 259.92,-267.7 368.33,-267.7 368.33,-143.7 259.92,-143.7"></polygon> <text text-anchor="middle" x="314.12" y="-251.1" font-family="Courier,monospace" font-size="14.00">Place</text> <polyline fill="none" stroke="black" points="259.92,-242.9 368.33,-242.9 "></polyline> <text text-anchor="start" x="267.92" y="-226.3" font-family="Courier,monospace" font-size="14.00">City</text> <polyline fill="none" stroke="black" points="259.92,-218.1 368.33,-218.1 "></polyline> <text text-anchor="start" x="267.92" y="-201.5" font-family="Courier,monospace" font-size="14.00">State</text> <polyline fill="none" stroke="black" points="259.92,-193.3 368.33,-193.3 "></polyline> <text text-anchor="start" x="267.92" y="-176.7" font-family="Courier,monospace" font-size="14.00">Country</text> <polyline fill="none" stroke="black" points="259.92,-168.5 368.33,-168.5 "></polyline> <text text-anchor="start" x="267.92" y="-151.9" font-family="Courier,monospace" font-size="14.00">Print_Map()</text> </g> <!-- Bookstore&#45;&gt;Place --> <g id="edge1" class="edge">
+<title>
+Bookstore:loc-&gt;Place:placehead
+</title>
+<path fill="none" stroke="black" d="M150.42,-221.7C197.79,-221.7 207.68,-251.09 249.78,-255.22"></path> <polygon fill="black" stroke="black" points="249.76,-258.72 259.92,-255.7 250.09,-251.73 249.76,-258.72"></polygon> <text text-anchor="middle" x="205.17" y="-257.9" font-family="Times,serif" font-size="14.00">Has One</text> </g> <!-- Book --> <g id="node3" class="node">
+<title>
+Book
+</title>
+<polygon fill="none" stroke="black" points="268.32,-0.7 268.32,-124.7 359.93,-124.7 359.93,-0.7 268.32,-0.7"></polygon> <text text-anchor="middle" x="314.12" y="-108.1" font-family="Courier,monospace" font-size="14.00">Book</text> <polyline fill="none" stroke="black" points="268.32,-99.9 359.93,-99.9 "></polyline> <text text-anchor="start" x="276.32" y="-83.3" font-family="Courier,monospace" font-size="14.00">Title</text> <polyline fill="none" stroke="black" points="268.32,-75.1 359.93,-75.1 "></polyline> <text text-anchor="start" x="276.32" y="-58.5" font-family="Courier,monospace" font-size="14.00">Authors</text> <polyline fill="none" stroke="black" points="268.32,-50.3 359.93,-50.3 "></polyline> <text text-anchor="start" x="276.32" y="-33.7" font-family="Courier,monospace" font-size="14.00">Num Pages</text> <polyline fill="none" stroke="black" points="268.32,-25.5 359.93,-25.5 "></polyline> <text text-anchor="middle" x="314.12" y="-8.9" font-family="Courier,monospace" font-size="14.00">Preview()</text> </g> <!-- Bookstore&#45;&gt;Book --> <g id="edge2" class="edge">
+<title>
+Bookstore:bl-&gt;Book:bookhead
+</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M150.42,-197.7C210.95,-197.7 204.03,-122.06 256.92,-113.49"></path> <polygon fill="black" stroke="black" points="257.42,-116.96 267.12,-112.7 256.88,-109.98 257.42,-116.96"></polygon> <text text-anchor="middle" x="205.17" y="-197.9" font-family="Times,serif" font-size="14.00">Has Multiple</text> </g> <!-- Person --> <g id="node4" class="node">
+<title>
+Person
+</title>
+<polygon fill="none" stroke="black" points="477.82,-0.5 477.82,-74.9 586.24,-74.9 586.24,-0.5 477.82,-0.5"></polygon> <text text-anchor="middle" x="532.03" y="-58.3" font-family="Courier,monospace" font-size="14.00">Person</text> <polyline fill="none" stroke="black" points="477.82,-50.1 586.24,-50.1 "></polyline> <text text-anchor="middle" x="532.03" y="-33.5" font-family="Courier,monospace" font-size="14.00">Family Name</text> <polyline fill="none" stroke="black" points="477.82,-25.3 586.24,-25.3 "></polyline> <text text-anchor="middle" x="532.03" y="-8.7" font-family="Courier,monospace" font-size="14.00">Given Name</text> </g> <!-- Book&#45;&gt;Person --> <g id="edge3" class="edge">
+<title>
+Book:auths-&gt;Person:personhead
+</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M361.12,-62.7C409.44,-62.7 424,-62.7 467.71,-62.7"></path> <polygon fill="black" stroke="black" points="467.82,-66.2 477.82,-62.7 467.82,-59.2 467.82,-66.2"></polygon> <text text-anchor="middle" x="423.08" y="-66.9" font-family="Times,serif" font-size="14.00">Has Multiple</text> </g> </g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-classes" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="creating-classes">Creating Classes</h2>
 <ul>
 <li>Use case: Creating an inventory system for a <strong>Bookstore</strong></li>
 </ul>
@@ -422,50 +702,25 @@ Inventory:
 </div>
 </div>
 </section>
-<section id="in-pictures" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="in-pictures">In Pictures</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div id="bookstore-diagram">
-<div>
-<svg width="672" height="480" viewbox="0.00 0.00 594.24 317.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 313.4)">
-<title>
-G
-</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-313.4 590.24,-313.4 590.24,4 -4,4"></polygon> <text text-anchor="middle" x="293.12" y="-292.8" font-family="Times,serif" font-size="14.00">Bookstore Relational Diagram</text> <!-- Bookstore --> <g id="node1" class="node">
-<title>
-Bookstore
-</title>
-<polygon fill="none" stroke="black" points="0,-135.3 0,-284.1 150.42,-284.1 150.42,-135.3 0,-135.3"></polygon> <text text-anchor="middle" x="75.21" y="-267.5" font-family="Courier,monospace" font-size="14.00">Bookstore</text> <polyline fill="none" stroke="black" points="0,-259.3 150.42,-259.3 "></polyline> <text text-anchor="start" x="8" y="-242.7" font-family="Courier,monospace" font-size="14.00">Name</text> <polyline fill="none" stroke="black" points="0,-234.5 150.42,-234.5 "></polyline> <text text-anchor="start" x="8" y="-217.9" font-family="Courier,monospace" font-size="14.00">Location</text> <polyline fill="none" stroke="black" points="0,-209.7 150.42,-209.7 "></polyline> <text text-anchor="start" x="8" y="-193.1" font-family="Courier,monospace" font-size="14.00">Booklist</text> <polyline fill="none" stroke="black" points="0,-184.9 150.42,-184.9 "></polyline> <text text-anchor="start" x="8" y="-168.3" font-family="Courier,monospace" font-size="14.00">Get_Inventory()</text> <polyline fill="none" stroke="black" points="0,-160.1 150.42,-160.1 "></polyline> <text text-anchor="start" x="8" y="-143.5" font-family="Courier,monospace" font-size="14.00">Sort_Inventory()</text> </g> <!-- Place --> <g id="node2" class="node">
-<title>
-Place
-</title>
-<polygon fill="none" stroke="black" points="259.92,-143.7 259.92,-267.7 368.33,-267.7 368.33,-143.7 259.92,-143.7"></polygon> <text text-anchor="middle" x="314.12" y="-251.1" font-family="Courier,monospace" font-size="14.00">Place</text> <polyline fill="none" stroke="black" points="259.92,-242.9 368.33,-242.9 "></polyline> <text text-anchor="start" x="267.92" y="-226.3" font-family="Courier,monospace" font-size="14.00">City</text> <polyline fill="none" stroke="black" points="259.92,-218.1 368.33,-218.1 "></polyline> <text text-anchor="start" x="267.92" y="-201.5" font-family="Courier,monospace" font-size="14.00">State</text> <polyline fill="none" stroke="black" points="259.92,-193.3 368.33,-193.3 "></polyline> <text text-anchor="start" x="267.92" y="-176.7" font-family="Courier,monospace" font-size="14.00">Country</text> <polyline fill="none" stroke="black" points="259.92,-168.5 368.33,-168.5 "></polyline> <text text-anchor="start" x="267.92" y="-151.9" font-family="Courier,monospace" font-size="14.00">Print_Map()</text> </g> <!-- Bookstore&#45;&gt;Place --> <g id="edge1" class="edge">
-<title>
-Bookstore:loc-&gt;Place:placehead
-</title>
-<path fill="none" stroke="black" d="M150.42,-221.7C197.79,-221.7 207.68,-251.09 249.78,-255.22"></path> <polygon fill="black" stroke="black" points="249.76,-258.72 259.92,-255.7 250.09,-251.73 249.76,-258.72"></polygon> <text text-anchor="middle" x="205.17" y="-257.9" font-family="Times,serif" font-size="14.00">Has One</text> </g> <!-- Book --> <g id="node3" class="node">
-<title>
-Book
-</title>
-<polygon fill="none" stroke="black" points="268.32,-0.7 268.32,-124.7 359.93,-124.7 359.93,-0.7 268.32,-0.7"></polygon> <text text-anchor="middle" x="314.12" y="-108.1" font-family="Courier,monospace" font-size="14.00">Book</text> <polyline fill="none" stroke="black" points="268.32,-99.9 359.93,-99.9 "></polyline> <text text-anchor="start" x="276.32" y="-83.3" font-family="Courier,monospace" font-size="14.00">Title</text> <polyline fill="none" stroke="black" points="268.32,-75.1 359.93,-75.1 "></polyline> <text text-anchor="start" x="276.32" y="-58.5" font-family="Courier,monospace" font-size="14.00">Authors</text> <polyline fill="none" stroke="black" points="268.32,-50.3 359.93,-50.3 "></polyline> <text text-anchor="start" x="276.32" y="-33.7" font-family="Courier,monospace" font-size="14.00">Num Pages</text> <polyline fill="none" stroke="black" points="268.32,-25.5 359.93,-25.5 "></polyline> <text text-anchor="middle" x="314.12" y="-8.9" font-family="Courier,monospace" font-size="14.00">Preview()</text> </g> <!-- Bookstore&#45;&gt;Book --> <g id="edge2" class="edge">
-<title>
-Bookstore:bl-&gt;Book:bookhead
-</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M150.42,-197.7C210.95,-197.7 204.03,-122.06 256.92,-113.49"></path> <polygon fill="black" stroke="black" points="257.42,-116.96 267.12,-112.7 256.88,-109.98 257.42,-116.96"></polygon> <text text-anchor="middle" x="205.17" y="-197.9" font-family="Times,serif" font-size="14.00">Has Multiple</text> </g> <!-- Person --> <g id="node4" class="node">
-<title>
-Person
-</title>
-<polygon fill="none" stroke="black" points="477.82,-0.5 477.82,-74.9 586.24,-74.9 586.24,-0.5 477.82,-0.5"></polygon> <text text-anchor="middle" x="532.03" y="-58.3" font-family="Courier,monospace" font-size="14.00">Person</text> <polyline fill="none" stroke="black" points="477.82,-50.1 586.24,-50.1 "></polyline> <text text-anchor="middle" x="532.03" y="-33.5" font-family="Courier,monospace" font-size="14.00">Family Name</text> <polyline fill="none" stroke="black" points="477.82,-25.3 586.24,-25.3 "></polyline> <text text-anchor="middle" x="532.03" y="-8.7" font-family="Courier,monospace" font-size="14.00">Given Name</text> </g> <!-- Book&#45;&gt;Person --> <g id="edge3" class="edge">
-<title>
-Book:auths-&gt;Person:personhead
-</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M361.12,-62.7C409.44,-62.7 424,-62.7 467.71,-62.7"></path> <polygon fill="black" stroke="black" points="467.82,-66.2 477.82,-62.7 467.82,-59.2 467.82,-66.2"></polygon> <text text-anchor="middle" x="423.08" y="-66.9" font-family="Times,serif" font-size="14.00">Has Multiple</text> </g> </g>
-</svg>
+<section id="key-oop-feature-2-polymorphism" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="key-oop-feature-2-polymorphism">Key OOP Feature #2: <em>Polymorphism</em></h2>
+<ul>
+<li>Encapsulate <strong>general properties</strong> in <strong>parent</strong> class, <strong>specific properties</strong> in <strong>child classes</strong></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/vehicle-basic.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">(You can edit this or make your own UML diagrams in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7C%0A%20%20numDoors%3A%20int%3B%20numWheels%3A%20int%3B%20balanced%3A%20bool%3B%7C%0A%20%20turnOn()%3B%20accelerate()%3B%20brake()%3B%20turnOff()%3B%0A%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%20balanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3Bbalanced%20%3D%20true%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3Bbalanced%20%3D%20true%3B%5D%0A%0A%5BVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BCar%5D%0A%5BVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a>!)</figcaption>
+</figure>
 </div>
-</div>
-</div>
+</section>
+<section id="or-is-this-better" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="or-is-this-better">Or… Is This Better?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/vehicle-fancy.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Edit in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7CnumDoors%3A%20int%3BnumWheels%3A%20int%3Bbalanced%3A%20bool%3B%7CturnOn()%3Baccelerate()%3Bbrake()%3BturnOff()%3B%5D%0A%5B%3Cabstract%3E%20UnbalancedVehicle%7Cbalanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20BalancedVehicle%7Cbalanced%20%3D%20true%3B%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3B%5D%0A%0A%5BVehicle%5D--%3A%3E%5BUnbalancedVehicle%5D%0A%5BUnbalancedVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BBalancedVehicle%5D%0A%5BBalancedVehicle%5D--%3A%3E%5BCar%5D%0A%5BBalancedVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a></figcaption>
+</figure>
 </div>
 </section>
 <section id="design-choices" class="level2 smaller">
@@ -549,9 +804,15 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 </div>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="hw1-python-fundamentals" class="level1" data-name="HW1">
+<h1 data-name="HW1">HW1: Python Fundamentals</h1>
+<ul>
+<li><a href="https://classroom.google.com/c/NjM5MzE2MTE4NTgx" target="_blank">Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

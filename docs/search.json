@@ -417,7 +417,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'cat', 'lizard', 'fish', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'dog', 'fish', 'cat', 'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'cat', 'lizard', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'cat', 'dog', 'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/index.html#maps-dictionaries",
@@ -571,7 +571,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'bird', 'cat', 'lizard'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'bird', 'cat', 'dog', 'fish', 'lizard'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'bird', 'cat', 'fish', 'lizard'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'lizard', 'fish', 'bird', 'cat', 'dog'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -686,6 +686,118 @@
     "text": "Open slides in new window →"
   },
   {
+    "objectID": "w02/index.html#why-does-the-nyc-subway-have-express-lines",
+    "href": "w02/index.html#why-does-the-nyc-subway-have-express-lines",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Why Does The NYC Subway Have Express Lines?",
+    "text": "Why Does The NYC Subway Have Express Lines?\n\n\n\nFrom NYC Central Park website"
+  },
+  {
+    "objectID": "w02/index.html#why-stop-at-two-levels",
+    "href": "w02/index.html#why-stop-at-two-levels",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Why Stop At Two Levels?",
+    "text": "Why Stop At Two Levels?\n\n\n\nFrom Skip List Data Structure Explained, Sumit’s Diary blog"
+  },
+  {
+    "objectID": "w02/index.html#how-tf-does-google-maps-work",
+    "href": "w02/index.html#how-tf-does-google-maps-work",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "How TF Does Google Maps Work?",
+    "text": "How TF Does Google Maps Work?\n\nA (mostly) full-on answer: soon to come! Data structures for spatial data\nA step in that direction: Quadtrees! (Fractal DC)\n\n\nJim Kang’s Quadtree Visualizations"
+  },
+  {
+    "objectID": "w02/index.html#the-secretly-exciting-world-of-matrix-multiplication",
+    "href": "w02/index.html#the-secretly-exciting-world-of-matrix-multiplication",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "The Secretly Exciting World of Matrix Multiplication",
+    "text": "The Secretly Exciting World of Matrix Multiplication\n\nFun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations\nFun Fact 2: The way we’ve all learned how to multiply matrices requires \\(O(N^3)\\) operations, for two \\(N \\times N\\) matrices \\(A\\) and \\(B\\)\nFun Fact 3: \\(\\underbrace{x^2 - y^2}_{\\mathclap{\\times\\text{ twice, }\\pm\\text{ once}}} = \\underbrace{(x+y)(x-y)}_{\\times\\text{once, }\\pm\\text{ twice}}\\)\nFun Fact 4: These are not very fun facts at all"
+  },
+  {
+    "objectID": "w02/index.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
+    "href": "w02/index.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Why Is Jeff Rambling About Matrix Math From 300 Years Ago?",
+    "text": "Why Is Jeff Rambling About Matrix Math From 300 Years Ago?\n\nThe way we all learned it in school (for \\(N = 2\\)):\n\n\\[\nAB = \\begin{bmatrix}\na_{11} & a_{12} \\\\\na_{21} & a_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nb_{11} & b_{12} \\\\\nb_{21} & b_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\na_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\\\\na_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}\n\\end{bmatrix}\n\\]\n\n12 operations: 8 multiplications, 4 additions \\(\\implies O(N^3) = O(2^3) = O(8)\\)\nAre we trapped? Like… what is there to do besides performing these \\(N^3\\) operations, if we want to multiply two \\(N \\times N\\) matrices? Why are we about to move onto yet another slide about this?"
+  },
+  {
+    "objectID": "w02/index.html#block-partitioning-matrices",
+    "href": "w02/index.html#block-partitioning-matrices",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Block-Partitioning Matrices",
+    "text": "Block-Partitioning Matrices\n\nNow let’s consider big matrices, whose dimensions are a power of 2 (for ease of illustration): \\(A\\) and \\(B\\) are now \\(N \\times N = 2^n \\times 2^n\\) matrices\nWe can “decompose” the matrix product \\(AB\\) as:\n\n\\[\nAB = \\begin{bmatrix}\nA_{11} & A_{12} \\\\\nA_{21} & A_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nB_{11} & B_{12} \\\\\nB_{21} & B_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\nA_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\\\\nA_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}\n\\end{bmatrix}\n\\]\n\nWhich gives us a recurrence relation representing the total number of computations required for this big-matrix multiplication: \\(T(N) = \\underbrace{8T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(1)}_{\\text{Additions}}\\)\nIt turns out that (using a method we’ll learn in Week 3), given this recurrence relation and our base case from the previous slide, this divide-and-conquer approach via block-partitioning doesn’t help us: we still get \\(T(n) = O(n^3)\\)…\nSo why is Jeff still torturing us with this example?"
+  },
+  {
+    "objectID": "w02/index.html#time-for-some-matrix-magic",
+    "href": "w02/index.html#time-for-some-matrix-magic",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Time For Some 🪄MATRIX MAGIC!🪄",
+    "text": "Time For Some 🪄MATRIX MAGIC!🪄\n\n\nIf we define\n\n\\[\n\\begin{align*}\nm_1 &= (a_{11}+a_{22})(b_{11}+b_{22}) \\\\\nm_2 &= (a_{21}+a_{22})b_{11} \\\\\nm_3 &= a_{11}(b_{12}-b_{22}) \\\\\nm_4 &= a_{22}(b_{21}-b_{11}) \\\\\nm_5 &= (a_{11}+a_{12})b_{22} \\\\\nm_6 &= (a_{21}-a_{11})(b_{11}+b_{12}) \\\\\nm_7 &= (a_{12}-a_{22})(b_{21}+b_{22})\n\\end{align*}\n\\]\n\n\n\nThen we can combine these seven scalar products to obtain our matrix product:\n\n\\[\nAB = \\begin{bmatrix}\nm_1 + m_4 - m_5 + m_7 & m_3 + m_5 \\\\\nm_2 + m_4 & m_1 - m_2 + m_3 + m_6\n\\end{bmatrix}\n\\]\n\n\nTotal operations: 7 multiplications, 18 additions"
+  },
+  {
+    "objectID": "w02/index.html#block-partitioned-matrix-magic",
+    "href": "w02/index.html#block-partitioned-matrix-magic",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Block-Partitioned Matrix Magic",
+    "text": "Block-Partitioned Matrix Magic\n\nUsing the previous slide as our base case and applying this same method to the block-paritioned big matrices, we get the same result, but where the four entries in \\(AB\\) here are now matrices rather than scalars:\n\n\\[\nAB = \\begin{bmatrix}\nM_1 + M_4 - M_5 + M_7 & M_3 + M_5 \\\\\nM_2 + M_4 & M_1 - M_2 + M_3 + M_6\n\\end{bmatrix}\n\\]\n\nWe now have a different recurrence relation: \\(T(N) = \\underbrace{7T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(N^2)}_{\\text{Additions}}\\)\nAnd it turns out, somewhat miraculously, that the additional time required for the increased number of additions is significantly less than the time savings we obtain by doing 7 instead of 8 multiplications, since this method now runs in \\(T(N) = O(N^{\\log_2(7)}) \\approx O(N^{2.807}) &lt; O(N^3)\\) 🤯"
+  },
+  {
+    "objectID": "w02/index.html#insertion-sort",
+    "href": "w02/index.html#insertion-sort",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Insertion Sort",
+    "text": "Insertion Sort\n\nThink of how you might sort a deck of cards in your hand"
+  },
+  {
+    "objectID": "w02/index.html#merge-sort",
+    "href": "w02/index.html#merge-sort",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Merge Sort",
+    "text": "Merge Sort"
+  },
+  {
+    "objectID": "w02/index.html#complexity-analysis",
+    "href": "w02/index.html#complexity-analysis",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Complexity Analysis",
+    "text": "Complexity Analysis"
+  },
+  {
+    "objectID": "w02/index.html#breaking-a-problem-into-interacting-parts",
+    "href": "w02/index.html#breaking-a-problem-into-interacting-parts",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Breaking a Problem into (Interacting) Parts",
+    "text": "Breaking a Problem into (Interacting) Parts\n\nPython so far: “Data science mode”\n\nStart at top of file with raw data\nWrite lines of code until problem solved\n\nPython in this class: “Software engineering mode”\n\nBreak system down into parts\nWrite each part separately\nLink parts together to create the whole\n\n(One implication: .py files may be easier than .ipynb for development!)"
+  },
+  {
+    "objectID": "w02/index.html#how-does-a-calculator-work",
+    "href": "w02/index.html#how-does-a-calculator-work",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "How Does A Calculator Work?",
+    "text": "How Does A Calculator Work?\n\n\n\n(Calculator image from Wikimedia Commons)"
+  },
+  {
+    "objectID": "w02/index.html#key-oop-feature-1-encapsulation",
+    "href": "w02/index.html#key-oop-feature-1-encapsulation",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Key OOP Feature #1: Encapsulation",
+    "text": "Key OOP Feature #1: Encapsulation\n\nImagine you’re on a team trying to make a calculator\nOne person can write the Screen class, another person can write the Button class, and so on\nNatural division of labor! (May seem silly for a calculator, but imagine as your app scales up)"
+  },
+  {
+    "objectID": "w02/index.html#use-case-bookstore-inventory-management",
+    "href": "w02/index.html#use-case-bookstore-inventory-management",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Use Case: Bookstore Inventory Management",
+    "text": "Use Case: Bookstore Inventory Management\n\n\n\nImage source"
+  },
+  {
+    "objectID": "w02/index.html#in-pictures",
+    "href": "w02/index.html#in-pictures",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "In Pictures",
+    "text": "In Pictures\n\n\n\n\n\n\n\nG\n\n Bookstore Relational Diagram  \n\nBookstore\n\n Bookstore  Name  Location  Booklist  Get_Inventory()  Sort_Inventory()   \n\nPlace\n\n Place  City  State  Country  Print_Map()   \n\nBookstore:loc-&gt;Place:placehead\n\n  Has One   \n\nBook\n\n Book  Title  Authors  Num Pages  Preview()   \n\nBookstore:bl-&gt;Book:bookhead\n\n  Has Multiple   \n\nPerson\n\n Person  Family Name  Given Name   \n\nBook:auths-&gt;Person:personhead\n\n  Has Multiple"
+  },
+  {
     "objectID": "w02/index.html#creating-classes",
     "href": "w02/index.html#creating-classes",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
@@ -700,11 +812,18 @@
     "text": "Doing Things With Classes\n\nNow we can use our OOP structure, for example to sort the inventory in different ways!\n\n\n\n\nAlphabetical (By First Author)\n\n\n\nCode\nsort_alpha = lambda x: x.get_first_author().get_family_name()\nmy_bookstore.sort_books(sort_key = sort_alpha)\nprint(my_bookstore.get_inventory())\n\n\n0. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]\n1. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]\n2. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]\n\n\n\n\nBy Page Count\n\n\n\nCode\nsort_pages = lambda x: x.get_num_pages()\nmy_bookstore.sort_books(sort_key = sort_pages)\nprint(my_bookstore.get_inventory())\n\n\n0. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]\n1. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]\n2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]"
   },
   {
-    "objectID": "w02/index.html#in-pictures",
-    "href": "w02/index.html#in-pictures",
+    "objectID": "w02/index.html#key-oop-feature-2-polymorphism",
+    "href": "w02/index.html#key-oop-feature-2-polymorphism",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
-    "section": "In Pictures",
-    "text": "In Pictures\n\n\n\n\n\n\n\nG\n\n Bookstore Relational Diagram  \n\nBookstore\n\n Bookstore  Name  Location  Booklist  Get_Inventory()  Sort_Inventory()   \n\nPlace\n\n Place  City  State  Country  Print_Map()   \n\nBookstore:loc-&gt;Place:placehead\n\n  Has One   \n\nBook\n\n Book  Title  Authors  Num Pages  Preview()   \n\nBookstore:bl-&gt;Book:bookhead\n\n  Has Multiple   \n\nPerson\n\n Person  Family Name  Given Name   \n\nBook:auths-&gt;Person:personhead\n\n  Has Multiple"
+    "section": "Key OOP Feature #2: Polymorphism",
+    "text": "Key OOP Feature #2: Polymorphism\n\nEncapsulate general properties in parent class, specific properties in child classes\n\n\n\n\n(You can edit this or make your own UML diagrams in nomnoml!)"
+  },
+  {
+    "objectID": "w02/index.html#or-is-this-better",
+    "href": "w02/index.html#or-is-this-better",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Or… Is This Better?",
+    "text": "Or… Is This Better?\n\n\n\nEdit in nomnoml"
   },
   {
     "objectID": "w02/index.html#design-choices",
@@ -712,6 +831,118 @@
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Design Choices",
     "text": "Design Choices\n\nThe goal is to encapsulate as best as possible: which objects should have which properties, and which methods?\nExample: Fiction vs. Non-Fiction. How important is this distinction for your use case?\n\n\n\n\nOption 1: As Property of Book\n\n\n\nCode\nfrom enum import Enum\nclass BookType(Enum):\n    NONFICTION = 0\n    FICTION = 1\n\nclass Book:\n    def __init__(self, title: str, authors: list[Person], num_pages: int, type: BookType):\n        self.title = title\n        self.authors = authors\n        self.num_pages = num_pages\n        self.type = type\n\n    def __str__(self):\n        return f\"Book[title={self.title}, authors={self.authors}, pages={self.num_pages}, type={self.type}]\"\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = Book(\"Ulysses\", [joyce], 732, BookType.FICTION)\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = Book(\"Micromotives and Macrobehavior\", [schelling], 252, BookType.NONFICTION)\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252, type=BookType.NONFICTION]\n\n\n\n\nOption 2: Separate Classes\n\n\n\nCode\n# class Book defined as earlier\nclass FictionBook(Book):\n    def __init__(self, title, authors, num_pages, characters):\n        super().__init__(title, authors, num_pages)\n        self.characters = characters\n\nclass NonfictionBook(Book):\n    def __init__(self, title, authors, num_pages, topic):\n        super().__init__(title, authors, num_pages)\n        self.topic = topic\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = FictionBook(\"Ulysses\", [joyce], 732, [\"Daedalus\"])\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = NonfictionBook(\"Micromotives and Macrobehavior\", [schelling], 252, \"Economics\")\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]"
+  },
+  {
+    "objectID": "w02/slides.html#why-does-the-nyc-subway-have-express-lines",
+    "href": "w02/slides.html#why-does-the-nyc-subway-have-express-lines",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Why Does The NYC Subway Have Express Lines?",
+    "text": "Why Does The NYC Subway Have Express Lines?\n\nFrom NYC Central Park website"
+  },
+  {
+    "objectID": "w02/slides.html#why-stop-at-two-levels",
+    "href": "w02/slides.html#why-stop-at-two-levels",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Why Stop At Two Levels?",
+    "text": "Why Stop At Two Levels?\n\nFrom Skip List Data Structure Explained, Sumit’s Diary blog"
+  },
+  {
+    "objectID": "w02/slides.html#how-tf-does-google-maps-work",
+    "href": "w02/slides.html#how-tf-does-google-maps-work",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "How TF Does Google Maps Work?",
+    "text": "How TF Does Google Maps Work?\n\nA (mostly) full-on answer: soon to come! Data structures for spatial data\nA step in that direction: Quadtrees! (Fractal DC)\n\n\nJim Kang’s Quadtree Visualizations"
+  },
+  {
+    "objectID": "w02/slides.html#the-secretly-exciting-world-of-matrix-multiplication",
+    "href": "w02/slides.html#the-secretly-exciting-world-of-matrix-multiplication",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "The Secretly Exciting World of Matrix Multiplication",
+    "text": "The Secretly Exciting World of Matrix Multiplication\n\nFun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations\nFun Fact 2: The way we’ve all learned how to multiply matrices requires \\(O(N^3)\\) operations, for two \\(N \\times N\\) matrices \\(A\\) and \\(B\\)\nFun Fact 3: \\(\\underbrace{x^2 - y^2}_{\\mathclap{\\times\\text{ twice, }\\pm\\text{ once}}} = \\underbrace{(x+y)(x-y)}_{\\times\\text{once, }\\pm\\text{ twice}}\\)\nFun Fact 4: These are not very fun facts at all"
+  },
+  {
+    "objectID": "w02/slides.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
+    "href": "w02/slides.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Why Is Jeff Rambling About Matrix Math From 300 Years Ago?",
+    "text": "Why Is Jeff Rambling About Matrix Math From 300 Years Ago?\n\nThe way we all learned it in school (for \\(N = 2\\)):\n\n\\[\nAB = \\begin{bmatrix}\na_{11} & a_{12} \\\\\na_{21} & a_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nb_{11} & b_{12} \\\\\nb_{21} & b_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\na_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\\\\na_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}\n\\end{bmatrix}\n\\]\n\n12 operations: 8 multiplications, 4 additions \\(\\implies O(N^3) = O(2^3) = O(8)\\)\nAre we trapped? Like… what is there to do besides performing these \\(N^3\\) operations, if we want to multiply two \\(N \\times N\\) matrices? Why are we about to move onto yet another slide about this?"
+  },
+  {
+    "objectID": "w02/slides.html#block-partitioning-matrices",
+    "href": "w02/slides.html#block-partitioning-matrices",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Block-Partitioning Matrices",
+    "text": "Block-Partitioning Matrices\n\nNow let’s consider big matrices, whose dimensions are a power of 2 (for ease of illustration): \\(A\\) and \\(B\\) are now \\(N \\times N = 2^n \\times 2^n\\) matrices\nWe can “decompose” the matrix product \\(AB\\) as:\n\n\\[\nAB = \\begin{bmatrix}\nA_{11} & A_{12} \\\\\nA_{21} & A_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nB_{11} & B_{12} \\\\\nB_{21} & B_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\nA_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\\\\nA_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}\n\\end{bmatrix}\n\\]\n\nWhich gives us a recurrence relation representing the total number of computations required for this big-matrix multiplication: \\(T(N) = \\underbrace{8T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(1)}_{\\text{Additions}}\\)\nIt turns out that (using a method we’ll learn in Week 3), given this recurrence relation and our base case from the previous slide, this divide-and-conquer approach via block-partitioning doesn’t help us: we still get \\(T(n) = O(n^3)\\)…\nSo why is Jeff still torturing us with this example?"
+  },
+  {
+    "objectID": "w02/slides.html#time-for-some-matrix-magic",
+    "href": "w02/slides.html#time-for-some-matrix-magic",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Time For Some 🪄MATRIX MAGIC!🪄",
+    "text": "Time For Some 🪄MATRIX MAGIC!🪄\n\n\nIf we define\n\n\\[\n\\begin{align*}\nm_1 &= (a_{11}+a_{22})(b_{11}+b_{22}) \\\\\nm_2 &= (a_{21}+a_{22})b_{11} \\\\\nm_3 &= a_{11}(b_{12}-b_{22}) \\\\\nm_4 &= a_{22}(b_{21}-b_{11}) \\\\\nm_5 &= (a_{11}+a_{12})b_{22} \\\\\nm_6 &= (a_{21}-a_{11})(b_{11}+b_{12}) \\\\\nm_7 &= (a_{12}-a_{22})(b_{21}+b_{22})\n\\end{align*}\n\\]\n\n\n\nThen we can combine these seven scalar products to obtain our matrix product:\n\n\\[\nAB = \\begin{bmatrix}\nm_1 + m_4 - m_5 + m_7 & m_3 + m_5 \\\\\nm_2 + m_4 & m_1 - m_2 + m_3 + m_6\n\\end{bmatrix}\n\\]\n\n\nTotal operations: 7 multiplications, 18 additions"
+  },
+  {
+    "objectID": "w02/slides.html#block-partitioned-matrix-magic",
+    "href": "w02/slides.html#block-partitioned-matrix-magic",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Block-Partitioned Matrix Magic",
+    "text": "Block-Partitioned Matrix Magic\n\nUsing the previous slide as our base case and applying this same method to the block-paritioned big matrices, we get the same result, but where the four entries in \\(AB\\) here are now matrices rather than scalars:\n\n\\[\nAB = \\begin{bmatrix}\nM_1 + M_4 - M_5 + M_7 & M_3 + M_5 \\\\\nM_2 + M_4 & M_1 - M_2 + M_3 + M_6\n\\end{bmatrix}\n\\]\n\nWe now have a different recurrence relation: \\(T(N) = \\underbrace{7T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(N^2)}_{\\text{Additions}}\\)\nAnd it turns out, somewhat miraculously, that the additional time required for the increased number of additions is significantly less than the time savings we obtain by doing 7 instead of 8 multiplications, since this method now runs in \\(T(N) = O(N^{\\log_2(7)}) \\approx O(N^{2.807}) &lt; O(N^3)\\) 🤯"
+  },
+  {
+    "objectID": "w02/slides.html#insertion-sort",
+    "href": "w02/slides.html#insertion-sort",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Insertion Sort",
+    "text": "Insertion Sort\n\nThink of how you might sort a deck of cards in your hand"
+  },
+  {
+    "objectID": "w02/slides.html#merge-sort",
+    "href": "w02/slides.html#merge-sort",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Merge Sort",
+    "text": "Merge Sort"
+  },
+  {
+    "objectID": "w02/slides.html#complexity-analysis",
+    "href": "w02/slides.html#complexity-analysis",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Complexity Analysis",
+    "text": "Complexity Analysis"
+  },
+  {
+    "objectID": "w02/slides.html#breaking-a-problem-into-interacting-parts",
+    "href": "w02/slides.html#breaking-a-problem-into-interacting-parts",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Breaking a Problem into (Interacting) Parts",
+    "text": "Breaking a Problem into (Interacting) Parts\n\nPython so far: “Data science mode”\n\nStart at top of file with raw data\nWrite lines of code until problem solved\n\nPython in this class: “Software engineering mode”\n\nBreak system down into parts\nWrite each part separately\nLink parts together to create the whole\n\n(One implication: .py files may be easier than .ipynb for development!)"
+  },
+  {
+    "objectID": "w02/slides.html#how-does-a-calculator-work",
+    "href": "w02/slides.html#how-does-a-calculator-work",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "How Does A Calculator Work?",
+    "text": "How Does A Calculator Work?\n\n(Calculator image from Wikimedia Commons)"
+  },
+  {
+    "objectID": "w02/slides.html#key-oop-feature-1-encapsulation",
+    "href": "w02/slides.html#key-oop-feature-1-encapsulation",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Key OOP Feature #1: Encapsulation",
+    "text": "Key OOP Feature #1: Encapsulation\n\nImagine you’re on a team trying to make a calculator\nOne person can write the Screen class, another person can write the Button class, and so on\nNatural division of labor! (May seem silly for a calculator, but imagine as your app scales up)"
+  },
+  {
+    "objectID": "w02/slides.html#use-case-bookstore-inventory-management",
+    "href": "w02/slides.html#use-case-bookstore-inventory-management",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Use Case: Bookstore Inventory Management",
+    "text": "Use Case: Bookstore Inventory Management\n\nImage source"
+  },
+  {
+    "objectID": "w02/slides.html#in-pictures",
+    "href": "w02/slides.html#in-pictures",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "In Pictures",
+    "text": "In Pictures\n\n\n\n\n\n\n\nG\n\n Bookstore Relational Diagram  \n\nBookstore\n\n Bookstore  Name  Location  Booklist  Get_Inventory()  Sort_Inventory()   \n\nPlace\n\n Place  City  State  Country  Print_Map()   \n\nBookstore:loc-&gt;Place:placehead\n\n  Has One   \n\nBook\n\n Book  Title  Authors  Num Pages  Preview()   \n\nBookstore:bl-&gt;Book:bookhead\n\n  Has Multiple   \n\nPerson\n\n Person  Family Name  Given Name   \n\nBook:auths-&gt;Person:personhead\n\n  Has Multiple"
   },
   {
     "objectID": "w02/slides.html#creating-classes",
@@ -728,18 +959,25 @@
     "text": "Doing Things With Classes\n\nNow we can use our OOP structure, for example to sort the inventory in different ways!\n\n\n\n\nAlphabetical (By First Author)\n\n\n\nCode\nsort_alpha = lambda x: x.get_first_author().get_family_name()\nmy_bookstore.sort_books(sort_key = sort_alpha)\nprint(my_bookstore.get_inventory())\n\n\n0. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]\n1. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]\n2. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]\n\n\n\n\nBy Page Count\n\n\n\nCode\nsort_pages = lambda x: x.get_num_pages()\nmy_bookstore.sort_books(sort_key = sort_pages)\nprint(my_bookstore.get_inventory())\n\n\n0. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]\n1. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]\n2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]"
   },
   {
-    "objectID": "w02/slides.html#in-pictures",
-    "href": "w02/slides.html#in-pictures",
+    "objectID": "w02/slides.html#key-oop-feature-2-polymorphism",
+    "href": "w02/slides.html#key-oop-feature-2-polymorphism",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
-    "section": "In Pictures",
-    "text": "In Pictures\n\n\n\n\n\n\n\nG\n\n Bookstore Relational Diagram  \n\nBookstore\n\n Bookstore  Name  Location  Booklist  Get_Inventory()  Sort_Inventory()   \n\nPlace\n\n Place  City  State  Country  Print_Map()   \n\nBookstore:loc-&gt;Place:placehead\n\n  Has One   \n\nBook\n\n Book  Title  Authors  Num Pages  Preview()   \n\nBookstore:bl-&gt;Book:bookhead\n\n  Has Multiple   \n\nPerson\n\n Person  Family Name  Given Name   \n\nBook:auths-&gt;Person:personhead\n\n  Has Multiple"
+    "section": "Key OOP Feature #2: Polymorphism",
+    "text": "Key OOP Feature #2: Polymorphism\n\nEncapsulate general properties in parent class, specific properties in child classes\n\n\n(You can edit this or make your own UML diagrams in nomnoml!)"
+  },
+  {
+    "objectID": "w02/slides.html#or-is-this-better",
+    "href": "w02/slides.html#or-is-this-better",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Or… Is This Better?",
+    "text": "Or… Is This Better?\n\nEdit in nomnoml"
   },
   {
     "objectID": "w02/slides.html#design-choices",
     "href": "w02/slides.html#design-choices",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Design Choices",
-    "text": "Design Choices\n\nThe goal is to encapsulate as best as possible: which objects should have which properties, and which methods?\nExample: Fiction vs. Non-Fiction. How important is this distinction for your use case?\n\n\n\n\nOption 1: As Property of Book\n\n\n\nCode\nfrom enum import Enum\nclass BookType(Enum):\n    NONFICTION = 0\n    FICTION = 1\n\nclass Book:\n    def __init__(self, title: str, authors: list[Person], num_pages: int, type: BookType):\n        self.title = title\n        self.authors = authors\n        self.num_pages = num_pages\n        self.type = type\n\n    def __str__(self):\n        return f\"Book[title={self.title}, authors={self.authors}, pages={self.num_pages}, type={self.type}]\"\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = Book(\"Ulysses\", [joyce], 732, BookType.FICTION)\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = Book(\"Micromotives and Macrobehavior\", [schelling], 252, BookType.NONFICTION)\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252, type=BookType.NONFICTION]\n\n\n\n\nOption 2: Separate Classes\n\n\n\nCode\n# class Book defined as earlier\nclass FictionBook(Book):\n    def __init__(self, title, authors, num_pages, characters):\n        super().__init__(title, authors, num_pages)\n        self.characters = characters\n\nclass NonfictionBook(Book):\n    def __init__(self, title, authors, num_pages, topic):\n        super().__init__(title, authors, num_pages)\n        self.topic = topic\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = FictionBook(\"Ulysses\", [joyce], 732, [\"Daedalus\"])\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = NonfictionBook(\"Micromotives and Macrobehavior\", [schelling], 252, \"Economics\")\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]\n\n\n\n\n\n\nDSAN 5500 Week 2: Software Design Patterns and OOP"
+    "text": "Design Choices\n\nThe goal is to encapsulate as best as possible: which objects should have which properties, and which methods?\nExample: Fiction vs. Non-Fiction. How important is this distinction for your use case?\n\n\n\n\nOption 1: As Property of Book\n\n\n\nCode\nfrom enum import Enum\nclass BookType(Enum):\n    NONFICTION = 0\n    FICTION = 1\n\nclass Book:\n    def __init__(self, title: str, authors: list[Person], num_pages: int, type: BookType):\n        self.title = title\n        self.authors = authors\n        self.num_pages = num_pages\n        self.type = type\n\n    def __str__(self):\n        return f\"Book[title={self.title}, authors={self.authors}, pages={self.num_pages}, type={self.type}]\"\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = Book(\"Ulysses\", [joyce], 732, BookType.FICTION)\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = Book(\"Micromotives and Macrobehavior\", [schelling], 252, BookType.NONFICTION)\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252, type=BookType.NONFICTION]\n\n\n\n\nOption 2: Separate Classes\n\n\n\nCode\n# class Book defined as earlier\nclass FictionBook(Book):\n    def __init__(self, title, authors, num_pages, characters):\n        super().__init__(title, authors, num_pages)\n        self.characters = characters\n\nclass NonfictionBook(Book):\n    def __init__(self, title, authors, num_pages, topic):\n        super().__init__(title, authors, num_pages)\n        self.topic = topic\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = FictionBook(\"Ulysses\", [joyce], 732, [\"Daedalus\"])\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = NonfictionBook(\"Micromotives and Macrobehavior\", [schelling], 252, \"Economics\")\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]"
   },
   {
     "objectID": "index.html",

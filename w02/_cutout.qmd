@@ -1,0 +1,82 @@
+
+## Algorithmic Thinking
+
+* What are the **inputs**?
+* What are the **outputs**?
+* **Standard** cases vs. **edge cases**
+* **Adversarial** development: brainstorm all of the ways an evil hacker might break your code!
+
+## Example: Finding An Item Within A List {.title-09}
+
+* Seems straightforward, right? Given a list `l`, and a value `v`, return the index of `l` which contains `v`
+* Corner cases galore...
+* What if `l` contains `v` more than once? What if it doesn't contain `v` at all? What if `l` is `None`? What if `v` is `None`? What if `l` isn't a list at all? What if `v` is itself a list?
+
+# Part 2: Python Specifically {data-stack-name="Python"}
+
+## \#1 Sanity-Preserving Tip!
+
+* (For our purposes) the answer to "what is Python?" is: an **executable file** that **runs `.py` files!**
+  * e.g., we can run `python mycode.py` in Terminal/PowerShell
+
+* Everything else: `pip`, Jupyter, Pandas, etc., is an **add-on** to this basic functionality!
+
+## Code Blocks via Indentation
+
+```{python}
+#| label: indentation-example
+for i in range(5):
+    print(i)
+```
+
+```{python}
+#| label: indentation-2
+#| error: true
+for i in range(5):
+print(i)
+```
+
+## Type Hints {.smaller .crunch-title .crunch-ul}
+
+* **Not** a "standard" Python feature, **not** enforced by the Python interpreter, but can help you **maintain sanity**!
+
+::: columns
+::: {.column width="50%"}
+
+```{python}
+#| label: type-hints
+def multiply(thing1, thing2):
+  return thing1 * thing2
+print(multiply(5, 3))
+print(multiply("fiveee", 3))
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+#| label: type-hints-safe
+from numbers import Number
+def multiply(thing1: Number, thing2: Number) -> Number:
+  return thing1 * thing2
+print(multiply(5, 3))
+print(multiply("fiveee", 3))
+```
+
+:::
+:::
+
+```{python}
+from mypy import api
+result = api.run(['-c',_i])
+print(result[0])
+```
+
+## Unit Testing
+
+* For your life: test-driven development
+  * If you're coding a duck, you should test that it **looks like a duck**, **quacks like a duck**, etc.
+* For this class:
+  * Public tests: Fully visible, see result plus full code
+  * Hidden tests: See result + description of test, but no code
+  * Secret tests: We run these after you submit, as a major portion of the total grade
