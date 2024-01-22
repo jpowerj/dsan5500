@@ -417,7 +417,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'cat', 'lizard', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'cat', 'dog', 'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'cat', 'bird', 'lizard', 'fish'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'cat', 'bird', 'fish', 'lizard', 'dog'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/index.html#maps-dictionaries",
@@ -571,7 +571,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'bird', 'cat', 'fish', 'lizard'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'lizard', 'fish', 'bird', 'cat', 'dog'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'bird', 'fish', 'lizard', 'cat'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'bird', 'dog', 'lizard', 'fish', 'cat'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -749,18 +749,116 @@
     "text": "Insertion Sort\n\nThink of how you might sort a deck of cards in your hand"
   },
   {
-    "objectID": "w02/index.html#merge-sort",
-    "href": "w02/index.html#merge-sort",
+    "objectID": "w02/index.html#cards-rightarrow-list-elements",
+    "href": "w02/index.html#cards-rightarrow-list-elements",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
-    "section": "Merge Sort",
-    "text": "Merge Sort"
+    "section": "Cards \\(\\rightarrow\\) List Elements",
+    "text": "Cards \\(\\rightarrow\\) List Elements\n\nInput list: [5, 2, 4, 6, 1, 3]\n\n\n\n\n\n\n\nNotice how, at each point:\n\nThere is a card we’re currently “looking at”, called the key, and\nThere is an invariant: everything in the list before the key is already sorted"
   },
   {
     "objectID": "w02/index.html#complexity-analysis",
     "href": "w02/index.html#complexity-analysis",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Complexity Analysis",
-    "text": "Complexity Analysis"
+    "text": "Complexity Analysis\n\nLet \\(t_i\\) be the number of times the while loop runs, \\(\\widetilde{n} = n - 1\\):\n\n\n\n\n\nCode\nCost\nTimes Run\n\n\n\n\n1\nfor i = 2 to n:\n\\(c_1\\)\n\\(n\\)\n\n\n2\n  key = A[i]\n\\(c_2\\)\n\\(\\widetilde{n}\\)\n\n\n3\n  # Insert A[i] into sorted subarray A[1:i-1]\n\\(0\\)\n\\(\\widetilde{n}\\)\n\n\n4\n  j = i - 1\n\\(c_4\\)\n\\(\\widetilde{n}\\)\n\n\n5\n  while j &gt; 0 and A[j] &gt; key:\n\\(c_5\\)\n\\(\\sum_{i=2}^n t_i\\)\n\n\n6\n    A[j + 1] = A[j]\n\\(c_6\\)\n\\(\\sum_{i=2}^n(t_i - 1)\\)\n\n\n7\n    j = j - 1\n\\(c_7\\)\n\\(\\sum_{i=2}^n(t_i - 1)\\)\n\n\n8\n  A[j + 1] = key\n\\(c_8\\)\n\\(\\widetilde{n}\\)\n\n\n\n\\[\nT(n) = c_1n + c_2\\widetilde{n} + c_4\\widetilde{n} + c_5\\sum_{i=2}^nt_i + c_6\\sum_{i=2}^n(t_i - 1) + c_7\\sum_{i=2}^n(t_i-1) + c_8\\widetilde{n}\n\\]"
+  },
+  {
+    "objectID": "w02/index.html#simplifying",
+    "href": "w02/index.html#simplifying",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Simplifying",
+    "text": "Simplifying\n\nThe original, scary-looking equation:\n\n\\[\nT(n) = c_1n + c_2\\widetilde{n} + c_4\\widetilde{n} + c_5{\\color{orange}\\boxed{\\color{black}\\sum_{i=2}^nt_i}} + c_6{\\color{lightblue}\\boxed{\\color{black}\\sum_{i=2}^n(t_i - 1)}} + c_7{\\color{lightblue}\\boxed{\\color{black}\\sum_{i=2}^n(t_i-1)}} + c_8\\widetilde{n}\n\\]\n\nBut \\(\\sum_{i=1}^ni = \\frac{n(n+1)}{2}\\), so:\n\n\\[\n\\begin{align*}\n{\\color{orange}\\boxed{\\color{black}\\sum_{i=2}^ni}} &= \\sum_{i=1}^ni - \\sum_{i=1}^1i = \\frac{n(n+1)}{2} - 1 \\\\\n{\\color{lightblue}\\boxed{\\color{black}\\sum_{i=2}^n(i-1)}} &= \\sum_{i=1}^{n-1}i = \\frac{(n-1)(n-1+1)}{2} = \\frac{n(n-1)}{2}\n\\end{align*}\n\\]\n\nAnd the scary-looking equation simplifies to\n\n\\[\n\\begin{align*}\nT(n) = &{\\color{gray}\\left(\\frac{c_5}{2} + \\frac{c_6}{2} + \\frac{c_7}{2}\\right)}{\\color{green}n^2} + {\\color{gray}\\left(c_1 + c_2 + c_4 + \\frac{c_5}{2} - \\frac{c_6}{2} - \\frac{c_7}{2} + c_8\\right)}{\\color{green}n^1} \\\\\n\\phantom{T(n) = }& - {\\color{gray}(c_2 + c_4 + c_5 + c_8)}{\\color{green}n^0}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w02/index.html#remember-asymptotic-analysis",
+    "href": "w02/index.html#remember-asymptotic-analysis",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Remember: Asymptotic Analysis!",
+    "text": "Remember: Asymptotic Analysis!\n\nIt still looks pretty messy, but remember: we care about efficiency as a function of \\(n\\)!\n\n\\[\n\\begin{align*}\nT(n) = &\\underbrace{{\\color{gray}\\left(\\frac{c_5}{2} + \\frac{c_6}{2} + \\frac{c_7}{2}\\right)}}_{\\text{Constant}}\\underbrace{\\phantom{(}{\\color{green}n^2}\\phantom{)}}_{\\text{Quadratic}} \\\\\n\\phantom{T(n) = }&+ \\underbrace{{\\color{gray}\\left(c_1 + c_2 + c_4 + \\frac{c_5}{2} - \\frac{c_6}{2} - \\frac{c_7}{2} + c_8\\right)}}_{\\text{Constant}}\\underbrace{\\phantom{(}{\\color{green}n^1}\\phantom{)}}_{\\text{Linear}} \\\\\n\\phantom{T(n) = }& - \\underbrace{{\\color{gray}(c_2 + c_4 + c_5 + c_8)}}_{\\text{Constant}}\\underbrace{{\\color{green}n^0}}_{\\text{Constant}}\n\\end{align*}\n\\]\n\nSo, there’s a sense in which \\(T(n) \\approx n^2\\), for “sufficiently large” values of \\(n\\)…\nLet’s work our way towards formalizing the \\(\\approx\\)!"
+  },
+  {
+    "objectID": "w02/index.html#the-figure-you-should-make-in-your-brain-every-time",
+    "href": "w02/index.html#the-figure-you-should-make-in-your-brain-every-time",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "The Figure You Should Make In Your Brain Every Time",
+    "text": "The Figure You Should Make In Your Brain Every Time\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nn_vals = [np.power(10, k) for k in np.arange(1, 2.75, 0.25)]\nruntime_df = pd.DataFrame({'$n$': n_vals})\nruntime_df['$n^2 + 50n$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 50*x)\nruntime_df['$n^2 + 10000$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 10000)\nruntime_df['$O(n)$'] = runtime_df['$n$'].copy()\nruntime_df['$O(nlogn)$'] = runtime_df['$n$'].apply(lambda x: x * np.log(x))\nruntime_df['$O(n^2)$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2))\nruntime_df['$O(n^2logn)$'] = runtime_df['$n$'].apply(lambda x: np.power(x,2) * np.log(x))\nruntime_df['$O(n^3)$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3))\nruntime_df['$O(n^3logn)$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3) * np.log(x))\n# Get the max values, for labeling the ends of lines\nmax_vals = runtime_df.max().to_dict()\nplot_df = runtime_df.melt(id_vars=['$n$'])\n#print(plot_df)\nstyle_map = {col: '' if (col == '$n^2 + 50n$') or (col == '$n^2 + 10000$') else (2,1) for col in runtime_df.columns}\nfig, ax = plt.subplots(figsize=(11,5))\nsns.lineplot(plot_df, x='$n$', y='value', hue='variable', style='variable', dashes=style_map)\n#plt.xscale('log')\nplt.yscale('log')\n# extract the existing handles and labels\nh, l = ax.get_legend_handles_labels()\n# slice the appropriate section of l and h to include in the legend\nax.legend(h[0:2], l[0:2])\nfor label, val in max_vals.items():\n  if (label == '$n$') or (label == '$n^2 + 50n$') or (label == '$n^2 + 10000$'):\n    continue\n  if 'logn' in label:\n    label = label.replace('logn', r'\\log(n)')\n  ax.text(x = max_vals['$n$'] + 2, y = val, s=label, va='center')\n# Hide the right and top spines\nax.spines[['right', 'top']].set_visible(False)\nplt.show()\n\n\n\n\n\n\n\n\n\n\nTakeaway: As \\(n \\rightarrow \\infty\\), highest-degree terms dominate!"
+  },
+  {
+    "objectID": "w02/index.html#constants-on-highest-degree-terms-also-go-away",
+    "href": "w02/index.html#constants-on-highest-degree-terms-also-go-away",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Constants On Highest-Degree Terms Also Go Away",
+    "text": "Constants On Highest-Degree Terms Also Go Away\n\n(Though this is harder to see, without a log-log plot:)\n\n\n\nCode\nn_vals = [np.power(10, k) for k in np.arange(1, 6, 0.5)]\nrt_const_df = pd.DataFrame({'$n$': n_vals})\nrt_const_df['$20n^2$'] = rt_const_df['$n$'].apply(lambda x: 20*np.power(x,2))\nrt_const_df['$n^2$'] = rt_const_df['$n$'].apply(lambda x: np.power(x,2))\nrt_const_df['$n^2logn$'] = rt_const_df['$n$'].apply(lambda x: np.power(x,2) * np.power(np.log(x),2))\nrt_const_df['$n^3$'] = rt_const_df['$n$'].apply(lambda x: np.power(x,3))\n# Get the max values, for labeling the ends of lines\nmax_vals = rt_const_df.max().to_dict()\nplot_df_const = rt_const_df.melt(id_vars=['$n$'])\nstyle_map = {col: '' if (col == '$20n^2$') else (2,1) for col in rt_const_df.columns}\nfig_const, ax_const = plt.subplots(figsize=(11,5))\nsns.lineplot(plot_df_const, x='$n$', y='value', hue='variable', style='variable', dashes=style_map)\nplt.xscale('log')\nplt.yscale('log')\n# extract the existing handles and labels\nh_const, l_const = ax_const.get_legend_handles_labels()\n# slice the appropriate section of l and h to include in the legend\nax_const.legend(h_const[0:1], l_const[0:1])\nfor label, val in max_vals.items():\n  if (label == '$n$') or (label == '$20n^2$'):\n    continue\n  if 'logn' in label:\n    label = label.replace('logn', r'\\log(n)')\n  ax_const.text(x = max_vals['$n$'] + 10**4, y = val, s=label, va='center')\n# Hide the right and top spines\nax_const.spines[['right', 'top']].set_visible(False)\nplt.show()"
+  },
+  {
+    "objectID": "w02/index.html#formalizing-big-o-notation",
+    "href": "w02/index.html#formalizing-big-o-notation",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Formalizing Big-O Notation",
+    "text": "Formalizing Big-O Notation\n\nLet \\(f, g: \\mathbb{N} \\rightarrow \\mathbb{N}\\). Then we write \\(f(n) = O(g(n))\\) when there exists a threshold \\(n_0 &gt; 0\\) and a constant \\(K &gt; 0\\) such that \\[\n\\forall n \\geq n_0 \\left[ f(n) \\leq K\\cdot g(n) \\right]\n\\]\nIn words: beyond a certain point \\(n_0\\), \\(f(n)\\) is bounded above by \\(K\\cdot g(n)\\).\nDefinition from Savage (1998, pg. 13)"
+  },
+  {
+    "objectID": "w02/index.html#intuition-rightarrow-proof",
+    "href": "w02/index.html#intuition-rightarrow-proof",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Intuition \\(\\rightarrow\\) Proof",
+    "text": "Intuition \\(\\rightarrow\\) Proof\n\nUsing this definition, we can now prove \\(f(n) = n^2 + 50n = O(n^2)\\)!\nHere \\(f(n) = n^2 + 50n\\), \\(g(n) = n^2\\)\nTheorem: \\(\\exists \\; n_0 \\; \\text{ s.t. } \\forall n \\geq n_0 \\left[ n^2 + 50n \\leq Kn^2 \\right]\\)\nProof: Let \\(K = 50\\). Then \\[\n\\begin{align*}\n&n^2 + 50n \\leq 50n^2 \\iff n + 50 \\leq 50n \\\\\n&\\iff 49n \\geq 50 \\iff n \\geq \\frac{50}{49}.\n\\end{align*}\n\\]\nSo if we choose \\(n_0 = 2\\), the chain of statements holds. \\(\\blacksquare\\)"
+  },
+  {
+    "objectID": "w02/index.html#bounding-insertion-sort-runtime",
+    "href": "w02/index.html#bounding-insertion-sort-runtime",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Bounding Insertion Sort Runtime",
+    "text": "Bounding Insertion Sort Runtime\n\nRuns in \\(T(n) = O(n^2)\\) (use constants from prev slide)\nCan similarly define lower bound \\(T(n) = \\Omega(f(n))\\)\n\n\\(O\\) = “Big-Oh”, \\(\\Omega\\) = “Big-Omega”\n\nNeed to be careful with \\(O(f(n))\\) vs. \\(\\Omega(f(n))\\) however: difference between “for all inputs” vs. “for some inputs”:\n\n\n\n\n\n\n\nBounding Worst-Case Runtime\n\n\n\nBy saying that the worst-case running time of an algorithm is \\(\\Omega(n^2)\\), we mean that for every input size \\(n\\) above a certain threshold, there is at least one input of size \\(n\\) for which the algorithm takes at least \\(cn^2\\) time, for some positive constant \\(n\\). It does not necessarily mean that the algorithm takes at least \\(cn^2\\) time for all inputs."
+  },
+  {
+    "objectID": "w02/index.html#intuition-for-lower-bound",
+    "href": "w02/index.html#intuition-for-lower-bound",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Intuition for Lower Bound",
+    "text": "Intuition for Lower Bound\n\nSpoiler: Insertion sort also runs in \\(T(n) = \\Omega(n^2)\\) time. How could we prove this?\nGiven any value \\(n &gt; n_0\\), we need to construct an input for which Insertion-Sort requires \\(cn^2\\) steps: consider a list where \\(n/3\\) greatest values are in first \\(n/3\\) slots:\n\n\n\n\nAll \\(n/3\\) values in \\(\\textrm{L}\\) pass, one-by-one, through the \\(n/3\\) slots in \\(\\textrm{M}\\) (since they must end up in \\(\\textrm{R}\\)) \\(\\implies (n/3)(n/3) = n^2/9 = \\Omega(n^2)\\) steps!\n\n\n\nFinal definition (a theorem you could prove if you want!): \\(\\Theta\\) = “Big-Theta”\n\nIf \\(T(n) = \\overline{O}(g(n))\\) and \\(T(n) = \\Omega(g(n))\\), then \\(T(n) = \\Theta(n)\\)\n\n\\(\\implies\\) most “informative” way to characterize insertion sort is \\(\\boxed{T(n) = \\Theta(n^2)}\\)"
+  },
+  {
+    "objectID": "w02/index.html#doing-better-than-insertion-sort",
+    "href": "w02/index.html#doing-better-than-insertion-sort",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Doing Better Than Insertion Sort",
+    "text": "Doing Better Than Insertion Sort\n\nIntuition Break 🥳: Finding a word in a dictionary! dsan.io/dict-lookup"
+  },
+  {
+    "objectID": "w02/index.html#how-can-merge-sort-work-that-much-better",
+    "href": "w02/index.html#how-can-merge-sort-work-that-much-better",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "How Can Merge Sort Work That Much Better!?",
+    "text": "How Can Merge Sort Work That Much Better!?\n\nWith the linear approach, each time we check a word and it’s not our word we eliminate… one measly word 😞\nBut with the divide-and-conquer approach… we eliminate 🔥HALF OF THE REMAINING WORDS🔥"
+  },
+  {
+    "objectID": "w02/index.html#merging-two-sorted-lists-in-on-time",
+    "href": "w02/index.html#merging-two-sorted-lists-in-on-time",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Merging Two Sorted Lists in \\(O(n)\\) Time",
+    "text": "Merging Two Sorted Lists in \\(O(n)\\) Time\n\n\n\nFrom Cormen et al. (2001), pg. 37"
+  },
+  {
+    "objectID": "w02/index.html#merge-sort-merging-as-subroutine",
+    "href": "w02/index.html#merge-sort-merging-as-subroutine",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Merge Sort (Merging as Subroutine)",
+    "text": "Merge Sort (Merging as Subroutine)\n\n\n\nFrom Cormen et al. (2001), pg. 40"
+  },
+  {
+    "objectID": "w02/index.html#complexity-analysis-1",
+    "href": "w02/index.html#complexity-analysis-1",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Complexity Analysis",
+    "text": "Complexity Analysis\n\nHard way: re-do the line-by-line analysis we did for Insertion-Sort 😣 Easy way: stand on shoulders of giants!\nUsing a famous+fun theorem (the Master Theorem): Given a recurrence \\(T(n) = aT(n/b) + f(n)\\), compute its:\n\nWatershed function \\(W(n) = n^{\\log_b(a)}\\) and\nDriving function \\(D(n) = f(n)\\)\n\nThe Master Theorem gives closed-form asymptotic solution for \\(T(n)\\), split into three cases:\n(1) \\(W(n)\\) grows faster than \\(D(n)\\), (2) grows at same rate as \\(D(n)\\), or (3) grows slower than \\(D(n)\\)"
+  },
+  {
+    "objectID": "w02/index.html#bounding-the-runtime-of-merge-sort",
+    "href": "w02/index.html#bounding-the-runtime-of-merge-sort",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Bounding the Runtime of Merge Sort",
+    "text": "Bounding the Runtime of Merge Sort\n\nHow about Merge-Sort? \\(T(n) = 2T(n/2) + \\Theta(n)\\)\n\n\\(a = b = 2\\), \\(W(n) = n^{\\log_2(2)} = n\\), \\(D(n) = \\Theta(n)\\)\n\n\\(W(n)\\) and \\(D(n)\\) grow at same rate \\(\\implies\\) Case 21:\n\n\n\n\n\n\n\nApplying the Master Theorem When \\(W(n) = \\Theta(D(n))\\) (Case 2)\n\n\n\n\nIs there a \\(k \\geq 0\\) satisfying \\(D(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\)?\nIf so, your solution is \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\)\n\n\n\n\nMerge-Sort: \\(k = 0\\) works! \\(\\Theta(n^{\\log_2(2)}\\log_2^0(n)) = \\Theta(n)\\)\nThus \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n)) = \\boxed{\\Theta(n\\log_2n)}\\) 😎"
   },
   {
     "objectID": "w02/index.html#breaking-a-problem-into-interacting-parts",
@@ -833,6 +931,27 @@
     "text": "Design Choices\n\nThe goal is to encapsulate as best as possible: which objects should have which properties, and which methods?\nExample: Fiction vs. Non-Fiction. How important is this distinction for your use case?\n\n\n\n\nOption 1: As Property of Book\n\n\n\nCode\nfrom enum import Enum\nclass BookType(Enum):\n    NONFICTION = 0\n    FICTION = 1\n\nclass Book:\n    def __init__(self, title: str, authors: list[Person], num_pages: int, type: BookType):\n        self.title = title\n        self.authors = authors\n        self.num_pages = num_pages\n        self.type = type\n\n    def __str__(self):\n        return f\"Book[title={self.title}, authors={self.authors}, pages={self.num_pages}, type={self.type}]\"\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = Book(\"Ulysses\", [joyce], 732, BookType.FICTION)\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = Book(\"Micromotives and Macrobehavior\", [schelling], 252, BookType.NONFICTION)\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252, type=BookType.NONFICTION]\n\n\n\n\nOption 2: Separate Classes\n\n\n\nCode\n# class Book defined as earlier\nclass FictionBook(Book):\n    def __init__(self, title, authors, num_pages, characters):\n        super().__init__(title, authors, num_pages)\n        self.characters = characters\n\nclass NonfictionBook(Book):\n    def __init__(self, title, authors, num_pages, topic):\n        super().__init__(title, authors, num_pages)\n        self.topic = topic\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = FictionBook(\"Ulysses\", [joyce], 732, [\"Daedalus\"])\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = NonfictionBook(\"Micromotives and Macrobehavior\", [schelling], 252, \"Economics\")\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]"
   },
   {
+    "objectID": "w02/index.html#references",
+    "href": "w02/index.html#references",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "References",
+    "text": "References\n\n\nCormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. Introduction To Algorithms. MIT Press.\n\n\nSavage, John E. 1998. Models of Computation: Exploring the Power of Computing. Addison-Wesley."
+  },
+  {
+    "objectID": "w02/index.html#appendix-the-full-master-theorem",
+    "href": "w02/index.html#appendix-the-full-master-theorem",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Appendix: The Full Master Theorem",
+    "text": "Appendix: The Full Master Theorem\nMaster Theorem: Let \\(a &gt; 0\\) and \\(b &gt; 1\\) be constants, and let \\(f(n)\\) be a driving function defined and nonnegative on all sufficiently large reals. Define \\(T(n)\\) on \\(n \\in \\mathbb{N}\\) by\n\\[\nT(n) = aT(n/b) + f(n)\n\\]\nwhere \\(aT(n/b) = a'T(\\lfloor n/b \\rfloor) + a''T(\\lceil n/b \\rceil)\\) for some \\(a' \\geq 0\\) and \\(a'' \\geq 0\\) satisfying \\(a = a' + a''\\). Then the asymptotic behavior of \\(T(n)\\) can be characterized as follows:\n\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = O(n^{\\log_b(a) - \\epsilon})\\), then \\(T(n) = \\Theta(n^{\\log_b(a)})\\)\nIf there exists \\(k \\geq 0\\) such that \\(f(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\), then \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\).\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = \\Omega(n^{\\log_b(a) + \\epsilon})\\), and if \\(f(n)\\) satisfies the regularity condition \\(af(n/b) \\leq cf(n)\\) for some constant \\(c &lt; 1\\) and all sufficiently large \\(n\\), then \\(T(n) = \\Theta(f(n))\\).\n\n\nProof. See Cormen et al. (2001), pg. 107-114.\n\n(← Back to Merge Sort slides)"
+  },
+  {
+    "objectID": "w02/index.html#footnotes",
+    "href": "w02/index.html#footnotes",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSee appendix slide for all 3 cases, if you’re some kind of masochist↩︎"
+  },
+  {
     "objectID": "w02/slides.html#why-does-the-nyc-subway-have-express-lines",
     "href": "w02/slides.html#why-does-the-nyc-subway-have-express-lines",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
@@ -896,18 +1015,116 @@
     "text": "Insertion Sort\n\nThink of how you might sort a deck of cards in your hand"
   },
   {
-    "objectID": "w02/slides.html#merge-sort",
-    "href": "w02/slides.html#merge-sort",
+    "objectID": "w02/slides.html#cards-rightarrow-list-elements",
+    "href": "w02/slides.html#cards-rightarrow-list-elements",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
-    "section": "Merge Sort",
-    "text": "Merge Sort"
+    "section": "Cards \\(\\rightarrow\\) List Elements",
+    "text": "Cards \\(\\rightarrow\\) List Elements\n\nInput list: [5, 2, 4, 6, 1, 3]\n\n\n\nNotice how, at each point:\n\nThere is a card we’re currently “looking at”, called the key, and\nThere is an invariant: everything in the list before the key is already sorted"
   },
   {
     "objectID": "w02/slides.html#complexity-analysis",
     "href": "w02/slides.html#complexity-analysis",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Complexity Analysis",
-    "text": "Complexity Analysis"
+    "text": "Complexity Analysis\n\nLet \\(t_i\\) be the number of times the while loop runs, \\(\\widetilde{n} = n - 1\\):\n\n\n\n\n\nCode\nCost\nTimes Run\n\n\n\n\n1\nfor i = 2 to n:\n\\(c_1\\)\n\\(n\\)\n\n\n2\n  key = A[i]\n\\(c_2\\)\n\\(\\widetilde{n}\\)\n\n\n3\n  # Insert A[i] into sorted subarray A[1:i-1]\n\\(0\\)\n\\(\\widetilde{n}\\)\n\n\n4\n  j = i - 1\n\\(c_4\\)\n\\(\\widetilde{n}\\)\n\n\n5\n  while j &gt; 0 and A[j] &gt; key:\n\\(c_5\\)\n\\(\\sum_{i=2}^n t_i\\)\n\n\n6\n    A[j + 1] = A[j]\n\\(c_6\\)\n\\(\\sum_{i=2}^n(t_i - 1)\\)\n\n\n7\n    j = j - 1\n\\(c_7\\)\n\\(\\sum_{i=2}^n(t_i - 1)\\)\n\n\n8\n  A[j + 1] = key\n\\(c_8\\)\n\\(\\widetilde{n}\\)\n\n\n\n\\[\nT(n) = c_1n + c_2\\widetilde{n} + c_4\\widetilde{n} + c_5\\sum_{i=2}^nt_i + c_6\\sum_{i=2}^n(t_i - 1) + c_7\\sum_{i=2}^n(t_i-1) + c_8\\widetilde{n}\n\\]"
+  },
+  {
+    "objectID": "w02/slides.html#simplifying",
+    "href": "w02/slides.html#simplifying",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Simplifying",
+    "text": "Simplifying\n\nThe original, scary-looking equation:\n\n\\[\nT(n) = c_1n + c_2\\widetilde{n} + c_4\\widetilde{n} + c_5{\\color{orange}\\boxed{\\color{black}\\sum_{i=2}^nt_i}} + c_6{\\color{lightblue}\\boxed{\\color{black}\\sum_{i=2}^n(t_i - 1)}} + c_7{\\color{lightblue}\\boxed{\\color{black}\\sum_{i=2}^n(t_i-1)}} + c_8\\widetilde{n}\n\\]\n\nBut \\(\\sum_{i=1}^ni = \\frac{n(n+1)}{2}\\), so:\n\n\\[\n\\begin{align*}\n{\\color{orange}\\boxed{\\color{black}\\sum_{i=2}^ni}} &= \\sum_{i=1}^ni - \\sum_{i=1}^1i = \\frac{n(n+1)}{2} - 1 \\\\\n{\\color{lightblue}\\boxed{\\color{black}\\sum_{i=2}^n(i-1)}} &= \\sum_{i=1}^{n-1}i = \\frac{(n-1)(n-1+1)}{2} = \\frac{n(n-1)}{2}\n\\end{align*}\n\\]\n\nAnd the scary-looking equation simplifies to\n\n\\[\n\\begin{align*}\nT(n) = &{\\color{gray}\\left(\\frac{c_5}{2} + \\frac{c_6}{2} + \\frac{c_7}{2}\\right)}{\\color{green}n^2} + {\\color{gray}\\left(c_1 + c_2 + c_4 + \\frac{c_5}{2} - \\frac{c_6}{2} - \\frac{c_7}{2} + c_8\\right)}{\\color{green}n^1} \\\\\n\\phantom{T(n) = }& - {\\color{gray}(c_2 + c_4 + c_5 + c_8)}{\\color{green}n^0}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w02/slides.html#remember-asymptotic-analysis",
+    "href": "w02/slides.html#remember-asymptotic-analysis",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Remember: Asymptotic Analysis!",
+    "text": "Remember: Asymptotic Analysis!\n\nIt still looks pretty messy, but remember: we care about efficiency as a function of \\(n\\)!\n\n\\[\n\\begin{align*}\nT(n) = &\\underbrace{{\\color{gray}\\left(\\frac{c_5}{2} + \\frac{c_6}{2} + \\frac{c_7}{2}\\right)}}_{\\text{Constant}}\\underbrace{\\phantom{(}{\\color{green}n^2}\\phantom{)}}_{\\text{Quadratic}} \\\\\n\\phantom{T(n) = }&+ \\underbrace{{\\color{gray}\\left(c_1 + c_2 + c_4 + \\frac{c_5}{2} - \\frac{c_6}{2} - \\frac{c_7}{2} + c_8\\right)}}_{\\text{Constant}}\\underbrace{\\phantom{(}{\\color{green}n^1}\\phantom{)}}_{\\text{Linear}} \\\\\n\\phantom{T(n) = }& - \\underbrace{{\\color{gray}(c_2 + c_4 + c_5 + c_8)}}_{\\text{Constant}}\\underbrace{{\\color{green}n^0}}_{\\text{Constant}}\n\\end{align*}\n\\]\n\nSo, there’s a sense in which \\(T(n) \\approx n^2\\), for “sufficiently large” values of \\(n\\)…\nLet’s work our way towards formalizing the \\(\\approx\\)!"
+  },
+  {
+    "objectID": "w02/slides.html#the-figure-you-should-make-in-your-brain-every-time",
+    "href": "w02/slides.html#the-figure-you-should-make-in-your-brain-every-time",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "The Figure You Should Make In Your Brain Every Time",
+    "text": "The Figure You Should Make In Your Brain Every Time\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nn_vals = [np.power(10, k) for k in np.arange(1, 2.75, 0.25)]\nruntime_df = pd.DataFrame({'$n$': n_vals})\nruntime_df['$n^2 + 50n$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 50*x)\nruntime_df['$n^2 + 10000$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 10000)\nruntime_df['$O(n)$'] = runtime_df['$n$'].copy()\nruntime_df['$O(nlogn)$'] = runtime_df['$n$'].apply(lambda x: x * np.log(x))\nruntime_df['$O(n^2)$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2))\nruntime_df['$O(n^2logn)$'] = runtime_df['$n$'].apply(lambda x: np.power(x,2) * np.log(x))\nruntime_df['$O(n^3)$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3))\nruntime_df['$O(n^3logn)$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3) * np.log(x))\n# Get the max values, for labeling the ends of lines\nmax_vals = runtime_df.max().to_dict()\nplot_df = runtime_df.melt(id_vars=['$n$'])\n#print(plot_df)\nstyle_map = {col: '' if (col == '$n^2 + 50n$') or (col == '$n^2 + 10000$') else (2,1) for col in runtime_df.columns}\nfig, ax = plt.subplots(figsize=(11,5))\nsns.lineplot(plot_df, x='$n$', y='value', hue='variable', style='variable', dashes=style_map)\n#plt.xscale('log')\nplt.yscale('log')\n# extract the existing handles and labels\nh, l = ax.get_legend_handles_labels()\n# slice the appropriate section of l and h to include in the legend\nax.legend(h[0:2], l[0:2])\nfor label, val in max_vals.items():\n  if (label == '$n$') or (label == '$n^2 + 50n$') or (label == '$n^2 + 10000$'):\n    continue\n  if 'logn' in label:\n    label = label.replace('logn', r'\\log(n)')\n  ax.text(x = max_vals['$n$'] + 2, y = val, s=label, va='center')\n# Hide the right and top spines\nax.spines[['right', 'top']].set_visible(False)\nplt.show()\n\n\n\n\n\n\n\n\n\n\nTakeaway: As \\(n \\rightarrow \\infty\\), highest-degree terms dominate!"
+  },
+  {
+    "objectID": "w02/slides.html#constants-on-highest-degree-terms-also-go-away",
+    "href": "w02/slides.html#constants-on-highest-degree-terms-also-go-away",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Constants On Highest-Degree Terms Also Go Away",
+    "text": "Constants On Highest-Degree Terms Also Go Away\n\n(Though this is harder to see, without a log-log plot:)\n\n\n\nCode\nn_vals = [np.power(10, k) for k in np.arange(1, 6, 0.5)]\nrt_const_df = pd.DataFrame({'$n$': n_vals})\nrt_const_df['$20n^2$'] = rt_const_df['$n$'].apply(lambda x: 20*np.power(x,2))\nrt_const_df['$n^2$'] = rt_const_df['$n$'].apply(lambda x: np.power(x,2))\nrt_const_df['$n^2logn$'] = rt_const_df['$n$'].apply(lambda x: np.power(x,2) * np.power(np.log(x),2))\nrt_const_df['$n^3$'] = rt_const_df['$n$'].apply(lambda x: np.power(x,3))\n# Get the max values, for labeling the ends of lines\nmax_vals = rt_const_df.max().to_dict()\nplot_df_const = rt_const_df.melt(id_vars=['$n$'])\nstyle_map = {col: '' if (col == '$20n^2$') else (2,1) for col in rt_const_df.columns}\nfig_const, ax_const = plt.subplots(figsize=(11,5))\nsns.lineplot(plot_df_const, x='$n$', y='value', hue='variable', style='variable', dashes=style_map)\nplt.xscale('log')\nplt.yscale('log')\n# extract the existing handles and labels\nh_const, l_const = ax_const.get_legend_handles_labels()\n# slice the appropriate section of l and h to include in the legend\nax_const.legend(h_const[0:1], l_const[0:1])\nfor label, val in max_vals.items():\n  if (label == '$n$') or (label == '$20n^2$'):\n    continue\n  if 'logn' in label:\n    label = label.replace('logn', r'\\log(n)')\n  ax_const.text(x = max_vals['$n$'] + 10**4, y = val, s=label, va='center')\n# Hide the right and top spines\nax_const.spines[['right', 'top']].set_visible(False)\nplt.show()"
+  },
+  {
+    "objectID": "w02/slides.html#formalizing-big-o-notation",
+    "href": "w02/slides.html#formalizing-big-o-notation",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Formalizing Big-O Notation",
+    "text": "Formalizing Big-O Notation\n\nLet \\(f, g: \\mathbb{N} \\rightarrow \\mathbb{N}\\). Then we write \\(f(n) = O(g(n))\\) when there exists a threshold \\(n_0 &gt; 0\\) and a constant \\(K &gt; 0\\) such that \\[\n\\forall n \\geq n_0 \\left[ f(n) \\leq K\\cdot g(n) \\right]\n\\]\nIn words: beyond a certain point \\(n_0\\), \\(f(n)\\) is bounded above by \\(K\\cdot g(n)\\).\nDefinition from Savage (1998, pg. 13)"
+  },
+  {
+    "objectID": "w02/slides.html#intuition-rightarrow-proof",
+    "href": "w02/slides.html#intuition-rightarrow-proof",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Intuition \\(\\rightarrow\\) Proof",
+    "text": "Intuition \\(\\rightarrow\\) Proof\n\nUsing this definition, we can now prove \\(f(n) = n^2 + 50n = O(n^2)\\)!\nHere \\(f(n) = n^2 + 50n\\), \\(g(n) = n^2\\)\nTheorem: \\(\\exists \\; n_0 \\; \\text{ s.t. } \\forall n \\geq n_0 \\left[ n^2 + 50n \\leq Kn^2 \\right]\\)\nProof: Let \\(K = 50\\). Then \\[\n\\begin{align*}\n&n^2 + 50n \\leq 50n^2 \\iff n + 50 \\leq 50n \\\\\n&\\iff 49n \\geq 50 \\iff n \\geq \\frac{50}{49}.\n\\end{align*}\n\\]\nSo if we choose \\(n_0 = 2\\), the chain of statements holds. \\(\\blacksquare\\)"
+  },
+  {
+    "objectID": "w02/slides.html#bounding-insertion-sort-runtime",
+    "href": "w02/slides.html#bounding-insertion-sort-runtime",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Bounding Insertion Sort Runtime",
+    "text": "Bounding Insertion Sort Runtime\n\nRuns in \\(T(n) = O(n^2)\\) (use constants from prev slide)\nCan similarly define lower bound \\(T(n) = \\Omega(f(n))\\)\n\n\\(O\\) = “Big-Oh”, \\(\\Omega\\) = “Big-Omega”\n\nNeed to be careful with \\(O(f(n))\\) vs. \\(\\Omega(f(n))\\) however: difference between “for all inputs” vs. “for some inputs”:\n\n\n\n\nBounding Worst-Case Runtime\n\n\nBy saying that the worst-case running time of an algorithm is \\(\\Omega(n^2)\\), we mean that for every input size \\(n\\) above a certain threshold, there is at least one input of size \\(n\\) for which the algorithm takes at least \\(cn^2\\) time, for some positive constant \\(n\\). It does not necessarily mean that the algorithm takes at least \\(cn^2\\) time for all inputs."
+  },
+  {
+    "objectID": "w02/slides.html#intuition-for-lower-bound",
+    "href": "w02/slides.html#intuition-for-lower-bound",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Intuition for Lower Bound",
+    "text": "Intuition for Lower Bound\n\nSpoiler: Insertion sort also runs in \\(T(n) = \\Omega(n^2)\\) time. How could we prove this?\nGiven any value \\(n &gt; n_0\\), we need to construct an input for which Insertion-Sort requires \\(cn^2\\) steps: consider a list where \\(n/3\\) greatest values are in first \\(n/3\\) slots:\n\n\nAll \\(n/3\\) values in \\(\\textrm{L}\\) pass, one-by-one, through the \\(n/3\\) slots in \\(\\textrm{M}\\) (since they must end up in \\(\\textrm{R}\\)) \\(\\implies (n/3)(n/3) = n^2/9 = \\Omega(n^2)\\) steps!\nFinal definition (a theorem you could prove if you want!): \\(\\Theta\\) = “Big-Theta”\n\nIf \\(T(n) = \\overline{O}(g(n))\\) and \\(T(n) = \\Omega(g(n))\\), then \\(T(n) = \\Theta(n)\\)\n\n\\(\\implies\\) most “informative” way to characterize insertion sort is \\(\\boxed{T(n) = \\Theta(n^2)}\\)"
+  },
+  {
+    "objectID": "w02/slides.html#doing-better-than-insertion-sort",
+    "href": "w02/slides.html#doing-better-than-insertion-sort",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Doing Better Than Insertion Sort",
+    "text": "Doing Better Than Insertion Sort\n\nIntuition Break 🥳: Finding a word in a dictionary! dsan.io/dict-lookup"
+  },
+  {
+    "objectID": "w02/slides.html#how-can-merge-sort-work-that-much-better",
+    "href": "w02/slides.html#how-can-merge-sort-work-that-much-better",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "How Can Merge Sort Work That Much Better!?",
+    "text": "How Can Merge Sort Work That Much Better!?\n\nWith the linear approach, each time we check a word and it’s not our word we eliminate… one measly word 😞\nBut with the divide-and-conquer approach… we eliminate 🔥HALF OF THE REMAINING WORDS🔥"
+  },
+  {
+    "objectID": "w02/slides.html#merging-two-sorted-lists-in-on-time",
+    "href": "w02/slides.html#merging-two-sorted-lists-in-on-time",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Merging Two Sorted Lists in \\(O(n)\\) Time",
+    "text": "Merging Two Sorted Lists in \\(O(n)\\) Time\n\nFrom Cormen et al. (2001), pg. 37"
+  },
+  {
+    "objectID": "w02/slides.html#merge-sort-merging-as-subroutine",
+    "href": "w02/slides.html#merge-sort-merging-as-subroutine",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Merge Sort (Merging as Subroutine)",
+    "text": "Merge Sort (Merging as Subroutine)\n\nFrom Cormen et al. (2001), pg. 40"
+  },
+  {
+    "objectID": "w02/slides.html#complexity-analysis-1",
+    "href": "w02/slides.html#complexity-analysis-1",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Complexity Analysis",
+    "text": "Complexity Analysis\n\nHard way: re-do the line-by-line analysis we did for Insertion-Sort 😣 Easy way: stand on shoulders of giants!\nUsing a famous+fun theorem (the Master Theorem): Given a recurrence \\(T(n) = aT(n/b) + f(n)\\), compute its:\n\nWatershed function \\(W(n) = n^{\\log_b(a)}\\) and\nDriving function \\(D(n) = f(n)\\)\n\nThe Master Theorem gives closed-form asymptotic solution for \\(T(n)\\), split into three cases:\n(1) \\(W(n)\\) grows faster than \\(D(n)\\), (2) grows at same rate as \\(D(n)\\), or (3) grows slower than \\(D(n)\\)"
+  },
+  {
+    "objectID": "w02/slides.html#bounding-the-runtime-of-merge-sort",
+    "href": "w02/slides.html#bounding-the-runtime-of-merge-sort",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Bounding the Runtime of Merge Sort",
+    "text": "Bounding the Runtime of Merge Sort\n\nHow about Merge-Sort? \\(T(n) = 2T(n/2) + \\Theta(n)\\)\n\n\\(a = b = 2\\), \\(W(n) = n^{\\log_2(2)} = n\\), \\(D(n) = \\Theta(n)\\)\n\n\\(W(n)\\) and \\(D(n)\\) grow at same rate \\(\\implies\\) Case 21:\n\n\n\n\nApplying the Master Theorem When \\(W(n) = \\Theta(D(n))\\) (Case 2)\n\n\n\nIs there a \\(k \\geq 0\\) satisfying \\(D(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\)?\nIf so, your solution is \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\)\n\n\n\n\n\nMerge-Sort: \\(k = 0\\) works! \\(\\Theta(n^{\\log_2(2)}\\log_2^0(n)) = \\Theta(n)\\)\nThus \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n)) = \\boxed{\\Theta(n\\log_2n)}\\) 😎\n\nSee appendix slide for all 3 cases, if you’re some kind of masochist"
   },
   {
     "objectID": "w02/slides.html#breaking-a-problem-into-interacting-parts",
@@ -978,6 +1195,20 @@
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Design Choices",
     "text": "Design Choices\n\nThe goal is to encapsulate as best as possible: which objects should have which properties, and which methods?\nExample: Fiction vs. Non-Fiction. How important is this distinction for your use case?\n\n\n\n\nOption 1: As Property of Book\n\n\n\nCode\nfrom enum import Enum\nclass BookType(Enum):\n    NONFICTION = 0\n    FICTION = 1\n\nclass Book:\n    def __init__(self, title: str, authors: list[Person], num_pages: int, type: BookType):\n        self.title = title\n        self.authors = authors\n        self.num_pages = num_pages\n        self.type = type\n\n    def __str__(self):\n        return f\"Book[title={self.title}, authors={self.authors}, pages={self.num_pages}, type={self.type}]\"\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = Book(\"Ulysses\", [joyce], 732, BookType.FICTION)\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = Book(\"Micromotives and Macrobehavior\", [schelling], 252, BookType.NONFICTION)\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252, type=BookType.NONFICTION]\n\n\n\n\nOption 2: Separate Classes\n\n\n\nCode\n# class Book defined as earlier\nclass FictionBook(Book):\n    def __init__(self, title, authors, num_pages, characters):\n        super().__init__(title, authors, num_pages)\n        self.characters = characters\n\nclass NonfictionBook(Book):\n    def __init__(self, title, authors, num_pages, topic):\n        super().__init__(title, authors, num_pages)\n        self.topic = topic\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = FictionBook(\"Ulysses\", [joyce], 732, [\"Daedalus\"])\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = NonfictionBook(\"Micromotives and Macrobehavior\", [schelling], 252, \"Economics\")\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]"
+  },
+  {
+    "objectID": "w02/slides.html#references",
+    "href": "w02/slides.html#references",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "References",
+    "text": "References\n\n\nCormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. Introduction To Algorithms. MIT Press.\n\n\nSavage, John E. 1998. Models of Computation: Exploring the Power of Computing. Addison-Wesley."
+  },
+  {
+    "objectID": "w02/slides.html#appendix-the-full-master-theorem",
+    "href": "w02/slides.html#appendix-the-full-master-theorem",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Appendix: The Full Master Theorem",
+    "text": "Appendix: The Full Master Theorem\nMaster Theorem: Let \\(a &gt; 0\\) and \\(b &gt; 1\\) be constants, and let \\(f(n)\\) be a driving function defined and nonnegative on all sufficiently large reals. Define \\(T(n)\\) on \\(n \\in \\mathbb{N}\\) by\n\\[\nT(n) = aT(n/b) + f(n)\n\\]\nwhere \\(aT(n/b) = a'T(\\lfloor n/b \\rfloor) + a''T(\\lceil n/b \\rceil)\\) for some \\(a' \\geq 0\\) and \\(a'' \\geq 0\\) satisfying \\(a = a' + a''\\). Then the asymptotic behavior of \\(T(n)\\) can be characterized as follows:\n\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = O(n^{\\log_b(a) - \\epsilon})\\), then \\(T(n) = \\Theta(n^{\\log_b(a)})\\)\nIf there exists \\(k \\geq 0\\) such that \\(f(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\), then \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\).\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = \\Omega(n^{\\log_b(a) + \\epsilon})\\), and if \\(f(n)\\) satisfies the regularity condition \\(af(n/b) \\leq cf(n)\\) for some constant \\(c &lt; 1\\) and all sufficiently large \\(n\\), then \\(T(n) = \\Theta(f(n))\\).\n\n\nProof. See Cormen et al. (2001), pg. 107-114.\n\n(← Back to Merge Sort slides)\n\n\nDSAN 5500 Week 2: Software Design Patterns and OOP"
   },
   {
     "objectID": "index.html",
