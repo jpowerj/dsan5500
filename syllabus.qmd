@@ -9,8 +9,11 @@ title: "Syllabus"
 * Prof. Jeff Jacobs, <a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>
   * Office hours (Click to reserve): <a href='https://calendar.app.google/ENpvjNxd5WVm6Rvq6' target='_blank'>Monday, Tuesday 3:30-6pm</a>, held in Car Barn Room 207-04A
 * TA Yihan Bian, <a href='mailto:yb214@georgetown.edu' target='_blank'>`yb214@georgetown.edu`</a>
+  * Office hours: By appointment
 * TA Binhui Chen, <a href='mailto:bc928@georgetown.edu' target='_blank'>`bc928@georgetown.edu`</a>
+  * Office hours (Click to reserve): <a href='https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3P_99QdWPrD-9BuWqEyJyEQ0nEfBlBiW0Ko7pyzvcEmgaYrd2fEzwa6azxrvl8J1pH2FXuAEG9' target='_blank'>Wednesday, 3:30-4:30pm</a>, held on <a href='https://us04web.zoom.us/j/71554699407?pwd=NutPHXYPFlrj98PPBbnItxf9uMhfEl.1' target='_blank'>Zoom</a>
 * TA Brian Kwon, <a href='mailto:sk2338@georgetown.edu' target='_blank'>`sk2338@georgetown.edu`</a>
+  * Office hours: By appointment
 
 ## Course Overview
 
@@ -96,40 +99,31 @@ The following is a rough map of what we will work through together throughout th
     <td></td>
     <td>2</td>
     <td>Jan 22</td>
-    <td><a href='./w02/' target='_blank'>Software Design Patterns and Object-Oriented Programming (OOP)</a></td>
+    <td><a href='./w02/' target='_blank'>Data Structures and Computational Complexity</a></td>
+</tr>
+<tr>
+    <td></td>
+    <td>3</td>
+    <td>Jan 29</td>
+    <td><a href='./w03/' target='_blank'>Software Design Patterns and OOP</a></td>
 </tr>
 <tr>
     <td></td>
     <td></td>
-    <td>Jan 26 (Friday), 11:59pm EST</td>
+    <td>Feb 2 (Friday), 11:59pm EST</td>
     <td><span data-qmd="**HW1 (Python Fundamentals) Due**"></span></td>
 </tr>
 
 <!-- Data structures -->
 
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 2**: Data Structures"></span></td>
-    <td>3</td>
-    <td>Jan 29</td>
-    <td><a href='./w03/' target='_blank'>Data Structures and Computational Complexity</a></td>
-</tr>
-<tr>
-    <td></td>
+    <td><span data-qmd="**Unit 2**: Data Structures and Algorithms"></span></td>
     <td>4</td>
     <td>Feb 5</td>
     <td><a href='./w04/' target='_blank'>Heaps, Stacks, Trees, Graphs</a></td>
 </tr>
 <tr>
     <td></td>
-    <td></td>
-    <td>Feb 9 (Friday), 11:59pm EST</td>
-    <td><span data-qmd="**HW2 (Data Structures) Due**"></span></td>
-</tr>
-
-<!-- Basic Algorithms -->
-
-<tr class='new-unit'>
-    <td><span data-qmd="**Unit 3**: Basic Algorithms"></span></td>
     <td>5</td>
     <td>Feb 12</td>
     <td>Search Trees</td>
@@ -144,7 +138,7 @@ The following is a rough map of what we will work through together throughout th
     <td></td>
     <td></td>
     <td>Feb 23 (Friday), 11:59pm EST</td>
-    <td><span data-qmd="**HW3 (Basic Algorithms) Due**"></span></td>
+    <td><span data-qmd="**HW2 (Data Structures, Algorithms, and Complexity) Due**"></span></td>
 </tr>
 
 <!-- Midterm -->
