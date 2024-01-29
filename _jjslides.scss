@@ -103,6 +103,11 @@ figcaption {
     margin-bottom: 4px !important;
 }
 
+//details
+.crunch-details details {
+    margin-bottom: 3px !important;
+}
+
 // figcaption
 
 .crunch-figcaption figcaption {
@@ -154,9 +159,12 @@ figcaption {
 }
 
 // quarto-figure
+// .crunch-quarto-figure .quarto-figure {
+//     margin: 0px !important;
+// }
 
 .crunch-quarto-figure .quarto-figure {
-    margin: 0px !important;
+    margin-bottom: 0px !important;
 }
 
 // quarto-layout-panel

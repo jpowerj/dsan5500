@@ -9,10 +9,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.5.4">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5500 - Week 2: Software Design Patterns and Object-Oriented Programming</title>
+  <title>DSAN 5500 – Week 2: Software Design Patterns and Object-Oriented Programming</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -99,6 +99,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -242,7 +243,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -437,11 +439,11 @@ Jeff Jacobs
 <section id="why-does-the-nyc-subway-have-express-lines" class="slide level2 smaller title-11">
 <h2>Why Does The NYC Subway Have Express Lines?</h2>
 
-<img data-src="images/subway_map_nyc.jpg" class="r-stretch quarto-figure-center"><p class="caption">From <a href="https://www.centralpark.com/visitor-info/get-directions/" target="_blank">NYC Central Park website</a></p></section>
+<img data-src="images/subway_map_nyc.jpg" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">From <a href="https://www.centralpark.com/visitor-info/get-directions/" target="_blank">NYC Central Park website</a></p></section>
 <section id="why-stop-at-two-levels" class="slide level2 smaller">
 <h2>Why Stop At Two Levels?</h2>
 
-<img data-src="images/nyc-7.png" class="r-stretch quarto-figure-center"><p class="caption">From <a href="https://blog.reachsumit.com/posts/2020/07/skip-list/" target="_blank">Skip List Data Structure Explained</a>, Sumit’s Diary blog</p></section>
+<img data-src="images/nyc-7.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">From <a href="https://blog.reachsumit.com/posts/2020/07/skip-list/" target="_blank">Skip List Data Structure Explained</a>, Sumit’s Diary blog</p></section>
 <section id="how-tf-does-google-maps-work" class="slide level2 smaller crunch-iframe crunch-title crunch-ul">
 <h2>How TF Does Google Maps Work?</h2>
 <ul>
@@ -579,14 +581,14 @@ M_2 + M_4 &amp; M_1 - M_2 + M_3 + M_6
 <li>Think of how you might sort a deck of cards in your hand</li>
 </ul>
 
-<img data-src="images/cards.svg" class="r-stretch quarto-figure-center"></section>
-<section id="cards-rightarrow-list-elements" class="slide level2 smaller">
+<img data-src="images/cards.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="cards-rightarrow-list-elements" class="slide level2 smaller scrollable">
 <h2>Cards <span class="math inline">\(\rightarrow\)</span> List Elements</h2>
 <ul>
 <li>Input list: <code>[5, 2, 4, 6, 1, 3]</code></li>
 </ul>
 
-<img data-src="images/insertion_zero.svg" class="r-stretch quarto-figure-center"><ul>
+<img data-src="images/insertion_zero.svg" class="quarto-figure quarto-figure-center r-stretch"><ul>
 <li>Notice how, at each point:
 <ol type="1">
 <li>There is a card we’re currently “looking at”, called the <span class="cb2"><strong>key</strong></span>, and</li>
@@ -709,50 +711,50 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </section>
 <section id="the-figure-you-should-make-in-your-brain-every-time" class="slide level2 smaller crunch-title title-10 crunch-quarto-figure">
 <h2>The Figure You Should Make In Your Brain Every Time</h2>
-<div class="cell" data-execution_count="1">
-<details>
+<div id="0ac9e46f" class="cell" data-execution_count="1">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-5"><a href="#cb1-5"></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="fl">2.75</span>, <span class="fl">0.25</span>)]</span>
-<span id="cb1-6"><a href="#cb1-6"></a>runtime_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
-<span id="cb1-7"><a href="#cb1-7"></a>runtime_df[<span class="st">'$n^2 + 50n$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">50</span><span class="op">*</span>x)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>runtime_df[<span class="st">'$n^2 + 10000$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">10000</span>)</span>
-<span id="cb1-9"><a href="#cb1-9"></a>runtime_df[<span class="st">'$O(n)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].copy()</span>
-<span id="cb1-10"><a href="#cb1-10"></a>runtime_df[<span class="st">'$O(nlogn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">*</span> np.log(x))</span>
-<span id="cb1-11"><a href="#cb1-11"></a>runtime_df[<span class="st">'$O(n^2)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>))</span>
-<span id="cb1-12"><a href="#cb1-12"></a>runtime_df[<span class="st">'$O(n^2logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.log(x))</span>
-<span id="cb1-13"><a href="#cb1-13"></a>runtime_df[<span class="st">'$O(n^3)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>))</span>
-<span id="cb1-14"><a href="#cb1-14"></a>runtime_df[<span class="st">'$O(n^3logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>) <span class="op">*</span> np.log(x))</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>max_vals <span class="op">=</span> runtime_df.<span class="bu">max</span>().to_dict()</span>
-<span id="cb1-17"><a href="#cb1-17"></a>plot_df <span class="op">=</span> runtime_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#print(plot_df)</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (col <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> runtime_df.columns}</span>
-<span id="cb1-20"><a href="#cb1-20"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
-<span id="cb1-21"><a href="#cb1-21"></a>sns.lineplot(plot_df, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="co">#plt.xscale('log')</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a>plt.yscale(<span class="st">'log'</span>)</span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="co"># extract the existing handles and labels</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a>h, l <span class="op">=</span> ax.get_legend_handles_labels()</span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a>ax.legend(h[<span class="dv">0</span>:<span class="dv">2</span>], l[<span class="dv">0</span>:<span class="dv">2</span>])</span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
-<span id="cb1-29"><a href="#cb1-29"></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>):</span>
-<span id="cb1-30"><a href="#cb1-30"></a>    <span class="cf">continue</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
-<span id="cb1-32"><a href="#cb1-32"></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'\log(n)'</span>)</span>
-<span id="cb1-33"><a href="#cb1-33"></a>  ax.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">2</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="co"># Hide the right and top spines</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a>ax.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-36"><a href="#cb1-36"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="fl">2.75</span>, <span class="fl">0.25</span>)]</span>
+<span id="cb1-6"><a></a>runtime_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
+<span id="cb1-7"><a></a>runtime_df[<span class="st">'$n^2 + 50n$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">50</span><span class="op">*</span>x)</span>
+<span id="cb1-8"><a></a>runtime_df[<span class="st">'$n^2 + 10000$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">10000</span>)</span>
+<span id="cb1-9"><a></a>runtime_df[<span class="st">'$O(n)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].copy()</span>
+<span id="cb1-10"><a></a>runtime_df[<span class="st">'$O(nlogn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">*</span> np.log(x))</span>
+<span id="cb1-11"><a></a>runtime_df[<span class="st">'$O(n^2)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>))</span>
+<span id="cb1-12"><a></a>runtime_df[<span class="st">'$O(n^2logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.log(x))</span>
+<span id="cb1-13"><a></a>runtime_df[<span class="st">'$O(n^3)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>))</span>
+<span id="cb1-14"><a></a>runtime_df[<span class="st">'$O(n^3logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>) <span class="op">*</span> np.log(x))</span>
+<span id="cb1-15"><a></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
+<span id="cb1-16"><a></a>max_vals <span class="op">=</span> runtime_df.<span class="bu">max</span>().to_dict()</span>
+<span id="cb1-17"><a></a>plot_df <span class="op">=</span> runtime_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
+<span id="cb1-18"><a></a><span class="co">#print(plot_df)</span></span>
+<span id="cb1-19"><a></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (col <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> runtime_df.columns}</span>
+<span id="cb1-20"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
+<span id="cb1-21"><a></a>sns.lineplot(plot_df, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
+<span id="cb1-22"><a></a><span class="co">#plt.xscale('log')</span></span>
+<span id="cb1-23"><a></a>plt.yscale(<span class="st">'log'</span>)</span>
+<span id="cb1-24"><a></a><span class="co"># extract the existing handles and labels</span></span>
+<span id="cb1-25"><a></a>h, l <span class="op">=</span> ax.get_legend_handles_labels()</span>
+<span id="cb1-26"><a></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
+<span id="cb1-27"><a></a>ax.legend(h[<span class="dv">0</span>:<span class="dv">2</span>], l[<span class="dv">0</span>:<span class="dv">2</span>])</span>
+<span id="cb1-28"><a></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
+<span id="cb1-29"><a></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>):</span>
+<span id="cb1-30"><a></a>    <span class="cf">continue</span></span>
+<span id="cb1-31"><a></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
+<span id="cb1-32"><a></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'\log(n)'</span>)</span>
+<span id="cb1-33"><a></a>  ax.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">2</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb1-34"><a></a><span class="co"># Hide the right and top spines</span></span>
+<span id="cb1-35"><a></a>ax.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb1-36"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/cell-2-output-1.png" width="932" height="429"></p>
+<p><img data-src="index_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="932" height="429"></p>
 </figure>
 </div>
 </div>
@@ -766,39 +768,43 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <ul>
 <li>(Though this is harder to see, without a log-log plot:)</li>
 </ul>
-<div class="cell" data-execution_count="2">
-<details>
+<div id="47a5abe3" class="cell" data-execution_count="2">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>
-<span id="cb2-2"><a href="#cb2-2"></a>rt_const_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
-<span id="cb2-3"><a href="#cb2-3"></a>rt_const_df[<span class="st">'$20n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">20</span><span class="op">*</span>np.power(x,<span class="dv">2</span>))</span>
-<span id="cb2-4"><a href="#cb2-4"></a>rt_const_df[<span class="st">'$n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>))</span>
-<span id="cb2-5"><a href="#cb2-5"></a>rt_const_df[<span class="st">'$n^2logn$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.power(np.log(x),<span class="dv">2</span>))</span>
-<span id="cb2-6"><a href="#cb2-6"></a>rt_const_df[<span class="st">'$n^3$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">3</span>))</span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>max_vals <span class="op">=</span> rt_const_df.<span class="bu">max</span>().to_dict()</span>
-<span id="cb2-9"><a href="#cb2-9"></a>plot_df_const <span class="op">=</span> rt_const_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
-<span id="cb2-10"><a href="#cb2-10"></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$20n^2$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> rt_const_df.columns}</span>
-<span id="cb2-11"><a href="#cb2-11"></a>fig_const, ax_const <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
-<span id="cb2-12"><a href="#cb2-12"></a>sns.lineplot(plot_df_const, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
-<span id="cb2-13"><a href="#cb2-13"></a>plt.xscale(<span class="st">'log'</span>)</span>
-<span id="cb2-14"><a href="#cb2-14"></a>plt.yscale(<span class="st">'log'</span>)</span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># extract the existing handles and labels</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a>h_const, l_const <span class="op">=</span> ax_const.get_legend_handles_labels()</span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a>ax_const.legend(h_const[<span class="dv">0</span>:<span class="dv">1</span>], l_const[<span class="dv">0</span>:<span class="dv">1</span>])</span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
-<span id="cb2-20"><a href="#cb2-20"></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$20n^2$'</span>):</span>
-<span id="cb2-21"><a href="#cb2-21"></a>    <span class="cf">continue</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
-<span id="cb2-23"><a href="#cb2-23"></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'\log(n)'</span>)</span>
-<span id="cb2-24"><a href="#cb2-24"></a>  ax_const.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">10</span><span class="op">**</span><span class="dv">4</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
-<span id="cb2-25"><a href="#cb2-25"></a><span class="co"># Hide the right and top spines</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a>ax_const.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb2-27"><a href="#cb2-27"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>
+<span id="cb2-2"><a></a>rt_const_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
+<span id="cb2-3"><a></a>rt_const_df[<span class="st">'$20n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">20</span><span class="op">*</span>np.power(x,<span class="dv">2</span>))</span>
+<span id="cb2-4"><a></a>rt_const_df[<span class="st">'$n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>))</span>
+<span id="cb2-5"><a></a>rt_const_df[<span class="st">'$n^2logn$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.power(np.log(x),<span class="dv">2</span>))</span>
+<span id="cb2-6"><a></a>rt_const_df[<span class="st">'$n^3$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">3</span>))</span>
+<span id="cb2-7"><a></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
+<span id="cb2-8"><a></a>max_vals <span class="op">=</span> rt_const_df.<span class="bu">max</span>().to_dict()</span>
+<span id="cb2-9"><a></a>plot_df_const <span class="op">=</span> rt_const_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
+<span id="cb2-10"><a></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$20n^2$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> rt_const_df.columns}</span>
+<span id="cb2-11"><a></a>fig_const, ax_const <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
+<span id="cb2-12"><a></a>sns.lineplot(plot_df_const, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
+<span id="cb2-13"><a></a>plt.xscale(<span class="st">'log'</span>)</span>
+<span id="cb2-14"><a></a>plt.yscale(<span class="st">'log'</span>)</span>
+<span id="cb2-15"><a></a><span class="co"># extract the existing handles and labels</span></span>
+<span id="cb2-16"><a></a>h_const, l_const <span class="op">=</span> ax_const.get_legend_handles_labels()</span>
+<span id="cb2-17"><a></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
+<span id="cb2-18"><a></a>ax_const.legend(h_const[<span class="dv">0</span>:<span class="dv">1</span>], l_const[<span class="dv">0</span>:<span class="dv">1</span>])</span>
+<span id="cb2-19"><a></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
+<span id="cb2-20"><a></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$20n^2$'</span>):</span>
+<span id="cb2-21"><a></a>    <span class="cf">continue</span></span>
+<span id="cb2-22"><a></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
+<span id="cb2-23"><a></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'\log(n)'</span>)</span>
+<span id="cb2-24"><a></a>  ax_const.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">10</span><span class="op">**</span><span class="dv">4</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb2-25"><a></a><span class="co"># Hide the right and top spines</span></span>
+<span id="cb2-26"><a></a>ax_const.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb2-27"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="index_files/figure-revealjs/cell-3-output-1.png" width="914" height="431"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -837,6 +843,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </ul></li>
 <li>Need to be careful with <span class="math inline">\(O(f(n))\)</span> vs.&nbsp;<span class="math inline">\(\Omega(f(n))\)</span> however: difference between “for all inputs” vs.&nbsp;“for some inputs”:</li>
 </ul>
+<div title="Bounding Worst-Case Runtime">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -844,6 +851,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </div>
 <div class="callout-content">
 <p>By saying that the worst-case running time of an algorithm is <span class="math inline">\(\Omega(n^2)\)</span>, we mean that for every input size <span class="math inline">\(n\)</span> above a certain threshold, there is <strong>at least one input</strong> of size <span class="math inline">\(n\)</span> for which the algorithm takes at least <span class="math inline">\(cn^2\)</span> time, for some positive constant <span class="math inline">\(n\)</span>. It does <strong>not</strong> necessarily mean that the algorithm takes at least <span class="math inline">\(cn^2\)</span> time for <strong>all</strong> inputs.</p>
+</div>
 </div>
 </div>
 </div>
@@ -855,7 +863,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <li>Given <strong>any value <span class="math inline">\(n &gt; n_0\)</span></strong>, we need to <strong>construct an input</strong> for which Insertion-Sort requires <span class="math inline">\(cn^2\)</span> steps: consider a list where <span class="math inline">\(n/3\)</span> <strong>greatest values</strong> are in <strong>first <span class="math inline">\(n/3\)</span> slots</strong>:</li>
 </ul>
 
-<img data-src="images/insertion_lower_bound_alt.svg" width="600" class="r-stretch quarto-figure-center"><p class="caption">All <span class="math inline">\(n/3\)</span> values in <span class="math inline">\(\textrm{L}\)</span> pass, one-by-one, through the <span class="math inline">\(n/3\)</span> slots in <span class="math inline">\(\textrm{M}\)</span> (since they must end up in <span class="math inline">\(\textrm{R}\)</span>) <span class="math inline">\(\implies (n/3)(n/3) = n^2/9 = \Omega(n^2)\)</span> steps!</p><ul>
+<img data-src="images/insertion_lower_bound_alt.svg" class="quarto-figure quarto-figure-center r-stretch" width="600"><p class="caption">All <span class="math inline">\(n/3\)</span> values in <span class="math inline">\(\textrm{L}\)</span> pass, one-by-one, through the <span class="math inline">\(n/3\)</span> slots in <span class="math inline">\(\textrm{M}\)</span> (since they must end up in <span class="math inline">\(\textrm{R}\)</span>) <span class="math inline">\(\implies (n/3)(n/3) = n^2/9 = \Omega(n^2)\)</span> steps!</p><ul>
 <li>Final definition (a <strong>theorem</strong> you could prove if you want!): <span class="math inline">\(\Theta\)</span> = “Big-Theta”
 <ul>
 <li>If <span class="math inline">\(T(n) = \overline{O}(g(n))\)</span> and <span class="math inline">\(T(n) = \Omega(g(n))\)</span>, then <span class="math inline">\(T(n) = \Theta(n)\)</span></li>
@@ -875,19 +883,19 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <li>With the <strong>linear</strong> approach, each time we check a word and it’s not our word we eliminate… one measly word 😞</li>
 <li>But with the <strong>divide-and-conquer</strong> approach… we eliminate 🔥<strong>HALF OF THE REMAINING WORDS</strong>🔥</li>
 </ul>
-<div class="quarto-layout-panel">
+<div class="quarto-layout-panel" data-layout="[1,1]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/lakers.gif"></p>
+<p><img data-src="images/lakers.gif" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/tuck_em_in.jpeg" width="270"></p>
+<p><img data-src="images/tuck_em_in.jpeg" class="quarto-figure quarto-figure-center" width="270"></p>
 </figure>
 </div>
 </div>
@@ -897,11 +905,11 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <section id="merging-two-sorted-lists-in-on-time" class="slide level2 smaller title-11 crunch-figcaption crunch-quarto-figure">
 <h2>Merging Two Sorted Lists in <span class="math inline">\(O(n)\)</span> Time</h2>
 
-<img data-src="images/merge.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 37</p></section>
+<img data-src="images/merge.svg" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 37</p></section>
 <section id="merge-sort-merging-as-subroutine" class="slide level2">
 <h2>Merge Sort (Merging as Subroutine)</h2>
 
-<img data-src="images/merge_tree.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 40</p></section>
+<img data-src="images/merge_tree.svg" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 40</p></section>
 <section id="complexity-analysis-1" class="slide level2 crunch-title">
 <h2>Complexity Analysis</h2>
 <ul>
@@ -915,7 +923,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <li><strong>(1)</strong> <span class="math inline">\(W(n)\)</span> grows <strong>faster</strong> than <span class="math inline">\(D(n)\)</span>, <strong>(2)</strong> grows at <strong>same rate</strong> as <span class="math inline">\(D(n)\)</span>, or <strong>(3)</strong> grows <strong>slower</strong> than <span class="math inline">\(D(n)\)</span></li>
 </ul>
 </section>
-<section id="bounding-the-runtime-of-merge-sort" class="slide level2 crunch-title crunch-ul crunch-callout crunch-footnotes">
+<section id="bounding-the-runtime-of-merge-sort" class="slide level2 crunch-title crunch-ul crunch-callout crunch-footnotes scrollable">
 <h2>Bounding the Runtime of Merge Sort</h2>
 <ul>
 <li>How about <span class="alg">Merge-Sort</span>? <span class="math inline">\(T(n) = 2T(n/2) + \Theta(n)\)</span>
@@ -924,6 +932,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </ul></li>
 <li><span class="math inline">\(W(n)\)</span> and <span class="math inline">\(D(n)\)</span> grow at <strong>same rate</strong> <span class="math inline">\(\implies\)</span> <em>Case 2</em><sup>1</sup>:</li>
 </ul>
+<div title="Applying the Master Theorem When $W(n) = \Theta(D(n))$ (Case 2)">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -934,6 +943,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <li>Is there a <span class="math inline">\(k \geq 0\)</span> satisfying <span class="math inline">\(D(n) = \Theta(n^{\log_b(a)}\log_2^k(n))\)</span>?</li>
 <li>If so, your solution is <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))\)</span></li>
 </ol>
+</div>
 </div>
 </div>
 </div>
@@ -967,7 +977,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <section id="how-does-a-calculator-work" class="slide level2">
 <h2>How Does A Calculator Work?</h2>
 
-<img data-src="images/Calculator.drawio.svg" class="r-stretch quarto-figure-center"><p class="caption">(Calculator image from <a href="//commons.wikimedia.org/wiki/User:LoMit" title="User:LoMit">Wikimedia Commons</a>)</p></section>
+<img data-src="images/Calculator.drawio.svg" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">(Calculator image from <a href="//commons.wikimedia.org/wiki/User:LoMit" title="User:LoMit">Wikimedia Commons</a>)</p></section>
 <section id="key-oop-feature-1-encapsulation" class="slide level2">
 <h2>Key OOP Feature #1: <em>Encapsulation</em></h2>
 <ul>
@@ -979,47 +989,94 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <section id="use-case-bookstore-inventory-management" class="slide level2 smaller title-12">
 <h2>Use Case: Bookstore Inventory Management</h2>
 
-<img data-src="images/spencerbeck_exterior-of-capitol-hill-books_yesmydccool.jpg" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://washington.org/visit-dc/bookstores-sure-charm-you-washington-dc" target="_blank">Image source</a></p></section>
+<img data-src="images/spencerbeck_exterior-of-capitol-hill-books_yesmydccool.jpg" class="quarto-figure quarto-figure-center r-stretch"><p class="caption"><a href="https://washington.org/visit-dc/bookstores-sure-charm-you-washington-dc" target="_blank">Image source</a></p></section>
 <section id="in-pictures" class="slide level2 smaller">
 <h2>In Pictures</h2>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div id="bookstore-diagram">
 <div>
 <svg width="960" height="480" viewbox="0.00 0.00 594.24 317.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 313.4)">
-<title>
-G
-</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-313.4 590.24,-313.4 590.24,4 -4,4"></polygon> <text text-anchor="middle" x="293.12" y="-292.8" font-family="Times,serif" font-size="14.00">Bookstore Relational Diagram</text> <!-- Bookstore --> <g id="node1" class="node">
-<title>
-Bookstore
-</title>
-<polygon fill="none" stroke="black" points="0,-135.3 0,-284.1 150.42,-284.1 150.42,-135.3 0,-135.3"></polygon> <text text-anchor="middle" x="75.21" y="-267.5" font-family="Courier,monospace" font-size="14.00">Bookstore</text> <polyline fill="none" stroke="black" points="0,-259.3 150.42,-259.3 "></polyline> <text text-anchor="start" x="8" y="-242.7" font-family="Courier,monospace" font-size="14.00">Name</text> <polyline fill="none" stroke="black" points="0,-234.5 150.42,-234.5 "></polyline> <text text-anchor="start" x="8" y="-217.9" font-family="Courier,monospace" font-size="14.00">Location</text> <polyline fill="none" stroke="black" points="0,-209.7 150.42,-209.7 "></polyline> <text text-anchor="start" x="8" y="-193.1" font-family="Courier,monospace" font-size="14.00">Booklist</text> <polyline fill="none" stroke="black" points="0,-184.9 150.42,-184.9 "></polyline> <text text-anchor="start" x="8" y="-168.3" font-family="Courier,monospace" font-size="14.00">Get_Inventory()</text> <polyline fill="none" stroke="black" points="0,-160.1 150.42,-160.1 "></polyline> <text text-anchor="start" x="8" y="-143.5" font-family="Courier,monospace" font-size="14.00">Sort_Inventory()</text> </g> <!-- Place --> <g id="node2" class="node">
-<title>
-Place
-</title>
-<polygon fill="none" stroke="black" points="259.92,-143.7 259.92,-267.7 368.33,-267.7 368.33,-143.7 259.92,-143.7"></polygon> <text text-anchor="middle" x="314.12" y="-251.1" font-family="Courier,monospace" font-size="14.00">Place</text> <polyline fill="none" stroke="black" points="259.92,-242.9 368.33,-242.9 "></polyline> <text text-anchor="start" x="267.92" y="-226.3" font-family="Courier,monospace" font-size="14.00">City</text> <polyline fill="none" stroke="black" points="259.92,-218.1 368.33,-218.1 "></polyline> <text text-anchor="start" x="267.92" y="-201.5" font-family="Courier,monospace" font-size="14.00">State</text> <polyline fill="none" stroke="black" points="259.92,-193.3 368.33,-193.3 "></polyline> <text text-anchor="start" x="267.92" y="-176.7" font-family="Courier,monospace" font-size="14.00">Country</text> <polyline fill="none" stroke="black" points="259.92,-168.5 368.33,-168.5 "></polyline> <text text-anchor="start" x="267.92" y="-151.9" font-family="Courier,monospace" font-size="14.00">Print_Map()</text> </g> <!-- Bookstore&#45;&gt;Place --> <g id="edge1" class="edge">
-<title>
-Bookstore:loc-&gt;Place:placehead
-</title>
-<path fill="none" stroke="black" d="M150.42,-221.7C197.79,-221.7 207.68,-251.09 249.78,-255.22"></path> <polygon fill="black" stroke="black" points="249.76,-258.72 259.92,-255.7 250.09,-251.73 249.76,-258.72"></polygon> <text text-anchor="middle" x="205.17" y="-257.9" font-family="Times,serif" font-size="14.00">Has One</text> </g> <!-- Book --> <g id="node3" class="node">
-<title>
-Book
-</title>
-<polygon fill="none" stroke="black" points="268.32,-0.7 268.32,-124.7 359.93,-124.7 359.93,-0.7 268.32,-0.7"></polygon> <text text-anchor="middle" x="314.12" y="-108.1" font-family="Courier,monospace" font-size="14.00">Book</text> <polyline fill="none" stroke="black" points="268.32,-99.9 359.93,-99.9 "></polyline> <text text-anchor="start" x="276.32" y="-83.3" font-family="Courier,monospace" font-size="14.00">Title</text> <polyline fill="none" stroke="black" points="268.32,-75.1 359.93,-75.1 "></polyline> <text text-anchor="start" x="276.32" y="-58.5" font-family="Courier,monospace" font-size="14.00">Authors</text> <polyline fill="none" stroke="black" points="268.32,-50.3 359.93,-50.3 "></polyline> <text text-anchor="start" x="276.32" y="-33.7" font-family="Courier,monospace" font-size="14.00">Num Pages</text> <polyline fill="none" stroke="black" points="268.32,-25.5 359.93,-25.5 "></polyline> <text text-anchor="middle" x="314.12" y="-8.9" font-family="Courier,monospace" font-size="14.00">Preview()</text> </g> <!-- Bookstore&#45;&gt;Book --> <g id="edge2" class="edge">
-<title>
-Bookstore:bl-&gt;Book:bookhead
-</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M150.42,-197.7C210.95,-197.7 204.03,-122.06 256.92,-113.49"></path> <polygon fill="black" stroke="black" points="257.42,-116.96 267.12,-112.7 256.88,-109.98 257.42,-116.96"></polygon> <text text-anchor="middle" x="205.17" y="-197.9" font-family="Times,serif" font-size="14.00">Has Multiple</text> </g> <!-- Person --> <g id="node4" class="node">
-<title>
-Person
-</title>
-<polygon fill="none" stroke="black" points="477.82,-0.5 477.82,-74.9 586.24,-74.9 586.24,-0.5 477.82,-0.5"></polygon> <text text-anchor="middle" x="532.03" y="-58.3" font-family="Courier,monospace" font-size="14.00">Person</text> <polyline fill="none" stroke="black" points="477.82,-50.1 586.24,-50.1 "></polyline> <text text-anchor="middle" x="532.03" y="-33.5" font-family="Courier,monospace" font-size="14.00">Family Name</text> <polyline fill="none" stroke="black" points="477.82,-25.3 586.24,-25.3 "></polyline> <text text-anchor="middle" x="532.03" y="-8.7" font-family="Courier,monospace" font-size="14.00">Given Name</text> </g> <!-- Book&#45;&gt;Person --> <g id="edge3" class="edge">
-<title>
-Book:auths-&gt;Person:personhead
-</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M361.12,-62.7C409.44,-62.7 424,-62.7 467.71,-62.7"></path> <polygon fill="black" stroke="black" points="467.82,-66.2 477.82,-62.7 467.82,-59.2 467.82,-66.2"></polygon> <text text-anchor="middle" x="423.08" y="-66.9" font-family="Times,serif" font-size="14.00">Has Multiple</text> </g> </g>
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-313.4 590.24,-313.4 590.24,4 -4,4"></polygon>
+<text text-anchor="middle" x="293.12" y="-292.8" font-family="Times,serif" font-size="14.00">Bookstore Relational Diagram</text>
+<!-- Bookstore -->
+<g id="node1" class="node">
+<title>Bookstore</title>
+<polygon fill="none" stroke="black" points="0,-135.3 0,-284.1 150.42,-284.1 150.42,-135.3 0,-135.3"></polygon>
+<text text-anchor="middle" x="75.21" y="-267.5" font-family="Courier,monospace" font-size="14.00">Bookstore</text>
+<polyline fill="none" stroke="black" points="0,-259.3 150.42,-259.3 "></polyline>
+<text text-anchor="start" x="8" y="-242.7" font-family="Courier,monospace" font-size="14.00">Name</text>
+<polyline fill="none" stroke="black" points="0,-234.5 150.42,-234.5 "></polyline>
+<text text-anchor="start" x="8" y="-217.9" font-family="Courier,monospace" font-size="14.00">Location</text>
+<polyline fill="none" stroke="black" points="0,-209.7 150.42,-209.7 "></polyline>
+<text text-anchor="start" x="8" y="-193.1" font-family="Courier,monospace" font-size="14.00">Booklist</text>
+<polyline fill="none" stroke="black" points="0,-184.9 150.42,-184.9 "></polyline>
+<text text-anchor="start" x="8" y="-168.3" font-family="Courier,monospace" font-size="14.00">Get_Inventory()</text>
+<polyline fill="none" stroke="black" points="0,-160.1 150.42,-160.1 "></polyline>
+<text text-anchor="start" x="8" y="-143.5" font-family="Courier,monospace" font-size="14.00">Sort_Inventory()</text>
+</g>
+<!-- Place -->
+<g id="node2" class="node">
+<title>Place</title>
+<polygon fill="none" stroke="black" points="259.92,-143.7 259.92,-267.7 368.33,-267.7 368.33,-143.7 259.92,-143.7"></polygon>
+<text text-anchor="middle" x="314.12" y="-251.1" font-family="Courier,monospace" font-size="14.00">Place</text>
+<polyline fill="none" stroke="black" points="259.92,-242.9 368.33,-242.9 "></polyline>
+<text text-anchor="start" x="267.92" y="-226.3" font-family="Courier,monospace" font-size="14.00">City</text>
+<polyline fill="none" stroke="black" points="259.92,-218.1 368.33,-218.1 "></polyline>
+<text text-anchor="start" x="267.92" y="-201.5" font-family="Courier,monospace" font-size="14.00">State</text>
+<polyline fill="none" stroke="black" points="259.92,-193.3 368.33,-193.3 "></polyline>
+<text text-anchor="start" x="267.92" y="-176.7" font-family="Courier,monospace" font-size="14.00">Country</text>
+<polyline fill="none" stroke="black" points="259.92,-168.5 368.33,-168.5 "></polyline>
+<text text-anchor="start" x="267.92" y="-151.9" font-family="Courier,monospace" font-size="14.00">Print_Map()</text>
+</g>
+<!-- Bookstore&#45;&gt;Place -->
+<g id="edge1" class="edge">
+<title>Bookstore:loc-&gt;Place:placehead</title>
+<path fill="none" stroke="black" d="M150.42,-221.7C197.79,-221.7 207.68,-251.09 249.78,-255.22"></path>
+<polygon fill="black" stroke="black" points="249.76,-258.72 259.92,-255.7 250.09,-251.73 249.76,-258.72"></polygon>
+<text text-anchor="middle" x="205.17" y="-257.9" font-family="Times,serif" font-size="14.00">Has One</text>
+</g>
+<!-- Book -->
+<g id="node3" class="node">
+<title>Book</title>
+<polygon fill="none" stroke="black" points="268.32,-0.7 268.32,-124.7 359.93,-124.7 359.93,-0.7 268.32,-0.7"></polygon>
+<text text-anchor="middle" x="314.12" y="-108.1" font-family="Courier,monospace" font-size="14.00">Book</text>
+<polyline fill="none" stroke="black" points="268.32,-99.9 359.93,-99.9 "></polyline>
+<text text-anchor="start" x="276.32" y="-83.3" font-family="Courier,monospace" font-size="14.00">Title</text>
+<polyline fill="none" stroke="black" points="268.32,-75.1 359.93,-75.1 "></polyline>
+<text text-anchor="start" x="276.32" y="-58.5" font-family="Courier,monospace" font-size="14.00">Authors</text>
+<polyline fill="none" stroke="black" points="268.32,-50.3 359.93,-50.3 "></polyline>
+<text text-anchor="start" x="276.32" y="-33.7" font-family="Courier,monospace" font-size="14.00">Num Pages</text>
+<polyline fill="none" stroke="black" points="268.32,-25.5 359.93,-25.5 "></polyline>
+<text text-anchor="middle" x="314.12" y="-8.9" font-family="Courier,monospace" font-size="14.00">Preview()</text>
+</g>
+<!-- Bookstore&#45;&gt;Book -->
+<g id="edge2" class="edge">
+<title>Bookstore:bl-&gt;Book:bookhead</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M150.42,-197.7C210.95,-197.7 204.03,-122.06 256.92,-113.49"></path>
+<polygon fill="black" stroke="black" points="257.42,-116.96 267.12,-112.7 256.88,-109.98 257.42,-116.96"></polygon>
+<text text-anchor="middle" x="205.17" y="-197.9" font-family="Times,serif" font-size="14.00">Has Multiple</text>
+</g>
+<!-- Person -->
+<g id="node4" class="node">
+<title>Person</title>
+<polygon fill="none" stroke="black" points="477.82,-0.5 477.82,-74.9 586.24,-74.9 586.24,-0.5 477.82,-0.5"></polygon>
+<text text-anchor="middle" x="532.03" y="-58.3" font-family="Courier,monospace" font-size="14.00">Person</text>
+<polyline fill="none" stroke="black" points="477.82,-50.1 586.24,-50.1 "></polyline>
+<text text-anchor="middle" x="532.03" y="-33.5" font-family="Courier,monospace" font-size="14.00">Family Name</text>
+<polyline fill="none" stroke="black" points="477.82,-25.3 586.24,-25.3 "></polyline>
+<text text-anchor="middle" x="532.03" y="-8.7" font-family="Courier,monospace" font-size="14.00">Given Name</text>
+</g>
+<!-- Book&#45;&gt;Person -->
+<g id="edge3" class="edge">
+<title>Book:auths-&gt;Person:personhead</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M361.12,-62.7C409.44,-62.7 424,-62.7 467.71,-62.7"></path>
+<polygon fill="black" stroke="black" points="467.82,-66.2 477.82,-62.7 467.82,-59.2 467.82,-66.2"></polygon>
+<text text-anchor="middle" x="423.08" y="-66.9" font-family="Times,serif" font-size="14.00">Has Multiple</text>
+</g>
+</g>
 </svg>
 </div>
 </div>
@@ -1034,98 +1091,98 @@ Book:auths-&gt;Person:personhead
 <div class="columns">
 <div class="column" style="width:50%;">
 <div id="basic-class" class="cell" data-execution_count="3">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> Bookstore:</span>
-<span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, location):</span>
-<span id="cb3-3"><a href="#cb3-3"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb3-4"><a href="#cb3-4"></a>        <span class="va">self</span>.location <span class="op">=</span> location</span>
-<span id="cb3-5"><a href="#cb3-5"></a>        <span class="va">self</span>.books <span class="op">=</span> []</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, index):</span>
-<span id="cb3-8"><a href="#cb3-8"></a>        <span class="cf">return</span> <span class="va">self</span>.books[index]</span>
-<span id="cb3-9"><a href="#cb3-9"></a></span>
-<span id="cb3-10"><a href="#cb3-10"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
-<span id="cb3-11"><a href="#cb3-11"></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
-<span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb3-14"><a href="#cb3-14"></a>        <span class="cf">return</span> <span class="ss">f"Bookstore[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_books()<span class="sc">}</span><span class="ss"> books]"</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a></span>
-<span id="cb3-16"><a href="#cb3-16"></a>    <span class="kw">def</span> add_books(<span class="va">self</span>, book_list):</span>
-<span id="cb3-17"><a href="#cb3-17"></a>        <span class="va">self</span>.books.extend(book_list)</span>
-<span id="cb3-18"><a href="#cb3-18"></a></span>
-<span id="cb3-19"><a href="#cb3-19"></a>    <span class="kw">def</span> get_books(<span class="va">self</span>):</span>
-<span id="cb3-20"><a href="#cb3-20"></a>        <span class="cf">return</span> <span class="va">self</span>.books</span>
-<span id="cb3-21"><a href="#cb3-21"></a></span>
-<span id="cb3-22"><a href="#cb3-22"></a>    <span class="kw">def</span> get_inventory(<span class="va">self</span>):</span>
-<span id="cb3-23"><a href="#cb3-23"></a>        book_lines <span class="op">=</span> []</span>
-<span id="cb3-24"><a href="#cb3-24"></a>        <span class="cf">for</span> book_index, book <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.get_books()):</span>
-<span id="cb3-25"><a href="#cb3-25"></a>            cur_book_line <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>book_index<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span><span class="bu">str</span>(book)<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb3-26"><a href="#cb3-26"></a>            book_lines.append(cur_book_line)</span>
-<span id="cb3-27"><a href="#cb3-27"></a>        <span class="cf">return</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(book_lines)</span>
-<span id="cb3-28"><a href="#cb3-28"></a></span>
-<span id="cb3-29"><a href="#cb3-29"></a>    <span class="kw">def</span> get_num_books(<span class="va">self</span>):</span>
-<span id="cb3-30"><a href="#cb3-30"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.get_books())</span>
-<span id="cb3-31"><a href="#cb3-31"></a></span>
-<span id="cb3-32"><a href="#cb3-32"></a>    <span class="kw">def</span> sort_books(<span class="va">self</span>, sort_key):</span>
-<span id="cb3-33"><a href="#cb3-33"></a>        <span class="va">self</span>.books.sort(key<span class="op">=</span>sort_key)</span>
-<span id="cb3-34"><a href="#cb3-34"></a></span>
-<span id="cb3-35"><a href="#cb3-35"></a><span class="kw">class</span> Book:</span>
-<span id="cb3-36"><a href="#cb3-36"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages):</span>
-<span id="cb3-37"><a href="#cb3-37"></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
-<span id="cb3-38"><a href="#cb3-38"></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
-<span id="cb3-39"><a href="#cb3-39"></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
-<span id="cb3-40"><a href="#cb3-40"></a></span>
-<span id="cb3-41"><a href="#cb3-41"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb3-42"><a href="#cb3-42"></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_title()<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_authors()<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_pages()<span class="sc">}</span><span class="ss">]"</span></span>
-<span id="cb3-43"><a href="#cb3-43"></a></span>
-<span id="cb3-44"><a href="#cb3-44"></a>    <span class="kw">def</span> get_authors(<span class="va">self</span>):</span>
-<span id="cb3-45"><a href="#cb3-45"></a>        <span class="cf">return</span> <span class="va">self</span>.authors</span>
-<span id="cb3-46"><a href="#cb3-46"></a></span>
-<span id="cb3-47"><a href="#cb3-47"></a>    <span class="kw">def</span> get_first_author(<span class="va">self</span>):</span>
-<span id="cb3-48"><a href="#cb3-48"></a>        <span class="cf">return</span> <span class="va">self</span>.authors[<span class="dv">0</span>]</span>
-<span id="cb3-49"><a href="#cb3-49"></a></span>
-<span id="cb3-50"><a href="#cb3-50"></a>    <span class="kw">def</span> get_num_pages(<span class="va">self</span>):</span>
-<span id="cb3-51"><a href="#cb3-51"></a>        <span class="cf">return</span> <span class="va">self</span>.num_pages</span>
-<span id="cb3-52"><a href="#cb3-52"></a></span>
-<span id="cb3-53"><a href="#cb3-53"></a>    <span class="kw">def</span> get_title(<span class="va">self</span>):</span>
-<span id="cb3-54"><a href="#cb3-54"></a>        <span class="cf">return</span> <span class="va">self</span>.title</span>
-<span id="cb3-55"><a href="#cb3-55"></a></span>
-<span id="cb3-56"><a href="#cb3-56"></a><span class="kw">class</span> Person:</span>
-<span id="cb3-57"><a href="#cb3-57"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, family_name, given_name):</span>
-<span id="cb3-58"><a href="#cb3-58"></a>        <span class="va">self</span>.family_name <span class="op">=</span> family_name</span>
-<span id="cb3-59"><a href="#cb3-59"></a>        <span class="va">self</span>.given_name <span class="op">=</span> given_name</span>
-<span id="cb3-60"><a href="#cb3-60"></a></span>
-<span id="cb3-61"><a href="#cb3-61"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
-<span id="cb3-62"><a href="#cb3-62"></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
-<span id="cb3-63"><a href="#cb3-63"></a></span>
-<span id="cb3-64"><a href="#cb3-64"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb3-65"><a href="#cb3-65"></a>        <span class="cf">return</span> <span class="ss">f"Person[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_family_name()<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_given_name()<span class="sc">}</span><span class="ss">]"</span></span>
-<span id="cb3-66"><a href="#cb3-66"></a></span>
-<span id="cb3-67"><a href="#cb3-67"></a>    <span class="kw">def</span> get_family_name(<span class="va">self</span>):</span>
-<span id="cb3-68"><a href="#cb3-68"></a>        <span class="cf">return</span> <span class="va">self</span>.family_name</span>
-<span id="cb3-69"><a href="#cb3-69"></a></span>
-<span id="cb3-70"><a href="#cb3-70"></a>    <span class="kw">def</span> get_given_name(<span class="va">self</span>):</span>
-<span id="cb3-71"><a href="#cb3-71"></a>        <span class="cf">return</span> <span class="va">self</span>.given_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">class</span> Bookstore:</span>
+<span id="cb3-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, location):</span>
+<span id="cb3-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb3-4"><a></a>        <span class="va">self</span>.location <span class="op">=</span> location</span>
+<span id="cb3-5"><a></a>        <span class="va">self</span>.books <span class="op">=</span> []</span>
+<span id="cb3-6"><a></a></span>
+<span id="cb3-7"><a></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, index):</span>
+<span id="cb3-8"><a></a>        <span class="cf">return</span> <span class="va">self</span>.books[index]</span>
+<span id="cb3-9"><a></a></span>
+<span id="cb3-10"><a></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb3-11"><a></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
+<span id="cb3-12"><a></a></span>
+<span id="cb3-13"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb3-14"><a></a>        <span class="cf">return</span> <span class="ss">f"Bookstore[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_books()<span class="sc">}</span><span class="ss"> books]"</span></span>
+<span id="cb3-15"><a></a></span>
+<span id="cb3-16"><a></a>    <span class="kw">def</span> add_books(<span class="va">self</span>, book_list):</span>
+<span id="cb3-17"><a></a>        <span class="va">self</span>.books.extend(book_list)</span>
+<span id="cb3-18"><a></a></span>
+<span id="cb3-19"><a></a>    <span class="kw">def</span> get_books(<span class="va">self</span>):</span>
+<span id="cb3-20"><a></a>        <span class="cf">return</span> <span class="va">self</span>.books</span>
+<span id="cb3-21"><a></a></span>
+<span id="cb3-22"><a></a>    <span class="kw">def</span> get_inventory(<span class="va">self</span>):</span>
+<span id="cb3-23"><a></a>        book_lines <span class="op">=</span> []</span>
+<span id="cb3-24"><a></a>        <span class="cf">for</span> book_index, book <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.get_books()):</span>
+<span id="cb3-25"><a></a>            cur_book_line <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>book_index<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span><span class="bu">str</span>(book)<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb3-26"><a></a>            book_lines.append(cur_book_line)</span>
+<span id="cb3-27"><a></a>        <span class="cf">return</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(book_lines)</span>
+<span id="cb3-28"><a></a></span>
+<span id="cb3-29"><a></a>    <span class="kw">def</span> get_num_books(<span class="va">self</span>):</span>
+<span id="cb3-30"><a></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.get_books())</span>
+<span id="cb3-31"><a></a></span>
+<span id="cb3-32"><a></a>    <span class="kw">def</span> sort_books(<span class="va">self</span>, sort_key):</span>
+<span id="cb3-33"><a></a>        <span class="va">self</span>.books.sort(key<span class="op">=</span>sort_key)</span>
+<span id="cb3-34"><a></a></span>
+<span id="cb3-35"><a></a><span class="kw">class</span> Book:</span>
+<span id="cb3-36"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages):</span>
+<span id="cb3-37"><a></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
+<span id="cb3-38"><a></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
+<span id="cb3-39"><a></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
+<span id="cb3-40"><a></a></span>
+<span id="cb3-41"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb3-42"><a></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_title()<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_authors()<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_pages()<span class="sc">}</span><span class="ss">]"</span></span>
+<span id="cb3-43"><a></a></span>
+<span id="cb3-44"><a></a>    <span class="kw">def</span> get_authors(<span class="va">self</span>):</span>
+<span id="cb3-45"><a></a>        <span class="cf">return</span> <span class="va">self</span>.authors</span>
+<span id="cb3-46"><a></a></span>
+<span id="cb3-47"><a></a>    <span class="kw">def</span> get_first_author(<span class="va">self</span>):</span>
+<span id="cb3-48"><a></a>        <span class="cf">return</span> <span class="va">self</span>.authors[<span class="dv">0</span>]</span>
+<span id="cb3-49"><a></a></span>
+<span id="cb3-50"><a></a>    <span class="kw">def</span> get_num_pages(<span class="va">self</span>):</span>
+<span id="cb3-51"><a></a>        <span class="cf">return</span> <span class="va">self</span>.num_pages</span>
+<span id="cb3-52"><a></a></span>
+<span id="cb3-53"><a></a>    <span class="kw">def</span> get_title(<span class="va">self</span>):</span>
+<span id="cb3-54"><a></a>        <span class="cf">return</span> <span class="va">self</span>.title</span>
+<span id="cb3-55"><a></a></span>
+<span id="cb3-56"><a></a><span class="kw">class</span> Person:</span>
+<span id="cb3-57"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, family_name, given_name):</span>
+<span id="cb3-58"><a></a>        <span class="va">self</span>.family_name <span class="op">=</span> family_name</span>
+<span id="cb3-59"><a></a>        <span class="va">self</span>.given_name <span class="op">=</span> given_name</span>
+<span id="cb3-60"><a></a></span>
+<span id="cb3-61"><a></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb3-62"><a></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
+<span id="cb3-63"><a></a></span>
+<span id="cb3-64"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb3-65"><a></a>        <span class="cf">return</span> <span class="ss">f"Person[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_family_name()<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_given_name()<span class="sc">}</span><span class="ss">]"</span></span>
+<span id="cb3-66"><a></a></span>
+<span id="cb3-67"><a></a>    <span class="kw">def</span> get_family_name(<span class="va">self</span>):</span>
+<span id="cb3-68"><a></a>        <span class="cf">return</span> <span class="va">self</span>.family_name</span>
+<span id="cb3-69"><a></a></span>
+<span id="cb3-70"><a></a>    <span class="kw">def</span> get_given_name(<span class="va">self</span>):</span>
+<span id="cb3-71"><a></a>        <span class="cf">return</span> <span class="va">self</span>.given_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div><div class="column" style="width:50%;">
 <div id="create-objs" class="cell" data-execution_count="4">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>my_bookstore <span class="op">=</span> Bookstore(<span class="st">"Bookland"</span>, <span class="st">"Washington, DC"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>plath <span class="op">=</span> Person(<span class="st">"Plath"</span>, <span class="st">"Sylvia"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>bell_jar <span class="op">=</span> Book(<span class="st">"The Bell Jar"</span>, [plath], <span class="dv">244</span>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>marx <span class="op">=</span> Person(<span class="st">"Marx"</span>, <span class="st">"Karl"</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>engels <span class="op">=</span> Person(<span class="st">"Engels"</span>, <span class="st">"Friedrich"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6"></a>manifesto <span class="op">=</span> Book(<span class="st">"The Communist Manifesto"</span>, [marx, engels], <span class="dv">43</span>)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>elster <span class="op">=</span> Person(<span class="st">"Elster"</span>, <span class="st">"Jon"</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>cement <span class="op">=</span> Book(<span class="st">"The Cement of Society"</span>, [elster], <span class="dv">311</span>)</span>
-<span id="cb4-9"><a href="#cb4-9"></a>my_bookstore.add_books([bell_jar, manifesto, cement])</span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="bu">print</span>(my_bookstore)</span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="bu">print</span>(my_bookstore[<span class="dv">0</span>])</span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="bu">print</span>(<span class="st">"Inventory:"</span>)</span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>my_bookstore <span class="op">=</span> Bookstore(<span class="st">"Bookland"</span>, <span class="st">"Washington, DC"</span>)</span>
+<span id="cb4-2"><a></a>plath <span class="op">=</span> Person(<span class="st">"Plath"</span>, <span class="st">"Sylvia"</span>)</span>
+<span id="cb4-3"><a></a>bell_jar <span class="op">=</span> Book(<span class="st">"The Bell Jar"</span>, [plath], <span class="dv">244</span>)</span>
+<span id="cb4-4"><a></a>marx <span class="op">=</span> Person(<span class="st">"Marx"</span>, <span class="st">"Karl"</span>)</span>
+<span id="cb4-5"><a></a>engels <span class="op">=</span> Person(<span class="st">"Engels"</span>, <span class="st">"Friedrich"</span>)</span>
+<span id="cb4-6"><a></a>manifesto <span class="op">=</span> Book(<span class="st">"The Communist Manifesto"</span>, [marx, engels], <span class="dv">43</span>)</span>
+<span id="cb4-7"><a></a>elster <span class="op">=</span> Person(<span class="st">"Elster"</span>, <span class="st">"Jon"</span>)</span>
+<span id="cb4-8"><a></a>cement <span class="op">=</span> Book(<span class="st">"The Cement of Society"</span>, [elster], <span class="dv">311</span>)</span>
+<span id="cb4-9"><a></a>my_bookstore.add_books([bell_jar, manifesto, cement])</span>
+<span id="cb4-10"><a></a><span class="bu">print</span>(my_bookstore)</span>
+<span id="cb4-11"><a></a><span class="bu">print</span>(my_bookstore[<span class="dv">0</span>])</span>
+<span id="cb4-12"><a></a><span class="bu">print</span>(<span class="st">"Inventory:"</span>)</span>
+<span id="cb4-13"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bookstore[3 books]
@@ -1150,11 +1207,11 @@ Inventory:
 <strong>Alphabetical (By First Author)</strong>
 </center>
 <div id="sort-alpha" class="cell" data-execution_count="5">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>sort_alpha <span class="op">=</span> <span class="kw">lambda</span> x: x.get_first_author().get_family_name()</span>
-<span id="cb6-2"><a href="#cb6-2"></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_alpha)</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>sort_alpha <span class="op">=</span> <span class="kw">lambda</span> x: x.get_first_author().get_family_name()</span>
+<span id="cb6-2"><a></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_alpha)</span>
+<span id="cb6-3"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]
@@ -1167,11 +1224,11 @@ Inventory:
 <strong>By Page Count</strong>
 </center>
 <div id="sort-pages" class="cell" data-execution_count="6">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>sort_pages <span class="op">=</span> <span class="kw">lambda</span> x: x.get_num_pages()</span>
-<span id="cb8-2"><a href="#cb8-2"></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_pages)</span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>sort_pages <span class="op">=</span> <span class="kw">lambda</span> x: x.get_num_pages()</span>
+<span id="cb8-2"><a></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_pages)</span>
+<span id="cb8-3"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]
@@ -1188,11 +1245,11 @@ Inventory:
 <li>Encapsulate <strong>general properties</strong> in <strong>parent</strong> class, <strong>specific properties</strong> in <strong>child classes</strong></li>
 </ul>
 
-<img data-src="images/vehicle-basic.svg" class="r-stretch quarto-figure-center"><p class="caption">(You can edit this or make your own UML diagrams in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7C%0A%20%20numDoors%3A%20int%3B%20numWheels%3A%20int%3B%20balanced%3A%20bool%3B%7C%0A%20%20turnOn()%3B%20accelerate()%3B%20brake()%3B%20turnOff()%3B%0A%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%20balanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3Bbalanced%20%3D%20true%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3Bbalanced%20%3D%20true%3B%5D%0A%0A%5BVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BCar%5D%0A%5BVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a>!)</p></section>
+<img data-src="images/vehicle-basic.svg" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">(You can edit this or make your own UML diagrams in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7C%0A%20%20numDoors%3A%20int%3B%20numWheels%3A%20int%3B%20balanced%3A%20bool%3B%7C%0A%20%20turnOn()%3B%20accelerate()%3B%20brake()%3B%20turnOff()%3B%0A%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%20balanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3Bbalanced%20%3D%20true%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3Bbalanced%20%3D%20true%3B%5D%0A%0A%5BVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BCar%5D%0A%5BVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a>!)</p></section>
 <section id="or-is-this-better" class="slide level2 smaller crunch-title">
 <h2>Or… Is This Better?</h2>
 
-<img data-src="images/vehicle-fancy.svg" class="r-stretch quarto-figure-center"><p class="caption">Edit in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7CnumDoors%3A%20int%3BnumWheels%3A%20int%3Bbalanced%3A%20bool%3B%7CturnOn()%3Baccelerate()%3Bbrake()%3BturnOff()%3B%5D%0A%5B%3Cabstract%3E%20UnbalancedVehicle%7Cbalanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20BalancedVehicle%7Cbalanced%20%3D%20true%3B%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3B%5D%0A%0A%5BVehicle%5D--%3A%3E%5BUnbalancedVehicle%5D%0A%5BUnbalancedVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BBalancedVehicle%5D%0A%5BBalancedVehicle%5D--%3A%3E%5BCar%5D%0A%5BBalancedVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a></p></section>
+<img data-src="images/vehicle-fancy.svg" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">Edit in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7CnumDoors%3A%20int%3BnumWheels%3A%20int%3Bbalanced%3A%20bool%3B%7CturnOn()%3Baccelerate()%3Bbrake()%3BturnOff()%3B%5D%0A%5B%3Cabstract%3E%20UnbalancedVehicle%7Cbalanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20BalancedVehicle%7Cbalanced%20%3D%20true%3B%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3B%5D%0A%0A%5BVehicle%5D--%3A%3E%5BUnbalancedVehicle%5D%0A%5BUnbalancedVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BBalancedVehicle%5D%0A%5BBalancedVehicle%5D--%3A%3E%5BCar%5D%0A%5BBalancedVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a></p></section>
 <section id="design-choices" class="slide level2 smaller">
 <h2>Design Choices</h2>
 <ul>
@@ -1205,33 +1262,33 @@ Inventory:
 <strong>Option 1: As Property of <code>Book</code></strong>
 </center>
 <div id="fiction-property" class="cell" data-execution_count="7">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">from</span> enum <span class="im">import</span> Enum</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">class</span> BookType(Enum):</span>
-<span id="cb10-3"><a href="#cb10-3"></a>    NONFICTION <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>    FICTION <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="kw">class</span> Book:</span>
-<span id="cb10-7"><a href="#cb10-7"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title: <span class="bu">str</span>, authors: <span class="bu">list</span>[Person], num_pages: <span class="bu">int</span>, <span class="bu">type</span>: BookType):</span>
-<span id="cb10-8"><a href="#cb10-8"></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
-<span id="cb10-9"><a href="#cb10-9"></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
-<span id="cb10-10"><a href="#cb10-10"></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
-<span id="cb10-11"><a href="#cb10-11"></a>        <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="bu">type</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a></span>
-<span id="cb10-13"><a href="#cb10-13"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb10-14"><a href="#cb10-14"></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>title<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>authors<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>num_pages<span class="sc">}</span><span class="ss">, type=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">type</span><span class="sc">}</span><span class="ss">]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">from</span> enum <span class="im">import</span> Enum</span>
+<span id="cb10-2"><a></a><span class="kw">class</span> BookType(Enum):</span>
+<span id="cb10-3"><a></a>    NONFICTION <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-4"><a></a>    FICTION <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb10-5"><a></a></span>
+<span id="cb10-6"><a></a><span class="kw">class</span> Book:</span>
+<span id="cb10-7"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title: <span class="bu">str</span>, authors: <span class="bu">list</span>[Person], num_pages: <span class="bu">int</span>, <span class="bu">type</span>: BookType):</span>
+<span id="cb10-8"><a></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
+<span id="cb10-9"><a></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
+<span id="cb10-10"><a></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
+<span id="cb10-11"><a></a>        <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="bu">type</span></span>
+<span id="cb10-12"><a></a></span>
+<span id="cb10-13"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb10-14"><a></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>title<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>authors<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>num_pages<span class="sc">}</span><span class="ss">, type=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">type</span><span class="sc">}</span><span class="ss">]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="use-fiction-property" class="cell" data-execution_count="8">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>ulysses <span class="op">=</span> Book(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, BookType.FICTION)</span>
-<span id="cb11-3"><a href="#cb11-3"></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>micromotives <span class="op">=</span> Book(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, BookType.NONFICTION)</span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="bu">print</span>(ulysses)</span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
+<span id="cb11-2"><a></a>ulysses <span class="op">=</span> Book(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, BookType.FICTION)</span>
+<span id="cb11-3"><a></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
+<span id="cb11-4"><a></a>micromotives <span class="op">=</span> Book(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, BookType.NONFICTION)</span>
+<span id="cb11-5"><a></a><span class="bu">print</span>(ulysses)</span>
+<span id="cb11-6"><a></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Book[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]
@@ -1243,29 +1300,29 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 <strong>Option 2: Separate Classes</strong>
 </center>
 <div id="fiction-separate-classes" class="cell" data-execution_count="10">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># class Book defined as earlier</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="kw">class</span> FictionBook(Book):</span>
-<span id="cb13-3"><a href="#cb13-3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, characters):</span>
-<span id="cb13-4"><a href="#cb13-4"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
-<span id="cb13-5"><a href="#cb13-5"></a>        <span class="va">self</span>.characters <span class="op">=</span> characters</span>
-<span id="cb13-6"><a href="#cb13-6"></a></span>
-<span id="cb13-7"><a href="#cb13-7"></a><span class="kw">class</span> NonfictionBook(Book):</span>
-<span id="cb13-8"><a href="#cb13-8"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, topic):</span>
-<span id="cb13-9"><a href="#cb13-9"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
-<span id="cb13-10"><a href="#cb13-10"></a>        <span class="va">self</span>.topic <span class="op">=</span> topic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># class Book defined as earlier</span></span>
+<span id="cb13-2"><a></a><span class="kw">class</span> FictionBook(Book):</span>
+<span id="cb13-3"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, characters):</span>
+<span id="cb13-4"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
+<span id="cb13-5"><a></a>        <span class="va">self</span>.characters <span class="op">=</span> characters</span>
+<span id="cb13-6"><a></a></span>
+<span id="cb13-7"><a></a><span class="kw">class</span> NonfictionBook(Book):</span>
+<span id="cb13-8"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, topic):</span>
+<span id="cb13-9"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
+<span id="cb13-10"><a></a>        <span class="va">self</span>.topic <span class="op">=</span> topic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="use-fiction-separate-classes" class="cell" data-execution_count="11">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2"></a>ulysses <span class="op">=</span> FictionBook(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, [<span class="st">"Daedalus"</span>])</span>
-<span id="cb14-3"><a href="#cb14-3"></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
-<span id="cb14-4"><a href="#cb14-4"></a>micromotives <span class="op">=</span> NonfictionBook(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, <span class="st">"Economics"</span>)</span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="bu">print</span>(ulysses)</span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
+<span id="cb14-2"><a></a>ulysses <span class="op">=</span> FictionBook(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, [<span class="st">"Daedalus"</span>])</span>
+<span id="cb14-3"><a></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
+<span id="cb14-4"><a></a>micromotives <span class="op">=</span> NonfictionBook(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, <span class="st">"Economics"</span>)</span>
+<span id="cb14-5"><a></a><span class="bu">print</span>(ulysses)</span>
+<span id="cb14-6"><a></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Book[title=Ulysses, authors=[Person[Joyce, James]], pages=732]
@@ -1284,7 +1341,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-cormen_introduction_2001" class="csl-entry" role="listitem">
 Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. <em>Introduction <span>To Algorithms</span></em>. <span>MIT Press</span>.
 </div>
@@ -1293,7 +1350,7 @@ Savage, John E. 1998. <em>Models of <span>Computation</span>: <span>Exploring</s
 </div>
 </div>
 </section>
-<section id="appendix-the-full-master-theorem" class="slide level2 smaller crunch-title crunch-ol">
+<section id="appendix-the-full-master-theorem" class="slide level2 smaller crunch-title crunch-ol scrollable">
 <h2>Appendix: The Full Master Theorem</h2>
 <p><strong>Master Theorem</strong>: Let <span class="math inline">\(a &gt; 0\)</span> and <span class="math inline">\(b &gt; 1\)</span> be constants, and let <span class="math inline">\(f(n)\)</span> be a driving function defined and nonnegative on all sufficiently large reals. Define <span class="math inline">\(T(n)\)</span> on <span class="math inline">\(n \in \mathbb{N}\)</span> by</p>
 <p><span class="math display">\[
@@ -1310,8 +1367,10 @@ T(n) = aT(n/b) + f(n)
 </div>
 <p><em>(<a href="#/bounding-the-runtime-of-merge-sort">← Back to Merge Sort slides</a>)</em></p>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>DSAN 5500 Week 2: Software Design Patterns and OOP</p>
+</div>
 </div>
 </section></section>
 
@@ -1342,7 +1401,6 @@ T(n) = aT(n/b) + f(n)
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1604,10 +1662,9 @@ T(n) = aT(n/b) + f(n)
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1617,8 +1674,17 @@ T(n) = aT(n/b) + f(n)
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
