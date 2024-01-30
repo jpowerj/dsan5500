@@ -557,9 +557,9 @@ M_2 + M_4 &amp; M_1 - M_2 + M_3 + M_6
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td><span class="bold-code"><code>for</code></span><code> i = 2 </code><span class="bold-code"><code>to</code></span><code> n:</code></td>
+<td><span class="bold-code"><code>for</code></span><code> i = 1 </code><span class="bold-code"><code>to</code></span><code> n-1:</code></td>
 <td><span class="math inline">\(c_1\)</span></td>
-<td><span class="math inline">\(n\)</span></td>
+<td><span class="math inline">\(\widetilde{n}\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
@@ -569,7 +569,7 @@ M_2 + M_4 &amp; M_1 - M_2 + M_3 + M_6
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
-<td><code style="color: #699754 !important;">&nbsp;&nbsp;# Insert A[i] into sorted subarray A[1:i-1]</code></td>
+<td><code style="color: #699754 !important;">&nbsp;&nbsp;# Insert A[i] into sorted subarray A[0:i-1]</code></td>
 <td><span class="math inline">\(0\)</span></td>
 <td><span class="math inline">\(\widetilde{n}\)</span></td>
 </tr>
@@ -581,7 +581,7 @@ M_2 + M_4 &amp; M_1 - M_2 + M_3 + M_6
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
-<td><code>&nbsp;&nbsp;</code><span class="bold-code"><code>while</code></span><code> j &gt; 0 </code><span class="bold-code"><code>and</code></span><code> A[j] &gt; key:</code></td>
+<td><code>&nbsp;&nbsp;</code><span class="bold-code"><code>while</code></span><code> j &gt;= 0 </code><span class="bold-code"><code>and</code></span><code> A[j] &gt; key:</code></td>
 <td><span class="math inline">\(c_5\)</span></td>
 <td><span class="math inline">\(\sum_{i=2}^n t_i\)</span></td>
 </tr>
@@ -606,7 +606,7 @@ M_2 + M_4 &amp; M_1 - M_2 + M_3 + M_6
 </tbody>
 </table>
 <p><span class="math display">\[
-T(n) = c_1n + c_2\widetilde{n} + c_4\widetilde{n} + c_5\sum_{i=2}^nt_i + c_6\sum_{i=2}^n(t_i - 1) + c_7\sum_{i=2}^n(t_i-1) + c_8\widetilde{n}
+T(n) = c_1\widetilde{n} + c_2\widetilde{n} + c_4\widetilde{n} + c_5\sum_{i=2}^nt_i + c_6\sum_{i=2}^n(t_i - 1) + c_7\sum_{i=2}^n(t_i-1) + c_8\widetilde{n}
 \]</span></p>
 </section>
 <section id="simplifying" class="level2 smaller crunch-title crunch-ul crunch-math math-95">
@@ -655,7 +655,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </section>
 <section id="the-figure-you-should-make-in-your-brain-every-time" class="level2 smaller crunch-title title-10 crunch-quarto-figure">
 <h2 class="smaller crunch-title title-10 crunch-quarto-figure anchored" data-anchor-id="the-figure-you-should-make-in-your-brain-every-time">The Figure You Should Make In Your Brain Every Time</h2>
-<div id="5f8df7d9" class="cell" data-execution_count="1">
+<div id="bdd8bb96" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -712,7 +712,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <ul>
 <li>(Though this is harder to see, without a log-log plot:)</li>
 </ul>
-<div id="fd35df05" class="cell" data-execution_count="2">
+<div id="f4cbf2a7" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>

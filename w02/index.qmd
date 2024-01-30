@@ -207,9 +207,9 @@ $$
 <tbody>
 <tr>
     <td align="right">1</td>
-    <td><code><span class='bold-code'>for</span> i = 2 <span class='bold-code'>to</span> n:</code></td>
+    <td><code><span class='bold-code'>for</span> i = 1 <span class='bold-code'>to</span> n-1:</code></td>
     <td><span data-qmd="$c_1$"></span></td>
-    <td><span data-qmd="$n$"></span></td>
+    <td><span data-qmd="$\widetilde{n}$"></span></td>
 </tr>
 <tr>
     <td>2</td>
@@ -219,7 +219,7 @@ $$
 </tr>
 <tr>
     <td>3</td>
-    <td><code style="color: #699754 !important;">&nbsp;&nbsp;# Insert A[i] into sorted subarray A[1:i-1]</code></td>
+    <td><code style="color: #699754 !important;">&nbsp;&nbsp;# Insert A[i] into sorted subarray A[0:i-1]</code></td>
     <td><span data-qmd="$0$"></span></td>
     <td><span data-qmd="$\widetilde{n}$"></span></td>
 </tr>
@@ -231,7 +231,7 @@ $$
 </tr>
 <tr>
     <td>5</td>
-    <td><code>&nbsp;&nbsp;<span class='bold-code'>while</span> j > 0 <span class='bold-code'>and</span> A[j] > key:</code></td>
+    <td><code>&nbsp;&nbsp;<span class='bold-code'>while</span> j >= 0 <span class='bold-code'>and</span> A[j] > key:</code></td>
     <td><span data-qmd="$c_5$"></span></td>
     <td><span data-qmd="$\sum_{i=2}^n t_i$"></span></td>
 </tr>
@@ -258,7 +258,7 @@ $$
 ```
 
 $$
-T(n) = c_1n + c_2\widetilde{n} + c_4\widetilde{n} + c_5\sum_{i=2}^nt_i + c_6\sum_{i=2}^n(t_i - 1) + c_7\sum_{i=2}^n(t_i-1) + c_8\widetilde{n}
+T(n) = c_1\widetilde{n} + c_2\widetilde{n} + c_4\widetilde{n} + c_5\sum_{i=2}^nt_i + c_6\sum_{i=2}^n(t_i - 1) + c_7\sum_{i=2}^n(t_i-1) + c_8\widetilde{n}
 $$
 
 ## Simplifying {.smaller .crunch-title .crunch-ul .crunch-math .math-95}
