@@ -1,11 +1,11 @@
 ---
 title: "Assignment Point Distributions"
-subtitle: "DSAN 5500"
+subtitle: "DSAN 5500: Data Structures, Objects, and Algorithms in Python"
 ---
 
 Use the **tabs at the bottom of the spreadsheet** (e.g., click the label **HW1**) to view the point distributions for different assignments.
 
-The distributions are imported from a Google Sheet mainly for transparency: so that you can see exactly how totals are computed by summing the individual points allocated for each test!
+The distributions are imported from a Google Sheet mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!
 
 ```{=html}
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSlrqKdiNAgXyGgGdiZ8JgMFWmWPcEiuIbWEHz3GtqerrmjbO3yeAEZCc4k9HwONQZbD1JzAae_0GPK/pubhtml?widget=true&amp;headers=false" width="100%" height="400"></iframe>
