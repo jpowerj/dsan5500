@@ -159,7 +159,7 @@ The following is a rough map of what we will work through together throughout th
 <!-- Advanced Algorithms -->
 
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 4**: Advanced Algorithms"></span></td>
+    <td><span data-qmd="**Unit 3**: Advanced Algorithms"></span></td>
     <td>8</td>
     <td>Mar 11</td>
     <td>Graph Algorithms</td>
@@ -181,7 +181,7 @@ The following is a rough map of what we will work through together throughout th
     <td></td>
     <td></td>
     <td>Mar 27 (Wednesday), 11:59pm EST</td>
-    <td><span data-qmd="**HW4 (Advanced Algorithms) Due**"></span></td>
+    <td><span data-qmd="**HW3 (Advanced Algorithms) Due**"></span></td>
 </tr>
 <tr>
     <td></td>
@@ -190,7 +190,7 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="*No Class (Easter Break)*"></span></td>
 </tr>
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 5**: Parallel Computing"></span></td>
+    <td><span data-qmd="**Unit 4**: Parallel Computing"></span></td>
     <td>11</td>
     <td>Apr 8</td>
     <td>Parallel Computing and MapReduce</td>
@@ -205,13 +205,13 @@ The following is a rough map of what we will work through together throughout th
     <td></td>
     <td></td>
     <td>Apr 19 (Friday), 11:59pm EST</td>
-    <td><span data-qmd="**HW5 (Parallel Computing) Due**"></span></td>
+    <td><span data-qmd="**HW4 (Parallel Computing) Due**"></span></td>
 </tr>
 
 <!-- Advanced Topics and Applications -->
 
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 6**: Advanced Topics and Applications"></span></td>
+    <td><span data-qmd="**Unit 5**: Advanced Topics and Applications"></span></td>
     <td>13</td>
     <td>Apr 22</td>
     <td>Applications in Bioinformatics</td>
@@ -221,6 +221,12 @@ The following is a rough map of what we will work through together throughout th
     <td>14</td>
     <td>Apr 29</td>
     <td>Applications in NLP</td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td>May 3 (Friday), 11:59pm EST</td>
+    <td><span data-qmd="**Final Project Due**"></span></td>
 </tr>
 </tbody>
 </table>
