@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jeff Jacobs">
+<meta name="dcterms.date" content="2024-02-02">
 
-<title>DSAN 5500 – Week 4: Heaps, Stacks, Trees, Graphs</title>
+<title>DSAN 5500 – HW1 Point Distributions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,147 +74,37 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../w04/index.html">Week 4: Feb 5</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../">DSAN 5500: Data Structures, Objects, and Algorithms in Python</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><i class="bi bi-house pe-1"></i> Home</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Syllabus</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Resources</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../assignments/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assignments</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../recordings/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Recordings</span></a>
-  </div>
-</li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../w01/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1: Jan 10</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../w02/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2: Jan 22</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../w03/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3: Jan 29</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../w04/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Week 4: Feb 5</span></a>
-  </div>
-</li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item">
- <span class="menu-text"><a href="https://classroom.google.com/c/NjM5MzE2MTE4NTgx?cjc=r4pzugi" target="_blank">Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></a></span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text"><a href="https://chat.google.com/room/AAAAy61nvA8?cls=7" target="_blank">Google Spaces <i class="bi bi-box-arrow-up-right ps-1"></i></a></span>
-  </li>
-        <li class="sidebar-item">
- <span class="menu-text"><a href="https://georgetown.instructure.com/courses/183034" target="_blank">Canvas <i class="bi bi-box-arrow-up-right ps-1"></i></a></span>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 4: Heaps, Stacks, Trees, Graphs</h1>
-<p class="subtitle lead"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
+<h1 class="title">HW1 Point Distributions</h1>
+<p class="subtitle lead">DSAN 5500</p>
   <div class="quarto-categories">
-    <div class="quarto-category">Class Sessions</div>
+    <div class="quarto-category">Rubric</div>
   </div>
   </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Jeff Jacobs </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a>
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
+    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Wednesday, January 10, 2024</p>
+      <p class="date">February 2, 2024</p>
     </div>
   </div>
   
@@ -226,9 +116,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<center>
-<a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
-</center>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSlrqKdiNAgXyGgGdiZ8JgMFWmWPcEiuIbWEHz3GtqerrmjbO3yeAEZCc4k9HwONQZbD1JzAae_0GPK/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="600"></iframe>
 
 
 

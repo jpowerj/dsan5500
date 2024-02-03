@@ -29,5 +29,11 @@
   },
   "recordings/index.qmd": {
     "index.html": "ab1a5d07"
+  },
+  "assignments/hw1.qmd": {
+    "hw1.html": "7f8229d4"
+  },
+  "assignments/index.qmd": {
+    "index.html": "5895e706"
   }
 }

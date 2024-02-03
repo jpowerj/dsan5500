@@ -16,6 +16,8 @@ website:
         href: syllabus.qmd
       - text: "Resources"
         href: resources.qmd
+      - text: "Assignments"
+        href: "assignments/index.qmd"
       - text: "Recordings"
         href: recordings/index.qmd
       - "---"
