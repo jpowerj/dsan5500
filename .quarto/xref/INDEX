@@ -35,5 +35,17 @@
   },
   "assignments/index.qmd": {
     "index.html": "5895e706"
+  },
+  "assignments/hw1/index.qmd": {
+    "index.html": "fbb0f60b"
+  },
+  "assignments.qmd": {
+    "assignments.html": "da824826"
+  },
+  "assignments/hw1-rubric.qmd": {
+    "hw1-rubric.html": "e85bc8a4"
+  },
+  "assignments/hw1/hw1-rubric.qmd": {
+    "hw1-rubric.html": "90bcb76f"
   }
 }
