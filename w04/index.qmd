@@ -1,7 +1,7 @@
 ---
-title: "Week 4: Heaps, Stacks, Trees, Graphs"
+title: "Week 4: Heaps, Stacks, Hash Maps"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
-date: "Wednesday, January 10, 2024"
+date: "Monday, February 5, 2024"
 date-format: full
 author: "Jeff Jacobs"
 institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
@@ -12,7 +12,7 @@ format:
   revealjs:
     df-print: kable
     output-file: "slides.html"
-    footer: "DSAN 5500 Week 4: Heaps, Stacks, Trees, Graphs"
+    footer: "DSAN 5500 Week 4: Heaps, Stacks, Hash Maps"
     echo: true
     code-fold: show
     scrollable: true

@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5500 - Week 4: Heaps, Stacks, Trees, Graphs</title>
+  <title>DSAN 5500 - Week 4: Heaps, Stacks, Hash Maps</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -417,7 +417,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 4: Heaps, Stacks, Trees, Graphs</h1>
+  <h1 class="title">Week 4: Heaps, Stacks, Hash Maps</h1>
   <p class="subtitle"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
 
 <div class="quarto-title-authors">
@@ -431,7 +431,7 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Wednesday, January 10, 2024</p>
+  <p class="date">Monday, February 5, 2024</p>
 </section>
 <section>
 <section id="hw1-postmortem" class="title-slide slide level1 center" data-stack-name="HW1 Postmortem">
@@ -485,7 +485,7 @@ Jeff Jacobs
 <h2>In Python</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="c898c68d" class="cell" data-execution_count="1">
+<div id="324c8353" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span>
@@ -501,7 +501,7 @@ Jeff Jacobs
 <ul>
 <li>So far so good…</li>
 </ul>
-<div id="ff65c1ca" class="cell" data-execution_count="2">
+<div id="c178e35a" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="bu">print</span>(x<span class="op">+</span><span class="dv">1</span>)</span>
@@ -561,7 +561,7 @@ Jeff Jacobs
 <ol type="1">
 <li><code>str</code>s are just lists of <strong>characters</strong>…</li>
 </ol>
-<div id="ce438751" class="cell" data-execution_count="3">
+<div id="8aa95b35" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>x <span class="op">=</span> <span class="st">"Ceci n'est pas une string"</span></span>
@@ -577,7 +577,7 @@ Jeff Jacobs
 </div>
 </div><div class="column" style="width:50%;">
 <p><span class="math inline">\(\leadsto\)</span> 2. <strong>Characters</strong> are stored in Python memory as <strong><code>int</code> values</strong> (ASCII encodings)…</p>
-<div id="c9a6f1d6" class="cell" data-execution_count="4">
+<div id="1c41c90a" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>y <span class="op">=</span> <span class="st">b"Ceci n'est pas une string"</span></span>
@@ -594,7 +594,7 @@ Jeff Jacobs
 </div>
 </div>
 <p><span class="math inline">\(\leadsto\)</span> 3. Each <code>int</code> value is stored in <strong>computer memory</strong> as a <strong>byte</strong> (8 <strong>bits</strong> <span class="math inline">\(b_i \in \{0, 1\}\)</span>):</p>
-<div id="540f6fa3" class="cell" data-execution_count="5">
+<div id="f0f67e99" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="bu">print</span>([<span class="bu">format</span>(character, <span class="st">'b'</span>) <span class="cf">for</span> character <span class="kw">in</span> y])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -664,7 +664,7 @@ Jeff Jacobs
 </section>
 <section id="swim-club-with-data-science-hats" class="slide level2 smaller crunch-title">
 <h2>Swim Club with Data Science Hats</h2>
-<div id="7f8dc4b4" class="cell" data-execution_count="6">
+<div id="8ab62548" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -753,7 +753,7 @@ Jeff Jacobs
 <center>
 <strong>Short Events</strong>
 </center>
-<div id="34fdcce8" class="cell" data-execution_count="7">
+<div id="4a0761ab" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>short_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"50m"</span>].copy()</span>
@@ -824,7 +824,7 @@ Jeff Jacobs
 <center>
 <strong>Long Events</strong>
 </center>
-<div id="797440ce" class="cell" data-execution_count="8">
+<div id="c7145657" class="cell" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>long_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"100m"</span>].copy()</span>
@@ -1007,7 +1007,7 @@ Jeff Jacobs
 </section>
 <section id="our-list-of-item-price-pairs" class="slide level2 crunch-title crunch-details crunch-ul small-summary">
 <h2>Our List of (Item, Price) Pairs</h2>
-<div id="cfc9c3ef" class="cell" data-execution_count="9">
+<div id="4531080c" class="cell" data-execution_count="9">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>price_list <span class="op">=</span> []</span>
@@ -1116,7 +1116,7 @@ h(\texttt{x}) = \texttt{x[0]}
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>DSAN 5500 Week 4: Heaps, Stacks, Trees, Graphs</p>
+<p>DSAN 5500 Week 4: Heaps, Stacks, Hash Maps</p>
 </div>
 </div>
 </section></section>
