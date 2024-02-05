@@ -497,7 +497,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'lizard', 'bird', 'cat'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'lizard', 'cat', 'fish', 'dog', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'cat', 'lizard', 'fish', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'bird', 'cat', 'lizard', 'fish', 'dog'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -791,7 +791,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'bird', 'fish', 'cat', 'lizard'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'dog', 'cat', 'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}",
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'lizard', 'cat', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'lizard', 'cat', 'dog', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}",
     "crumbs": [
       "Week 3: Jan 29"
     ]
@@ -1125,6 +1125,448 @@
     "crumbs": [
       "Week 4: Feb 5"
     ]
+  },
+  {
+    "objectID": "w04/index.html#thank-you",
+    "href": "w04/index.html#thank-you",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "THANK YOU!!!",
+    "text": "THANK YOU!!!\n\nThank you all SO so much for your patience\nI know it doesn’t help present-day you to hear this, but\nFuture you will have less stress now that I have a big server log containing all of the issues with the grading server, which I’ll use to fix the server for HW2 onwards!",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#the-devil-is-in-the-details",
+    "href": "w04/index.html#the-devil-is-in-the-details",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "The Devil is in the Details",
+    "text": "The Devil is in the Details\n\n\n\nFrom PR Week, 19 Oct 2015",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#objects-vs.-their-string-representations",
+    "href": "w04/index.html#objects-vs.-their-string-representations",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Objects vs. Their (String) Representations",
+    "text": "Objects vs. Their (String) Representations\n\n\n\n\n\n\n\n\n\nFrom Vice News",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#in-art",
+    "href": "w04/index.html#in-art",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "In Art",
+    "text": "In Art\n\n\n\nRené Magritte, The Treachery of Images (1929)",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#in-python",
+    "href": "w04/index.html#in-python",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "In Python",
+    "text": "In Python\n\n\n\n\nCode\nx = 1 + 1\ny = str(x)\nprint(x)\nprint(y)\n\n\n2\n2\n\n\n\nSo far so good…\n\n\n\nCode\nprint(x+1)\nprint(y+1)\n\n\n3\n\n\nTypeError: can only concatenate str (not \"int\") to str\n\n\n\n\n…What Happened??\n\n\nThe value assigned to x is an int\n\nint \\(\\implies\\) thing you can do arithmetic addition with\n\nThe value assigned to y is a str\n\nstr \\(\\implies\\) thing you cannot do arithmetic addition with\n(Though we can overload the + operator to represent concatenation when applied to two str objects)",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#in-hw1",
+    "href": "w04/index.html#in-hw1",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "In HW1",
+    "text": "In HW1\n\n\n\n\n\n\n Objects vs. Their Representations\n\n\n\n\n\\[\n\\begin{align*}\n\\overbrace{\\boxed{\\texttt{int}\\text{ object}}}^{\\text{addition defined}} &\\neq \\overbrace{\\boxed{\\texttt{str}\\text{ representation of }\\texttt{int}\\text{ object}}}^{\\text{addition not defined}} \\\\\n\\underbrace{\\boxed{\\texttt{SwimStyle}\\text{ object}}}_{\\texttt{.name}\\text{ defined}} &\\neq \\underbrace{\\boxed{\\texttt{str}\\text{ representation of }\\texttt{SwimStyle}\\text{ object}}}_{\\texttt{.name}\\text{ not defined}}\n\\end{align*}\n\\]",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#other-possible-representations",
+    "href": "w04/index.html#other-possible-representations",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Other Possible Representations!",
+    "text": "Other Possible Representations!\n\n\n\nstrs are just lists of characters…\n\n\n\nCode\nx = \"Ceci n'est pas une string\"\nprint(x)\nprint(type(x))\nprint(list(x))\n\n\nCeci n'est pas une string\n&lt;class 'str'&gt;\n['C', 'e', 'c', 'i', ' ', 'n', \"'\", 'e', 's', 't', ' ', 'p', 'a', 's', ' ', 'u', 'n', 'e', ' ', 's', 't', 'r', 'i', 'n', 'g']\n\n\n\n\\(\\leadsto\\) 2. Characters are stored in Python memory as int values (ASCII encodings)…\n\n\nCode\ny = b\"Ceci n'est pas une string\"\nprint(y)\nprint(type(y))\nprint(list(y))\n\n\nb\"Ceci n'est pas une string\"\n&lt;class 'bytes'&gt;\n[67, 101, 99, 105, 32, 110, 39, 101, 115, 116, 32, 112, 97, 115, 32, 117, 110, 101, 32, 115, 116, 114, 105, 110, 103]\n\n\n\n\n\\(\\leadsto\\) 3. Each int value is stored in computer memory as a byte (8 bits \\(b_i \\in \\{0, 1\\}\\)):\n\n\nCode\nprint([format(character, 'b') for character in y])\n\n\n['1000011', '1100101', '1100011', '1101001', '100000', '1101110', '100111', '1100101', '1110011', '1110100', '100000', '1110000', '1100001', '1110011', '100000', '1110101', '1101110', '1100101', '100000', '1110011', '1110100', '1110010', '1101001', '1101110', '1100111']",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#so-what-is-the-right-representation",
+    "href": "w04/index.html#so-what-is-the-right-representation",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "So What is the “Right” Representation?",
+    "text": "So What is the “Right” Representation?\n\n\n\n\n\n\n\nNo single “best” choice!\nDifferent choices more/less helpful for different goals (think of datetime.datetime example)\nThat’s exactly why Python has two different “default” ways to generate representations: __str__() and __repr__()\nDifferent “pictures” of an object (from different angles) may reveal some properties while hiding others\nWhat is the “right” photo of this statue? →\n\n\n\n\n\n\nJames Hopkins, 123 (2014)",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#different-representations-different-information-about-the-object",
+    "href": "w04/index.html#different-representations-different-information-about-the-object",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Different Representations, Different Information About the Object",
+    "text": "Different Representations, Different Information About the Object",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#parallel-computing-preview",
+    "href": "w04/index.html#parallel-computing-preview",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Parallel Computing Preview",
+    "text": "Parallel Computing Preview\n\n\n\n\n\n\n\n\nFrom Cornell Virtual Workshop on Parallel Programming",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#why-is-this-a-big-deal",
+    "href": "w04/index.html#why-is-this-a-big-deal",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Why Is This A Big Deal?",
+    "text": "Why Is This A Big Deal?\n\nYou’ve been tasked with writing bank software\n\\(A\\) has $500, \\(B\\) has $500, \\(A\\) fills out form to send $300 to \\(B\\) but clicks “Submit” twice…\n\n\n\n\nFrom Baeldung on Computer Science, What is a Race Condition?",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#and-on-the-autograder-server",
+    "href": "w04/index.html#and-on-the-autograder-server",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "And on the Autograder Server…",
+    "text": "And on the Autograder Server…",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#swim-club-with-data-science-hats",
+    "href": "w04/index.html#swim-club-with-data-science-hats",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Swim Club with Data Science Hats",
+    "text": "Swim Club with Data Science Hats\n\n\nCode\nimport pandas as pd\nswim_df = pd.read_csv(\"assets/swimdata.csv\", index_col=0)\nswim_df.head()\n\n\n\n\n\n\n\n\n\nname\nage\ndistance\nstyle\ntime\n\n\n\n\n0\nAbi\n10\n50m\nBack\n41050\n\n\n1\nAbi\n10\n50m\nBack\n43058\n\n\n2\nAbi\n10\n50m\nBack\n42035\n\n\n3\nAbi\n10\n50m\nBack\n43035\n\n\n4\nAbi\n10\n50m\nBack\n39085",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#fastest-per-style",
+    "href": "w04/index.html#fastest-per-style",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Fastest Per Style",
+    "text": "Fastest Per Style\n\n\n\nShort Events\n\n\n\nCode\nshort_df = swim_df[swim_df['distance'] == \"50m\"].copy()\nshort_df.sort_values(['style', 'time'], ascending=True).groupby('style').head(1).drop(columns=\"age\")\n\n\n\n\n\n\n\n\n\nname\ndistance\nstyle\ntime\n\n\n\n\n101\nCalvin\n50m\nBack\n37085\n\n\n18\nAbi\n50m\nBreast\n45071\n\n\n111\nCalvin\n50m\nFly\n37018\n\n\n65\nAurora\n50m\nFree\n28086\n\n\n\n\n\n\n\n\n\nLong Events\n\n\n\nCode\nlong_df = swim_df[swim_df['distance'] == \"100m\"].copy()\nlong_df.sort_values(['style', 'time'], ascending=True).groupby('style').head(1).drop(columns=\"age\")\n\n\n\n\n\n\n\n\n\nname\ndistance\nstyle\ntime\n\n\n\n\n72\nBill\n100m\nBack\n65075\n\n\n276\nTasmin\n100m\nBreast\n80059\n\n\n241\nMike\n100m\nFly\n68038\n\n\n151\nDave\n100m\nFree\n58067\n\n\n\n\n\n\n\n\n\n\nThis works well for you, as a data scientist, manually analyzing the data via code cells\nWhat if the public is accessing your data hundreds of times per second (e.g., for a live-updating data dashboard)? Should we (1) filter, (2) sort, (3) group by style, (4) filter (choose top entry), (5) drop column every time data is accessed?\n(Every DSAN student can do this with Pandas… YOU will know how to do it with exponentially-greater efficiency, and mathematically prove it 😎)",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#linkedlist-foundation-for-most-data-structures",
+    "href": "w04/index.html#linkedlist-foundation-for-most-data-structures",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "LinkedList: Foundation for Most(?) Data Structures!",
+    "text": "LinkedList: Foundation for Most(?) Data Structures!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass LinkedList:\n  @property\n  def root(self):\n    return self.__root\n\nclass LinkedListNode:\n  @property content\n  @property next\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass BinaryTree:\n  @property\n  def root(self):\n    return self.__root\n\nclass BinaryTreeNode:\n  @property content\n  @property left\n  @property right\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass QuadTree:\n  @property\n  def root(self):\n    return self.__root\n\nclass QuadTreeNode:\n  @property content\n  @property nw\n  @property ne\n  @property sw\n  @property se",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#so-then-why-is-this-a-whole-dsan-class",
+    "href": "w04/index.html#so-then-why-is-this-a-whole-dsan-class",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "So Then… Why Is This a Whole DSAN Class?",
+    "text": "So Then… Why Is This a Whole DSAN Class?\n\nThe core structures are identical, but we can optimize different goals (efficient insertion, sorting, retrieval, deletion, …) by changing the invariants maintained by the algorithms internal to our structure\nCrucial Insertion-Sort invariant: \\(\\textsf{Sorted}(1,i)\\) true when we go to process entry \\(i + 1\\) (key)\nCrucial HW1 invariant: \\(\\textsf{Up-To-Date-Favorite}(1,i-1)\\) true when we go to process entry \\(i + 1\\) (next result in dataset)\n\\(\\implies\\) Efficiency of obtaining favorite style guaranteed to be constant-time, \\(O(1)\\)!\nOtherwise, would be \\(O(n) &gt; O(1)\\) (linear approach) or at best \\(O(\\log_2(n)) &gt; O(1)\\) (divide-and-conquer)",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#our-list-of-item-price-pairs",
+    "href": "w04/index.html#our-list-of-item-price-pairs",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Our List of (Item, Price) Pairs",
+    "text": "Our List of (Item, Price) Pairs\n\n\nCode\nprice_list = []\nprice_list.append(('Banana', 10))\nprice_list.append(('Apple', 2))\nprice_list.append(('Four Loko', 5))\nprice_list\n\n\n[('Banana', 10), ('Apple', 2), ('Four Loko', 5)]\n\n\n\nAs the list gets longer, it gets harder and harder to find where you wrote down a specific item and its price\nAs you now know, you could use linear search, \\(O(n)\\), or if you ensure alphabetical order (an invariant!), you could use binary, divide-and-conquer search, \\(O(\\log_2(n))\\)\nWe can do even better: \\(O(1)\\). First w/magic, but then math",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#strange-at-first-technique-for-algorithm-analysis-oracles",
+    "href": "w04/index.html#strange-at-first-technique-for-algorithm-analysis-oracles",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Strange-At-First Technique for Algorithm Analysis: Oracles",
+    "text": "Strange-At-First Technique for Algorithm Analysis: Oracles\n\nWhat if we had a magical wizard who could just tell us where to find an item we were looking for?\nSounds like I’m joking or saying “what if we had a billion $ and infinite rizz and we could fly and walk through walls”\nAnd yet, through the magic of math and computer science, there are concrete hashing algorithms which ensure (in a mathematically-provable way!) “almost certain” \\(O(1)\\) lookup time",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#mathematical-strategy-of-oracles",
+    "href": "w04/index.html#mathematical-strategy-of-oracles",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Mathematical Strategy of Oracles",
+    "text": "Mathematical Strategy of Oracles\n\nWe’ll use a concrete, simplified hash function to illustrate\nMathematically we’ll be able to get something like\n\n\\[\nT(n) = O(1 + \\underbrace{\\epsilon}_{\\mathclap{\\text{Collision rate}}} \\cdot n)\n\\]\n\nWhich tells us: if we had an oracle who could ensure near-0 collision rates, then \\(T(n) = O(1)\\).\nAnd, by a beautiful division-of-labor, other computer scientists figure out the near-0 collision rates part, giving us\n\n\\[\np^{✅} = [T(n) = O(1 + \\epsilon n)], q^{✅} = [\\epsilon \\approx 0],\\text{ so } p \\wedge q \\implies T(n) \\overset{✅}{=} O(1).\n\\]",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#back-to-the-price-list",
+    "href": "w04/index.html#back-to-the-price-list",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Back to the Price List",
+    "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, and then write down (item, price) pairs in whatever slot item hashes to",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#the-importance-of-differentiating-operations-insertion-vs.-lookup",
+    "href": "w04/index.html#the-importance-of-differentiating-operations-insertion-vs.-lookup",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "The Importance of Differentiating Operations: Insertion vs. Lookup",
+    "text": "The Importance of Differentiating Operations: Insertion vs. Lookup\n\nSo far, we have \\(O(1)\\) insertion via hashing\nWe also get \\(O(1)\\) lookup!\nWhen customer hands us an item (say, 'Banana'), we compute the hash (B), look in that slot, and obtain the price for bananas.\nWe also get \\(O(1)\\) updating (hash to find the old price, update it to have new price) and \\(O(1)\\) deletion (hash to find the slot containing the item, then erase it from that slot)",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#so-whats-the-catch",
+    "href": "w04/index.html#so-whats-the-catch",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "So What’s the Catch???",
+    "text": "So What’s the Catch???\n\nBLUEBERRIES show up to ruin our day (as usual 😞)\nWe hash, so far so good: h('Blueberries') = 'B'\nBut then we go to the B slot and see that (Bananas, 10) is already there!!! Wtf do we do here… don’t panic!\nThe answer? We open our HW1 from DSAN 5500 and remember that we have our lovely friend the LinkedList that we can use whenever and however we want!",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#arrays-vs.-linked-lists",
+    "href": "w04/index.html#arrays-vs.-linked-lists",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Arrays vs. Linked Lists",
+    "text": "Arrays vs. Linked Lists\n\nJeff is hiding something here… Why jump to LinkedList? Why not just… another length-26 array, for example?\nFor this we open up our Week 1 slides and remember the stack vs. heap distinction: we know how many letters in the alphabet, we don’t know how many items starting with B (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)\nTerminology for this kind of “hybrid” data structure: HashTable is an Array that “degenerates into” a LinkedList (when there are collisions)",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#look-how-far-we-came",
+    "href": "w04/index.html#look-how-far-we-came",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Look How Far We Came!",
+    "text": "Look How Far We Came!\n\nBeginning of class: Only structure we knew allowing insertion (LinkedList) was \\(O(n)\\) for everythihg\nEnd of class: New structure where suddenly everything is \\(O(1)\\), except in “unlucky” cases, in which it partially “degenerates” into a LinkedList\n\\(\\implies\\) The “inevitable” \\(O(n)\\) runtime has transformed into the unlucky worst-case upper bound\n\\(\\implies\\) By taking core data structures/algorithms from your toolkit, you can “piece together” hybrid structures whose whole (runtime) is better than the sum of its parts",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#taking-this-idea-and-running-with-it",
+    "href": "w04/index.html#taking-this-idea-and-running-with-it",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Taking This Idea and Running With It",
+    "text": "Taking This Idea and Running With It\n\nNext week we’ll look at BinarySearchTree (BST)\nSince it’s just a glorified LinkedList, we’ll be able to take our HashMap from today and “drop in” the BST to play the role the LinkedList is playing right now\ni.e., when there’s a collision, we’ll create a BST with its \\(O(\\log(n))\\) operations, rather than a LinkedList with its \\(O(n)\\) operations\n\\(\\implies\\) HashMap will go from [\\(O(1)\\) best-case / \\(O(n)\\) worst-case] to [\\(O(1)\\) best-case / \\(O(\\log_2(n))\\) worst-case]! Stay tuned…",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#references",
+    "href": "w04/index.html#references",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "References",
+    "text": "References",
+    "crumbs": [
+      "Week 4: Feb 5"
+    ]
+  },
+  {
+    "objectID": "w04/slides.html#thank-you",
+    "href": "w04/slides.html#thank-you",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "THANK YOU!!!",
+    "text": "THANK YOU!!!\n\nThank you all SO so much for your patience\nI know it doesn’t help present-day you to hear this, but\nFuture you will have less stress now that I have a big server log containing all of the issues with the grading server, which I’ll use to fix the server for HW2 onwards!"
+  },
+  {
+    "objectID": "w04/slides.html#the-devil-is-in-the-details",
+    "href": "w04/slides.html#the-devil-is-in-the-details",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "The Devil is in the Details",
+    "text": "The Devil is in the Details\n\nFrom PR Week, 19 Oct 2015"
+  },
+  {
+    "objectID": "w04/slides.html#objects-vs.-their-string-representations",
+    "href": "w04/slides.html#objects-vs.-their-string-representations",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Objects vs. Their (String) Representations",
+    "text": "Objects vs. Their (String) Representations\n\n\n\n\n\n\nFrom Vice News"
+  },
+  {
+    "objectID": "w04/slides.html#in-art",
+    "href": "w04/slides.html#in-art",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "In Art",
+    "text": "In Art\n\nRené Magritte, The Treachery of Images (1929)"
+  },
+  {
+    "objectID": "w04/slides.html#in-python",
+    "href": "w04/slides.html#in-python",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "In Python",
+    "text": "In Python\n\n\n\n\nCode\nx = 1 + 1\ny = str(x)\nprint(x)\nprint(y)\n\n\n2\n2\n\n\n\nSo far so good…\n\n\n\nCode\nprint(x+1)\nprint(y+1)\n\n\n3\n\n\nTypeError: can only concatenate str (not \"int\") to str\n\n\n\n\n…What Happened??\n\n\nThe value assigned to x is an int\n\nint \\(\\implies\\) thing you can do arithmetic addition with\n\nThe value assigned to y is a str\n\nstr \\(\\implies\\) thing you cannot do arithmetic addition with\n(Though we can overload the + operator to represent concatenation when applied to two str objects)"
+  },
+  {
+    "objectID": "w04/slides.html#in-hw1",
+    "href": "w04/slides.html#in-hw1",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "In HW1",
+    "text": "In HW1\n\n\n\n\n Objects vs. Their Representations\n\n\n\n\\[\n\\begin{align*}\n\\overbrace{\\boxed{\\texttt{int}\\text{ object}}}^{\\text{addition defined}} &\\neq \\overbrace{\\boxed{\\texttt{str}\\text{ representation of }\\texttt{int}\\text{ object}}}^{\\text{addition not defined}} \\\\\n\\underbrace{\\boxed{\\texttt{SwimStyle}\\text{ object}}}_{\\texttt{.name}\\text{ defined}} &\\neq \\underbrace{\\boxed{\\texttt{str}\\text{ representation of }\\texttt{SwimStyle}\\text{ object}}}_{\\texttt{.name}\\text{ not defined}}\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w04/slides.html#other-possible-representations",
+    "href": "w04/slides.html#other-possible-representations",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Other Possible Representations!",
+    "text": "Other Possible Representations!\n\n\n\nstrs are just lists of characters…\n\n\n\nCode\nx = \"Ceci n'est pas une string\"\nprint(x)\nprint(type(x))\nprint(list(x))\n\n\nCeci n'est pas une string\n&lt;class 'str'&gt;\n['C', 'e', 'c', 'i', ' ', 'n', \"'\", 'e', 's', 't', ' ', 'p', 'a', 's', ' ', 'u', 'n', 'e', ' ', 's', 't', 'r', 'i', 'n', 'g']\n\n\n\n\\(\\leadsto\\) 2. Characters are stored in Python memory as int values (ASCII encodings)…\n\n\nCode\ny = b\"Ceci n'est pas une string\"\nprint(y)\nprint(type(y))\nprint(list(y))\n\n\nb\"Ceci n'est pas une string\"\n&lt;class 'bytes'&gt;\n[67, 101, 99, 105, 32, 110, 39, 101, 115, 116, 32, 112, 97, 115, 32, 117, 110, 101, 32, 115, 116, 114, 105, 110, 103]\n\n\n\n\n\\(\\leadsto\\) 3. Each int value is stored in computer memory as a byte (8 bits \\(b_i \\in \\{0, 1\\}\\)):\n\n\nCode\nprint([format(character, 'b') for character in y])\n\n\n['1000011', '1100101', '1100011', '1101001', '100000', '1101110', '100111', '1100101', '1110011', '1110100', '100000', '1110000', '1100001', '1110011', '100000', '1110101', '1101110', '1100101', '100000', '1110011', '1110100', '1110010', '1101001', '1101110', '1100111']"
+  },
+  {
+    "objectID": "w04/slides.html#so-what-is-the-right-representation",
+    "href": "w04/slides.html#so-what-is-the-right-representation",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "So What is the “Right” Representation?",
+    "text": "So What is the “Right” Representation?\n\n\n\n\nNo single “best” choice!\nDifferent choices more/less helpful for different goals (think of datetime.datetime example)\nThat’s exactly why Python has two different “default” ways to generate representations: __str__() and __repr__()\nDifferent “pictures” of an object (from different angles) may reveal some properties while hiding others\nWhat is the “right” photo of this statue? →\n\n\n\n\n\n\nJames Hopkins, 123 (2014)"
+  },
+  {
+    "objectID": "w04/slides.html#different-representations-different-information-about-the-object",
+    "href": "w04/slides.html#different-representations-different-information-about-the-object",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Different Representations, Different Information About the Object",
+    "text": "Different Representations, Different Information About the Object"
+  },
+  {
+    "objectID": "w04/slides.html#parallel-computing-preview",
+    "href": "w04/slides.html#parallel-computing-preview",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Parallel Computing Preview",
+    "text": "Parallel Computing Preview\n\n\n\n\n\n\n\n\nFrom Cornell Virtual Workshop on Parallel Programming"
+  },
+  {
+    "objectID": "w04/slides.html#why-is-this-a-big-deal",
+    "href": "w04/slides.html#why-is-this-a-big-deal",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Why Is This A Big Deal?",
+    "text": "Why Is This A Big Deal?\n\nYou’ve been tasked with writing bank software\n\\(A\\) has $500, \\(B\\) has $500, \\(A\\) fills out form to send $300 to \\(B\\) but clicks “Submit” twice…\n\n\nFrom Baeldung on Computer Science, What is a Race Condition?"
+  },
+  {
+    "objectID": "w04/slides.html#and-on-the-autograder-server",
+    "href": "w04/slides.html#and-on-the-autograder-server",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "And on the Autograder Server…",
+    "text": "And on the Autograder Server…"
+  },
+  {
+    "objectID": "w04/slides.html#swim-club-with-data-science-hats",
+    "href": "w04/slides.html#swim-club-with-data-science-hats",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Swim Club with Data Science Hats",
+    "text": "Swim Club with Data Science Hats\n\n\nCode\nimport pandas as pd\nswim_df = pd.read_csv(\"assets/swimdata.csv\", index_col=0)\nswim_df.head()\n\n\n\n\n\n\n\n\n\nname\nage\ndistance\nstyle\ntime\n\n\n\n\n0\nAbi\n10\n50m\nBack\n41050\n\n\n1\nAbi\n10\n50m\nBack\n43058\n\n\n2\nAbi\n10\n50m\nBack\n42035\n\n\n3\nAbi\n10\n50m\nBack\n43035\n\n\n4\nAbi\n10\n50m\nBack\n39085"
+  },
+  {
+    "objectID": "w04/slides.html#fastest-per-style",
+    "href": "w04/slides.html#fastest-per-style",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Fastest Per Style",
+    "text": "Fastest Per Style\n\n\n\nShort Events\n\n\n\nCode\nshort_df = swim_df[swim_df['distance'] == \"50m\"].copy()\nshort_df.sort_values(['style', 'time'], ascending=True).groupby('style').head(1).drop(columns=\"age\")\n\n\n\n\n\n\n\n\n\nname\ndistance\nstyle\ntime\n\n\n\n\n101\nCalvin\n50m\nBack\n37085\n\n\n18\nAbi\n50m\nBreast\n45071\n\n\n111\nCalvin\n50m\nFly\n37018\n\n\n65\nAurora\n50m\nFree\n28086\n\n\n\n\n\n\n\n\n\nLong Events\n\n\n\nCode\nlong_df = swim_df[swim_df['distance'] == \"100m\"].copy()\nlong_df.sort_values(['style', 'time'], ascending=True).groupby('style').head(1).drop(columns=\"age\")\n\n\n\n\n\n\n\n\n\nname\ndistance\nstyle\ntime\n\n\n\n\n72\nBill\n100m\nBack\n65075\n\n\n276\nTasmin\n100m\nBreast\n80059\n\n\n241\nMike\n100m\nFly\n68038\n\n\n151\nDave\n100m\nFree\n58067\n\n\n\n\n\n\n\n\n\n\nThis works well for you, as a data scientist, manually analyzing the data via code cells\nWhat if the public is accessing your data hundreds of times per second (e.g., for a live-updating data dashboard)? Should we (1) filter, (2) sort, (3) group by style, (4) filter (choose top entry), (5) drop column every time data is accessed?\n(Every DSAN student can do this with Pandas… YOU will know how to do it with exponentially-greater efficiency, and mathematically prove it 😎)"
+  },
+  {
+    "objectID": "w04/slides.html#linkedlist-foundation-for-most-data-structures",
+    "href": "w04/slides.html#linkedlist-foundation-for-most-data-structures",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "LinkedList: Foundation for Most(?) Data Structures!",
+    "text": "LinkedList: Foundation for Most(?) Data Structures!\n\n\n\n\n\n\n\n\n\n\n\n\nclass LinkedList:\n  @property\n  def root(self):\n    return self.__root\n\nclass LinkedListNode:\n  @property content\n  @property next\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass BinaryTree:\n  @property\n  def root(self):\n    return self.__root\n\nclass BinaryTreeNode:\n  @property content\n  @property left\n  @property right\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass QuadTree:\n  @property\n  def root(self):\n    return self.__root\n\nclass QuadTreeNode:\n  @property content\n  @property nw\n  @property ne\n  @property sw\n  @property se"
+  },
+  {
+    "objectID": "w04/slides.html#so-then-why-is-this-a-whole-dsan-class",
+    "href": "w04/slides.html#so-then-why-is-this-a-whole-dsan-class",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "So Then… Why Is This a Whole DSAN Class?",
+    "text": "So Then… Why Is This a Whole DSAN Class?\n\nThe core structures are identical, but we can optimize different goals (efficient insertion, sorting, retrieval, deletion, …) by changing the invariants maintained by the algorithms internal to our structure\nCrucial Insertion-Sort invariant: \\(\\textsf{Sorted}(1,i)\\) true when we go to process entry \\(i + 1\\) (key)\nCrucial HW1 invariant: \\(\\textsf{Up-To-Date-Favorite}(1,i-1)\\) true when we go to process entry \\(i + 1\\) (next result in dataset)\n\\(\\implies\\) Efficiency of obtaining favorite style guaranteed to be constant-time, \\(O(1)\\)!\nOtherwise, would be \\(O(n) &gt; O(1)\\) (linear approach) or at best \\(O(\\log_2(n)) &gt; O(1)\\) (divide-and-conquer)"
+  },
+  {
+    "objectID": "w04/slides.html#our-list-of-item-price-pairs",
+    "href": "w04/slides.html#our-list-of-item-price-pairs",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Our List of (Item, Price) Pairs",
+    "text": "Our List of (Item, Price) Pairs\n\n\nCode\nprice_list = []\nprice_list.append(('Banana', 10))\nprice_list.append(('Apple', 2))\nprice_list.append(('Four Loko', 5))\nprice_list\n\n\n[('Banana', 10), ('Apple', 2), ('Four Loko', 5)]\n\n\n\nAs the list gets longer, it gets harder and harder to find where you wrote down a specific item and its price\nAs you now know, you could use linear search, \\(O(n)\\), or if you ensure alphabetical order (an invariant!), you could use binary, divide-and-conquer search, \\(O(\\log_2(n))\\)\nWe can do even better: \\(O(1)\\). First w/magic, but then math"
+  },
+  {
+    "objectID": "w04/slides.html#strange-at-first-technique-for-algorithm-analysis-oracles",
+    "href": "w04/slides.html#strange-at-first-technique-for-algorithm-analysis-oracles",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Strange-At-First Technique for Algorithm Analysis: Oracles",
+    "text": "Strange-At-First Technique for Algorithm Analysis: Oracles\n\nWhat if we had a magical wizard who could just tell us where to find an item we were looking for?\nSounds like I’m joking or saying “what if we had a billion $ and infinite rizz and we could fly and walk through walls”\nAnd yet, through the magic of math and computer science, there are concrete hashing algorithms which ensure (in a mathematically-provable way!) “almost certain” \\(O(1)\\) lookup time"
+  },
+  {
+    "objectID": "w04/slides.html#mathematical-strategy-of-oracles",
+    "href": "w04/slides.html#mathematical-strategy-of-oracles",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Mathematical Strategy of Oracles",
+    "text": "Mathematical Strategy of Oracles\n\nWe’ll use a concrete, simplified hash function to illustrate\nMathematically we’ll be able to get something like\n\n\\[\nT(n) = O(1 + \\underbrace{\\epsilon}_{\\mathclap{\\text{Collision rate}}} \\cdot n)\n\\]\n\nWhich tells us: if we had an oracle who could ensure near-0 collision rates, then \\(T(n) = O(1)\\).\nAnd, by a beautiful division-of-labor, other computer scientists figure out the near-0 collision rates part, giving us\n\n\\[\np^{✅} = [T(n) = O(1 + \\epsilon n)], q^{✅} = [\\epsilon \\approx 0],\\text{ so } p \\wedge q \\implies T(n) \\overset{✅}{=} O(1).\n\\]"
+  },
+  {
+    "objectID": "w04/slides.html#back-to-the-price-list",
+    "href": "w04/slides.html#back-to-the-price-list",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Back to the Price List",
+    "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, and then write down (item, price) pairs in whatever slot item hashes to"
+  },
+  {
+    "objectID": "w04/slides.html#the-importance-of-differentiating-operations-insertion-vs.-lookup",
+    "href": "w04/slides.html#the-importance-of-differentiating-operations-insertion-vs.-lookup",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "The Importance of Differentiating Operations: Insertion vs. Lookup",
+    "text": "The Importance of Differentiating Operations: Insertion vs. Lookup\n\nSo far, we have \\(O(1)\\) insertion via hashing\nWe also get \\(O(1)\\) lookup!\nWhen customer hands us an item (say, 'Banana'), we compute the hash (B), look in that slot, and obtain the price for bananas.\nWe also get \\(O(1)\\) updating (hash to find the old price, update it to have new price) and \\(O(1)\\) deletion (hash to find the slot containing the item, then erase it from that slot)"
+  },
+  {
+    "objectID": "w04/slides.html#so-whats-the-catch",
+    "href": "w04/slides.html#so-whats-the-catch",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "So What’s the Catch???",
+    "text": "So What’s the Catch???\n\nBLUEBERRIES show up to ruin our day (as usual 😞)\nWe hash, so far so good: h('Blueberries') = 'B'\nBut then we go to the B slot and see that (Bananas, 10) is already there!!! Wtf do we do here… don’t panic!\nThe answer? We open our HW1 from DSAN 5500 and remember that we have our lovely friend the LinkedList that we can use whenever and however we want!"
+  },
+  {
+    "objectID": "w04/slides.html#arrays-vs.-linked-lists",
+    "href": "w04/slides.html#arrays-vs.-linked-lists",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Arrays vs. Linked Lists",
+    "text": "Arrays vs. Linked Lists\n\nJeff is hiding something here… Why jump to LinkedList? Why not just… another length-26 array, for example?\nFor this we open up our Week 1 slides and remember the stack vs. heap distinction: we know how many letters in the alphabet, we don’t know how many items starting with B (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)\nTerminology for this kind of “hybrid” data structure: HashTable is an Array that “degenerates into” a LinkedList (when there are collisions)"
+  },
+  {
+    "objectID": "w04/slides.html#look-how-far-we-came",
+    "href": "w04/slides.html#look-how-far-we-came",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Look How Far We Came!",
+    "text": "Look How Far We Came!\n\nBeginning of class: Only structure we knew allowing insertion (LinkedList) was \\(O(n)\\) for everythihg\nEnd of class: New structure where suddenly everything is \\(O(1)\\), except in “unlucky” cases, in which it partially “degenerates” into a LinkedList\n\\(\\implies\\) The “inevitable” \\(O(n)\\) runtime has transformed into the unlucky worst-case upper bound\n\\(\\implies\\) By taking core data structures/algorithms from your toolkit, you can “piece together” hybrid structures whose whole (runtime) is better than the sum of its parts"
+  },
+  {
+    "objectID": "w04/slides.html#taking-this-idea-and-running-with-it",
+    "href": "w04/slides.html#taking-this-idea-and-running-with-it",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "Taking This Idea and Running With It",
+    "text": "Taking This Idea and Running With It\n\nNext week we’ll look at BinarySearchTree (BST)\nSince it’s just a glorified LinkedList, we’ll be able to take our HashMap from today and “drop in” the BST to play the role the LinkedList is playing right now\ni.e., when there’s a collision, we’ll create a BST with its \\(O(\\log(n))\\) operations, rather than a LinkedList with its \\(O(n)\\) operations\n\\(\\implies\\) HashMap will go from [\\(O(1)\\) best-case / \\(O(n)\\) worst-case] to [\\(O(1)\\) best-case / \\(O(\\log_2(n))\\) worst-case]! Stay tuned…"
+  },
+  {
+    "objectID": "w04/slides.html#references",
+    "href": "w04/slides.html#references",
+    "title": "Week 4: Heaps, Stacks, Trees, Graphs",
+    "section": "References",
+    "text": "References\n\n\n\n\n\n\nDSAN 5500 Week 4: Heaps, Stacks, Trees, Graphs"
   },
   {
     "objectID": "w02/index.html",

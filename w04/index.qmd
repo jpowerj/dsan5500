@@ -17,6 +17,9 @@ format:
     code-fold: show
     scrollable: true
     slide-number: true
+    html-math-method: mathjax
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'>"
     theme: ["../_jjslides.scss"]
     simplemenu:
       flat: true
@@ -30,6 +33,7 @@ format:
     output-file: "index.html"
     echo: true
     code-fold: show
+    html-math-method: mathjax
 ---
 
 ::: {.content-visible unless-format="revealjs"}
@@ -38,4 +42,409 @@ format:
 <a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
 </center>
 
+:::
+
+# HW1 Postmortem {data-stack-name="HW1 Postmortem"}
+
+## THANK YOU!!!
+
+* Thank you all SO so much for your patience
+* I know it doesn't help **present-day you** to hear this, but
+* **Future you** will have less stress now that I have a big server log containing all of the issues with the grading server, which I'll use to **fix the server** for HW2 onwards!
+
+## The Devil is in the Details
+
+![From <a href='https://www.prweek.com/article/1368808/pr-ethics-asia-patchwork-values' target='_blank'>*PR Week*</a>, 19 Oct 2015](images/devil_details.png){fig-align="center"}
+
+## *Objects* vs. Their *(String) Representations* {.smaller .crunch-title .title-11 .crunch-quarto-layout-panel .crunch-images}
+
+::: {layout="[1,1]" layout-valign="center" layout-align="center"}
+
+::: {#xbox-left}
+
+![From <a href='https://www.vice.com/en/article/4w7vab/XBOX-One-From-Ebay-Turned-Out-to-be-a-Shitty-Photo-of-an-XBOX-One' target='_blank'>*Vice* News</a>](images/xbox.jpeg){fig-align="center"}
+
+:::
+::: {#xbox-right}
+
+![](images/xbox_photo.jpeg){fig-align="center" width="350"}
+
+![](images/xbox_result.jpg){fig-align="center" width="350"}
+
+:::
+:::
+
+## In Art
+
+![René Magritte, <a href='https://en.wikipedia.org/wiki/The_Treachery_of_Images' target='_blank'>*The Treachery of Images*</a> (1929)](images/magritte.jpg){fig-align="center"}
+
+## In Python {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{python}
+#| error: true
+x = 1 + 1
+y = str(x)
+print(x)
+print(y)
+```
+
+* So far so good...
+
+```{python}
+#| error: true
+print(x+1)
+print(y+1)
+```
+
+:::
+::: {.column width="50%"}
+
+<center>
+**...What Happened??**
+</center>
+
+* The value assigned to `x` is an `int`
+  * `int` $\implies$ thing you can **do arithmetic addition with**
+* The value assigned to `y` is a `str`
+  * `str` $\implies$ thing you **cannot** do arithmetic addition with
+  * (Though we can **overload** the `+` operator to represent **concatenation** when applied to **two `str` objects**)
+
+:::
+:::
+
+## In HW1 {.crunch-title}
+
+::: {.callout-note title="<i class='bi bi-exclamation-triangle-fill' style='font-size: 1.333rem;'></i> Objects vs. Their Representations" icon="false"}
+
+<center style='margin: 20px;'>
+
+$$
+\begin{align*}
+\overbrace{\boxed{\texttt{int}\text{ object}}}^{\text{addition defined}} &\neq \overbrace{\boxed{\texttt{str}\text{ representation of }\texttt{int}\text{ object}}}^{\text{addition not defined}} \\
+\underbrace{\boxed{\texttt{SwimStyle}\text{ object}}}_{\texttt{.name}\text{ defined}} &\neq \underbrace{\boxed{\texttt{str}\text{ representation of }\texttt{SwimStyle}\text{ object}}}_{\texttt{.name}\text{ not defined}}
+\end{align*}
+$$
+
+</center>
+
+:::
+
+## Other Possible Representations! {.smaller .crunch-title .crunch-ul .crunch-details}
+
+::: {.columns}
+::: {.column width="50%"}
+
+1. `str`s are just lists of **characters**...
+
+```{python}
+x = "Ceci n'est pas une string"
+print(x)
+print(type(x))
+print(list(x))
+```
+
+:::
+::: {.column width="50%"}
+
+$\leadsto$ 2. **Characters** are stored in Python memory as **`int` values** (ASCII encodings)...
+
+```{python}
+y = b"Ceci n'est pas une string"
+print(y)
+print(type(y))
+print(list(y))
+```
+
+:::
+:::
+
+$\leadsto$ 3. Each `int` value is stored in **computer memory** as a **byte** (8 **bits** $b_i \in \{0, 1\}$):
+
+```{python}
+print([format(character, 'b') for character in y])
+```
+
+## So What is the "Right" Representation? {.title-12 .smaller .crunch-title .crunch-quarto-layout-panel}
+
+::: {layout="[1,1]"}
+::: {#best-repr-left}
+
+* No single "best" choice!
+* Different choices more/less helpful for different goals (think of `datetime.datetime` example)
+* That's exactly **why** Python has **two different** "default" ways to generate representations: `__str__()` and `__repr__()`
+* Different "pictures" of an object (from different angles) may **reveal some properties** while **hiding others**
+* What is the "right" photo of this statue? &rarr;
+
+:::
+::: {#best-repr-right}
+
+![James Hopkins, <a href='https://blog.re-title.com/features/2014/06/james-hopkins-123.html' target='_blank'>*123*</a> (2014)](images/hopkins_123.jpg){fig-align="center" width="360"}
+
+:::
+:::
+
+## Different Representations, Different Information About the Object {.crunch-title}
+
+![](images/hopkins_123_angles.png){fig-align="center"}
+
+## Parallel Computing Preview {.smaller .crunch-title .crunch-figures .crunch-figcaption}
+
+![](images/shared_memory_updated.gif){fig-align="center" width="580"}
+
+![From <a href='https://cvw.cac.cornell.edu/parallel/memory-access/multithreading' target='_blank'>Cornell Virtual Workshop on Parallel Programming</a>](images/shared_memory_outcomes.gif){fig-align="center" width="580"}
+
+## Why Is This A Big Deal? {.smaller .crunch-title .crunch-ul}
+
+* You've been tasked with writing **bank software**
+* $A$ has $500, $B$ has $500, $A$ fills out form to send $300 to $B$ but **clicks "Submit" twice**...
+
+![From Baeldung on Computer Science, <a href='https://www.baeldung.com/cs/race-conditions' target='_blank'>*What is a Race Condition?*</a>](images/race_conditions.webp){fig-align="center"}
+
+## And on the Autograder Server... {.smaller}
+
+![](images/deadlock.webp){.nostretch fig-align="center" width="600"}
+
+## Swim Club with Data Science Hats {.smaller .crunch-title}
+
+```{python}
+import pandas as pd
+swim_df = pd.read_csv("assets/swimdata.csv", index_col=0)
+swim_df.head()
+```
+
+## Fastest Per Style {.smaller .crunch-title .crunch-ul .crunch-details .crunch-code .smaller-table}
+
+::: {.columns}
+::: {.column width="50%"}
+
+<center>
+**Short Events**
+</center>
+
+```{python}
+short_df = swim_df[swim_df['distance'] == "50m"].copy()
+short_df.sort_values(['style', 'time'], ascending=True).groupby('style').head(1).drop(columns="age")
+```
+
+:::
+::: {.column wiudth="50%"}
+
+<center>
+**Long Events**
+</center>
+
+```{python}
+long_df = swim_df[swim_df['distance'] == "100m"].copy()
+long_df.sort_values(['style', 'time'], ascending=True).groupby('style').head(1).drop(columns="age")
+```
+
+:::
+:::
+
+* This works well for **you**, as a data scientist, **manually analyzing** the data via code cells
+* What if **the public** is accessing your data **hundreds of times per second** (e.g., for a <a href='https://www.espn.com/olympics/summer/2024/medals' target='_blank'>**live-updating data dashboard**</a>)? Should we (1) filter, (2) sort, (3) group by style, (4) filter (choose top entry), (5) drop column **every time data is accessed?**
+* (*Every* DSAN student can do this with Pandas... **YOU** will know how to do it with exponentially-greater efficiency, and **mathematically prove it** 😎)
+
+# Onwards and Upwards: Fancier Algorithms {data-stack-name="Even Fancier Linked Lists"}
+
+## LinkedList: Foundation for Most(?) Data Structures! {.smaller .crunch-title .title-10 .crunch-quarto-layout-panel .crunch-images .crunch-figures}
+
+::: {layout="[1,3]" layout-valign="center"}
+
+![](images/bored_pooh.jpeg){fig-align="left" width="210"}
+
+::: {#bored-pooh}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```python
+class LinkedList:
+  @property
+  def root(self):
+    return self.__root
+```
+
+:::
+::: {.column width="50%"}
+
+```python
+class LinkedListNode:
+  @property content
+  @property next
+```
+
+:::
+:::
+
+:::
+:::
+
+::: {layout="[1,3]" layout-valign="center"}
+
+![](images/fancy_pooh_single.jpeg){fig-align="left" width="210"}
+
+::: {#fancy-pooh}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```python
+class BinaryTree:
+  @property
+  def root(self):
+    return self.__root
+```
+
+:::
+::: {.column width="50%"}
+
+```python
+class BinaryTreeNode:
+  @property content
+  @property left
+  @property right
+```
+
+:::
+:::
+
+:::
+:::
+
+::: {layout="[1,3]" layout-valign="center"}
+
+![](images/fanciest_pooh.jpeg){fig-align="left" width="210"}
+
+::: {#fanciest-pooh}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```python
+class QuadTree:
+  @property
+  def root(self):
+    return self.__root
+```
+
+:::
+::: {.column width="50%"}
+
+```python
+class QuadTreeNode:
+  @property content
+  @property nw
+  @property ne
+  @property sw
+  @property se
+```
+
+:::
+:::
+
+:::
+:::
+
+## So Then... Why Is This a Whole DSAN Class? {.smaller .crunch-title .title-12}
+
+* The **core structures** are identical, but we can optimize **different goals** (efficient insertion, sorting, retrieval, deletion, ...) by changing the **invariants** maintained by the algorithms **internal to** our structure
+* Crucial [Insertion-Sort]{.alg} invariant: $\textsf{Sorted}(1,i)$ true when we go to process entry $i + 1$ (`key`)
+* Crucial HW1 invariant: $\textsf{Up-To-Date-Favorite}(1,i-1)$ true when we go to process entry $i + 1$ (next result in dataset)
+* $\implies$ Efficiency of obtaining favorite style **guaranteed to be constant-time**, $O(1)$!
+* Otherwise, would be $O(n) > O(1)$ (linear approach) or at best $O(\log_2(n)) > O(1)$ (divide-and-conquer)
+
+# Hash Tables {data-stack-name="Hash Tables"}
+
+* *(Spoiler alert, so you know I'm not lying to you: this is a **LinkedList** with some **additional structure!**)
+* You just got hired as a **cashier** (Safeway cashiering alum myself 🫡)
+* The scanner is broken (spoiler #2: the scanner uses a hash table), so you start writing down **items** along with their **prices**, one-by-one, as items come in...
+
+## Our List of (Item, Price) Pairs {.crunch-title .crunch-details .crunch-ul .small-summary}
+
+```{python}
+price_list = []
+price_list.append(('Banana', 10))
+price_list.append(('Apple', 2))
+price_list.append(('Four Loko', 5))
+price_list
+```
+
+* As the list gets longer, it gets harder and harder to **find where you wrote down a specific item and its price**
+* As you now know, you could use **linear search**, $O(n)$, or if you ensure alphabetical order (an **invariant!**), you could use **binary, divide-and-conquer search**, $O(\log_2(n))$
+* We can do **even better**: $O(1)$. First w/magic, but then math
+
+## Strange-At-First Technique for Algorithm Analysis: Oracles
+
+* What if we had a magical wizard who could just **tell us** where to find an item we were looking for?
+* Sounds like I'm joking or saying "what if we had a billion $ and infinite rizz and we could fly and walk through walls"
+* And yet, through the magic of math and computer science, there are concrete **hashing algorithms** which ensure (in a mathematically-provable way!) "almost certain" $O(1)$ lookup time
+
+## Mathematical Strategy of Oracles {.crunch-title .crunch-math .math-85 .crunch-ul}
+
+* We'll use a **concrete**, **simplified hash function** to illustrate
+* Mathematically we'll be able to get something like
+
+$$
+T(n) = O(1 + \underbrace{\epsilon}_{\mathclap{\text{Collision rate}}} \cdot n)
+$$
+
+* Which tells us: **if** we had an oracle who could ensure near-0 collision rates, **then** $T(n) = O(1)$.
+* And, by a beautiful division-of-labor, **other** computer scientists figure out the near-0 collision rates part, giving us
+
+$$
+p^{✅} = [T(n) = O(1 + \epsilon n)], q^{✅} = [\epsilon \approx 0],\text{ so } p \wedge q \implies T(n) \overset{✅}{=} O(1).
+$$
+
+## Back to the Price List {.crunch-title .crunch-math .crunch-ul}
+
+* Our hash function: **`hash(item)`** = **first letter of `item`**
+
+$$
+h(\texttt{x}) = \texttt{x[0]}
+$$
+
+* `h('Banana') = 'B'`, `h('Monkey') = 'M'`
+* With this function in hand, we can create a length-26 **array**, one slot for each letter in alphabet, and then **write down (item, price) pairs** in **whatever slot `item` hashes to**
+
+## The Importance of Differentiating Operations: *Insertion* vs. *Lookup*
+
+* So far, we have $O(1)$ **insertion** via hashing
+* We also get $O(1)$ **lookup!**
+* When customer hands us an item (say, `'Banana'`), we compute the hash (`B`), look in that slot, and obtain the price for bananas.
+* We also get $O(1)$ **updating** (hash to find the old price, update it to have new price) and $O(1)$ **deletion** (hash to find the slot containing the item, then erase it from that slot)
+
+## So What's the Catch???
+
+* **BLUEBERRIES** show up to ruin our day (as usual 😞)
+* We hash, so far so good: `h('Blueberries') = 'B'`
+* But then we go to the `B` slot and see that `(Bananas, 10)` is already there!!! Wtf do we do here... don't panic!
+* The answer? We open our HW1 from DSAN 5500 and remember that we have our lovely friend the `LinkedList` that we can use whenever and however we want!
+
+## Arrays vs. Linked Lists
+
+* Jeff is hiding something here... Why jump to `LinkedList`? Why not just... another length-26 array, for example?
+* For this we open up our Week 1 slides and remember the **stack** vs. **heap** distinction: we **know** how many letters in the alphabet, we **don't know** how many items starting with `B` (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)
+* Terminology for this kind of "hybrid" data structure: `HashTable` is an `Array` that **"degenerates into"** a `LinkedList` (when there are **collisions**)
+
+## Look How Far We Came!
+
+* Beginning of class: Only structure we knew allowing insertion (`LinkedList`) was $O(n)$ for everythihg
+* End of class: New structure where suddenly everything is $O(1)$, except in "unlucky" cases, in which it partially **"degenerates"** into a `LinkedList`
+* $\implies$ The "inevitable" $O(n)$ runtime has transformed into the unlucky worst-case **upper bound**
+* $\implies$ By taking **core** data structures/algorithms from your toolkit, you can "piece together" **hybrid structures** whose *whole (runtime) is better than the sum of its parts*
+
+## Taking This Idea and Running With It
+
+* Next week we'll look at `BinarySearchTree` (`BST`)
+* Since it's just a glorified `LinkedList`, we'll be able to take our `HashMap` from today and "drop in" the `BST` to play the role the `LinkedList` is playing right now
+* i.e., when there's a collision, we'll create a `BST` with its $O(\log(n))$ operations, rather than a `LinkedList` with its $O(n)$ operations
+* $\implies$ `HashMap` will go from [$O(1)$ best-case / $O(n)$ worst-case] to [$O(1)$ best-case / $O(\log_2(n))$ worst-case]! Stay tuned...
+
+## References
+
+::: {#refs}
 :::

@@ -37,6 +37,11 @@ $cbg-alpha: rgba(211, 211, 211, 0.333);
     font-weight: 800 !important;
 }
 
+.boxed {
+    border: 3px solid black !important;
+    padding: 4px !important;
+}
+
 .caption {
     text-align: center !important;
 }
@@ -191,6 +196,10 @@ figcaption {
 }
 
 // math smaller
+.math-85 mjx-container {
+    font-size: 85% !important;
+}
+
 .math-90 mjx-container {
     font-size: 90% !important;
 }
@@ -207,6 +216,14 @@ figcaption {
 .subsubtitle {
     font-size: 70% !important;
     line-height: 0.5em !important;
+}
+
+.small-summary summary {
+    font-size: 1.25rem !important;
+}
+
+.smaller-table table {
+    font-size: 1.5rem !important;
 }
 
 // title smaller

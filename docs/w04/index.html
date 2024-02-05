@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.4">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>DSAN 5500 – Week 4: Heaps, Stacks, Trees, Graphs</title>
+<title>DSAN 5500 - Week 4: Heaps, Stacks, Trees, Graphs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,10 +21,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -68,8 +121,40 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"><script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script><script src="../jjcustom.js"></script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -179,8 +264,48 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#hw1-postmortem" id="toc-hw1-postmortem" class="nav-link active" data-scroll-target="#hw1-postmortem">HW1 Postmortem</a>
+  <ul class="collapse">
+  <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">THANK YOU!!!</a></li>
+  <li><a href="#the-devil-is-in-the-details" id="toc-the-devil-is-in-the-details" class="nav-link" data-scroll-target="#the-devil-is-in-the-details">The Devil is in the Details</a></li>
+  <li><a href="#objects-vs.-their-string-representations" id="toc-objects-vs.-their-string-representations" class="nav-link" data-scroll-target="#objects-vs.-their-string-representations"><em>Objects</em> vs.&nbsp;Their <em>(String) Representations</em></a></li>
+  <li><a href="#in-art" id="toc-in-art" class="nav-link" data-scroll-target="#in-art">In Art</a></li>
+  <li><a href="#in-python" id="toc-in-python" class="nav-link" data-scroll-target="#in-python">In Python</a></li>
+  <li><a href="#in-hw1" id="toc-in-hw1" class="nav-link" data-scroll-target="#in-hw1">In HW1</a></li>
+  <li><a href="#other-possible-representations" id="toc-other-possible-representations" class="nav-link" data-scroll-target="#other-possible-representations">Other Possible Representations!</a></li>
+  <li><a href="#so-what-is-the-right-representation" id="toc-so-what-is-the-right-representation" class="nav-link" data-scroll-target="#so-what-is-the-right-representation">So What is the “Right” Representation?</a></li>
+  <li><a href="#different-representations-different-information-about-the-object" id="toc-different-representations-different-information-about-the-object" class="nav-link" data-scroll-target="#different-representations-different-information-about-the-object">Different Representations, Different Information About the Object</a></li>
+  <li><a href="#parallel-computing-preview" id="toc-parallel-computing-preview" class="nav-link" data-scroll-target="#parallel-computing-preview">Parallel Computing Preview</a></li>
+  <li><a href="#why-is-this-a-big-deal" id="toc-why-is-this-a-big-deal" class="nav-link" data-scroll-target="#why-is-this-a-big-deal">Why Is This A Big Deal?</a></li>
+  <li><a href="#and-on-the-autograder-server" id="toc-and-on-the-autograder-server" class="nav-link" data-scroll-target="#and-on-the-autograder-server">And on the Autograder Server…</a></li>
+  <li><a href="#swim-club-with-data-science-hats" id="toc-swim-club-with-data-science-hats" class="nav-link" data-scroll-target="#swim-club-with-data-science-hats">Swim Club with Data Science Hats</a></li>
+  <li><a href="#fastest-per-style" id="toc-fastest-per-style" class="nav-link" data-scroll-target="#fastest-per-style">Fastest Per Style</a></li>
+  </ul></li>
+  <li><a href="#onwards-and-upwards-fancier-algorithms" id="toc-onwards-and-upwards-fancier-algorithms" class="nav-link" data-scroll-target="#onwards-and-upwards-fancier-algorithms">Onwards and Upwards: Fancier Algorithms</a>
+  <ul class="collapse">
+  <li><a href="#linkedlist-foundation-for-most-data-structures" id="toc-linkedlist-foundation-for-most-data-structures" class="nav-link" data-scroll-target="#linkedlist-foundation-for-most-data-structures">LinkedList: Foundation for Most(?) Data Structures!</a></li>
+  <li><a href="#so-then-why-is-this-a-whole-dsan-class" id="toc-so-then-why-is-this-a-whole-dsan-class" class="nav-link" data-scroll-target="#so-then-why-is-this-a-whole-dsan-class">So Then… Why Is This a Whole DSAN Class?</a></li>
+  </ul></li>
+  <li><a href="#hash-tables" id="toc-hash-tables" class="nav-link" data-scroll-target="#hash-tables">Hash Tables</a>
+  <ul class="collapse">
+  <li><a href="#our-list-of-item-price-pairs" id="toc-our-list-of-item-price-pairs" class="nav-link" data-scroll-target="#our-list-of-item-price-pairs">Our List of (Item, Price) Pairs</a></li>
+  <li><a href="#strange-at-first-technique-for-algorithm-analysis-oracles" id="toc-strange-at-first-technique-for-algorithm-analysis-oracles" class="nav-link" data-scroll-target="#strange-at-first-technique-for-algorithm-analysis-oracles">Strange-At-First Technique for Algorithm Analysis: Oracles</a></li>
+  <li><a href="#mathematical-strategy-of-oracles" id="toc-mathematical-strategy-of-oracles" class="nav-link" data-scroll-target="#mathematical-strategy-of-oracles">Mathematical Strategy of Oracles</a></li>
+  <li><a href="#back-to-the-price-list" id="toc-back-to-the-price-list" class="nav-link" data-scroll-target="#back-to-the-price-list">Back to the Price List</a></li>
+  <li><a href="#the-importance-of-differentiating-operations-insertion-vs.-lookup" id="toc-the-importance-of-differentiating-operations-insertion-vs.-lookup" class="nav-link" data-scroll-target="#the-importance-of-differentiating-operations-insertion-vs.-lookup">The Importance of Differentiating Operations: <em>Insertion</em> vs.&nbsp;<em>Lookup</em></a></li>
+  <li><a href="#so-whats-the-catch" id="toc-so-whats-the-catch" class="nav-link" data-scroll-target="#so-whats-the-catch">So What’s the Catch???</a></li>
+  <li><a href="#arrays-vs.-linked-lists" id="toc-arrays-vs.-linked-lists" class="nav-link" data-scroll-target="#arrays-vs.-linked-lists">Arrays vs.&nbsp;Linked Lists</a></li>
+  <li><a href="#look-how-far-we-came" id="toc-look-how-far-we-came" class="nav-link" data-scroll-target="#look-how-far-we-came">Look How Far We Came!</a></li>
+  <li><a href="#taking-this-idea-and-running-with-it" id="toc-taking-this-idea-and-running-with-it" class="nav-link" data-scroll-target="#taking-this-idea-and-running-with-it">Taking This Idea and Running With It</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -229,8 +354,683 @@ ul.task-list li input[type="checkbox"] {
 <center>
 <a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
 </center>
+<section id="hw1-postmortem" class="level1" data-stack-name="HW1 Postmortem">
+<h1 data-stack-name="HW1 Postmortem">HW1 Postmortem</h1>
+<section id="thank-you" class="level2">
+<h2 class="anchored" data-anchor-id="thank-you">THANK YOU!!!</h2>
+<ul>
+<li>Thank you all SO so much for your patience</li>
+<li>I know it doesn’t help <strong>present-day you</strong> to hear this, but</li>
+<li><strong>Future you</strong> will have less stress now that I have a big server log containing all of the issues with the grading server, which I’ll use to <strong>fix the server</strong> for HW2 onwards!</li>
+</ul>
+</section>
+<section id="the-devil-is-in-the-details" class="level2">
+<h2 class="anchored" data-anchor-id="the-devil-is-in-the-details">The Devil is in the Details</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/devil_details.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>From <a href="https://www.prweek.com/article/1368808/pr-ethics-asia-patchwork-values" target="_blank"><em>PR Week</em></a>, 19 Oct 2015</figcaption>
+</figure>
+</div>
+</section>
+<section id="objects-vs.-their-string-representations" class="level2 smaller crunch-title title-11 crunch-quarto-layout-panel crunch-images">
+<h2 class="smaller crunch-title title-11 crunch-quarto-layout-panel crunch-images anchored" data-anchor-id="objects-vs.-their-string-representations"><em>Objects</em> vs.&nbsp;Their <em>(String) Representations</em></h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[1,1]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="xbox-left" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/xbox.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>From <a href="https://www.vice.com/en/article/4w7vab/XBOX-One-From-Ebay-Turned-Out-to-be-a-Shitty-Photo-of-an-XBOX-One" target="_blank"><em>Vice</em> News</a></figcaption>
+</figure>
+</div>
+</div>
+<div id="xbox-right" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/xbox_photo.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/xbox_result.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="in-art" class="level2">
+<h2 class="anchored" data-anchor-id="in-art">In Art</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/magritte.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>René Magritte, <a href="https://en.wikipedia.org/wiki/The_Treachery_of_Images" target="_blank"><em>The Treachery of Images</em></a> (1929)</figcaption>
+</figure>
+</div>
+</section>
+<section id="in-python" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="in-python">In Python</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="7736a457" class="cell" data-execution_count="1">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="bu">str</span>(x)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>2
+2</code></pre>
+</div>
+</div>
+<ul>
+<li>So far so good…</li>
+</ul>
+<div id="f234c069" class="cell" data-execution_count="2">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y<span class="op">+</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>3</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: can only concatenate str (not "int") to str</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<center>
+<strong>…What Happened??</strong>
+</center>
+<ul>
+<li>The value assigned to <code>x</code> is an <code>int</code>
+<ul>
+<li><code>int</code> <span class="math inline">\(\implies\)</span> thing you can <strong>do arithmetic addition with</strong></li>
+</ul></li>
+<li>The value assigned to <code>y</code> is a <code>str</code>
+<ul>
+<li><code>str</code> <span class="math inline">\(\implies\)</span> thing you <strong>cannot</strong> do arithmetic addition with</li>
+<li>(Though we can <strong>overload</strong> the <code>+</code> operator to represent <strong>concatenation</strong> when applied to <strong>two <code>str</code> objects</strong>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="in-hw1" class="level2 crunch-title">
+<h2 class="crunch-title anchored" data-anchor-id="in-hw1">In HW1</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="<i class='bi bi-exclamation-triangle-fill' style='font-size: 1.333rem;'></i> Objects vs. Their Representations">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<i class="bi bi-exclamation-triangle-fill" style="font-size: 1.333rem;"></i> Objects vs.&nbsp;Their Representations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<center style="margin: 20px;">
+<p><span class="math display">\[
+\begin{align*}
+\overbrace{\boxed{\texttt{int}\text{ object}}}^{\text{addition defined}} &amp;\neq \overbrace{\boxed{\texttt{str}\text{ representation of }\texttt{int}\text{ object}}}^{\text{addition not defined}} \\
+\underbrace{\boxed{\texttt{SwimStyle}\text{ object}}}_{\texttt{.name}\text{ defined}} &amp;\neq \underbrace{\boxed{\texttt{str}\text{ representation of }\texttt{SwimStyle}\text{ object}}}_{\texttt{.name}\text{ not defined}}
+\end{align*}
+\]</span></p>
+</center>
+</div>
+</div>
+</section>
+<section id="other-possible-representations" class="level2 smaller crunch-title crunch-ul crunch-details">
+<h2 class="smaller crunch-title crunch-ul crunch-details anchored" data-anchor-id="other-possible-representations">Other Possible Representations!</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol type="1">
+<li><code>str</code>s are just lists of <strong>characters</strong>…</li>
+</ol>
+<div id="aef2da1e" class="cell" data-execution_count="3">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Ceci n'est pas une string"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Ceci n'est pas une string
+&lt;class 'str'&gt;
+['C', 'e', 'c', 'i', ' ', 'n', "'", 'e', 's', 't', ' ', 'p', 'a', 's', ' ', 'u', 'n', 'e', ' ', 's', 't', 'r', 'i', 'n', 'g']</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\(\leadsto\)</span> 2. <strong>Characters</strong> are stored in Python memory as <strong><code>int</code> values</strong> (ASCII encodings)…</p>
+<div id="4673c261" class="cell" data-execution_count="4">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">b"Ceci n'est pas une string"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(y))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">list</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>b"Ceci n'est pas une string"
+&lt;class 'bytes'&gt;
+[67, 101, 99, 105, 32, 110, 39, 101, 115, 116, 32, 112, 97, 115, 32, 117, 110, 101, 32, 115, 116, 114, 105, 110, 103]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(\leadsto\)</span> 3. Each <code>int</code> value is stored in <strong>computer memory</strong> as a <strong>byte</strong> (8 <strong>bits</strong> <span class="math inline">\(b_i \in \{0, 1\}\)</span>):</p>
+<div id="965752e8" class="cell" data-execution_count="5">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="bu">format</span>(character, <span class="st">'b'</span>) <span class="cf">for</span> character <span class="kw">in</span> y])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>['1000011', '1100101', '1100011', '1101001', '100000', '1101110', '100111', '1100101', '1110011', '1110100', '100000', '1110000', '1100001', '1110011', '100000', '1110101', '1101110', '1100101', '100000', '1110011', '1110100', '1110010', '1101001', '1101110', '1100111']</code></pre>
+</div>
+</div>
+</section>
+<section id="so-what-is-the-right-representation" class="level2 title-12 smaller crunch-title crunch-quarto-layout-panel">
+<h2 class="title-12 smaller crunch-title crunch-quarto-layout-panel anchored" data-anchor-id="so-what-is-the-right-representation">So What is the “Right” Representation?</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1,1]">
+<div class="quarto-layout-row">
+<div id="best-repr-left" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<ul>
+<li>No single “best” choice!</li>
+<li>Different choices more/less helpful for different goals (think of <code>datetime.datetime</code> example)</li>
+<li>That’s exactly <strong>why</strong> Python has <strong>two different</strong> “default” ways to generate representations: <code>__str__()</code> and <code>__repr__()</code></li>
+<li>Different “pictures” of an object (from different angles) may <strong>reveal some properties</strong> while <strong>hiding others</strong></li>
+<li>What is the “right” photo of this statue? →</li>
+</ul>
+</div>
+<div id="best-repr-right" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/hopkins_123.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="360"></p>
+<figcaption>James Hopkins, <a href="https://blog.re-title.com/features/2014/06/james-hopkins-123.html" target="_blank"><em>123</em></a> (2014)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="different-representations-different-information-about-the-object" class="level2 crunch-title">
+<h2 class="crunch-title anchored" data-anchor-id="different-representations-different-information-about-the-object">Different Representations, Different Information About the Object</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/hopkins_123_angles.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="parallel-computing-preview" class="level2 smaller crunch-title crunch-figures crunch-figcaption">
+<h2 class="smaller crunch-title crunch-figures crunch-figcaption anchored" data-anchor-id="parallel-computing-preview">Parallel Computing Preview</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/shared_memory_updated.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" width="580"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/shared_memory_outcomes.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" width="580"></p>
+<figcaption>From <a href="https://cvw.cac.cornell.edu/parallel/memory-access/multithreading" target="_blank">Cornell Virtual Workshop on Parallel Programming</a></figcaption>
+</figure>
+</div>
+</section>
+<section id="why-is-this-a-big-deal" class="level2 smaller crunch-title crunch-ul">
+<h2 class="smaller crunch-title crunch-ul anchored" data-anchor-id="why-is-this-a-big-deal">Why Is This A Big Deal?</h2>
+<ul>
+<li>You’ve been tasked with writing <strong>bank software</strong></li>
+<li><span class="math inline">\(A\)</span> has $500, <span class="math inline">\(B\)</span> has $500, <span class="math inline">\(A\)</span> fills out form to send $300 to <span class="math inline">\(B\)</span> but <strong>clicks “Submit” twice</strong>…</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/race_conditions.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>From Baeldung on Computer Science, <a href="https://www.baeldung.com/cs/race-conditions" target="_blank"><em>What is a Race Condition?</em></a></figcaption>
+</figure>
+</div>
+</section>
+<section id="and-on-the-autograder-server" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="and-on-the-autograder-server">And on the Autograder Server…</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/deadlock.webp" class="nostretch img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
+</figure>
+</div>
+</section>
+<section id="swim-club-with-data-science-hats" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="swim-club-with-data-science-hats">Swim Club with Data Science Hats</h2>
+<div id="fe8867bc" class="cell" data-execution_count="6">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>swim_df <span class="op">=</span> pd.read_csv(<span class="st">"assets/swimdata.csv"</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>swim_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
 
 
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">distance</th>
+<th data-quarto-table-cell-role="th">style</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Abi</td>
+<td>10</td>
+<td>50m</td>
+<td>Back</td>
+<td>41050</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Abi</td>
+<td>10</td>
+<td>50m</td>
+<td>Back</td>
+<td>43058</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Abi</td>
+<td>10</td>
+<td>50m</td>
+<td>Back</td>
+<td>42035</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Abi</td>
+<td>10</td>
+<td>50m</td>
+<td>Back</td>
+<td>43035</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Abi</td>
+<td>10</td>
+<td>50m</td>
+<td>Back</td>
+<td>39085</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="fastest-per-style" class="level2 smaller crunch-title crunch-ul crunch-details crunch-code smaller-table">
+<h2 class="smaller crunch-title crunch-ul crunch-details crunch-code smaller-table anchored" data-anchor-id="fastest-per-style">Fastest Per Style</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<center>
+<strong>Short Events</strong>
+</center>
+<div id="896b6f6c" class="cell" data-execution_count="7">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>short_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"50m"</span>].copy()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>short_df.sort_values([<span class="st">'style'</span>, <span class="st">'time'</span>], ascending<span class="op">=</span><span class="va">True</span>).groupby(<span class="st">'style'</span>).head(<span class="dv">1</span>).drop(columns<span class="op">=</span><span class="st">"age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">distance</th>
+<th data-quarto-table-cell-role="th">style</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">101</td>
+<td>Calvin</td>
+<td>50m</td>
+<td>Back</td>
+<td>37085</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Abi</td>
+<td>50m</td>
+<td>Breast</td>
+<td>45071</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">111</td>
+<td>Calvin</td>
+<td>50m</td>
+<td>Fly</td>
+<td>37018</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">65</td>
+<td>Aurora</td>
+<td>50m</td>
+<td>Free</td>
+<td>28086</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div><div class="column" data-wiudth="50%">
+<center>
+<strong>Long Events</strong>
+</center>
+<div id="f20df640" class="cell" data-execution_count="8">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>long_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"100m"</span>].copy()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>long_df.sort_values([<span class="st">'style'</span>, <span class="st">'time'</span>], ascending<span class="op">=</span><span class="va">True</span>).groupby(<span class="st">'style'</span>).head(<span class="dv">1</span>).drop(columns<span class="op">=</span><span class="st">"age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">distance</th>
+<th data-quarto-table-cell-role="th">style</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">72</td>
+<td>Bill</td>
+<td>100m</td>
+<td>Back</td>
+<td>65075</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">276</td>
+<td>Tasmin</td>
+<td>100m</td>
+<td>Breast</td>
+<td>80059</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">241</td>
+<td>Mike</td>
+<td>100m</td>
+<td>Fly</td>
+<td>68038</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">151</td>
+<td>Dave</td>
+<td>100m</td>
+<td>Free</td>
+<td>58067</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>This works well for <strong>you</strong>, as a data scientist, <strong>manually analyzing</strong> the data via code cells</li>
+<li>What if <strong>the public</strong> is accessing your data <strong>hundreds of times per second</strong> (e.g., for a <a href="https://www.espn.com/olympics/summer/2024/medals" target="_blank"><strong>live-updating data dashboard</strong></a>)? Should we (1) filter, (2) sort, (3) group by style, (4) filter (choose top entry), (5) drop column <strong>every time data is accessed?</strong></li>
+<li>(<em>Every</em> DSAN student can do this with Pandas… <strong>YOU</strong> will know how to do it with exponentially-greater efficiency, and <strong>mathematically prove it</strong> 😎)</li>
+</ul>
+</section>
+</section>
+<section id="onwards-and-upwards-fancier-algorithms" class="level1" data-stack-name="Even Fancier Linked Lists">
+<h1 data-stack-name="Even Fancier Linked Lists">Onwards and Upwards: Fancier Algorithms</h1>
+<section id="linkedlist-foundation-for-most-data-structures" class="level2 smaller crunch-title title-10 crunch-quarto-layout-panel crunch-images crunch-figures">
+<h2 class="smaller crunch-title title-10 crunch-quarto-layout-panel crunch-images crunch-figures anchored" data-anchor-id="linkedlist-foundation-for-most-data-structures">LinkedList: Foundation for Most(?) Data Structures!</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1,3]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/bored_pooh.jpeg" class="img-fluid quarto-figure quarto-figure-left figure-img" width="210"></p>
+</figure>
+</div>
+</div>
+<div id="bored-pooh" class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: flex-start;">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LinkedList:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> root(<span class="va">self</span>):</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">self</span>.__root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LinkedListNode:</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span> content</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span> <span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1,3]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/fancy_pooh_single.jpeg" class="img-fluid quarto-figure quarto-figure-left figure-img" width="210"></p>
+</figure>
+</div>
+</div>
+<div id="fancy-pooh" class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: flex-start;">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BinaryTree:</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> root(<span class="va">self</span>):</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">self</span>.__root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BinaryTreeNode:</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span> content</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span> left</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span> right</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1,3]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/fanciest_pooh.jpeg" class="img-fluid quarto-figure quarto-figure-left figure-img" width="210"></p>
+</figure>
+</div>
+</div>
+<div id="fanciest-pooh" class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: flex-start;">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> QuadTree:</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> root(<span class="va">self</span>):</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">self</span>.__root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> QuadTreeNode:</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span> content</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span> nw</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span> ne</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span> sw</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">@property</span> se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="so-then-why-is-this-a-whole-dsan-class" class="level2 smaller crunch-title title-12">
+<h2 class="smaller crunch-title title-12 anchored" data-anchor-id="so-then-why-is-this-a-whole-dsan-class">So Then… Why Is This a Whole DSAN Class?</h2>
+<ul>
+<li>The <strong>core structures</strong> are identical, but we can optimize <strong>different goals</strong> (efficient insertion, sorting, retrieval, deletion, …) by changing the <strong>invariants</strong> maintained by the algorithms <strong>internal to</strong> our structure</li>
+<li>Crucial <span class="alg">Insertion-Sort</span> invariant: <span class="math inline">\(\textsf{Sorted}(1,i)\)</span> true when we go to process entry <span class="math inline">\(i + 1\)</span> (<code>key</code>)</li>
+<li>Crucial HW1 invariant: <span class="math inline">\(\textsf{Up-To-Date-Favorite}(1,i-1)\)</span> true when we go to process entry <span class="math inline">\(i + 1\)</span> (next result in dataset)</li>
+<li><span class="math inline">\(\implies\)</span> Efficiency of obtaining favorite style <strong>guaranteed to be constant-time</strong>, <span class="math inline">\(O(1)\)</span>!</li>
+<li>Otherwise, would be <span class="math inline">\(O(n) &gt; O(1)\)</span> (linear approach) or at best <span class="math inline">\(O(\log_2(n)) &gt; O(1)\)</span> (divide-and-conquer)</li>
+</ul>
+</section>
+</section>
+<section id="hash-tables" class="level1" data-stack-name="Hash Tables">
+<h1 data-stack-name="Hash Tables">Hash Tables</h1>
+<ul>
+<li>*(Spoiler alert, so you know I’m not lying to you: this is a <strong>LinkedList</strong> with some <strong>additional structure!</strong>)</li>
+<li>You just got hired as a <strong>cashier</strong> (Safeway cashiering alum myself 🫡)</li>
+<li>The scanner is broken (spoiler #2: the scanner uses a hash table), so you start writing down <strong>items</strong> along with their <strong>prices</strong>, one-by-one, as items come in…</li>
+</ul>
+<section id="our-list-of-item-price-pairs" class="level2 crunch-title crunch-details crunch-ul small-summary">
+<h2 class="crunch-title crunch-details crunch-ul small-summary anchored" data-anchor-id="our-list-of-item-price-pairs">Our List of (Item, Price) Pairs</h2>
+<div id="03de2e7a" class="cell" data-execution_count="9">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>price_list <span class="op">=</span> []</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>price_list.append((<span class="st">'Banana'</span>, <span class="dv">10</span>))</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>price_list.append((<span class="st">'Apple'</span>, <span class="dv">2</span>))</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>price_list.append((<span class="st">'Four Loko'</span>, <span class="dv">5</span>))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>price_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[('Banana', 10), ('Apple', 2), ('Four Loko', 5)]</code></pre>
+</div>
+</div>
+<ul>
+<li>As the list gets longer, it gets harder and harder to <strong>find where you wrote down a specific item and its price</strong></li>
+<li>As you now know, you could use <strong>linear search</strong>, <span class="math inline">\(O(n)\)</span>, or if you ensure alphabetical order (an <strong>invariant!</strong>), you could use <strong>binary, divide-and-conquer search</strong>, <span class="math inline">\(O(\log_2(n))\)</span></li>
+<li>We can do <strong>even better</strong>: <span class="math inline">\(O(1)\)</span>. First w/magic, but then math</li>
+</ul>
+</section>
+<section id="strange-at-first-technique-for-algorithm-analysis-oracles" class="level2">
+<h2 class="anchored" data-anchor-id="strange-at-first-technique-for-algorithm-analysis-oracles">Strange-At-First Technique for Algorithm Analysis: Oracles</h2>
+<ul>
+<li>What if we had a magical wizard who could just <strong>tell us</strong> where to find an item we were looking for?</li>
+<li>Sounds like I’m joking or saying “what if we had a billion $ and infinite rizz and we could fly and walk through walls”</li>
+<li>And yet, through the magic of math and computer science, there are concrete <strong>hashing algorithms</strong> which ensure (in a mathematically-provable way!) “almost certain” <span class="math inline">\(O(1)\)</span> lookup time</li>
+</ul>
+</section>
+<section id="mathematical-strategy-of-oracles" class="level2 crunch-title crunch-math math-85 crunch-ul">
+<h2 class="crunch-title crunch-math math-85 crunch-ul anchored" data-anchor-id="mathematical-strategy-of-oracles">Mathematical Strategy of Oracles</h2>
+<ul>
+<li>We’ll use a <strong>concrete</strong>, <strong>simplified hash function</strong> to illustrate</li>
+<li>Mathematically we’ll be able to get something like</li>
+</ul>
+<p><span class="math display">\[
+T(n) = O(1 + \underbrace{\epsilon}_{\mathclap{\text{Collision rate}}} \cdot n)
+\]</span></p>
+<ul>
+<li>Which tells us: <strong>if</strong> we had an oracle who could ensure near-0 collision rates, <strong>then</strong> <span class="math inline">\(T(n) = O(1)\)</span>.</li>
+<li>And, by a beautiful division-of-labor, <strong>other</strong> computer scientists figure out the near-0 collision rates part, giving us</li>
+</ul>
+<p><span class="math display">\[
+p^{✅} = [T(n) = O(1 + \epsilon n)], q^{✅} = [\epsilon \approx 0],\text{ so } p \wedge q \implies T(n) \overset{✅}{=} O(1).
+\]</span></p>
+</section>
+<section id="back-to-the-price-list" class="level2 crunch-title crunch-math crunch-ul">
+<h2 class="crunch-title crunch-math crunch-ul anchored" data-anchor-id="back-to-the-price-list">Back to the Price List</h2>
+<ul>
+<li>Our hash function: <strong><code>hash(item)</code></strong> = <strong>first letter of <code>item</code></strong></li>
+</ul>
+<p><span class="math display">\[
+h(\texttt{x}) = \texttt{x[0]}
+\]</span></p>
+<ul>
+<li><code>h('Banana') = 'B'</code>, <code>h('Monkey') = 'M'</code></li>
+<li>With this function in hand, we can create a length-26 <strong>array</strong>, one slot for each letter in alphabet, and then <strong>write down (item, price) pairs</strong> in <strong>whatever slot <code>item</code> hashes to</strong></li>
+</ul>
+</section>
+<section id="the-importance-of-differentiating-operations-insertion-vs.-lookup" class="level2">
+<h2 class="anchored" data-anchor-id="the-importance-of-differentiating-operations-insertion-vs.-lookup">The Importance of Differentiating Operations: <em>Insertion</em> vs.&nbsp;<em>Lookup</em></h2>
+<ul>
+<li>So far, we have <span class="math inline">\(O(1)\)</span> <strong>insertion</strong> via hashing</li>
+<li>We also get <span class="math inline">\(O(1)\)</span> <strong>lookup!</strong></li>
+<li>When customer hands us an item (say, <code>'Banana'</code>), we compute the hash (<code>B</code>), look in that slot, and obtain the price for bananas.</li>
+<li>We also get <span class="math inline">\(O(1)\)</span> <strong>updating</strong> (hash to find the old price, update it to have new price) and <span class="math inline">\(O(1)\)</span> <strong>deletion</strong> (hash to find the slot containing the item, then erase it from that slot)</li>
+</ul>
+</section>
+<section id="so-whats-the-catch" class="level2">
+<h2 class="anchored" data-anchor-id="so-whats-the-catch">So What’s the Catch???</h2>
+<ul>
+<li><strong>BLUEBERRIES</strong> show up to ruin our day (as usual 😞)</li>
+<li>We hash, so far so good: <code>h('Blueberries') = 'B'</code></li>
+<li>But then we go to the <code>B</code> slot and see that <code>(Bananas, 10)</code> is already there!!! Wtf do we do here… don’t panic!</li>
+<li>The answer? We open our HW1 from DSAN 5500 and remember that we have our lovely friend the <code>LinkedList</code> that we can use whenever and however we want!</li>
+</ul>
+</section>
+<section id="arrays-vs.-linked-lists" class="level2">
+<h2 class="anchored" data-anchor-id="arrays-vs.-linked-lists">Arrays vs.&nbsp;Linked Lists</h2>
+<ul>
+<li>Jeff is hiding something here… Why jump to <code>LinkedList</code>? Why not just… another length-26 array, for example?</li>
+<li>For this we open up our Week 1 slides and remember the <strong>stack</strong> vs.&nbsp;<strong>heap</strong> distinction: we <strong>know</strong> how many letters in the alphabet, we <strong>don’t know</strong> how many items starting with <code>B</code> (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)</li>
+<li>Terminology for this kind of “hybrid” data structure: <code>HashTable</code> is an <code>Array</code> that <strong>“degenerates into”</strong> a <code>LinkedList</code> (when there are <strong>collisions</strong>)</li>
+</ul>
+</section>
+<section id="look-how-far-we-came" class="level2">
+<h2 class="anchored" data-anchor-id="look-how-far-we-came">Look How Far We Came!</h2>
+<ul>
+<li>Beginning of class: Only structure we knew allowing insertion (<code>LinkedList</code>) was <span class="math inline">\(O(n)\)</span> for everythihg</li>
+<li>End of class: New structure where suddenly everything is <span class="math inline">\(O(1)\)</span>, except in “unlucky” cases, in which it partially <strong>“degenerates”</strong> into a <code>LinkedList</code></li>
+<li><span class="math inline">\(\implies\)</span> The “inevitable” <span class="math inline">\(O(n)\)</span> runtime has transformed into the unlucky worst-case <strong>upper bound</strong></li>
+<li><span class="math inline">\(\implies\)</span> By taking <strong>core</strong> data structures/algorithms from your toolkit, you can “piece together” <strong>hybrid structures</strong> whose <em>whole (runtime) is better than the sum of its parts</em></li>
+</ul>
+</section>
+<section id="taking-this-idea-and-running-with-it" class="level2">
+<h2 class="anchored" data-anchor-id="taking-this-idea-and-running-with-it">Taking This Idea and Running With It</h2>
+<ul>
+<li>Next week we’ll look at <code>BinarySearchTree</code> (<code>BST</code>)</li>
+<li>Since it’s just a glorified <code>LinkedList</code>, we’ll be able to take our <code>HashMap</code> from today and “drop in” the <code>BST</code> to play the role the <code>LinkedList</code> is playing right now</li>
+<li>i.e., when there’s a collision, we’ll create a <code>BST</code> with its <span class="math inline">\(O(\log(n))\)</span> operations, rather than a <code>LinkedList</code> with its <span class="math inline">\(O(n)\)</span> operations</li>
+<li><span class="math inline">\(\implies\)</span> <code>HashMap</code> will go from [<span class="math inline">\(O(1)\)</span> best-case / <span class="math inline">\(O(n)\)</span> worst-case] to [<span class="math inline">\(O(1)\)</span> best-case / <span class="math inline">\(O(\log_2(n))\)</span> worst-case]! Stay tuned…</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" role="list">
+
+</div>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
