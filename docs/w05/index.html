@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jeff Jacobs">
+
+<title>DSAN 5500 - Week 5: Binary Search Trees</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"><script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script><script src="../jjcustom.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#week-4-recap-wrapup" id="toc-week-4-recap-wrapup" class="nav-link active" data-scroll-target="#week-4-recap-wrapup">Week 4 Recap + Wrapup</a>
+  <ul class="collapse">
+  <li><a href="#hash-tables-tldr-edition" id="toc-hash-tables-tldr-edition" class="nav-link" data-scroll-target="#hash-tables-tldr-edition">Hash Tables: tldr Edition</a></li>
+  </ul></li>
+  <li><a href="#binary-search-trees" id="toc-binary-search-trees" class="nav-link" data-scroll-target="#binary-search-trees">Binary Search Trees</a>
+  <ul class="collapse">
+  <li><a href="#linked-lists-divide-and-conquer-bsts" id="toc-linked-lists-divide-and-conquer-bsts" class="nav-link" data-scroll-target="#linked-lists-divide-and-conquer-bsts">Linked Lists + Divide-and-Conquer = BSTs</a></li>
+  <li><a href="#hiromi-uehara" id="toc-hiromi-uehara" class="nav-link" data-scroll-target="#hiromi-uehara">Hiromi Uehara</a></li>
+  <li><a href="#the-metaphor-goes-deep" id="toc-the-metaphor-goes-deep" class="nav-link" data-scroll-target="#the-metaphor-goes-deep">The Metaphor Goes Deep!</a></li>
+  <li><a href="#visualizing-the-structures" id="toc-visualizing-the-structures" class="nav-link" data-scroll-target="#visualizing-the-structures">Visualizing the Structures</a></li>
+  <li><a href="#practical-considerations" id="toc-practical-considerations" class="nav-link" data-scroll-target="#practical-considerations">Practical Considerations</a></li>
+  <li><a href="#why-just-work" id="toc-why-just-work" class="nav-link" data-scroll-target="#why-just-work">Why <code>==</code>, <code>&lt;</code>, <code>&gt;=</code> “Just Work”</a></li>
+  <li><a href="#ordering-vectors-via-pareto-dominance" id="toc-ordering-vectors-via-pareto-dominance" class="nav-link" data-scroll-target="#ordering-vectors-via-pareto-dominance">Ordering Vectors via Pareto Dominance</a></li>
+  <li><a href="#back-to-bsts" id="toc-back-to-bsts" class="nav-link" data-scroll-target="#back-to-bsts">Back to BSTs</a></li>
+  <li><a href="#lls-rightarrow-bsts-the-hard-part" id="toc-lls-rightarrow-bsts-the-hard-part" class="nav-link" data-scroll-target="#lls-rightarrow-bsts-the-hard-part">LLs <span class="math inline">\(\rightarrow\)</span> BSTs: The Hard Part</a></li>
+  <li><a href="#two-ways-to-traverse-irl-version" id="toc-two-ways-to-traverse-irl-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-irl-version">Two Ways to Traverse: IRL Version</a></li>
+  <li><a href="#two-ways-to-traverse-picture-version" id="toc-two-ways-to-traverse-picture-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-picture-version">Two Ways to Traverse: Picture Version</a></li>
+  <li><a href="#two-ways-to-traverse-in-words-version" id="toc-two-ways-to-traverse-in-words-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-in-words-version">Two Ways to Traverse: In-Words Version</a></li>
+  <li><a href="#two-ways-to-traverse-animated-version" id="toc-two-ways-to-traverse-animated-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-animated-version">Two Ways to Traverse: Animated Version</a></li>
+  <li><a href="#two-ways-to-traverse-underlying-data-structures-version" id="toc-two-ways-to-traverse-underlying-data-structures-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-underlying-data-structures-version">Two Ways to Traverse: Underlying Data Structures Version</a></li>
+  <li><a href="#two-ways-to-traverse-hw2-version" id="toc-two-ways-to-traverse-hw2-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-hw2-version">Two Ways to Traverse: HW2 Version</a></li>
+  <li><a href="#three-animals-in-the-dfs-species" id="toc-three-animals-in-the-dfs-species" class="nav-link" data-scroll-target="#three-animals-in-the-dfs-species">Three Animals in the DFS Species</a></li>
+  <li><a href="#the-three-animals-traverse-our-inventory-tree" id="toc-the-three-animals-traverse-our-inventory-tree" class="nav-link" data-scroll-target="#the-three-animals-traverse-our-inventory-tree">The Three Animals Traverse our Inventory Tree</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 5: Binary Search Trees</h1>
+<p class="subtitle lead"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Class Sessions</div>
+  </div>
+  </div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Jeff Jacobs </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a>
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Monday, February 5, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
+</center>
+<section id="week-4-recap-wrapup" class="level1" data-stack-name="Week 4 Wrapup">
+<h1 data-stack-name="Week 4 Wrapup">Week 4 Recap + Wrapup</h1>
+<section id="hash-tables-tldr-edition" class="level2 crunch-title crunch-ul">
+<h2 class="crunch-title crunch-ul anchored" data-anchor-id="hash-tables-tldr-edition">Hash Tables: tldr Edition</h2>
+<ul>
+<li><strong>Keys</strong> <span class="math inline">\(k \in \mathcal{K}\)</span> are plugged into a (deterministic) <strong>hash function</strong> <span class="math inline">\(h: \mathcal{K} \rightarrow \{1, \ldots, N\}\)</span>, producing an <strong>index</strong> where <span class="math inline">\(k\)</span> is stored</li>
+<li>If <strong>nothing at that index yet</strong>, store <span class="math inline">\((k,v)\)</span> in empty slot</li>
+<li>If <strong>already an item at that index</strong>, we have a ⚠️<strong>collision</strong>⚠️</li>
+<li>We could just <strong>throw away</strong> the old value (HW2 Part 1)</li>
+<li>Otherwise, need a way to store multiple items in one slot… (a way to <strong>dynamically grow</strong> storage at given index)</li>
+<li>Solution you know so far: <strong>Linked Lists</strong></li>
+<li>New solution: <strong>Binary Search Trees!</strong></li>
+</ul>
+</section>
+</section>
+<section id="binary-search-trees" class="level1" data-stack-name="BSTs">
+<h1 data-stack-name="BSTs">Binary Search Trees</h1>
+<ul>
+<li>If you’ve been annoyed by how long we’ve talked about Linked Lists for… this is where it finally pays off!</li>
+</ul>
+<section id="linked-lists-divide-and-conquer-bsts" class="level2 crunch-title title-11">
+<h2 class="crunch-title title-11 anchored" data-anchor-id="linked-lists-divide-and-conquer-bsts">Linked Lists + Divide-and-Conquer = BSTs</h2>
+<ul>
+<li>By now, the word “Linked List” should make you groan, cross your arms and start tapping your feet with impatience</li>
+<li>“Here we go again… the Linked List is gonna make us <strong>traverse through every single element</strong> before we reach the one we’re looking for” 😖</li>
+<li>Linked List = Canon in D</li>
+<li>Binary Search Tree = Canon in D played by Hiromi Uehara…</li>
+</ul>
+</section>
+<section id="hiromi-uehara" class="level2">
+<h2 class="anchored" data-anchor-id="hiromi-uehara">Hiromi Uehara</h2>
+<iframe width="100%" height="70%" src="https://www.youtube.com/embed/lpc1lEJ-SRc?si=csxh7-N4-CFUshO1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+</section>
+<section id="the-metaphor-goes-deep" class="level2">
+<h2 class="anchored" data-anchor-id="the-metaphor-goes-deep">The Metaphor Goes Deep!</h2>
+<ul>
+<li>Uehara’s Canon in D = Pachelbel’s + Fancier notes/rhythms on top of it</li>
+<li>Binary Search Trees = Linked Lists + Fancier structure built on top of it
+<ul>
+<li>Specifically: “next” pointer can now <strong>branch</strong> left or right, to ensure <strong>ordering</strong> of nodes</li>
+</ul></li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1,1]">
+<div class="quarto-layout-row">
+<div id="metaphor-left" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LinkedListNode:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> content</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> <span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="metaphor-right" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BinarySearchTreeNode:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> content</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> left</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> right</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-the-structures" class="level2 smaller crunch-title crunch-col-output crunch-details">
+<h2 class="smaller crunch-title crunch-col-output crunch-details anchored" data-anchor-id="visualizing-the-structures">Visualizing the Structures</h2>
+<div class="vcenter">
+<div id="957d794f" class="cell" data-output-location="column" data-execution_count="2">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> LinkedList, InventoryItem</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ll <span class="op">=</span> LinkedList()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>item1 <span class="op">=</span> InventoryItem(<span class="st">'Mango'</span>, <span class="dv">50</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ll.append(item1)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>item2 <span class="op">=</span> InventoryItem(<span class="st">'Pickle'</span>, <span class="dv">60</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ll.append(item2)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>item3 <span class="op">=</span> InventoryItem(<span class="st">'Artichoke'</span>, <span class="dv">55</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ll.append(item3)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>item5 <span class="op">=</span> InventoryItem(<span class="st">'Banana'</span>, <span class="dv">123</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ll.append(item5)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>item6 <span class="op">=</span> InventoryItem(<span class="st">'Aardvark'</span>, <span class="dv">11</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>ll.append(item6)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>HTML(visualize_ll(ll))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-revealjs/cell-3-output-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="e31ae678" class="cell" data-output-location="column" data-execution_count="3">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> BinarySearchTree</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bst <span class="op">=</span> BinarySearchTree()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>item1 <span class="op">=</span> InventoryItem(<span class="st">'Mango'</span>, <span class="dv">50</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>bst.add(item1)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>item2 <span class="op">=</span> InventoryItem(<span class="st">'Pickle'</span>, <span class="dv">60</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>bst.add(item2)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>item3 <span class="op">=</span> InventoryItem(<span class="st">'Artichoke'</span>, <span class="dv">55</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>bst.add(item3)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>item5 <span class="op">=</span> InventoryItem(<span class="st">'Banana'</span>, <span class="dv">123</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>bst.add(item5)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>item6 <span class="op">=</span> InventoryItem(<span class="st">'Aardvark'</span>, <span class="dv">11</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>bst.add(item6)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>HTML(visualize(bst))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-revealjs/cell-4-output-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="practical-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="practical-considerations">Practical Considerations</h2>
+<ul>
+<li><strong>Hash Maps</strong>: Only useful if keys are <strong>hashable</strong>
+<ul>
+<li>Python has a built-in <code>collections.abc.Hashable</code> class, such that <code>hash(my_obj)</code> works iff <code>isinstance(my_obj, Hashable)</code></li>
+</ul></li>
+<li><strong>Binary Search Trees</strong>: Only useful if keys have an <strong>ordering</strong>
+<ul>
+<li>“Standard” classes (<code>int</code>, <code>str</code>, <code>datetime</code>) come with implementations of ordering, but if you make <strong>your own class</strong> you need to <strong>implement the ordering</strong> for it!</li>
+</ul></li>
+<li>(<strong>Linked Lists</strong> still work for non-hashable/orderable objects!)</li>
+</ul>
+</section>
+<section id="why-just-work" class="level2 crunch-title smaller crunch-ul">
+<h2 class="crunch-title smaller crunch-ul anchored" data-anchor-id="why-just-work">Why <code>==</code>, <code>&lt;</code>, <code>&gt;=</code> “Just Work”</h2>
+<ul>
+<li>Not magic! Someone has <strong>explicitly written a set of functions</strong> telling Python <strong>what to do</strong> when it sees e.g.&nbsp;<code>obj1 &lt; obj2</code></li>
+<li>Example: let’s implement an ordering of vectors <span class="math inline">\(\mathbf{x} \in \mathbb{R}^2\)</span> based on <strong>Pareto dominance</strong></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pareto.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="ordering-vectors-via-pareto-dominance" class="level2 smaller crunch-title title-12">
+<h2 class="smaller crunch-title title-12 anchored" data-anchor-id="ordering-vectors-via-pareto-dominance">Ordering Vectors via Pareto Dominance</h2>
+<div id="ee0aa686" class="cell" data-output-location="column" data-execution_count="4">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UtilVector:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, u1, u2):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.u1 <span class="op">=</span> u1</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.u2 <span class="op">=</span> u2</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__eq__</span>(<span class="va">self</span>, other):</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(other, UtilVector):</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">NotImplemented</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.u1 <span class="op">==</span> other.u1 <span class="kw">and</span> <span class="va">self</span>.u2 <span class="op">==</span> other.u2</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__ne__</span>(<span class="va">self</span>, other):</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(other, UtilVector):</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">NotImplemented</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.u1 <span class="op">!=</span> other.u1 <span class="kw">or</span> <span class="va">self</span>.u2 <span class="op">!=</span> other.u2</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__gt__</span>(<span class="va">self</span>, other):</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(other, UtilVector):</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">NotImplemented</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.u1 <span class="op">&gt;</span> other.u1 <span class="kw">and</span> <span class="va">self</span>.u2 <span class="op">&gt;=</span> other.u2 <span class="kw">or</span> <span class="va">self</span>.u1 <span class="op">&gt;=</span> other.u1 <span class="kw">and</span> <span class="va">self</span>.u2 <span class="op">&gt;</span> other.u2</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__ge__</span>(<span class="va">self</span>, other):</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__gt__</span>(other) <span class="kw">or</span> <span class="va">self</span>.<span class="fu">__eq__</span>(other)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__lt__</span>(<span class="va">self</span>, other):</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(other, UtilVector):</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">NotImplemented</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> other.<span class="fu">__gt__</span>(<span class="va">self</span>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__le__</span>(<span class="va">self</span>, other):</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__lt__</span>(other) <span class="kw">or</span> <span class="va">self</span>.<span class="fu">__eq__</span>(other)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>xA <span class="op">=</span> UtilVector(<span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>xB <span class="op">=</span> UtilVector(<span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(xB <span class="op">&gt;</span> xA)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>xC <span class="op">=</span> UtilVector(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(xC <span class="op">&gt;</span> xB)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> UtilVector(<span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>util_vals <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">11</span>, <span class="fl">0.5</span>)</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>util_pairs <span class="op">=</span> <span class="bu">list</span>(itertools.product(util_vals, util_vals))</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>util_df <span class="op">=</span> pd.DataFrame(util_pairs, columns<span class="op">=</span>[<span class="st">'x'</span>,<span class="st">'y'</span>])</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_to_x0(row):</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    row_vec <span class="op">=</span> UtilVector(row[<span class="st">'x'</span>], row[<span class="st">'y'</span>])</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    gt_result <span class="op">=</span> <span class="bu">int</span>(row_vec <span class="op">&gt;</span> x0)</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    lt_result <span class="op">=</span> <span class="bu">int</span>(row_vec <span class="op">&lt;</span> x0)</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gt_result <span class="op">-</span> lt_result</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>util_df[<span class="st">'greater'</span>] <span class="op">=</span> util_df.<span class="bu">apply</span>(compare_to_x0, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co">#my_palette = sns.color_palette(['#E69F00','lightgray','#CCFFCC'])</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>my_palette <span class="op">=</span> sns.color_palette([<span class="st">'#FF3535'</span>,<span class="st">'lightgray'</span>,<span class="st">'#35FF35'</span>])</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>sns.relplot(</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>util_df,</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>,</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">'greater'</span>,</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span>my_palette,</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    marker<span class="op">=</span><span class="st">'X'</span>, s<span class="op">=</span><span class="dv">150</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>x0_df <span class="op">=</span> pd.DataFrame({<span class="st">'x'</span>: [<span class="dv">4</span>], <span class="st">'y'</span>: [<span class="dv">6</span>]})</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>plt.scatter(data<span class="op">=</span>x0_df, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>plt.gca().set_aspect(<span class="st">'equal'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>True
+False</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-revealjs/cell-5-output-2.png" width="532" height="468" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="back-to-bsts" class="level2">
+<h2 class="anchored" data-anchor-id="back-to-bsts">Back to BSTs</h2>
+<ul>
+<li>For HW2, we provide you with an <code>InventoryItem</code> class</li>
+<li>Two instance variables: <code>item_name</code> and <code>price</code></li>
+<li>Equivalence relations:
+<ul>
+<li><code>__eq__(other)</code>, <code>__ne__(other)</code></li>
+</ul></li>
+<li><strong>Ordering relations</strong>:
+<ul>
+<li><code>__lt__(other)</code>, <code>__le__(other)</code>, <code>__gt__(other)</code>, <code>__ge__(other)</code></li>
+</ul></li>
+<li>Bonus: <code>__repr__()</code> and <code>__str__()</code></li>
+</ul>
+</section>
+<section id="lls-rightarrow-bsts-the-hard-part" class="level2">
+<h2 class="anchored" data-anchor-id="lls-rightarrow-bsts-the-hard-part">LLs <span class="math inline">\(\rightarrow\)</span> BSTs: The Hard Part</h2>
+<ul>
+<li>When we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.</li>
+<li>But… for a BinarySearchTree, since our structure can now <strong>branch</strong> as we traverse it… How do we “loop through” a BST?</li>
+<li><strong>Two fundamentally different ways</strong> to traverse every node in our BST</li>
+<li>“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task</li>
+<li>Your job as a data scientist is to <strong>think carefully</strong> about which one is <strong>more efficient</strong> for a given goal!</li>
+</ul>
+</section>
+<section id="two-ways-to-traverse-irl-version" class="level2 smaller crunch-title title-12 crunch-ul crunch-callout">
+<h2 class="smaller crunch-title title-12 crunch-ul crunch-callout anchored" data-anchor-id="two-ways-to-traverse-irl-version">Two Ways to Traverse: IRL Version</h2>
+<ul>
+<li>Imagine we’re trying to learn about a topic <span class="math inline">\(\tau\)</span> using <strong>Wikipedia</strong>, so we find its article <span class="math inline">\(\tau_0\)</span></li>
+<li>There are two “extremes” in terms of strategies we could follow for learning, given the <strong>contents</strong> of the article as well as the <strong>links</strong> it contains to <strong>other articles</strong></li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="<i class='bi bi-info-circle pe-1'></i> Depth-First Search (DFS)" style="margin-bottom: 8px !important;">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<i class="bi bi-info-circle pe-1"></i> Depth-First Search (DFS)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Open <span class="math inline">\(\tau_0\)</span> and start reading it; When we encounter a <strong>link</strong> we <strong>always click it</strong> and <strong>immediately start reading</strong> the new article.</li>
+<li>If we hit an article with no links (or a dead end/broken link), we finish reading it and click the <strong>back button</strong>, picking up where we left off in the previous article. When we reach the end of <span class="math inline">\(\tau_0\)</span>, we’re done!</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="<i class='bi bi-info-circle pe-1'></i> Breadth-First Search (BFS)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<i class="bi bi-info-circle pe-1"></i> Breadth-First Search (BFS)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Bookmark <span class="math inline">\(\tau_0\)</span> in a folder called <strong>“Level 0 Articles”</strong>; open and start reading it</li>
+<li>When we encounter a <strong>link</strong>, we <strong>put it in a “Level 1 Articles” folder</strong>, but <strong>continue reading <span class="math inline">\(\tau_0\)</span></strong> until we reach the end.</li>
+<li>We then <strong>open all “Level 1 Articles”</strong> in new tabs, placing links we encounter in <strong>these</strong> articles into a <strong>“Level 2 Articles”</strong> folder, that we only start reading once all “Level 1 Articles” are read</li>
+<li>We continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the <strong>“opposite”</strong> of DFS?)</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>…Let’s try them out! I clicked “Random Article” and got <a href="https://en.wikipedia.org/wiki/Eustache_de_Saint_Pierre" target="_blank">Eustache de Saint Pierre <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
+</ul>
+</section>
+<section id="two-ways-to-traverse-picture-version" class="level2 smaller crunch-title crunch-details">
+<h2 class="smaller crunch-title crunch-details anchored" data-anchor-id="two-ways-to-traverse-picture-version">Two Ways to Traverse: Picture Version</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="7385d3b1" class="cell" data-execution_count="5">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> IterAlgorithm, NodeProcessor</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>visualize(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-revealjs/cell-6-output-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="466ac3d7" class="cell" data-execution_count="6">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"DFS:"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dfs_processor <span class="op">=</span> NodeProcessor(IterAlgorithm.DEPTH_FIRST)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#print(type(dfs_processor.node_container))</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>dfs_processor.iterate_over(bst)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">BFS:"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>bfs_processor <span class="op">=</span> NodeProcessor(IterAlgorithm.BREADTH_FIRST)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#print(type(bfs_processor.node_container))</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>bfs_processor.iterate_over(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>DFS:
+InventoryItem[item_name=Mango,price=50]
+InventoryItem[item_name=Pickle,price=60]
+InventoryItem[item_name=Artichoke,price=55]
+InventoryItem[item_name=Banana,price=123]
+InventoryItem[item_name=Aardvark,price=11]
+
+BFS:
+InventoryItem[item_name=Mango,price=50]
+InventoryItem[item_name=Artichoke,price=55]
+InventoryItem[item_name=Pickle,price=60]
+InventoryItem[item_name=Aardvark,price=11]
+InventoryItem[item_name=Banana,price=123]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="two-ways-to-traverse-in-words-version" class="level2 smaller crunch-title title-12">
+<h2 class="smaller crunch-title title-12 anchored" data-anchor-id="two-ways-to-traverse-in-words-version">Two Ways to Traverse: In-Words Version</h2>
+<ol type="1">
+<li><strong>Depth-First Search (DFS)</strong>: With this approach, we iterate through the BST by <strong>always taking the left child as the “next” child</strong> until we hit a <strong>leaf node</strong> (which means, we cannot follow this left-child pointer any longer, since a leaf node does not have a left child or a right child!), and only at that point do we <strong>back up</strong> and take the <strong>right children</strong> we skipped.</li>
+<li><strong>Breadth-First Search (BFS)</strong>: This is the <strong>“opposite”</strong> of DFS in the sense that we traverse the tree level-by-level, <strong>never moving to the next level of the tree</strong> until we’re <strong>sure that we have visited every node on the current level</strong>.</li>
+</ol>
+</section>
+<section id="two-ways-to-traverse-animated-version" class="level2 smaller crunch-title title-12">
+<h2 class="smaller crunch-title title-12 anchored" data-anchor-id="two-ways-to-traverse-animated-version">Two Ways to Traverse: Animated Version</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1,1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Depth-First-Search.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption><strong>Depth-First Search</strong> (from <a href="https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif" target="_blank">Wikimedia Commons</a>)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Breadth-First-Search.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption><strong>Breadth-First Search</strong> (from <a href="https://commons.wikimedia.org/wiki/File:Breadth-First-Search-Algorithm.gif" target="_blank">Wikimedia Commons</a>)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="two-ways-to-traverse-underlying-data-structures-version" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="two-ways-to-traverse-underlying-data-structures-version">Two Ways to Traverse: Underlying Data Structures Version</h2>
+<ul>
+<li>Now that you have some intuition, you may be thinking that they might require very different code to implement 🤔</li>
+<li>This is where the <strong>mathematical-formal linkage</strong> between the two becomes ultra helpful!</li>
+<li>It turns out (and a full-on algorithmic theory course makes you prove) that</li>
+</ul>
+<ol type="1">
+<li><strong>Depth-First Search</strong> can be accomplished by <strong>processing nodes in an order determined by adding each to a <em>stack</em></strong>, while</li>
+<li><strong>Breadth-First Search</strong> can be accomplished by <strong>processing nodes in an order determined by adding each to a <em>queue</em></strong>!</li>
+</ol>
+<ul>
+<li><span class="math inline">\(\implies\)</span> Literally <strong>identical code</strong>, “pulling out” the word <strong>stack</strong> and replacing it with the word <strong>queue</strong> within your code (or vice-versa).</li>
+<li>If you have your Software Engineer Hats on, you’ll recognize this as a job for an <strong>abstraction layer!</strong></li>
+</ul>
+</section>
+<section id="two-ways-to-traverse-hw2-version" class="level2">
+<h2 class="anchored" data-anchor-id="two-ways-to-traverse-hw2-version">Two Ways to Traverse: HW2 Version</h2>
+<ul>
+<li>You’ll make a class called <code>NodeProcessor</code>, with a <strong>single</strong> <code>iterate_over(tree)</code> function</li>
+<li>This function—<strong>without any changes in the code or even any if statements!</strong>—will be capable of both DFS and BFS</li>
+<li>It will take in a <code>ThingContainer</code> (could be a <strong>stack</strong> or a <strong>queue</strong>, you won’t know which), which has two functions:
+<ul>
+<li><code>put_new_thing_in(new_thing)</code></li>
+<li><code>take_existing_thing_out()</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="three-animals-in-the-dfs-species" class="level2">
+<h2 class="anchored" data-anchor-id="three-animals-in-the-dfs-species">Three Animals in the DFS Species</h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>DFS Procedure</th>
+<th>Algorithm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pre-Order Traversal</td>
+<td>1. <strong>Print node</strong><br>2. Traverse left subtree<br>3. Traverse right subtree</td>
+</tr>
+<tr class="even">
+<td><strong>In-Order</strong> Traversal 🧐‼️</td>
+<td>1. Traverse left subtree<br>2. <strong>Print node</strong><br>3. Traverse right subtree</td>
+</tr>
+<tr class="odd">
+<td>Post-Order Traversal</td>
+<td>1. Traverse left subtree<br>2. Traverse right subtree<br>3. <strong>Print node</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-three-animals-traverse-our-inventory-tree" class="level2 smaller crunch-title title-10">
+<h2 class="smaller crunch-title title-10 anchored" data-anchor-id="the-three-animals-traverse-our-inventory-tree">The Three Animals Traverse our Inventory Tree</h2>
+<div id="027acada" class="cell" data-execution_count="7">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>visualize(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-revealjs/cell-8-output-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

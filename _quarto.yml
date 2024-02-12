@@ -9,6 +9,7 @@ website:
   favicon: favicon.png
   sidebar:
     title: "DSAN 5500: Data Structures, Objects, and Algorithms in Python"
+    id: mainnav
     contents:
       - text: "<i class='bi bi-house pe-1'></i> Home"
         href: index.qmd

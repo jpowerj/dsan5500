@@ -47,5 +47,9 @@
   },
   "assignments/hw1/hw1-rubric.qmd": {
     "hw1-rubric.html": "90bcb76f"
+  },
+  "w05/index.qmd": {
+    "slides.html": "908d6cc4",
+    "index.html": "e743650c"
   }
 }

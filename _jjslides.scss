@@ -102,6 +102,11 @@ figcaption {
     text-align: center !important;
 }
 
+.crunch-col-output .column-output-location {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
 // callout blocks
 .crunch-callout .callout {
     margin-top: 4px !important;
@@ -278,4 +283,11 @@ figcaption {
 
 .title-12 h2 {
     font-size: calc(1.2*var(--r-heading2-size)) !important;
+}
+
+.vcenter .cell-output-display {
+    position: absolute !important;
+    top: 25% !important;
+    margin: 0 !important;
+    // background-color: purple !important;
 }

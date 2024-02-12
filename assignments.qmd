@@ -1,6 +1,10 @@
 ---
 title: "Assignment Point Distributions"
 subtitle: "DSAN 5500: Data Structures, Objects, and Algorithms in Python"
+sidebar: mainnav
+format:
+  html:
+    df-print: kable
 ---
 
 Use the **tabs at the bottom of the spreadsheet** (e.g., click the label **HW1**) to view the point distributions for different assignments.

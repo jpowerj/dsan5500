@@ -1,0 +1,45 @@
+
+```{python}
+#| output-location: column
+class ComplexityClass:
+    def __init__(self, n2_coef, n_coef, const_coef):
+        self.n2_coef = n2_coef
+        self.n_coef = n_coef
+        self.const_coef = const_coef
+
+    def __gt__(self, other):
+        if self.n2_coef > 0:
+            return other.n2_coef == 0
+        if self.n_coef > 0:
+            return other.n_coef == 0
+        if self.const_coef > 0:
+            return other.const_coef == 0
+        return False
+
+    def __eq__(self, other):
+        if not isinstance(other, ComplexityClass):
+            return NotImplemented
+        if self.n2_coef > 0 and other.n2_coef > 0:
+            return True
+        if self.n_coef > 0 and other.n_coef > 0:
+            return True
+        return self.const_coef > 0 and other.const_coef > 0
+
+    def __repr__(self):
+        if self.n2_coef > 0:
+            class_str = "n^2"
+        elif self.n_coef > 0:
+            class_str = "n"
+        else:
+            class_str = "1"
+        return f'{self.n2_coef}n^2 + {self.n_coef}n + {self.const_coef} = O({class_str})'
+c1 = ComplexityClass(2, 0, 0)
+print(c1)
+c2 = ComplexityClass(5, 2, 1)
+print(c2)
+c3 = ComplexityClass(0, 100, 1)
+print(c3)
+print(c1 == c2)
+print(c1 == c3)
+print(c2 > c3)
+```
