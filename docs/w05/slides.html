@@ -476,7 +476,7 @@ Jeff Jacobs
 <section id="visualizing-the-structures" class="slide level2 smaller crunch-title crunch-col-output crunch-details">
 <h2>Visualizing the Structures</h2>
 <div class="vcenter">
-<div id="d2a9fd4d" class="cell columns column-output-location" data-execution_count="2">
+<div id="bfd4f698" class="cell columns column-output-location" data-execution_count="2">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -505,7 +505,7 @@ Jeff Jacobs
 </div>
 </div>
 </div>
-<div id="4e468baa" class="cell columns column-output-location" data-execution_count="3">
+<div id="115603fc" class="cell columns column-output-location" data-execution_count="3">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -558,7 +558,7 @@ Jeff Jacobs
 <img data-src="images/pareto.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="ordering-vectors-via-pareto-dominance" class="slide level2 smaller crunch-title title-12">
 <h2>Ordering Vectors via Pareto Dominance</h2>
-<div id="ae72ab26" class="cell columns column-output-location" data-execution_count="4">
+<div id="f94028a2" class="cell columns column-output-location" data-execution_count="4">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -712,7 +712,7 @@ False</code></pre>
 <h2>Two Ways to Traverse: Picture Version</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="0b20f892" class="cell" data-execution_count="5">
+<div id="468e9608" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> hw2 <span class="im">import</span> IterAlgorithm, NodeProcessor</span>
@@ -727,7 +727,7 @@ False</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="8ebb09a4" class="cell" data-execution_count="6">
+<div id="bb284c9b" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="bu">print</span>(<span class="st">"DFS:"</span>)</span>
@@ -848,15 +848,26 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
 </section>
 <section id="the-three-animals-traverse-our-inventory-tree" class="slide level2 smaller crunch-title title-10">
 <h2>The Three Animals Traverse our Inventory Tree</h2>
-<div id="081bb579" class="cell" data-execution_count="7">
+<div id="faedbff2" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>visualize(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
+<img data-src="index_files/figure-revealjs/cell-8-output-1.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="final-notes-for-hw2" class="slide level2">
+<h2>Final Notes for HW2</h2>
+<ul>
+<li>The last part challenges you to ask: <strong>why stop at a hash based on just the <em>first</em> letter of the key?</strong></li>
+<li>We could just as easily use the first <strong>two</strong> letters:</li>
+<li><code>h('AA') = 0</code>, <code>h('AB') = 1</code>, …, <code>h('AZ') = 25</code>,</li>
+<li><code>h('BA') = 26</code>, <code>h('BB') = 27</code>, …, <code>h('BZ') = 51</code>,</li>
+<li><code>h('CA') = 52</code>, …, <code>h('ZZ') = 675</code>.</li>
+<li>You will see how this gets us <strong>even closer to the elusive <span class="math inline">\(O(1)\)</span>!</strong> And we could get even closer with three letters, four letters, … 🤔🤔🤔</li>
+</ul>
 
-<img data-src="index_files/figure-revealjs/cell-8-output-1.svg" class="quarto-figure quarto-figure-center r-stretch"><div class="quarto-auto-generated-content">
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>DSAN 5500 Week 5: Binary Search Trees</p>
 </div>

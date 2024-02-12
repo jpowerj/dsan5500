@@ -137,12 +137,115 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body>
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../w05/index.html">Week 5: Feb 12</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">DSAN 5500: Data Structures, Objects, and Algorithms in Python</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><i class="bi bi-house pe-1"></i> Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../recordings/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recordings</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1: Jan 10</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2: Jan 22</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 3: Jan 29</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4: Feb 5</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w05/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Week 5: Feb 12</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+ <span class="menu-text"><a href="https://classroom.google.com/c/NjM5MzE2MTE4NTgx?cjc=r4pzugi" target="_blank">Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></a></span>
+  </li>
+        <li class="sidebar-item">
+ <span class="menu-text"><a href="https://chat.google.com/room/AAAAy61nvA8?cls=7" target="_blank">Google Spaces <i class="bi bi-box-arrow-up-right ps-1"></i></a></span>
+  </li>
+        <li class="sidebar-item">
+ <span class="menu-text"><a href="https://georgetown.instructure.com/courses/183034" target="_blank">Canvas <i class="bi bi-box-arrow-up-right ps-1"></i></a></span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -172,6 +275,7 @@ window.Quarto = {
   <li><a href="#two-ways-to-traverse-hw2-version" id="toc-two-ways-to-traverse-hw2-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-hw2-version">Two Ways to Traverse: HW2 Version</a></li>
   <li><a href="#three-animals-in-the-dfs-species" id="toc-three-animals-in-the-dfs-species" class="nav-link" data-scroll-target="#three-animals-in-the-dfs-species">Three Animals in the DFS Species</a></li>
   <li><a href="#the-three-animals-traverse-our-inventory-tree" id="toc-the-three-animals-traverse-our-inventory-tree" class="nav-link" data-scroll-target="#the-three-animals-traverse-our-inventory-tree">The Three Animals Traverse our Inventory Tree</a></li>
+  <li><a href="#final-notes-for-hw2" id="toc-final-notes-for-hw2" class="nav-link" data-scroll-target="#final-notes-for-hw2">Final Notes for HW2</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
@@ -288,7 +392,7 @@ window.Quarto = {
 <section id="visualizing-the-structures" class="level2 smaller crunch-title crunch-col-output crunch-details">
 <h2 class="smaller crunch-title crunch-col-output crunch-details anchored" data-anchor-id="visualizing-the-structures">Visualizing the Structures</h2>
 <div class="vcenter">
-<div id="957d794f" class="cell" data-output-location="column" data-execution_count="2">
+<div id="a6c1bbe0" class="cell" data-output-location="column" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> LinkedList, InventoryItem</span>
@@ -314,7 +418,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="e31ae678" class="cell" data-output-location="column" data-execution_count="3">
+<div id="80103496" class="cell" data-output-location="column" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> BinarySearchTree</span>
@@ -368,7 +472,7 @@ window.Quarto = {
 </section>
 <section id="ordering-vectors-via-pareto-dominance" class="level2 smaller crunch-title title-12">
 <h2 class="smaller crunch-title title-12 anchored" data-anchor-id="ordering-vectors-via-pareto-dominance">Ordering Vectors via Pareto Dominance</h2>
-<div id="ee0aa686" class="cell" data-output-location="column" data-execution_count="4">
+<div id="6f3c842f" class="cell" data-output-location="column" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UtilVector:</span>
@@ -521,7 +625,7 @@ False</code></pre>
 <h2 class="smaller crunch-title crunch-details anchored" data-anchor-id="two-ways-to-traverse-picture-version">Two Ways to Traverse: Picture Version</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="7385d3b1" class="cell" data-execution_count="5">
+<div id="a7049c9f" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> IterAlgorithm, NodeProcessor</span>
@@ -536,7 +640,7 @@ False</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="466ac3d7" class="cell" data-execution_count="6">
+<div id="31efad6d" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"DFS:"</span>)</span>
@@ -660,7 +764,7 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
 </section>
 <section id="the-three-animals-traverse-our-inventory-tree" class="level2 smaller crunch-title title-10">
 <h2 class="smaller crunch-title title-10 anchored" data-anchor-id="the-three-animals-traverse-our-inventory-tree">The Three Animals Traverse our Inventory Tree</h2>
-<div id="027acada" class="cell" data-execution_count="7">
+<div id="e8f93fef" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>visualize(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -673,6 +777,17 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
 </div>
 </div>
 </div>
+</section>
+<section id="final-notes-for-hw2" class="level2">
+<h2 class="anchored" data-anchor-id="final-notes-for-hw2">Final Notes for HW2</h2>
+<ul>
+<li>The last part challenges you to ask: <strong>why stop at a hash based on just the <em>first</em> letter of the key?</strong></li>
+<li>We could just as easily use the first <strong>two</strong> letters:</li>
+<li><code>h('AA') = 0</code>, <code>h('AB') = 1</code>, …, <code>h('AZ') = 25</code>,</li>
+<li><code>h('BA') = 26</code>, <code>h('BB') = 27</code>, …, <code>h('BZ') = 51</code>,</li>
+<li><code>h('CA') = 52</code>, …, <code>h('ZZ') = 675</code>.</li>
+<li>You will see how this gets us <strong>even closer to the elusive <span class="math inline">\(O(1)\)</span>!</strong> And we could get even closer with three letters, four letters, … 🤔🤔🤔</li>
+</ul>
 
 
 </section>

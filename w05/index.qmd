@@ -406,3 +406,12 @@ bfs_processor.iterate_over(bst)
 #| fig-align: center
 visualize(bst)
 ```
+
+## Final Notes for HW2
+
+* The last part challenges you to ask: **why stop at a hash based on just the *first* letter of the key?**
+* We could just as easily use the first **two** letters:
+* `h('AA') = 0`, `h('AB') = 1`, ..., `h('AZ') = 25`,
+* `h('BA') = 26`, `h('BB') = 27`, ..., `h('BZ') = 51`,
+* `h('CA') = 52`, ..., `h('ZZ') = 675`.
+* You will see how this gets us **even closer to the elusive $O(1)$!** And we could get even closer with three letters, four letters, ... 🤔🤔🤔

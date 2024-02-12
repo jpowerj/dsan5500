@@ -452,7 +452,7 @@ Jeff Jacobs
 <img data-src="images/devil_details.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">From <a href="https://www.prweek.com/article/1368808/pr-ethics-asia-patchwork-values" target="_blank"><em>PR Week</em></a>, 19 Oct 2015</p></section>
 <section id="objects-vs.-their-string-representations" class="slide level2 smaller crunch-title title-11 crunch-quarto-layout-panel crunch-images">
 <h2><em>Objects</em> vs.&nbsp;Their <em>(String) Representations</em></h2>
-<div class="quarto-layout-panel" data-layout="[1,1]" data-layout-align="center">
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[1,1]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="xbox-left" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
@@ -485,7 +485,7 @@ Jeff Jacobs
 <h2>In Python</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="7679e2aa" class="cell" data-execution_count="1">
+<div id="e14bc300" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span>
@@ -501,7 +501,7 @@ Jeff Jacobs
 <ul>
 <li>So far so good…</li>
 </ul>
-<div id="52f60190" class="cell" data-execution_count="2">
+<div id="0841f4b6" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="bu">print</span>(x<span class="op">+</span><span class="dv">1</span>)</span>
@@ -561,7 +561,7 @@ Jeff Jacobs
 <ol type="1">
 <li><code>str</code>s are just lists of <strong>characters</strong>…</li>
 </ol>
-<div id="58631422" class="cell" data-execution_count="3">
+<div id="525ceae0" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>x <span class="op">=</span> <span class="st">"Ceci n'est pas une string"</span></span>
@@ -577,7 +577,7 @@ Jeff Jacobs
 </div>
 </div><div class="column" style="width:50%;">
 <p><span class="math inline">\(\leadsto\)</span> 2. <strong>Characters</strong> are stored in Python memory as <strong><code>int</code> values</strong> (ASCII encodings)…</p>
-<div id="e13e4416" class="cell" data-execution_count="4">
+<div id="04067733" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>y <span class="op">=</span> <span class="st">b"Ceci n'est pas une string"</span></span>
@@ -594,7 +594,7 @@ Jeff Jacobs
 </div>
 </div>
 <p><span class="math inline">\(\leadsto\)</span> 3. Each <code>int</code> value is stored in <strong>computer memory</strong> as a <strong>byte</strong> (8 <strong>bits</strong> <span class="math inline">\(b_i \in \{0, 1\}\)</span>):</p>
-<div id="6aec134e" class="cell" data-execution_count="5">
+<div id="f40a2dc4" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="bu">print</span>([<span class="bu">format</span>(character, <span class="st">'b'</span>) <span class="cf">for</span> character <span class="kw">in</span> y])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -664,7 +664,7 @@ Jeff Jacobs
 </section>
 <section id="swim-club-with-data-science-hats" class="slide level2 smaller crunch-title">
 <h2>Swim Club with Data Science Hats</h2>
-<div id="9ba4e72f" class="cell" data-execution_count="6">
+<div id="b9c16a12" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -753,7 +753,7 @@ Jeff Jacobs
 <center>
 <strong>Short Events</strong>
 </center>
-<div id="402269f2" class="cell" data-execution_count="7">
+<div id="3319fb7f" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>short_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"50m"</span>].copy()</span>
@@ -824,7 +824,7 @@ Jeff Jacobs
 <center>
 <strong>Long Events</strong>
 </center>
-<div id="be64d6bf" class="cell" data-execution_count="8">
+<div id="331a8c5c" class="cell" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>long_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"100m"</span>].copy()</span>
@@ -1007,7 +1007,7 @@ Jeff Jacobs
 </section>
 <section id="our-list-of-item-price-pairs" class="slide level2 crunch-title crunch-details crunch-ul small-summary">
 <h2>Our List of (Item, Price) Pairs</h2>
-<div id="a2ac7afa" class="cell" data-execution_count="9">
+<div id="1480a1b2" class="cell" data-execution_count="9">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>price_list <span class="op">=</span> []</span>

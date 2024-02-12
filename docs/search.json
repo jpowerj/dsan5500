@@ -564,140 +564,214 @@
     "href": "w05/slides.html#the-three-animals-traverse-our-inventory-tree",
     "title": "Week 5: Binary Search Trees",
     "section": "The Three Animals Traverse our Inventory Tree",
-    "text": "The Three Animals Traverse our Inventory Tree\n\n\nCode\nvisualize(bst)\n\n\n\n\n\n\nDSAN 5500 Week 5: Binary Search Trees"
+    "text": "The Three Animals Traverse our Inventory Tree\n\n\nCode\nvisualize(bst)"
+  },
+  {
+    "objectID": "w05/slides.html#final-notes-for-hw2",
+    "href": "w05/slides.html#final-notes-for-hw2",
+    "title": "Week 5: Binary Search Trees",
+    "section": "Final Notes for HW2",
+    "text": "Final Notes for HW2\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔\n\n\n\n\nDSAN 5500 Week 5: Binary Search Trees"
   },
   {
     "objectID": "w05/index.html",
     "href": "w05/index.html",
     "title": "Week 5: Binary Search Trees",
     "section": "",
-    "text": "Open slides in new window →"
+    "text": "Open slides in new window →",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#hash-tables-tldr-edition",
     "href": "w05/index.html#hash-tables-tldr-edition",
     "title": "Week 5: Binary Search Trees",
     "section": "Hash Tables: tldr Edition",
-    "text": "Hash Tables: tldr Edition\n\nKeys \\(k \\in \\mathcal{K}\\) are plugged into a (deterministic) hash function \\(h: \\mathcal{K} \\rightarrow \\{1, \\ldots, N\\}\\), producing an index where \\(k\\) is stored\nIf nothing at that index yet, store \\((k,v)\\) in empty slot\nIf already an item at that index, we have a ⚠️collision⚠️\nWe could just throw away the old value (HW2 Part 1)\nOtherwise, need a way to store multiple items in one slot… (a way to dynamically grow storage at given index)\nSolution you know so far: Linked Lists\nNew solution: Binary Search Trees!"
+    "text": "Hash Tables: tldr Edition\n\nKeys \\(k \\in \\mathcal{K}\\) are plugged into a (deterministic) hash function \\(h: \\mathcal{K} \\rightarrow \\{1, \\ldots, N\\}\\), producing an index where \\(k\\) is stored\nIf nothing at that index yet, store \\((k,v)\\) in empty slot\nIf already an item at that index, we have a ⚠️collision⚠️\nWe could just throw away the old value (HW2 Part 1)\nOtherwise, need a way to store multiple items in one slot… (a way to dynamically grow storage at given index)\nSolution you know so far: Linked Lists\nNew solution: Binary Search Trees!",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#linked-lists-divide-and-conquer-bsts",
     "href": "w05/index.html#linked-lists-divide-and-conquer-bsts",
     "title": "Week 5: Binary Search Trees",
     "section": "Linked Lists + Divide-and-Conquer = BSTs",
-    "text": "Linked Lists + Divide-and-Conquer = BSTs\n\nBy now, the word “Linked List” should make you groan, cross your arms and start tapping your feet with impatience\n“Here we go again… the Linked List is gonna make us traverse through every single element before we reach the one we’re looking for” 😖\nLinked List = Canon in D\nBinary Search Tree = Canon in D played by Hiromi Uehara…"
+    "text": "Linked Lists + Divide-and-Conquer = BSTs\n\nBy now, the word “Linked List” should make you groan, cross your arms and start tapping your feet with impatience\n“Here we go again… the Linked List is gonna make us traverse through every single element before we reach the one we’re looking for” 😖\nLinked List = Canon in D\nBinary Search Tree = Canon in D played by Hiromi Uehara…",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#hiromi-uehara",
     "href": "w05/index.html#hiromi-uehara",
     "title": "Week 5: Binary Search Trees",
     "section": "Hiromi Uehara",
-    "text": "Hiromi Uehara"
+    "text": "Hiromi Uehara",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#the-metaphor-goes-deep",
     "href": "w05/index.html#the-metaphor-goes-deep",
     "title": "Week 5: Binary Search Trees",
     "section": "The Metaphor Goes Deep!",
-    "text": "The Metaphor Goes Deep!\n\nUehara’s Canon in D = Pachelbel’s + Fancier notes/rhythms on top of it\nBinary Search Trees = Linked Lists + Fancier structure built on top of it\n\nSpecifically: “next” pointer can now branch left or right, to ensure ordering of nodes\n\n\n\n\n\n\n\n\nclass LinkedListNode:\n    @property content\n    @property next\n\n\nclass BinarySearchTreeNode:\n    @property content\n    @property left\n    @property right"
+    "text": "The Metaphor Goes Deep!\n\nUehara’s Canon in D = Pachelbel’s + Fancier notes/rhythms on top of it\nBinary Search Trees = Linked Lists + Fancier structure built on top of it\n\nSpecifically: “next” pointer can now branch left or right, to ensure ordering of nodes\n\n\n\n\n\n\n\n\nclass LinkedListNode:\n    @property content\n    @property next\n\n\nclass BinarySearchTreeNode:\n    @property content\n    @property left\n    @property right",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#visualizing-the-structures",
     "href": "w05/index.html#visualizing-the-structures",
     "title": "Week 5: Binary Search Trees",
     "section": "Visualizing the Structures",
-    "text": "Visualizing the Structures\n\n\n\nCode\nfrom hw2 import LinkedList, InventoryItem\nll = LinkedList()\nitem1 = InventoryItem('Mango', 50)\nll.append(item1)\nitem2 = InventoryItem('Pickle', 60)\nll.append(item2)\nitem3 = InventoryItem('Artichoke', 55)\nll.append(item3)\nitem5 = InventoryItem('Banana', 123)\nll.append(item5)\nitem6 = InventoryItem('Aardvark', 11)\nll.append(item6)\nHTML(visualize_ll(ll))\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nfrom hw2 import BinarySearchTree\nbst = BinarySearchTree()\nitem1 = InventoryItem('Mango', 50)\nbst.add(item1)\nitem2 = InventoryItem('Pickle', 60)\nbst.add(item2)\nitem3 = InventoryItem('Artichoke', 55)\nbst.add(item3)\nitem5 = InventoryItem('Banana', 123)\nbst.add(item5)\nitem6 = InventoryItem('Aardvark', 11)\nbst.add(item6)\nHTML(visualize(bst))"
+    "text": "Visualizing the Structures\n\n\n\nCode\nfrom hw2 import LinkedList, InventoryItem\nll = LinkedList()\nitem1 = InventoryItem('Mango', 50)\nll.append(item1)\nitem2 = InventoryItem('Pickle', 60)\nll.append(item2)\nitem3 = InventoryItem('Artichoke', 55)\nll.append(item3)\nitem5 = InventoryItem('Banana', 123)\nll.append(item5)\nitem6 = InventoryItem('Aardvark', 11)\nll.append(item6)\nHTML(visualize_ll(ll))\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nfrom hw2 import BinarySearchTree\nbst = BinarySearchTree()\nitem1 = InventoryItem('Mango', 50)\nbst.add(item1)\nitem2 = InventoryItem('Pickle', 60)\nbst.add(item2)\nitem3 = InventoryItem('Artichoke', 55)\nbst.add(item3)\nitem5 = InventoryItem('Banana', 123)\nbst.add(item5)\nitem6 = InventoryItem('Aardvark', 11)\nbst.add(item6)\nHTML(visualize(bst))",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#practical-considerations",
     "href": "w05/index.html#practical-considerations",
     "title": "Week 5: Binary Search Trees",
     "section": "Practical Considerations",
-    "text": "Practical Considerations\n\nHash Maps: Only useful if keys are hashable\n\nPython has a built-in collections.abc.Hashable class, such that hash(my_obj) works iff isinstance(my_obj, Hashable)\n\nBinary Search Trees: Only useful if keys have an ordering\n\n“Standard” classes (int, str, datetime) come with implementations of ordering, but if you make your own class you need to implement the ordering for it!\n\n(Linked Lists still work for non-hashable/orderable objects!)"
+    "text": "Practical Considerations\n\nHash Maps: Only useful if keys are hashable\n\nPython has a built-in collections.abc.Hashable class, such that hash(my_obj) works iff isinstance(my_obj, Hashable)\n\nBinary Search Trees: Only useful if keys have an ordering\n\n“Standard” classes (int, str, datetime) come with implementations of ordering, but if you make your own class you need to implement the ordering for it!\n\n(Linked Lists still work for non-hashable/orderable objects!)",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#why-just-work",
     "href": "w05/index.html#why-just-work",
     "title": "Week 5: Binary Search Trees",
     "section": "Why ==, <, >= “Just Work”",
-    "text": "Why ==, &lt;, &gt;= “Just Work”\n\nNot magic! Someone has explicitly written a set of functions telling Python what to do when it sees e.g. obj1 &lt; obj2\nExample: let’s implement an ordering of vectors \\(\\mathbf{x} \\in \\mathbb{R}^2\\) based on Pareto dominance"
+    "text": "Why ==, &lt;, &gt;= “Just Work”\n\nNot magic! Someone has explicitly written a set of functions telling Python what to do when it sees e.g. obj1 &lt; obj2\nExample: let’s implement an ordering of vectors \\(\\mathbf{x} \\in \\mathbb{R}^2\\) based on Pareto dominance",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#ordering-vectors-via-pareto-dominance",
     "href": "w05/index.html#ordering-vectors-via-pareto-dominance",
     "title": "Week 5: Binary Search Trees",
     "section": "Ordering Vectors via Pareto Dominance",
-    "text": "Ordering Vectors via Pareto Dominance\n\n\nCode\nclass UtilVector:\n    def __init__(self, u1, u2):\n        self.u1 = u1\n        self.u2 = u2\n    \n    def __eq__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return self.u1 == other.u1 and self.u2 == other.u2\n\n    def __ne__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return self.u1 != other.u1 or self.u2 != other.u2\n    \n    def __gt__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return self.u1 &gt; other.u1 and self.u2 &gt;= other.u2 or self.u1 &gt;= other.u1 and self.u2 &gt; other.u2\n\n    def __ge__(self, other):\n        return self.__gt__(other) or self.__eq__(other)\n        \n    def __lt__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return other.__gt__(self)\n\n    def __le__(self, other):\n        return self.__lt__(other) or self.__eq__(other)\nxA = UtilVector(2, 2)\nxB = UtilVector(3, 2)\nprint(xB &gt; xA)\nxC = UtilVector(2, 3)\nprint(xC &gt; xB)\nimport itertools\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nx0 = UtilVector(4, 6)\nutil_vals = np.arange(0, 11, 0.5)\nutil_pairs = list(itertools.product(util_vals, util_vals))\nutil_df = pd.DataFrame(util_pairs, columns=['x','y'])\ndef compare_to_x0(row):\n    row_vec = UtilVector(row['x'], row['y'])\n    gt_result = int(row_vec &gt; x0)\n    lt_result = int(row_vec &lt; x0)\n    return gt_result - lt_result\nutil_df['greater'] = util_df.apply(compare_to_x0, axis=1)\n#my_palette = sns.color_palette(['#E69F00','lightgray','#CCFFCC'])\nmy_palette = sns.color_palette(['#FF3535','lightgray','#35FF35'])\nsns.relplot(\n    data=util_df,\n    x='x', y='y',\n    hue='greater',\n    palette=my_palette,\n    marker='X', s=150\n);\nx0_df = pd.DataFrame({'x': [4], 'y': [6]})\nplt.scatter(data=x0_df, x='x', y='y', color='black')\nplt.gca().set_aspect('equal')\n\n\nTrue\nFalse"
+    "text": "Ordering Vectors via Pareto Dominance\n\n\nCode\nclass UtilVector:\n    def __init__(self, u1, u2):\n        self.u1 = u1\n        self.u2 = u2\n    \n    def __eq__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return self.u1 == other.u1 and self.u2 == other.u2\n\n    def __ne__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return self.u1 != other.u1 or self.u2 != other.u2\n    \n    def __gt__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return self.u1 &gt; other.u1 and self.u2 &gt;= other.u2 or self.u1 &gt;= other.u1 and self.u2 &gt; other.u2\n\n    def __ge__(self, other):\n        return self.__gt__(other) or self.__eq__(other)\n        \n    def __lt__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return other.__gt__(self)\n\n    def __le__(self, other):\n        return self.__lt__(other) or self.__eq__(other)\nxA = UtilVector(2, 2)\nxB = UtilVector(3, 2)\nprint(xB &gt; xA)\nxC = UtilVector(2, 3)\nprint(xC &gt; xB)\nimport itertools\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nx0 = UtilVector(4, 6)\nutil_vals = np.arange(0, 11, 0.5)\nutil_pairs = list(itertools.product(util_vals, util_vals))\nutil_df = pd.DataFrame(util_pairs, columns=['x','y'])\ndef compare_to_x0(row):\n    row_vec = UtilVector(row['x'], row['y'])\n    gt_result = int(row_vec &gt; x0)\n    lt_result = int(row_vec &lt; x0)\n    return gt_result - lt_result\nutil_df['greater'] = util_df.apply(compare_to_x0, axis=1)\n#my_palette = sns.color_palette(['#E69F00','lightgray','#CCFFCC'])\nmy_palette = sns.color_palette(['#FF3535','lightgray','#35FF35'])\nsns.relplot(\n    data=util_df,\n    x='x', y='y',\n    hue='greater',\n    palette=my_palette,\n    marker='X', s=150\n);\nx0_df = pd.DataFrame({'x': [4], 'y': [6]})\nplt.scatter(data=x0_df, x='x', y='y', color='black')\nplt.gca().set_aspect('equal')\n\n\nTrue\nFalse",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#back-to-bsts",
     "href": "w05/index.html#back-to-bsts",
     "title": "Week 5: Binary Search Trees",
     "section": "Back to BSTs",
-    "text": "Back to BSTs\n\nFor HW2, we provide you with an InventoryItem class\nTwo instance variables: item_name and price\nEquivalence relations:\n\n__eq__(other), __ne__(other)\n\nOrdering relations:\n\n__lt__(other), __le__(other), __gt__(other), __ge__(other)\n\nBonus: __repr__() and __str__()"
+    "text": "Back to BSTs\n\nFor HW2, we provide you with an InventoryItem class\nTwo instance variables: item_name and price\nEquivalence relations:\n\n__eq__(other), __ne__(other)\n\nOrdering relations:\n\n__lt__(other), __le__(other), __gt__(other), __ge__(other)\n\nBonus: __repr__() and __str__()",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#lls-rightarrow-bsts-the-hard-part",
     "href": "w05/index.html#lls-rightarrow-bsts-the-hard-part",
     "title": "Week 5: Binary Search Trees",
     "section": "LLs \\(\\rightarrow\\) BSTs: The Hard Part",
-    "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.\nBut… for a BinarySearchTree, since our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node in our BST\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!"
+    "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.\nBut… for a BinarySearchTree, since our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node in our BST\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#two-ways-to-traverse-irl-version",
     "href": "w05/index.html#two-ways-to-traverse-irl-version",
     "title": "Week 5: Binary Search Trees",
     "section": "Two Ways to Traverse: IRL Version",
-    "text": "Two Ways to Traverse: IRL Version\n\nImagine we’re trying to learn about a topic \\(\\tau\\) using Wikipedia, so we find its article \\(\\tau_0\\)\nThere are two “extremes” in terms of strategies we could follow for learning, given the contents of the article as well as the links it contains to other articles\n\n\n\n\n\n\n\n Depth-First Search (DFS)\n\n\n\n\nOpen \\(\\tau_0\\) and start reading it; When we encounter a link we always click it and immediately start reading the new article.\nIf we hit an article with no links (or a dead end/broken link), we finish reading it and click the back button, picking up where we left off in the previous article. When we reach the end of \\(\\tau_0\\), we’re done!\n\n\n\n\n\n\n\n\n\n Breadth-First Search (BFS)\n\n\n\n\nBookmark \\(\\tau_0\\) in a folder called “Level 0 Articles”; open and start reading it\nWhen we encounter a link, we put it in a “Level 1 Articles” folder, but continue reading \\(\\tau_0\\) until we reach the end.\nWe then open all “Level 1 Articles” in new tabs, placing links we encounter in these articles into a “Level 2 Articles” folder, that we only start reading once all “Level 1 Articles” are read\nWe continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the “opposite” of DFS?)\n\n\n\n\n…Let’s try them out! I clicked “Random Article” and got Eustache de Saint Pierre"
+    "text": "Two Ways to Traverse: IRL Version\n\nImagine we’re trying to learn about a topic \\(\\tau\\) using Wikipedia, so we find its article \\(\\tau_0\\)\nThere are two “extremes” in terms of strategies we could follow for learning, given the contents of the article as well as the links it contains to other articles\n\n\n\n\n\n\n\n Depth-First Search (DFS)\n\n\n\n\nOpen \\(\\tau_0\\) and start reading it; When we encounter a link we always click it and immediately start reading the new article.\nIf we hit an article with no links (or a dead end/broken link), we finish reading it and click the back button, picking up where we left off in the previous article. When we reach the end of \\(\\tau_0\\), we’re done!\n\n\n\n\n\n\n\n\n\n Breadth-First Search (BFS)\n\n\n\n\nBookmark \\(\\tau_0\\) in a folder called “Level 0 Articles”; open and start reading it\nWhen we encounter a link, we put it in a “Level 1 Articles” folder, but continue reading \\(\\tau_0\\) until we reach the end.\nWe then open all “Level 1 Articles” in new tabs, placing links we encounter in these articles into a “Level 2 Articles” folder, that we only start reading once all “Level 1 Articles” are read\nWe continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the “opposite” of DFS?)\n\n\n\n\n…Let’s try them out! I clicked “Random Article” and got Eustache de Saint Pierre",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#two-ways-to-traverse-picture-version",
     "href": "w05/index.html#two-ways-to-traverse-picture-version",
     "title": "Week 5: Binary Search Trees",
     "section": "Two Ways to Traverse: Picture Version",
-    "text": "Two Ways to Traverse: Picture Version\n\n\n\n\nCode\nfrom hw2 import IterAlgorithm, NodeProcessor\nvisualize(bst)\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nprint(\"DFS:\")\ndfs_processor = NodeProcessor(IterAlgorithm.DEPTH_FIRST)\n#print(type(dfs_processor.node_container))\ndfs_processor.iterate_over(bst)\n\nprint(\"\\nBFS:\")\nbfs_processor = NodeProcessor(IterAlgorithm.BREADTH_FIRST)\n#print(type(bfs_processor.node_container))\nbfs_processor.iterate_over(bst)\n\n\nDFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Banana,price=123]\nInventoryItem[item_name=Aardvark,price=11]\n\nBFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Aardvark,price=11]\nInventoryItem[item_name=Banana,price=123]"
+    "text": "Two Ways to Traverse: Picture Version\n\n\n\n\nCode\nfrom hw2 import IterAlgorithm, NodeProcessor\nvisualize(bst)\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nprint(\"DFS:\")\ndfs_processor = NodeProcessor(IterAlgorithm.DEPTH_FIRST)\n#print(type(dfs_processor.node_container))\ndfs_processor.iterate_over(bst)\n\nprint(\"\\nBFS:\")\nbfs_processor = NodeProcessor(IterAlgorithm.BREADTH_FIRST)\n#print(type(bfs_processor.node_container))\nbfs_processor.iterate_over(bst)\n\n\nDFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Banana,price=123]\nInventoryItem[item_name=Aardvark,price=11]\n\nBFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Aardvark,price=11]\nInventoryItem[item_name=Banana,price=123]",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#two-ways-to-traverse-in-words-version",
     "href": "w05/index.html#two-ways-to-traverse-in-words-version",
     "title": "Week 5: Binary Search Trees",
     "section": "Two Ways to Traverse: In-Words Version",
-    "text": "Two Ways to Traverse: In-Words Version\n\nDepth-First Search (DFS): With this approach, we iterate through the BST by always taking the left child as the “next” child until we hit a leaf node (which means, we cannot follow this left-child pointer any longer, since a leaf node does not have a left child or a right child!), and only at that point do we back up and take the right children we skipped.\nBreadth-First Search (BFS): This is the “opposite” of DFS in the sense that we traverse the tree level-by-level, never moving to the next level of the tree until we’re sure that we have visited every node on the current level."
+    "text": "Two Ways to Traverse: In-Words Version\n\nDepth-First Search (DFS): With this approach, we iterate through the BST by always taking the left child as the “next” child until we hit a leaf node (which means, we cannot follow this left-child pointer any longer, since a leaf node does not have a left child or a right child!), and only at that point do we back up and take the right children we skipped.\nBreadth-First Search (BFS): This is the “opposite” of DFS in the sense that we traverse the tree level-by-level, never moving to the next level of the tree until we’re sure that we have visited every node on the current level.",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#two-ways-to-traverse-animated-version",
     "href": "w05/index.html#two-ways-to-traverse-animated-version",
     "title": "Week 5: Binary Search Trees",
     "section": "Two Ways to Traverse: Animated Version",
-    "text": "Two Ways to Traverse: Animated Version\n\n\n\n\n\n\n\n\n\nDepth-First Search (from Wikimedia Commons)\n\n\n\n\n\n\n\nBreadth-First Search (from Wikimedia Commons)"
+    "text": "Two Ways to Traverse: Animated Version\n\n\n\n\n\n\n\n\n\nDepth-First Search (from Wikimedia Commons)\n\n\n\n\n\n\n\nBreadth-First Search (from Wikimedia Commons)",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#two-ways-to-traverse-underlying-data-structures-version",
     "href": "w05/index.html#two-ways-to-traverse-underlying-data-structures-version",
     "title": "Week 5: Binary Search Trees",
     "section": "Two Ways to Traverse: Underlying Data Structures Version",
-    "text": "Two Ways to Traverse: Underlying Data Structures Version\n\nNow that you have some intuition, you may be thinking that they might require very different code to implement 🤔\nThis is where the mathematical-formal linkage between the two becomes ultra helpful!\nIt turns out (and a full-on algorithmic theory course makes you prove) that\n\n\nDepth-First Search can be accomplished by processing nodes in an order determined by adding each to a stack, while\nBreadth-First Search can be accomplished by processing nodes in an order determined by adding each to a queue!\n\n\n\\(\\implies\\) Literally identical code, “pulling out” the word stack and replacing it with the word queue within your code (or vice-versa).\nIf you have your Software Engineer Hats on, you’ll recognize this as a job for an abstraction layer!"
+    "text": "Two Ways to Traverse: Underlying Data Structures Version\n\nNow that you have some intuition, you may be thinking that they might require very different code to implement 🤔\nThis is where the mathematical-formal linkage between the two becomes ultra helpful!\nIt turns out (and a full-on algorithmic theory course makes you prove) that\n\n\nDepth-First Search can be accomplished by processing nodes in an order determined by adding each to a stack, while\nBreadth-First Search can be accomplished by processing nodes in an order determined by adding each to a queue!\n\n\n\\(\\implies\\) Literally identical code, “pulling out” the word stack and replacing it with the word queue within your code (or vice-versa).\nIf you have your Software Engineer Hats on, you’ll recognize this as a job for an abstraction layer!",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#two-ways-to-traverse-hw2-version",
     "href": "w05/index.html#two-ways-to-traverse-hw2-version",
     "title": "Week 5: Binary Search Trees",
     "section": "Two Ways to Traverse: HW2 Version",
-    "text": "Two Ways to Traverse: HW2 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\nIt will take in a ThingContainer (could be a stack or a queue, you won’t know which), which has two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()"
+    "text": "Two Ways to Traverse: HW2 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\nIt will take in a ThingContainer (could be a stack or a queue, you won’t know which), which has two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#three-animals-in-the-dfs-species",
     "href": "w05/index.html#three-animals-in-the-dfs-species",
     "title": "Week 5: Binary Search Trees",
     "section": "Three Animals in the DFS Species",
-    "text": "Three Animals in the DFS Species\n\n\n\n\n\n\n\nDFS Procedure\nAlgorithm\n\n\n\n\nPre-Order Traversal\n1. Print node2. Traverse left subtree3. Traverse right subtree\n\n\nIn-Order Traversal 🧐‼️\n1. Traverse left subtree2. Print node3. Traverse right subtree\n\n\nPost-Order Traversal\n1. Traverse left subtree2. Traverse right subtree3. Print node"
+    "text": "Three Animals in the DFS Species\n\n\n\n\n\n\n\nDFS Procedure\nAlgorithm\n\n\n\n\nPre-Order Traversal\n1. Print node2. Traverse left subtree3. Traverse right subtree\n\n\nIn-Order Traversal 🧐‼️\n1. Traverse left subtree2. Print node3. Traverse right subtree\n\n\nPost-Order Traversal\n1. Traverse left subtree2. Traverse right subtree3. Print node",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w05/index.html#the-three-animals-traverse-our-inventory-tree",
     "href": "w05/index.html#the-three-animals-traverse-our-inventory-tree",
     "title": "Week 5: Binary Search Trees",
     "section": "The Three Animals Traverse our Inventory Tree",
-    "text": "The Three Animals Traverse our Inventory Tree\n\n\nCode\nvisualize(bst)"
+    "text": "The Three Animals Traverse our Inventory Tree\n\n\nCode\nvisualize(bst)",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#final-notes-for-hw2",
+    "href": "w05/index.html#final-notes-for-hw2",
+    "title": "Week 5: Binary Search Trees",
+    "section": "Final Notes for HW2",
+    "text": "Final Notes for HW2\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔",
+    "crumbs": [
+      "Week 5: Feb 12"
+    ]
   },
   {
     "objectID": "w04/slides.html#thank-you",
@@ -1226,7 +1300,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'lizard', 'bird', 'cat', 'fish'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'lizard', 'bird', 'cat', 'dog', 'fish'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}",
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'bird', 'cat', 'lizard', 'fish'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'dog', 'bird', 'cat', 'lizard'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}",
     "crumbs": [
       "Week 3: Jan 29"
     ]
@@ -1598,7 +1672,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'cat', 'lizard', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'cat', 'dog', 'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'cat', 'fish', 'bird', 'lizard'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'dog', 'cat', 'fish', 'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
