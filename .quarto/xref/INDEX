@@ -51,5 +51,9 @@
   "w05/index.qmd": {
     "slides.html": "908d6cc4",
     "index.html": "e743650c"
+  },
+  "w06/index.qmd": {
+    "slides.html": "85c64c7f",
+    "index.html": "8c0f20a8"
   }
 }

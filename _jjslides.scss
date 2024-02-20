@@ -145,6 +145,10 @@ figcaption {
 }
 
 // lists
+.crunch-li li {
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
 .crunch-ul-0 ul {
     margin-bottom: 0px !important;
 }
@@ -182,6 +186,17 @@ figcaption {
     margin-bottom: 0px !important;
 }
 
+// table
+.crunch-table td {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
+.crunch-table th {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
 // title
 .crunch-title h2 {
     margin-bottom: 0px !important;
@@ -210,6 +225,10 @@ figcaption {
 }
 
 .math-95 mjx-container {
+    font-size: 95% !important;
+}
+
+.math-95 .math .inline {
     font-size: 95% !important;
 }
 
