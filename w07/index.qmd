@@ -1,0 +1,20 @@
+---
+title: "Week 7: {{< var w07.title >}}"
+subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
+date: "Monday, February 26, 2024"
+date-format: full
+author: "Jeff Jacobs"
+institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
+lecnum: 7
+categories:
+  - "Class Sessions"
+format:
+  html:
+    df-print: kable
+    output-file: "index.html"
+    echo: true
+    code-fold: show
+    html-math-method: mathjax
+---
+
+Link to midterm will be posted on Google Classroom.

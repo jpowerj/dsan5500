@@ -1,5 +1,5 @@
 ---
-title: "Week 6: Code Examples and Midterm Prep"
+title: "Week 6: {{< var w06.title >}}"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: "Tuesday, February 20, 2024"
 date-format: full
@@ -12,7 +12,7 @@ format:
   revealjs:
     df-print: kable
     output-file: "slides.html"
-    footer: "DSAN 5500 Week 6: Code Examples and Midterm Prep"
+    footer: "DSAN 5500 Week 6: {{< var w06.footer >}}"
     echo: true
     code-fold: show
     scrollable: true

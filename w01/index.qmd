@@ -1,5 +1,5 @@
 ---
-title: "Week 1: Course Intro and Motivation"
+title: "Week 1: {{< var w01.title >}}"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: "Wednesday, January 10, 2024"
 date-format: full
@@ -12,7 +12,7 @@ format:
   revealjs:
     df-print: kable
     output-file: "slides.html"
-    footer: "DSAN 5500 Week 1: Course Intro, Motivation"
+    footer: "DSAN 5500 Week 1: {{< w01.footer >}}"
     echo: true
     code-fold: show
     scrollable: true

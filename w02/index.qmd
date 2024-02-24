@@ -1,5 +1,5 @@
 ---
-title: "Week 2: Software Design Patterns and Object-Oriented Programming"
+title: "Week 2: {{< var w02.title >}}"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: "Monday, January 22, 2024"
 date-format: full
@@ -13,7 +13,7 @@ format:
   revealjs:
     df-print: kable
     output-file: "slides.html"
-    footer: "DSAN 5500 Week 2: Software Design Patterns and OOP"
+    footer: "DSAN 5500 Week 2: {{< var w02.footer >}}"
     echo: true
     code-fold: show
     scrollable: true

@@ -1,5 +1,5 @@
 ---
-title: "Week 3: Data Structures and Computational Complexity"
+title: "Week 3: {{< var w03.title >}}"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: "Monday, January 29, 2024"
 date-format: full
@@ -13,7 +13,7 @@ format:
   revealjs:
     df-print: kable
     output-file: "slides.html"
-    footer: "DSAN 5500 Week 3: Data Structures, Computational Complexity"
+    footer: "DSAN 5500 Week 3: {{< var w03.footer >}}"
     echo: true
     code-fold: show
     scrollable: true

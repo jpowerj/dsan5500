@@ -1,5 +1,5 @@
 ---
-title: "Week 4: Heaps, Stacks, Hash Maps"
+title: "Week 4: {{< var w04.title >}}"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: "Monday, February 5, 2024"
 date-format: full
@@ -12,7 +12,7 @@ format:
   revealjs:
     df-print: kable
     output-file: "slides.html"
-    footer: "DSAN 5500 Week 4: Heaps, Stacks, Hash Maps"
+    footer: "DSAN 5500 Week 4: {{< var w04.footer >}}"
     echo: true
     code-fold: show
     scrollable: true

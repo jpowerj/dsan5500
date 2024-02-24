@@ -1,0 +1,50 @@
+w01:
+  weeknum: 1
+  title: "Course Intro and Motivation"
+  footer: "Course Intro and Motivation"
+  date-md: "Jan 10"
+w02:
+  weeknum: 2
+  title: "Software Design Patterns and Object-Oriented Programming"
+  footer: "Software Design Patterns and OOP"
+  date-md: "Jan 22"
+w03:
+  weeknum: 3
+  title: "Data Structures and Computational Complexity"
+  footer: "Data Structures and Computational Complexity"
+  date-md: "Jan 29"
+w04:
+  weeknum: 4
+  title: "Heaps, Stacks, Hash Maps"
+  footer: "Heaps, Stacks, Hash Maps"
+  date-md: "Feb 5"
+w05:
+  weeknum: 5
+  title: "Binary Search Trees"
+  footer: "Binary Search Trees"
+  date-md: "Feb 12"
+w06:
+  weeknum: 6
+  title: "Code Examples and Midterm Prep"
+  footer: "Code Examples and Midterm Prep"
+  date-md: "Feb 20"
+w07:
+  weeknum: 7
+  title: "In-Class Midterm"
+  footer: "In-Class Midterm"
+  date-md: "Feb 26"
+w08:
+  weeknum: 8
+  # title: ""
+  # footer: ""
+  # date-md: ""
+w09:
+  weeknum: 9
+  # title: ""
+  # footer: ""
+  # date-md: ""
+w10:
+  weeknum: 10
+  # title: ""
+  # footer: ""
+  # date-md: ""

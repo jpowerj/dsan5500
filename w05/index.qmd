@@ -1,18 +1,18 @@
 ---
-title: "Week 5: Binary Search Trees"
+title: "Week 5: {{< var w05.title >}}"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
-date: "Monday, February 5, 2024"
+date: "Monday, February 12, 2024"
 date-format: full
 author: "Jeff Jacobs"
 institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
-lecnum: 4
+lecnum: 5
 categories:
   - "Class Sessions"
 format:
   revealjs:
     df-print: kable
     output-file: "slides.html"
-    footer: "DSAN 5500 Week 5: Binary Search Trees"
+    footer: "DSAN 5500 Week 5: {{< var w05.footer >}}"
     echo: true
     code-fold: show
     scrollable: true

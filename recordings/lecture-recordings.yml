@@ -26,7 +26,7 @@
   date: 2024-01-22
   categories: ["Lecture Recordings"]
 - week: 1
-  title: "<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4c5ad5b1-2fee-4934-9396-b0f30159ca70' target='_blank'>Week 1: Course Intro and Motivation</a>"
+  title: "<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4c5ad5b1-2fee-4934-9396-b0f30159ca70' target='_blank'>Week 1: {{< var w01.title >}}</a>"
   url: "https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4c5ad5b1-2fee-4934-9396-b0f30159ca70"
   date: 2024-01-10
   categories: ["Lecture Recordings"]

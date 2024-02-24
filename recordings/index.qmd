@@ -9,9 +9,6 @@ listing:
   contents:
     - lecture-recordings.yml
   type: table
-  #categories: true
-#   include:
-#     categories: "{Lecture Videos,Extra Videos}"
   fields: [week,title,date]
   field-display-names:
     week: "Week"
