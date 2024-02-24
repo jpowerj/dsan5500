@@ -434,7 +434,7 @@ window.Quarto = {
 <h2 class="smaller anchored" data-anchor-id="in-python">In Python</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="9c0d5d94" class="cell" data-execution_count="1">
+<div id="e89b1d9d" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span>
@@ -450,7 +450,7 @@ window.Quarto = {
 <ul>
 <li>So far so good…</li>
 </ul>
-<div id="334755b5" class="cell" data-execution_count="2">
+<div id="2d3e1dcb" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x<span class="op">+</span><span class="dv">1</span>)</span>
@@ -511,7 +511,7 @@ window.Quarto = {
 <ol type="1">
 <li><code>str</code>s are just lists of <strong>characters</strong>…</li>
 </ol>
-<div id="30d7c714" class="cell" data-execution_count="3">
+<div id="47bdb803" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Ceci n'est pas une string"</span></span>
@@ -527,7 +527,7 @@ window.Quarto = {
 </div>
 </div><div class="column" style="width:50%;">
 <p><span class="math inline">\(\leadsto\)</span> 2. <strong>Characters</strong> are stored in Python memory as <strong><code>int</code> values</strong> (ASCII encodings)…</p>
-<div id="ced81df4" class="cell" data-execution_count="4">
+<div id="b517a944" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">b"Ceci n'est pas une string"</span></span>
@@ -544,7 +544,7 @@ window.Quarto = {
 </div>
 </div>
 <p><span class="math inline">\(\leadsto\)</span> 3. Each <code>int</code> value is stored in <strong>computer memory</strong> as a <strong>byte</strong> (8 <strong>bits</strong> <span class="math inline">\(b_i \in \{0, 1\}\)</span>):</p>
-<div id="184c7f95" class="cell" data-execution_count="5">
+<div id="22c8ee8d" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="bu">format</span>(character, <span class="st">'b'</span>) <span class="cf">for</span> character <span class="kw">in</span> y])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -626,7 +626,7 @@ window.Quarto = {
 </section>
 <section id="swim-club-with-data-science-hats" class="level2 smaller crunch-title">
 <h2 class="smaller crunch-title anchored" data-anchor-id="swim-club-with-data-science-hats">Swim Club with Data Science Hats</h2>
-<div id="da867094" class="cell" data-execution_count="6">
+<div id="3c8d8802" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -705,7 +705,7 @@ window.Quarto = {
 <center>
 <strong>Short Events</strong>
 </center>
-<div id="8f795a27" class="cell" data-execution_count="7">
+<div id="fa53fedb" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>short_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"50m"</span>].copy()</span>
@@ -766,7 +766,7 @@ window.Quarto = {
 <center>
 <strong>Long Events</strong>
 </center>
-<div id="350d9ada" class="cell" data-execution_count="8">
+<div id="50a9826c" class="cell" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>long_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"100m"</span>].copy()</span>
@@ -945,7 +945,7 @@ window.Quarto = {
 </ul>
 <section id="our-list-of-item-price-pairs" class="level2 crunch-title crunch-details crunch-ul small-summary">
 <h2 class="crunch-title crunch-details crunch-ul small-summary anchored" data-anchor-id="our-list-of-item-price-pairs">Our List of (Item, Price) Pairs</h2>
-<div id="fdffa128" class="cell" data-execution_count="9">
+<div id="faa36679" class="cell" data-execution_count="9">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>price_list <span class="op">=</span> []</span>

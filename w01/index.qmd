@@ -12,7 +12,7 @@ format:
   revealjs:
     df-print: kable
     output-file: "slides.html"
-    footer: "DSAN 5500 Week 1: {{< w01.footer >}}"
+    footer: "DSAN 5500 Week 1: {{< var w01.footer >}}"
     echo: true
     code-fold: show
     scrollable: true
