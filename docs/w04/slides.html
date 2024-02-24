@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.550">
 
   <meta name="author" content="Jeff Jacobs">
   <title>DSAN 5500 - Week 4: Heaps, Stacks, Hash Maps</title>
@@ -452,7 +452,7 @@ Jeff Jacobs
 <img data-src="images/devil_details.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">From <a href="https://www.prweek.com/article/1368808/pr-ethics-asia-patchwork-values" target="_blank"><em>PR Week</em></a>, 19 Oct 2015</p></section>
 <section id="objects-vs.-their-string-representations" class="slide level2 smaller crunch-title title-11 crunch-quarto-layout-panel crunch-images">
 <h2><em>Objects</em> vs.&nbsp;Their <em>(String) Representations</em></h2>
-<div class="quarto-layout-panel" data-layout-align="center" data-layout="[1,1]">
+<div class="quarto-layout-panel" data-layout="[1,1]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="xbox-left" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
@@ -485,7 +485,7 @@ Jeff Jacobs
 <h2>In Python</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="4e7dd487" class="cell" data-execution_count="1">
+<div id="29622144" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span>
@@ -501,7 +501,7 @@ Jeff Jacobs
 <ul>
 <li>So far so good…</li>
 </ul>
-<div id="d45bdd70" class="cell" data-execution_count="2">
+<div id="ae3211ea" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="bu">print</span>(x<span class="op">+</span><span class="dv">1</span>)</span>
@@ -561,7 +561,7 @@ Jeff Jacobs
 <ol type="1">
 <li><code>str</code>s are just lists of <strong>characters</strong>…</li>
 </ol>
-<div id="c9543b14" class="cell" data-execution_count="3">
+<div id="593a7678" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>x <span class="op">=</span> <span class="st">"Ceci n'est pas une string"</span></span>
@@ -577,7 +577,7 @@ Jeff Jacobs
 </div>
 </div><div class="column" style="width:50%;">
 <p><span class="math inline">\(\leadsto\)</span> 2. <strong>Characters</strong> are stored in Python memory as <strong><code>int</code> values</strong> (ASCII encodings)…</p>
-<div id="96a5e77d" class="cell" data-execution_count="4">
+<div id="cb0af14b" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>y <span class="op">=</span> <span class="st">b"Ceci n'est pas une string"</span></span>
@@ -594,7 +594,7 @@ Jeff Jacobs
 </div>
 </div>
 <p><span class="math inline">\(\leadsto\)</span> 3. Each <code>int</code> value is stored in <strong>computer memory</strong> as a <strong>byte</strong> (8 <strong>bits</strong> <span class="math inline">\(b_i \in \{0, 1\}\)</span>):</p>
-<div id="7a39d205" class="cell" data-execution_count="5">
+<div id="bd9f55cc" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="bu">print</span>([<span class="bu">format</span>(character, <span class="st">'b'</span>) <span class="cf">for</span> character <span class="kw">in</span> y])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -664,7 +664,7 @@ Jeff Jacobs
 </section>
 <section id="swim-club-with-data-science-hats" class="slide level2 smaller crunch-title">
 <h2>Swim Club with Data Science Hats</h2>
-<div id="6ba6a6d1" class="cell" data-execution_count="6">
+<div id="683e8be3" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -672,6 +672,7 @@ Jeff Jacobs
 <span id="cb12-3"><a></a>swim_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="6">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -745,6 +746,7 @@ Jeff Jacobs
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="fastest-per-style" class="slide level2 smaller crunch-title crunch-ul crunch-details crunch-code smaller-table">
 <h2>Fastest Per Style</h2>
@@ -753,13 +755,14 @@ Jeff Jacobs
 <center>
 <strong>Short Events</strong>
 </center>
-<div id="877f6ff7" class="cell" data-execution_count="7">
+<div id="218b2236" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>short_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"50m"</span>].copy()</span>
 <span id="cb13-2"><a></a>short_df.sort_values([<span class="st">'style'</span>, <span class="st">'time'</span>], ascending<span class="op">=</span><span class="va">True</span>).groupby(<span class="st">'style'</span>).head(<span class="dv">1</span>).drop(columns<span class="op">=</span><span class="st">"age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="7">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -820,17 +823,19 @@ Jeff Jacobs
 </div>
 </div>
 </div>
+</div>
 </div><div class="column" data-wiudth="50%">
 <center>
 <strong>Long Events</strong>
 </center>
-<div id="207444b1" class="cell" data-execution_count="8">
+<div id="90e8d500" class="cell" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>long_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"100m"</span>].copy()</span>
 <span id="cb14-2"><a></a>long_df.sort_values([<span class="st">'style'</span>, <span class="st">'time'</span>], ascending<span class="op">=</span><span class="va">True</span>).groupby(<span class="st">'style'</span>).head(<span class="dv">1</span>).drop(columns<span class="op">=</span><span class="st">"age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="8">
+<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -888,6 +893,7 @@ Jeff Jacobs
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>
@@ -1007,7 +1013,7 @@ Jeff Jacobs
 </section>
 <section id="our-list-of-item-price-pairs" class="slide level2 crunch-title crunch-details crunch-ul small-summary">
 <h2>Our List of (Item, Price) Pairs</h2>
-<div id="72d5cd8e" class="cell" data-execution_count="9">
+<div id="50349392" class="cell" data-execution_count="9">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>price_list <span class="op">=</span> []</span>

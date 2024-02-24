@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -428,7 +428,7 @@ window.Quarto = {
 <h2 class="smaller anchored" data-anchor-id="in-python">In Python</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="7b1382ec" class="cell" data-execution_count="1">
+<div id="c5d44293" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span>
@@ -444,7 +444,7 @@ window.Quarto = {
 <ul>
 <li>So far so good…</li>
 </ul>
-<div id="7a963e77" class="cell" data-execution_count="2">
+<div id="d1d5ef0a" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x<span class="op">+</span><span class="dv">1</span>)</span>
@@ -505,7 +505,7 @@ window.Quarto = {
 <ol type="1">
 <li><code>str</code>s are just lists of <strong>characters</strong>…</li>
 </ol>
-<div id="c526be76" class="cell" data-execution_count="3">
+<div id="a55d888a" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Ceci n'est pas une string"</span></span>
@@ -521,7 +521,7 @@ window.Quarto = {
 </div>
 </div><div class="column" style="width:50%;">
 <p><span class="math inline">\(\leadsto\)</span> 2. <strong>Characters</strong> are stored in Python memory as <strong><code>int</code> values</strong> (ASCII encodings)…</p>
-<div id="b0edb30d" class="cell" data-execution_count="4">
+<div id="94a32791" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">b"Ceci n'est pas une string"</span></span>
@@ -538,7 +538,7 @@ window.Quarto = {
 </div>
 </div>
 <p><span class="math inline">\(\leadsto\)</span> 3. Each <code>int</code> value is stored in <strong>computer memory</strong> as a <strong>byte</strong> (8 <strong>bits</strong> <span class="math inline">\(b_i \in \{0, 1\}\)</span>):</p>
-<div id="9a820f91" class="cell" data-execution_count="5">
+<div id="58e52b90" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([<span class="bu">format</span>(character, <span class="st">'b'</span>) <span class="cf">for</span> character <span class="kw">in</span> y])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -620,7 +620,7 @@ window.Quarto = {
 </section>
 <section id="swim-club-with-data-science-hats" class="level2 smaller crunch-title">
 <h2 class="smaller crunch-title anchored" data-anchor-id="swim-club-with-data-science-hats">Swim Club with Data Science Hats</h2>
-<div id="f37b5772" class="cell" data-execution_count="6">
+<div id="5d3f0110" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -628,6 +628,7 @@ window.Quarto = {
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>swim_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="6">
+<div>
 <div>
 
 
@@ -689,6 +690,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="fastest-per-style" class="level2 smaller crunch-title crunch-ul crunch-details crunch-code smaller-table">
 <h2 class="smaller crunch-title crunch-ul crunch-details crunch-code smaller-table anchored" data-anchor-id="fastest-per-style">Fastest Per Style</h2>
@@ -697,13 +699,14 @@ window.Quarto = {
 <center>
 <strong>Short Events</strong>
 </center>
-<div id="a83a64a2" class="cell" data-execution_count="7">
+<div id="1e3c974c" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>short_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"50m"</span>].copy()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>short_df.sort_values([<span class="st">'style'</span>, <span class="st">'time'</span>], ascending<span class="op">=</span><span class="va">True</span>).groupby(<span class="st">'style'</span>).head(<span class="dv">1</span>).drop(columns<span class="op">=</span><span class="st">"age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="7">
+<div>
 <div>
 
 
@@ -752,17 +755,19 @@ window.Quarto = {
 </div>
 </div>
 </div>
+</div>
 </div><div class="column" data-wiudth="50%">
 <center>
 <strong>Long Events</strong>
 </center>
-<div id="9c9f7074" class="cell" data-execution_count="8">
+<div id="de115c75" class="cell" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>long_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"100m"</span>].copy()</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>long_df.sort_values([<span class="st">'style'</span>, <span class="st">'time'</span>], ascending<span class="op">=</span><span class="va">True</span>).groupby(<span class="st">'style'</span>).head(<span class="dv">1</span>).drop(columns<span class="op">=</span><span class="st">"age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="8">
+<div>
 <div>
 
 
@@ -808,6 +813,7 @@ window.Quarto = {
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>
@@ -933,7 +939,7 @@ window.Quarto = {
 </ul>
 <section id="our-list-of-item-price-pairs" class="level2 crunch-title crunch-details crunch-ul small-summary">
 <h2 class="crunch-title crunch-details crunch-ul small-summary anchored" data-anchor-id="our-list-of-item-price-pairs">Our List of (Item, Price) Pairs</h2>
-<div id="4220481d" class="cell" data-execution_count="9">
+<div id="000c1513" class="cell" data-execution_count="9">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>price_list <span class="op">=</span> []</span>
