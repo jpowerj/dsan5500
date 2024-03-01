@@ -1,0 +1,40 @@
+---
+title: "Assignment Point Distributions"
+subtitle: "DSAN 5500: Data Structures, Objects, and Algorithms in Python"
+sidebar: mainnav
+format:
+  html:
+    df-print: kable
+---
+
+Use the **tabs below** (e.g., click the label **HW1**) to view the point distributions for different assignments.
+
+The distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!
+
+::: {.panel-tabset}
+
+## HW1
+
+```{=html}
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSlrqKdiNAgXyGgGdiZ8JgMFWmWPcEiuIbWEHz3GtqerrmjbO3yeAEZCc4k9HwONQZbD1JzAae_0GPK/pubhtml?widget=true&amp;headers=false" width="100%" height="400"></iframe>
+```
+
+## HW2
+
+<div style="height: 400px !important; max-height: 400px !important; overflow-y: scroll !important;">
+
+```{r}
+#| warning: false
+#| echo: false
+library(tidyverse)
+hw2_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQDjUeCZp9Xi9b97w5wRxwrgGk9lAVwEthXOj7Oiqh8DmlbmEzme3eEmjlR8mRINEOqdbzcTXQ0FlpE/pub?output=csv"
+hw2_df <- read_csv(hw2_url)
+hw2_df <- hw2_df |> drop_na(points)
+hw2_df$part <- as.character(hw2_df$part)
+hw2_df <- hw2_df |> mutate(part = replace_na(part, ""), qid = replace_na(qid, ""))
+hw2_df
+```
+
+</div>
+
+:::
