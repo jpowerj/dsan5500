@@ -420,7 +420,7 @@ window.Quarto = {
 <li>Unless otherwise specified, we’re talking about <span class="math inline">\(2\)</span>-tuples</li>
 <li>Example: We can locate something on the Earth by specifying two <code>floats</code>: latitude and longitude!</li>
 </ul>
-<div id="b3f6af35" class="cell" data-execution_count="1">
+<div id="b5bb637a" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>gtown_loc <span class="op">=</span> (<span class="fl">38.9076</span>, <span class="op">-</span><span class="fl">77.0723</span>)</span>
@@ -468,7 +468,7 @@ c
 <ul>
 <li>Python:</li>
 </ul>
-<div id="d5eb411d" class="cell" data-execution_count="2">
+<div id="2d5d65a5" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>]</span>
@@ -489,7 +489,7 @@ c</code></pre>
 <ul>
 <li>Construct <strong>new</strong> list by applying operation to each element:</li>
 </ul>
-<div id="ea5ef25b" class="cell" data-execution_count="3">
+<div id="06990610" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>my_nums <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
@@ -503,7 +503,7 @@ c</code></pre>
 <ul>
 <li>Can also <strong>filter</strong> the elements of the list with <code>if</code>:</li>
 </ul>
-<div id="d3d12695" class="cell" data-execution_count="4">
+<div id="94d9abd9" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>my_odd_squares <span class="op">=</span> [num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> my_nums <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>]</span>
@@ -521,7 +521,7 @@ c</code></pre>
 <ul>
 <li>Extremely helpful + efficient for finding <strong>unique</strong> elements:</li>
 </ul>
-<div id="e79452b0" class="cell" data-execution_count="5">
+<div id="cb8918b6" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>animals_i_saw <span class="op">=</span> [<span class="st">'bird'</span>,<span class="st">'bird'</span>,<span class="st">'fish'</span>,<span class="st">'bird'</span>,<span class="st">'cat'</span>,<span class="st">'bird'</span>,<span class="st">'lizard'</span>]</span>
@@ -531,7 +531,7 @@ c</code></pre>
 <pre><code>Number of animals I saw: 7</code></pre>
 </div>
 </div>
-<div id="c3c51645" class="cell" data-execution_count="6">
+<div id="ce8619d5" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>unique_animals_me <span class="op">=</span> <span class="bu">set</span>(animals_i_saw)</span>
@@ -539,7 +539,7 @@ c</code></pre>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of unique animals: </span><span class="sc">{</span><span class="bu">len</span>(unique_animals_me)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Set of unique animals: {'bird', 'lizard', 'cat', 'fish'}
+<pre><code>Set of unique animals: {'bird', 'fish', 'lizard', 'cat'}
 Number of unique animals: 4</code></pre>
 </div>
 </div>
@@ -547,7 +547,7 @@ Number of unique animals: 4</code></pre>
 <ul>
 <li>Supports all set operators from math:</li>
 </ul>
-<div id="574552ca" class="cell" data-execution_count="7">
+<div id="f341b0f7" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>animals_you_saw <span class="op">=</span> [<span class="st">'lizard'</span>,<span class="st">'dog'</span>,<span class="st">'bird'</span>,<span class="st">'bird'</span>,<span class="st">'bird'</span>]</span>
@@ -559,17 +559,17 @@ Number of unique animals: 4</code></pre>
 <pre><code>Animals we both saw: {'bird', 'lizard'}</code></pre>
 </div>
 </div>
-<div id="34227635" class="cell" data-execution_count="8">
+<div id="892f0e9f" class="cell" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>unique_animals_either <span class="op">=</span> unique_animals_me.union(unique_animals_you)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Animals either of us saw: </span><span class="sc">{</span>unique_animals_either<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Animals either of us saw: {'dog', 'bird', 'lizard', 'cat', 'fish'}</code></pre>
+<pre><code>Animals either of us saw: {'bird', 'dog', 'fish', 'lizard', 'cat'}</code></pre>
 </div>
 </div>
-<div id="aa10cd0f" class="cell" data-execution_count="9">
+<div id="9fc05575" class="cell" data-execution_count="9">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>unique_animals_meonly <span class="op">=</span> unique_animals_me <span class="op">-</span> unique_animals_you</span>
@@ -592,7 +592,7 @@ Animals you saw that I didn't see: {'dog'}</code></pre>
 <ul>
 <li>While other language like Java have lots of fancy types of Map, Python has a single type, the <strong>dictionary</strong>:</li>
 </ul>
-<div id="94424ac4" class="cell" data-execution_count="10">
+<div id="0d4ed402" class="cell" data-execution_count="10">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>gtown_data <span class="op">=</span> {</span>
@@ -617,7 +617,7 @@ dict_values(['Georgetown University', 1789, (38.9076, -77.0723), {'city': 'Washi
 <ul>
 <li>Be careful when looping! Default behavior is iteration over <strong>keys</strong>:</li>
 </ul>
-<div id="0d0ceae3" class="cell" data-execution_count="11">
+<div id="62438a1c" class="cell" data-execution_count="11">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> gtown_data:</span>
@@ -633,7 +633,7 @@ location</code></pre>
 <ul>
 <li>For <strong>key-value pairs</strong> use <code>.items()</code>:</li>
 </ul>
-<div id="4f3f6c5f" class="cell" data-execution_count="12">
+<div id="66960661" class="cell" data-execution_count="12">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> gtown_data.items():</span>
@@ -670,7 +670,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </section>
 <section id="tuples-1" class="level2">
 <h2 class="anchored" data-anchor-id="tuples-1">Tuples</h2>
-<div id="f586cf7e" class="cell" data-execution_count="13">
+<div id="44274e9d" class="cell" data-execution_count="13">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyTuple:</span>
@@ -700,7 +700,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li>The list itself just points to a root item:</li>
 </ul>
-<div id="d0f52a84" class="cell" data-execution_count="14">
+<div id="46c5e620" class="cell" data-execution_count="14">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyList:</span>
@@ -721,7 +721,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li>An item has contents, pointer to next item:</li>
 </ul>
-<div id="cf3f0d7b" class="cell" data-execution_count="15">
+<div id="7a4c4bcc" class="cell" data-execution_count="15">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyListItem:</span>
@@ -742,7 +742,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div>
 </div>
-<div id="33ae5a4b" class="cell" data-execution_count="16">
+<div id="342f8c04" class="cell" data-execution_count="16">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> MyList()</span>
@@ -772,7 +772,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li>With a <code>MyTuple</code>:</li>
 </ul>
-<div id="10ff2cbf" class="cell" data-execution_count="17">
+<div id="bf35d1d5" class="cell" data-execution_count="17">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>t1.thing1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -784,7 +784,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li><span class="math inline">\(\implies\)</span> 1 step</li>
 </ul>
-<div id="72611f4b" class="cell" data-execution_count="18">
+<div id="2fb7c5d3" class="cell" data-execution_count="18">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>t1.thing2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -800,7 +800,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li>With a <code>MyList</code>:</li>
 </ul>
-<div id="c927a2e4" class="cell" data-execution_count="19">
+<div id="8b02c862" class="cell" data-execution_count="19">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(users.root.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -812,7 +812,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li><span class="math inline">\(\implies\)</span> 1 step</li>
 </ul>
-<div id="38acdf73" class="cell" data-execution_count="20">
+<div id="1622c251" class="cell" data-execution_count="20">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>current_node <span class="op">=</span> users.root</span>
@@ -836,7 +836,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li>Now rather than just printing, let’s pairwise concatenate:</li>
 </ul>
-<div id="f1283af6" class="cell" data-execution_count="21">
+<div id="5e86fca4" class="cell" data-execution_count="21">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>cur_pointer1 <span class="op">=</span> users.root</span>
@@ -865,7 +865,7 @@ BoBo</code></pre>
 </section>
 <section id="last-example-pairwise-concat-end-check" class="level2 smaller crunch-title title-12 crunch-details">
 <h2 class="smaller crunch-title title-12 crunch-details anchored" data-anchor-id="last-example-pairwise-concat-end-check">Last Example: Pairwise-Concat + End Check</h2>
-<div id="2f9edb2e" class="cell" data-execution_count="22">
+<div id="96d59d3f" class="cell" data-execution_count="22">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>printed_items <span class="op">=</span> []</span>
@@ -1071,7 +1071,7 @@ Applying the Master Theorem When <span class="math inline">\(W(n) = \Theta(D(n))
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="4dc8609e" class="cell" data-execution_count="23">
+<div id="87392a53" class="cell" data-execution_count="23">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyTopSecretInfo:</span>
@@ -1086,7 +1086,7 @@ Applying the Master Theorem When <span class="math inline">\(W(n) = \Theta(D(n))
 </div>
 <p>Guess we can’t access it then, right? 😮‍💨</p>
 </div><div class="column" style="width:50%;">
-<div id="ca9fc806" class="cell" data-execution_count="24">
+<div id="8d6dbc3e" class="cell" data-execution_count="24">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>info_obj._MyTopSecretInfo__the_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
