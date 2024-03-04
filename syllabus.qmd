@@ -43,24 +43,20 @@ The graded components for the course consist of **five** homework assignments, a
     <td>40%</td>
 </tr>
 <tr>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW1**: Python Fundamentals"></span></td>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>8%"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW1**: {{< var hw1.title >}}"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>10%"></span></td>
 </tr>
 <tr>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW2**: Data Structures"></span></td>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>8%"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW2**: {{< var hw2.title >}}"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>10%"></span></td>
 </tr>
 <tr>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW3**: Basic Algorithms"></span></td>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>8%"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW3**: {{< var hw3.title >}}"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>10%"></span></td>
 </tr>
 <tr>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW4**: Advanced Algorithms"></span></td>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>8%"></span></td>
-</tr>
-<tr>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW5**: Parallel Computing"></span></td>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>8%"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW4**: {{< var hw4.title >}}"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>10%"></span></td>
 </tr>
 </tbody>
 </table>
@@ -84,10 +80,10 @@ The following is a rough map of what we will work through together throughout th
 </thead>
 <tbody>
 <tr>
-    <td><span data-qmd="**Unit 1**: Python Fundamentals"></span></td>
+    <td><span data-qmd="**Unit 1**: {{< var hw1.title >}}"></span></td>
     <td>1</td>
-    <td><span data-qmd="Jan 10 (**Wednesday**)"></span></td>
-    <td><a href='./w01/' target='_blank'>Python Fundamentals</a></td>
+    <td><span data-qmd="{{< var w01.date-md >}} (**Wednesday**)"></span></td>
+    <td><a href='./w01/' target='_blank'><span data-qmd="{{< var w01.title >}}"></span></a></td>
 </tr>
 <tr>
     <td></td>
@@ -98,47 +94,41 @@ The following is a rough map of what we will work through together throughout th
 <tr>
     <td></td>
     <td>2</td>
-    <td>Jan 22</td>
-    <td><a href='./w02/' target='_blank'>Data Structures and Computational Complexity</a></td>
+    <td><span data-qmd="{{< var w02.date-md >}}"></span></td>
+    <td><a href='./w02/' target='_blank'><span data-qmd="{{< var w02.title >}}"></span></a></td>
 </tr>
 <tr>
     <td></td>
     <td>3</td>
-    <td>Jan 29</td>
-    <td><a href='./w03/' target='_blank'>Software Design Patterns and OOP</a></td>
+    <td><span data-qmd="{{< var w03.date-md >}}"></span></td>
+    <td><a href='./w03/' target='_blank'><span data-qmd="{{< var w03.title >}}"></span></a></td>
 </tr>
 <tr>
     <td></td>
     <td></td>
-    <td>Feb 2 (Friday), 11:59pm EST</td>
+    <td><span data-qmd="{{< var hw1.date-md >}}"></span></td>
     <td><span data-qmd="**HW1 (Python Fundamentals) Due**"></span></td>
 </tr>
 
 <!-- Data structures -->
 
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 2**: Data Structures and Algorithms"></span></td>
+    <td><span data-qmd="**Unit 2**: {{< var hw2.title >}}"></span></td>
     <td>4</td>
-    <td>Feb 5</td>
-    <td><a href='./w04/' target='_blank'>Heaps, Stacks, Trees, Graphs</a></td>
+    <td><span data-qmd="{{< var w04.date-md >}}"></span></td>
+    <td><a href='./w04/' target='_blank'><span data-qmd="{{< var w04.title >}}"></span></a></td>
 </tr>
 <tr>
     <td></td>
     <td>5</td>
-    <td>Feb 12</td>
-    <td>Search Trees</td>
+    <td><span data-qmd="{{< var w05.date-md >}}"></span></td>
+    <td><a href='./w05/' target='_blank'><span data-qmd="{{< var w05.title >}}"></span></a></td>
 </tr>
 <tr>
     <td></td>
     <td>6</td>
-    <td><span data-qmd="Feb 20 (**Tuesday**)"></span></td>
-    <td>Sorting Algorithms</td>
-</tr>
-<tr>
-    <td></td>
-    <td></td>
-    <td>Feb 23 (Friday), 11:59pm EST</td>
-    <td><span data-qmd="**HW2 (Data Structures, Algorithms, and Complexity) Due**"></span></td>
+    <td><span data-qmd="{{< var w06.date-md >}} (**Tuesday**)"></span></td>
+    <td><a href='./w06' target='_blank'><span data-qmd="{{< var w06.title >}}"></span></a></td>
 </tr>
 
 <!-- Midterm -->
@@ -152,36 +142,45 @@ The following is a rough map of what we will work through together throughout th
 <tr>
     <td></td>
     <td></td>
+    <td><span data-qmd="{{< var hw2.date-md >}}"></span></td>
+    <td><span data-qmd="**HW2 ({{< var hw2.title >}}) Due**"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
     <td><span data-qmd="*Mar 4*"></span></td>
     <td><span data-qmd="*No Class (Spring Break)*"></span></td>
 </tr>
 
-<!-- Advanced Algorithms -->
+<!-- Data-Processing Pipelines -->
 
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 3**: Advanced Algorithms"></span></td>
+    <td><span data-qmd="**Unit 3**: {{< var hw3.title >}}"></span></td>
     <td>8</td>
-    <td>Mar 11</td>
-    <td>Graph Algorithms</td>
+    <td><span data-qmd="{{< var w08.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w08.title >}}"></span></td>
 </tr>
 
 <tr>
     <td></td>
     <td>9</td>
-    <td>Mar 18</td>
-    <td>Algorithms for Spatial Data</td>
+    <td><span data-qmd="{{< var w09.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w09.title >}}"></span></td>
 </tr>
 <tr>
     <td></td>
+    <td></td>
+    <td><span data-qmd="{{< var hw3.date-md >}}"></span></td>
+    <td><span data-qmd="**HW3 ({{< var hw3.title >}}) Due**"></span></td>
+</tr>
+
+<!-- Parallel Computing -->
+
+<tr class='new-unit'>
+    <td><span data-qmd="**Unit 4**: {{< var hw4.title >}}"></span></td>
     <td>10</td>
-    <td>Mar 25</td>
-    <td>Building Efficient Data Pipelines</td>
-</tr>
-<tr>
-    <td></td>
-    <td></td>
-    <td>Mar 27 (Wednesday), 11:59pm EST</td>
-    <td><span data-qmd="**HW3 (Advanced Algorithms) Due**"></span></td>
+    <td><span data-qmd="{{< var w10.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w10.title >}}"></span></td>
 </tr>
 <tr>
     <td></td>
@@ -189,17 +188,17 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="*Apr 1*"></span></td>
     <td><span data-qmd="*No Class (Easter Break)*"></span></td>
 </tr>
-<tr class='new-unit'>
-    <td><span data-qmd="**Unit 4**: Parallel Computing"></span></td>
+<tr>
+    <td></td>
     <td>11</td>
-    <td>Apr 8</td>
-    <td>Parallel Computing and MapReduce</td>
+    <td><span data-qmd="{{< var w11.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w11.title >}}"></span></td>
 </tr>
 <tr>
     <td></td>
     <td>12</td>
-    <td>Apr 15</td>
-    <td>Parallel Computing Part 2</td>
+    <td><span data-qmd="{{< var w12.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w12.title >}}"></span></td>
 </tr>
 <tr>
     <td></td>
@@ -213,14 +212,14 @@ The following is a rough map of what we will work through together throughout th
 <tr class='new-unit'>
     <td><span data-qmd="**Unit 5**: Advanced Topics and Applications"></span></td>
     <td>13</td>
-    <td>Apr 22</td>
-    <td>Applications in Bioinformatics</td>
+    <td><span data-qmd="{{< var w13.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w13.title >}}"></span></td>
 </tr>
 <tr>
     <td></td>
     <td>14</td>
-    <td>Apr 29</td>
-    <td>Applications in NLP</td>
+    <td><span data-qmd="{{< var w14.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w14.title >}}"></span></td>
 </tr>
 <tr>
     <td></td>

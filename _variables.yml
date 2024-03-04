@@ -35,16 +35,51 @@ w07:
   date-md: "Feb 26"
 w08:
   weeknum: 8
-  # title: ""
-  # footer: ""
-  # date-md: ""
+  title: "Data-Processing Pipelines"
+  footer: "Data-Processing Pipelines"
+  date-md: "Mar 11"
 w09:
   weeknum: 9
-  # title: ""
-  # footer: ""
-  # date-md: ""
+  title: "Extract, Transform, Load (ETL) Case Studies"
+  footer: "ETL Case Studies"
+  date-md: "Mar 18"
 w10:
   weeknum: 10
-  # title: ""
-  # footer: ""
-  # date-md: ""
+  title: "Parallel Computing Overview"
+  footer: "Parallel Computing Overview"
+  date-md: "Mar 25"
+w11:
+  weeknum: 11
+  title: "The Map-Reduce Paradigm"
+  footer: "The Map-Reduce Paradigm"
+  date-md: "Apr 8"
+w12:
+  weeknum: 12
+  title: "Parallel Computing Case Studies"
+  footer: "Parallel Computing Case Studies"
+  date-md: "Apr 15"
+w13:
+  weeknum: 13
+  title: "Applications in NLP"
+  footer: "Applications in NLP"
+  date-md: "Apr 22"
+w14:
+  weeknum: 14
+  title: "Applications in Bioinformatics"
+  footer: "Applications in Bioinformatics"
+  date-md: "Apr 29"
+hw1:
+  title: "Python Fundamentals"
+  date-md: "Feb 2 (Friday), 11:59pm EST"
+hw2:
+  title: "Data Structures, Algorithms, and Complexity"
+  date-md: "Mar 1 (Friday), 5:59pm EST"
+hw3:
+  title: "Data-Processing Pipelines"
+  date-md: "Mar 22 (Friday), 5:59pm EDT"
+hw4:
+  title: "Parallel Computing"
+  date-md: "Apr 19 (Friday), 5:59pm EDT"
+final:
+  title: "Final Project"
+  date-md: "May 3 (Friday), 5:59pm EDT"
