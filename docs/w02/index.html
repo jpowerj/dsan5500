@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.5.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>DSAN 5500 - Week 2: Software Design Patterns and Object-Oriented Programming</title>
+<title>DSAN 5500 – Week 2: Software Design Patterns and Object-Oriented Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -399,7 +399,7 @@ window.Quarto = {
 <h2 class="smaller title-11 anchored" data-anchor-id="why-does-the-nyc-subway-have-express-lines">Why Does The NYC Subway Have Express Lines?</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/subway_map_nyc.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/subway_map_nyc.jpg" class="img-fluid figure-img"></p>
 <figcaption>From <a href="https://www.centralpark.com/visitor-info/get-directions/" target="_blank">NYC Central Park website</a></figcaption>
 </figure>
 </div>
@@ -408,7 +408,7 @@ window.Quarto = {
 <h2 class="smaller anchored" data-anchor-id="why-stop-at-two-levels">Why Stop At Two Levels?</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/nyc-7.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/nyc-7.png" class="img-fluid figure-img"></p>
 <figcaption>From <a href="https://blog.reachsumit.com/posts/2020/07/skip-list/" target="_blank">Skip List Data Structure Explained</a>, Sumit’s Diary blog</figcaption>
 </figure>
 </div>
@@ -687,7 +687,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </section>
 <section id="the-figure-you-should-make-in-your-brain-every-time" class="level2 smaller crunch-title title-10 crunch-quarto-figure">
 <h2 class="smaller crunch-title title-10 crunch-quarto-figure anchored" data-anchor-id="the-figure-you-should-make-in-your-brain-every-time">The Figure You Should Make In Your Brain Every Time</h2>
-<div id="18c5c339" class="cell" data-execution_count="1">
+<div id="fb41d70d" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -744,7 +744,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <ul>
 <li>(Though this is harder to see, without a log-log plot:)</li>
 </ul>
-<div id="9b6476c1" class="cell" data-execution_count="2">
+<div id="6d8d0835" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>
@@ -841,7 +841,7 @@ Bounding Worst-Case Runtime
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/insertion_lower_bound_alt.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
+<p><img src="images/insertion_lower_bound_alt.svg" class="img-fluid figure-img" width="600"></p>
 <figcaption>All <span class="math inline">\(n/3\)</span> values in <span class="math inline">\(\textrm{L}\)</span> pass, one-by-one, through the <span class="math inline">\(n/3\)</span> slots in <span class="math inline">\(\textrm{M}\)</span> (since they must end up in <span class="math inline">\(\textrm{R}\)</span>) <span class="math inline">\(\implies (n/3)(n/3) = n^2/9 = \Omega(n^2)\)</span> steps!</figcaption>
 </figure>
 </div>
@@ -891,7 +891,7 @@ Bounding Worst-Case Runtime
 <h2 class="smaller title-11 crunch-figcaption crunch-quarto-figure anchored" data-anchor-id="merging-two-sorted-lists-in-on-time">Merging Two Sorted Lists in <span class="math inline">\(O(n)\)</span> Time</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/merge.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/merge.svg" class="img-fluid figure-img"></p>
 <figcaption>From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#ref-cormen_introduction_2001" role="doc-biblioref">2001</a>)</span>, pg. 37</figcaption>
 </figure>
 </div>
@@ -900,7 +900,7 @@ Bounding Worst-Case Runtime
 <h2 class="anchored" data-anchor-id="merge-sort-merging-as-subroutine">Merge Sort (Merging as Subroutine)</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/merge_tree.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/merge_tree.svg" class="img-fluid figure-img"></p>
 <figcaption>From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#ref-cormen_introduction_2001" role="doc-biblioref">2001</a>)</span>, pg. 40</figcaption>
 </figure>
 </div>
@@ -972,7 +972,7 @@ Applying the Master Theorem When <span class="math inline">\(W(n) = \Theta(D(n))
 <h2 class="anchored" data-anchor-id="how-does-a-calculator-work">How Does A Calculator Work?</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/Calculator.drawio.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/Calculator.drawio.svg" class="img-fluid figure-img"></p>
 <figcaption>(Calculator image from <a href="//commons.wikimedia.org/wiki/User:LoMit" title="User:LoMit">Wikimedia Commons</a>)</figcaption>
 </figure>
 </div>
@@ -989,7 +989,7 @@ Applying the Master Theorem When <span class="math inline">\(W(n) = \Theta(D(n))
 <h2 class="smaller title-12 anchored" data-anchor-id="use-case-bookstore-inventory-management">Use Case: Bookstore Inventory Management</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/spencerbeck_exterior-of-capitol-hill-books_yesmydccool.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/spencerbeck_exterior-of-capitol-hill-books_yesmydccool.jpg" class="img-fluid figure-img"></p>
 <figcaption><a href="https://washington.org/visit-dc/bookstores-sure-charm-you-washington-dc" target="_blank">Image source</a></figcaption>
 </figure>
 </div>
@@ -1250,7 +1250,7 @@ Inventory:
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/vehicle-basic.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/vehicle-basic.svg" class="img-fluid figure-img"></p>
 <figcaption>(You can edit this or make your own UML diagrams in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7C%0A%20%20numDoors%3A%20int%3B%20numWheels%3A%20int%3B%20balanced%3A%20bool%3B%7C%0A%20%20turnOn()%3B%20accelerate()%3B%20brake()%3B%20turnOff()%3B%0A%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%20balanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3Bbalanced%20%3D%20true%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3Bbalanced%20%3D%20true%3B%5D%0A%0A%5BVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BCar%5D%0A%5BVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a>!)</figcaption>
 </figure>
 </div>
@@ -1259,7 +1259,7 @@ Inventory:
 <h2 class="smaller crunch-title anchored" data-anchor-id="or-is-this-better">Or… Is This Better?</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/vehicle-fancy.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/vehicle-fancy.svg" class="img-fluid figure-img"></p>
 <figcaption>Edit in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7CnumDoors%3A%20int%3BnumWheels%3A%20int%3Bbalanced%3A%20bool%3B%7CturnOn()%3Baccelerate()%3Bbrake()%3BturnOff()%3B%5D%0A%5B%3Cabstract%3E%20UnbalancedVehicle%7Cbalanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20BalancedVehicle%7Cbalanced%20%3D%20true%3B%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3B%5D%0A%0A%5BVehicle%5D--%3A%3E%5BUnbalancedVehicle%5D%0A%5BUnbalancedVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BBalancedVehicle%5D%0A%5BBalancedVehicle%5D--%3A%3E%5BCar%5D%0A%5BBalancedVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a></figcaption>
 </figure>
 </div>
@@ -1470,6 +1470,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1504,7 +1522,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

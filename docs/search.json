@@ -244,11 +244,266 @@
     ]
   },
   {
+    "objectID": "w08/slides.html#most-common-hw1-to-midterm-struggles",
+    "href": "w08/slides.html#most-common-hw1-to-midterm-struggles",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Most Common HW1-to-Midterm Struggles",
+    "text": "Most Common HW1-to-Midterm Struggles\n\nIngesting data (HW1: Swimmer class)\n\n\\(\\implies\\) Data-processing pipelines!\n\nMaintaining invariants as dataset grows (HW2: None → InventoryItem → BinarySearchTree)\n\n\\(\\implies\\) Data validation!"
+  },
+  {
+    "objectID": "w08/slides.html#pydantic",
+    "href": "w08/slides.html#pydantic",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Pydantic",
+    "text": "Pydantic"
+  },
+  {
+    "objectID": "w08/slides.html#pydantic-in-action",
+    "href": "w08/slides.html#pydantic-in-action",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Pydantic in Action",
+    "text": "Pydantic in Action\n\n\nCode\nfrom pydantic import BaseModel\nclass InventoryItem(BaseModel):\n    item_name: str\n    price: float\nmy_item = InventoryItem(item_name=\"Banana\", price=10)\nmy_item\n\n\nInventoryItem(item_name='Banana', price=10.0)\n\n\n\n\nCode\ninvalid_item = InventoryItem(item_name=\"Banana\", price=\"100 dollar\")\n\n\nValidationError: 1 validation error for InventoryItem\nprice\n  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='100 dollar', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.6/v/float_parsing"
+  },
+  {
+    "objectID": "w08/slides.html#pydantic-in-even-cooler-action",
+    "href": "w08/slides.html#pydantic-in-even-cooler-action",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Pydantic in Even-Cooler Action",
+    "text": "Pydantic in Even-Cooler Action\n\n\n\n\nCode\nfrom pydantic import BaseModel, EmailStr, PositiveInt\nclass Employee(BaseModel):\n    name: str\n    email: EmailStr\n    age: PositiveInt\ninvalid_employee = Employee(\n  name=\"Jeef\",\n  email=\"fakeemail!!!\",\n  age=50\n)\n\n\nValidationError: 1 validation error for Employee\nemail\n  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]\n\n\n\n\n\nCode\ninvalid_employee2 = Employee(\n  name=\"Jeeferson\",\n  email=\"valid@email.com\",\n  age=-3\n)\n\n\nValidationError: 1 validation error for Employee\nage\n  Input should be greater than 0 [type=greater_than, input_value=-3, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.6/v/greater_than"
+  },
+  {
+    "objectID": "w08/slides.html#two-generations-of-python-pipeline-libraries",
+    "href": "w08/slides.html#two-generations-of-python-pipeline-libraries",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Two Generations of Python Pipeline Libraries",
+    "text": "Two Generations of Python Pipeline Libraries\n\nGen 1: Airflow (AirBnB), Luigi (Spotify)\nGen 2: Dagster, Prefect"
+  },
+  {
+    "objectID": "w08/slides.html#for-now-prefect",
+    "href": "w08/slides.html#for-now-prefect",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "For Now: Prefect!",
+    "text": "For Now: Prefect!\n\nBut, the principles (ETL) remain the same!"
+  },
+  {
+    "objectID": "w08/slides.html#etl-extract-transform-load",
+    "href": "w08/slides.html#etl-extract-transform-load",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "ETL = Extract, Transform, Load",
+    "text": "ETL = Extract, Transform, Load\n\nFrom Analytics Vidhya"
+  },
+  {
+    "objectID": "w08/slides.html#you-have-already-been-doing-this",
+    "href": "w08/slides.html#you-have-already-been-doing-this",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "You Have Already Been Doing This!",
+    "text": "You Have Already Been Doing This!\n\nHW1: Swim team example\n\nExtract: Load data from .csv\nTransform: Convert times to milliseconds\nLoad: Store into Team object\n\nHW2 (Throughout)\n\nExtract: Load products from .csv into Pandas\nTransform: (Construct InventoryItem object for each row)\nLoad: Store into LogarithmicHashTable"
+  },
+  {
+    "objectID": "w08/slides.html#and-you-have-already-run-into-the-need-for-validation",
+    "href": "w08/slides.html#and-you-have-already-run-into-the-need-for-validation",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "(And You Have Already Run into the Need for Validation!)",
+    "text": "(And You Have Already Run into the Need for Validation!)\n\nHW1: Are the times in seconds or milliseconds?\nHW2: Are users providing key and value separately, or together?\nIf together: as tuples or InventoryItems?\nIf InventoryItems: What type(s) for item_name? What type(s) for price? 😵\n\\(\\implies\\) One of the two main focuses for HW3 will be validation of input data!"
+  },
+  {
+    "objectID": "w08/slides.html#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step",
+    "href": "w08/slides.html#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)",
+    "text": "Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)\n\n(Hopefully things from previous slide have taught you the dangers of this!)\nIt’s like Anscombe’s Quartet from DSAN 5000/5100/5200: We can be misled by fancy tools if we don’t take time for the (sometimes boring) step of looking at the data\nExample: ETL for processing text data (books for now)"
+  },
+  {
+    "objectID": "w08/slides.html#bookshelfscan-an-example-i-use-irl",
+    "href": "w08/slides.html#bookshelfscan-an-example-i-use-irl",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "BookshelfScan (An Example I Use IRL!)",
+    "text": "BookshelfScan (An Example I Use IRL!)\n\nExtract: Dropbox folder containing ebooks\nTransform: Compute word counts\nLoad: Save word counts into a database\nEnables me to figure out which books talk about a topic \\(t\\) (data structures, algorithms, data ethics and policy, etc.)!\nBUT (Devil is in the details): Can look very different for txt, epub (can contain images), pdf (sometimes text is embedded, sometimes not), images of scans, audiobooks\n\\(\\implies\\) (Sad but true) Pipleline will crash and burn if you don’t handle these before using Cool NLP things in T step"
+  },
+  {
+    "objectID": "w08/slides.html#hw3-possibility-1-pet-store-inventory",
+    "href": "w08/slides.html#hw3-possibility-1-pet-store-inventory",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "HW3 Possibility 1: Pet Store Inventory",
+    "text": "HW3 Possibility 1: Pet Store Inventory\n\nhttps://petstore.swagger.io/v2/store/inventory"
+  },
+  {
+    "objectID": "w08/slides.html#hw3-possibility-2-books-to-scrape",
+    "href": "w08/slides.html#hw3-possibility-2-books-to-scrape",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "HW3 Possibility 2: Books to Scrape",
+    "text": "HW3 Possibility 2: Books to Scrape\n\nBooks to Scrape homepage"
+  },
+  {
+    "objectID": "w08/slides.html#google-classroom-link",
+    "href": "w08/slides.html#google-classroom-link",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Google Classroom Link",
+    "text": "Google Classroom Link\n\nOpen in Google Classroom"
+  },
+  {
+    "objectID": "w08/slides.html#references",
+    "href": "w08/slides.html#references",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "References",
+    "text": "References\n\n\n\n\n\n\nDSAN 5500 Week 8: Data Validation, Pipelines"
+  },
+  {
     "objectID": "w08/index.html",
     "href": "w08/index.html",
-    "title": "Week 8: Data-Processing Pipelines",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
     "section": "",
     "text": "Open slides in new window →",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#most-common-hw1-to-midterm-struggles",
+    "href": "w08/index.html#most-common-hw1-to-midterm-struggles",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Most Common HW1-to-Midterm Struggles",
+    "text": "Most Common HW1-to-Midterm Struggles\n\nIngesting data (HW1: Swimmer class)\n\n\\(\\implies\\) Data-processing pipelines!\n\nMaintaining invariants as dataset grows (HW2: None → InventoryItem → BinarySearchTree)\n\n\\(\\implies\\) Data validation!",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#pydantic",
+    "href": "w08/index.html#pydantic",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Pydantic",
+    "text": "Pydantic",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#pydantic-in-action",
+    "href": "w08/index.html#pydantic-in-action",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Pydantic in Action",
+    "text": "Pydantic in Action\n\n\nCode\nfrom pydantic import BaseModel\nclass InventoryItem(BaseModel):\n    item_name: str\n    price: float\nmy_item = InventoryItem(item_name=\"Banana\", price=10)\nmy_item\n\n\nInventoryItem(item_name='Banana', price=10.0)\n\n\n\n\nCode\ninvalid_item = InventoryItem(item_name=\"Banana\", price=\"100 dollar\")\n\n\nValidationError: 1 validation error for InventoryItem\nprice\n  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='100 dollar', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.6/v/float_parsing",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#pydantic-in-even-cooler-action",
+    "href": "w08/index.html#pydantic-in-even-cooler-action",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Pydantic in Even-Cooler Action",
+    "text": "Pydantic in Even-Cooler Action\n\n\n\n\nCode\nfrom pydantic import BaseModel, EmailStr, PositiveInt\nclass Employee(BaseModel):\n    name: str\n    email: EmailStr\n    age: PositiveInt\ninvalid_employee = Employee(\n  name=\"Jeef\",\n  email=\"fakeemail!!!\",\n  age=50\n)\n\n\nValidationError: 1 validation error for Employee\nemail\n  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]\n\n\n\n\n\nCode\ninvalid_employee2 = Employee(\n  name=\"Jeeferson\",\n  email=\"valid@email.com\",\n  age=-3\n)\n\n\nValidationError: 1 validation error for Employee\nage\n  Input should be greater than 0 [type=greater_than, input_value=-3, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.6/v/greater_than",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#two-generations-of-python-pipeline-libraries",
+    "href": "w08/index.html#two-generations-of-python-pipeline-libraries",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Two Generations of Python Pipeline Libraries",
+    "text": "Two Generations of Python Pipeline Libraries\n\nGen 1: Airflow (AirBnB), Luigi (Spotify)\nGen 2: Dagster, Prefect",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#for-now-prefect",
+    "href": "w08/index.html#for-now-prefect",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "For Now: Prefect!",
+    "text": "For Now: Prefect!\n\nBut, the principles (ETL) remain the same!",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#etl-extract-transform-load",
+    "href": "w08/index.html#etl-extract-transform-load",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "ETL = Extract, Transform, Load",
+    "text": "ETL = Extract, Transform, Load\n\n\n\nFrom Analytics Vidhya",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#you-have-already-been-doing-this",
+    "href": "w08/index.html#you-have-already-been-doing-this",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "You Have Already Been Doing This!",
+    "text": "You Have Already Been Doing This!\n\nHW1: Swim team example\n\nExtract: Load data from .csv\nTransform: Convert times to milliseconds\nLoad: Store into Team object\n\nHW2 (Throughout)\n\nExtract: Load products from .csv into Pandas\nTransform: (Construct InventoryItem object for each row)\nLoad: Store into LogarithmicHashTable",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#and-you-have-already-run-into-the-need-for-validation",
+    "href": "w08/index.html#and-you-have-already-run-into-the-need-for-validation",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "(And You Have Already Run into the Need for Validation!)",
+    "text": "(And You Have Already Run into the Need for Validation!)\n\nHW1: Are the times in seconds or milliseconds?\nHW2: Are users providing key and value separately, or together?\nIf together: as tuples or InventoryItems?\nIf InventoryItems: What type(s) for item_name? What type(s) for price? 😵\n\\(\\implies\\) One of the two main focuses for HW3 will be validation of input data!",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step",
+    "href": "w08/index.html#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)",
+    "text": "Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)\n\n(Hopefully things from previous slide have taught you the dangers of this!)\nIt’s like Anscombe’s Quartet from DSAN 5000/5100/5200: We can be misled by fancy tools if we don’t take time for the (sometimes boring) step of looking at the data\nExample: ETL for processing text data (books for now)",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#bookshelfscan-an-example-i-use-irl",
+    "href": "w08/index.html#bookshelfscan-an-example-i-use-irl",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "BookshelfScan (An Example I Use IRL!)",
+    "text": "BookshelfScan (An Example I Use IRL!)\n\nExtract: Dropbox folder containing ebooks\nTransform: Compute word counts\nLoad: Save word counts into a database\nEnables me to figure out which books talk about a topic \\(t\\) (data structures, algorithms, data ethics and policy, etc.)!\nBUT (Devil is in the details): Can look very different for txt, epub (can contain images), pdf (sometimes text is embedded, sometimes not), images of scans, audiobooks\n\\(\\implies\\) (Sad but true) Pipleline will crash and burn if you don’t handle these before using Cool NLP things in T step",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#hw3-possibility-1-pet-store-inventory",
+    "href": "w08/index.html#hw3-possibility-1-pet-store-inventory",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "HW3 Possibility 1: Pet Store Inventory",
+    "text": "HW3 Possibility 1: Pet Store Inventory\n\nhttps://petstore.swagger.io/v2/store/inventory",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#hw3-possibility-2-books-to-scrape",
+    "href": "w08/index.html#hw3-possibility-2-books-to-scrape",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "HW3 Possibility 2: Books to Scrape",
+    "text": "HW3 Possibility 2: Books to Scrape\n\nBooks to Scrape homepage",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#google-classroom-link",
+    "href": "w08/index.html#google-classroom-link",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "Google Classroom Link",
+    "text": "Google Classroom Link\n\nOpen in Google Classroom",
+    "crumbs": [
+      "Week 8: {{< var w08.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w08/index.html#references",
+    "href": "w08/index.html#references",
+    "title": "Week 8: Data Validation, Data Processing Pipelines",
+    "section": "References",
+    "text": "References",
     "crumbs": [
       "Week 8: {{< var w08.date-md >}}"
     ]
@@ -258,7 +513,7 @@
     "href": "index.html",
     "title": "DSAN 5500: Data Structures, Objects, and Algorithms in Python",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5500: Data Structures, Objects, and Algorithms in Python, Spring 2024, at Georgetown University! The course takes place on Mondays from 12:30 to 3:00pm in Car Barn Room 204. More details are provided on the syllabus.\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Course Intro and Motivation\n\n\nJanuary 10\n\n\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nJanuary 22\n\n\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nJanuary 29\n\n\n\n\nWeek 4: Heaps, Stacks, Hash Maps\n\n\nFebruary 5\n\n\n\n\nWeek 5: Binary Search Trees\n\n\nFebruary 12\n\n\n\n\nWeek 6: Code Examples and Midterm Prep\n\n\nFebruary 20\n\n\n\n\nWeek 7: In-Class Midterm\n\n\nFebruary 26\n\n\n\n\nWeek 8: Data-Processing Pipelines\n\n\nMarch 11\n\n\n\n\n\nNo matching items",
+    "text": "Welcome to the homepage for DSAN 5500: Data Structures, Objects, and Algorithms in Python, Spring 2024, at Georgetown University! The course takes place on Mondays from 12:30 to 3:00pm in Car Barn Room 204. More details are provided on the syllabus.\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Course Intro and Motivation\n\n\nJanuary 10\n\n\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nJanuary 22\n\n\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nJanuary 29\n\n\n\n\nWeek 4: Heaps, Stacks, Hash Maps\n\n\nFebruary 5\n\n\n\n\nWeek 5: Binary Search Trees\n\n\nFebruary 12\n\n\n\n\nWeek 6: Code Examples and Midterm Prep\n\n\nFebruary 20\n\n\n\n\nWeek 7: In-Class Midterm\n\n\nFebruary 26\n\n\n\n\nWeek 8: Data Validation, Data Processing Pipelines\n\n\nMarch 11\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]
@@ -268,7 +523,7 @@
     "href": "assignments/index.html",
     "title": "Assignment Point Distributions",
     "section": "",
-    "text": "Use the tabs below (e.g., click the label HW1) to view the point distributions for different assignments.\nThe distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!\n\nHW1HW2\n\n\n\n\n\n\n\n\n\n\n\n\npart\nqid\ntest_type\npoints\n\n\n\n\n1\nQ1.1\npublic\n10\n\n\n\nQ1.1\nhidden\n1\n\n\n\nQ1.2.1\npublic\n1\n\n\n\nQ1.2.1\nhidden\n1\n\n\n\nQ1.2.2\npublic\n1\n\n\n\nQ1.2.2\nhidden\n1\n\n\n\nQ1.2.3\npublic\n1\n\n\n\nQ1.2.3\nhidden\n2\n\n\n\nQ1.3.1\npublic\n1\n\n\n\nQ1.3.1\nhidden\n1\n\n\n\nQ1.3.2\npublic\n1\n\n\n\nQ1.3.2\nhidden\n1\n\n\n\nQ1.3.3\npublic\n1\n\n\n\nQ1.3.3\nhidden\n1\n\n\n\nQ1.3.4\npublic\n1\n\n\n\nQ1.3.4\nhidden\n1\n\n\n\nQ1.3.5\npublic\n1\n\n\n\nQ1.3.5\nhidden\n2\n\n\n2\nQ2.1\npublic\n10\n\n\n\nQ2.1\nhidden\n1\n\n\n\nQ2.2.1\npublic\n1\n\n\n\nQ2.2.1\nhidden\n1\n\n\n\nQ2.2.2\npublic\n1\n\n\n\nQ2.2.2\nhidden\n2\n\n\n3\nQ3.1\npublic\n10\n\n\n\nQ3.1\nhidden\n1\n\n\n\nQ3.2.1\npublic\n10\n\n\n\nQ3.2.1\nhidden\n1\n\n\n\nQ3.2.2\npublic\n1\n\n\n\nQ3.2.2\nhidden\n1\n\n\n4\nQ4.1\npublic\n10\n\n\n\nQ4.1\nhidden\n1\n\n\n\nQ4.2.1\npublic\n1\n\n\n\nQ4.2.1\nhidden\n1\n\n\n\nQ4.2.2\npublic\n1\n\n\n\nQ4.2.2\nhidden\n1\n\n\n5\nQ5.1\npublic\n10\n\n\n\nQ5.1\nhidden\n1\n\n\n\nQ5.2.1\npublic\n1\n\n\n\nQ5.2.1\nhidden\n1\n\n\n\nQ5.2.2\npublic\n1\n\n\n\nQ5.2.2\nhidden\n2\n\n\n\n\nTotal\n100",
+    "text": "Use the tabs below (e.g., click the label HW1) to view the point distributions for different assignments.\nThe distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!\n\nHW1HW2\n\n\n\n\n\n\n\n\n\n\n\n\npart\nqid\ntest_type\npoints\n\n\n\n\n1\nQ1.1\npublic\n1\n\n\n\nQ1.1\nhidden\n6\n\n\n\nQ1.2.1\npublic\n1\n\n\n\nQ1.2.1\nhidden\n2\n\n\n\nQ1.2.2\npublic\n1\n\n\n\nQ1.2.2\nhidden\n2\n\n\n\nQ1.2.3\npublic\n1\n\n\n\nQ1.2.3\nhidden\n2\n\n\n\nQ1.3.1\npublic\n1\n\n\n\nQ1.3.1\nhidden\n2\n\n\n\nQ1.3.2\npublic\n1\n\n\n\nQ1.3.2\nhidden\n2\n\n\n\nQ1.3.3\npublic\n1\n\n\n\nQ1.3.3\nhidden\n1\n\n\n\nQ1.3.4\npublic\n1\n\n\n\nQ1.3.4\nhidden\n1\n\n\n\nQ1.3.5\npublic\n1\n\n\n\nQ1.3.5\nhidden\n2\n\n\n2\nQ2.1\npublic\n1\n\n\n\nQ2.1\nhidden\n10\n\n\n\nQ2.2.1\npublic\n1\n\n\n\nQ2.2.1\nhidden\n2\n\n\n\nQ2.2.2\npublic\n1\n\n\n\nQ2.2.2\nhidden\n2\n\n\n3\nQ3.1\npublic\n1\n\n\n\nQ3.1\nhidden\n10\n\n\n\nQ3.2.1\npublic\n1\n\n\n\nQ3.2.1\nhidden\n9\n\n\n\nQ3.2.2\npublic\n1\n\n\n\nQ3.2.2\nhidden\n2\n\n\n4\nQ4.1\npublic\n1\n\n\n\nQ4.1\nhidden\n8\n\n\n\nQ4.2.1\npublic\n1\n\n\n\nQ4.2.1\nhidden\n2\n\n\n\nQ4.2.2\npublic\n1\n\n\n\nQ4.2.2\nhidden\n2\n\n\n5\nQ5.1\npublic\n1\n\n\n\nQ5.1\nhidden\n8\n\n\n\nQ5.2.1\npublic\n1\n\n\n\nQ5.2.1\nhidden\n2\n\n\n\nQ5.2.2\npublic\n1\n\n\n\nQ5.2.2\nhidden\n2\n\n\n\n\nTotal\n100",
     "crumbs": [
       "Assignments"
     ]
@@ -653,7 +908,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'bird', 'cat', 'lizard'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'lizard', 'fish', 'bird', 'cat', 'dog'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'lizard', 'bird', 'fish', 'cat'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'bird', 'fish', 'lizard', 'dog', 'cat'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -947,7 +1202,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'bird', 'cat', 'lizard', 'fish'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'cat', 'dog', 'bird', 'lizard', 'fish'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}",
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'cat', 'bird', 'fish', 'lizard'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'lizard', 'cat', 'bird', 'fish', 'dog'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2829,7 +3084,7 @@
     "href": "syllabus.html#course-topics-calendar",
     "title": "Syllabus",
     "section": "Course Topics / Calendar",
-    "text": "Course Topics / Calendar\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: Python Fundamentals\n1\nJan 10 (Wednesday)\nCourse Intro and Motivation\n\n\n\n\nJan 15\nNo Class (Martin Luther King, Jr. Day)\n\n\n\n2\nJan 22\nSoftware Design Patterns and Object-Oriented Programming\n\n\n\n3\nJan 29\nData Structures and Computational Complexity\n\n\n\n\nFeb 2 (Friday), 11:59pm EST\nHW1 (Python Fundamentals) Due\n\n\nUnit 2: Data Structures, Algorithms, and Complexity\n4\nFeb 5\nHeaps, Stacks, Hash Maps\n\n\n\n5\nFeb 12\nBinary Search Trees\n\n\n\n6\nFeb 20 (Tuesday)\nCode Examples and Midterm Prep\n\n\nMidterm\n7\nFeb 26\nIn-Class Midterm\n\n\n\n\nMar 1 (Friday), 5:59pm EST\nHW2 (Data Structures, Algorithms, and Complexity) Due\n\n\n\n\nMar 4\nNo Class (Spring Break)\n\n\nUnit 3: Data-Processing Pipelines\n8\nMar 11\nData-Processing Pipelines\n\n\n\n9\nMar 18\nExtract, Transform, Load (ETL) Case Studies\n\n\n\n\nMar 22 (Friday), 5:59pm EDT\nHW3 (Data-Processing Pipelines) Due\n\n\nUnit 4: Parallel Computing\n10\nMar 25\nParallel Computing Overview\n\n\n\n\nApr 1\nNo Class (Easter Break)\n\n\n\n11\nApr 8\nThe Map-Reduce Paradigm\n\n\n\n12\nApr 15\nParallel Computing Case Studies\n\n\n\n\nApr 19 (Friday), 11:59pm EST\nHW4 (Parallel Computing) Due\n\n\nUnit 5: Advanced Topics and Applications\n13\nApr 22\nApplications in NLP\n\n\n\n14\nApr 29\nApplications in Bioinformatics\n\n\n\n\nMay 3 (Friday), 11:59pm EST\nFinal Project Due",
+    "text": "Course Topics / Calendar\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: Python Fundamentals\n1\nJan 10 (Wednesday)\nCourse Intro and Motivation\n\n\n\n\nJan 15\nNo Class (Martin Luther King, Jr. Day)\n\n\n\n2\nJan 22\nSoftware Design Patterns and Object-Oriented Programming\n\n\n\n3\nJan 29\nData Structures and Computational Complexity\n\n\n\n\nFeb 2 (Friday), 11:59pm EST\nHW1 (Python Fundamentals) Due\n\n\nUnit 2: Data Structures, Algorithms, and Complexity\n4\nFeb 5\nHeaps, Stacks, Hash Maps\n\n\n\n5\nFeb 12\nBinary Search Trees\n\n\n\n6\nFeb 20 (Tuesday)\nCode Examples and Midterm Prep\n\n\nMidterm\n7\nFeb 26\nIn-Class Midterm\n\n\n\n\nMar 1 (Friday), 5:59pm EST\nHW2 (Data Structures, Algorithms, and Complexity) Due\n\n\n\n\nMar 4\nNo Class (Spring Break)\n\n\nUnit 3: Data-Processing Pipelines\n8\nMar 11\nData Validation, Data Processing Pipelines\n\n\n\n9\nMar 18\nExtract, Transform, Load (ETL) Case Studies\n\n\n\n\nMar 22 (Friday), 5:59pm EDT\nHW3 (Data-Processing Pipelines) Due\n\n\nUnit 4: Parallel Computing\n10\nMar 25\nParallel Computing Overview\n\n\n\n\nApr 1\nNo Class (Easter Break)\n\n\n\n11\nApr 8\nThe Map-Reduce Paradigm\n\n\n\n12\nApr 15\nParallel Computing Case Studies\n\n\n\n\nApr 19 (Friday), 11:59pm EST\nHW4 (Parallel Computing) Due\n\n\nUnit 5: Advanced Topics and Applications\n13\nApr 22\nApplications in NLP\n\n\n\n14\nApr 29\nApplications in Bioinformatics\n\n\n\n\nMay 3 (Friday), 11:59pm EST\nFinal Project Due",
     "crumbs": [
       "Syllabus"
     ]

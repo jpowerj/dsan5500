@@ -149,6 +149,18 @@ figcaption {
     margin-top: 2px !important;
     margin-bottom: 2px !important;
 }
+.crunch-li-3 li {
+    margin-top: 3px !important;
+    margin-bottom: 3px !important;
+}
+.crunch-li-5 li {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+.crunch-li-8 li {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}
 .crunch-ul-0 ul {
     margin-bottom: 0px !important;
 }
@@ -198,6 +210,9 @@ figcaption {
 }
 
 // title
+.crunch-title h1 {
+    margin-bottom: 0px !important;
+}
 .crunch-title h2 {
     margin-bottom: 0px !important;
 }

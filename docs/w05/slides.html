@@ -9,10 +9,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.550">
+  <meta name="generator" content="quarto-1.5.23">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5500 - Week 5: Binary Search Trees</title>
+  <title>DSAN 5500 – Week 5: Binary Search Trees</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -71,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -85,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -476,7 +476,7 @@ Jeff Jacobs
 <section id="visualizing-the-structures" class="slide level2 smaller crunch-title crunch-col-output crunch-details">
 <h2>Visualizing the Structures</h2>
 <div class="vcenter">
-<div id="ebad8a24" class="cell columns column-output-location" data-execution_count="2">
+<div id="05f7a9c7" class="cell columns column-output-location" data-execution_count="2">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -505,7 +505,7 @@ Jeff Jacobs
 </div>
 </div>
 </div>
-<div id="e3bc985b" class="cell columns column-output-location" data-execution_count="3">
+<div id="4f298198" class="cell columns column-output-location" data-execution_count="3">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -558,7 +558,7 @@ Jeff Jacobs
 <img data-src="images/pareto.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="ordering-vectors-via-pareto-dominance" class="slide level2 smaller crunch-title title-12">
 <h2>Ordering Vectors via Pareto Dominance</h2>
-<div id="8e09ac41" class="cell columns column-output-location" data-execution_count="4">
+<div id="f10beeef" class="cell columns column-output-location" data-execution_count="4">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -712,7 +712,7 @@ False</code></pre>
 <h2>Two Ways to Traverse: Picture Version</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="bf2dc97b" class="cell" data-execution_count="5">
+<div id="2d9f79d2" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">from</span> hw2 <span class="im">import</span> IterAlgorithm, NodeProcessor</span>
@@ -727,7 +727,7 @@ False</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="e8ff6464" class="cell" data-execution_count="6">
+<div id="79faca55" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="bu">print</span>(<span class="st">"DFS:"</span>)</span>
@@ -773,7 +773,7 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/Depth-First-Search.gif" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="images/Depth-First-Search.gif"></p>
 <figcaption><strong>Depth-First Search</strong> (from <a href="https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif" target="_blank">Wikimedia Commons</a>)</figcaption>
 </figure>
 </div>
@@ -781,7 +781,7 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/Breadth-First-Search.gif" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="images/Breadth-First-Search.gif"></p>
 <figcaption><strong>Breadth-First Search</strong> (from <a href="https://commons.wikimedia.org/wiki/File:Breadth-First-Search-Algorithm.gif" target="_blank">Wikimedia Commons</a>)</figcaption>
 </figure>
 </div>
@@ -848,7 +848,7 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
 </section>
 <section id="the-three-animals-traverse-our-inventory-tree" class="slide level2 smaller crunch-title title-10">
 <h2>The Three Animals Traverse our Inventory Tree</h2>
-<div id="3b2697e7" class="cell" data-execution_count="7">
+<div id="d8ad3dd8" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>visualize(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1161,6 +1161,24 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
         // clear code selection
         e.clearSelection();
       });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1197,7 +1215,11 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
