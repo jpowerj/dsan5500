@@ -1,3 +1,8 @@
+- week: 8
+  title: "<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9f3473ed-8026-4eb7-8af3-b130014acc48' target='_blank'>Week 8: {{< var w08.title >}}</a>"
+  url: "https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9f3473ed-8026-4eb7-8af3-b130014acc48"
+  date: 2024-03-11
+  categories: ["Lecture Recordings"]
 - week: 6
   title: "<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=aadfadc1-9675-4716-8fd2-b11c015a0213' target='_blank'>Week 6: Code Examples and Midterm Prep</a>"
   url: "https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=aadfadc1-9675-4716-8fd2-b11c015a0213"
@@ -5,6 +10,7 @@
   categories: ["Lecture Recordings"]
 - week: 5
   title: "<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=1651ad38-a234-4434-a084-b11401547f12' target='_blank'>Week 5: Binary Search Trees</a>"
+  url: "https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9f3473ed-8026-4eb7-8af3-b130014acc48"
   date: 2024-02-12
   categories: ["Lecture Recordings"]
 - week: 4
