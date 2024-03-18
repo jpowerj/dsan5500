@@ -1704,7 +1704,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'bird', 'cat', 'lizard'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'cat', 'lizard', 'dog', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}",
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'bird', 'fish', 'cat', 'lizard'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'lizard', 'bird', 'cat', 'dog'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2076,7 +2076,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'cat', 'fish', 'lizard', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'cat', 'fish', 'dog', 'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'lizard', 'cat', 'fish', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'dog', 'lizard', 'cat', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -2653,70 +2653,100 @@
     "href": "w09/index.html",
     "title": "Week 9: Data Pipeline Orchestration",
     "section": "",
-    "text": "Open slides in new window →"
+    "text": "Open slides in new window →",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
   },
   {
     "objectID": "w09/index.html#the-necessary-buzzwords",
     "href": "w09/index.html#the-necessary-buzzwords",
     "title": "Week 9: Data Pipeline Orchestration",
     "section": "The Necessary Buzzwords",
-    "text": "The Necessary Buzzwords\n(Underlined words link to “Concepts” section of Prefect’s docs)\n\nFlow: The “main thing” your pipeline is doing!\n\nExcept in simple cases, will consist of multiple Tasks\n\nFlows and Tasks alone already provide much more functionality than “basic” functions…\nDeployments: Flows + Tasks + Metadata about how and when you want them to run.\n\nPrefect docs: “Deployments elevate workflows from [functions that you call manually] to [API-managed entities].”"
+    "text": "The Necessary Buzzwords\n(Underlined words link to “Concepts” section of Prefect’s docs)\n\nFlow: The “main thing” your pipeline is doing!\n\nExcept in simple cases, will consist of multiple Tasks\n\nFlows and Tasks alone already provide much more functionality than “basic” functions…\nDeployments: Flows + Tasks + Metadata about how and when you want them to run.\n\nPrefect docs: “Deployments elevate workflows from [functions that you call manually] to [API-managed entities].”",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
   },
   {
     "objectID": "w09/index.html#deployments-rightarrow-run-flows-programmatically",
     "href": "w09/index.html#deployments-rightarrow-run-flows-programmatically",
     "title": "Week 9: Data Pipeline Orchestration",
     "section": "Deployments \\(\\Rightarrow\\) Run Flows Programmatically",
-    "text": "Deployments \\(\\Rightarrow\\) Run Flows Programmatically"
+    "text": "Deployments \\(\\Rightarrow\\) Run Flows Programmatically",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
   },
   {
     "objectID": "w09/index.html#the-power-of-deployments",
     "href": "w09/index.html#the-power-of-deployments",
     "title": "Week 9: Data Pipeline Orchestration",
     "section": "The Power of Deployments",
-    "text": "The Power of Deployments\n\n“Packaging” code as Deployments enables Triggers:\n\nOn a particular Schedules: every 4 hours, every day at noon, once per week, etc.\nWhen important Events happen: pushes to GitHub, addition, removal, modification of files in Dropbox, etc.\n\nLogging, Notifications (Slack, email, text messages)\nResults as natural-language explanations (produced by Prefect) or custom summaries, called Artifacts, that you define as part of your flows"
+    "text": "The Power of Deployments\n\n“Packaging” code as Deployments enables Triggers:\n\nOn a particular Schedules: every 4 hours, every day at noon, once per week, etc.\nWhen important Events happen: pushes to GitHub, addition, removal, modification of files in Dropbox, etc.\n\nLogging, Notifications (Slack, email, text messages)\nResults as natural-language explanations (produced by Prefect) or custom summaries, called Artifacts, that you define as part of your flows",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
   },
   {
     "objectID": "w09/index.html#schedules",
     "href": "w09/index.html#schedules",
     "title": "Week 9: Data Pipeline Orchestration",
     "section": "Schedules",
-    "text": "Schedules\n\nCron: Full-on scheduling language (used by computers since 1975!)\n\n\n\ncrontab.sh\n\n# ┌───────────── minute (0–59)\n# │ ┌───────────── hour (0–23)\n# │ │ ┌───────────── day of the month (1–31)\n# │ │ │ ┌───────────── month (1–12)\n# │ │ │ │ ┌───────────── day of the week (0–6) (Sunday to Saturday)\n# │ │ │ │ │\n# │ │ │ │ │\n# │ │ │ │ │\n# * * * * * &lt;command to execute&gt;\n\n\n\n\nInterval\n\n\n\nmy_interval.yml\n\nschedule:\n  interval: 600\n  timezone: America/Chicago\n\n\n\nRRule\n\n\n\nmy_rrule.yml\n\nschedule:\n  rrule: 'FREQ=WEEKLY;BYDAY=MO,WE,FR;UNTIL=20240730T040000Z'"
+    "text": "Schedules\n\nCron: Full-on scheduling language (used by computers since 1975!)\n\n\n\ncrontab.sh\n\n# ┌───────────── minute (0–59)\n# │ ┌───────────── hour (0–23)\n# │ │ ┌───────────── day of the month (1–31)\n# │ │ │ ┌───────────── month (1–12)\n# │ │ │ │ ┌───────────── day of the week (0–6) (Sunday to Saturday)\n# │ │ │ │ │\n# │ │ │ │ │\n# │ │ │ │ │\n# * * * * * &lt;command to execute&gt;\n\n\n\n\nInterval\n\n\n\nmy_interval.yml\n\nschedule:\n  interval: 600\n  timezone: America/Chicago\n\n\n\nRRule\n\n\n\nmy_rrule.yml\n\nschedule:\n  rrule: 'FREQ=WEEKLY;BYDAY=MO,WE,FR;UNTIL=20240730T040000Z'",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
   },
   {
     "objectID": "w09/index.html#events",
     "href": "w09/index.html#events",
     "title": "Week 9: Data Pipeline Orchestration",
     "section": "Events",
-    "text": "Events\n\nThese integrations are nice, but in reality usually overkill: you can just use Webhooks"
+    "text": "Events\n\nThese integrations are nice, but in reality usually overkill: you can just use Webhooks",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
   },
   {
     "objectID": "w09/index.html#logging",
     "href": "w09/index.html#logging",
     "title": "Week 9: Data Pipeline Orchestration",
     "section": "Logging",
-    "text": "Logging\n\nFor most non-advanced use cases: literally just put log_prints=True as a parameters of your Flow:\n\n\n\nflow_with_logging.py\n\nfrom prefect import task, flow\n\n@task\ndef my_task():\n    print(\"we're logging print statements from a task\")\n\n@flow(log_prints=True)\ndef my_flow():\n    print(\"we're logging print statements from a flow\")\n    my_task()"
+    "text": "Logging\n\nFor most non-advanced use cases: literally just put log_prints=True as a parameters of your Flow:\n\n\n\nflow_with_logging.py\n\nfrom prefect import task, flow\n\n@task\ndef my_task():\n    print(\"we're logging print statements from a task\")\n\n@flow(log_prints=True)\ndef my_flow():\n    print(\"we're logging print statements from a flow\")\n    my_task()",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
   },
   {
     "objectID": "w09/index.html#notifications",
     "href": "w09/index.html#notifications",
     "title": "Week 9: Data Pipeline Orchestration",
     "section": "Notifications",
-    "text": "Notifications\n\nActually immensely powerful, because it uses a templating engine called Jinja which is VERY worth learning!\nWith your brain in pipeline mode, think of Jinja as the [?] in:"
+    "text": "Notifications\n\nActually immensely powerful, because it uses a templating engine called Jinja which is VERY worth learning!\nWith your brain in pipeline mode, think of Jinja as the [?] in:",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
   },
   {
     "objectID": "w09/index.html#jinja-example",
     "href": "w09/index.html#jinja-example",
     "title": "Week 9: Data Pipeline Orchestration",
     "section": "Jinja Example",
-    "text": "Jinja Example\n\n\n\n\nhomepage.jinja\n\n&lt;h3&gt;{{ me['name'] }}'s Favorite Hobbies&lt;/h3&gt;\n&lt;ul&gt;\n{%- for hobby in hobbies %}\n  &lt;li&gt;{{ hobby }}&lt;/li&gt;\n{%- endfor %}\n&lt;/ul&gt;\n\n\n\n+\n\n\n\n\nrender_jinja.py\n\nfrom jinja2 import Template\ntmpl = Template('homepage.jinja')\ntmpl.render(\n    me = {'name': 'Jeff'},\n    hobbies = [\n        \"sleeping\",\n        \"jetski\",\n        \"getting sturdy\"\n    ]\n)\n\n\n\n\n\n↓\n\n\n\n\n\n\nrendered.html\n\n&lt;h3&gt;Jeff's Favorite Hobbies&lt;/h3&gt;\n&lt;ul&gt;\n  &lt;li&gt;sleeping&lt;/li&gt;\n  &lt;li&gt;jetski&lt;/li&gt;\n  &lt;li&gt;getting sturdy&lt;/li&gt;\n&lt;/ul&gt;\n\n\n\\(\\leadsto\\)\n\nJeff's Favorite Hobbies\n\n  sleeping\n  jetski\n  getting sturdy"
+    "text": "Jinja Example\n\n\n\n\nhomepage.jinja\n\n&lt;h3&gt;{{ me['name'] }}'s Favorite Hobbies&lt;/h3&gt;\n&lt;ul&gt;\n{%- for hobby in hobbies %}\n  &lt;li&gt;{{ hobby }}&lt;/li&gt;\n{%- endfor %}\n&lt;/ul&gt;\n\n\n\n+\n\n\n\n\nrender_jinja.py\n\nfrom jinja2 import Template\ntmpl = Template('homepage.jinja')\ntmpl.render(\n    me = {'name': 'Jeff'},\n    hobbies = [\n        \"sleeping\",\n        \"jetski\",\n        \"getting sturdy\"\n    ]\n)\n\n\n\n\n\n↓\n\n\n\n\n\n\nrendered.html\n\n&lt;h3&gt;Jeff's Favorite Hobbies&lt;/h3&gt;\n&lt;ul&gt;\n  &lt;li&gt;sleeping&lt;/li&gt;\n  &lt;li&gt;jetski&lt;/li&gt;\n  &lt;li&gt;getting sturdy&lt;/li&gt;\n&lt;/ul&gt;\n\n\n\\(\\leadsto\\)\n\nJeff's Favorite Hobbies\n\n  sleeping\n  jetski\n  getting sturdy",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
   },
   {
     "objectID": "w09/index.html#lab-time",
     "href": "w09/index.html#lab-time",
     "title": "Week 9: Data Pipeline Orchestration",
     "section": "Lab Time!",
-    "text": "Lab Time!\n\nWeek 9 Lab: Pipeline Orchestration with Prefect"
+    "text": "Lab Time!\n\nWeek 9 Lab: Pipeline Orchestration with Prefect",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
   },
   {
     "objectID": "w09/slides.html#the-necessary-buzzwords",
