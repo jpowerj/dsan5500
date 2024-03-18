@@ -134,6 +134,12 @@ figcaption {
     bottom: 0px !important;
 }
 
+// hr
+.crunch-hr hr {
+    margin-top: 3px !important;
+    margin-bottom: 3px !important;
+}
+
 // iframe
 .crunch-iframe iframe {
     margin-bottom: 0px !important;
@@ -252,6 +258,10 @@ figcaption {
     top: 0px !important;
 }
 
+.reveal pre {
+    background-color: unset !important;
+}
+
 .subsubtitle {
     font-size: 70% !important;
     line-height: 0.5em !important;
@@ -317,6 +327,10 @@ figcaption {
 
 .title-12 h2 {
     font-size: calc(1.2*var(--r-heading2-size)) !important;
+}
+
+.under {
+    text-decoration: underline !important;
 }
 
 .vcenter .cell-output-display {

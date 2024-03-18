@@ -40,8 +40,8 @@ w08:
   date-md: "Mar 11"
 w09:
   weeknum: 9
-  title: "Extract, Transform, Load (ETL) Case Studies"
-  footer: "ETL Case Studies"
+  title: "Data Pipeline Orchestration"
+  footer: "Pipeline Orchestration"
   date-md: "Mar 18"
 w10:
   weeknum: 10

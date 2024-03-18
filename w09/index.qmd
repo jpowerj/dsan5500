@@ -1,0 +1,228 @@
+---
+title: "Week 9: {{< var w09.title >}}"
+subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
+date: "Monday, March 18, 2024"
+date-format: full
+author: "Jeff Jacobs"
+institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
+lecnum: 9
+categories:
+  - "Class Sessions"
+format:
+  revealjs:
+    df-print: kable
+    output-file: "slides.html"
+    footer: "DSAN 5500 Week 9: {{< var w09.footer >}}"
+    echo: true
+    code-fold: show
+    scrollable: true
+    slide-number: true
+    html-math-method: mathjax
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link href='https://fonts.googleapis.com/css2?family=Honk&display=swap' rel='stylesheet'>"
+    theme: ["../_jjslides.scss"]
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    echo: true
+    code-fold: show
+    html-math-method: mathjax
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+<!-- # Absorbing Buzzwords Now $\leadsto$ Quickly Harnessing the Full Power of Prefect! {data-stack-name="Key Concepts"} -->
+
+## The Necessary Buzzwords {data-name="Key Concepts"}
+
+*(Underlined words link to "Concepts" section of Prefect's docs)*
+
+* <a class='under' href='https://docs.prefect.io/latest/concepts/flows/' target='_blank'>**`Flow`**</a>: The "main thing" your pipeline is doing!
+  * Except in simple cases, will consist of **multiple <a class='under' href='https://docs.prefect.io/latest/concepts/tasks/' target='_blank'>`Tasks`</a>**
+* `Flow`s and `Task`s alone already provide much more functionality than "basic" functions...
+* <a class='under' href='https://docs.prefect.io/latest/concepts/deployments/' target='_blank'>**`Deployment`s**</a>: `Flow`s + `Task`s + **Metadata** about **how** and **when** you want them to run.
+  * Prefect docs: "**Deployments** elevate workflows from [functions that you call manually] to [API-managed entities]."
+
+## Deployments $\Rightarrow$ Run Flows Programmatically {.crunch-title .title-11 .smaller}
+
+![](images/flow-run-details-crop.png){fig-align="center"}
+
+## The Power of `Deployment`s {.crunch-title .crunch-ul data-name="Fancier Concepts"}
+
+* "Packaging" code as **`Deployments`** enables <a class='under' href='https://docs.prefect.io/latest/concepts/automations/' target='_blank'>**`Triggers`**</a>:
+  * On a particular <a href='https://docs.prefect.io/latest/concepts/schedules/' target='_blank' class='under'>**`Schedules`**</a>: every 4 hours, every day at noon, once per week, etc.
+  * When important <a class='under' href='https://docs.prefect.io/latest/concepts/automations/' target='_blank'>**`Events`**</a> happen: **pushes** to GitHub, **addition, removal, modification** of files in Dropbox, etc.
+* <a class='under' href='https://docs.prefect.io/latest/guides/logs/' target='_blank'>**`Logging`**</a>, <a class='under' href='https://docs.prefect.io/latest/guides/host/#notifications' target='_blank'>**`Notifications`**</a> (Slack, email, text messages)
+* <a class='under' href='https://docs.prefect.io/latest/concepts/results/' target='_blank'>**`Results`**</a> as natural-language explanations (produced by Prefect) or **custom summaries**, called <a class='under' href='https://docs.prefect.io/latest/concepts/artifacts/' target='_blank'>**`Artifacts`**</a>, that you define as part of your flows
+
+## `Schedules` {.smaller .crunch-title .crunch-ul}
+
+* <a class='under' href='https://docs.prefect.io/latest/concepts/schedules/#cron' target='_blank'>**`Cron`**</a>: Full-on scheduling language (used by computers since <a href='https://en.wikipedia.org/wiki/Cron' target='_blank'>1975</a>!)
+
+```bash {filename="crontab.sh"}
+# ┌───────────── minute (0–59)
+# │ ┌───────────── hour (0–23)
+# │ │ ┌───────────── day of the month (1–31)
+# │ │ │ ┌───────────── month (1–12)
+# │ │ │ │ ┌───────────── day of the week (0–6) (Sunday to Saturday)
+# │ │ │ │ │
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * * <command to execute>
+```
+
+::: {.columns}
+::: {.column width="35%"}
+
+* <a class='under' href='https://docs.prefect.io/latest/concepts/schedules/#interval' target='_blank'>**`Interval`**</a>
+
+```yaml {filename="my_interval.yml"}
+schedule:
+  interval: 600
+  timezone: America/Chicago
+```
+
+:::
+::: {.column width="65%"}
+
+* <a class='under' href='https://docs.prefect.io/latest/concepts/schedules/#rrule' target='_blank'>**`RRule`**</a>
+
+```yaml {filename="my_rrule.yml"}
+schedule:
+  rrule: 'FREQ=WEEKLY;BYDAY=MO,WE,FR;UNTIL=20240730T040000Z'
+```
+
+:::
+:::
+
+## `Events` {.smaller .crunch-title .crunch-ul}
+
+* These **integrations** are nice, but in reality usually **overkill**: you can just use <a class='under' href='https://docs.prefect.io/latest/guides/webhooks/' target='_blank'>**`Webhooks`**</a>
+
+![](images/integrations.jpeg){fig-align="center"}
+
+## `Logging` {.crunch-title}
+
+* For most non-advanced use cases: literally just put `log_prints=True` as a **parameters** of your `Flow`:
+
+```python {filename="flow_with_logging.py"}
+from prefect import task, flow
+
+@task
+def my_task():
+    print("we're logging print statements from a task")
+
+@flow(log_prints=True)
+def my_flow():
+    print("we're logging print statements from a flow")
+    my_task()
+```
+
+## `Notifications` {.crunch-title}
+
+* Actually immensely powerful, because it uses a **templating engine** called <a class='under' href='https://jinja.palletsprojects.com/en/3.1.x/' target='_blank'>**`Jinja`**</a> which is **VERY** worth learning!
+* With your brain in **pipeline mode**, think of Jinja as the [?] in:
+
+![](images/jinja.svg){fig-align="center"}
+
+<!-- https://edotor.net/?engine=dot?engine=dot#digraph%20G%20%7B%0A%20%20%20%20rankdir%3D%22LR%22%3B%0A%09edge%20%5Bpenwidth%3D0.75%2Carrowsize%3D0.6%5D%0A%20%20%20%20%23%20results%0A%09csv%20%5Blabel%3D%22CSV%22%5D%3B%0A%09json%20%5Blabel%3D%22JSON%22%5D%3B%0A%09pl%20%5Blabel%3D%22Python%20lists%22%5D%3B%0A%20%20%20%20logs%20%5Blabel%3D%22Logged%20outputs%22%5D%3B%0A%20%20%20%20%23%20%3F%0A%20%20%20%20qm%20%5Blabel%3D%22%3F%3F%3F%22%5D%3B%0A%20%20%20%20%23%20summaries%0A%20%20%20%20email%20%5Blabel%3D%22Email%20%2F%20Text%20message%22%5D%0A%20%20%20%20slack%20%5Blabel%3D%22Slack%20message%22%5D%0A%09%23text%20%5Blabel%3D%22Text%20message%22%5D%0A%20%20%20%20reports%20%5Blabel%3D%22Markdown%20report%22%5D%0A%09subgraph%20cluster_G1%20%7B%0A%20%20%20%20%20%20%20%20style%3D%22dashed%22%3B%0A%09%09%09%09label%3D%22Messy%20Pipeline%20Results%22%0A%09%09%09%09csv%3B%0A%09%09%09%09json%3B%0A%09%09%09%09pl%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20logs%3B%0A%09%7D%0A%09subgraph%20cluster_G2%20%7B%0A%20%20%20%20%20%20%20%20style%3D%22dashed%22%3B%0A%09%09%09%09label%3D%22Clean%20Summaries%22%0A%09%09%09%09email%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20slack%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23text%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20reports%3B%0A%09%7D%0A%20%20%20%20csv%20-%3E%20qm%3B%0A%20%20%20%20json%20-%3E%20qm%3B%0A%20%20%20%20pl%20-%3E%20qm%3B%0A%20%20%20%20logs%20-%3E%20qm%3B%0A%20%20%20%20qm%20-%3E%20email%3B%0A%20%20%20%20qm%20-%3E%20slack%3B%0A%20%20%20%20%23qm%20-%3E%20text%3B%0A%20%20%20%20qm%20-%3E%20reports%3B%0A%7D%0A -->
+
+## `Jinja` Example {.crunch-title .smaller .crunch-hr}
+
+::: {.columns}
+::: {.column width="48%"}
+
+```html {filename="homepage.jinja"}
+<h3>{{ me['name'] }}'s Favorite Hobbies</h3>
+<ul>
+{%- for hobby in hobbies %}
+  <li>{{ hobby }}</li>
+{%- endfor %}
+</ul>
+```
+
+:::
+::: {.column width="4%"}
+
+<center>
+<span>+</span>
+</center>
+
+:::
+::: {.column width="48%"}
+
+```python {filename="render_jinja.py"}
+from jinja2 import Template
+tmpl = Template('homepage.jinja')
+tmpl.render(
+    me = {'name': 'Jeff'},
+    hobbies = [
+        "sleeping",
+        "jetski",
+        "getting sturdy"
+    ]
+)
+```
+
+:::
+:::
+
+<hr>
+
+<center>
+&darr;
+</center>
+
+<hr>
+
+::: {.columns}
+::: {.column width="48%"}
+
+```html {filename="rendered.html"}
+<h3>Jeff's Favorite Hobbies</h3>
+<ul>
+  <li>sleeping</li>
+  <li>jetski</li>
+  <li>getting sturdy</li>
+</ul>
+```
+
+:::
+::: {.column width="4%"}
+
+$\leadsto$
+
+:::
+::: {.column width="48%"}
+
+```{=html}
+<h3>Jeff's Favorite Hobbies</h3>
+<ul>
+  <li>sleeping</li>
+  <li>jetski</li>
+  <li>getting sturdy</li>
+</ul>
+```
+
+:::
+:::
+
+## Lab Time! {data-name="Lab"}
+
+* <a href='https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing' target='_blank'>Week 9 Lab: Pipeline Orchestration with Prefect <i class='bi bi-box-arrow-up-right ps-1'></i></a>
+

@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.23">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5500 – Week 8: Data Validation, Data Processing Pipelines</title>
+  <title>DSAN 5500 – Week 9: Data Pipeline Orchestration</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -95,26 +95,7 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
+  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -414,7 +395,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 8: Data Validation, Data Processing Pipelines</h1>
+  <h1 class="title">Week 9: Data Pipeline Orchestration</h1>
   <p class="subtitle"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
 
 <div class="quarto-title-authors">
@@ -428,233 +409,205 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Monday, March 11, 2024</p>
+  <p class="date">Monday, March 18, 2024</p>
 </section>
-<section>
-<section id="micro-rightarrow-meso-rightarrow-macro" class="title-slide slide level1 title-11 crunch-title crunch-ul crunch-li-8 not-title-slide center" data-stack-name="Intro">
-<h1>Micro <span class="math inline">\(\rightarrow\)</span> Meso <span class="math inline">\(\rightarrow\)</span> Macro</h1>
-<ul>
-<li>✅ Micro-level: Individual, <strong>“core” algorithms/data structures</strong> and their big-<span class="math inline">\(O\)</span> runtimes
-<ul>
-<li>e.g., <code>LinkedList</code>, <span class="alg">Merge-Sort</span></li>
-</ul></li>
-<li>✅ Meso-level: Algorithms/data structures that “piece together” a small collection of core algorithms
-<ul>
-<li><strong>Hash tables</strong>: Fixed-Length Array + Hashing Algorithm + Collision Handling Algorithm (BST)</li>
-</ul></li>
-</ul>
-<div style="border: 3px solid black !important;">
-<ul>
-<li>🤔 <strong>Macro-level</strong>: <strong>Pipelines</strong> of data structures and algorithms:
-<ul>
-<li><strong>raw data source</strong> <span class="math inline">\(\rightarrow\)</span> <strong>processing</strong> <span class="math inline">\(\rightarrow\)</span> <strong>storage</strong></li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="most-common-hw1-to-midterm-struggles" class="slide level2 title-09 crunch-title crunch-ul">
-<h2>Most Common HW1-to-Midterm Struggles</h2>
-<ul>
-<li>Ingesting data (HW1: <code>Swimmer</code> class)
-<ul>
-<li><span class="math inline">\(\implies\)</span> Data-processing pipelines!</li>
-</ul></li>
-<li>Maintaining <strong>invariants</strong> as dataset grows (HW2: <code>None</code> → <code>InventoryItem</code> → <code>BinarySearchTree</code>)
-<ul>
-<li><span class="math inline">\(\implies\)</span> Data validation!</li>
-</ul></li>
-</ul>
-</section></section>
-<section>
-<section id="data-validation" class="title-slide slide level1 center" data-stack-name="Validation">
-<h1>Data Validation</h1>
-<ul>
-<li>What you already know: Type hints</li>
-<li>Type hints on steroids: Pydantic 😎</li>
-</ul>
-</section>
-<section id="pydantic" class="slide level2">
-<h2>Pydantic</h2>
+<section class="slide level2">
 
-<img data-src="images/pydantic_logo.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="pydantic-in-action" class="slide level2 crunch-title crunch-details">
-<h2>Pydantic in Action</h2>
-<div id="0ca92108" class="cell" data-execution_count="1">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
-<span id="cb1-2"><a></a><span class="kw">class</span> InventoryItem(BaseModel):</span>
-<span id="cb1-3"><a></a>    item_name: <span class="bu">str</span></span>
-<span id="cb1-4"><a></a>    price: <span class="bu">float</span></span>
-<span id="cb1-5"><a></a>my_item <span class="op">=</span> InventoryItem(item_name<span class="op">=</span><span class="st">"Banana"</span>, price<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb1-6"><a></a>my_item</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>InventoryItem(item_name='Banana', price=10.0)</code></pre>
-</div>
-</div>
-<div id="7271c3bb" class="cell" data-execution_count="2">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>invalid_item <span class="op">=</span> InventoryItem(item_name<span class="op">=</span><span class="st">"Banana"</span>, price<span class="op">=</span><span class="st">"100 dollar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<pre><code>ValidationError: 1 validation error for InventoryItem
-price
-  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='100 dollar', input_type=str]
-    For further information visit https://errors.pydantic.dev/2.6/v/float_parsing</code></pre>
-</div>
-</div>
+<!-- # Absorbing Buzzwords Now $\leadsto$ Quickly Harnessing the Full Power of Prefect! {data-stack-name="Key Concepts"} -->
 </section>
-<section id="pydantic-in-even-cooler-action" class="slide level2 crunch-title crunch-details">
-<h2>Pydantic in Even-Cooler Action</h2>
+<section id="the-necessary-buzzwords" class="slide level2" data-name="Key Concepts">
+<h2>The Necessary Buzzwords</h2>
+<p><em>(Underlined words link to “Concepts” section of Prefect’s docs)</em></p>
+<ul>
+<li><a class="under" href="https://docs.prefect.io/latest/concepts/flows/" target="_blank"><strong><code>Flow</code></strong></a>: The “main thing” your pipeline is doing!
+<ul>
+<li>Except in simple cases, will consist of <strong>multiple <a class="under" href="https://docs.prefect.io/latest/concepts/tasks/" target="_blank"><code>Tasks</code></a></strong></li>
+</ul></li>
+<li><code>Flow</code>s and <code>Task</code>s alone already provide much more functionality than “basic” functions…</li>
+<li><a class="under" href="https://docs.prefect.io/latest/concepts/deployments/" target="_blank"><strong><code>Deployment</code>s</strong></a>: <code>Flow</code>s + <code>Task</code>s + <strong>Metadata</strong> about <strong>how</strong> and <strong>when</strong> you want them to run.
+<ul>
+<li>Prefect docs: “<strong>Deployments</strong> elevate workflows from [functions that you call manually] to [API-managed entities].”</li>
+</ul></li>
+</ul>
+</section>
+<section id="deployments-rightarrow-run-flows-programmatically" class="slide level2 crunch-title title-11 smaller">
+<h2>Deployments <span class="math inline">\(\Rightarrow\)</span> Run Flows Programmatically</h2>
+
+<img data-src="images/flow-run-details-crop.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="the-power-of-deployments" class="slide level2 crunch-title crunch-ul" data-name="Fancier Concepts">
+<h2>The Power of <code>Deployment</code>s</h2>
+<ul>
+<li>“Packaging” code as <strong><code>Deployments</code></strong> enables <a class="under" href="https://docs.prefect.io/latest/concepts/automations/" target="_blank"><strong><code>Triggers</code></strong></a>:
+<ul>
+<li>On a particular <a href="https://docs.prefect.io/latest/concepts/schedules/" target="_blank" class="under"><strong><code>Schedules</code></strong></a>: every 4 hours, every day at noon, once per week, etc.</li>
+<li>When important <a class="under" href="https://docs.prefect.io/latest/concepts/automations/" target="_blank"><strong><code>Events</code></strong></a> happen: <strong>pushes</strong> to GitHub, <strong>addition, removal, modification</strong> of files in Dropbox, etc.</li>
+</ul></li>
+<li><a class="under" href="https://docs.prefect.io/latest/guides/logs/" target="_blank"><strong><code>Logging</code></strong></a>, <a class="under" href="https://docs.prefect.io/latest/guides/host/#notifications" target="_blank"><strong><code>Notifications</code></strong></a> (Slack, email, text messages)</li>
+<li><a class="under" href="https://docs.prefect.io/latest/concepts/results/" target="_blank"><strong><code>Results</code></strong></a> as natural-language explanations (produced by Prefect) or <strong>custom summaries</strong>, called <a class="under" href="https://docs.prefect.io/latest/concepts/artifacts/" target="_blank"><strong><code>Artifacts</code></strong></a>, that you define as part of your flows</li>
+</ul>
+</section>
+<section id="schedules" class="slide level2 smaller crunch-title crunch-ul">
+<h2><code>Schedules</code></h2>
+<ul>
+<li><a class="under" href="https://docs.prefect.io/latest/concepts/schedules/#cron" target="_blank"><strong><code>Cron</code></strong></a>: Full-on scheduling language (used by computers since <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">1975</a>!)</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>crontab.sh</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="crontab.sh"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="co"># ┌───────────── minute (0–59)</span></span>
+<span id="cb1-2"><a></a><span class="co"># │ ┌───────────── hour (0–23)</span></span>
+<span id="cb1-3"><a></a><span class="co"># │ │ ┌───────────── day of the month (1–31)</span></span>
+<span id="cb1-4"><a></a><span class="co"># │ │ │ ┌───────────── month (1–12)</span></span>
+<span id="cb1-5"><a></a><span class="co"># │ │ │ │ ┌───────────── day of the week (0–6) (Sunday to Saturday)</span></span>
+<span id="cb1-6"><a></a><span class="co"># │ │ │ │ │</span></span>
+<span id="cb1-7"><a></a><span class="co"># │ │ │ │ │</span></span>
+<span id="cb1-8"><a></a><span class="co"># │ │ │ │ │</span></span>
+<span id="cb1-9"><a></a><span class="co"># * * * * * &lt;command to execute&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="columns">
-<div class="column" style="width:50%;">
-<div id="fafc7c83" class="cell" data-execution_count="3">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, PositiveInt</span>
-<span id="cb5-2"><a></a><span class="kw">class</span> Employee(BaseModel):</span>
-<span id="cb5-3"><a></a>    name: <span class="bu">str</span></span>
-<span id="cb5-4"><a></a>    email: EmailStr</span>
-<span id="cb5-5"><a></a>    age: PositiveInt</span>
-<span id="cb5-6"><a></a>invalid_employee <span class="op">=</span> Employee(</span>
-<span id="cb5-7"><a></a>  name<span class="op">=</span><span class="st">"Jeef"</span>,</span>
-<span id="cb5-8"><a></a>  email<span class="op">=</span><span class="st">"fakeemail!!!"</span>,</span>
-<span id="cb5-9"><a></a>  age<span class="op">=</span><span class="dv">50</span></span>
-<span id="cb5-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<pre><code>ValidationError: 1 validation error for Employee
-email
-  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div id="8d3462bc" class="cell" data-execution_count="4">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>invalid_employee2 <span class="op">=</span> Employee(</span>
-<span id="cb7-2"><a></a>  name<span class="op">=</span><span class="st">"Jeeferson"</span>,</span>
-<span id="cb7-3"><a></a>  email<span class="op">=</span><span class="st">"valid@email.com"</span>,</span>
-<span id="cb7-4"><a></a>  age<span class="op">=-</span><span class="dv">3</span></span>
-<span id="cb7-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<pre><code>ValidationError: 1 validation error for Employee
-age
-  Input should be greater than 0 [type=greater_than, input_value=-3, input_type=int]
-    For further information visit https://errors.pydantic.dev/2.6/v/greater_than</code></pre>
-</div>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="data-processing-pipelines" class="title-slide slide level1 center" data-stack-name="Pipelines">
-<h1>Data-Processing Pipelines</h1>
-
-</section>
-<section id="two-generations-of-python-pipeline-libraries" class="slide level2">
-<h2>Two Generations of Python Pipeline Libraries</h2>
+<div class="column" style="width:35%;">
 <ul>
-<li>Gen 1: Airflow (AirBnB), Luigi (Spotify)</li>
-<li>Gen 2: Dagster, Prefect</li>
+<li><a class="under" href="https://docs.prefect.io/latest/concepts/schedules/#interval" target="_blank"><strong><code>Interval</code></strong></a></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>my_interval.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="my_interval.yml"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a></a><span class="fu">schedule</span><span class="kw">:</span></span>
+<span id="cb2-2"><a></a><span class="at">  </span><span class="fu">interval</span><span class="kw">:</span><span class="at"> </span><span class="dv">600</span></span>
+<span id="cb2-3"><a></a><span class="at">  </span><span class="fu">timezone</span><span class="kw">:</span><span class="at"> America/Chicago</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:65%;">
+<ul>
+<li><a class="under" href="https://docs.prefect.io/latest/concepts/schedules/#rrule" target="_blank"><strong><code>RRule</code></strong></a></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>my_rrule.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="my_rrule.yml"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a></a><span class="fu">schedule</span><span class="kw">:</span></span>
+<span id="cb3-2"><a></a><span class="at">  </span><span class="fu">rrule</span><span class="kw">:</span><span class="at"> </span><span class="st">'FREQ=WEEKLY;BYDAY=MO,WE,FR;UNTIL=20240730T040000Z'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="events" class="slide level2 smaller crunch-title crunch-ul">
+<h2><code>Events</code></h2>
+<ul>
+<li>These <strong>integrations</strong> are nice, but in reality usually <strong>overkill</strong>: you can just use <a class="under" href="https://docs.prefect.io/latest/guides/webhooks/" target="_blank"><strong><code>Webhooks</code></strong></a></li>
 </ul>
 
-<img data-src="images/Prefect.webp" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="for-now-prefect" class="slide level2">
-<h2>For Now: Prefect!</h2>
+<img data-src="images/integrations.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="logging" class="slide level2 crunch-title">
+<h2><code>Logging</code></h2>
 <ul>
-<li>But, the <strong>principles</strong> (<strong>ETL</strong>) remain the same!</li>
+<li>For most non-advanced use cases: literally just put <code>log_prints=True</code> as a <strong>parameters</strong> of your <code>Flow</code>:</li>
 </ul>
-
-<img data-src="images/flow-run-page.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="etl-extract-transform-load" class="slide level2">
-<h2>ETL = Extract, Transform, Load</h2>
-
-<img data-src="images/etl.png" class="r-stretch quarto-figure-center"><p class="caption">From <a href="https://www.analyticsvidhya.com/blog/2022/06/a-complete-guide-on-building-an-etl-pipeline-for-beginners/" target="_blank">Analytics Vidhya</a></p></section>
-<section id="you-have-already-been-doing-this" class="slide level2 crunch-title crunch-ul">
-<h2>You Have Already Been Doing This!</h2>
-<ul>
-<li>HW1: Swim team example
-<ul>
-<li><strong>Extract</strong>: Load data from .csv</li>
-<li><strong>Transform</strong>: Convert times to milliseconds</li>
-<li><strong>Load</strong>: Store into <code>Team</code> object</li>
-</ul></li>
-<li>HW2 (Throughout)
-<ul>
-<li><strong>Extract</strong>: Load products from .csv into Pandas</li>
-<li><strong>Transform</strong>: (Construct <code>InventoryItem</code> object for each row)</li>
-<li><strong>Load</strong>: Store into <code>LogarithmicHashTable</code></li>
-</ul></li>
-</ul>
-</section>
-<section id="and-you-have-already-run-into-the-need-for-validation" class="slide level2">
-<h2>(And You Have Already Run into the Need for Validation!)</h2>
-<ul>
-<li>HW1: Are the times in seconds or milliseconds?</li>
-<li>HW2: Are users providing <code>key</code> and <code>value</code> separately, or together?</li>
-<li>If together: as <code>tuple</code>s or <code>InventoryItem</code>s?</li>
-<li>If <code>InventoryItem</code>s: What type(s) for <code>item_name</code>? What type(s) for <code>price</code>? 😵</li>
-<li><span class="math inline">\(\implies\)</span> One of the <strong>two</strong> main focuses for <strong>HW3</strong> will be <strong>validation</strong> of input data!</li>
-</ul>
-</section>
-<section id="cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step" class="slide level2">
-<h2>Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)</h2>
-<ul>
-<li>(Hopefully things from previous slide have taught you the dangers of this!)</li>
-<li>It’s like <strong>Anscombe’s Quartet</strong> from DSAN 5000/5100/5200: We can be misled by fancy tools if we don’t take time for the (sometimes boring) step of <strong>looking at</strong> the data</li>
-<li>Example: ETL for processing text data (books for now)</li>
-</ul>
-</section>
-<section id="bookshelfscan-an-example-i-use-irl" class="slide level2 title-09 crunch-title crunc-ul">
-<h2>BookshelfScan (An Example I Use IRL!)</h2>
-<ul>
-<li><strong>Extract</strong>: Dropbox folder containing ebooks</li>
-<li><strong>Transform</strong>: Compute word counts</li>
-<li><strong>Load</strong>: Save word counts into a database</li>
-<li>Enables me to figure out <strong>which books</strong> talk about a topic <span class="math inline">\(t\)</span> (data structures, algorithms, data ethics and policy, etc.)!</li>
-<li><strong>BUT</strong> (Devil is in the details): Can look very different for <code>txt</code>, <code>epub</code> (can contain images), <code>pdf</code> (sometimes text is embedded, sometimes not), images of scans, audiobooks</li>
-<li><span class="math inline">\(\implies\)</span> (Sad but true) Pipleline will <strong>crash and burn</strong> if you don’t handle these <strong>before</strong> using <a href="https://www.trychroma.com/" target="_blank">Cool NLP things</a> in T step</li>
-</ul>
-</section>
-<section id="hw3-possibility-1-pet-store-inventory" class="slide level2">
-<h2>HW3 Possibility 1: Pet Store Inventory</h2>
-<ul>
-<li><a href="https://petstore.swagger.io/v2/store/inventory" target="_blank">https://petstore.swagger.io/v2/store/inventory</a></li>
-</ul>
-</section>
-<section id="hw3-possibility-2-books-to-scrape" class="slide level2">
-<h2>HW3 Possibility 2: Books to Scrape</h2>
-<ul>
-<li><a href="http://books.toscrape.com/" target="_blank">Books to Scrape homepage</a></li>
-</ul>
-</section></section>
-<section>
-<section id="lab-data-validation" class="title-slide slide level1 center" data-stack-name="Lab: Data Validation">
-<h1>Lab(!): Data Validation</h1>
-
-</section>
-<section id="google-classroom-link" class="slide level2">
-<h2>Google Classroom Link</h2>
-<ul>
-<li><a href="https://classroom.google.com/c/NjM5MzE2MTE4NTgx/m/NjY4NDU0NTk0MTk4/details" target="_blank">Open in Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
-</ul>
-</section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
-<div id="refs" role="list">
-
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>flow_with_logging.py</strong></pre>
 </div>
+<div class="sourceCode" id="cb4" data-filename="flow_with_logging.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> prefect <span class="im">import</span> task, flow</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a><span class="at">@task</span></span>
+<span id="cb4-4"><a></a><span class="kw">def</span> my_task():</span>
+<span id="cb4-5"><a></a>    <span class="bu">print</span>(<span class="st">"we're logging print statements from a task"</span>)</span>
+<span id="cb4-6"><a></a></span>
+<span id="cb4-7"><a></a><span class="at">@flow</span>(log_prints<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-8"><a></a><span class="kw">def</span> my_flow():</span>
+<span id="cb4-9"><a></a>    <span class="bu">print</span>(<span class="st">"we're logging print statements from a flow"</span>)</span>
+<span id="cb4-10"><a></a>    my_task()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="notifications" class="slide level2 crunch-title">
+<h2><code>Notifications</code></h2>
+<ul>
+<li>Actually immensely powerful, because it uses a <strong>templating engine</strong> called <a class="under" href="https://jinja.palletsprojects.com/en/3.1.x/" target="_blank"><strong><code>Jinja</code></strong></a> which is <strong>VERY</strong> worth learning!</li>
+<li>With your brain in <strong>pipeline mode</strong>, think of Jinja as the [?] in:</li>
+</ul>
+
+<!-- https://edotor.net/?engine=dot?engine=dot#digraph%20G%20%7B%0A%20%20%20%20rankdir%3D%22LR%22%3B%0A%09edge%20%5Bpenwidth%3D0.75%2Carrowsize%3D0.6%5D%0A%20%20%20%20%23%20results%0A%09csv%20%5Blabel%3D%22CSV%22%5D%3B%0A%09json%20%5Blabel%3D%22JSON%22%5D%3B%0A%09pl%20%5Blabel%3D%22Python%20lists%22%5D%3B%0A%20%20%20%20logs%20%5Blabel%3D%22Logged%20outputs%22%5D%3B%0A%20%20%20%20%23%20%3F%0A%20%20%20%20qm%20%5Blabel%3D%22%3F%3F%3F%22%5D%3B%0A%20%20%20%20%23%20summaries%0A%20%20%20%20email%20%5Blabel%3D%22Email%20%2F%20Text%20message%22%5D%0A%20%20%20%20slack%20%5Blabel%3D%22Slack%20message%22%5D%0A%09%23text%20%5Blabel%3D%22Text%20message%22%5D%0A%20%20%20%20reports%20%5Blabel%3D%22Markdown%20report%22%5D%0A%09subgraph%20cluster_G1%20%7B%0A%20%20%20%20%20%20%20%20style%3D%22dashed%22%3B%0A%09%09%09%09label%3D%22Messy%20Pipeline%20Results%22%0A%09%09%09%09csv%3B%0A%09%09%09%09json%3B%0A%09%09%09%09pl%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20logs%3B%0A%09%7D%0A%09subgraph%20cluster_G2%20%7B%0A%20%20%20%20%20%20%20%20style%3D%22dashed%22%3B%0A%09%09%09%09label%3D%22Clean%20Summaries%22%0A%09%09%09%09email%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20slack%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23text%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20reports%3B%0A%09%7D%0A%20%20%20%20csv%20-%3E%20qm%3B%0A%20%20%20%20json%20-%3E%20qm%3B%0A%20%20%20%20pl%20-%3E%20qm%3B%0A%20%20%20%20logs%20-%3E%20qm%3B%0A%20%20%20%20qm%20-%3E%20email%3B%0A%20%20%20%20qm%20-%3E%20slack%3B%0A%20%20%20%20%23qm%20-%3E%20text%3B%0A%20%20%20%20qm%20-%3E%20reports%3B%0A%7D%0A -->
+<img data-src="images/jinja.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="jinja-example" class="slide level2 crunch-title smaller crunch-hr">
+<h2><code>Jinja</code> Example</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>homepage.jinja</strong></pre>
+</div>
+<div class="sourceCode" id="cb5" data-filename="homepage.jinja"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a></a><span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>{{ me['name'] }}'s Favorite Hobbies<span class="dt">&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span></span>
+<span id="cb5-2"><a></a><span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb5-3"><a></a>{%- for hobby in hobbies %}</span>
+<span id="cb5-4"><a></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>{{ hobby }}<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb5-5"><a></a>{%- endfor %}</span>
+<span id="cb5-6"><a></a><span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:4%;">
+<center>
+<span>+</span>
+</center>
+</div><div class="column" style="width:48%;">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>render_jinja.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb6" data-filename="render_jinja.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">from</span> jinja2 <span class="im">import</span> Template</span>
+<span id="cb6-2"><a></a>tmpl <span class="op">=</span> Template(<span class="st">'homepage.jinja'</span>)</span>
+<span id="cb6-3"><a></a>tmpl.render(</span>
+<span id="cb6-4"><a></a>    me <span class="op">=</span> {<span class="st">'name'</span>: <span class="st">'Jeff'</span>},</span>
+<span id="cb6-5"><a></a>    hobbies <span class="op">=</span> [</span>
+<span id="cb6-6"><a></a>        <span class="st">"sleeping"</span>,</span>
+<span id="cb6-7"><a></a>        <span class="st">"jetski"</span>,</span>
+<span id="cb6-8"><a></a>        <span class="st">"getting sturdy"</span></span>
+<span id="cb6-9"><a></a>    ]</span>
+<span id="cb6-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<hr>
+<center>
+↓
+</center>
+<hr>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>rendered.html</strong></pre>
+</div>
+<div class="sourceCode" id="cb7" data-filename="rendered.html"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb7-1"><a></a><span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>Jeff's Favorite Hobbies<span class="dt">&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span></span>
+<span id="cb7-2"><a></a><span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb7-3"><a></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>sleeping<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb7-4"><a></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>jetski<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb7-5"><a></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>getting sturdy<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb7-6"><a></a><span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:4%;">
+<p><span class="math inline">\(\leadsto\)</span></p>
+</div><div class="column" style="width:48%;">
+<h3>Jeff's Favorite Hobbies</h3>
+<ul>
+  <li>sleeping</li>
+  <li>jetski</li>
+  <li>getting sturdy</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="lab-time" class="slide level2" data-name="Lab">
+<h2>Lab Time!</h2>
+<ul>
+<li><a href="https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing" target="_blank">Week 9 Lab: Pipeline Orchestration with Prefect <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>DSAN 5500 Week 8: Data Validation, Pipelines</p>
+<p>DSAN 5500 Week 9: Pipeline Orchestration</p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
