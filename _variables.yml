@@ -45,8 +45,8 @@ w09:
   date-md: "Mar 18"
 w10:
   weeknum: 10
-  title: "Parallel Computing Overview"
-  footer: "Parallel Computing Overview"
+  title: "Moving from Serial to Parallel Pipelines"
+  footer: "Moving from Serial to Parallel Pipelines"
   date-md: "Mar 25"
 w11:
   weeknum: 11

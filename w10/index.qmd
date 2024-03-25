@@ -1,0 +1,185 @@
+---
+title: "Week 10: {{< var w10.title >}}"
+subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
+date: "Monday, March 25, 2024"
+date-format: full
+author: "Jeff Jacobs"
+institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
+lecnum: 10
+categories:
+  - "Class Sessions"
+format:
+  revealjs:
+    df-print: kable
+    output-file: "slides.html"
+    footer: "DSAN 5500 Week 10: {{< var w10.footer >}}"
+    echo: true
+    code-fold: show
+    scrollable: true
+    slide-number: true
+    html-math-method: mathjax
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link href='https://fonts.googleapis.com/css2?family=Honk&display=swap' rel='stylesheet'>"
+    theme: ["../_jjslides.scss"]
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    echo: true
+    code-fold: show
+    html-math-method: mathjax
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# HW3: Final Pieces of the Data-Pipelines Puzzle {data-stack-name="Serial Pipelines"}
+
+* Overview (Quotes to Scrape)
+* Web Scraping with BeautifulSoup
+* Python's `Counter` class
+* RRule.js
+
+## Data Mining
+
+![](images/gambling.jpg){fig-align="center"}
+
+## Quotes to Scrape
+
+* Created by Zyte as a <a href='http://quotes.toscrape.com/random' target='_blank'>"sandbox"</a> for web scraping
+* Has "levels" representing more and more difficult scraping tasks: <a href='https://toscrape.com/' target='_blank'>ToScrape.com</a>
+* Our case: Not **harder** than the "main" site, just a different task to simulate a different environment
+* Could take the HW3 pipeline and "plug in" **Twitter**, **stock data**, etc.
+
+## First Pipeline: One Quote Per Second
+
+* **E**xtract: Scrape the quote data from the webpage's HTML
+* **T**ransform: Filter out **function** words, compute **frequencies** for **content** words
+* **L**oad: Save the 
+* Our copilot: **Pydantic!**
+  * Use a `Quote` class, extending `BaseModel`, to specify data fields and ensure quality/uniformity
+* Run once per second, 10 times total
+
+## Second Pipeline: Post-Scrape Report
+
+* First pipeline has successfully run 10 times... what now?
+* Answer: Generate a **report** for your boss up at the entrance to the quote mine
+* **E**xtract: The ten scraped `Quote` objects
+* **T**ransform: Find top 5 words, top 5 tags, and generate a wordcloud
+* **L**oad: Embed the words, tags, and wordcloud within a **Markdown document** that gets emailed to your boss
+
+## BeautifulSoup
+
+* Without giving away the answers...
+* The key to this part is to **inspect the source** of the Quotes to Scrape page, and identify the **HTML tags** and **classes** containing each piece of info you need to extract!
+
+## RRules
+
+* A **language** for specying **schedules** for tasks
+* In the same way that we can run SQL queries from within Python, we can use RRule syntax to specify **schedules** for tasks from within Python
+* <a href='https://jkbrzt.github.io/rrule/' target='_blank'>RRule.js Demo</a>
+
+## Python's `Counter` Class
+
+* A fancy wrapper around a plain-old `dict`!
+* (Quick Colab demo to see how it works: **creating** a `Counter`, **combining** two `Counter`s)
+
+# Serial Pipelines $\rightarrow$ Parallel Pipelines {data-stack-name="Parallel Pipelines"}
+
+* Don't worry; for now, just a high-level overview of what we'll dive into in the final unit
+
+## Quick Survey Question, for Intuition-Building
+
+* Are humans capable of **"true" multi-tasking**?
+  * As in, doing two things at the **exact same time?**
+* (Or, do we instead **rapidly switch back and forth** between tasks?)
+
+## The Answer {.smaller .crunch-title .crunch-ul}
+
+* (From what we understand, at the moment, by way of studies in neuroscience/cognitive science/etc...)
+* Humans are **not** capable of true multitasking! In CS terms, this would be called **multiprocessing** (more on this later)
+* We **are** capable, however, of various modes of **concurrency**!
+
+| | Multithreading | Asynchronous Execution |
+| - | - | - |
+| **Unconsciously**<br>(you do it already, "naturally") | Focus on **one** speaker within a loud room, with tons of other conversations entering your ears | Put something in oven, set alarm, go do something else, take out of oven once alarm goes off |
+| **Consciously**<br>(you can do it with effort/practice) | Pat head (up and down) and rub stomach (circular motion) "simultaneously" | Throw a ball in the air, clap 3 times, catch ball |
+
+## Helpful *Specifically* for Programming
+
+* One <a href='https://book.sciml.ai/' target='_blank'>famous book</a> phrases it like: if implemented thoughtfully, concurrency is a **power multiplier** for your code (do 10 things in 1 second instead of 10 seconds...)
+
+![](images/mario.gif){fig-align="center"}
+
+## Helpful *In General* as a Way of Thinking! {.crunch-title .crunch-ul .title-09}
+
+* Say you get hired as a Project Manager...
+* Part of your job will fundamentally involve **pipelines!**
+  * Need to know when Task $B$ does/does not require Task $A$ as a prerequisite
+  * Need to know whether Task $A$ and Task $B$ can **share one resource** or **need their own individual resources**
+  * Once Task $A$ and $B$ both complete, how do we **merge** their results together?
+
+## Avoiding the Rabbithole
+
+* Parallel computing is a **rabbithole**, but one you can safely avoid via simple heuristics ("rules of thumb")!
+
+1. Check for optimizations to serial code first,
+2. Check for **embarrassingly parallel** code blocks
+3. Use **map-reduce** approach for more complicated cases
+
+## "Embarrassingly Parallel" Pipelines {.smaller .crunch-title .crunch-ul}
+
+* Technical definition: tasks within pipeline can easily be parallelized bc **no dependence** and **no need for communication** (see next slide). Better video explanation:
+
+<center>
+
+{{< video "images/triple_spatula.mp4" height="500" >}}
+
+</center>
+
+## Parallelizing Non-Embarrassingly-Parallel Pipelines... {.smaller .title-10}
+
+![epic_bacon_lifehack.jpeg](images/epic_bacon_lifehack.jpeg){fig-align="center"}
+
+## Buzzkill: Complications to Come 😰 {.crunch-title .crunch-ul}
+
+* If it's such a magical powerup, shouldn't we just **parallelize everything**? Answer: No 😞 because **overhead**.
+* Overhead source 1: Beyond "embarrassingly parallel" cases, threads may require **their own separate stacks and heaps**
+* Overhead source 2: Even after setting up new stacks and heaps, threads may need to **communicate with one another** (especially if they need to **synchronize** at some point(s))
+* In fact, probably the earliest super-popular parallelization library was created to handle **Source 2**, not Source 1: <a href='https://en.wikipedia.org/wiki/Message_Passing_Interface' target='_blank'>**Message Passing Interface**</a> (C, C++, and Fortran)
+
+## The Worst Part, IMO {.smaller}
+
+* Plenty of problems in CS/data science have these kinds of complications... (if they weren't complicated, we wouldn't have as many jobs)
+* We saw for example, with **hash tables**, how we can try our best to **minimize** collisions (MD5 and other provably-optimal hash functions), but can't **eliminate them** entirely
+  * So, we tackle this complication by also developing efficient **collision-handling structures** like BSTs!
+* With parallel overhead costs, however... I don't know of any easily-accessible "thing" like the theory of hash tables that can be used to optimize parallelization
+  * In other words, you would think we could do a similar optimization: paralellize if benefits > costs, keep as serial otherwise
+  * But, if you try to find a "framework" for this, you'll mostly find StackOverflow posts, textbooks, etc. which say "stuff varies too much between different chipsets, languages, operating systems, etc... sorry!"
+
+## The Solution? {.crunch-title .crunch-ul}
+
+* Again, as far as I can tell (despite workshops/courses and two summer internships just parallelizing stuff)...
+* You just start trying to parallelize, carefully **measure** and **test** the performance gains/losses, and then
+* Decide whether to commit to parallel or stick to serial, via an estimate of how your analysis/app will need to **scale!**
+* Hence the usefulness of Prefect for visualizing tradeoff:
+  * **Tasks** which used to run in serial will now run at same time, but will **take longer** (unless embarrassingly parallel) due to setup+communication overhead
+
+## HW4 Draft Part 1 = Parallelized HW3
+
+* $N$ random quotes on the page rather than just one
+* Is it embarrassingly parallel?
+* Part 2 TBD!
