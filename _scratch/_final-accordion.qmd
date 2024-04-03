@@ -1,0 +1,215 @@
+---
+title: "Final Project Details"
+subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
+author: "DSAN 5500 Course Staff"
+date: 2024-04-02
+format:
+  html:
+    df-print: kable
+---
+
+## Overview
+
+The idea for your final project is as follows:
+
+In pretty much **any** course on algorithms and data structures, whether in a Data Science, Computer Science, or (say) Applied Math context, there's only so much that can be covered in a given unit. This means that, for all of the topics we've covered thus far, there's a **next step** that could be taken in learning about the topic. In general this could mean one of the following **four options**, where I've provided a concrete example specific to the class under each heading:
+
+```{=html}
+<style>
+.accordion {
+	--bs-accordion-btn-color: black;
+	--bs-accordion-btn-bg: #f8f8f8;
+	--bs-accordion-active-color: black;
+	--bs-accordion-active-bg: #f8f8f8;
+}
+</style>
+<div class="accordion" id="accordionAllOpen">
+<div class="accordion-item">
+  <div class="accordion-header">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#aao-c1" aria-expanded="true" aria-controls="aao-c1">
+      Option 1:&nbsp; <i>A Deeper Dive</i>
+    </button>
+  </div>
+  <div id="aao-c1" class="accordion-collapse collapse show">
+    <div class="accordion-body">
+      <h5 class='accordion-title'>
+        Diving 'one level deeper' into the details of an algorithm/data structure
+      </h5>
+      <p class="accordion-text">
+        
+      </p>
+    </div>
+  </div>
+</div>
+<div class="accordion-item">
+  <div class="accordion-header">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#aao-c2" aria-expanded="true" aria-controls="aao-c2">
+      Option 2:&nbsp; <i>"Fixing" an Issue</i>
+    </button>
+  </div>
+  <div id="aao-c2" class="accordion-collapse collapse show">
+    <div class="accordion-body">
+      <h5 class='accordion-title'>
+        Figuring out how to address some existing <i>drawback</i> of the algorithm/data structure
+      </h5>
+      <p class="accordion-text">
+        For example, the fact that Binary Search Trees <b>lose their logarithmic efficiency</b> if items are added to them <b>in order</b> (since newly-added items are always added to the <i>right subtree</i> of all existing items, thus "degenerating" into a linear linked list structure), an issue which fancier versions of the BST like <a href='https://en.wikipedia.org/wiki/AVL_tree' target='_blank'>AVL Trees</a> and <a href='https://en.wikipedia.org/wiki/Red%E2%80%93black_tree' target='_blank'>Red-Black Trees</a> resolve.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="accordion-item">
+  <div class="accordion-header">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#aao-c3" aria-expanded="true" aria-controls="aao-c3">
+        Option 3:&nbsp; <i>Exploring an Application</i>
+    </button>
+  </div>
+  <div id="aao-c3" class="accordion-collapse collapse show">
+    <div class="accordion-body">
+      <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+    </div>
+  </div>
+</div>
+<div class="accordion-item">
+  <div class="accordion-header">
+    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#aao-c4" aria-expanded="true" aria-controls="aao-c4">
+      Option 4:&nbsp; <i>Proving Correctness and/or Efficiency</i>
+    </button>
+  </div>
+  <div id="aao-c4" class="accordion-collapse collapse show">
+    <div class="accordion-body">
+      <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+    </div>
+  </div>
+</div>
+</div>
+```
+
+```{=html}
+<div class="card mb-3">
+  <div class="card-header">
+    Option 1: <i>A Deeper Dive</i>
+  </div>
+  <div class="card-body">
+    <h5 class='card-title'>Diving 'one level deeper' into the details of an algorithm/data structure</h5>
+    <p class="card-text">
+    <ul>
+          <li><b>Example 1</b>: Efficient implementations of <b>deletion</b> in linked lists, rather than just the <b>insertion</b> and <b>retrieval</b> operations on linked lists that we looked at.</li>
+    </ul>
+    </p>
+  </div>
+</div>
+```
+
+```{=html}
+<div class="card mb-3">
+  <div class="card-header">
+    Option 2: <i>"Fixing" an Issue</i>
+  </div>
+  <div class="card-body">
+    <h5 class='card-title'>Figuring out how to address some existing <i>drawback</i> of the algorithm/data structure</h5>
+    <p class="card-text">
+    For example, the fact that Binary Search Trees <b>lose their logarithmic efficiency</b> if items are added to them <b>in order</b> (since newly-added items are always added to the <i>right subtree</i> of all existing items, thus "degenerating" into a linear linked list structure), an issue which fancier versions of the BST like <a href='https://en.wikipedia.org/wiki/AVL_tree' target='_blank'>AVL Trees</a> and <a href='https://en.wikipedia.org/wiki/Red%E2%80%93black_tree' target='_blank'>Red-Black Trees</a> resolve.
+    </p>
+  </div>
+</div>
+```
+
+
+```{=html}
+<div class="card mb-3">
+  <div class="card-header">
+    Option 3: <i>Exploring Applications</i>
+  </div>
+  <div class="card-body">
+    <h5 class='card-title'>Examining different <i>applications</i> of the data structure that make it helpful for particular contexts</h5>
+    <p class="card-text">
+    For example, in bioinformatics, the sorting algorithms we <b>did</b> learn are helpful for genetic sequence searching, but can be made even <b>more efficient</b> for genetic sequence searches by <a href='https://web.stanford.edu/class/cs262/archives/notes/lecture4.pdf' target='_blank'>applying the Burrows-Wheeler Transform</a> to a collection of genetic sequences <b>before</b> applying the sorting algorithms.
+    </p>
+  </div>
+</div>
+```
+
+```{=html}
+<div class="card mb-3">
+  <div class="card-header">
+    Option 4: <i>Proving Correctness and/or Efficiency</i>
+  </div>
+  <div class="card-body">
+    <h5 class='card-title'>Carrying out a more robust analysis of the <i>correctness</i> and/or <i>asymptotic complexity</i> of the algorithms and data structures we looked at</h5>
+    <p class="card-text">
+    For example, in the lecture on <span class='alg'>Insertion-Sort</span>, I hinted at the notion of a <b>correctness proof</b> using <b>invariants</b>---how it would proceed along the same lines as a <a href='https://www.youtube.com/watch?v=wblW_M_HVQ8' target='_blank'>proof by induction</a> that you might have seen in a previous math class---but never formally walked you through how to do one.
+    </p>
+  </div>
+</div>
+```
+
+So, your task for the final project will be to
+
+1. Choose one of the topics we covered
+2. Determine or work with your mentor to find an interesting "next step" with respect to this topic
+3. Carry out this next step (details below, since this will look different for different choices from the above options!)
+4. Write up what you did in a report, including any of the code or math or data analysis that you did in Step 3
+
+## Concrete Requirements
+
+For each of the four options described in the Overview section above, the following sections describe the structure of the deliverable(s) you would be responsible for (you can use the "On this page" menu on the right side of ther page to jump to a specific option)
+
+### Option 1: A Deeper Dive
+
+**Diving 'one level deeper' into the details of the algorithm/data structure**
+
+Here, the deliverable should be structured like:
+
+1. State which algorithm or data structure you chose, from among those covered in class
+2. Identify a substantive implementation detail that we didn't cover in class
+3. Implement it in Python, <b>describing in your own words</b> (through comments or Markdown text above/below the code) how your implementation works
+4. Write a set of <b>unit tests</b> demonstrating that your implementation <b>resolves/fixes the drawback</b> that you identified in Step 2
+
+### Option 2: Fixing an Issue
+
+**Figuring out how to address some existing <i>drawback</i> of the algorithm/data structure**
+
+Here, the deliverable should be structured like:
+
+1. State which algorithm or data structure you chose, from among those covered in class</li>
+2. Identify a substantive <b>drawback</b> present in the implementation of that topic that we learned in class</li>
+3. Implement it in Python, <b>describing in your own words</b> (through comments or Markdown text above/below the code) how your implementation works</li>
+4. Write a set of <b>unit tests</b> demonstrating that your implementation handles a range of possible inputs
+
+
+### Option 3: Exploring Applications
+
+**Examining different <i>applications</i> of the data structure that make it helpful for particular fields**
+
+1. State which course topic you've chosen</li>
+2. Identify a substantive <b>application</b> of that topic in a field you are interested in: e.g., bioinformatics, marketing, finance, NLP, image processing, operations management, social science</li>
+3. Write a <b>Literature Review</b> section containing a few examples of the use of the topic in your chosen field that are particularly interesting to you</li>
+4. Choose one of the examples from your literature review and create a <b>Quarto document</b> or <b>Jupyter notebook</b> containing code that <b>you wrote yourself</b> which illustrates the application of the data structure or algorithm within your domain of interest, <b>describing in your own words</b> (through comments or Markdown text above/below the code) how the code works and what it does</li>
+
+### Option 4: Proving Correctness and/or Efficiency
+
+Carrying out a more robust analysis of the <i>correctness</i> and/or <i>asymptotic complexity</i> of the algorithms and data structures we looked at</h5>
+
+1. State which algorithm or data structure you chose, from among those covered in class, and whether your focus is on analyzing <b>correctness</b> or <b>efficiency</b> of the algorithm/data structure (or both!)</li>
+2. Write out the chosen proof, which should be your <b>own work</b>, though it can draw on existing proofs</li>
+3. Throughout the proof in Step 2, also provide an explanation of each step---for guidance on what we're looking for, imagine not only writing the proof but also **walking someone through it** who has never seen it before (though you can assume they have some level of mathematical background)
+
+(Basically, for this option, we can't <i>prevent</i> you from looking at an existing proof---and we don't want to!---so instead we are looking at your ability to convey your <b>understanding</b> of <b>how/why the proof works</b>)
+
+## Timeline
+
+In general, the only "true" due date is the due date for the final submission, but the project will go most smoothly if you are able to hold yourself to the following schedule:
+
+* **Proposal**: Approved by mentor by Wednesday, April 3rd
+* **Final Draft**: Sent to mentor for review by Monday, April 29th
+* **Submission**: Completed project submitted via Google Classroom by Friday, May 6th, 5:59pm EDT
+
+## Submission Format
+
+There is now an assignment page for the final project (within the Google Classroom site for the course), where you will upload your final submission for grading. The following is a rough sketch of what we're looking for in terms of the structure of your submission:
+
+* HTML format, as a rendered <a href='https://quarto.org/docs/manuscripts/' target='_blank'>Quarto manuscript</a>, would be optimal, but can be PDF if preferred---for example, if you choose Option 4 (involving mathematical proofs), you might instead want to use LaTeX rendered to PDF.
+* A requirement in terms of **number of pages** is difficult, but a reasonable range for the **PDF format** would be 5-20 pages double-spaced. Therefore, for a **Quarto** document or **Jupyter** notebook, the length can be the equivalent of this (for example, you can print-preview the Quarto doc to see how many pages it would produce if printed)
+* It should have an **abstract**, a 250-500 word paragraph at the very top of the manuscript, summarizing what you did
+* Citations, if used, should be set up so that they're handled automatically. By <a href='https://quarto.org/docs/authoring/footnotes-and-citations.html' target='_blank'>Quarto's citation manager</a> for example, or by <a href='https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex' target='_blank'>Bibtex/Biber</a> if you're using LaTeX.

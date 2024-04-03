@@ -70,5 +70,8 @@
   "w10/index.qmd": {
     "slides.html": "f9c378de",
     "index.html": "2ffc62a2"
+  },
+  "final.qmd": {
+    "final.html": "a7a0dd90"
   }
 }

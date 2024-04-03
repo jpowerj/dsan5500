@@ -19,6 +19,8 @@ website:
         href: resources.qmd
       - text: "Assignments"
         href: "assignments/index.qmd"
+      - text: "Final Project"
+        href: final.qmd
       - text: "Recordings"
         href: recordings/index.qmd
       - "---"
