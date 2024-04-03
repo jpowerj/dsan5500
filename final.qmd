@@ -197,7 +197,7 @@ In general, the only "true" due date is the due date for the final submission, b
 
 ## Submission Format
 
-There is now an assignment page for the final project (within the Google Classroom site for the course), where you will upload your final submission for grading. The following is a rough sketch of what we're looking for in terms of the structure of your submission:
+There is now an <a href='https://classroom.google.com/c/NjM5MzE2MTE4NTgx/a/NjUyMzY1MTY3NDAz/details' target='_blank'>assignment page</a> for the final project on Google Classroom, where you will upload your final submission for grading. The following is a rough sketch of what we're looking for in terms of the structure of your submission:
 
 * HTML format, as a rendered <a href='https://quarto.org/docs/manuscripts/' target='_blank'>Quarto manuscript</a>, would be optimal, but can be PDF if preferred---for example, if you choose Option 4 (involving mathematical proofs), you might instead want to use LaTeX rendered to PDF.
 * A requirement in terms of **number of pages** is difficult, but a reasonable range for the **PDF format** would be 5-20 pages double-spaced. Therefore, for a **Quarto** document or **Jupyter** notebook, the length can be the equivalent of this (for example, you can print-preview the Quarto doc to see how many pages it would produce if printed)
