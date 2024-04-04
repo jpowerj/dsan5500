@@ -191,7 +191,7 @@ Here, the deliverable should be structured like:
 
 In general, the only "true" due date is the due date for the final submission, but the project will go most smoothly if you are able to hold yourself to the following schedule:
 
-* **Proposal**: Approved by mentor by Wednesday, April 3rd
+* **Proposal**: Approved by mentor by Wednesday, April 10th
 * **Final Draft**: Sent to mentor for review by Monday, April 29th
 * **Submission**: Completed project submitted via Google Classroom by Friday, May 6th, 5:59pm EDT
 
