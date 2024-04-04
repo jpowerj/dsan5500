@@ -8,6 +8,12 @@ format:
     df-print: kable
 ---
 
+::: {.callout-note title="Changelog"}
+
+* *[Thursday, April 4, 4:30pm]* Updated Timeline section to specify that proposals should be approved by **April 10th**, not **April 3rd**
+
+:::
+
 ## Overview
 
 The idea for your final project is as follows:
