@@ -10,7 +10,8 @@ format:
 
 ::: {.callout-note title="Changelog"}
 
-* *[Thursday, April 4, 4:30pm]* Updated Timeline section to specify that proposals should be approved by **April 10th**, not **April 3rd**
+* *[Thursday, April 4, 6:15pm]* Added section with details on [Individual vs. Group Projects](#individual-vs.-group-projects)
+* *[Thursday, April 4, 4:30pm]* Updated [Timeline](#timeline) section to specify that proposals should be approved by **April 10th**, not **April 3rd**
 
 :::
 
@@ -193,6 +194,14 @@ Here, the deliverable should be structured like:
 
 :::
 
+## Individual vs. Group Projects
+
+It is totally up to you whether you'd like to do the project individually or in a group with other students. However, if you are pursuing the project as a group, please choose **one member** of the group to serve as the **"project lead"**, and include this detail in an email to your mentor.
+
+The mentor for the **group** project will then be whoever was assigned as the **individual** mentor for the project leader (this choice doesn't have to be related to the actual work on the project, it is just for us to be able to allocate mentees fairly between the course staff!).
+
+Expectations for group projects will **scale** based on the number of members in the group: for example, a group with two members will be expected to carry out a more substantive project, such that it requires approximately two times the amount of work that would be expected for individual projects[^group].
+
 ## Timeline
 
 In general, the only "true" due date is the due date for the final submission, but the project will go most smoothly if you are able to hold yourself to the following schedule:
@@ -209,3 +218,5 @@ There is now an <a href='https://classroom.google.com/c/NjM5MzE2MTE4NTgx/a/NjUyM
 * A requirement in terms of **number of pages** is difficult, but a reasonable range for the **PDF format** would be 5-20 pages double-spaced. Therefore, for a **Quarto** document or **Jupyter** notebook, the length can be the equivalent of this (for example, you can print-preview the Quarto doc to see how many pages it would produce if printed)
 * It should have an **abstract**, a 250-500 word paragraph at the very top of the manuscript, summarizing what you did
 * Citations, if used, should be set up so that they're handled automatically. By <a href='https://quarto.org/docs/authoring/footnotes-and-citations.html' target='_blank'>Quarto's citation manager</a> for example, or by <a href='https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex' target='_blank'>Bibtex/Biber</a> if you're using LaTeX.
+
+[^group]: This detail is not something we're trying to explicitly measure or be harsh about, but is included here since otherwise (if the expectations for individual and group projects were the exact same) the work would scale the other way: that each person in a two-person project would be doing half the amount of work that a person doing an individual project is doing... Hopefully that makes sense from a fairness perspective!
