@@ -37,4 +37,21 @@ hw2_df
 
 </div>
 
+## HW3
+
+<div style="height: 400px !important; max-height: 400px !important; overflow-y: scroll !important;">
+
+```{r}
+#| warning: false
+#| echo: false
+library(tidyverse)
+hw3_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTacsoByFYLPB5IkfPJddyy5PDAk1MlY2FTJj8bKq4E-BYs8U_cNs6uRNe2ZrLhwl4KB9NeU1qC82dx/pub?output=csv"
+hw3_df <- read_csv(hw3_url)
+hw3_df <- hw3_df |> drop_na(points)
+hw3_df <- hw3_df |> mutate(qid = replace_na(qid, "Total"))
+hw3_df
+```
+
+</div>
+
 :::

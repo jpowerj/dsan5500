@@ -1,0 +1,19 @@
+---
+title: "Extra Writeups"
+subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
+author: "Jeff Jacobs"
+format:
+  html:
+    df-print: kable
+listing:
+  contents: "*.qmd"
+  type: table
+  sort-ui: false
+  filter-ui: false
+  sort: "date desc"
+  table-hover: true
+  field-display-names:
+    categories: "Category"
+  fields: [date,title,categories]
+---
+

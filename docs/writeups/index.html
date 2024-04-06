@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jeff Jacobs">
 
-<title>DSAN 5500 – Lecture Recordings</title>
+<title>DSAN 5500 – Extra Writeups</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,9 +80,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-week','listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] },{ data: ['listing-date-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-week","listing-title","listing-url","listing-date","listing-categories","listing-target"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -142,7 +143,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../recordings/index.html">Recordings</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../writeups/index.html">Extra Writeups</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -199,13 +200,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../writeups/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../writeups/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Extra Writeups</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../recordings/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../recordings/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Recordings</span></a>
   </div>
 </li>
@@ -293,13 +294,20 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lecture Recordings</h1>
+<h1 class="title">Extra Writeups</h1>
+<p class="subtitle lead"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Jeff Jacobs </p>
+          </div>
+  </div>
     
   
     
@@ -319,123 +327,27 @@ window.Quarto = {
 <thead>
 <tr>
 <th>
-Week
+Date
 </th>
 <th>
 Title
 </th>
 <th>
-Date
+Category
 </th>
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="Leture Recordings" data-listing-date-sort="1711339200000" data-listing-title-sort="<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=06bfe051-956b-405e-9025-b13e01516af4' target='_blank'>Week 10: {{< var w10.title >}}</a>" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-categories="HW3 Clarification" data-listing-date-sort="1712203200000" data-listing-file-modified-sort="1712443342570" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1173" data-listing-title-sort="'Serving' Code to Prefect from Colab" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<span class="listing-week">10</span>
+<span class="listing-date">Apr 4, 2024</span>
 </td>
 <td>
-<span class="listing-title"><a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=06bfe051-956b-405e-9025-b13e01516af4" target="_blank">Week 10: Moving from Serial to Parallel Pipelines</a></span>
+<a href="../writeups/prefect/index.html" class="title listing-title">‘Serving’ Code to Prefect from Colab</a>
 </td>
 <td>
-<span class="listing-date">Monday Mar 25, 2024</span>
-</td>
-</tr>
-<tr data-index="1" data-categories="Lecture Recordings" data-listing-date-sort="1710734400000" data-listing-title-sort="<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ad8ed483-9404-4fdb-b0dc-b13701485131' target='_blank'>Week 9: {{< var w09.title >}}</a>" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-week">9</span>
-</td>
-<td>
-<span class="listing-title"><a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ad8ed483-9404-4fdb-b0dc-b13701485131" target="_blank">Week 9: Data Pipeline Orchestration</a></span>
-</td>
-<td>
-<span class="listing-date">Monday Mar 18, 2024</span>
-</td>
-</tr>
-<tr data-index="2" data-categories="Lecture Recordings" data-listing-date-sort="1710129600000" data-listing-title-sort="<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9f3473ed-8026-4eb7-8af3-b130014acc48' target='_blank'>Week 8: {{< var w08.title >}}</a>" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-week">8</span>
-</td>
-<td>
-<span class="listing-title"><a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9f3473ed-8026-4eb7-8af3-b130014acc48" target="_blank">Week 8: Data Validation, Data Processing Pipelines</a></span>
-</td>
-<td>
-<span class="listing-date">Monday Mar 11, 2024</span>
-</td>
-</tr>
-<tr data-index="3" data-categories="Lecture Recordings" data-listing-date-sort="1708405200000" data-listing-title-sort="<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=aadfadc1-9675-4716-8fd2-b11c015a0213' target='_blank'>Week 6: Code Examples and Midterm Prep</a>" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-week">6</span>
-</td>
-<td>
-<span class="listing-title"><a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=aadfadc1-9675-4716-8fd2-b11c015a0213" target="_blank">Week 6: Code Examples and Midterm Prep</a></span>
-</td>
-<td>
-<span class="listing-date">Tuesday Feb 20, 2024</span>
-</td>
-</tr>
-<tr data-index="4" data-categories="Lecture Recordings" data-listing-date-sort="1707714000000" data-listing-title-sort="<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=1651ad38-a234-4434-a084-b11401547f12' target='_blank'>Week 5: Binary Search Trees</a>" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-week">5</span>
-</td>
-<td>
-<span class="listing-title"><a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=1651ad38-a234-4434-a084-b11401547f12" target="_blank">Week 5: Binary Search Trees</a></span>
-</td>
-<td>
-<span class="listing-date">Monday Feb 12, 2024</span>
-</td>
-</tr>
-<tr data-index="5" data-categories="Lecture Recordings" data-listing-date-sort="1707109200000" data-listing-title-sort="<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=b7e9bdd7-a50d-4c38-8b69-b10d015bb49a' target='_blank'>Week 4: Heaps, Stacks, Hash Maps</a>" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-week">4</span>
-</td>
-<td>
-<span class="listing-title"><a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=b7e9bdd7-a50d-4c38-8b69-b10d015bb49a" target="_blank">Week 4: Heaps, Stacks, Hash Maps</a></span>
-</td>
-<td>
-<span class="listing-date">Monday Feb 5, 2024</span>
-</td>
-</tr>
-<tr data-index="6" data-categories="Lecture Recordings" data-listing-date-sort="1706504400000" data-listing-title-sort="<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=49e05814-39d4-4d1c-b9bf-b1060158f2d3' target='_blank'>Week 3: Data Structures and Computational Complexity</a>" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-week">3</span>
-</td>
-<td>
-<span class="listing-title"><a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=49e05814-39d4-4d1c-b9bf-b1060158f2d3" target="_blank">Week 3: Data Structures and Computational Complexity</a></span>
-</td>
-<td>
-<span class="listing-date">Monday Jan 29, 2024</span>
-</td>
-</tr>
-<tr data-index="7" data-categories="Lecture Recordings" data-listing-date-sort="1705899600000" data-listing-title-sort="<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d5b1de20-a740-48ba-af5e-b0ff015812f1' target='_blank'>Week 2: Software Design Patterns and Object-Oriented Programming</a>" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-week">2</span>
-</td>
-<td>
-<span class="listing-title"><a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d5b1de20-a740-48ba-af5e-b0ff015812f1" target="_blank">Week 2: Software Design Patterns and Object-Oriented Programming</a></span>
-</td>
-<td>
-<span class="listing-date">Monday Jan 22, 2024</span>
-</td>
-</tr>
-<tr data-index="8" data-categories="Lecture Recordings" data-listing-date-sort="1704862800000" data-listing-title-sort="<a href='https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4c5ad5b1-2fee-4934-9396-b0f30159ca70' target='_blank'>Week 1: {{< var w01.title >}}</a>" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<span class="listing-week">1</span>
-</td>
-<td>
-<span class="listing-title"><a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4c5ad5b1-2fee-4934-9396-b0f30159ca70" target="_blank">Week 1: Course Intro and Motivation</a></span>
-</td>
-<td>
-<span class="listing-date">Wednesday Jan 10, 2024</span>
+<span class="listing-categories">HW3 Clarification</span>
 </td>
 </tr>
 </tbody>
