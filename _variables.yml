@@ -50,8 +50,8 @@ w10:
   date-md: "Mar 25"
 w11:
   weeknum: 11
-  title: "The Map-Reduce Paradigm"
-  footer: "The Map-Reduce Paradigm"
+  title: "Parallel Pipelines and Map-Reduce"
+  footer: "Parallel Pipelines and Map-Reduce"
   date-md: "Apr 8"
 w12:
   weeknum: 12

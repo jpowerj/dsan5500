@@ -8,11 +8,13 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.23">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5500 – Week 8: Data Validation, Data Processing Pipelines</title>
+  <title>DSAN 5500 – Week 11: Parallel Pipelines and Map-Reduce</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -99,6 +101,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -414,7 +417,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 8: Data Validation, Data Processing Pipelines</h1>
+  <h1 class="title">Week 11: Parallel Pipelines and Map-Reduce</h1>
   <p class="subtitle"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
 
 <div class="quarto-title-authors">
@@ -428,230 +431,337 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Monday, March 11, 2024</p>
+  <p class="date">Monday, April 8, 2024</p>
 </section>
 <section>
-<section id="micro-rightarrow-meso-rightarrow-macro" class="title-slide slide level1 title-11 crunch-title crunch-ul crunch-li-8 not-title-slide center" data-stack-name="Intro">
-<h1>Micro <span class="math inline">\(\rightarrow\)</span> Meso <span class="math inline">\(\rightarrow\)</span> Macro</h1>
-<ul>
-<li>✅ Micro-level: Individual, <strong>“core” algorithms/data structures</strong> and their big-<span class="math inline">\(O\)</span> runtimes
-<ul>
-<li>e.g., <code>LinkedList</code>, <span class="alg">Merge-Sort</span></li>
-</ul></li>
-<li>✅ Meso-level: Algorithms/data structures that “piece together” a small collection of core algorithms
-<ul>
-<li><strong>Hash tables</strong>: Fixed-Length Array + Hashing Algorithm + Collision Handling Algorithm (BST)</li>
-</ul></li>
-</ul>
-<div style="border: 3px solid black !important;">
-<ul>
-<li>🤔 <strong>Macro-level</strong>: <strong>Pipelines</strong> of data structures and algorithms:
-<ul>
-<li><strong>raw data source</strong> <span class="math inline">\(\rightarrow\)</span> <strong>processing</strong> <span class="math inline">\(\rightarrow\)</span> <strong>storage</strong></li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="most-common-hw1-to-midterm-struggles" class="slide level2 title-09 crunch-title crunch-ul">
-<h2>Most Common HW1-to-Midterm Struggles</h2>
-<ul>
-<li>Ingesting data (HW1: <code>Swimmer</code> class)
-<ul>
-<li><span class="math inline">\(\implies\)</span> Data-processing pipelines!</li>
-</ul></li>
-<li>Maintaining <strong>invariants</strong> as dataset grows (HW2: <code>None</code> → <code>InventoryItem</code> → <code>BinarySearchTree</code>)
-<ul>
-<li><span class="math inline">\(\implies\)</span> Data validation!</li>
-</ul></li>
-</ul>
-</section></section>
-<section>
-<section id="data-validation" class="title-slide slide level1 center" data-stack-name="Validation">
-<h1>Data Validation</h1>
-<ul>
-<li>What you already know: Type hints</li>
-<li>Type hints on steroids: Pydantic 😎</li>
-</ul>
-</section>
-<section id="pydantic" class="slide level2">
-<h2>Pydantic</h2>
+<section id="beyond-embarrassingly-parallel-code" class="title-slide slide level1 center" data-stack-name="Beyond Embarrassingly Parallel">
+<h1>Beyond Embarrassingly Parallel Code…</h1>
 
-<img data-src="images/pydantic_logo.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="pydantic-in-action" class="slide level2 crunch-title crunch-details">
-<h2>Pydantic in Action</h2>
-<div id="adec73cd" class="cell" data-execution_count="1">
+</section>
+<section id="last-week-embarrassingly-parallel" class="slide level2 smaller crunch-title crunch-ul">
+<h2>Last Week: Embarrassingly Parallel</h2>
+<ul>
+<li>Technical definition: tasks within pipeline can easily be parallelized bc <strong>no dependence</strong> and <strong>no need for communication</strong> (see next slide). Better video explanation:</li>
+</ul>
+<center>
+<video id="video_shortcode_videojs_video1" height="500" class="video-js vjs-default-skin " controls="" preload="auto" data-setup="{}" title=""><source src="images/triple_spatula.mp4"></video>
+</center>
+</section>
+<section id="what-happens-when-code-is-not-embarrassingly-parallel" class="slide level2 smaller crunch-title crunch-math crunch-ul title-09">
+<h2>What Happens When Code is <em>Not</em> Embarrassingly Parallel?</h2>
+<ul>
+<li>Think of the difference between <strong>linear</strong> and <strong>quadratic equations</strong> in algebra:</li>
+<li><span class="math inline">\(3x - 1 = 0\)</span> is “embarrassingly” solvable, on its own: you can solve it directly, by adding 3 to both sides <span class="math inline">\(\implies x = \frac{1}{3}\)</span>. Same for <span class="math inline">\(2x + 3 = 0 \implies x = -\frac{3}{2}\)</span></li>
+<li>Now consider <span class="math inline">\(6x^2 + 7x - 3 = 0\)</span>: Harder to solve “directly”, so your instinct might be to turn to the laborious <strong>quadratic equation</strong>:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-7 \pm \sqrt{49 - 4(6)(-3)}}{2(6)} = \frac{-7 \pm 11}{12} = \left\{\frac{1}{3},-\frac{3}{2}\right\}
+\end{align*}
+\]</span></p>
+<ul>
+<li>And yet, <span class="math inline">\(6x^2 + 7x - 3 = (3x - 1)(2x + 3)\)</span>, meaning that we could have <strong>split</strong> the problem into two “embarrassingly” solvable pieces, then <strong>multiplied</strong> to get result!</li>
+</ul>
+</section>
+<section id="the-analogy-to-map-reduce" class="slide level2">
+<h2>The Analogy to Map-Reduce</h2>
+<table>
+<colgroup>
+<col style="width: 75%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\leadsto\)</span> If code is <strong>not</strong> embarrassingly parallel (instinctually requiring laborious serial execution),</td>
+<td style="text-align: center;"><span class="math inline">\(\underbrace{6x^2 + 7x - 3 = 0}_{\text{Solve using Quadratic Eqn}}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">But can be <strong>split</strong> into…</td>
+<td style="text-align: center;"><span class="math inline">\((3x - 1)(2x + 3) = 0\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Embarrassingly parallel <strong>pieces</strong> which <strong>combine</strong> to same result,</td>
+<td style="text-align: center;"><span class="math inline">\(\underbrace{3x - 1 = 0}_{\text{Solve directly}}, \underbrace{2x + 3 = 0}_{\text{Solve directly}}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">We can use <strong>map-reduce</strong> to achieve ultra speedup (running “pieces” on <strong>GPU!</strong>)</td>
+<td style="text-align: center;"><span class="math inline">\(\underbrace{(3x-1)(2x+3) = 0}_{\text{Solutions satisfy this product}}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-direct-analogy-map-reduce" class="slide level2 smaller crunch-title crunch-details">
+<h2>The Direct Analogy: Map-Reduce!</h2>
+<ul>
+<li>Problem you’ve seen in DSAN 5000/5100: Computing SSR (<strong>Sum of Squared Residuals</strong>)</li>
+<li><span class="math inline">\(y = (1,3,2), \widehat{y} = (2, 5, 0) \implies \text{SSR} = (1-2)^2 + (3-5)^2 + (2-0)^2 = 9\)</span></li>
+<li>Computing pieces separately:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="bu">map</span>(do_something_with_piece, list_of_pieces)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="13203dc7" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
-<span id="cb1-2"><a></a><span class="kw">class</span> InventoryItem(BaseModel):</span>
-<span id="cb1-3"><a></a>    item_name: <span class="bu">str</span></span>
-<span id="cb1-4"><a></a>    price: <span class="bu">float</span></span>
-<span id="cb1-5"><a></a>my_item <span class="op">=</span> InventoryItem(item_name<span class="op">=</span><span class="st">"Banana"</span>, price<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb1-6"><a></a>my_item</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>my_map <span class="op">=</span> <span class="bu">map</span>(<span class="kw">lambda</span> <span class="bu">input</span>: <span class="bu">input</span><span class="op">**</span><span class="dv">2</span>, [(<span class="dv">1</span><span class="op">-</span><span class="dv">2</span>), (<span class="dv">3</span><span class="op">-</span><span class="dv">5</span>), (<span class="dv">2</span><span class="op">-</span><span class="dv">0</span>)])</span>
+<span id="cb2-2"><a></a>map_result <span class="op">=</span> <span class="bu">list</span>(my_map)</span>
+<span id="cb2-3"><a></a>map_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>InventoryItem(item_name='Banana', price=10.0)</code></pre>
+<pre><code>[1, 4, 4]</code></pre>
 </div>
 </div>
-<div id="3b8d6725" class="cell" data-execution_count="2">
+<ul>
+<li>Combining solved pieces</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="bu">reduce</span>(how_to_combine_pair_of_pieces, pieces_to_combine)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="23200470" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>invalid_item <span class="op">=</span> InventoryItem(item_name<span class="op">=</span><span class="st">"Banana"</span>, price<span class="op">=</span><span class="st">"100 dollar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
+<span id="cb5-2"><a></a>my_reduce <span class="op">=</span> <span class="bu">reduce</span>(<span class="kw">lambda</span> piece1, piece2: piece1 <span class="op">+</span> piece2, map_result)</span>
+<span id="cb5-3"><a></a>my_reduce</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-error">
-<pre><code>ValidationError: 1 validation error for InventoryItem
-price
-  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='100 dollar', input_type=str]
-    For further information visit https://errors.pydantic.dev/2.6/v/float_parsing</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>9</code></pre>
 </div>
 </div>
 </section>
-<section id="pydantic-in-even-cooler-action" class="slide level2 crunch-title crunch-details">
-<h2>Pydantic in Even-Cooler Action</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div id="4986739a" class="cell" data-execution_count="3">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, PositiveInt</span>
-<span id="cb5-2"><a></a><span class="kw">class</span> Employee(BaseModel):</span>
-<span id="cb5-3"><a></a>    name: <span class="bu">str</span></span>
-<span id="cb5-4"><a></a>    email: EmailStr</span>
-<span id="cb5-5"><a></a>    age: PositiveInt</span>
-<span id="cb5-6"><a></a>invalid_employee <span class="op">=</span> Employee(</span>
-<span id="cb5-7"><a></a>  name<span class="op">=</span><span class="st">"Jeef"</span>,</span>
-<span id="cb5-8"><a></a>  email<span class="op">=</span><span class="st">"fakeemail!!!"</span>,</span>
-<span id="cb5-9"><a></a>  age<span class="op">=</span><span class="dv">50</span></span>
-<span id="cb5-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<pre><code>ValidationError: 1 validation error for Employee
-email
-  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div id="c2e17fac" class="cell" data-execution_count="4">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>invalid_employee2 <span class="op">=</span> Employee(</span>
-<span id="cb7-2"><a></a>  name<span class="op">=</span><span class="st">"Jeeferson"</span>,</span>
-<span id="cb7-3"><a></a>  email<span class="op">=</span><span class="st">"valid@email.com"</span>,</span>
-<span id="cb7-4"><a></a>  age<span class="op">=-</span><span class="dv">3</span></span>
-<span id="cb7-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<pre><code>ValidationError: 1 validation error for Employee
-age
-  Input should be greater than 0 [type=greater_than, input_value=-3, input_type=int]
-    For further information visit https://errors.pydantic.dev/2.6/v/greater_than</code></pre>
-</div>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="data-processing-pipelines" class="title-slide slide level1 center" data-stack-name="Pipelines">
-<h1>Data-Processing Pipelines</h1>
-
-</section>
-<section id="two-generations-of-python-pipeline-libraries" class="slide level2">
-<h2>Two Generations of Python Pipeline Libraries</h2>
+<section id="example-with-non-embarrassing-code" class="slide level2">
+<h2>Example with Non-Embarrassing Code</h2>
 <ul>
-<li>Gen 1: Airflow (AirBnB), Luigi (Spotify)</li>
-<li>Gen 2: Dagster, Prefect</li>
-</ul>
-
-<img data-src="images/Prefect.webp" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="for-now-prefect" class="slide level2">
-<h2>For Now: Prefect!</h2>
-<ul>
-<li>But, the <strong>principles</strong> (<strong>ETL</strong>) remain the same!</li>
-</ul>
-
-<img data-src="images/flow-run-page.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="etl-extract-transform-load" class="slide level2">
-<h2>ETL = Extract, Transform, Load</h2>
-
-<img data-src="images/etl.png" class="r-stretch quarto-figure-center"><p class="caption">From <a href="https://www.analyticsvidhya.com/blog/2022/06/a-complete-guide-on-building-an-etl-pipeline-for-beginners/" target="_blank">Analytics Vidhya</a></p></section>
-<section id="you-have-already-been-doing-this" class="slide level2 crunch-title crunch-ul">
-<h2>You Have Already Been Doing This!</h2>
-<ul>
-<li>HW1: Swim team example
-<ul>
-<li><strong>Extract</strong>: Load data from .csv</li>
-<li><strong>Transform</strong>: Convert times to milliseconds</li>
-<li><strong>Load</strong>: Store into <code>Team</code> object</li>
-</ul></li>
-<li>HW2 (Throughout)
-<ul>
-<li><strong>Extract</strong>: Load products from .csv into Pandas</li>
-<li><strong>Transform</strong>: (Construct <code>InventoryItem</code> object for each row)</li>
-<li><strong>Load</strong>: Store into <code>LogarithmicHashTable</code></li>
-</ul></li>
-</ul>
-</section>
-<section id="and-you-have-already-run-into-the-need-for-validation" class="slide level2">
-<h2>(And You Have Already Run into the Need for Validation!)</h2>
-<ul>
-<li>HW1: Are the times in seconds or milliseconds?</li>
-<li>HW2: Are users providing <code>key</code> and <code>value</code> separately, or together?</li>
-<li>If together: as <code>tuple</code>s or <code>InventoryItem</code>s?</li>
-<li>If <code>InventoryItem</code>s: What type(s) for <code>item_name</code>? What type(s) for <code>price</code>? 😵</li>
-<li><span class="math inline">\(\implies\)</span> One of the <strong>two</strong> main focuses for <strong>HW3</strong> will be <strong>validation</strong> of input data!</li>
-</ul>
-</section>
-<section id="cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step" class="slide level2">
-<h2>Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)</h2>
-<ul>
-<li>(Hopefully things from previous slide have taught you the dangers of this!)</li>
-<li>It’s like <strong>Anscombe’s Quartet</strong> from DSAN 5000/5100/5200: We can be misled by fancy tools if we don’t take time for the (sometimes boring) step of <strong>looking at</strong> the data</li>
-<li>Example: ETL for processing text data (books for now)</li>
-</ul>
-</section>
-<section id="bookshelfscan-an-example-i-use-irl" class="slide level2 title-09 crunch-title crunc-ul">
-<h2>BookshelfScan (An Example I Use IRL!)</h2>
-<ul>
-<li><strong>Extract</strong>: Dropbox folder containing ebooks</li>
-<li><strong>Transform</strong>: Compute word counts</li>
-<li><strong>Load</strong>: Save word counts into a database</li>
-<li>Enables me to figure out <strong>which books</strong> talk about a topic <span class="math inline">\(t\)</span> (data structures, algorithms, data ethics and policy, etc.)!</li>
-<li><strong>BUT</strong> (Devil is in the details): Can look very different for <code>txt</code>, <code>epub</code> (can contain images), <code>pdf</code> (sometimes text is embedded, sometimes not), images of scans, audiobooks</li>
-<li><span class="math inline">\(\implies\)</span> (Sad but true) Pipleline will <strong>crash and burn</strong> if you don’t handle these <strong>before</strong> using <a href="https://www.trychroma.com/" target="_blank">Cool NLP things</a> in T step</li>
-</ul>
-</section>
-<section id="hw3-possibility-1-pet-store-inventory" class="slide level2">
-<h2>HW3 Possibility 1: Pet Store Inventory</h2>
-<ul>
-<li><a href="https://petstore.swagger.io/v2/store/inventory" target="_blank">https://petstore.swagger.io/v2/store/inventory</a></li>
-</ul>
-</section>
-<section id="hw3-possibility-2-books-to-scrape" class="slide level2">
-<h2>HW3 Possibility 2: Books to Scrape</h2>
-<ul>
-<li><a href="http://books.toscrape.com/" target="_blank">Books to Scrape homepage</a></li>
+<li>Matrix multiplication</li>
 </ul>
 </section></section>
 <section>
-<section id="lab-data-validation" class="title-slide slide level1 center" data-stack-name="Lab: Data Validation">
-<h1>Lab(!): Data Validation</h1>
-
-</section>
-<section id="google-classroom-link" class="slide level2">
-<h2>Google Classroom Link</h2>
+<section id="but-why-is-all-this-weird-mapping-and-reducing-necessary" class="title-slide slide level1 center" data-stack-name="Map-Reduce Rationale">
+<h1>But… Why is All This Weird Mapping and Reducing Necessary?</h1>
 <ul>
-<li><a href="https://classroom.google.com/c/NjM5MzE2MTE4NTgx/m/NjY4NDU0NTk0MTk4/details" target="_blank">Open in Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
+<li>Without knowing a bit more of the <strong>internals</strong> of <strong>computing efficiency</strong>, it may seem like a huge cost in terms of overly-complicated overhead</li>
 </ul>
+</section>
+<section id="the-killer-application-matrix-multiplication" class="slide level2 crunch-title smaller title-08">
+<h2>The “Killer Application”: Matrix Multiplication</h2>
+<ul>
+<li><em>(I learned from <a href="http://infolab.stanford.edu/~ullman/" target="_blank">Jeff Ullman</a>, who did the obnoxious Stanford thing of mentioning in passing how “two previous students in the <a href="http://web.stanford.edu/class/cs246/" target="_blank">class</a> did this for a cool final project on web crawling and, well, it escalated quickly”, aka became Google)</em></li>
+</ul>
+
+<img data-src="images/map_reduce3.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="leskovec_mining_2014">Leskovec, Rajaraman, and Ullman (<a href="#/references" role="doc-biblioref" onclick="">2014</a>)</span>, which is (legally) <a href="http://www.mmds.org/" target="_blank">free online</a>!</p></section>
+<section id="the-killer-way-to-learn-text-counts" class="slide level2 smaller crunch-title crunch-ul crunch-p">
+<h2>The Killer Way-To-Learn: Text Counts!</h2>
+<ul>
+<li><span class="citation" data-cites="leskovec_mining_2014">(<a href="#/references" role="doc-biblioref" onclick="">2014</a>)</span>: Text counts (2.2) <span class="math inline">\(\rightarrow\)</span> Matrix multiplication (2.3) <span class="math inline">\(\rightarrow \cdots \rightarrow\)</span> PageRank (5.1)</li>
+<li><em>(And yall thought it was just busywork for HW3</em> 😏<em>)</em></li>
+<li>Scenario: User searches “Denzel Curry”… How <strong>relevant</strong> is a given webpage?</li>
+</ul>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 817.00 419.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 415)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-415 813,-415 813,4 -4,4"></polygon>
+<!-- chunked -->
+<g id="node1" class="node">
+<title>chunked</title>
+<polyline fill="none" stroke="black" points="11.5,-342.5 210.5,-342.5 "></polyline>
+<text text-anchor="start" x="49.13" y="-348.9" font-family="Helvetica,sans-Serif" font-size="14.00">Chunked Document</text>
+<polyline fill="none" stroke="black" points="11.5,-267.5 210.5,-267.5 "></polyline>
+<text text-anchor="start" x="14.5" y="-324.9" font-family="Courier,monospace" font-size="14.00">Today Denzel Washington</text>
+<text text-anchor="start" x="14.5" y="-308.1" font-family="Courier,monospace" font-size="14.00">ate a big bowl of Yum's</text>
+<text text-anchor="start" x="14.5" y="-291.3" font-family="Courier,monospace" font-size="14.00">curry. Denzel allegedly</text>
+<text text-anchor="start" x="14.5" y="-274.5" font-family="Courier,monospace" font-size="14.00">rubbed his tum and said</text>
+<polyline fill="none" stroke="black" points="11.5,-192.5 210.5,-192.5 "></polyline>
+<text text-anchor="start" x="14.5" y="-249.9" font-family="Courier,monospace" font-size="14.00">"yum yum yum" when he</text>
+<text text-anchor="start" x="14.5" y="-233.1" font-family="Courier,monospace" font-size="14.00">tasted today's curry.</text>
+<text text-anchor="start" x="14.5" y="-216.3" font-family="Courier,monospace" font-size="14.00">"Yum! It is me Denzel,</text>
+<text text-anchor="start" x="14.5" y="-199.5" font-family="Courier,monospace" font-size="14.00">curry is my fav!", he</text>
+<polyline fill="none" stroke="black" points="11.5,-117.5 210.5,-117.5 "></polyline>
+<text text-anchor="start" x="14.5" y="-174.9" font-family="Courier,monospace" font-size="14.00">exclaimed. According to</text>
+<text text-anchor="start" x="14.5" y="-158.1" font-family="Courier,monospace" font-size="14.00">his friend Steph, curry</text>
+<text text-anchor="start" x="14.5" y="-141.3" font-family="Courier,monospace" font-size="14.00">is indeed Denzel's fav.</text>
+<text text-anchor="start" x="14.5" y="-124.5" font-family="Courier,monospace" font-size="14.00">We are live with Del</text>
+<text text-anchor="start" x="13.5" y="-100.9" font-family="Courier,monospace" font-size="14.00">Curry in Washington for</text>
+<text text-anchor="start" x="13.5" y="-84.1" font-family="Courier,monospace" font-size="14.00">a Denzel curry update.</text>
+<polygon fill="none" stroke="black" points="8,-75.5 8,-367.5 213,-367.5 213,-75.5 8,-75.5"></polygon>
+</g>
+<!-- chcounts -->
+<g id="node2" class="node">
+<title>chcounts</title>
+<polyline fill="none" stroke="black" points="268,-368.5 406,-368.5 "></polyline>
+<text text-anchor="start" x="284.86" y="-374.9" font-family="Helvetica,sans-Serif" font-size="14.00">Chunked Counts</text>
+<polyline fill="none" stroke="black" points="268,-276.5 406,-276.5 "></polyline>
+<text text-anchor="start" x="271" y="-350.9" font-family="Courier,monospace" font-size="14.00">('today',1)</text>
+<text text-anchor="start" x="271" y="-334.1" font-family="Courier,monospace" font-size="14.00">('denzel',1)</text>
+<text text-anchor="start" x="271" y="-317.3" font-family="Courier,monospace" font-size="14.00">...</text>
+<text text-anchor="start" x="271" y="-300.5" font-family="Courier,monospace" font-size="14.00">('tum',1)</text>
+<text text-anchor="start" x="271" y="-283.7" font-family="Courier,monospace" font-size="14.00">('said',1)</text>
+<polyline fill="none" stroke="black" points="268,-184.5 406,-184.5 "></polyline>
+<text text-anchor="start" x="271" y="-258.9" font-family="Courier,monospace" font-size="14.00">('yum',1)</text>
+<text text-anchor="start" x="271" y="-242.1" font-family="Courier,monospace" font-size="14.00">('yum',1)</text>
+<text text-anchor="start" x="271" y="-225.3" font-family="Courier,monospace" font-size="14.00">('yum',1)</text>
+<text text-anchor="start" x="271" y="-208.5" font-family="Courier,monospace" font-size="14.00">...</text>
+<text text-anchor="start" x="271" y="-191.7" font-family="Courier,monospace" font-size="14.00">('fav',1)</text>
+<polyline fill="none" stroke="black" points="268,-126.5 406,-126.5 "></polyline>
+<text text-anchor="start" x="271" y="-166.9" font-family="Courier,monospace" font-size="14.00">('exclaimed',1)</text>
+<text text-anchor="start" x="271" y="-150.1" font-family="Courier,monospace" font-size="14.00">...</text>
+<text text-anchor="start" x="271" y="-133.3" font-family="Courier,monospace" font-size="14.00">('del',1)</text>
+<text text-anchor="start" x="270" y="-109.9" font-family="Courier,monospace" font-size="14.00">('curry',1)</text>
+<text text-anchor="start" x="270" y="-93.1" font-family="Courier,monospace" font-size="14.00">('washington',1)</text>
+<text text-anchor="start" x="270" y="-76.3" font-family="Courier,monospace" font-size="14.00">('denzel',1)</text>
+<text text-anchor="start" x="270" y="-59.5" font-family="Courier,monospace" font-size="14.00">('curry',1)</text>
+<text text-anchor="start" x="270" y="-42.7" font-family="Courier,monospace" font-size="14.00">('update',1)</text>
+<polygon fill="none" stroke="black" points="265,-33.5 265,-393.5 409,-393.5 409,-33.5 265,-33.5"></polygon>
+</g>
+<!-- chunked&#45;&gt;chcounts -->
+<g id="edge1" class="edge">
+<title>chunked:p1-&gt;chcounts:p1</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M211.5,-304.5C234.17,-304.5 239.94,-317.63 258.51,-320.81"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="258.29,-323.78 267,-321.5 258.77,-317.85 258.29,-323.78"></polygon>
+</g>
+<!-- chunked&#45;&gt;chcounts -->
+<g id="edge2" class="edge">
+<title>chunked:p2-&gt;chcounts:p2</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M211.5,-229.5C232.89,-229.5 240.37,-229.5 258.06,-229.5"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="258.5,-232.48 267,-229.5 258.5,-226.53 258.5,-232.48"></polygon>
+</g>
+<!-- chunked&#45;&gt;chcounts -->
+<g id="edge3" class="edge">
+<title>chunked:p3-&gt;chcounts:p3</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M211.5,-153.5C232.89,-153.5 240.37,-154.25 258.06,-154.45"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="258.48,-157.43 267,-154.5 258.52,-151.48 258.48,-157.43"></polygon>
+</g>
+<!-- chunked&#45;&gt;chcounts -->
+<g id="edge4" class="edge">
+<title>chunked:p4-&gt;chcounts:p4</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M211.5,-96.5C233.96,-96.5 239.95,-84.25 258.3,-81.19"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="258.76,-84.14 267,-80.5 258.29,-78.2 258.76,-84.14"></polygon>
+</g>
+<!-- scounts -->
+<g id="node3" class="node">
+<title>scounts</title>
+<polyline fill="none" stroke="black" points="464,-380.5 602,-380.5 "></polyline>
+<text text-anchor="start" x="484.75" y="-386.9" font-family="Helvetica,sans-Serif" font-size="14.00">Hashed Counts</text>
+<polyline fill="none" stroke="black" points="464,-272.5 602,-272.5 "></polyline>
+<text text-anchor="start" x="467" y="-362.9" font-family="Courier,monospace" font-size="14.00">('allegedly',1)</text>
+<text text-anchor="start" x="467" y="-346.1" font-family="Courier,monospace" font-size="14.00">...</text>
+<text text-anchor="start" x="467" y="-329.3" font-family="Courier,monospace" font-size="14.00">('curry',1)</text>
+<text text-anchor="start" x="467" y="-312.5" font-family="Courier,monospace" font-size="14.00">('denzel',2)</text>
+<text text-anchor="start" x="467" y="-295.7" font-family="Courier,monospace" font-size="14.00">...</text>
+<text text-anchor="start" x="467" y="-278.9" font-family="Courier,monospace" font-size="14.00">('yum',1)</text>
+<polyline fill="none" stroke="black" points="464,-197.5 602,-197.5 "></polyline>
+<text text-anchor="start" x="467" y="-254.9" font-family="Courier,monospace" font-size="14.00">('curry',2)</text>
+<text text-anchor="start" x="467" y="-238.1" font-family="Courier,monospace" font-size="14.00">('denzel',1)</text>
+<text text-anchor="start" x="467" y="-221.3" font-family="Courier,monospace" font-size="14.00">...</text>
+<text text-anchor="start" x="467" y="-204.5" font-family="Courier,monospace" font-size="14.00">('yum',4)</text>
+<polyline fill="none" stroke="black" points="464,-105.5 602,-105.5 "></polyline>
+<text text-anchor="start" x="467" y="-179.9" font-family="Courier,monospace" font-size="14.00">('according',1)</text>
+<text text-anchor="start" x="467" y="-163.1" font-family="Courier,monospace" font-size="14.00">('curry',1)</text>
+<text text-anchor="start" x="467" y="-146.3" font-family="Courier,monospace" font-size="14.00">('del',1)</text>
+<text text-anchor="start" x="467" y="-129.5" font-family="Courier,monospace" font-size="14.00">('denzel',1)</text>
+<text text-anchor="start" x="467" y="-112.7" font-family="Courier,monospace" font-size="14.00">...</text>
+<text text-anchor="start" x="466" y="-88.9" font-family="Courier,monospace" font-size="14.00">('curry',2)</text>
+<text text-anchor="start" x="466" y="-72.1" font-family="Courier,monospace" font-size="14.00">('denzel',1)</text>
+<text text-anchor="start" x="466" y="-55.3" font-family="Courier,monospace" font-size="14.00">('update',1)</text>
+<text text-anchor="start" x="466" y="-38.5" font-family="Courier,monospace" font-size="14.00">('washington',1)</text>
+<polygon fill="none" stroke="black" points="461,-29.5 461,-405.5 605,-405.5 605,-29.5 461,-29.5"></polygon>
+</g>
+<!-- chcounts&#45;&gt;scounts -->
+<g id="edge5" class="edge">
+<title>chcounts:p1-&gt;scounts:p1</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M407,-321.5C428.83,-321.5 436.23,-324.56 454.45,-325.33"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="454.44,-328.3 463,-325.5 454.56,-322.35 454.44,-328.3"></polygon>
+</g>
+<!-- chcounts&#45;&gt;scounts -->
+<g id="edge6" class="edge">
+<title>chcounts:p2-&gt;scounts:p2</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M407,-229.5C428.86,-229.5 436.21,-233.33 454.44,-234.29"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="454.43,-237.26 463,-234.5 454.58,-231.31 454.43,-237.26"></polygon>
+</g>
+<!-- chcounts&#45;&gt;scounts -->
+<g id="edge7" class="edge">
+<title>chcounts:p3-&gt;scounts:p3</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M407,-154.5C428.83,-154.5 436.23,-151.44 454.45,-150.67"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="454.56,-153.65 463,-150.5 454.44,-147.7 454.56,-153.65"></polygon>
+</g>
+<!-- chcounts&#45;&gt;scounts -->
+<g id="edge8" class="edge">
+<title>chcounts:p4-&gt;scounts:p4</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M407,-80.5C429.36,-80.5 435.9,-70.55 454.31,-68.06"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="454.71,-71.01 463,-67.5 454.33,-65.08 454.71,-71.01"></polygon>
+</g>
+<!-- ccounts -->
+<g id="node4" class="node">
+<title>ccounts</title>
+<polyline fill="none" stroke="black" points="660,-381.5 798,-381.5 "></polyline>
+<text text-anchor="start" x="682.7" y="-387.9" font-family="Helvetica,sans-Serif" font-size="14.00">Overall Counts</text>
+<text text-anchor="start" x="662" y="-364.9" font-family="Courier,monospace" font-size="14.00">('according',1)</text>
+<text text-anchor="start" x="662" y="-348.1" font-family="Courier,monospace" font-size="14.00">('allegedly',1)</text>
+<text text-anchor="start" x="662" y="-331.3" font-family="Courier,monospace" font-size="14.00">('ate',1)</text>
+<text text-anchor="start" x="662" y="-314.5" font-family="Courier,monospace" font-size="14.00">('big',1)</text>
+<text text-anchor="start" x="662" y="-297.7" font-family="Courier,monospace" font-size="14.00">('bowl',1)</text>
+<text text-anchor="start" x="662" y="-280.9" font-family="Courier,monospace" font-size="14.00">('curry',6)</text>
+<text text-anchor="start" x="662" y="-264.1" font-family="Courier,monospace" font-size="14.00">('del',1)</text>
+<text text-anchor="start" x="662" y="-247.3" font-family="Courier,monospace" font-size="14.00">('denzel',5)</text>
+<text text-anchor="start" x="662" y="-230.5" font-family="Courier,monospace" font-size="14.00">('exclaimed',1)</text>
+<text text-anchor="start" x="662" y="-213.7" font-family="Courier,monospace" font-size="14.00">('fav',2)</text>
+<text text-anchor="start" x="662" y="-196.9" font-family="Courier,monospace" font-size="14.00">('friend',1)</text>
+<text text-anchor="start" x="662" y="-180.1" font-family="Courier,monospace" font-size="14.00">('indeed',1)</text>
+<text text-anchor="start" x="662" y="-163.3" font-family="Courier,monospace" font-size="14.00">('live',1)</text>
+<text text-anchor="start" x="662" y="-146.5" font-family="Courier,monospace" font-size="14.00">('rubbed',1)</text>
+<text text-anchor="start" x="662" y="-129.7" font-family="Courier,monospace" font-size="14.00">('said',1)</text>
+<text text-anchor="start" x="662" y="-112.9" font-family="Courier,monospace" font-size="14.00">('steph',1)</text>
+<text text-anchor="start" x="662" y="-96.1" font-family="Courier,monospace" font-size="14.00">('tasted',1)</text>
+<text text-anchor="start" x="662" y="-79.3" font-family="Courier,monospace" font-size="14.00">('today',2)</text>
+<text text-anchor="start" x="662" y="-62.5" font-family="Courier,monospace" font-size="14.00">('tum',1)</text>
+<text text-anchor="start" x="662" y="-45.7" font-family="Courier,monospace" font-size="14.00">('update',1)</text>
+<text text-anchor="start" x="662" y="-28.9" font-family="Courier,monospace" font-size="14.00">('washington',2)</text>
+<text text-anchor="start" x="662" y="-12.1" font-family="Courier,monospace" font-size="14.00">('yum',4)</text>
+<polygon fill="none" stroke="black" points="657,-4 657,-407 801,-407 801,-4 657,-4"></polygon>
+</g>
+<!-- scounts&#45;&gt;ccounts -->
+<g id="edge9" class="edge">
+<title>scounts:p1-&gt;ccounts:p1</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M603,-325.5C664.01,-325.5 601.6,-205.17 650.55,-193.42"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="650.87,-196.38 659,-192.5 650.23,-190.46 650.87,-196.38"></polygon>
+</g>
+<!-- scounts&#45;&gt;ccounts -->
+<g id="edge10" class="edge">
+<title>scounts:p2-&gt;ccounts:p1</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M603,-234.5C630.83,-234.5 628.79,-200.89 650.31,-193.8"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="651.04,-196.7 659,-192.5 650.15,-190.82 651.04,-196.7"></polygon>
+</g>
+<!-- scounts&#45;&gt;ccounts -->
+<g id="edge11" class="edge">
+<title>scounts:p3-&gt;ccounts:p1</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M603,-150.5C630.83,-150.5 628.79,-184.11 650.31,-191.2"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="650.15,-194.18 659,-192.5 651.04,-188.3 650.15,-194.18"></polygon>
+</g>
+<!-- scounts&#45;&gt;ccounts -->
+<g id="edge12" class="edge">
+<title>scounts:p4-&gt;ccounts:p1</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M603,-67.5C660.67,-67.5 604.71,-179.66 650.39,-191.49"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="650.21,-194.47 659,-192.5 650.9,-188.56 650.21,-194.47"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-leskovec_mining_2014" class="csl-entry" role="listitem">
+Leskovec, Jure, Anand Rajaraman, and Jeffrey David Ullman. 2014. <em>Mining of <span>Massive Datasets</span></em>. Cambridge University Press.
+</div>
 </div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>DSAN 5500 Week 8: Data Validation, Pipelines</p>
+<p>DSAN 5500 Week 11: Parallel Pipelines and Map-Reduce</p>
 </div>
 </div>
 </section></section>
@@ -1043,6 +1153,7 @@ age
       }
     });
     </script>
+    <script>videojs(video_shortcode_videojs_video1);</script>
     
 
 </body></html>

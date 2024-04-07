@@ -79,5 +79,9 @@
   },
   "writeups/index.qmd": {
     "index.html": "d72a0de2"
+  },
+  "w11/index.qmd": {
+    "slides.html": "0cbc80e7",
+    "index.html": "4400fd40"
   }
 }
