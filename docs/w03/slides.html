@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.23">
+
+  <meta name="author" content="Jeff Jacobs">
+  <title>DSAN 5500 – Week 3: Data Structures and Computational Complexity</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/simplemenu/simplemenu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Week 3: Data Structures and Computational Complexity</h1>
+  <p class="subtitle"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jeff Jacobs 
+</div>
+        <p class="quarto-title-affiliation">
+            <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a>
+          </p>
+    </div>
+</div>
+
+  <p class="date">Monday, January 29, 2024</p>
+</section>
+<section>
+<section id="why-we-cant-learn-these-topics-separately" class="title-slide slide level1 center" data-stack-name="Overview">
+<h1>Why We Can’t Learn These Topics Separately</h1>
+
+</section>
+<section id="data-structure-choice-leftrightarrow-efficiency-for-task" class="slide level2">
+<h2>Data Structure Choice <span class="math inline">\(\Leftrightarrow\)</span> Efficiency for Task</h2>
+<ul>
+<li>Do we need to be able to <strong>insert</strong> quickly?</li>
+<li>Do we need to be able to <strong>sort</strong> quickly?</li>
+<li>Do we need to be able to <strong>search</strong> quickly?</li>
+<li>Are we searching for <strong>individual items</strong> or for <strong>ranges</strong>?</li>
+</ul>
+</section></section>
+<section>
+<section id="basic-data-structures" class="title-slide slide level1 center" data-stack-name="Structures">
+<h1>Basic Data Structures</h1>
+
+</section>
+<section id="recall-primitives" class="slide level2">
+<h2>Recall: Primitives</h2>
+<ul>
+<li><code>bool</code></li>
+<li><code>int</code></li>
+<li><code>float</code></li>
+<li><code>None</code></li>
+<li>Now we want to put these together, to form… <strong>structures!</strong> 👀</li>
+<li>Structures are the things that live in the <strong>heap</strong>; the <strong>stack</strong> just <strong>points to them</strong></li>
+</ul>
+</section>
+<section id="tuples" class="slide level2 crunch-title crunch-ul">
+<h2>Tuples</h2>
+<ul>
+<li><strong>Fixed-size</strong> collection of <span class="math inline">\(N\)</span> objects</li>
+<li>Unless otherwise specified, we’re talking about <span class="math inline">\(2\)</span>-tuples</li>
+<li>Example: We can locate something on the Earth by specifying two <code>floats</code>: latitude and longitude!</li>
+</ul>
+<div id="8b200ed6" class="cell" data-execution_count="1">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>gtown_loc <span class="op">=</span> (<span class="fl">38.9076</span>, <span class="op">-</span><span class="fl">77.0723</span>)</span>
+<span id="cb1-2"><a></a>gtown_loc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(38.9076, -77.0723)</code></pre>
+</div>
+</div>
+<ul>
+<li>But what if we don’t know in advance how many items we want to store? Ex: how can we store users for a new app?</li>
+</ul>
+</section>
+<section id="sequences" class="slide level2">
+<h2>Sequences</h2>
+<ul>
+<li><strong>In General</strong>: Mapping of integer <strong>indices</strong> to objects</li>
+<li><code>x = ['a','b','c']</code>
+<ul>
+<li><span class="math inline">\(\implies\)</span> <code>x[0] = 'a'</code></li>
+<li><span class="math inline">\(\implies\)</span> <code>x[1] = 'b'</code></li>
+<li><span class="math inline">\(\implies\)</span> <code>x[2] = 'c'</code></li>
+</ul></li>
+<li>In Python: <code>list</code></li>
+<li>Nice built-in language constructs for <strong>looping</strong> over lists, and especially for <strong>performing operations on each element</strong></li>
+</ul>
+</section>
+<section id="looping-over-sequences" class="slide level2">
+<h2>Looping Over Sequences</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>C/C++/Java:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource java number-lines code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a></a><span class="bu">List</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> myList <span class="op">=</span> <span class="bu">Arrays</span><span class="op">.</span><span class="fu">asList</span><span class="op">(</span><span class="st">"a"</span><span class="op">,</span> <span class="st">"b"</span><span class="op">,</span> <span class="st">"c"</span><span class="op">);</span></span>
+<span id="cb3-2"><a></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> x<span class="op">.</span><span class="fu">size</span><span class="op">();</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-3"><a></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>myList<span class="op">.</span><span class="fu">get</span><span class="op">(</span>i<span class="op">));</span></span>
+<span id="cb3-4"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<br>
+<pre>a
+b
+c
+</pre>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Python:</li>
+</ul>
+<div id="7f3b313e" class="cell" data-execution_count="2">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>my_list <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>]</span>
+<span id="cb4-2"><a></a><span class="cf">for</span> list_element <span class="kw">in</span> my_list:</span>
+<span id="cb4-3"><a></a>  <span class="bu">print</span>(list_element)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>a
+b
+c</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-comprehensions-apply-function-to-each-element" class="slide level2 crunch-title title-07">
+<h2><em>List Comprehensions</em>: Apply Function to Each Element</h2>
+<ul>
+<li>Construct <strong>new</strong> list by applying operation to each element:</li>
+</ul>
+<div id="24490191" class="cell" data-execution_count="3">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>my_nums <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
+<span id="cb6-2"><a></a>my_squares <span class="op">=</span> [num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> my_nums]</span>
+<span id="cb6-3"><a></a>my_squares</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>[16, 25, 36, 49]</code></pre>
+</div>
+</div>
+<ul>
+<li>Can also <strong>filter</strong> the elements of the list with <code>if</code>:</li>
+</ul>
+<div id="42e12fa1" class="cell" data-execution_count="4">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>my_odd_squares <span class="op">=</span> [num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> my_nums <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb8-2"><a></a>my_odd_squares</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>[25, 49]</code></pre>
+</div>
+</div>
+</section>
+<section id="sets" class="slide level2 smaller crunch-title">
+<h2>Sets</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Extremely helpful + efficient for finding <strong>unique</strong> elements:</li>
+</ul>
+<div id="465b495e" class="cell" data-execution_count="5">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>animals_i_saw <span class="op">=</span> [<span class="st">'bird'</span>,<span class="st">'bird'</span>,<span class="st">'fish'</span>,<span class="st">'bird'</span>,<span class="st">'cat'</span>,<span class="st">'bird'</span>,<span class="st">'lizard'</span>]</span>
+<span id="cb10-2"><a></a><span class="bu">print</span>(<span class="ss">f"Number of animals I saw: </span><span class="sc">{</span><span class="bu">len</span>(animals_i_saw)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of animals I saw: 7</code></pre>
+</div>
+</div>
+<div id="b7a5303a" class="cell" data-execution_count="6">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>unique_animals_me <span class="op">=</span> <span class="bu">set</span>(animals_i_saw)</span>
+<span id="cb12-2"><a></a><span class="bu">print</span>(<span class="ss">f"Set of unique animals: </span><span class="sc">{</span>unique_animals_me<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-3"><a></a><span class="bu">print</span>(<span class="ss">f"Number of unique animals: </span><span class="sc">{</span><span class="bu">len</span>(unique_animals_me)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Set of unique animals: {'bird', 'cat', 'fish', 'lizard'}
+Number of unique animals: 4</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Supports all set operators from math:</li>
+</ul>
+<div id="3686c772" class="cell" data-execution_count="7">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>animals_you_saw <span class="op">=</span> [<span class="st">'lizard'</span>,<span class="st">'dog'</span>,<span class="st">'bird'</span>,<span class="st">'bird'</span>,<span class="st">'bird'</span>]</span>
+<span id="cb14-2"><a></a>unique_animals_you <span class="op">=</span> <span class="bu">set</span>(animals_you_saw)</span>
+<span id="cb14-3"><a></a>unique_animals_both <span class="op">=</span> unique_animals_me.intersection(unique_animals_you)</span>
+<span id="cb14-4"><a></a><span class="bu">print</span>(<span class="ss">f"Animals we both saw: </span><span class="sc">{</span>unique_animals_both<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Animals we both saw: {'bird', 'lizard'}</code></pre>
+</div>
+</div>
+<div id="b3072f1e" class="cell" data-execution_count="8">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>unique_animals_either <span class="op">=</span> unique_animals_me.union(unique_animals_you)</span>
+<span id="cb16-2"><a></a><span class="bu">print</span>(<span class="ss">f"Animals either of us saw: </span><span class="sc">{</span>unique_animals_either<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Animals either of us saw: {'cat', 'fish', 'lizard', 'bird', 'dog'}</code></pre>
+</div>
+</div>
+<div id="7c41a823" class="cell" data-execution_count="9">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>unique_animals_meonly <span class="op">=</span> unique_animals_me <span class="op">-</span> unique_animals_you</span>
+<span id="cb18-2"><a></a><span class="bu">print</span>(<span class="ss">f"Animals I saw that you didn't see: </span><span class="sc">{</span>unique_animals_meonly<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-3"><a></a>unique_animals_youonly <span class="op">=</span> unique_animals_you <span class="op">-</span> unique_animals_me</span>
+<span id="cb18-4"><a></a><span class="bu">print</span>(<span class="ss">f"Animals you saw that I didn't see: </span><span class="sc">{</span>unique_animals_youonly<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Animals I saw that you didn't see: {'cat', 'fish'}
+Animals you saw that I didn't see: {'dog'}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="maps-dictionaries" class="slide level2 smaller crunch-title">
+<h2>Maps / Dictionaries</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>While other language like Java have lots of fancy types of Map, Python has a single type, the <strong>dictionary</strong>:</li>
+</ul>
+<div id="b3473958" class="cell" data-execution_count="10">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>gtown_data <span class="op">=</span> {</span>
+<span id="cb20-2"><a></a>  <span class="st">'name'</span>: <span class="st">'Georgetown University'</span>,</span>
+<span id="cb20-3"><a></a>  <span class="st">'founded'</span>: <span class="dv">1789</span>,</span>
+<span id="cb20-4"><a></a>  <span class="st">'coordinates'</span>: (<span class="fl">38.9076</span>, <span class="op">-</span><span class="fl">77.0723</span>),</span>
+<span id="cb20-5"><a></a>  <span class="st">'location'</span>: {</span>
+<span id="cb20-6"><a></a>    <span class="st">'city'</span>: <span class="st">'Washington'</span>,</span>
+<span id="cb20-7"><a></a>    <span class="st">'state'</span>: <span class="st">'DC'</span>, <span class="co"># &lt;__&lt;</span></span>
+<span id="cb20-8"><a></a>    <span class="st">'country'</span>: <span class="st">'USA'</span></span>
+<span id="cb20-9"><a></a>  }</span>
+<span id="cb20-10"><a></a>}</span>
+<span id="cb20-11"><a></a><span class="bu">print</span>(gtown_data.keys())</span>
+<span id="cb20-12"><a></a><span class="bu">print</span>(gtown_data.values())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>dict_keys(['name', 'founded', 'coordinates', 'location'])
+dict_values(['Georgetown University', 1789, (38.9076, -77.0723), {'city': 'Washington', 'state': 'DC', 'country': 'USA'}])</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Be careful when looping! Default behavior is iteration over <strong>keys</strong>:</li>
+</ul>
+<div id="14d58633" class="cell" data-execution_count="11">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="cf">for</span> k <span class="kw">in</span> gtown_data:</span>
+<span id="cb22-2"><a></a>  <span class="bu">print</span>(k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>name
+founded
+coordinates
+location</code></pre>
+</div>
+</div>
+<ul>
+<li>For <strong>key-value pairs</strong> use <code>.items()</code>:</li>
+</ul>
+<div id="0714a176" class="cell" data-execution_count="12">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="cf">for</span> k, v <span class="kw">in</span> gtown_data.items():</span>
+<span id="cb24-2"><a></a>  <span class="bu">print</span>(k, v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>name Georgetown University
+founded 1789
+coordinates (38.9076, -77.0723)
+location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="complexity-with-respect-to-a-structure" class="title-slide slide level1 center" data-stack-name="Complexity">
+<h1>Complexity With Respect To A <em>Structure</em></h1>
+<ul>
+<li>Last week: analyzing complexity of an <strong>algorithm</strong> (no broader context)</li>
+<li>This week: analyzing complexity of a <strong>structure</strong> as a <strong>collection</strong> of variables + algorithms</li>
+<li>Object-Oriented Programming: <strong>Design pattern</strong> for “organizing” data and algorithms into structures</li>
+</ul>
+</section>
+<section id="looking-under-the-hood-of-a-data-structure" class="slide level2 crunch-title title-08">
+<h2>Looking Under the Hood of a Data Structure</h2>
+<ul>
+<li>Last week we saw the <strong>math</strong> for why we can “abstract away from” the details of how a particular language works</li>
+<li>We want to understand these structures <strong>independently</strong> of the specifics of their implementation in Python (for now)</li>
+<li>So, let’s construct our own <strong>simplified versions</strong> of the basic structures, and use these simplified versions to get a sense for their <strong>efficiency</strong>
+<ul>
+<li>(The “true” Python versions may be <strong>hyper-optimized</strong>, but as we saw, there are <strong>fundamental constraints</strong> on runtime, assuming <span class="math inline">\(P \neq NP\)</span>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="tuples-1" class="slide level2">
+<h2>Tuples</h2>
+<div id="c08706e2" class="cell" data-execution_count="13">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="kw">class</span> MyTuple:</span>
+<span id="cb26-2"><a></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, thing1, thing2):</span>
+<span id="cb26-3"><a></a>    <span class="va">self</span>.thing1 <span class="op">=</span> thing1</span>
+<span id="cb26-4"><a></a>    <span class="va">self</span>.thing2 <span class="op">=</span> thing2</span>
+<span id="cb26-5"><a></a></span>
+<span id="cb26-6"><a></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb26-7"><a></a>    <span class="cf">return</span> <span class="ss">f"(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>thing1<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>thing2<span class="sc">}</span><span class="ss">)"</span></span>
+<span id="cb26-8"><a></a></span>
+<span id="cb26-9"><a></a>  <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb26-10"><a></a>    <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__repr__</span>()</span>
+<span id="cb26-11"><a></a></span>
+<span id="cb26-12"><a></a>t1 <span class="op">=</span> MyTuple(<span class="st">'a'</span>,<span class="st">'b'</span>)</span>
+<span id="cb26-13"><a></a>t2 <span class="op">=</span> MyTuple(<span class="dv">111</span>, <span class="dv">222</span>)</span>
+<span id="cb26-14"><a></a><span class="bu">print</span>(t1, t2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>(a, b) (111, 222)</code></pre>
+</div>
+</div>
+</section>
+<section id="lists" class="slide level2 crunch-title smaller">
+<h2>Lists</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>The list itself just points to a root item:</li>
+</ul>
+<div id="e59dad2c" class="cell" data-execution_count="14">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="kw">class</span> MyList:</span>
+<span id="cb28-2"><a></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb28-3"><a></a>    <span class="va">self</span>.root <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb28-4"><a></a></span>
+<span id="cb28-5"><a></a>  <span class="kw">def</span> append(<span class="va">self</span>, new_item):</span>
+<span id="cb28-6"><a></a>    <span class="cf">if</span> <span class="va">self</span>.root <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb28-7"><a></a>      <span class="va">self</span>.root <span class="op">=</span> MyListItem(new_item)</span>
+<span id="cb28-8"><a></a>    <span class="cf">else</span>:</span>
+<span id="cb28-9"><a></a>      <span class="va">self</span>.root.append(new_item)</span>
+<span id="cb28-10"><a></a></span>
+<span id="cb28-11"><a></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb28-12"><a></a>    <span class="cf">return</span> <span class="va">self</span>.root.<span class="fu">__repr__</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>An item has contents, pointer to next item:</li>
+</ul>
+<div id="8ca89a68" class="cell" data-execution_count="15">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="kw">class</span> MyListItem:</span>
+<span id="cb29-2"><a></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, content):</span>
+<span id="cb29-3"><a></a>    <span class="va">self</span>.content <span class="op">=</span> content</span>
+<span id="cb29-4"><a></a>    <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb29-5"><a></a></span>
+<span id="cb29-6"><a></a>  <span class="kw">def</span> append(<span class="va">self</span>, new_item):</span>
+<span id="cb29-7"><a></a>    <span class="cf">if</span> <span class="va">self</span>.<span class="bu">next</span> <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb29-8"><a></a>      <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> MyListItem(new_item)</span>
+<span id="cb29-9"><a></a>    <span class="cf">else</span>:</span>
+<span id="cb29-10"><a></a>      <span class="va">self</span>.<span class="bu">next</span>.append(new_item)</span>
+<span id="cb29-11"><a></a></span>
+<span id="cb29-12"><a></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb29-13"><a></a>    my_content <span class="op">=</span> <span class="va">self</span>.content</span>
+<span id="cb29-14"><a></a>    <span class="cf">return</span> my_content <span class="cf">if</span> <span class="va">self</span>.<span class="bu">next</span> <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> <span class="ss">f"</span><span class="sc">{</span>my_content<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">next</span><span class="sc">.</span><span class="fu">__repr__</span>()<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+<div id="9dc49add" class="cell" data-execution_count="16">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>users <span class="op">=</span> MyList()</span>
+<span id="cb30-2"><a></a>users.append(<span class="st">'Jeff'</span>)</span>
+<span id="cb30-3"><a></a>users.append(<span class="st">'Alma'</span>)</span>
+<span id="cb30-4"><a></a>users.append(<span class="st">'Bo'</span>)</span>
+<span id="cb30-5"><a></a><span class="bu">print</span>(users)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Jeff, Alma, Bo</code></pre>
+</div>
+</div>
+</section>
+<section id="so-how-many-steps-are-required" class="slide level2">
+<h2>So, How Many “Steps” Are Required…</h2>
+<ul>
+<li>To retrieve the <strong>first</strong> element in a <code>MyTuple</code>?</li>
+<li>To retrieve the <strong>last</strong> element in a <code>MyTuple</code>?</li>
+<li>To retrieve the <strong>first</strong> element in a <code>MyList</code>?</li>
+<li>To retrieve the <strong>last</strong> element in a <code>MyList</code>?</li>
+</ul>
+</section>
+<section id="how-many-steps" class="slide level2 smaller">
+<h2>How Many Steps?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>With a <code>MyTuple</code>:</li>
+</ul>
+<div id="42ebf586" class="cell" data-execution_count="17">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>t1.thing1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>'a'</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(\implies\)</span> 1 step</li>
+</ul>
+<div id="b56f390d" class="cell" data-execution_count="18">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a>t1.thing2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>'b'</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(\implies\)</span> 1 step</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>With a <code>MyList</code>:</li>
+</ul>
+<div id="f5aca793" class="cell" data-execution_count="19">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="bu">print</span>(users.root.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Jeff</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(\implies\)</span> 1 step</li>
+</ul>
+<div id="8009568c" class="cell" data-execution_count="20">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a>current_node <span class="op">=</span> users.root</span>
+<span id="cb38-2"><a></a><span class="cf">while</span> current_node.<span class="bu">next</span> <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb38-3"><a></a>  current_node <span class="op">=</span> current_node.<span class="bu">next</span></span>
+<span id="cb38-4"><a></a><span class="bu">print</span>(current_node.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bo</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(\implies\)</span> (3 steps)</li>
+<li>…But why 3? How many steps if the list contained 5 elements? <span class="math inline">\(N\)</span> elements?</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="pairwise-concatenating-list-elements" class="slide level2 smaller crunch-title">
+<h2>Pairwise-Concatenating List Elements</h2>
+<ul>
+<li>Now rather than just printing, let’s pairwise concatenate:</li>
+</ul>
+<div id="6a5df9e3" class="cell" data-execution_count="21">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a>cur_pointer1 <span class="op">=</span> users.root</span>
+<span id="cb40-2"><a></a><span class="cf">while</span> cur_pointer1 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb40-3"><a></a>  cur_pointer2 <span class="op">=</span> users.root</span>
+<span id="cb40-4"><a></a>  <span class="cf">while</span> cur_pointer2 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb40-5"><a></a>    <span class="bu">print</span>(cur_pointer1.content <span class="op">+</span> cur_pointer2.content)</span>
+<span id="cb40-6"><a></a>    cur_pointer2 <span class="op">=</span> cur_pointer2.<span class="bu">next</span></span>
+<span id="cb40-7"><a></a>  cur_pointer1 <span class="op">=</span> cur_pointer1.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>JeffJeff
+JeffAlma
+JeffBo
+AlmaJeff
+AlmaAlma
+AlmaBo
+BoJeff
+BoAlma
+BoBo</code></pre>
+</div>
+</div>
+<ul>
+<li>How many steps did this take? How about for a list with <span class="math inline">\(5\)</span> elements? <span class="math inline">\(N\)</span> elements?</li>
+</ul>
+</section>
+<section id="last-example-pairwise-concat-end-check" class="slide level2 smaller crunch-title title-12 crunch-details">
+<h2>Last Example: Pairwise-Concat + End Check</h2>
+<div id="008b63ce" class="cell" data-execution_count="22">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a>printed_items <span class="op">=</span> []</span>
+<span id="cb42-2"><a></a>cur_pointer1 <span class="op">=</span> users.root</span>
+<span id="cb42-3"><a></a><span class="cf">while</span> cur_pointer1 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb42-4"><a></a>  cur_pointer2 <span class="op">=</span> users.root</span>
+<span id="cb42-5"><a></a>  <span class="cf">while</span> cur_pointer2 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb42-6"><a></a>    <span class="bu">print</span>(cur_pointer1.content <span class="op">+</span> cur_pointer2.content)</span>
+<span id="cb42-7"><a></a>    printed_items.append(cur_pointer1.content)</span>
+<span id="cb42-8"><a></a>    printed_items.append(cur_pointer2.content)</span>
+<span id="cb42-9"><a></a>    cur_pointer2 <span class="op">=</span> cur_pointer2.<span class="bu">next</span></span>
+<span id="cb42-10"><a></a>  cur_pointer1 <span class="op">=</span> cur_pointer1.<span class="bu">next</span></span>
+<span id="cb42-11"><a></a>check_pointer <span class="op">=</span> users.root</span>
+<span id="cb42-12"><a></a><span class="cf">while</span> check_pointer <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb42-13"><a></a>  <span class="cf">if</span> check_pointer.content <span class="kw">in</span> printed_items:</span>
+<span id="cb42-14"><a></a>    <span class="bu">print</span>(<span class="ss">f"Phew. </span><span class="sc">{</span>check_pointer<span class="sc">.</span>content<span class="sc">}</span><span class="ss"> printed at least once."</span>)</span>
+<span id="cb42-15"><a></a>  <span class="cf">else</span>:</span>
+<span id="cb42-16"><a></a>    <span class="bu">print</span>(<span class="ss">f"Oh no! </span><span class="sc">{</span>check_pointer<span class="sc">.</span>content<span class="sc">}</span><span class="ss"> was never printed!!!"</span>)</span>
+<span id="cb42-17"><a></a>  check_pointer <span class="op">=</span> check_pointer.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>JeffJeff
+JeffAlma
+JeffBo
+AlmaJeff
+AlmaAlma
+AlmaBo
+BoJeff
+BoAlma
+BoBo
+Phew. Jeff printed at least once.
+Phew. Alma printed at least once.
+Phew. Bo printed at least once.</code></pre>
+</div>
+</div>
+</section>
+<section id="generalizing" class="slide level2">
+<h2>Generalizing</h2>
+<ul>
+<li>Algorithms are <strong>“efficient”</strong> relative to how their runtime <strong>scales</strong> as the <strong>objects</strong> grow larger and larger!</li>
+<li>Tuple operations take 1 step no matter what</li>
+<li>For lists, retrieving the <strong>first</strong> element takes 1 step no matter what, but retrieving the <strong>last</strong> element takes <span class="math inline">\(n\)</span> steps!</li>
+<li>Pairwise concatenation requires <span class="math inline">\(n^2\)</span> steps!</li>
+</ul>
+</section>
+<section id="the-complexity-of-our-examples" class="slide level2">
+<h2>The Complexity of Our Examples</h2>
+<ul>
+<li>Tuple operations: <span class="math inline">\(O(1)\)</span></li>
+<li>Retrieving the first element of a list: <span class="math inline">\(O(1)\)</span></li>
+<li>Retrieving the last element of a list: <span class="math inline">\(O(n)\)</span></li>
+<li>Pairwise concatenation: <span class="math inline">\(O(n^2)\)</span></li>
+<li>Pairwise concatenation+check: <span class="math inline">\(O(n^2 + n) = O(n^2) \leftarrow !!!\)</span></li>
+<li>Crucial to think <strong>asymptotically</strong> to wrap our heads around this!</li>
+</ul>
+</section>
+<section id="doing-better-than-insertion-sort" class="slide level2">
+<h2>Doing Better Than Insertion Sort</h2>
+<ul>
+<li><em>Intuition Break</em> 🥳: <strong>Finding a word in a dictionary!</strong> <a href="https://dsan.io/dict-lookup" target="_blank" class="font-monospace">dsan.io/dict-lookup<i class="bi bi-box-arrow-up-right ps-2"></i></a></li>
+</ul>
+</section>
+<section id="how-can-merge-sort-work-that-much-better" class="slide level2 crunch-title title-08 crunch-ul crunch-quarto-layout-panel crunch-quarto-figure">
+<h2>How Can Merge Sort Work <em>That</em> Much Better!?</h2>
+<ul>
+<li>With the <strong>linear</strong> approach, each time we check a word and it’s not our word we eliminate… one measly word 😞</li>
+<li>But with the <strong>divide-and-conquer</strong> approach… we eliminate 🔥<strong>HALF OF THE REMAINING WORDS</strong>🔥</li>
+</ul>
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[1,1]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/lakers.gif" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/tuck_em_in.jpeg" class="quarto-figure quarto-figure-center" width="270"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="merging-two-sorted-lists-in-on-time" class="slide level2 smaller title-11 crunch-figcaption">
+<h2>Merging Two Sorted Lists in <span class="math inline">\(O(n)\)</span> Time</h2>
+<!-- .crunch-quarto-figure breaks the centering in newest Quarto version... -->
+
+<img data-src="images/merge.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 37</p></section>
+<section id="merge-sort-merging-as-subroutine" class="slide level2 smaller crunch-figcaption">
+<h2>Merge Sort (Merging as Subroutine)</h2>
+
+<img data-src="images/merge_tree.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 40</p></section>
+<section id="complexity-analysis" class="slide level2 crunch-title">
+<h2>Complexity Analysis</h2>
+<ul>
+<li>Hard way: re-do the line-by-line analysis we did for <span class="alg">Insertion-Sort</span> 😣 Easy way: stand on shoulders of giants!</li>
+<li>Using a famous+fun theorem (the <strong>Master Theorem</strong>): Given a recurrence <span class="math inline">\(T(n) = aT(n/b) + f(n)\)</span>, compute its:
+<ul>
+<li><strong>Watershed function</strong> <span class="math inline">\(W(n) = n^{\log_b(a)}\)</span> and</li>
+<li><strong>Driving function</strong> <span class="math inline">\(D(n) = f(n)\)</span></li>
+</ul></li>
+<li>The Master Theorem gives <strong>closed-form</strong> asymptotic solution for <span class="math inline">\(T(n)\)</span>, split into three cases: <strong>(1)</strong> <span class="math inline">\(W(n)\)</span> grows <strong>faster</strong> than <span class="math inline">\(D(n)\)</span>, <strong>(2)</strong> grows at <strong>same rate</strong> as <span class="math inline">\(D(n)\)</span>, or <strong>(3)</strong> grows <strong>slower</strong> than <span class="math inline">\(D(n)\)</span></li>
+</ul>
+</section>
+<section id="bounding-the-runtime-of-merge-sort" class="slide level2 crunch-title crunch-ul crunch-callout crunch-footnotes scrollable">
+<h2>Bounding the Runtime of Merge Sort</h2>
+<ul>
+<li>How about <span class="alg">Merge-Sort</span>? <span class="math inline">\(T(n) = 2T(n/2) + \Theta(n)\)</span>
+<ul>
+<li><span class="math inline">\(a = b = 2\)</span>, <span class="math inline">\(W(n) = n^{\log_2(2)} = n\)</span>, <span class="math inline">\(D(n) = \Theta(n)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(W(n)\)</span> and <span class="math inline">\(D(n)\)</span> grow at <strong>same rate</strong> <span class="math inline">\(\implies\)</span> <em>Case 2</em><sup>1</sup>:</li>
+</ul>
+<div title="Applying the Master Theorem When $W(n) = \Theta(D(n))$ (Case 2)">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Applying the Master Theorem When <span class="math inline">\(W(n) = \Theta(D(n))\)</span> (Case 2)</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>Is there a <span class="math inline">\(k \geq 0\)</span> satisfying <span class="math inline">\(D(n) = \Theta(n^{\log_b(a)}\log_2^k(n))\)</span>?</li>
+<li>If so, your solution is <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))\)</span></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li><span class="alg">Merge-Sort</span>: <span class="math inline">\(k = 0\)</span> works! <span class="math inline">\(\Theta(n^{\log_2(2)}\log_2^0(n)) = \Theta(n)\)</span></li>
+<li>Thus <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n)) = \boxed{\Theta(n\log_2n)}\)</span> 😎</li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>See <a href="#/appendix-the-full-master-theorem">appendix slide</a> for all 3 cases, if you’re some kind of masochist</p></li></ol></aside></section></section>
+<section>
+<section id="object-oriented-programming" class="title-slide slide level1 center" data-stack-name="OOP">
+<h1>Object-Oriented Programming</h1>
+
+</section>
+<section id="breaking-a-problem-into-interacting-parts" class="slide level2 title-08 crunch-title">
+<h2>Breaking a Problem into (Interacting) Parts</h2>
+<ul>
+<li><strong>Python so far</strong>: “Data science mode”
+<ul>
+<li>Start at top of file with raw data</li>
+<li>Write lines of code until problem solved</li>
+</ul></li>
+<li><strong>Python in this class</strong>: “Software engineering mode”
+<ul>
+<li>Break system down into parts</li>
+<li>Write each part separately</li>
+<li>Link parts together to create the whole</li>
+</ul></li>
+<li><em>(One implication: <code>.py</code> files may be easier than <code>.ipynb</code> for development!)</em></li>
+</ul>
+</section>
+<section id="how-does-a-calculator-work" class="slide level2">
+<h2>How Does A Calculator Work?</h2>
+
+<img data-src="images/Calculator.drawio.svg" class="r-stretch quarto-figure-center"><p class="caption">(Calculator image from <a href="//commons.wikimedia.org/wiki/User:LoMit" title="User:LoMit">Wikimedia Commons</a>)</p></section>
+<section id="key-oop-feature-1-encapsulation" class="slide level2">
+<h2>Key OOP Feature #1: <em>Encapsulation</em></h2>
+<ul>
+<li>Imagine you’re on a <strong>team</strong> trying to make a calculator</li>
+<li>One person can write the <code>Screen</code> class, another person can write the <code>Button</code> class, and so on</li>
+<li>Natural division of labor! (May seem silly for a calculator, but imagine as your app <strong>scales up</strong>)</li>
+</ul>
+</section>
+<section id="key-oop-feature-2-abstraction" class="slide level2">
+<h2>Key OOP Feature #2: <em>Abstraction</em></h2>
+<ul>
+<li><strong>Abstraction</strong> complements this <strong>Encapsulation</strong>: the <code>Screen</code> team <strong>doesn’t need to know</strong> the <strong>internal details</strong> of <code>Button</code> (just it’s API), and vice-versa</li>
+<li>Relevant data and functions can be “public”, irrelevant internal data and functions “private”</li>
+<li>(Like with <em>type hints</em>), Python doesn’t <strong>enforce</strong> this distinction, <strong>but</strong> (unlike with <em>type hints</em>) most libraries <strong>do</strong> separate public from private by a <strong>variable-naming convention</strong>…</li>
+</ul>
+</section>
+<section id="public-protected-private-attributes-in-python" class="slide level2 smaller crunch-title title-11">
+<h2>Public, Protected, Private Attributes in Python</h2>
+<ul>
+<li>[<strong>Public</strong> (default)] No underscores: <code>public_var</code></li>
+<li>[<strong>Protected</strong>] One underscore: <code>_protected_var</code></li>
+<li>[<strong>Private</strong>] Two underscores: <code>__private_var</code></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="949390e8" class="cell" data-execution_count="23">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="kw">class</span> MyTopSecretInfo:</span>
+<span id="cb44-2"><a></a>  __the_info <span class="op">=</span> <span class="st">"I love Carly Rae Jepsen"</span></span>
+<span id="cb44-3"><a></a></span>
+<span id="cb44-4"><a></a>info_obj <span class="op">=</span> MyTopSecretInfo()</span>
+<span id="cb44-5"><a></a>info_obj.__the_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>AttributeError: 'MyTopSecretInfo' object has no attribute '__the_info'</code></pre>
+</div>
+</div>
+<p>Guess we can’t access it then, right? 😮‍💨</p>
+</div><div class="column" style="width:50%;">
+<div id="c55a61d4" class="cell" data-execution_count="24">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a>info_obj._MyTopSecretInfo__the_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>'I love Carly Rae Jepsen'</code></pre>
+</div>
+</div>
+<ul>
+<li>NOO MY SECRET!!! 😭</li>
+<li>Pls don’t tell anyone</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="key-oop-features-3-4-inheritance-polymorphism" class="slide level2 crunch-title title-07 crunch-ul">
+<h2>Key OOP Features #3-4: Inheritance, Polymorphism</h2>
+<ul>
+<li>Better explained in <strong>diagrams</strong> than <strong>words</strong> (next 10 slides!), but we can get a sense by thinking about their <strong>etymology</strong>:</li>
+<li><strong>“Inheritance”</strong> comes from <strong>“heir”</strong>, like “heir to the throne”
+<ul>
+<li><em>Parent</em> passes on [things they possess] to their <em>children</em></li>
+</ul></li>
+<li><strong>“Polymorphism”</strong>: <strong>Poly</strong> = “many”, <strong>Morphe</strong> = “forms”
+<ul>
+<li>How does Python know what to do when we <code>print()</code>?</li>
+<li>It “just works” because <code>print()</code> (through <code>__str__()</code>) takes on <strong>many</strong> (!) <strong>forms</strong> (!): each type of object has its own <strong>implementation</strong> of <code>__str__()</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="use-case-bookstore-inventory-management" class="slide level2 smaller title-12">
+<h2>Use Case: Bookstore Inventory Management</h2>
+
+<img data-src="images/spencerbeck_exterior-of-capitol-hill-books_yesmydccool.jpg" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://washington.org/visit-dc/bookstores-sure-charm-you-washington-dc" target="_blank">Image source</a></p></section>
+<section id="in-pictures" class="slide level2 smaller">
+<h2>In Pictures</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="bookstore-diagram">
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 594.24 317.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 313.4)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-313.4 590.24,-313.4 590.24,4 -4,4"></polygon>
+<text text-anchor="middle" x="293.12" y="-292.8" font-family="Times,serif" font-size="14.00">Bookstore Relational Diagram</text>
+<!-- Bookstore -->
+<g id="node1" class="node">
+<title>Bookstore</title>
+<polygon fill="none" stroke="black" points="0,-135.3 0,-284.1 150.42,-284.1 150.42,-135.3 0,-135.3"></polygon>
+<text text-anchor="middle" x="75.21" y="-267.5" font-family="Courier,monospace" font-size="14.00">Bookstore</text>
+<polyline fill="none" stroke="black" points="0,-259.3 150.42,-259.3 "></polyline>
+<text text-anchor="start" x="8" y="-242.7" font-family="Courier,monospace" font-size="14.00">Name</text>
+<polyline fill="none" stroke="black" points="0,-234.5 150.42,-234.5 "></polyline>
+<text text-anchor="start" x="8" y="-217.9" font-family="Courier,monospace" font-size="14.00">Location</text>
+<polyline fill="none" stroke="black" points="0,-209.7 150.42,-209.7 "></polyline>
+<text text-anchor="start" x="8" y="-193.1" font-family="Courier,monospace" font-size="14.00">Booklist</text>
+<polyline fill="none" stroke="black" points="0,-184.9 150.42,-184.9 "></polyline>
+<text text-anchor="start" x="8" y="-168.3" font-family="Courier,monospace" font-size="14.00">Get_Inventory()</text>
+<polyline fill="none" stroke="black" points="0,-160.1 150.42,-160.1 "></polyline>
+<text text-anchor="start" x="8" y="-143.5" font-family="Courier,monospace" font-size="14.00">Sort_Inventory()</text>
+</g>
+<!-- Place -->
+<g id="node2" class="node">
+<title>Place</title>
+<polygon fill="none" stroke="black" points="259.92,-143.7 259.92,-267.7 368.33,-267.7 368.33,-143.7 259.92,-143.7"></polygon>
+<text text-anchor="middle" x="314.12" y="-251.1" font-family="Courier,monospace" font-size="14.00">Place</text>
+<polyline fill="none" stroke="black" points="259.92,-242.9 368.33,-242.9 "></polyline>
+<text text-anchor="start" x="267.92" y="-226.3" font-family="Courier,monospace" font-size="14.00">City</text>
+<polyline fill="none" stroke="black" points="259.92,-218.1 368.33,-218.1 "></polyline>
+<text text-anchor="start" x="267.92" y="-201.5" font-family="Courier,monospace" font-size="14.00">State</text>
+<polyline fill="none" stroke="black" points="259.92,-193.3 368.33,-193.3 "></polyline>
+<text text-anchor="start" x="267.92" y="-176.7" font-family="Courier,monospace" font-size="14.00">Country</text>
+<polyline fill="none" stroke="black" points="259.92,-168.5 368.33,-168.5 "></polyline>
+<text text-anchor="start" x="267.92" y="-151.9" font-family="Courier,monospace" font-size="14.00">Print_Map()</text>
+</g>
+<!-- Bookstore&#45;&gt;Place -->
+<g id="edge1" class="edge">
+<title>Bookstore:loc-&gt;Place:placehead</title>
+<path fill="none" stroke="black" d="M150.42,-221.7C197.79,-221.7 207.68,-251.09 249.78,-255.22"></path>
+<polygon fill="black" stroke="black" points="249.76,-258.72 259.92,-255.7 250.09,-251.73 249.76,-258.72"></polygon>
+<text text-anchor="middle" x="205.17" y="-257.9" font-family="Times,serif" font-size="14.00">Has One</text>
+</g>
+<!-- Book -->
+<g id="node3" class="node">
+<title>Book</title>
+<polygon fill="none" stroke="black" points="268.32,-0.7 268.32,-124.7 359.93,-124.7 359.93,-0.7 268.32,-0.7"></polygon>
+<text text-anchor="middle" x="314.12" y="-108.1" font-family="Courier,monospace" font-size="14.00">Book</text>
+<polyline fill="none" stroke="black" points="268.32,-99.9 359.93,-99.9 "></polyline>
+<text text-anchor="start" x="276.32" y="-83.3" font-family="Courier,monospace" font-size="14.00">Title</text>
+<polyline fill="none" stroke="black" points="268.32,-75.1 359.93,-75.1 "></polyline>
+<text text-anchor="start" x="276.32" y="-58.5" font-family="Courier,monospace" font-size="14.00">Authors</text>
+<polyline fill="none" stroke="black" points="268.32,-50.3 359.93,-50.3 "></polyline>
+<text text-anchor="start" x="276.32" y="-33.7" font-family="Courier,monospace" font-size="14.00">Num Pages</text>
+<polyline fill="none" stroke="black" points="268.32,-25.5 359.93,-25.5 "></polyline>
+<text text-anchor="middle" x="314.12" y="-8.9" font-family="Courier,monospace" font-size="14.00">Preview()</text>
+</g>
+<!-- Bookstore&#45;&gt;Book -->
+<g id="edge2" class="edge">
+<title>Bookstore:bl-&gt;Book:bookhead</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M150.42,-197.7C210.95,-197.7 204.03,-122.06 256.92,-113.49"></path>
+<polygon fill="black" stroke="black" points="257.42,-116.96 267.12,-112.7 256.88,-109.98 257.42,-116.96"></polygon>
+<text text-anchor="middle" x="205.17" y="-197.9" font-family="Times,serif" font-size="14.00">Has Multiple</text>
+</g>
+<!-- Person -->
+<g id="node4" class="node">
+<title>Person</title>
+<polygon fill="none" stroke="black" points="477.82,-0.5 477.82,-74.9 586.24,-74.9 586.24,-0.5 477.82,-0.5"></polygon>
+<text text-anchor="middle" x="532.03" y="-58.3" font-family="Courier,monospace" font-size="14.00">Person</text>
+<polyline fill="none" stroke="black" points="477.82,-50.1 586.24,-50.1 "></polyline>
+<text text-anchor="middle" x="532.03" y="-33.5" font-family="Courier,monospace" font-size="14.00">Family Name</text>
+<polyline fill="none" stroke="black" points="477.82,-25.3 586.24,-25.3 "></polyline>
+<text text-anchor="middle" x="532.03" y="-8.7" font-family="Courier,monospace" font-size="14.00">Given Name</text>
+</g>
+<!-- Book&#45;&gt;Person -->
+<g id="edge3" class="edge">
+<title>Book:auths-&gt;Person:personhead</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M361.12,-62.7C409.44,-62.7 424,-62.7 467.71,-62.7"></path>
+<polygon fill="black" stroke="black" points="467.82,-66.2 477.82,-62.7 467.82,-59.2 467.82,-66.2"></polygon>
+<text text-anchor="middle" x="423.08" y="-66.9" font-family="Times,serif" font-size="14.00">Has Multiple</text>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-classes" class="slide level2 smaller crunch-title crunch-ul crunch-details">
+<h2>Creating Classes</h2>
+<ul>
+<li>Use case: Creating an inventory system for a <strong>Bookstore</strong></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="basic-class" class="cell" data-execution_count="25">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a><span class="kw">class</span> Bookstore:</span>
+<span id="cb48-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, location):</span>
+<span id="cb48-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb48-4"><a></a>        <span class="va">self</span>.location <span class="op">=</span> location</span>
+<span id="cb48-5"><a></a>        <span class="va">self</span>.books <span class="op">=</span> []</span>
+<span id="cb48-6"><a></a></span>
+<span id="cb48-7"><a></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, index):</span>
+<span id="cb48-8"><a></a>        <span class="cf">return</span> <span class="va">self</span>.books[index]</span>
+<span id="cb48-9"><a></a></span>
+<span id="cb48-10"><a></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb48-11"><a></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
+<span id="cb48-12"><a></a></span>
+<span id="cb48-13"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb48-14"><a></a>        <span class="cf">return</span> <span class="ss">f"Bookstore[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_books()<span class="sc">}</span><span class="ss"> books]"</span></span>
+<span id="cb48-15"><a></a></span>
+<span id="cb48-16"><a></a>    <span class="kw">def</span> add_books(<span class="va">self</span>, book_list):</span>
+<span id="cb48-17"><a></a>        <span class="va">self</span>.books.extend(book_list)</span>
+<span id="cb48-18"><a></a></span>
+<span id="cb48-19"><a></a>    <span class="kw">def</span> get_books(<span class="va">self</span>):</span>
+<span id="cb48-20"><a></a>        <span class="cf">return</span> <span class="va">self</span>.books</span>
+<span id="cb48-21"><a></a></span>
+<span id="cb48-22"><a></a>    <span class="kw">def</span> get_inventory(<span class="va">self</span>):</span>
+<span id="cb48-23"><a></a>        book_lines <span class="op">=</span> []</span>
+<span id="cb48-24"><a></a>        <span class="cf">for</span> book_index, book <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.get_books()):</span>
+<span id="cb48-25"><a></a>            cur_book_line <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>book_index<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span><span class="bu">str</span>(book)<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb48-26"><a></a>            book_lines.append(cur_book_line)</span>
+<span id="cb48-27"><a></a>        <span class="cf">return</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(book_lines)</span>
+<span id="cb48-28"><a></a></span>
+<span id="cb48-29"><a></a>    <span class="kw">def</span> get_num_books(<span class="va">self</span>):</span>
+<span id="cb48-30"><a></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.get_books())</span>
+<span id="cb48-31"><a></a></span>
+<span id="cb48-32"><a></a>    <span class="kw">def</span> sort_books(<span class="va">self</span>, sort_key):</span>
+<span id="cb48-33"><a></a>        <span class="va">self</span>.books.sort(key<span class="op">=</span>sort_key)</span>
+<span id="cb48-34"><a></a></span>
+<span id="cb48-35"><a></a><span class="kw">class</span> Book:</span>
+<span id="cb48-36"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages):</span>
+<span id="cb48-37"><a></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
+<span id="cb48-38"><a></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
+<span id="cb48-39"><a></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
+<span id="cb48-40"><a></a></span>
+<span id="cb48-41"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb48-42"><a></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_title()<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_authors()<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_pages()<span class="sc">}</span><span class="ss">]"</span></span>
+<span id="cb48-43"><a></a></span>
+<span id="cb48-44"><a></a>    <span class="kw">def</span> get_authors(<span class="va">self</span>):</span>
+<span id="cb48-45"><a></a>        <span class="cf">return</span> <span class="va">self</span>.authors</span>
+<span id="cb48-46"><a></a></span>
+<span id="cb48-47"><a></a>    <span class="kw">def</span> get_first_author(<span class="va">self</span>):</span>
+<span id="cb48-48"><a></a>        <span class="cf">return</span> <span class="va">self</span>.authors[<span class="dv">0</span>]</span>
+<span id="cb48-49"><a></a></span>
+<span id="cb48-50"><a></a>    <span class="kw">def</span> get_num_pages(<span class="va">self</span>):</span>
+<span id="cb48-51"><a></a>        <span class="cf">return</span> <span class="va">self</span>.num_pages</span>
+<span id="cb48-52"><a></a></span>
+<span id="cb48-53"><a></a>    <span class="kw">def</span> get_title(<span class="va">self</span>):</span>
+<span id="cb48-54"><a></a>        <span class="cf">return</span> <span class="va">self</span>.title</span>
+<span id="cb48-55"><a></a></span>
+<span id="cb48-56"><a></a><span class="kw">class</span> Person:</span>
+<span id="cb48-57"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, family_name, given_name):</span>
+<span id="cb48-58"><a></a>        <span class="va">self</span>.family_name <span class="op">=</span> family_name</span>
+<span id="cb48-59"><a></a>        <span class="va">self</span>.given_name <span class="op">=</span> given_name</span>
+<span id="cb48-60"><a></a></span>
+<span id="cb48-61"><a></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb48-62"><a></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
+<span id="cb48-63"><a></a></span>
+<span id="cb48-64"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb48-65"><a></a>        <span class="cf">return</span> <span class="ss">f"Person[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_family_name()<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_given_name()<span class="sc">}</span><span class="ss">]"</span></span>
+<span id="cb48-66"><a></a></span>
+<span id="cb48-67"><a></a>    <span class="kw">def</span> get_family_name(<span class="va">self</span>):</span>
+<span id="cb48-68"><a></a>        <span class="cf">return</span> <span class="va">self</span>.family_name</span>
+<span id="cb48-69"><a></a></span>
+<span id="cb48-70"><a></a>    <span class="kw">def</span> get_given_name(<span class="va">self</span>):</span>
+<span id="cb48-71"><a></a>        <span class="cf">return</span> <span class="va">self</span>.given_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="create-objs" class="cell" data-execution_count="26">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a></a>my_bookstore <span class="op">=</span> Bookstore(<span class="st">"Bookland"</span>, <span class="st">"Washington, DC"</span>)</span>
+<span id="cb49-2"><a></a>plath <span class="op">=</span> Person(<span class="st">"Plath"</span>, <span class="st">"Sylvia"</span>)</span>
+<span id="cb49-3"><a></a>bell_jar <span class="op">=</span> Book(<span class="st">"The Bell Jar"</span>, [plath], <span class="dv">244</span>)</span>
+<span id="cb49-4"><a></a>marx <span class="op">=</span> Person(<span class="st">"Marx"</span>, <span class="st">"Karl"</span>)</span>
+<span id="cb49-5"><a></a>engels <span class="op">=</span> Person(<span class="st">"Engels"</span>, <span class="st">"Friedrich"</span>)</span>
+<span id="cb49-6"><a></a>manifesto <span class="op">=</span> Book(<span class="st">"The Communist Manifesto"</span>, [marx, engels], <span class="dv">43</span>)</span>
+<span id="cb49-7"><a></a>elster <span class="op">=</span> Person(<span class="st">"Elster"</span>, <span class="st">"Jon"</span>)</span>
+<span id="cb49-8"><a></a>cement <span class="op">=</span> Book(<span class="st">"The Cement of Society"</span>, [elster], <span class="dv">311</span>)</span>
+<span id="cb49-9"><a></a>my_bookstore.add_books([bell_jar, manifesto, cement])</span>
+<span id="cb49-10"><a></a><span class="bu">print</span>(my_bookstore)</span>
+<span id="cb49-11"><a></a><span class="bu">print</span>(my_bookstore[<span class="dv">0</span>])</span>
+<span id="cb49-12"><a></a><span class="bu">print</span>(<span class="st">"Inventory:"</span>)</span>
+<span id="cb49-13"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bookstore[3 books]
+Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]
+Inventory:
+0. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]
+1. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]
+2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="doing-things-with-classes" class="slide level2 smaller">
+<h2>Doing Things With Classes</h2>
+<ul>
+<li>Now we can <strong>use</strong> our OOP structure, for example to sort the inventory in different ways!</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<center>
+<strong>Alphabetical (By First Author)</strong>
+</center>
+<div id="sort-alpha" class="cell" data-execution_count="27">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a></a>sort_alpha <span class="op">=</span> <span class="kw">lambda</span> x: x.get_first_author().get_family_name()</span>
+<span id="cb51-2"><a></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_alpha)</span>
+<span id="cb51-3"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>0. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]
+1. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]
+2. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<center>
+<strong>By Page Count</strong>
+</center>
+<div id="sort-pages" class="cell" data-execution_count="28">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a></a>sort_pages <span class="op">=</span> <span class="kw">lambda</span> x: x.get_num_pages()</span>
+<span id="cb53-2"><a></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_pages)</span>
+<span id="cb53-3"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>0. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]
+1. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]
+2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="inheritance-and-polymorphism" class="slide level2 smaller crunch-title">
+<h2><em>Inheritance</em> and <em>Polymorphism</em></h2>
+<ul>
+<li>Encapsulate <strong>general properties</strong> in <strong>parent</strong> class, <strong>specific properties</strong> in <strong>child classes</strong></li>
+</ul>
+
+<img data-src="images/Inheritance.drawio.svg" class="r-stretch quarto-figure-center"><p class="caption">(You can edit this or make your own UML diagrams in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7C%0A%20%20numDoors%3A%20int%3B%20numWheels%3A%20int%3B%20balanced%3A%20bool%3B%7C%0A%20%20turnOn()%3B%20accelerate()%3B%20brake()%3B%20turnOff()%3B%0A%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%20balanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3Bbalanced%20%3D%20true%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3Bbalanced%20%3D%20true%3B%5D%0A%0A%5BVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BCar%5D%0A%5BVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a>!)</p></section>
+<section id="or-is-this-better" class="slide level2 smaller crunch-title">
+<h2>Or… Is This Better?</h2>
+
+<img data-src="images/vehicle-fancy.svg" class="r-stretch quarto-figure-center"><p class="caption">Edit in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7CnumDoors%3A%20int%3BnumWheels%3A%20int%3Bbalanced%3A%20bool%3B%7CturnOn()%3Baccelerate()%3Bbrake()%3BturnOff()%3B%5D%0A%5B%3Cabstract%3E%20UnbalancedVehicle%7Cbalanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20BalancedVehicle%7Cbalanced%20%3D%20true%3B%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3B%5D%0A%0A%5BVehicle%5D--%3A%3E%5BUnbalancedVehicle%5D%0A%5BUnbalancedVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BBalancedVehicle%5D%0A%5BBalancedVehicle%5D--%3A%3E%5BCar%5D%0A%5BBalancedVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a></p></section>
+<section id="design-choices" class="slide level2 smaller crunch-title crunch-details crunch-ul">
+<h2>Design Choices</h2>
+<ul>
+<li>The goal is to <strong>encapsulate</strong> as best as possible: which <strong>objects</strong> should have which <strong>properties</strong>, and which <strong>methods</strong>?</li>
+<li>Example: Fiction vs.&nbsp;Non-Fiction. How important is this distinction <strong>for your use case?</strong></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<center>
+<strong>Option 1: As Property of <code>Book</code></strong>
+</center>
+<div id="fiction-property" class="cell" data-execution_count="29">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a></a><span class="im">from</span> enum <span class="im">import</span> Enum</span>
+<span id="cb55-2"><a></a><span class="kw">class</span> BookType(Enum):</span>
+<span id="cb55-3"><a></a>    NONFICTION <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb55-4"><a></a>    FICTION <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb55-5"><a></a></span>
+<span id="cb55-6"><a></a><span class="kw">class</span> Book:</span>
+<span id="cb55-7"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title: <span class="bu">str</span>, authors: <span class="bu">list</span>[Person], num_pages: <span class="bu">int</span>, <span class="bu">type</span>: BookType):</span>
+<span id="cb55-8"><a></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
+<span id="cb55-9"><a></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
+<span id="cb55-10"><a></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
+<span id="cb55-11"><a></a>        <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="bu">type</span></span>
+<span id="cb55-12"><a></a></span>
+<span id="cb55-13"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb55-14"><a></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>title<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>authors<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>num_pages<span class="sc">}</span><span class="ss">, type=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">type</span><span class="sc">}</span><span class="ss">]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="use-fiction-property" class="cell" data-execution_count="30">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
+<span id="cb56-2"><a></a>ulysses <span class="op">=</span> Book(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, BookType.FICTION)</span>
+<span id="cb56-3"><a></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
+<span id="cb56-4"><a></a>micromotives <span class="op">=</span> Book(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, BookType.NONFICTION)</span>
+<span id="cb56-5"><a></a><span class="bu">print</span>(ulysses)</span>
+<span id="cb56-6"><a></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Book[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]
+Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252, type=BookType.NONFICTION]</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<center>
+<strong>Option 2: Separate Classes</strong>
+</center>
+<div id="fiction-separate-classes" class="cell" data-execution_count="32">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a></a><span class="co"># class Book defined as earlier</span></span>
+<span id="cb58-2"><a></a><span class="kw">class</span> FictionBook(Book):</span>
+<span id="cb58-3"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, characters):</span>
+<span id="cb58-4"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
+<span id="cb58-5"><a></a>        <span class="va">self</span>.characters <span class="op">=</span> characters</span>
+<span id="cb58-6"><a></a></span>
+<span id="cb58-7"><a></a><span class="kw">class</span> NonfictionBook(Book):</span>
+<span id="cb58-8"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, topic):</span>
+<span id="cb58-9"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
+<span id="cb58-10"><a></a>        <span class="va">self</span>.topic <span class="op">=</span> topic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="use-fiction-separate-classes" class="cell" data-execution_count="33">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
+<span id="cb59-2"><a></a>ulysses <span class="op">=</span> FictionBook(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, [<span class="st">"Daedalus"</span>])</span>
+<span id="cb59-3"><a></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
+<span id="cb59-4"><a></a>micromotives <span class="op">=</span> NonfictionBook(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, <span class="st">"Economics"</span>)</span>
+<span id="cb59-5"><a></a><span class="bu">print</span>(ulysses)</span>
+<span id="cb59-6"><a></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Book[title=Ulysses, authors=[Person[Joyce, James]], pages=732]
+Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="hw1-python-fundamentals" class="title-slide slide level1 center" data-name="HW1">
+<h1>HW1: Python Fundamentals</h1>
+<ul>
+<li><a href="https://classroom.google.com/c/NjM5MzE2MTE4NTgx" target="_blank">Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
+</ul>
+</section>
+<section id="appendix-the-full-master-theorem" class="slide level2 smaller crunch-title crunch-ol scrollable">
+<h2>Appendix: The Full Master Theorem</h2>
+<p><strong>Master Theorem</strong>: Let <span class="math inline">\(a &gt; 0\)</span> and <span class="math inline">\(b &gt; 1\)</span> be constants, and let <span class="math inline">\(f(n)\)</span> be a driving function defined and nonnegative on all sufficiently large reals. Define <span class="math inline">\(T(n)\)</span> on <span class="math inline">\(n \in \mathbb{N}\)</span> by</p>
+<p><span class="math display">\[
+T(n) = aT(n/b) + f(n)
+\]</span></p>
+<p>where <span class="math inline">\(aT(n/b) = a'T(\lfloor n/b \rfloor) + a''T(\lceil n/b \rceil)\)</span> for some <span class="math inline">\(a' \geq 0\)</span> and <span class="math inline">\(a'' \geq 0\)</span> satisfying <span class="math inline">\(a = a' + a''\)</span>. Then the asymptotic behavior of <span class="math inline">\(T(n)\)</span> can be characterized as follows:</p>
+<ol type="1">
+<li>If there exists <span class="math inline">\(\epsilon &gt; 0\)</span> such that <span class="math inline">\(f(n) = O(n^{\log_b(a) - \epsilon})\)</span>, then <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)})\)</span></li>
+<li>If there exists <span class="math inline">\(k \geq 0\)</span> such that <span class="math inline">\(f(n) = \Theta(n^{\log_b(a)}\log_2^k(n))\)</span>, then <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))\)</span>.</li>
+<li>If there exists <span class="math inline">\(\epsilon &gt; 0\)</span> such that <span class="math inline">\(f(n) = \Omega(n^{\log_b(a) + \epsilon})\)</span>, and if <span class="math inline">\(f(n)\)</span> satisfies the <strong>regularity condition</strong> <span class="math inline">\(af(n/b) \leq cf(n)\)</span> for some constant <span class="math inline">\(c &lt; 1\)</span> and all sufficiently large <span class="math inline">\(n\)</span>, then <span class="math inline">\(T(n) = \Theta(f(n))\)</span>.</li>
+</ol>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>See <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 107-114.</p>
+</div>
+<p><em>(<a href="#/bounding-the-runtime-of-merge-sort">← Back to Merge Sort slides</a>)</em></p>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cormen_introduction_2001" class="csl-entry" role="listitem">
+Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. <em>Introduction <span>To Algorithms</span></em>. MIT Press.
+</div>
+</div>
+
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+<p>DSAN 5500 Week 3: Data Structures and Computational Complexity</p>
+</div>
+</div>
+</section></section>
+
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/simplemenu/simplemenu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'simplemenu': {"menubarclass":"menubar","menuclass":"menu","activeclass":"active","activeelement":"li","flat":true,"barhtml":{"header":"<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>","footer":""},"scale":0.5},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, Simplemenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
