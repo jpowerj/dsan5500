@@ -112,15 +112,167 @@ my_reduce = reduce(lambda piece1, piece2: piece1 + piece2, map_result)
 my_reduce
 ```
 
-## Example with Non-Embarrassing Code
+# Functional Programming (FP){data-stack-name="Functional Programming"}
 
-* Matrix multiplication
+## Functions vs. Meta-Functions {.crunch-title .crunch-ul .crunch-details}
+
+* You may have noticed: `map()` and `reduce()` are "meta-functions": functions that **take in other functions as inputs**
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{python}
+#| echo: true
+#| code-fold: false
+def add_5(num):
+  return num + 5
+add_5(10)
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+#| echo: true
+#| code-fold: false
+def apply_twice(fn, arg):
+  return fn(fn(arg))
+apply_twice(add_5, 10)
+```
+
+:::
+:::
+
+* In Python, functions **can be used as** vars (Hence `lambda`{.python}):
+
+```{python}
+#| echo: true
+#| code-fold: false
+add_5 = lambda num: num + 5
+apply_twice(add_5, 10)
+```
+
+* This relates to a whole paradigm, "functional programming": mostly outside scope of course, but lots of important+useful takeaways/rules-of-thumb! &rarr;
+
+## Train Your Brain for Functional Approach $\implies$ Master Debugging! {.crunch-title}
+
+* In CS Theory: enables <a href='https://softwarefoundations.cis.upenn.edu/vfa-current/toc.html' target='_blank'>formal proofs of correctness</a>
+* In CS practice:
+
+> When a program doesn’t work, each function is an interface point where you can check that the data are correct. You can look at the intermediate inputs and outputs to **quickly isolate the function** that's **responsible for a bug**.<br>(from Python's <a href='https://docs.python.org/3/howto/functional.html#ease-of-debugging-and-testing' target='_blank'>"Functional Programming HowTo"</a>)
+
+## Code $\rightarrow$ Pipelines $\rightarrow$ *Debuggable* Pipelines {.smaller .crunch-title .title-12 .crunch-ul .crunch-p}
+
+<!-- * Imperative ("standard") programming: Code runs line-by-line, from top to bottom -->
+* Scenario: Run code, check the output, and... it's wrong 😵 what do you do?
+* Usual approach: Read lines one-by-one, figuring out what they do, seeing if something **pops out** that seems wrong; adding comments like `# Convert to lowercase`{.python}
+
+::: {.columns}
+::: {.column width="50%"}
+
+* **Easy case**: found typo in punctuation removal code. Fix the error, add comment like `# Remove punctuation`{.python}
+
+    <i class='bi bi-arrow-return-right'></i> **Rule 1** of FP: transform these comments into **function names**
+
+:::
+::: {.column width="50%"}
+
+* **Hard case**: Something in `load_text()` modifies a variable that **later on** breaks `remove_punct()` (Called a **side-effect**)
+
+    <i class='bi bi-arrow-return-right'></i> **Rule 2** of FP: **NO SIDE-EFFECTS!**
+
+:::
+:::
+
+```{dot}
+//| echo: false
+//| fig-height: 1
+//| fig-cap: "*(Does this way of diagramming a program look familiar?)*"
+digraph G {
+  rankdir="TB";
+	edge [
+    penwidth=1.2
+    arrowsize=0.85
+  ];
+  node [
+    fontname="Courier"
+    shape="plaintext"
+  ];
+  input[shape="plaintext", label="in.txt"];
+  load_text[label=<
+<table border="1" cellborder="0">
+<tr>
+  <td><font point-size="16">load_text</font></td>
+</tr>
+<tr>
+  <td><font face="Arial" point-size="12">(Verb)</font></td>
+</tr>
+</table>
+  >];
+  lowercase[label=<
+<table border="1" cellborder="0">
+<tr>
+  <td><font point-size="16">lowercase</font></td>
+</tr>
+<tr>
+  <td><font face="Arial" point-size="12">(Verb)</font></td>
+</tr>
+</table>
+  >];
+  remove_punct[label=<
+<table border="1" cellborder="0">
+<tr>
+  <td><font point-size="16">remove_punct</font></td>
+</tr>
+<tr>
+  <td><font face="Arial" point-size="12">(Verb)</font></td>
+</tr>
+</table>
+  >];
+  remove_stopwords[label=<
+<table border="1" cellborder="0">
+<tr>
+  <td><font point-size="16">remove_stopwords</font></td>
+</tr>
+<tr>
+  <td><font face="Arial" point-size="12">(Verb)</font></td>
+</tr>
+</table>
+  >];
+  output[shape="plaintext", label="out.txt"];
+
+  {
+    rank=same;
+    input -> load_text;
+    load_text -> lowercase[label="🧐 ✅"];
+    lowercase -> remove_punct[label="🧐 ✅"];
+    remove_punct -> remove_stopwords[label="🧐 ❌❗️"];
+    remove_stopwords -> output;
+  }
+}
+```
+
+* **With** side effects: ❌ $\implies$ issue is **somewhere earlier in the chain** 😩🏃‍♂️
+* **No** side effects: ❌ $\implies$ issue **must be in `remove_punct()`!!!** 😎 <i class='bi bi-arrow-down'></i>⏱️ = <i class='bi bi-arrow-up'></i>💰
+
+## If This Is So Useful... Why Doesn't Everyone Do It? {.smaller .crunch-title .crunch-ul .crunch-p .crunch-quarto-figure .title-11}
+
+* ~Trapped in **imperative** (sequential) coding mindset: **Path dependency** / QWERTY
+* But the reason **we** need to start thinking like this is: it's **1000x** harder to debug **parallel code!** So we need to be less ad hoc in how we write+debug, from here on out! 🙇‍♂️🙏
+
+![From @leskovec_mining_2014](images/map_reduce_full.svg){fig-align="center" width="500"}
+
+::: {.notes}
+
+The title relates to a classic Economics joke (the best kind of joke): "An economist and a CEO are walking down the street, when the CEO points at the ground and tells the economist, 'look! A $20 bill on the ground!' The economist keeps on walking, scoffing at the CEO: 'don't be silly, if there was a $20 bill on the ground, somebody would have picked it up already'."
+
+:::
 
 # But... Why is All This Weird Mapping and Reducing Necessary? {data-stack-name="Map-Reduce Rationale"}
 
-* Without knowing a bit more of the **internals** of **computing efficiency**, it may seem like a huge cost in terms of overly-complicated overhead
+* Without knowing a bit more of the **internals** of **computing efficiency**, it may seem like a huge cost in terms of overly-complicated overhead, not to mention learning curve...
 
-## The "Killer Application": Matrix Multiplication {.crunch-title .smaller .title-08}
+## The "Killer Application": Matrix Multiplication {.crunch-title .smaller .title-11}
 
 * *(I learned from <a href='http://infolab.stanford.edu/~ullman/' target='_blank'>Jeff Ullman</a>, who did the obnoxious Stanford thing of mentioning in passing how "two previous students in the <a href='http://web.stanford.edu/class/cs246/' target='_blank'>class</a> did this for a cool final project on web crawling and, well, it escalated quickly", aka became Google)*
 
@@ -130,13 +282,56 @@ my_reduce
 
 * [-@leskovec_mining_2014]: Text counts (2.2) $\rightarrow$ Matrix multiplication (2.3) $\rightarrow \cdots \rightarrow$ PageRank (5.1)
 * *(And yall thought it was just busywork for HW3* 😏*)*
-* Scenario: User searches "Denzel Curry"... How **relevant** is a given webpage?
+* The goal: User searches <a href='https://www.youtube.com/watch?v=eqwiC93zmxI' target='_blank'>"Denzel Curry"</a>... How **relevant** is a given webpage?
+* Scenario 1: The entire internet fits on CPU $\implies$ We can just make a big big hash table:
+
+```{dot}
+//| echo: false
+//| fig-height: 4
+digraph G {
+    rankdir="LR";
+    nodesep="10";
+	edge [penwidth=1.2,arrowsize=0.85]
+    node [
+        shape=plaintext;
+        fontname="Courier";
+    ];
+    # Chunked
+    internet [shape=none label=<
+<table border="1" cellborder="0">
+<tr>
+  <td border="1" sides="b"><font face="Helvetica">Scan in O(n):</font></td>
+</tr>
+<tr>
+  <td port="p1" align="text" balign="left">Today Denzel Washington<br />ate a big bowl of Yum's<br />curry. Denzel allegedly<br />rubbed his tum and said<br />"yum yum yum" when he<br />tasted today's curry.<br />"Yum! It is me Denzel,<br />curry is my fav!", he<br />exclaimed. According to<br />his friend Steph, curry<br />is indeed Denzel's fav.<br />We are live with Del<br />Curry in Washington for<br />a Denzel curry update.</td>
+</tr>
+</table>>];
+
+    # Combined counts
+    ccounts [shape=none label=<
+<table border="1" cellborder="0">
+<tr>
+  <td border="1" sides="b" colspan="2"><font face="Helvetica">Overall Counts</font></td>
+</tr>
+<tr>
+  <td port="p1" border="1" align="text" balign="left" sides="r">('according',1)<br />('allegedly',1)<br />('ate',1)<br />('big',1)<br />('bowl',1)<br />('curry',6)<br />('del',1)<br />('denzel',5)<br />('exclaimed',1)<br />('fav',2)<br />('friend',1)</td>
+  <td align="text" balign="left">('indeed',1)<br />('live',1)<br />('rubbed',1)<br />('said',1)<br />('steph',1)<br />('tasted',1)<br />('today',2)<br />('tum',1)<br />('update',1)<br />('washington',2)<br />('yum',4)</td>
+</tr>
+</table>>];
+    internet -> ccounts[label="Hash Table"];
+}
+```
+
+## If Everything *Doesn't* Fit on CPU...
+
+![From Cornell Virtual Workshop, <a href='https://cvw.cac.cornell.edu/gpu-architecture/gpu-characteristics/design' target='_blank'>"Understanding GPU Architecture"</a>](images/cpu_gpu.png){fig-align="center"}
+
+## Break the Problem into *Chunks* for the Green Bois! {.smaller .crunch-title .title-10}
 
 ```{dot}
 //| echo: false
 digraph G {
     rankdir="LR";
-    nodesep="10";
 	edge [penwidth=1.2,arrowsize=0.85]
     node [
         shape=plaintext;
@@ -185,10 +380,10 @@ digraph G {
   <td port="p4" border="0" align="text" balign="left">('curry',1)<br />('washington',1)<br />('denzel',1)<br />('curry',1)<br />('update',1)</td>
 </tr>
 </table>>];
-    chunked:p1 -> chcounts:p1;
-    chunked:p2 -> chcounts:p2;
-    chunked:p3 -> chcounts:p3;
-    chunked:p4 -> chcounts:p4;
+    chunked:p1 -> chcounts:p1[label="O(n/4)"];
+    chunked:p2 -> chcounts:p2[label="O(n/4)"];
+    chunked:p3 -> chcounts:p3[label="O(n/4)"];
+    chunked:p4 -> chcounts:p4[label="O(n/4)"];
 
     # Sorted counts
     scounts [shape=none label=<
@@ -209,13 +404,13 @@ digraph G {
   <td port="p4" border="0" align="text" balign="left">('curry',2)<br />('denzel',1)<br />('update',1)<br />('washington',1)</td>
 </tr>
 </table>>];
-    chcounts:p1 -> scounts:p1;
-    chcounts:p2 -> scounts:p2;
-    chcounts:p3 -> scounts:p3;
-    chcounts:p4 -> scounts:p4;
+    chcounts:p1 -> scounts:p1[label="O(n/4)"];
+    chcounts:p2 -> scounts:p2[label="O(n/4)"];
+    chcounts:p3 -> scounts:p3[label="O(n/4)"];
+    chcounts:p4 -> scounts:p4[label="O(n/4)"];
 
     # Combined counts
-    ccounts [shape=none label=<
+    ccounts [shape=none,label=<
 <table border="1" cellborder="0">
 <tr>
   <td port="p0" border="1" sides="b"><font face="Helvetica">Overall Counts</font></td>
@@ -228,8 +423,31 @@ digraph G {
     scounts:p2 -> ccounts:p1;
     scounts:p3 -> ccounts:p1;
     scounts:p4 -> ccounts:p1;
+    scounts:p2 -> ccounts[margin="5",labeldistance="4",penwidth="0",arrowsize="0.01",taillabel=<
+<table border="0" cellborder="0">
+<tr>
+  <td bgcolor="white" color="black"><font color="black">Merge in<br />O(n)</font></td>
+</tr>
+</table>
+    >,headlabel=" ",minlen="2"];
 }
 ```
+
+* $\implies$ Total = $O(3n) = O(n)$
+* But **also** optimized in terms of constants, because of **sequential memory reads**
+
+## HW4 Possibility 1
+
+* Map-Reduced **Matrix-Vector Multiplication**
+
+![<a href='https://www.walletfox.com/course/qtconcurrentmatrixvector.php' target='_blank'>Image source</a>](images/matvec2_img.png){fig-align="center"}
+
+## HW4 Possibility 2 (More Likely?)
+
+* Scrape quotes **in parallel!**
+* Advantage: Builds on HW3
+* Disadvantage: Embarrassingly parallel, so... no Map-Reduce coding practice
+* (Probable tiebreaker: If you're interested in Map-Reduce, do **Matrix Multiplication** as **Final Project!**)
 
 ## References
 
