@@ -1,0 +1,106 @@
+---
+title: "Week 12: Final Projects, Interfaces"
+subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
+date: "Monday, April 15, 2024"
+date-format: full
+author: "Jeff Jacobs"
+institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
+lecnum: 12
+bibliography: "../_DSAN5500.bib"
+categories:
+  - "Class Sessions"
+format:
+  revealjs:
+    df-print: kable
+    output-file: "slides.html"
+    footer: "DSAN 5500 Week 12: {{< var w12.footer >}}"
+    echo: true
+    code-fold: show
+    scrollable: true
+    slide-number: true
+    html-math-method: mathjax
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link href='https://fonts.googleapis.com/css2?family=Honk&display=swap' rel='stylesheet'>"
+    theme: ["../_jjslides.scss"]
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    echo: true
+    code-fold: show
+    html-math-method: mathjax
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Making Final Projects Less Scary!
+
+## How Do I Pick A Topic?
+
+* I know that "whatever is interesting to you" can be way overly-vague!
+* So, one approach is: imagine yourself in a job interview for your dream job, and they bring up DSAN 5450: "Interesting, what did you do in that class?" 
+* [Insert final project elevator pitch] "Wow, that's such a cool project, we really want someone who can [say] take a data-driven approach to a policy question like that. You're hired!"
+* (Jeff gets a commission: 10% of your salary)
+
+## Getting From Here to There
+
+```{=html}
+<style>
+.honk-honk {
+  font-size: 180% !important;
+  /* font-family: "Bungee Spice", sans-serif; */
+  font-family: "Honk", sans-serif;
+  /* font-optical-sizing: auto; */
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
+```
+
+* [**Minimum Viable Product**]{.honk-honk} (**MVP**) 
+* $\leadsto$ Final Product (but... Hofstadter's Law)
+
+::: {.callout-note title="<i class='bi bi-info-circle pe-1'></i> Hofstadter's Law (Paraphrase)" icon="false"}
+
+The pieces of your DSAN final project will take longer than you expect, even if you take Hofstadter's Law into account
+
+:::
+
+## Interactive Data Structures / Algorithms
+
+* A good number of yall are interested in **visualizing** or allowing **interaction with** the structures/algorithms from class
+* One quick way to allow this: **Streamlit!**
+* However, Streamlit's "default" is *form*-based interaction (form in sidebar $\rightarrow$ results in main panel); a bit more work required to make **everything** interactive
+* (Demo to see what I mean!)
+
+## HW4 Possibility 1
+
+* Map-Reduced **Matrix-Vector Multiplication**
+
+![<a href='https://www.walletfox.com/course/qtconcurrentmatrixvector.php' target='_blank'>Image source</a>](images/matvec2_img.png){fig-align="center"}
+
+## HW4 Possibility 2 (More Likely?)
+
+* Scrape quotes **in parallel!**
+* Advantage: Builds on HW3
+* Disadvantage: Embarrassingly parallel, so... no Map-Reduce coding practice
+* (Probable tiebreaker: If you're interested in Map-Reduce, do **Matrix Multiplication** as **Final Project!**)
+
+## References
+
+::: {#refs}
+:::
