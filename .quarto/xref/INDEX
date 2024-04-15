@@ -83,5 +83,9 @@
   "w11/index.qmd": {
     "slides.html": "0cbc80e7",
     "index.html": "4400fd40"
+  },
+  "w12/index.qmd": {
+    "slides.html": "74d79c4c",
+    "index.html": "258d4065"
   }
 }

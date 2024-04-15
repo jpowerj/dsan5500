@@ -3,11 +3,13 @@ from IPython.display import display
 import graphviz as gv # for visualizing a tree using Digraph
 from graphviz import Digraph, nohtml
 
-st.markdown("*Hello* world")
+st.header("LinkedList Visualizer")
+st.markdown("Enter a **value** on the left and click **Submit** to update the visualization!")
+
+viz_elt = st.empty()
 
 with st.sidebar.form("ll_entry"):
-    st.header("Enter a key-value pair:")
-    user_key = st.text_input("Key")
+    st.header("Enter a value to add:")
     user_val = st.text_input("Value")
     submitted = st.form_submit_button("Click to add")
 
@@ -98,20 +100,19 @@ def visualize_ll(ll):
     visited_nodes.append(cur_name)
     prev_node_name = cur_name
     node_pointer = node_pointer.next
-  st.graphviz_chart(dot)
+  viz_elt.graphviz_chart(dot)
 
-# @title Q1.1-helper
-palette = LinkedList()
-print(palette)
-palette.append('red')
-palette.append('green')
-palette.append('blue')
-print(palette)
+if 'palette' not in st.session_state:
+  st.session_state['palette'] = LinkedList()
+  st.session_state['palette'].append('red')
+  st.session_state['palette'].append('green')
+  st.session_state['palette'].append('blue')
+
+visualize_ll(st.session_state['palette'])
 if submitted:
-    if user_key == "":
-      st.sidebar.error("Please enter a key")
-    elif user_val == "":
+    if user_val == "":
       st.sidebar.error("Please enter a value")
     else:
-      st.toast(f"Added: {user_key} -> {user_val}")
-    visualize_ll(palette)
+      st.session_state['palette'].append(user_val)
+      st.toast(f"Added {user_val}")
+    visualize_ll(st.session_state['palette'])

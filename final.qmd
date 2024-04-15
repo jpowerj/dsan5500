@@ -6,10 +6,12 @@ date: 2024-04-02
 format:
   html:
     df-print: kable
+    html-math-method: mathjax
 ---
 
 ::: {.callout-note title="Changelog"}
 
+* *[Sunday, April 14, 11pm]* Added some additional examples to the cards in the [Overview](#overview) section
 * *[Thursday, April 4, 6:15pm]* Added section with details on [Individual vs. Group Projects](#individual-vs.-group-projects)
 * *[Thursday, April 4, 4:30pm]* Updated [Timeline](#timeline) section to specify that proposals should be approved by **April 10th**, not **April 3rd**
 
@@ -32,6 +34,7 @@ In pretty much **any** course on algorithms and data structures, whether in a Da
     <ul>
           <li><b>Example 1.1</b>: Efficient implementations of <b>deletion</b> in linked lists, rather than just the <b>insertion</b> and <b>retrieval</b> operations on linked lists that we looked at.</li>
           <li><b>Example 1.2</b>: Expanding the Binary Search Tree into a <a href='https://en.wikipedia.org/wiki/Quadtree' target='_blank'>Quadtree</a></li>
+          <li><b>Example 1.3</b>: Creating an interactive visualization (using <a href='https://streamlit.io/' target='_blank'>Streamlit</a>, for example) of a data structure or algorithm.</li>
     </ul>
     </p>
   </div>
@@ -41,13 +44,14 @@ In pretty much **any** course on algorithms and data structures, whether in a Da
 ```{=html}
 <div class="card mb-3">
   <div class="card-header">
-    Option 2: <i>"Fixing" an Issue</i>
+    Option 2: <i>Fixing an Issue</i>
   </div>
   <div class="card-body">
     <h5 class='card-title'>Figuring out how to address some existing <i>drawback</i> of the algorithm/data structure</h5>
     <p class="card-text">
     <ul>
       <li><b>Example 2.1</b>: Binary Search Trees <b>lose their logarithmic efficiency</b> if items are added to them <b>in order</b> (since newly-added items are always added to the <i>right subtree</i> of all existing items, thus "degenerating" into a linear linked list structure), an issue which fancier versions of the BST like <a href='https://en.wikipedia.org/wiki/AVL_tree' target='_blank'>AVL Trees</a> and <a href='https://en.wikipedia.org/wiki/Red%E2%80%93black_tree' target='_blank'>Red-Black Trees</a> resolve.</li>
+      <li><b>Example 2.2</b>: As you saw in the Midterm, hash tables "degenerate" from (approximate) $O(1)$ efficiency to $O(\log_2(n))$ efficiency if the **hashing function** we use is not **efficient** or not <a href='https://en.wikipedia.org/wiki/Collision_resistance' target='_blank'>**collision-resistant**</a>. So, your project could be to explore and summarize how efficient and collision-resistant hash functions work, and then implement one such hash function in Python.</li>
     </ul>
     </p>
   </div>
@@ -65,6 +69,7 @@ In pretty much **any** course on algorithms and data structures, whether in a Da
     <p class="card-text">
     <ul>
       <li><b>Example 3.1</b>: In bioinformatics, the sorting algorithms we <b>did</b> learn are helpful for genetic sequence searching, but can be made even <b>more efficient</b> for genetic sequence searches by <a href='https://web.stanford.edu/class/cs262/archives/notes/lecture4.pdf' target='_blank'>applying the Burrows-Wheeler Transform</a> to a collection of genetic sequences <b>before</b> applying the sorting algorithms.</li>
+      <li><b>Example 3.2</b>: We learned Breadth-First Search (BFS) and Depth-First Search (DFS) in somewhat of a hurry, as a way to traverse over the nodes in a Binary Search Tree, but they both have many more exciting applications! For example, if you're interested in <b>web scraping</b>, you could adapt the code from HW2 to create a polymorphic web-scraper, where each <b>node</b> is a webpage, and processing a node means adding each link in the page to the stack/queue.</li>
     </ul>
     </p>
   </div>
@@ -81,6 +86,55 @@ In pretty much **any** course on algorithms and data structures, whether in a Da
     <p class="card-text">
     <ul>
       <li><b>Example 4.1</b>: In the lecture on <span class='alg'>Insertion-Sort</span>, I hinted at the notion of a <b>correctness proof</b> using <b>invariants</b>---how it would proceed along the same lines as a <a href='https://www.youtube.com/watch?v=wblW_M_HVQ8' target='_blank'>proof by induction</a> that you might have seen in a previous math class---but never formally walked you through how to do one.</li>
+      <li><b>Example 4.2</b>: Over the first half of the course, we were able to gradually improve <b>retrieval</b> of elements from data structures in a progression like:
+      
+      <table>
+      <thead>
+      <tr>
+        <th>Linear</th>
+        <th></th>
+        <th>Logarithmic</th>
+        <th></th>
+        <th>Constant</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><span data-qmd="`LinkedList`<br>$O(n)$"></span></td>
+        <td><span data-qmd="$\rightarrow$"></span></td>
+        <td><span data-qmd="`BST`<br>$O(\log_2(n))$"></span></td>
+        <td><span data-qmd="$\rightarrow$"></span></td>
+        <td><span data-qmd="`HashTable`<br>$O(1 + \varepsilon)$"></span></td>
+      </tr>
+      </tbody>
+      </table>
+      
+      But then, for <b>search</b>, something was missing 🧐:
+
+      <table>
+      <thead>
+      <tr>
+        <th>Linear</th>
+        <th></th>
+        <th>Logarithmic</th>
+        <th></th>
+        <th>Constant</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><span data-qmd="[Insertion-Sort]{.alg}<br>$O(n^2)$"></span></td>
+        <td><span data-qmd="$\rightarrow$"></span></td>
+        <td><span data-qmd="[Merge-Sort]{.alg}<br>$O(n\log_2(n))$"></span></td>
+        <td><span data-qmd="$\rightarrow$"></span></td>
+        <td><span data-qmd="???"></span></td>
+      </tr>
+      </tbody>
+      </table>
+
+  Prove that it's in fact <b>not possible</b> to make that additional "jump" to <b>constant</b>-time search in \(O(n)\), except in very special cases.
+      
+      <!-- When we looked at <b>retrieving</b> an element from a data structure, we were able to improve from <b>linear</b> (linked lists, $O(n)$) to <b>logarithmic</b> (BSTs, in $O(\log_2(n))$) to <b>constant</b> (hash tables, in $O(1 + \varepsilon)$) time. But when we looked at <b>searching</b>, we were only able to improve from <b>linear</b> (Insertion-Sort) to <b>logarithmic</b> (Merge-Sort) time. Prove that it's not possible to make the additional "jump" to <b>constant</b> time search in $O(n)$, except in very special cases. -->
     </ul>
     </p>
   </div>
@@ -99,7 +153,8 @@ In pretty much **any** course on algorithms and data structures, whether in a Da
     </h5>
     <p class="card-text">
     <ul>
-      <li><b>Example 5.1</b>: If there is some task you currently handle manually---say, entering receipts from your email into a spreadsheet, or (the example I mentioned in class) making a fulltext index of ebooks in your library---your project can explore "automating" this task using Pydantic and Prefect</li>
+      <li><b>Example 5.1</b>: If there is some task you currently handle manually---say, entering receipts from your email into a spreadsheet, or (the example I mentioned in class) making a fulltext index of ebooks in your library---your project can explore <b>automating</b> this task using Pydantic and Prefect</li>
+      <li><b>Example 5.2</b>: If there are particular <b>APIs</b> and <b>Database</b> solutions that you've been hoping to explore, now's your chance! Create an ETL pipeline which <b>E</b>xtracts data from the API, <b>T</b>ransforms it in some interesting way, then <b>L</b>oads it into (for example) an SQL or MongoDB database.</li>
     </ul>
 
     <i>(For this option, note that we used <b>Pydantic</b> in the course because of its OOP orientation, but if your task is more DataFrame-heavy, you can use <a href='https://pandera.readthedocs.io/en/stable/' target='_blank'><b>Pandera</b></a> for <b>DataFrame validation</b> in place of Pydantic! Feel free to schedule an office hour with Jeff for more on Pandera)</i>

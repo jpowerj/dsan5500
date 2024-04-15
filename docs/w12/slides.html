@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.23">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5500 – Week 8: Data Validation, Data Processing Pipelines</title>
+  <title>DSAN 5500 – Week 12: Final Projects, Interfaces</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -414,7 +414,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 8: Data Validation, Data Processing Pipelines</h1>
+  <h1 class="title">Week 12: Final Projects, Interfaces</h1>
   <p class="subtitle"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
 
 <div class="quarto-title-authors">
@@ -428,219 +428,302 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Monday, March 11, 2024</p>
+  <p class="date">Monday, April 15, 2024</p>
 </section>
 <section>
-<section id="micro-rightarrow-meso-rightarrow-macro" class="title-slide slide level1 title-11 crunch-title crunch-ul crunch-li-8 not-title-slide center" data-stack-name="Intro">
-<h1>Micro <span class="math inline">\(\rightarrow\)</span> Meso <span class="math inline">\(\rightarrow\)</span> Macro</h1>
-<ul>
-<li>✅ Micro-level: Individual, <strong>“core” algorithms/data structures</strong> and their big-<span class="math inline">\(O\)</span> runtimes
-<ul>
-<li>e.g., <code>LinkedList</code>, <span class="alg">Merge-Sort</span></li>
-</ul></li>
-<li>✅ Meso-level: Algorithms/data structures that “piece together” a small collection of core algorithms
-<ul>
-<li><strong>Hash tables</strong>: Fixed-Length Array + Hashing Algorithm + Collision Handling Algorithm (BST)</li>
-</ul></li>
-</ul>
-<div style="border: 3px solid black !important;">
-<ul>
-<li>🤔 <strong>Macro-level</strong>: <strong>Pipelines</strong> of data structures and algorithms:
-<ul>
-<li><strong>raw data source</strong> <span class="math inline">\(\rightarrow\)</span> <strong>processing</strong> <span class="math inline">\(\rightarrow\)</span> <strong>storage</strong></li>
-</ul></li>
-</ul>
-</div>
+<section id="making-final-projects-less-scary" class="title-slide slide level1 center" data-stack-name="Final Projects">
+<h1>Making Final Projects Less Scary!</h1>
+
 </section>
-<section id="most-common-hw1-to-midterm-struggles" class="slide level2 title-09 crunch-title crunch-ul">
-<h2>Most Common HW1-to-Midterm Struggles</h2>
+<section id="how-do-i-pick-a-topic" class="slide level2">
+<h2>How Do I Pick A Topic?</h2>
 <ul>
-<li>Ingesting data (HW1: <code>Swimmer</code> class)
+<li>I know that “whatever is interesting to you” can be way overly-vague!</li>
+<li>So, one approach is: imagine yourself in a job interview for your dream job, and they bring up DSAN 5450: “Interesting, what did you do in that class?”</li>
+<li>[Insert final project elevator pitch] “Wow, that’s such a cool project, we really want someone who can [say] take a data-driven approach to a policy question like that. You’re hired!”</li>
+<li>(Jeff gets a commission: 10% of your salary)</li>
+</ul>
+</section>
+<section id="getting-from-here-to-there" class="slide level2">
+<h2>Getting From Here to There</h2>
+<style>
+.honk-honk {
+  font-size: 180% !important;
+  /* font-family: "Bungee Spice", sans-serif; */
+  font-family: "Honk", sans-serif;
+  /* font-optical-sizing: auto; */
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
 <ul>
-<li><span class="math inline">\(\implies\)</span> Data-processing pipelines!</li>
+<li><span class="honk-honk"><strong>Minimum Viable Product</strong></span> (<strong>MVP</strong>)</li>
+<li><span class="math inline">\(\leadsto\)</span> Final Product (but… Hofstadter’s Law)</li>
+</ul>
+<div title="<i class='bi bi-info-circle pe-1'></i> Hofstadter's Law (Paraphrase)">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><i class="bi bi-info-circle pe-1"></i> Hofstadter’s Law (Paraphrase)</strong></p>
+</div>
+<div class="callout-content">
+<p>The pieces of your DSAN final project will take longer than you expect, even if you take Hofstadter’s Law into account</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="the-options" class="title-slide slide level1 center scrollable">
+<h1>The Options</h1>
+<ol type="1">
+<li>A Deeper Dive</li>
+<li>Fixing an Issue</li>
+<li>Exploring Applications</li>
+<li>Proving Correctness and/or Efficiency</li>
+<li>Building an ETL Pipeline</li>
+</ol>
+<ul>
+<li>(New examples on next 5 slides!)</li>
+</ul>
+</section>
+<section id="a-deeper-dive" class="slide level2">
+<h2>1. A Deeper Dive</h2>
+<ul>
+<li><strong>Example 1.3</strong>: Creating an interactive visualization (using <a href="https://streamlit.io/" target="_blank">Streamlit</a>, for example) of a data structure or algorithm. (Streamlit demo coming in next section of slides!)</li>
+</ul>
+</section>
+<section id="fixing-an-issue" class="slide level2">
+<h2>2. Fixing an Issue</h2>
+<ul>
+<li><strong>Example 2.2</strong>: As you saw in the Midterm, hash tables “degenerate” from (approximate) <span class="math inline">\(O(1)\)</span> efficiency to <span class="math inline">\(O(\log_2(n))\)</span> efficiency if the <strong>hashing function</strong> we use is not <strong>efficient</strong> or not <a href="https://en.wikipedia.org/wiki/Collision_resistance" target="_blank"><strong>collision-resistant</strong></a>.</li>
+<li>So, your project could be to:
+<ul>
+<li>Explore and summarize how efficient and collision-resistant hash functions work, and then</li>
+<li>Implement one such hash function in Python.</li>
 </ul></li>
-<li>Maintaining <strong>invariants</strong> as dataset grows (HW2: <code>None</code> → <code>InventoryItem</code> → <code>BinarySearchTree</code>)
+</ul>
+</section>
+<section id="exploring-applications" class="slide level2">
+<h2>3. Exploring Applications</h2>
 <ul>
-<li><span class="math inline">\(\implies\)</span> Data validation!</li>
+<li><strong>Example 3.2</strong>: We learned Breadth-First Search (BFS) and Depth-First Search (DFS) in somewhat of a hurry, as a way to traverse over the nodes in a Binary Search Tree, but they both have many more exciting applications!</li>
+<li>For example, if you’re interested in <strong>web scraping</strong>, you could adapt the HW2 code to create a polymorphic web-scraper:
+<ul>
+<li>Each <strong>node</strong> is a webpage</li>
+<li>Processing a node means adding each link in that page to the <code>ThingContainer</code>.</li>
 </ul></li>
+</ul>
+</section>
+<section id="proving-things" class="slide level2 crunch-title crunch-ul math-95 crunch-li">
+<h2>4. Proving Things</h2>
+<ul>
+<li><strong>Example 4.2</strong>: We were able to gradually improve <strong>retrieval</strong>:</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 30%">
+<col style="width: 5%">
+<col style="width: 30%">
+<col style="width: 5%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Linear</th>
+<th></th>
+<th>Logarithmic</th>
+<th></th>
+<th>Constant</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>LinkedList</code><br><span class="math inline">\(O(n)\)</span></td>
+<td><span class="math inline">\(\rightarrow\)</span></td>
+<td><code>BST</code><br><span class="math inline">\(O(\log_2(n))\)</span></td>
+<td><span class="math inline">\(\rightarrow\)</span></td>
+<td><code>HashTable</code><br><span class="math inline">\(O(1 + \varepsilon)\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>But then for <b>search</b>, something was missing 🧐:</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 32%">
+<col style="width: 5%">
+<col style="width: 30%">
+<col style="width: 5%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Linear</th>
+<th></th>
+<th>Logarithmic</th>
+<th></th>
+<th>Constant</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="alg">Insertion-Sort</span><br><span class="math inline">\(O(n^2)\)</span></td>
+<td><span class="math inline">\(\rightarrow\)</span></td>
+<td><span class="alg">Merge-Sort</span><br><span class="math inline">\(O(n\log_2(n))\)</span></td>
+<td><span class="math inline">\(\rightarrow\)</span></td>
+<td>???</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Prove that it’s <strong>not possible</strong> to make the additional “jump” to <strong>constant</strong>-time search in <span class="math inline">\(O(n)\)</span>, except in very special cases.</li>
+</ul>
+</section>
+<section id="building-an-etl-pipeline" class="slide level2">
+<h2>5. Building an ETL Pipeline</h2>
+<ul>
+<li><strong>Example 5.2</strong>: If there are particular <b>APIs</b> and <b>Database</b> solutions that you’ve been hoping to explore, now’s your chance! Create an ETL pipeline which <b>E</b>xtracts data from the API, <b>T</b>ransforms it in some interesting way, then <b>L</b>oads it into (for example) an SQL or MongoDB database.</li>
 </ul>
 </section></section>
 <section>
-<section id="data-validation" class="title-slide slide level1 center" data-stack-name="Validation">
-<h1>Data Validation</h1>
+<section id="nuts-and-bolts-for-projects" class="title-slide slide level1 center">
+<h1>Nuts and Bolts for Projects</h1>
+
+</section>
+<section id="fake-data" class="slide level2">
+<h2>Fake Data!</h2>
 <ul>
-<li>What you already know: Type hints</li>
-<li>Type hints on steroids: Pydantic 😎</li>
+<li>When <strong>developing</strong> (as opposed to <strong>deploying</strong>) your projects, <strong>real data</strong> can add additional complexity <strong>beyond the MVP!</strong>: It might cost $$$, it might be rate-limited, or they might catch you scraping their website and ban you ☠️
+<ul>
+<li>(Also: might be too complicated to handle in the time available, even if you use <strong>Prefect</strong> 😉)</li>
+</ul></li>
+<li>Instead, use <a href="https://faker.readthedocs.io/en/master/" target="_blank">Faker</a>!</li>
+<li>In particular, see <a href="https://faker.readthedocs.io/en/stable/providers.html" target="_blank">Standard Providers</a> page for listing of all the types of data you can fake!</li>
 </ul>
 </section>
-<section id="pydantic" class="slide level2">
-<h2>Pydantic</h2>
+<section id="visual-interfaces" class="slide level2">
+<h2>Visual Interfaces</h2>
+<ul>
+<li>A good number of you are interested in <strong>visualizing</strong> or allowing <strong>interaction with</strong> the structures/algorithms from class</li>
+<li>One quick way to allow this: <a href="https://streamlit.io/" target="_blank"><strong>Streamlit!</strong></a></li>
+<li>However, Streamlit’s “default” is <em>form</em>-based interaction (form in sidebar <span class="math inline">\(\rightarrow\)</span> results in main panel); a bit more work required to make <strong>everything</strong> interactive</li>
+<li><a href="https://linkedlist.streamlit.app/" target="_blank">Demo</a> to see what I mean, <a href="https://github.com/jpowerj/streamlit-linkedlist" target="_blank">code</a> that you can steal!</li>
+</ul>
+</section></section>
+<section>
+<section id="parallel-processing-in-python-rightarrow-prefect" class="title-slide slide level1 center" data-stack-name="Parallel Prefect">
+<h1>Parallel Processing in Python <span class="math inline">\(\rightarrow\)</span> Prefect</h1>
 
-<img data-src="images/pydantic_logo.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="pydantic-in-action" class="slide level2 crunch-title crunch-details">
-<h2>Pydantic in Action</h2>
-<div id="e54b1222" class="cell" data-execution_count="1">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
-<span id="cb1-2"><a></a><span class="kw">class</span> InventoryItem(BaseModel):</span>
-<span id="cb1-3"><a></a>    item_name: <span class="bu">str</span></span>
-<span id="cb1-4"><a></a>    price: <span class="bu">float</span></span>
-<span id="cb1-5"><a></a>my_item <span class="op">=</span> InventoryItem(item_name<span class="op">=</span><span class="st">"Banana"</span>, price<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb1-6"><a></a>my_item</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>InventoryItem(item_name='Banana', price=10.0)</code></pre>
-</div>
-</div>
-<div id="82a27546" class="cell" data-execution_count="2">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>invalid_item <span class="op">=</span> InventoryItem(item_name<span class="op">=</span><span class="st">"Banana"</span>, price<span class="op">=</span><span class="st">"100 dollar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<pre><code>ValidationError: 1 validation error for InventoryItem
-price
-  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='100 dollar', input_type=str]
-    For further information visit https://errors.pydantic.dev/2.6/v/float_parsing</code></pre>
-</div>
-</div>
 </section>
-<section id="pydantic-in-even-cooler-action" class="slide level2 crunch-title crunch-details">
-<h2>Pydantic in Even-Cooler Action</h2>
+<section id="a-reminder-w10" class="slide level2 smaller">
+<h2>A Reminder (W10)</h2>
+<ul>
+<li>Humans are <strong>not</strong> capable of true multitasking! In CS terms, this would be called <strong>multiprocessing</strong> (more on this later)</li>
+<li>We <strong>are</strong> capable, however, of various modes of <strong>concurrency</strong>!</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Multithreading</th>
+<th>Asynchronous Execution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Unconsciously</strong><br>(you do it already, “naturally”)</td>
+<td>Focus on <strong>one</strong> speaker within a loud room, with tons of other conversations entering your ears</td>
+<td>Put something in oven, set alarm, go do something else, take out of oven once alarm goes off</td>
+</tr>
+<tr class="even">
+<td><strong>Consciously</strong><br>(you can do it with effort/practice)</td>
+<td>Pat head (up and down) and rub stomach (circular motion) “simultaneously”</td>
+<td>Throw a ball in the air, clap 3 times, catch ball</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="parallel-in-python-the-hard-way" class="slide level2">
+<h2>Parallel in Python: The Hard Way</h2>
+<ul>
+<li><code>threading</code></li>
+<li><code>multiprocessing</code></li>
+<li><code>asyncio</code></li>
+</ul>
+</section>
+<section id="joblib" class="slide level2">
+<h2>…Joblib</h2>
+
+<img data-src="images/all_three.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="in-action" class="slide level2 crunch-title crunch-details">
+<h2>In Action</h2>
+<div id="bea5b397" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> time</span>
+<span id="cb1-2"><a></a><span class="im">from</span> sympy.ntheory <span class="im">import</span> factorint</span>
+<span id="cb1-3"><a></a><span class="im">from</span> joblib <span class="im">import</span> Parallel, delayed</span>
+<span id="cb1-4"><a></a>parallel_runner <span class="op">=</span> Parallel(n_jobs<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb1-5"><a></a>start, end <span class="op">=</span> <span class="dv">500</span>, <span class="dv">580</span></span>
+<span id="cb1-6"><a></a><span class="kw">def</span> find_prime_factors(num):</span>
+<span id="cb1-7"><a></a>  time.sleep(<span class="fl">.01</span>)</span>
+<span id="cb1-8"><a></a>  <span class="cf">return</span> factorint(num, multiple<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-9"><a></a>disp_time <span class="op">=</span> <span class="kw">lambda</span> start, end: <span class="bu">print</span>(<span class="st">'</span><span class="sc">{:.4f}</span><span class="st"> s'</span>.<span class="bu">format</span>(end <span class="op">-</span> start))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="ef7c6860" class="cell" data-execution_count="3">
+<div id="32ce5116" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, PositiveInt</span>
-<span id="cb5-2"><a></a><span class="kw">class</span> Employee(BaseModel):</span>
-<span id="cb5-3"><a></a>    name: <span class="bu">str</span></span>
-<span id="cb5-4"><a></a>    email: EmailStr</span>
-<span id="cb5-5"><a></a>    age: PositiveInt</span>
-<span id="cb5-6"><a></a>invalid_employee <span class="op">=</span> Employee(</span>
-<span id="cb5-7"><a></a>  name<span class="op">=</span><span class="st">"Jeef"</span>,</span>
-<span id="cb5-8"><a></a>  email<span class="op">=</span><span class="st">"fakeemail!!!"</span>,</span>
-<span id="cb5-9"><a></a>  age<span class="op">=</span><span class="dv">50</span></span>
-<span id="cb5-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>serial_start <span class="op">=</span> time.time()</span>
+<span id="cb2-2"><a></a>result <span class="op">=</span> [</span>
+<span id="cb2-3"><a></a>  (i,find_prime_factors(i))</span>
+<span id="cb2-4"><a></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(start, end<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb2-5"><a></a>]</span>
+<span id="cb2-6"><a></a>serial_end <span class="op">=</span> time.time()</span>
+<span id="cb2-7"><a></a>disp_time(serial_start, serial_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-error">
-<pre><code>ValidationError: 1 validation error for Employee
-email
-  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.9938 s</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="e774a36d" class="cell" data-execution_count="4">
+<div id="00fac0ec" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>invalid_employee2 <span class="op">=</span> Employee(</span>
-<span id="cb7-2"><a></a>  name<span class="op">=</span><span class="st">"Jeeferson"</span>,</span>
-<span id="cb7-3"><a></a>  email<span class="op">=</span><span class="st">"valid@email.com"</span>,</span>
-<span id="cb7-4"><a></a>  age<span class="op">=-</span><span class="dv">3</span></span>
-<span id="cb7-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>par_start <span class="op">=</span> time.time()</span>
+<span id="cb4-2"><a></a>result <span class="op">=</span> parallel_runner(</span>
+<span id="cb4-3"><a></a>  delayed(find_prime_factors)(i)</span>
+<span id="cb4-4"><a></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(start, end<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb4-5"><a></a>)</span>
+<span id="cb4-6"><a></a>par_end <span class="op">=</span> time.time()</span>
+<span id="cb4-7"><a></a>disp_time(par_start, par_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-error">
-<pre><code>ValidationError: 1 validation error for Employee
-age
-  Input should be greater than 0 [type=greater_than, input_value=-3, input_type=int]
-    For further information visit https://errors.pydantic.dev/2.6/v/greater_than</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>2.1676 s</code></pre>
 </div>
 </div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="data-processing-pipelines" class="title-slide slide level1 center" data-stack-name="Pipelines">
-<h1>Data-Processing Pipelines</h1>
-
 </section>
-<section id="two-generations-of-python-pipeline-libraries" class="slide level2">
-<h2>Two Generations of Python Pipeline Libraries</h2>
+<section id="python-rightarrow-prefect" class="slide level2">
+<h2>Python <span class="math inline">\(\rightarrow\)</span> Prefect</h2>
 <ul>
-<li>Gen 1: Airflow (AirBnB), Luigi (Spotify)</li>
-<li>Gen 2: Dagster, Prefect</li>
-</ul>
-
-<img data-src="images/Prefect.webp" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="for-now-prefect" class="slide level2">
-<h2>For Now: Prefect!</h2>
-<ul>
-<li>But, the <strong>principles</strong> (<strong>ETL</strong>) remain the same!</li>
-</ul>
-
-<img data-src="images/flow-run-page.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="etl-extract-transform-load" class="slide level2">
-<h2>ETL = Extract, Transform, Load</h2>
-
-<img data-src="images/etl.png" class="r-stretch quarto-figure-center"><p class="caption">From <a href="https://www.analyticsvidhya.com/blog/2022/06/a-complete-guide-on-building-an-etl-pipeline-for-beginners/" target="_blank">Analytics Vidhya</a></p></section>
-<section id="you-have-already-been-doing-this" class="slide level2 crunch-title crunch-ul">
-<h2>You Have Already Been Doing This!</h2>
-<ul>
-<li>HW1: Swim team example
-<ul>
-<li><strong>Extract</strong>: Load data from .csv</li>
-<li><strong>Transform</strong>: Convert times to milliseconds</li>
-<li><strong>Load</strong>: Store into <code>Team</code> object</li>
-</ul></li>
-<li>HW2 (Throughout)
-<ul>
-<li><strong>Extract</strong>: Load products from .csv into Pandas</li>
-<li><strong>Transform</strong>: (Construct <code>InventoryItem</code> object for each row)</li>
-<li><strong>Load</strong>: Store into <code>LogarithmicHashTable</code></li>
-</ul></li>
+<li>Can think of code on prev slide as (implicitly) <strong>submitting</strong> numbers to the <code>find_prime_factors()</code> <strong>task</strong>…</li>
+<li>So, let’s make this <strong>explicit</strong> by using Prefect’s <code>@task</code> annotation!</li>
+<li><a href="https://colab.research.google.com/drive/1-3jWN4MEJRvSnp1WfsHJyeubPoG6uRVn?usp=sharing" target="_blank">Lab Time! <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
 </ul>
 </section>
-<section id="and-you-have-already-run-into-the-need-for-validation" class="slide level2">
-<h2>(And You Have Already Run into the Need for Validation!)</h2>
+<section id="hw4" class="slide level2">
+<h2>HW4</h2>
 <ul>
-<li>HW1: Are the times in seconds or milliseconds?</li>
-<li>HW2: Are users providing <code>key</code> and <code>value</code> separately, or together?</li>
-<li>If together: as <code>tuple</code>s or <code>InventoryItem</code>s?</li>
-<li>If <code>InventoryItem</code>s: What type(s) for <code>item_name</code>? What type(s) for <code>price</code>? 😵</li>
-<li><span class="math inline">\(\implies\)</span> One of the <strong>two</strong> main focuses for <strong>HW3</strong> will be <strong>validation</strong> of input data!</li>
-</ul>
-</section>
-<section id="cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step" class="slide level2">
-<h2>Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)</h2>
-<ul>
-<li>(Hopefully things from previous slide have taught you the dangers of this!)</li>
-<li>It’s like <strong>Anscombe’s Quartet</strong> from DSAN 5000/5100/5200: We can be misled by fancy tools if we don’t take time for the (sometimes boring) step of <strong>looking at</strong> the data</li>
-<li>Example: ETL for processing text data (books for now)</li>
-</ul>
-</section>
-<section id="bookshelfscan-an-example-i-use-irl" class="slide level2 title-09 crunch-title crunc-ul">
-<h2>BookshelfScan (An Example I Use IRL!)</h2>
-<ul>
-<li><strong>Extract</strong>: Dropbox folder containing ebooks</li>
-<li><strong>Transform</strong>: Compute word counts</li>
-<li><strong>Load</strong>: Save word counts into a database</li>
-<li>Enables me to figure out <strong>which books</strong> talk about a topic <span class="math inline">\(t\)</span> (data structures, algorithms, data ethics and policy, etc.)!</li>
-<li><strong>BUT</strong> (Devil is in the details): Can look very different for <code>txt</code>, <code>epub</code> (can contain images), <code>pdf</code> (sometimes text is embedded, sometimes not), images of scans, audiobooks</li>
-<li><span class="math inline">\(\implies\)</span> (Sad but true) Pipleline will <strong>crash and burn</strong> if you don’t handle these <strong>before</strong> using <a href="https://www.trychroma.com/" target="_blank">Cool NLP things</a> in T step</li>
-</ul>
-</section>
-<section id="hw3-possibility-1-pet-store-inventory" class="slide level2">
-<h2>HW3 Possibility 1: Pet Store Inventory</h2>
-<ul>
-<li><a href="https://petstore.swagger.io/v2/store/inventory" target="_blank">https://petstore.swagger.io/v2/store/inventory</a></li>
-</ul>
-</section>
-<section id="hw3-possibility-2-books-to-scrape" class="slide level2">
-<h2>HW3 Possibility 2: Books to Scrape</h2>
-<ul>
-<li><a href="http://books.toscrape.com/" target="_blank">Books to Scrape homepage</a></li>
-</ul>
-</section></section>
-<section>
-<section id="lab-data-validation" class="title-slide slide level1 center" data-stack-name="Lab: Data Validation">
-<h1>Lab(!): Data Validation</h1>
-
-</section>
-<section id="google-classroom-link" class="slide level2">
-<h2>Google Classroom Link</h2>
-<ul>
-<li><a href="https://classroom.google.com/c/NjM5MzE2MTE4NTgx/m/NjY4NDU0NTk0MTk4/details" target="_blank">Open in Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
+<li>Do that but for quotes!</li>
+<li>Scrape (one, and then many) page(s) from the <a href="http://quotes.toscrape.com/" target="_blank">default interface</a>, <strong>in parallel!</strong></li>
 </ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
@@ -651,7 +734,7 @@ age
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>DSAN 5500 Week 8: Data Validation, Pipelines</p>
+<p>DSAN 5500 Week 12: Final Projects, Interfaces</p>
 </div>
 </div>
 </section></section>
