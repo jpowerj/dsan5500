@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.23">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Jeff Jacobs">
   <title>DSAN 5500 – Week 4: Heaps, Stacks, Hash Maps</title>
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -452,7 +452,10 @@ Jeff Jacobs
 <img data-src="images/devil_details.png" class="r-stretch quarto-figure-center"><p class="caption">From <a href="https://www.prweek.com/article/1368808/pr-ethics-asia-patchwork-values" target="_blank"><em>PR Week</em></a>, 19 Oct 2015</p></section>
 <section id="objects-vs.-their-string-representations" class="slide level2 smaller crunch-title title-11 crunch-quarto-layout-panel crunch-images">
 <h2><em>Objects</em> vs.&nbsp;Their <em>(String) Representations</em></h2>
-<div class="quarto-layout-panel" data-layout="[1,1]" data-layout-align="center">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-align="center" data-layout="[1,1]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div id="xbox-left" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
@@ -485,7 +488,7 @@ Jeff Jacobs
 <h2>In Python</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="9367a448" class="cell" data-execution_count="1">
+<div id="b2c293a0" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span>
@@ -501,7 +504,7 @@ Jeff Jacobs
 <ul>
 <li>So far so good…</li>
 </ul>
-<div id="f289ffbb" class="cell" data-execution_count="2">
+<div id="4992b4ed" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="bu">print</span>(x<span class="op">+</span><span class="dv">1</span>)</span>
@@ -511,7 +514,15 @@ Jeff Jacobs
 <pre><code>3</code></pre>
 </div>
 <div class="cell-output cell-output-error">
-<pre><code>TypeError: can only concatenate str (not "int") to str</code></pre>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[2], line 2</span>
+<span class="ansi-green-fg ansi-bold">      1</span> <span style="color:rgb(0,135,0)">print</span>(x<span style="color:rgb(98,98,98)">+</span><span style="color:rgb(98,98,98)">1</span>)
+<span class="ansi-green-fg">----&gt; 2</span> <span style="color:rgb(0,135,0)">print</span>(<span class="ansi-yellow-bg">y</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">+</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">1</span>)
+
+<span class="ansi-red-fg">TypeError</span>: can only concatenate str (not "int") to str</pre>
+</div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -529,8 +540,7 @@ Jeff Jacobs
 <li>(Though we can <strong>overload</strong> the <code>+</code> operator to represent <strong>concatenation</strong> when applied to <strong>two <code>str</code> objects</strong>)</li>
 </ul></li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="in-hw1" class="slide level2 crunch-title">
 <h2>In HW1</h2>
@@ -561,13 +571,13 @@ Jeff Jacobs
 <ol type="1">
 <li><code>str</code>s are just lists of <strong>characters</strong>…</li>
 </ol>
-<div id="d989f60d" class="cell" data-execution_count="3">
+<div id="05734b55" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>x <span class="op">=</span> <span class="st">"Ceci n'est pas une string"</span></span>
-<span id="cb6-2"><a></a><span class="bu">print</span>(x)</span>
-<span id="cb6-3"><a></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span>
-<span id="cb6-4"><a></a><span class="bu">print</span>(<span class="bu">list</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>x <span class="op">=</span> <span class="st">"Ceci n'est pas une string"</span></span>
+<span id="cb5-2"><a></a><span class="bu">print</span>(x)</span>
+<span id="cb5-3"><a></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span>
+<span id="cb5-4"><a></a><span class="bu">print</span>(<span class="bu">list</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ceci n'est pas une string
@@ -577,13 +587,13 @@ Jeff Jacobs
 </div>
 </div><div class="column" style="width:50%;">
 <p><span class="math inline">\(\leadsto\)</span> 2. <strong>Characters</strong> are stored in Python memory as <strong><code>int</code> values</strong> (ASCII encodings)…</p>
-<div id="5b9494a0" class="cell" data-execution_count="4">
+<div id="534efc10" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>y <span class="op">=</span> <span class="st">b"Ceci n'est pas une string"</span></span>
-<span id="cb8-2"><a></a><span class="bu">print</span>(y)</span>
-<span id="cb8-3"><a></a><span class="bu">print</span>(<span class="bu">type</span>(y))</span>
-<span id="cb8-4"><a></a><span class="bu">print</span>(<span class="bu">list</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>y <span class="op">=</span> <span class="st">b"Ceci n'est pas une string"</span></span>
+<span id="cb7-2"><a></a><span class="bu">print</span>(y)</span>
+<span id="cb7-3"><a></a><span class="bu">print</span>(<span class="bu">type</span>(y))</span>
+<span id="cb7-4"><a></a><span class="bu">print</span>(<span class="bu">list</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>b"Ceci n'est pas une string"
@@ -591,13 +601,12 @@ Jeff Jacobs
 [67, 101, 99, 105, 32, 110, 39, 101, 115, 116, 32, 112, 97, 115, 32, 117, 110, 101, 32, 115, 116, 114, 105, 110, 103]</code></pre>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <p><span class="math inline">\(\leadsto\)</span> 3. Each <code>int</code> value is stored in <strong>computer memory</strong> as a <strong>byte</strong> (8 <strong>bits</strong> <span class="math inline">\(b_i \in \{0, 1\}\)</span>):</p>
-<div id="3f172ad4" class="cell" data-execution_count="5">
+<div id="e2b4ccf0" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="bu">print</span>([<span class="bu">format</span>(character, <span class="st">'b'</span>) <span class="cf">for</span> character <span class="kw">in</span> y])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="bu">print</span>([<span class="bu">format</span>(character, <span class="st">'b'</span>) <span class="cf">for</span> character <span class="kw">in</span> y])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>['1000011', '1100101', '1100011', '1101001', '100000', '1101110', '100111', '1100101', '1110011', '1110100', '100000', '1110000', '1100001', '1110011', '100000', '1110101', '1101110', '1100101', '100000', '1110011', '1110100', '1110010', '1101001', '1101110', '1100111']</code></pre>
@@ -606,6 +615,9 @@ Jeff Jacobs
 </section>
 <section id="so-what-is-the-right-representation" class="slide level2 title-12 smaller crunch-title crunch-quarto-layout-panel">
 <h2>So What is the “Right” Representation?</h2>
+<div>
+
+</div>
 <div class="quarto-layout-panel" data-layout="[1,1]">
 <div class="quarto-layout-row">
 <div id="best-repr-left" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -664,15 +676,14 @@ Jeff Jacobs
 </section>
 <section id="swim-club-with-data-science-hats" class="slide level2 smaller crunch-title">
 <h2>Swim Club with Data Science Hats</h2>
-<div id="6e0b0a92" class="cell" data-execution_count="6">
+<div id="fd00fdf1" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb12-2"><a></a>swim_df <span class="op">=</span> pd.read_csv(<span class="st">"assets/swimdata.csv"</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-3"><a></a>swim_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-2"><a></a>swim_df <span class="op">=</span> pd.read_csv(<span class="st">"assets/swimdata.csv"</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb11-3"><a></a>swim_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -688,7 +699,7 @@ Jeff Jacobs
     }
 </style>
 
-<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -746,7 +757,6 @@ Jeff Jacobs
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="fastest-per-style" class="slide level2 smaller crunch-title crunch-ul crunch-details crunch-code smaller-table">
 <h2>Fastest Per Style</h2>
@@ -755,14 +765,13 @@ Jeff Jacobs
 <center>
 <strong>Short Events</strong>
 </center>
-<div id="363d33c2" class="cell" data-execution_count="7">
+<div id="d27e0f8c" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>short_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"50m"</span>].copy()</span>
-<span id="cb13-2"><a></a>short_df.sort_values([<span class="st">'style'</span>, <span class="st">'time'</span>], ascending<span class="op">=</span><span class="va">True</span>).groupby(<span class="st">'style'</span>).head(<span class="dv">1</span>).drop(columns<span class="op">=</span><span class="st">"age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>short_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"50m"</span>].copy()</span>
+<span id="cb12-2"><a></a>short_df.sort_values([<span class="st">'style'</span>, <span class="st">'time'</span>], ascending<span class="op">=</span><span class="va">True</span>).groupby(<span class="st">'style'</span>).head(<span class="dv">1</span>).drop(columns<span class="op">=</span><span class="st">"age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -778,7 +787,7 @@ Jeff Jacobs
     }
 </style>
 
-<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -823,19 +832,17 @@ Jeff Jacobs
 </div>
 </div>
 </div>
-</div>
 </div><div class="column" data-wiudth="50%">
 <center>
 <strong>Long Events</strong>
 </center>
-<div id="97b860ee" class="cell" data-execution_count="8">
+<div id="bbf7a186" class="cell" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>long_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"100m"</span>].copy()</span>
-<span id="cb14-2"><a></a>long_df.sort_values([<span class="st">'style'</span>, <span class="st">'time'</span>], ascending<span class="op">=</span><span class="va">True</span>).groupby(<span class="st">'style'</span>).head(<span class="dv">1</span>).drop(columns<span class="op">=</span><span class="st">"age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>long_df <span class="op">=</span> swim_df[swim_df[<span class="st">'distance'</span>] <span class="op">==</span> <span class="st">"100m"</span>].copy()</span>
+<span id="cb13-2"><a></a>long_df.sort_values([<span class="st">'style'</span>, <span class="st">'time'</span>], ascending<span class="op">=</span><span class="va">True</span>).groupby(<span class="st">'style'</span>).head(<span class="dv">1</span>).drop(columns<span class="op">=</span><span class="st">"age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="8">
-<div>
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -851,7 +858,7 @@ Jeff Jacobs
     }
 </style>
 
-<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header" style="text-align: right;">
 <th data-quarto-table-cell-role="th"></th>
@@ -896,9 +903,7 @@ Jeff Jacobs
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</div></div>
 <ul>
 <li>This works well for <strong>you</strong>, as a data scientist, <strong>manually analyzing</strong> the data via code cells</li>
 <li>What if <strong>the public</strong> is accessing your data <strong>hundreds of times per second</strong> (e.g., for a <a href="https://www.espn.com/olympics/summer/2024/medals" target="_blank"><strong>live-updating data dashboard</strong></a>)? Should we (1) filter, (2) sort, (3) group by style, (4) filter (choose top entry), (5) drop column <strong>every time data is accessed?</strong></li>
@@ -912,6 +917,9 @@ Jeff Jacobs
 </section>
 <section id="linkedlist-foundation-for-most-data-structures" class="slide level2 smaller crunch-title title-10 crunch-quarto-layout-panel crunch-images crunch-figures">
 <h2>LinkedList: Foundation for Most(?) Data Structures!</h2>
+<div>
+
+</div>
 <div class="quarto-layout-panel" data-layout="[1,3]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
@@ -924,18 +932,20 @@ Jeff Jacobs
 <div id="bored-pooh" class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: flex-start;">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="kw">class</span> LinkedList:</span>
-<span id="cb15-2"><a></a>  <span class="at">@property</span></span>
-<span id="cb15-3"><a></a>  <span class="kw">def</span> root(<span class="va">self</span>):</span>
-<span id="cb15-4"><a></a>    <span class="cf">return</span> <span class="va">self</span>.__root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">class</span> LinkedList:</span>
+<span id="cb14-2"><a></a>  <span class="at">@property</span></span>
+<span id="cb14-3"><a></a>  <span class="kw">def</span> root(<span class="va">self</span>):</span>
+<span id="cb14-4"><a></a>    <span class="cf">return</span> <span class="va">self</span>.__root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">class</span> LinkedListNode:</span>
-<span id="cb16-2"><a></a>  <span class="at">@property</span> content</span>
-<span id="cb16-3"><a></a>  <span class="at">@property</span> <span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="kw">class</span> LinkedListNode:</span>
+<span id="cb15-2"><a></a>  <span class="at">@property</span> content</span>
+<span id="cb15-3"><a></a>  <span class="at">@property</span> <span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </div>
 </div>
 </div>
-</div>
+<div>
+
 </div>
 <div class="quarto-layout-panel" data-layout="[1,3]">
 <div class="quarto-layout-row quarto-layout-valign-center">
@@ -949,19 +959,21 @@ Jeff Jacobs
 <div id="fancy-pooh" class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: flex-start;">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="kw">class</span> BinaryTree:</span>
-<span id="cb17-2"><a></a>  <span class="at">@property</span></span>
-<span id="cb17-3"><a></a>  <span class="kw">def</span> root(<span class="va">self</span>):</span>
-<span id="cb17-4"><a></a>    <span class="cf">return</span> <span class="va">self</span>.__root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="kw">class</span> BinaryTree:</span>
+<span id="cb16-2"><a></a>  <span class="at">@property</span></span>
+<span id="cb16-3"><a></a>  <span class="kw">def</span> root(<span class="va">self</span>):</span>
+<span id="cb16-4"><a></a>    <span class="cf">return</span> <span class="va">self</span>.__root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">class</span> BinaryTreeNode:</span>
-<span id="cb18-2"><a></a>  <span class="at">@property</span> content</span>
-<span id="cb18-3"><a></a>  <span class="at">@property</span> left</span>
-<span id="cb18-4"><a></a>  <span class="at">@property</span> right</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="kw">class</span> BinaryTreeNode:</span>
+<span id="cb17-2"><a></a>  <span class="at">@property</span> content</span>
+<span id="cb17-3"><a></a>  <span class="at">@property</span> left</span>
+<span id="cb17-4"><a></a>  <span class="at">@property</span> right</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </div>
 </div>
 </div>
-</div>
+<div>
+
 </div>
 <div class="quarto-layout-panel" data-layout="[1,3]">
 <div class="quarto-layout-row quarto-layout-valign-center">
@@ -975,19 +987,18 @@ Jeff Jacobs
 <div id="fanciest-pooh" class="quarto-layout-cell" style="flex-basis: 75.0%;justify-content: flex-start;">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="kw">class</span> QuadTree:</span>
-<span id="cb19-2"><a></a>  <span class="at">@property</span></span>
-<span id="cb19-3"><a></a>  <span class="kw">def</span> root(<span class="va">self</span>):</span>
-<span id="cb19-4"><a></a>    <span class="cf">return</span> <span class="va">self</span>.__root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">class</span> QuadTree:</span>
+<span id="cb18-2"><a></a>  <span class="at">@property</span></span>
+<span id="cb18-3"><a></a>  <span class="kw">def</span> root(<span class="va">self</span>):</span>
+<span id="cb18-4"><a></a>    <span class="cf">return</span> <span class="va">self</span>.__root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="kw">class</span> QuadTreeNode:</span>
-<span id="cb20-2"><a></a>  <span class="at">@property</span> content</span>
-<span id="cb20-3"><a></a>  <span class="at">@property</span> nw</span>
-<span id="cb20-4"><a></a>  <span class="at">@property</span> ne</span>
-<span id="cb20-5"><a></a>  <span class="at">@property</span> sw</span>
-<span id="cb20-6"><a></a>  <span class="at">@property</span> se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="kw">class</span> QuadTreeNode:</span>
+<span id="cb19-2"><a></a>  <span class="at">@property</span> content</span>
+<span id="cb19-3"><a></a>  <span class="at">@property</span> nw</span>
+<span id="cb19-4"><a></a>  <span class="at">@property</span> ne</span>
+<span id="cb19-5"><a></a>  <span class="at">@property</span> sw</span>
+<span id="cb19-6"><a></a>  <span class="at">@property</span> se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </div>
 </div>
 </div>
@@ -1013,14 +1024,14 @@ Jeff Jacobs
 </section>
 <section id="our-list-of-item-price-pairs" class="slide level2 crunch-title crunch-details crunch-ul small-summary">
 <h2>Our List of (Item, Price) Pairs</h2>
-<div id="bcf979d3" class="cell" data-execution_count="9">
+<div id="b99c8c2b" class="cell" data-execution_count="9">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>price_list <span class="op">=</span> []</span>
-<span id="cb21-2"><a></a>price_list.append((<span class="st">'Banana'</span>, <span class="dv">10</span>))</span>
-<span id="cb21-3"><a></a>price_list.append((<span class="st">'Apple'</span>, <span class="dv">2</span>))</span>
-<span id="cb21-4"><a></a>price_list.append((<span class="st">'Four Loko'</span>, <span class="dv">5</span>))</span>
-<span id="cb21-5"><a></a>price_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>price_list <span class="op">=</span> []</span>
+<span id="cb20-2"><a></a>price_list.append((<span class="st">'Banana'</span>, <span class="dv">10</span>))</span>
+<span id="cb20-3"><a></a>price_list.append((<span class="st">'Apple'</span>, <span class="dv">2</span>))</span>
+<span id="cb20-4"><a></a>price_list.append((<span class="st">'Four Loko'</span>, <span class="dv">5</span>))</span>
+<span id="cb20-5"><a></a>price_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>[('Banana', 10), ('Apple', 2), ('Four Loko', 5)]</code></pre>
@@ -1370,18 +1381,7 @@ h(\texttt{x}) = \texttt{x[0]}
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1413,7 +1413,29 @@ h(\texttt{x}) = \texttt{x[0]}
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1421,7 +1443,7 @@ h(\texttt{x}) = \texttt{x[0]}
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

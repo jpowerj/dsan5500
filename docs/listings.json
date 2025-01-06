@@ -1,5 +1,15 @@
 [
   {
+    "listing": "/writeups/index.html",
+    "items": [
+      "/writeups/prefect/index.html"
+    ]
+  },
+  {
+    "listing": "/recordings/index.html",
+    "items": []
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/w01/index.html",
@@ -13,17 +23,8 @@
       "/w09/index.html",
       "/w10/index.html",
       "/w11/index.html",
-      "/w12/index.html"
-    ]
-  },
-  {
-    "listing": "/recordings/index.html",
-    "items": []
-  },
-  {
-    "listing": "/writeups/index.html",
-    "items": [
-      "/writeups/prefect/index.html"
+      "/w12/index.html",
+      "/w13/index.html"
     ]
   }
 ]

@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.23">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Jeff Jacobs">
   <title>DSAN 5500 – Week 12: Final Projects, Interfaces</title>
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -520,7 +520,7 @@ Jeff Jacobs
 <ul>
 <li><strong>Example 4.2</strong>: We were able to gradually improve <strong>retrieval</strong>:</li>
 </ul>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 30%">
 <col style="width: 5%">
@@ -550,7 +550,7 @@ Jeff Jacobs
 <ul>
 <li>But then for <b>search</b>, something was missing 🧐:</li>
 </ul>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 32%">
 <col style="width: 5%">
@@ -623,7 +623,7 @@ Jeff Jacobs
 <li>Humans are <strong>not</strong> capable of true multitasking! In CS terms, this would be called <strong>multiprocessing</strong> (more on this later)</li>
 <li>We <strong>are</strong> capable, however, of various modes of <strong>concurrency</strong>!</li>
 </ul>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -664,7 +664,7 @@ Jeff Jacobs
 <img data-src="images/all_three.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="in-action" class="slide level2 crunch-title crunch-details">
 <h2>In Action</h2>
-<div id="bea5b397" class="cell" data-execution_count="1">
+<div id="eb866757" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> time</span>
 <span id="cb1-2"><a></a><span class="im">from</span> sympy.ntheory <span class="im">import</span> factorint</span>
 <span id="cb1-3"><a></a><span class="im">from</span> joblib <span class="im">import</span> Parallel, delayed</span>
@@ -677,7 +677,7 @@ Jeff Jacobs
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="32ce5116" class="cell" data-execution_count="2">
+<div id="442a8646" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>serial_start <span class="op">=</span> time.time()</span>
@@ -689,11 +689,11 @@ Jeff Jacobs
 <span id="cb2-7"><a></a>disp_time(serial_start, serial_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.9938 s</code></pre>
+<pre><code>0.9670 s</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="00fac0ec" class="cell" data-execution_count="3">
+<div id="01753433" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>par_start <span class="op">=</span> time.time()</span>
@@ -705,11 +705,10 @@ Jeff Jacobs
 <span id="cb4-7"><a></a>disp_time(par_start, par_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>2.1676 s</code></pre>
+<pre><code>2.2585 s</code></pre>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="python-rightarrow-prefect" class="slide level2">
 <h2>Python <span class="math inline">\(\rightarrow\)</span> Prefect</h2>
@@ -982,18 +981,7 @@ Jeff Jacobs
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1025,7 +1013,29 @@ Jeff Jacobs
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1033,7 +1043,7 @@ Jeff Jacobs
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.23">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Jeff Jacobs">
   <title>DSAN 5500 – Week 8: Data Validation, Data Processing Pipelines</title>
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -479,7 +479,7 @@ Jeff Jacobs
 <img data-src="images/pydantic_logo.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="pydantic-in-action" class="slide level2 crunch-title crunch-details">
 <h2>Pydantic in Action</h2>
-<div id="e54b1222" class="cell" data-execution_count="1">
+<div id="7313271e" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
@@ -493,16 +493,28 @@ Jeff Jacobs
 <pre><code>InventoryItem(item_name='Banana', price=10.0)</code></pre>
 </div>
 </div>
-<div id="82a27546" class="cell" data-execution_count="2">
+<div id="c86b4fc8" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>invalid_item <span class="op">=</span> InventoryItem(item_name<span class="op">=</span><span class="st">"Banana"</span>, price<span class="op">=</span><span class="st">"100 dollar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-error">
-<pre><code>ValidationError: 1 validation error for InventoryItem
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValidationError</span>                           Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[2], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> invalid_item <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">InventoryItem</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">item_name</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Banana</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">price</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">100 dollar</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176</span>, in <span class="ansi-cyan-fg">BaseModel.__init__</span><span class="ansi-blue-fg">(self, **data)</span>
+<span class="ansi-green-fg ansi-bold">    174</span> <span style="font-style:italic;color:rgb(95,135,135)"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
+<span class="ansi-green-fg ansi-bold">    175</span> __tracebackhide__ <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
+<span class="ansi-green-fg">--&gt; 176</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">__pydantic_validator__</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">validate_python</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">self_instance</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-fg">ValidationError</span>: 1 validation error for InventoryItem
 price
   Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='100 dollar', input_type=str]
-    For further information visit https://errors.pydantic.dev/2.6/v/float_parsing</code></pre>
+    For further information visit https://errors.pydantic.dev/2.7/v/float_parsing</pre>
+</div>
 </div>
 </div>
 </section>
@@ -510,45 +522,78 @@ price
 <h2>Pydantic in Even-Cooler Action</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="ef7c6860" class="cell" data-execution_count="3">
+<div id="6980287e" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, PositiveInt</span>
-<span id="cb5-2"><a></a><span class="kw">class</span> Employee(BaseModel):</span>
-<span id="cb5-3"><a></a>    name: <span class="bu">str</span></span>
-<span id="cb5-4"><a></a>    email: EmailStr</span>
-<span id="cb5-5"><a></a>    age: PositiveInt</span>
-<span id="cb5-6"><a></a>invalid_employee <span class="op">=</span> Employee(</span>
-<span id="cb5-7"><a></a>  name<span class="op">=</span><span class="st">"Jeef"</span>,</span>
-<span id="cb5-8"><a></a>  email<span class="op">=</span><span class="st">"fakeemail!!!"</span>,</span>
-<span id="cb5-9"><a></a>  age<span class="op">=</span><span class="dv">50</span></span>
-<span id="cb5-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, PositiveInt</span>
+<span id="cb4-2"><a></a><span class="kw">class</span> Employee(BaseModel):</span>
+<span id="cb4-3"><a></a>    name: <span class="bu">str</span></span>
+<span id="cb4-4"><a></a>    email: EmailStr</span>
+<span id="cb4-5"><a></a>    age: PositiveInt</span>
+<span id="cb4-6"><a></a>invalid_employee <span class="op">=</span> Employee(</span>
+<span id="cb4-7"><a></a>  name<span class="op">=</span><span class="st">"Jeef"</span>,</span>
+<span id="cb4-8"><a></a>  email<span class="op">=</span><span class="st">"fakeemail!!!"</span>,</span>
+<span id="cb4-9"><a></a>  age<span class="op">=</span><span class="dv">50</span></span>
+<span id="cb4-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-error">
-<pre><code>ValidationError: 1 validation error for Employee
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValidationError</span>                           Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[3], line 6</span>
+<span class="ansi-green-fg ansi-bold">      4</span>     email: EmailStr
+<span class="ansi-green-fg ansi-bold">      5</span>     age: PositiveInt
+<span class="ansi-green-fg">----&gt; 6</span> invalid_employee <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Employee</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">      7</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">name</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Jeef</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">      8</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">email</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">fakeemail!!!</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">      9</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">age</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">50</span>
+<span class="ansi-green-fg ansi-bold">     10</span> <span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176</span>, in <span class="ansi-cyan-fg">BaseModel.__init__</span><span class="ansi-blue-fg">(self, **data)</span>
+<span class="ansi-green-fg ansi-bold">    174</span> <span style="font-style:italic;color:rgb(95,135,135)"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
+<span class="ansi-green-fg ansi-bold">    175</span> __tracebackhide__ <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
+<span class="ansi-green-fg">--&gt; 176</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">__pydantic_validator__</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">validate_python</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">self_instance</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-fg">ValidationError</span>: 1 validation error for Employee
 email
-  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]</code></pre>
+  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]</pre>
+</div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="e774a36d" class="cell" data-execution_count="4">
+<div id="d5212bc8" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>invalid_employee2 <span class="op">=</span> Employee(</span>
-<span id="cb7-2"><a></a>  name<span class="op">=</span><span class="st">"Jeeferson"</span>,</span>
-<span id="cb7-3"><a></a>  email<span class="op">=</span><span class="st">"valid@email.com"</span>,</span>
-<span id="cb7-4"><a></a>  age<span class="op">=-</span><span class="dv">3</span></span>
-<span id="cb7-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>invalid_employee2 <span class="op">=</span> Employee(</span>
+<span id="cb5-2"><a></a>  name<span class="op">=</span><span class="st">"Jeeferson"</span>,</span>
+<span id="cb5-3"><a></a>  email<span class="op">=</span><span class="st">"valid@email.com"</span>,</span>
+<span id="cb5-4"><a></a>  age<span class="op">=-</span><span class="dv">3</span></span>
+<span id="cb5-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-error">
-<pre><code>ValidationError: 1 validation error for Employee
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValidationError</span>                           Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[4], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> invalid_employee2 <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Employee</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">      2</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">name</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Jeeferson</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">      3</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">email</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">valid@email.com</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">      4</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">age</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">-</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">3</span>
+<span class="ansi-green-fg ansi-bold">      5</span> <span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176</span>, in <span class="ansi-cyan-fg">BaseModel.__init__</span><span class="ansi-blue-fg">(self, **data)</span>
+<span class="ansi-green-fg ansi-bold">    174</span> <span style="font-style:italic;color:rgb(95,135,135)"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
+<span class="ansi-green-fg ansi-bold">    175</span> __tracebackhide__ <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
+<span class="ansi-green-fg">--&gt; 176</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">__pydantic_validator__</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">validate_python</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">self_instance</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-fg">ValidationError</span>: 1 validation error for Employee
 age
   Input should be greater than 0 [type=greater_than, input_value=-3, input_type=int]
-    For further information visit https://errors.pydantic.dev/2.6/v/greater_than</code></pre>
+    For further information visit https://errors.pydantic.dev/2.7/v/greater_than</pre>
 </div>
 </div>
 </div>
-</div>
+</div></div>
 </section></section>
 <section>
 <section id="data-processing-pipelines" class="title-slide slide level1 center" data-stack-name="Pipelines">
@@ -899,18 +944,7 @@ age
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -942,7 +976,29 @@ age
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -950,7 +1006,7 @@ age
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

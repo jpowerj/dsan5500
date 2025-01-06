@@ -1,8 +1,17 @@
+zoom_url: https://georgetown.zoom.us/j/99019126324?pwd=wrcBediyQ3JO2y7IP1UrzlE6pz2FaF.1
+panopto_url: https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=3ada6168-ed11-47c8-8936-b25a00667770
+tas:
+  - name: Renee DeMaio
+    email: jrd154@georgetown.edu
+    office_hours: TBD
+  - name: Jiatong Liu
+    email: jl3081@georgetown.edu
+    office_hours: TBD
 w01:
   weeknum: 1
   title: "Course Intro and Motivation"
   footer: "Course Intro and Motivation"
-  date-md: "Jan 10"
+  date-md: "Jan 9"
 w02:
   weeknum: 2
   title: "Software Design Patterns and Object-Oriented Programming"
@@ -61,7 +70,7 @@ w12:
 w13:
   weeknum: 13
   title: "Applications in NLP"
-  footer: "Applications in NLP"
+  footer: "NLP Applications"
   date-md: "Apr 22"
 w14:
   weeknum: 14

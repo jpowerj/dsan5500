@@ -1,7 +1,7 @@
 ---
 title: "Week 1: {{< var w01.title >}}"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
-date: "Wednesday, January 10, 2024"
+date: 2024-01-09
 date-format: full
 lecnum: 1
 categories:

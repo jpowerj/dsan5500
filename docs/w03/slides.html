@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.23">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Jeff Jacobs">
   <title>DSAN 5500 – Week 3: Data Structures and Computational Complexity</title>
@@ -43,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -467,7 +467,7 @@ Jeff Jacobs
 <li>Unless otherwise specified, we’re talking about <span class="math inline">\(2\)</span>-tuples</li>
 <li>Example: We can locate something on the Earth by specifying two <code>floats</code>: latitude and longitude!</li>
 </ul>
-<div id="216db93d" class="cell" data-execution_count="1">
+<div id="dd4ac309" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>gtown_loc <span class="op">=</span> (<span class="fl">38.9076</span>, <span class="op">-</span><span class="fl">77.0723</span>)</span>
@@ -515,7 +515,7 @@ c
 <ul>
 <li>Python:</li>
 </ul>
-<div id="41e65dc4" class="cell" data-execution_count="2">
+<div id="7b795be5" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>my_list <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>]</span>
@@ -528,15 +528,14 @@ b
 c</code></pre>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="list-comprehensions-apply-function-to-each-element" class="slide level2 crunch-title title-07">
 <h2><em>List Comprehensions</em>: Apply Function to Each Element</h2>
 <ul>
 <li>Construct <strong>new</strong> list by applying operation to each element:</li>
 </ul>
-<div id="122ea8c7" class="cell" data-execution_count="3">
+<div id="1b79345b" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>my_nums <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
@@ -550,7 +549,7 @@ c</code></pre>
 <ul>
 <li>Can also <strong>filter</strong> the elements of the list with <code>if</code>:</li>
 </ul>
-<div id="dcc681b6" class="cell" data-execution_count="4">
+<div id="82cd19c4" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>my_odd_squares <span class="op">=</span> [num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> my_nums <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>]</span>
@@ -568,7 +567,7 @@ c</code></pre>
 <ul>
 <li>Extremely helpful + efficient for finding <strong>unique</strong> elements:</li>
 </ul>
-<div id="467f710b" class="cell" data-execution_count="5">
+<div id="25c8a7a9" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>animals_i_saw <span class="op">=</span> [<span class="st">'bird'</span>,<span class="st">'bird'</span>,<span class="st">'fish'</span>,<span class="st">'bird'</span>,<span class="st">'cat'</span>,<span class="st">'bird'</span>,<span class="st">'lizard'</span>]</span>
@@ -578,7 +577,7 @@ c</code></pre>
 <pre><code>Number of animals I saw: 7</code></pre>
 </div>
 </div>
-<div id="f1a1e34b" class="cell" data-execution_count="6">
+<div id="94c918fd" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>unique_animals_me <span class="op">=</span> <span class="bu">set</span>(animals_i_saw)</span>
@@ -586,7 +585,7 @@ c</code></pre>
 <span id="cb12-3"><a></a><span class="bu">print</span>(<span class="ss">f"Number of unique animals: </span><span class="sc">{</span><span class="bu">len</span>(unique_animals_me)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Set of unique animals: {'lizard', 'bird', 'cat', 'fish'}
+<pre><code>Set of unique animals: {'bird', 'lizard', 'fish', 'cat'}
 Number of unique animals: 4</code></pre>
 </div>
 </div>
@@ -594,7 +593,7 @@ Number of unique animals: 4</code></pre>
 <ul>
 <li>Supports all set operators from math:</li>
 </ul>
-<div id="6208c145" class="cell" data-execution_count="7">
+<div id="913f9776" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>animals_you_saw <span class="op">=</span> [<span class="st">'lizard'</span>,<span class="st">'dog'</span>,<span class="st">'bird'</span>,<span class="st">'bird'</span>,<span class="st">'bird'</span>]</span>
@@ -603,20 +602,20 @@ Number of unique animals: 4</code></pre>
 <span id="cb14-4"><a></a><span class="bu">print</span>(<span class="ss">f"Animals we both saw: </span><span class="sc">{</span>unique_animals_both<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Animals we both saw: {'bird', 'lizard'}</code></pre>
+<pre><code>Animals we both saw: {'lizard', 'bird'}</code></pre>
 </div>
 </div>
-<div id="b96779ce" class="cell" data-execution_count="8">
+<div id="e145f206" class="cell" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>unique_animals_either <span class="op">=</span> unique_animals_me.union(unique_animals_you)</span>
 <span id="cb16-2"><a></a><span class="bu">print</span>(<span class="ss">f"Animals either of us saw: </span><span class="sc">{</span>unique_animals_either<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Animals either of us saw: {'fish', 'dog', 'cat', 'bird', 'lizard'}</code></pre>
+<pre><code>Animals either of us saw: {'bird', 'lizard', 'fish', 'dog', 'cat'}</code></pre>
 </div>
 </div>
-<div id="36572314" class="cell" data-execution_count="9">
+<div id="79af53da" class="cell" data-execution_count="9">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>unique_animals_meonly <span class="op">=</span> unique_animals_me <span class="op">-</span> unique_animals_you</span>
@@ -625,12 +624,11 @@ Number of unique animals: 4</code></pre>
 <span id="cb18-4"><a></a><span class="bu">print</span>(<span class="ss">f"Animals you saw that I didn't see: </span><span class="sc">{</span>unique_animals_youonly<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Animals I saw that you didn't see: {'cat', 'fish'}
+<pre><code>Animals I saw that you didn't see: {'fish', 'cat'}
 Animals you saw that I didn't see: {'dog'}</code></pre>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="maps-dictionaries" class="slide level2 smaller crunch-title">
 <h2>Maps / Dictionaries</h2>
@@ -639,7 +637,7 @@ Animals you saw that I didn't see: {'dog'}</code></pre>
 <ul>
 <li>While other language like Java have lots of fancy types of Map, Python has a single type, the <strong>dictionary</strong>:</li>
 </ul>
-<div id="10aaac6c" class="cell" data-execution_count="10">
+<div id="fdba1fa3" class="cell" data-execution_count="10">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>gtown_data <span class="op">=</span> {</span>
@@ -664,7 +662,7 @@ dict_values(['Georgetown University', 1789, (38.9076, -77.0723), {'city': 'Washi
 <ul>
 <li>Be careful when looping! Default behavior is iteration over <strong>keys</strong>:</li>
 </ul>
-<div id="6cfa1d60" class="cell" data-execution_count="11">
+<div id="1afea37c" class="cell" data-execution_count="11">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a><span class="cf">for</span> k <span class="kw">in</span> gtown_data:</span>
@@ -680,7 +678,7 @@ location</code></pre>
 <ul>
 <li>For <strong>key-value pairs</strong> use <code>.items()</code>:</li>
 </ul>
-<div id="7bdba05f" class="cell" data-execution_count="12">
+<div id="2d5894af" class="cell" data-execution_count="12">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="cf">for</span> k, v <span class="kw">in</span> gtown_data.items():</span>
@@ -693,8 +691,7 @@ coordinates (38.9076, -77.0723)
 location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section></section>
 <section>
 <section id="complexity-with-respect-to-a-structure" class="title-slide slide level1 center" data-stack-name="Complexity">
@@ -718,7 +715,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </section>
 <section id="tuples-1" class="slide level2">
 <h2>Tuples</h2>
-<div id="8116e882" class="cell" data-execution_count="13">
+<div id="a904eb45" class="cell" data-execution_count="13">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="kw">class</span> MyTuple:</span>
@@ -748,7 +745,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li>The list itself just points to a root item:</li>
 </ul>
-<div id="0b7a1f0c" class="cell" data-execution_count="14">
+<div id="a4503158" class="cell" data-execution_count="14">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="kw">class</span> MyList:</span>
@@ -769,7 +766,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li>An item has contents, pointer to next item:</li>
 </ul>
-<div id="415a3224" class="cell" data-execution_count="15">
+<div id="1860b5c2" class="cell" data-execution_count="15">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="kw">class</span> MyListItem:</span>
@@ -788,9 +785,8 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <span id="cb29-14"><a></a>    <span class="cf">return</span> my_content <span class="cf">if</span> <span class="va">self</span>.<span class="bu">next</span> <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> <span class="ss">f"</span><span class="sc">{</span>my_content<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">next</span><span class="sc">.</span><span class="fu">__repr__</span>()<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</div>
-</div>
-<div id="82b68b33" class="cell" data-execution_count="16">
+</div></div>
+<div id="acdfe162" class="cell" data-execution_count="16">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>users <span class="op">=</span> MyList()</span>
@@ -820,7 +816,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li>With a <code>MyTuple</code>:</li>
 </ul>
-<div id="f2cf7d26" class="cell" data-execution_count="17">
+<div id="8efe23e5" class="cell" data-execution_count="17">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>t1.thing1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -832,7 +828,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li><span class="math inline">\(\implies\)</span> 1 step</li>
 </ul>
-<div id="457c9724" class="cell" data-execution_count="18">
+<div id="6e034582" class="cell" data-execution_count="18">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a>t1.thing2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -848,7 +844,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li>With a <code>MyList</code>:</li>
 </ul>
-<div id="68d06a3f" class="cell" data-execution_count="19">
+<div id="06b8d911" class="cell" data-execution_count="19">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="bu">print</span>(users.root.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -860,7 +856,7 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <ul>
 <li><span class="math inline">\(\implies\)</span> 1 step</li>
 </ul>
-<div id="6ae0aa20" class="cell" data-execution_count="20">
+<div id="7d95d6f4" class="cell" data-execution_count="20">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a>current_node <span class="op">=</span> users.root</span>
@@ -876,15 +872,14 @@ location {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <li><span class="math inline">\(\implies\)</span> (3 steps)</li>
 <li>…But why 3? How many steps if the list contained 5 elements? <span class="math inline">\(N\)</span> elements?</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="pairwise-concatenating-list-elements" class="slide level2 smaller crunch-title">
 <h2>Pairwise-Concatenating List Elements</h2>
 <ul>
 <li>Now rather than just printing, let’s pairwise concatenate:</li>
 </ul>
-<div id="b457b68f" class="cell" data-execution_count="21">
+<div id="00b7315d" class="cell" data-execution_count="21">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a>cur_pointer1 <span class="op">=</span> users.root</span>
@@ -913,7 +908,7 @@ BoBo</code></pre>
 </section>
 <section id="last-example-pairwise-concat-end-check" class="slide level2 smaller crunch-title title-12 crunch-details">
 <h2>Last Example: Pairwise-Concat + End Check</h2>
-<div id="2157b0a9" class="cell" data-execution_count="22">
+<div id="b0e75383" class="cell" data-execution_count="22">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a>printed_items <span class="op">=</span> []</span>
@@ -982,6 +977,9 @@ Phew. Bo printed at least once.</code></pre>
 <li>With the <strong>linear</strong> approach, each time we check a word and it’s not our word we eliminate… one measly word 😞</li>
 <li>But with the <strong>divide-and-conquer</strong> approach… we eliminate 🔥<strong>HALF OF THE REMAINING WORDS</strong>🔥</li>
 </ul>
+<div>
+
+</div>
 <div class="quarto-layout-panel" data-layout="[1,1]" data-layout-align="center">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -1102,7 +1100,7 @@ Phew. Bo printed at least once.</code></pre>
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="f8742794" class="cell" data-execution_count="23">
+<div id="17c28d1a" class="cell" data-execution_count="23">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="kw">class</span> MyTopSecretInfo:</span>
@@ -1112,15 +1110,24 @@ Phew. Bo printed at least once.</code></pre>
 <span id="cb44-5"><a></a>info_obj.__the_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-error">
-<pre><code>AttributeError: 'MyTopSecretInfo' object has no attribute '__the_info'</code></pre>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[23], line 5</span>
+<span class="ansi-green-fg ansi-bold">      2</span>   __the_info <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">I love Carly Rae Jepsen</span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">      4</span> info_obj <span style="color:rgb(98,98,98)">=</span> MyTopSecretInfo()
+<span class="ansi-green-fg">----&gt; 5</span> <span class="ansi-yellow-bg">info_obj</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">__the_info</span>
+
+<span class="ansi-red-fg">AttributeError</span>: 'MyTopSecretInfo' object has no attribute '__the_info'</pre>
+</div>
 </div>
 </div>
 <p>Guess we can’t access it then, right? 😮‍💨</p>
 </div><div class="column" style="width:50%;">
-<div id="fde48d09" class="cell" data-execution_count="24">
+<div id="60e630ef" class="cell" data-execution_count="24">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a>info_obj._MyTopSecretInfo__the_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a>info_obj._MyTopSecretInfo__the_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>'I love Carly Rae Jepsen'</code></pre>
@@ -1130,8 +1137,7 @@ Phew. Bo printed at least once.</code></pre>
 <li>NOO MY SECRET!!! 😭</li>
 <li>Pls don’t tell anyone</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="key-oop-features-3-4-inheritance-polymorphism" class="slide level2 crunch-title title-07 crunch-ul">
 <h2>Key OOP Features #3-4: Inheritance, Polymorphism</h2>
@@ -1255,96 +1261,96 @@ Phew. Bo printed at least once.</code></pre>
 <div id="basic-class" class="cell" data-execution_count="25">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a><span class="kw">class</span> Bookstore:</span>
-<span id="cb48-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, location):</span>
-<span id="cb48-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb48-4"><a></a>        <span class="va">self</span>.location <span class="op">=</span> location</span>
-<span id="cb48-5"><a></a>        <span class="va">self</span>.books <span class="op">=</span> []</span>
-<span id="cb48-6"><a></a></span>
-<span id="cb48-7"><a></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, index):</span>
-<span id="cb48-8"><a></a>        <span class="cf">return</span> <span class="va">self</span>.books[index]</span>
-<span id="cb48-9"><a></a></span>
-<span id="cb48-10"><a></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
-<span id="cb48-11"><a></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
-<span id="cb48-12"><a></a></span>
-<span id="cb48-13"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb48-14"><a></a>        <span class="cf">return</span> <span class="ss">f"Bookstore[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_books()<span class="sc">}</span><span class="ss"> books]"</span></span>
-<span id="cb48-15"><a></a></span>
-<span id="cb48-16"><a></a>    <span class="kw">def</span> add_books(<span class="va">self</span>, book_list):</span>
-<span id="cb48-17"><a></a>        <span class="va">self</span>.books.extend(book_list)</span>
-<span id="cb48-18"><a></a></span>
-<span id="cb48-19"><a></a>    <span class="kw">def</span> get_books(<span class="va">self</span>):</span>
-<span id="cb48-20"><a></a>        <span class="cf">return</span> <span class="va">self</span>.books</span>
-<span id="cb48-21"><a></a></span>
-<span id="cb48-22"><a></a>    <span class="kw">def</span> get_inventory(<span class="va">self</span>):</span>
-<span id="cb48-23"><a></a>        book_lines <span class="op">=</span> []</span>
-<span id="cb48-24"><a></a>        <span class="cf">for</span> book_index, book <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.get_books()):</span>
-<span id="cb48-25"><a></a>            cur_book_line <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>book_index<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span><span class="bu">str</span>(book)<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb48-26"><a></a>            book_lines.append(cur_book_line)</span>
-<span id="cb48-27"><a></a>        <span class="cf">return</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(book_lines)</span>
-<span id="cb48-28"><a></a></span>
-<span id="cb48-29"><a></a>    <span class="kw">def</span> get_num_books(<span class="va">self</span>):</span>
-<span id="cb48-30"><a></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.get_books())</span>
-<span id="cb48-31"><a></a></span>
-<span id="cb48-32"><a></a>    <span class="kw">def</span> sort_books(<span class="va">self</span>, sort_key):</span>
-<span id="cb48-33"><a></a>        <span class="va">self</span>.books.sort(key<span class="op">=</span>sort_key)</span>
-<span id="cb48-34"><a></a></span>
-<span id="cb48-35"><a></a><span class="kw">class</span> Book:</span>
-<span id="cb48-36"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages):</span>
-<span id="cb48-37"><a></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
-<span id="cb48-38"><a></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
-<span id="cb48-39"><a></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
-<span id="cb48-40"><a></a></span>
-<span id="cb48-41"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb48-42"><a></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_title()<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_authors()<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_pages()<span class="sc">}</span><span class="ss">]"</span></span>
-<span id="cb48-43"><a></a></span>
-<span id="cb48-44"><a></a>    <span class="kw">def</span> get_authors(<span class="va">self</span>):</span>
-<span id="cb48-45"><a></a>        <span class="cf">return</span> <span class="va">self</span>.authors</span>
-<span id="cb48-46"><a></a></span>
-<span id="cb48-47"><a></a>    <span class="kw">def</span> get_first_author(<span class="va">self</span>):</span>
-<span id="cb48-48"><a></a>        <span class="cf">return</span> <span class="va">self</span>.authors[<span class="dv">0</span>]</span>
-<span id="cb48-49"><a></a></span>
-<span id="cb48-50"><a></a>    <span class="kw">def</span> get_num_pages(<span class="va">self</span>):</span>
-<span id="cb48-51"><a></a>        <span class="cf">return</span> <span class="va">self</span>.num_pages</span>
-<span id="cb48-52"><a></a></span>
-<span id="cb48-53"><a></a>    <span class="kw">def</span> get_title(<span class="va">self</span>):</span>
-<span id="cb48-54"><a></a>        <span class="cf">return</span> <span class="va">self</span>.title</span>
-<span id="cb48-55"><a></a></span>
-<span id="cb48-56"><a></a><span class="kw">class</span> Person:</span>
-<span id="cb48-57"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, family_name, given_name):</span>
-<span id="cb48-58"><a></a>        <span class="va">self</span>.family_name <span class="op">=</span> family_name</span>
-<span id="cb48-59"><a></a>        <span class="va">self</span>.given_name <span class="op">=</span> given_name</span>
-<span id="cb48-60"><a></a></span>
-<span id="cb48-61"><a></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
-<span id="cb48-62"><a></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
-<span id="cb48-63"><a></a></span>
-<span id="cb48-64"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb48-65"><a></a>        <span class="cf">return</span> <span class="ss">f"Person[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_family_name()<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_given_name()<span class="sc">}</span><span class="ss">]"</span></span>
-<span id="cb48-66"><a></a></span>
-<span id="cb48-67"><a></a>    <span class="kw">def</span> get_family_name(<span class="va">self</span>):</span>
-<span id="cb48-68"><a></a>        <span class="cf">return</span> <span class="va">self</span>.family_name</span>
-<span id="cb48-69"><a></a></span>
-<span id="cb48-70"><a></a>    <span class="kw">def</span> get_given_name(<span class="va">self</span>):</span>
-<span id="cb48-71"><a></a>        <span class="cf">return</span> <span class="va">self</span>.given_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a><span class="kw">class</span> Bookstore:</span>
+<span id="cb47-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, location):</span>
+<span id="cb47-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb47-4"><a></a>        <span class="va">self</span>.location <span class="op">=</span> location</span>
+<span id="cb47-5"><a></a>        <span class="va">self</span>.books <span class="op">=</span> []</span>
+<span id="cb47-6"><a></a></span>
+<span id="cb47-7"><a></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, index):</span>
+<span id="cb47-8"><a></a>        <span class="cf">return</span> <span class="va">self</span>.books[index]</span>
+<span id="cb47-9"><a></a></span>
+<span id="cb47-10"><a></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb47-11"><a></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
+<span id="cb47-12"><a></a></span>
+<span id="cb47-13"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb47-14"><a></a>        <span class="cf">return</span> <span class="ss">f"Bookstore[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_books()<span class="sc">}</span><span class="ss"> books]"</span></span>
+<span id="cb47-15"><a></a></span>
+<span id="cb47-16"><a></a>    <span class="kw">def</span> add_books(<span class="va">self</span>, book_list):</span>
+<span id="cb47-17"><a></a>        <span class="va">self</span>.books.extend(book_list)</span>
+<span id="cb47-18"><a></a></span>
+<span id="cb47-19"><a></a>    <span class="kw">def</span> get_books(<span class="va">self</span>):</span>
+<span id="cb47-20"><a></a>        <span class="cf">return</span> <span class="va">self</span>.books</span>
+<span id="cb47-21"><a></a></span>
+<span id="cb47-22"><a></a>    <span class="kw">def</span> get_inventory(<span class="va">self</span>):</span>
+<span id="cb47-23"><a></a>        book_lines <span class="op">=</span> []</span>
+<span id="cb47-24"><a></a>        <span class="cf">for</span> book_index, book <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.get_books()):</span>
+<span id="cb47-25"><a></a>            cur_book_line <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>book_index<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span><span class="bu">str</span>(book)<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb47-26"><a></a>            book_lines.append(cur_book_line)</span>
+<span id="cb47-27"><a></a>        <span class="cf">return</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(book_lines)</span>
+<span id="cb47-28"><a></a></span>
+<span id="cb47-29"><a></a>    <span class="kw">def</span> get_num_books(<span class="va">self</span>):</span>
+<span id="cb47-30"><a></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.get_books())</span>
+<span id="cb47-31"><a></a></span>
+<span id="cb47-32"><a></a>    <span class="kw">def</span> sort_books(<span class="va">self</span>, sort_key):</span>
+<span id="cb47-33"><a></a>        <span class="va">self</span>.books.sort(key<span class="op">=</span>sort_key)</span>
+<span id="cb47-34"><a></a></span>
+<span id="cb47-35"><a></a><span class="kw">class</span> Book:</span>
+<span id="cb47-36"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages):</span>
+<span id="cb47-37"><a></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
+<span id="cb47-38"><a></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
+<span id="cb47-39"><a></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
+<span id="cb47-40"><a></a></span>
+<span id="cb47-41"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb47-42"><a></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_title()<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_authors()<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_pages()<span class="sc">}</span><span class="ss">]"</span></span>
+<span id="cb47-43"><a></a></span>
+<span id="cb47-44"><a></a>    <span class="kw">def</span> get_authors(<span class="va">self</span>):</span>
+<span id="cb47-45"><a></a>        <span class="cf">return</span> <span class="va">self</span>.authors</span>
+<span id="cb47-46"><a></a></span>
+<span id="cb47-47"><a></a>    <span class="kw">def</span> get_first_author(<span class="va">self</span>):</span>
+<span id="cb47-48"><a></a>        <span class="cf">return</span> <span class="va">self</span>.authors[<span class="dv">0</span>]</span>
+<span id="cb47-49"><a></a></span>
+<span id="cb47-50"><a></a>    <span class="kw">def</span> get_num_pages(<span class="va">self</span>):</span>
+<span id="cb47-51"><a></a>        <span class="cf">return</span> <span class="va">self</span>.num_pages</span>
+<span id="cb47-52"><a></a></span>
+<span id="cb47-53"><a></a>    <span class="kw">def</span> get_title(<span class="va">self</span>):</span>
+<span id="cb47-54"><a></a>        <span class="cf">return</span> <span class="va">self</span>.title</span>
+<span id="cb47-55"><a></a></span>
+<span id="cb47-56"><a></a><span class="kw">class</span> Person:</span>
+<span id="cb47-57"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, family_name, given_name):</span>
+<span id="cb47-58"><a></a>        <span class="va">self</span>.family_name <span class="op">=</span> family_name</span>
+<span id="cb47-59"><a></a>        <span class="va">self</span>.given_name <span class="op">=</span> given_name</span>
+<span id="cb47-60"><a></a></span>
+<span id="cb47-61"><a></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb47-62"><a></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
+<span id="cb47-63"><a></a></span>
+<span id="cb47-64"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb47-65"><a></a>        <span class="cf">return</span> <span class="ss">f"Person[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_family_name()<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_given_name()<span class="sc">}</span><span class="ss">]"</span></span>
+<span id="cb47-66"><a></a></span>
+<span id="cb47-67"><a></a>    <span class="kw">def</span> get_family_name(<span class="va">self</span>):</span>
+<span id="cb47-68"><a></a>        <span class="cf">return</span> <span class="va">self</span>.family_name</span>
+<span id="cb47-69"><a></a></span>
+<span id="cb47-70"><a></a>    <span class="kw">def</span> get_given_name(<span class="va">self</span>):</span>
+<span id="cb47-71"><a></a>        <span class="cf">return</span> <span class="va">self</span>.given_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div><div class="column" style="width:50%;">
 <div id="create-objs" class="cell" data-execution_count="26">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a></a>my_bookstore <span class="op">=</span> Bookstore(<span class="st">"Bookland"</span>, <span class="st">"Washington, DC"</span>)</span>
-<span id="cb49-2"><a></a>plath <span class="op">=</span> Person(<span class="st">"Plath"</span>, <span class="st">"Sylvia"</span>)</span>
-<span id="cb49-3"><a></a>bell_jar <span class="op">=</span> Book(<span class="st">"The Bell Jar"</span>, [plath], <span class="dv">244</span>)</span>
-<span id="cb49-4"><a></a>marx <span class="op">=</span> Person(<span class="st">"Marx"</span>, <span class="st">"Karl"</span>)</span>
-<span id="cb49-5"><a></a>engels <span class="op">=</span> Person(<span class="st">"Engels"</span>, <span class="st">"Friedrich"</span>)</span>
-<span id="cb49-6"><a></a>manifesto <span class="op">=</span> Book(<span class="st">"The Communist Manifesto"</span>, [marx, engels], <span class="dv">43</span>)</span>
-<span id="cb49-7"><a></a>elster <span class="op">=</span> Person(<span class="st">"Elster"</span>, <span class="st">"Jon"</span>)</span>
-<span id="cb49-8"><a></a>cement <span class="op">=</span> Book(<span class="st">"The Cement of Society"</span>, [elster], <span class="dv">311</span>)</span>
-<span id="cb49-9"><a></a>my_bookstore.add_books([bell_jar, manifesto, cement])</span>
-<span id="cb49-10"><a></a><span class="bu">print</span>(my_bookstore)</span>
-<span id="cb49-11"><a></a><span class="bu">print</span>(my_bookstore[<span class="dv">0</span>])</span>
-<span id="cb49-12"><a></a><span class="bu">print</span>(<span class="st">"Inventory:"</span>)</span>
-<span id="cb49-13"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a>my_bookstore <span class="op">=</span> Bookstore(<span class="st">"Bookland"</span>, <span class="st">"Washington, DC"</span>)</span>
+<span id="cb48-2"><a></a>plath <span class="op">=</span> Person(<span class="st">"Plath"</span>, <span class="st">"Sylvia"</span>)</span>
+<span id="cb48-3"><a></a>bell_jar <span class="op">=</span> Book(<span class="st">"The Bell Jar"</span>, [plath], <span class="dv">244</span>)</span>
+<span id="cb48-4"><a></a>marx <span class="op">=</span> Person(<span class="st">"Marx"</span>, <span class="st">"Karl"</span>)</span>
+<span id="cb48-5"><a></a>engels <span class="op">=</span> Person(<span class="st">"Engels"</span>, <span class="st">"Friedrich"</span>)</span>
+<span id="cb48-6"><a></a>manifesto <span class="op">=</span> Book(<span class="st">"The Communist Manifesto"</span>, [marx, engels], <span class="dv">43</span>)</span>
+<span id="cb48-7"><a></a>elster <span class="op">=</span> Person(<span class="st">"Elster"</span>, <span class="st">"Jon"</span>)</span>
+<span id="cb48-8"><a></a>cement <span class="op">=</span> Book(<span class="st">"The Cement of Society"</span>, [elster], <span class="dv">311</span>)</span>
+<span id="cb48-9"><a></a>my_bookstore.add_books([bell_jar, manifesto, cement])</span>
+<span id="cb48-10"><a></a><span class="bu">print</span>(my_bookstore)</span>
+<span id="cb48-11"><a></a><span class="bu">print</span>(my_bookstore[<span class="dv">0</span>])</span>
+<span id="cb48-12"><a></a><span class="bu">print</span>(<span class="st">"Inventory:"</span>)</span>
+<span id="cb48-13"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bookstore[3 books]
@@ -1355,8 +1361,7 @@ Inventory:
 2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]</code></pre>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="doing-things-with-classes" class="slide level2 smaller">
 <h2>Doing Things With Classes</h2>
@@ -1371,9 +1376,9 @@ Inventory:
 <div id="sort-alpha" class="cell" data-execution_count="27">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a></a>sort_alpha <span class="op">=</span> <span class="kw">lambda</span> x: x.get_first_author().get_family_name()</span>
-<span id="cb51-2"><a></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_alpha)</span>
-<span id="cb51-3"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a></a>sort_alpha <span class="op">=</span> <span class="kw">lambda</span> x: x.get_first_author().get_family_name()</span>
+<span id="cb50-2"><a></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_alpha)</span>
+<span id="cb50-3"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]
@@ -1388,9 +1393,9 @@ Inventory:
 <div id="sort-pages" class="cell" data-execution_count="28">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a></a>sort_pages <span class="op">=</span> <span class="kw">lambda</span> x: x.get_num_pages()</span>
-<span id="cb53-2"><a></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_pages)</span>
-<span id="cb53-3"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a></a>sort_pages <span class="op">=</span> <span class="kw">lambda</span> x: x.get_num_pages()</span>
+<span id="cb52-2"><a></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_pages)</span>
+<span id="cb52-3"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]
@@ -1398,8 +1403,7 @@ Inventory:
 2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]</code></pre>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="inheritance-and-polymorphism" class="slide level2 smaller crunch-title">
 <h2><em>Inheritance</em> and <em>Polymorphism</em></h2>
@@ -1426,31 +1430,31 @@ Inventory:
 <div id="fiction-property" class="cell" data-execution_count="29">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a></a><span class="im">from</span> enum <span class="im">import</span> Enum</span>
-<span id="cb55-2"><a></a><span class="kw">class</span> BookType(Enum):</span>
-<span id="cb55-3"><a></a>    NONFICTION <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb55-4"><a></a>    FICTION <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb55-5"><a></a></span>
-<span id="cb55-6"><a></a><span class="kw">class</span> Book:</span>
-<span id="cb55-7"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title: <span class="bu">str</span>, authors: <span class="bu">list</span>[Person], num_pages: <span class="bu">int</span>, <span class="bu">type</span>: BookType):</span>
-<span id="cb55-8"><a></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
-<span id="cb55-9"><a></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
-<span id="cb55-10"><a></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
-<span id="cb55-11"><a></a>        <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="bu">type</span></span>
-<span id="cb55-12"><a></a></span>
-<span id="cb55-13"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb55-14"><a></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>title<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>authors<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>num_pages<span class="sc">}</span><span class="ss">, type=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">type</span><span class="sc">}</span><span class="ss">]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a></a><span class="im">from</span> enum <span class="im">import</span> Enum</span>
+<span id="cb54-2"><a></a><span class="kw">class</span> BookType(Enum):</span>
+<span id="cb54-3"><a></a>    NONFICTION <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb54-4"><a></a>    FICTION <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb54-5"><a></a></span>
+<span id="cb54-6"><a></a><span class="kw">class</span> Book:</span>
+<span id="cb54-7"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title: <span class="bu">str</span>, authors: <span class="bu">list</span>[Person], num_pages: <span class="bu">int</span>, <span class="bu">type</span>: BookType):</span>
+<span id="cb54-8"><a></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
+<span id="cb54-9"><a></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
+<span id="cb54-10"><a></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
+<span id="cb54-11"><a></a>        <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="bu">type</span></span>
+<span id="cb54-12"><a></a></span>
+<span id="cb54-13"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb54-14"><a></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>title<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>authors<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>num_pages<span class="sc">}</span><span class="ss">, type=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">type</span><span class="sc">}</span><span class="ss">]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="use-fiction-property" class="cell" data-execution_count="30">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
-<span id="cb56-2"><a></a>ulysses <span class="op">=</span> Book(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, BookType.FICTION)</span>
-<span id="cb56-3"><a></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
-<span id="cb56-4"><a></a>micromotives <span class="op">=</span> Book(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, BookType.NONFICTION)</span>
-<span id="cb56-5"><a></a><span class="bu">print</span>(ulysses)</span>
-<span id="cb56-6"><a></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
+<span id="cb55-2"><a></a>ulysses <span class="op">=</span> Book(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, BookType.FICTION)</span>
+<span id="cb55-3"><a></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
+<span id="cb55-4"><a></a>micromotives <span class="op">=</span> Book(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, BookType.NONFICTION)</span>
+<span id="cb55-5"><a></a><span class="bu">print</span>(ulysses)</span>
+<span id="cb55-6"><a></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Book[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]
@@ -1464,35 +1468,34 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 <div id="fiction-separate-classes" class="cell" data-execution_count="32">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a></a><span class="co"># class Book defined as earlier</span></span>
-<span id="cb58-2"><a></a><span class="kw">class</span> FictionBook(Book):</span>
-<span id="cb58-3"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, characters):</span>
-<span id="cb58-4"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
-<span id="cb58-5"><a></a>        <span class="va">self</span>.characters <span class="op">=</span> characters</span>
-<span id="cb58-6"><a></a></span>
-<span id="cb58-7"><a></a><span class="kw">class</span> NonfictionBook(Book):</span>
-<span id="cb58-8"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, topic):</span>
-<span id="cb58-9"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
-<span id="cb58-10"><a></a>        <span class="va">self</span>.topic <span class="op">=</span> topic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a></a><span class="co"># class Book defined as earlier</span></span>
+<span id="cb57-2"><a></a><span class="kw">class</span> FictionBook(Book):</span>
+<span id="cb57-3"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, characters):</span>
+<span id="cb57-4"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
+<span id="cb57-5"><a></a>        <span class="va">self</span>.characters <span class="op">=</span> characters</span>
+<span id="cb57-6"><a></a></span>
+<span id="cb57-7"><a></a><span class="kw">class</span> NonfictionBook(Book):</span>
+<span id="cb57-8"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, topic):</span>
+<span id="cb57-9"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
+<span id="cb57-10"><a></a>        <span class="va">self</span>.topic <span class="op">=</span> topic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="use-fiction-separate-classes" class="cell" data-execution_count="33">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
-<span id="cb59-2"><a></a>ulysses <span class="op">=</span> FictionBook(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, [<span class="st">"Daedalus"</span>])</span>
-<span id="cb59-3"><a></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
-<span id="cb59-4"><a></a>micromotives <span class="op">=</span> NonfictionBook(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, <span class="st">"Economics"</span>)</span>
-<span id="cb59-5"><a></a><span class="bu">print</span>(ulysses)</span>
-<span id="cb59-6"><a></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
+<span id="cb58-2"><a></a>ulysses <span class="op">=</span> FictionBook(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, [<span class="st">"Daedalus"</span>])</span>
+<span id="cb58-3"><a></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
+<span id="cb58-4"><a></a>micromotives <span class="op">=</span> NonfictionBook(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, <span class="st">"Economics"</span>)</span>
+<span id="cb58-5"><a></a><span class="bu">print</span>(ulysses)</span>
+<span id="cb58-6"><a></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Book[title=Ulysses, authors=[Person[Joyce, James]], pages=732]
 Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]</code></pre>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section></section>
 <section>
 <section id="hw1-python-fundamentals" class="title-slide slide level1 center" data-name="HW1">
@@ -1777,18 +1780,7 @@ Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1820,7 +1812,29 @@ Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1828,7 +1842,7 @@ Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

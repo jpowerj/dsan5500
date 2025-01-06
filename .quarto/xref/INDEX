@@ -87,5 +87,12 @@
   "w12/index.qmd": {
     "slides.html": "74d79c4c",
     "index.html": "258d4065"
+  },
+  "w13/index.qmd": {
+    "index.html": "745346f0",
+    "slides.html": "3fa86369"
+  },
+  "_manu.qmd": {
+    "_manu.html": "02989c44"
   }
 }

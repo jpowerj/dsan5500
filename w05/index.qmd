@@ -107,7 +107,7 @@ class BinarySearchTreeNode:
 #| label: graphviz-setup
 #| echo: false
 import sys
-sys.path.append('/Users/jpj/Library/CloudStorage/Dropbox/gtown/dsan5500-local/HW2/')
+sys.path.append('../../dsan5500-local/HW2/')
 from IPython.display import display, HTML
 import graphviz as gv # for visualizing a tree using Digraph
 from graphviz import Digraph, nohtml
