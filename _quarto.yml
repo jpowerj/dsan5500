@@ -7,9 +7,13 @@ project:
 website:
   title: "DSAN 5500"
   favicon: favicon.png
+  repo-url: "https://github.com/jpowerj/dsan5500"
+  repo-actions: [source]
+  repo-link-target: "_blank"
   sidebar:
     title: "DSAN 5500: Data Structures, Objects, and Algorithms in Python"
     id: mainnav
+    footer: "*Updated {{< env DSAN5500_LAST_UPDATED \"2024-08-28\" >}}*"
     contents:
       - text: "<i class='bi bi-house pe-1'></i> Home"
         href: index.qmd
