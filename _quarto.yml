@@ -13,7 +13,7 @@ website:
   sidebar:
     title: "DSAN 5500: Data Structures, Objects, and Algorithms in Python"
     id: mainnav
-    footer: "*Updated {{< env DSAN5500_LAST_UPDATED \"2024-08-28\" >}}*"
+    footer: "*Updated {{< env DSAN5500_LAST_UPDATED \"2025-01-09\" >}}*"
     contents:
       - text: "<i class='bi bi-house pe-1'></i> Home"
         href: index.qmd
@@ -28,7 +28,8 @@ website:
       - text: "Extra Writeups"
         href: "writeups/index.qmd"
       - text: "Recordings"
-        href: recordings/index.qmd
+        href: "https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=3ada6168-ed11-47c8-8936-b25a00667770"
+        target: "_blank"
       - "---"
       - text: "Week 1: {{< var w01.date-md >}}"
         href: "w01/index.qmd"
@@ -59,8 +60,12 @@ website:
       # - text: "Week 14: {{< var w14.date-md >}}"
       #   href: "w14/index.qmd"
       - "---"
-      - text: "<a href='https://classroom.google.com/c/NjM5MzE2MTE4NTgx?cjc=r4pzugi' target='_blank'>Google Classroom <i class='bi bi-box-arrow-up-right ps-1'></i></a>"
-      - text: "<a href='https://chat.google.com/room/AAAAhimoYoA?cls=7' target='_blank'>Google Spaces <i class='bi bi-box-arrow-up-right ps-1'></i></a>"
+      - text: "Google Classroom"
+        href: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx?cjc=v4aodxe"
+        target: "_blank"
+      - text: "Google Space"
+        href: "https://chat.google.com/room/AAAAhimoYoA?cls=7"
+        target: "_blank"
       
 
 format:
