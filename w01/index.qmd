@@ -60,9 +60,9 @@ format:
 
 ::: {layout="[1,1]"}
 
-![Python before taking DSAN 5500](images/scary.jpeg){fig-align="center" width="460"}
+![Python before taking DSAN 5500](images/scariest_snake.webp){fig-align="center" width="440"}
 
-![Python after taking DSAN 5500](images/snek.jpg){fig-align="center" width="310"}
+![Python after taking DSAN 5500](images/snek.jpg){fig-align="center" width="320"}
 
 :::
 
@@ -143,9 +143,11 @@ fig.show()
 
 ## Tie Yourself to the Mast
 
-* The exhausted 3am version of you will thank **present you** for writing useful **comments**, **exceptions/errors**, and **type hints**!
+* The exhausted 3am version of you will thank **present you** for writing useful **comments**, **exceptions**, and **type hints**!
 
 ![<a href="https://commons.wikimedia.org/wiki/File:John_William_Waterhouse_-_Ulysses_and_the_Sirens_(1891).jpg" target='_blank'>John William Waterhouse</a>, Public domain, via Wikimedia Commons](images/ulysses.jpg){fig-align="center"}
+
+* [Demo: Lab 1](https://colab.research.google.com/drive/1XMw3vOYK8NJl9MgMjfhYfK3lXg0KjnkE?usp=drive_link)
 
 # Part 1: Coding in General {data-stack-name="Coding"}
 
@@ -404,6 +406,6 @@ $$
 * We now have a **different recurrence relation**: $T(N) = \underbrace{7T(N/2)}_{\text{Multiplications}} + \underbrace{\Theta(N^2)}_{\text{Additions}}$
 * And it turns out, somewhat miraculously, that the additional time required for the **increased number of additions** is **significantly less** than the **time savings** we obtain by doing 7 instead of 8 multiplications, since this method now runs in $T(N) = O(N^{\log_2(7)}) \approx O(N^{2.807}) < O(N^3)$ 🤯
 
-# Lab: Assignment Workflow {data-name="Lab (HW0)"}
+# Lab: Assignment Workflow
 
 * <a href='https://classroom.google.com/c/NjM5MzE2MTE4NTgx' target='_blank'>Google Classroom <i class='bi bi-box-arrow-up-right ps-1'></i></a>
