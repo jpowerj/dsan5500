@@ -214,6 +214,10 @@ country_df
 * Corner cases galore...
 * What if `l` contains `v` more than once? What if it doesn't contain `v` at all? What if `l` is `None`? What if `v` is `None`? What if `l` isn't a list at all? What if `v` is itself a list?
 
+## Demo
+
+[Streamlit Dictionary Lookup Demo](https://dict-lookup.streamlit.app/)
+
 # Part 2: Python Specifically {data-stack-name="Python"}
 
 ## \#1 Sanity-Preserving Tip!
