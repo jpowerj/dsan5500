@@ -2,20 +2,12 @@
 title: "Final Project Details"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 author: "DSAN 5500 Course Staff"
-date: 2024-04-02
+date: 2025-10-10
 format:
   html:
     df-print: kable
     html-math-method: mathjax
 ---
-
-::: {.callout-note title="Changelog"}
-
-* *[Sunday, April 14, 11pm]* Added some additional examples to the cards in the [Overview](#overview) section
-* *[Thursday, April 4, 6:15pm]* Added section with details on [Individual vs. Group Projects](#individual-vs.-group-projects)
-* *[Thursday, April 4, 4:30pm]* Updated [Timeline](#timeline) section to specify that proposals should be approved by **April 10th**, not **April 3rd**
-
-:::
 
 ## Overview
 

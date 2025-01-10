@@ -9,6 +9,7 @@ lecnum: 12
 bibliography: "../_DSAN5500.bib"
 categories:
   - "Class Sessions"
+cache: true
 format:
   revealjs:
     df-print: kable
