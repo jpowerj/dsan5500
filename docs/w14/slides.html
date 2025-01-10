@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5500 – Week 8: In-Class Midterm</title>
+  <title>DSAN 5500 – Week 14: Applications in Bioinformatics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,71 +30,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -414,7 +349,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 8: In-Class Midterm</h1>
+  <h1 class="title">Week 14: Applications in Bioinformatics</h1>
   <p class="subtitle"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
 
 <div class="quarto-title-authors">
@@ -428,265 +363,26 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Monday, March 11, 2024</p>
+  <p class="date">Thursday, April 24, 2025</p>
 </section>
 <section>
-<section id="micro-rightarrow-meso-rightarrow-macro" class="title-slide slide level1 title-11 crunch-title crunch-ul crunch-li-8 not-title-slide center" data-stack-name="Intro">
-<h1>Micro <span class="math inline">\(\rightarrow\)</span> Meso <span class="math inline">\(\rightarrow\)</span> Macro</h1>
-<ul>
-<li>✅ Micro-level: Individual, <strong>“core” algorithms/data structures</strong> and their big-<span class="math inline">\(O\)</span> runtimes
-<ul>
-<li>e.g., <code>LinkedList</code>, <span class="alg">Merge-Sort</span></li>
-</ul></li>
-<li>✅ Meso-level: Algorithms/data structures that “piece together” a small collection of core algorithms
-<ul>
-<li><strong>Hash tables</strong>: Fixed-Length Array + Hashing Algorithm + Collision Handling Algorithm (BST)</li>
-</ul></li>
-</ul>
-<div style="border: 3px solid black !important;">
-<ul>
-<li>🤔 <strong>Macro-level</strong>: <strong>Pipelines</strong> of data structures and algorithms:
-<ul>
-<li><strong>raw data source</strong> <span class="math inline">\(\rightarrow\)</span> <strong>processing</strong> <span class="math inline">\(\rightarrow\)</span> <strong>storage</strong></li>
-</ul></li>
-</ul>
-</div>
+<section id="nlp-overview" class="title-slide slide level1 center">
+<h1>NLP Overview</h1>
+
 </section>
-<section id="most-common-hw1-to-midterm-struggles" class="slide level2 title-09 crunch-title crunch-ul">
-<h2>Most Common HW1-to-Midterm Struggles</h2>
-<ul>
-<li>Ingesting data (HW1: <code>Swimmer</code> class)
-<ul>
-<li><span class="math inline">\(\implies\)</span> Data-processing pipelines!</li>
-</ul></li>
-<li>Maintaining <strong>invariants</strong> as dataset grows (HW2: <code>None</code> → <code>InventoryItem</code> → <code>BinarySearchTree</code>)
-<ul>
-<li><span class="math inline">\(\implies\)</span> Data validation!</li>
-</ul></li>
-</ul>
+<section id="hw3-why-are-counts-insufficient" class="slide level2">
+<h2>HW3: Why Are Counts Insufficient?</h2>
+<blockquote>
+<p>You shall know a word by the company it keeps</p>
+</blockquote>
 </section></section>
 <section>
-<section id="data-validation" class="title-slide slide level1 center" data-stack-name="Validation">
-<h1>Data Validation</h1>
-<ul>
-<li>What you already know: Type hints</li>
-<li>Type hints on steroids: Pydantic 😎</li>
-</ul>
-</section>
-<section id="pydantic" class="slide level2">
-<h2>Pydantic</h2>
-
-<img data-src="images/pydantic_logo.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="pydantic-in-action" class="slide level2 crunch-title crunch-details">
-<h2>Pydantic in Action</h2>
-<div id="3e00b987" class="cell" data-execution_count="1">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
-<span id="cb1-2"><a></a><span class="kw">class</span> InventoryItem(BaseModel):</span>
-<span id="cb1-3"><a></a>    item_name: <span class="bu">str</span></span>
-<span id="cb1-4"><a></a>    price: <span class="bu">float</span></span>
-<span id="cb1-5"><a></a>my_item <span class="op">=</span> InventoryItem(item_name<span class="op">=</span><span class="st">"Banana"</span>, price<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb1-6"><a></a>my_item</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>InventoryItem(item_name='Banana', price=10.0)</code></pre>
-</div>
-</div>
-<div id="ea6ff268" class="cell" data-execution_count="2">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>invalid_item <span class="op">=</span> InventoryItem(item_name<span class="op">=</span><span class="st">"Banana"</span>, price<span class="op">=</span><span class="st">"100 dollar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValidationError</span>                           Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[2], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> invalid_item <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">InventoryItem</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">item_name</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Banana</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">price</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">100 dollar</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176</span>, in <span class="ansi-cyan-fg">BaseModel.__init__</span><span class="ansi-blue-fg">(self, **data)</span>
-<span class="ansi-green-fg ansi-bold">    174</span> <span style="font-style:italic;color:rgb(95,135,135)"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
-<span class="ansi-green-fg ansi-bold">    175</span> __tracebackhide__ <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-<span class="ansi-green-fg">--&gt; 176</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">__pydantic_validator__</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">validate_python</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">self_instance</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-red-fg">ValidationError</span>: 1 validation error for InventoryItem
-price
-  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='100 dollar', input_type=str]
-    For further information visit https://errors.pydantic.dev/2.7/v/float_parsing</pre>
-</div>
-</div>
-</div>
-</section>
-<section id="pydantic-in-even-cooler-action" class="slide level2 crunch-title crunch-details">
-<h2>Pydantic in Even-Cooler Action</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div id="366d689a" class="cell" data-execution_count="3">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, PositiveInt</span>
-<span id="cb4-2"><a></a><span class="kw">class</span> Employee(BaseModel):</span>
-<span id="cb4-3"><a></a>    name: <span class="bu">str</span></span>
-<span id="cb4-4"><a></a>    email: EmailStr</span>
-<span id="cb4-5"><a></a>    age: PositiveInt</span>
-<span id="cb4-6"><a></a>invalid_employee <span class="op">=</span> Employee(</span>
-<span id="cb4-7"><a></a>  name<span class="op">=</span><span class="st">"Jeef"</span>,</span>
-<span id="cb4-8"><a></a>  email<span class="op">=</span><span class="st">"fakeemail!!!"</span>,</span>
-<span id="cb4-9"><a></a>  age<span class="op">=</span><span class="dv">50</span></span>
-<span id="cb4-10"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValidationError</span>                           Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[3], line 6</span>
-<span class="ansi-green-fg ansi-bold">      4</span>     email: EmailStr
-<span class="ansi-green-fg ansi-bold">      5</span>     age: PositiveInt
-<span class="ansi-green-fg">----&gt; 6</span> invalid_employee <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Employee</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg ansi-bold">      7</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">name</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Jeef</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">      8</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">email</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">fakeemail!!!</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">      9</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">age</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">50</span>
-<span class="ansi-green-fg ansi-bold">     10</span> <span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176</span>, in <span class="ansi-cyan-fg">BaseModel.__init__</span><span class="ansi-blue-fg">(self, **data)</span>
-<span class="ansi-green-fg ansi-bold">    174</span> <span style="font-style:italic;color:rgb(95,135,135)"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
-<span class="ansi-green-fg ansi-bold">    175</span> __tracebackhide__ <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-<span class="ansi-green-fg">--&gt; 176</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">__pydantic_validator__</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">validate_python</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">self_instance</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-red-fg">ValidationError</span>: 1 validation error for Employee
-email
-  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]</pre>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div id="fb3a82d1" class="cell" data-execution_count="4">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>invalid_employee2 <span class="op">=</span> Employee(</span>
-<span id="cb5-2"><a></a>  name<span class="op">=</span><span class="st">"Jeeferson"</span>,</span>
-<span id="cb5-3"><a></a>  email<span class="op">=</span><span class="st">"valid@email.com"</span>,</span>
-<span id="cb5-4"><a></a>  age<span class="op">=-</span><span class="dv">3</span></span>
-<span id="cb5-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValidationError</span>                           Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[4], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> invalid_employee2 <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Employee</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg ansi-bold">      2</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">name</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Jeeferson</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">      3</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">email</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">valid@email.com</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">      4</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">age</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">-</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">3</span>
-<span class="ansi-green-fg ansi-bold">      5</span> <span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176</span>, in <span class="ansi-cyan-fg">BaseModel.__init__</span><span class="ansi-blue-fg">(self, **data)</span>
-<span class="ansi-green-fg ansi-bold">    174</span> <span style="font-style:italic;color:rgb(95,135,135)"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
-<span class="ansi-green-fg ansi-bold">    175</span> __tracebackhide__ <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-<span class="ansi-green-fg">--&gt; 176</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">__pydantic_validator__</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">validate_python</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">self_instance</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-red-fg">ValidationError</span>: 1 validation error for Employee
-age
-  Input should be greater than 0 [type=greater_than, input_value=-3, input_type=int]
-    For further information visit https://errors.pydantic.dev/2.7/v/greater_than</pre>
-</div>
-</div>
-</div>
-</div></div>
-</section></section>
-<section>
-<section id="data-processing-pipelines" class="title-slide slide level1 center" data-stack-name="Pipelines">
-<h1>Data-Processing Pipelines</h1>
+<section id="data-structures-in-nlp" class="title-slide slide level1 center">
+<h1>Data Structures in NLP</h1>
 
 </section>
-<section id="two-generations-of-python-pipeline-libraries" class="slide level2">
-<h2>Two Generations of Python Pipeline Libraries</h2>
-<ul>
-<li>Gen 1: Airflow (AirBnB), Luigi (Spotify)</li>
-<li>Gen 2: Dagster, Prefect</li>
-</ul>
-
-<img data-src="images/Prefect.webp" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="for-now-prefect" class="slide level2">
-<h2>For Now: Prefect!</h2>
-<ul>
-<li>But, the <strong>principles</strong> (<strong>ETL</strong>) remain the same!</li>
-</ul>
-
-<img data-src="images/flow-run-page.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="etl-extract-transform-load" class="slide level2">
-<h2>ETL = Extract, Transform, Load</h2>
-
-<img data-src="images/etl.png" class="r-stretch quarto-figure-center"><p class="caption">From <a href="https://www.analyticsvidhya.com/blog/2022/06/a-complete-guide-on-building-an-etl-pipeline-for-beginners/" target="_blank">Analytics Vidhya</a></p></section>
-<section id="you-have-already-been-doing-this" class="slide level2 crunch-title crunch-ul">
-<h2>You Have Already Been Doing This!</h2>
-<ul>
-<li>HW1: Swim team example
-<ul>
-<li><strong>Extract</strong>: Load data from .csv</li>
-<li><strong>Transform</strong>: Convert times to milliseconds</li>
-<li><strong>Load</strong>: Store into <code>Team</code> object</li>
-</ul></li>
-<li>HW2 (Throughout)
-<ul>
-<li><strong>Extract</strong>: Load products from .csv into Pandas</li>
-<li><strong>Transform</strong>: (Construct <code>InventoryItem</code> object for each row)</li>
-<li><strong>Load</strong>: Store into <code>LogarithmicHashTable</code></li>
-</ul></li>
-</ul>
-</section>
-<section id="and-you-have-already-run-into-the-need-for-validation" class="slide level2">
-<h2>(And You Have Already Run into the Need for Validation!)</h2>
-<ul>
-<li>HW1: Are the times in seconds or milliseconds?</li>
-<li>HW2: Are users providing <code>key</code> and <code>value</code> separately, or together?</li>
-<li>If together: as <code>tuple</code>s or <code>InventoryItem</code>s?</li>
-<li>If <code>InventoryItem</code>s: What type(s) for <code>item_name</code>? What type(s) for <code>price</code>? 😵</li>
-<li><span class="math inline">\(\implies\)</span> One of the <strong>two</strong> main focuses for <strong>HW3</strong> will be <strong>validation</strong> of input data!</li>
-</ul>
-</section>
-<section id="cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step" class="slide level2">
-<h2>Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)</h2>
-<ul>
-<li>(Hopefully things from previous slide have taught you the dangers of this!)</li>
-<li>It’s like <strong>Anscombe’s Quartet</strong> from DSAN 5000/5100/5200: We can be misled by fancy tools if we don’t take time for the (sometimes boring) step of <strong>looking at</strong> the data</li>
-<li>Example: ETL for processing text data (books for now)</li>
-</ul>
-</section>
-<section id="bookshelfscan-an-example-i-use-irl" class="slide level2 title-09 crunch-title crunc-ul">
-<h2>BookshelfScan (An Example I Use IRL!)</h2>
-<ul>
-<li><strong>Extract</strong>: Dropbox folder containing ebooks</li>
-<li><strong>Transform</strong>: Compute word counts</li>
-<li><strong>Load</strong>: Save word counts into a database</li>
-<li>Enables me to figure out <strong>which books</strong> talk about a topic <span class="math inline">\(t\)</span> (data structures, algorithms, data ethics and policy, etc.)!</li>
-<li><strong>BUT</strong> (Devil is in the details): Can look very different for <code>txt</code>, <code>epub</code> (can contain images), <code>pdf</code> (sometimes text is embedded, sometimes not), images of scans, audiobooks</li>
-<li><span class="math inline">\(\implies\)</span> (Sad but true) Pipleline will <strong>crash and burn</strong> if you don’t handle these <strong>before</strong> using <a href="https://www.trychroma.com/" target="_blank">Cool NLP things</a> in T step</li>
-</ul>
-</section>
-<section id="hw3-possibility-1-pet-store-inventory" class="slide level2">
-<h2>HW3 Possibility 1: Pet Store Inventory</h2>
-<ul>
-<li><a href="https://petstore.swagger.io/v2/store/inventory" target="_blank">https://petstore.swagger.io/v2/store/inventory</a></li>
-</ul>
-</section>
-<section id="hw3-possibility-2-books-to-scrape" class="slide level2">
-<h2>HW3 Possibility 2: Books to Scrape</h2>
-<ul>
-<li><a href="http://books.toscrape.com/" target="_blank">Books to Scrape homepage</a></li>
-</ul>
-</section></section>
-<section>
-<section id="lab-data-validation" class="title-slide slide level1 center" data-stack-name="Lab: Data Validation">
-<h1>Lab(!): Data Validation</h1>
-
-</section>
-<section id="google-classroom-link" class="slide level2">
-<h2>Google Classroom Link</h2>
-<ul>
-<li><a href="https://classroom.google.com/c/NjM5MzE2MTE4NTgx/m/NjY4NDU0NTk0MTk4/details" target="_blank">Open in Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
-</ul>
+<section id="map-reduce-for-counts" class="slide level2">
+<h2>Map-Reduce for Counts</h2>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
@@ -696,7 +392,7 @@ age
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>DSAN 5500 Week 8: In-Class Midterm</p>
+<p>DSAN 5500 Week 14: NLP Applications</p>
 </div>
 </div>
 </section></section>

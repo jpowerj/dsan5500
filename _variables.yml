@@ -18,79 +18,84 @@ w02:
   weeknum: 2
   title: "Software Design Patterns and Object-Oriented Programming"
   footer: "Software Design Patterns and OOP"
-  date-md: "Jan 22"
+  date-md: "Jan 16"
 w03:
   weeknum: 3
   title: "Data Structures and Computational Complexity"
   footer: "Data Structures and Computational Complexity"
-  date-md: "Jan 29"
+  date-md: "Jan 23"
 w04:
   weeknum: 4
   title: "Heaps, Stacks, Hash Maps"
   footer: "Heaps, Stacks, Hash Maps"
-  date-md: "Feb 5"
+  date-md: "Jan 30"
 w05:
   weeknum: 5
   title: "Binary Search Trees"
   footer: "Binary Search Trees"
-  date-md: "Feb 12"
+  date-md: "Feb 6"
 w06:
-  weeknum: 6
+  weeknum: 8
+  title: "Depth-First and Breadth-First Search"
+  footer: "Depth-First and Breadth-First Search"
+  date-md: "Feb 13"
+w07:
+  weeknum: 7
   title: "Code Examples and Midterm Prep"
   footer: "Code Examples and Midterm Prep"
   date-md: "Feb 20"
-w07:
-  weeknum: 7
-  title: "In-Class Midterm"
-  footer: "In-Class Midterm"
-  date-md: "Feb 26"
 w08:
   weeknum: 8
-  title: "Data Validation, Data Processing Pipelines"
-  footer: "Data Validation, Pipelines"
-  date-md: "Mar 11"
+  title: "In-Class Midterm"
+  footer: "In-Class Midterm"
+  date-md: "Feb 27"
 w09:
   weeknum: 9
-  title: "Data Pipeline Orchestration"
-  footer: "Pipeline Orchestration"
-  date-md: "Mar 18"
+  title: "Data Validation, Data Processing Pipelines"
+  footer: "Data Validation, Pipelines"
+  date-md: "Mar 13"
 w10:
   weeknum: 10
-  title: "Moving from Serial to Parallel Pipelines"
-  footer: "Moving from Serial to Parallel Pipelines"
-  date-md: "Mar 25"
+  title: "Data Pipeline Orchestration"
+  footer: "Pipeline Orchestration"
+  date-md: "Mar 20"
 w11:
   weeknum: 11
-  title: "Parallel Pipelines and Map-Reduce"
-  footer: "Parallel Pipelines and Map-Reduce"
-  date-md: "Apr 8"
+  title: "Moving from Serial to Parallel Pipelines"
+  footer: "Moving from Serial to Parallel Pipelines"
+  date-md: "Mar 27"
 w12:
   weeknum: 12
-  title: "Final Projects, Interfaces"
-  footer: "Final Projects, Interfaces"
-  date-md: "Apr 15"
+  title: "Parallel Pipelines and Map-Reduce"
+  footer: "Parallel Pipelines and Map-Reduce"
+  date-md: "Apr 3"
 w13:
   weeknum: 13
-  title: "Applications in NLP"
-  footer: "NLP Applications"
-  date-md: "Apr 22"
+  title: "Final Projects, Interfaces"
+  footer: "Final Projects, Interfaces"
+  date-md: "Apr 10"
 w14:
   weeknum: 14
-  title: "Applications in Bioinformatics"
-  footer: "Applications in Bioinformatics"
-  date-md: "Apr 29"
+  title: "Applications: NLP and Bioinformatics"
+  footer: "NLP Applications"
+  date-md: "Apr 24"
+w15:
+  weeknum: 15
+  title: "Final Projects Celebration"
+  footer: "Final Projects Celebration"
+  date-md: "May 1"
 hw1:
   title: "Python Fundamentals"
-  date-md: "Feb 2 (Friday), 11:59pm EST"
+  date-md: "Jan 24 (Friday), 5:59pm EST"
 hw2:
   title: "Data Structures, Algorithms, and Complexity"
-  date-md: "Mar 1 (Friday), 5:59pm EST"
+  date-md: "Feb 21 (Friday), 5:59pm EST"
 hw3:
   title: "Data-Processing Pipelines"
-  date-md: "Mar 22 (Friday), 5:59pm EDT"
+  date-md: "Mar 21 (Friday), 5:59pm EDT"
 hw4:
   title: "Parallel Computing"
-  date-md: "Apr 19 (Friday), 5:59pm EDT"
+  date-md: "Apr 4 (Friday), 5:59pm EDT"
 final:
   title: "Final Project"
-  date-md: "May 3 (Friday), 5:59pm EDT"
+  date-md: "May 2 (Friday), 5:59pm EDT"

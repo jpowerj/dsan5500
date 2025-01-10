@@ -80,14 +80,8 @@ The following is a rough map of what we will work through together throughout th
 <tr>
     <td><span data-qmd="**Unit 1**: {{< var hw1.title >}}"></span></td>
     <td>1</td>
-    <td><span data-qmd="{{< var w01.date-md >}} (**Wednesday**)"></span></td>
+    <td><span data-qmd="{{< var w01.date-md >}}"></span></td>
     <td><a href='./w01/' target='_blank'><span data-qmd="{{< var w01.title >}}"></span></a></td>
-</tr>
-<tr>
-    <td></td>
-    <td></td>
-    <td><span data-qmd="*Jan 15*"></span></td>
-    <td><span data-qmd="*No Class (Martin Luther King, Jr. Day)*"></span></td>
 </tr>
 <tr>
     <td></td>
@@ -105,7 +99,7 @@ The following is a rough map of what we will work through together throughout th
     <td></td>
     <td></td>
     <td><span data-qmd="{{< var hw1.date-md >}}"></span></td>
-    <td><span data-qmd="**HW1 (Python Fundamentals) Due**"></span></td>
+    <td><span data-qmd="*HW1 (Python Fundamentals) Due*"></span></td>
 </tr>
 
 <!-- Data structures -->
@@ -125,99 +119,99 @@ The following is a rough map of what we will work through together throughout th
 <tr>
     <td></td>
     <td>6</td>
-    <td><span data-qmd="{{< var w06.date-md >}} (**Tuesday**)"></span></td>
+    <td><span data-qmd="{{< var w06.date-md >}}"></span></td>
     <td><a href='./w06' target='_blank'><span data-qmd="{{< var w06.title >}}"></span></a></td>
+</tr>
+
+<tr>
+    <td></td>
+    <td>7</td>
+    <td><span data-qmd="{{< var w07.date-md >}}"></span></td>
+    <td><a href='./w07' target='_blank'><span data-qmd="{{< var w07.title >}}"></span></a></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="{{< var hw2.date-md >}}"></span></td>
+    <td><span data-qmd="*HW2 ({{< var hw2.title >}}) Due*"></span></td>
 </tr>
 
 <!-- Midterm -->
 
 <tr class='new-unit'>
     <td><span data-qmd="**Midterm**"></span></td>
-    <td>7</td>
-    <td>Feb 26</td>
-    <td><span data-qmd="**In-Class Midterm**"></span></td>
+    <td>8</td>
+    <td><span data-qmd="{{< var w08.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w08.title >}}"></span></td>
 </tr>
 <tr>
     <td></td>
     <td></td>
-    <td><span data-qmd="{{< var hw2.date-md >}}"></span></td>
-    <td><span data-qmd="**HW2 ({{< var hw2.title >}}) Due**"></span></td>
-</tr>
-<tr>
-    <td></td>
-    <td></td>
-    <td><span data-qmd="*Mar 4*"></span></td>
+    <td><span data-qmd="*Mar 6*"></span></td>
     <td><span data-qmd="*No Class (Spring Break)*"></span></td>
 </tr>
 
 <!-- Data-Processing Pipelines -->
 
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 3**: {{< var hw3.title >}}"></span></td>
-    <td>8</td>
-    <td><span data-qmd="{{< var w08.date-md >}}"></span></td>
-    <td><span data-qmd="{{< var w08.title >}}"></span></td>
-</tr>
-
-<tr>
-    <td></td>
+    <td><span data-qmd="**Unit 3**: Data Pipeline Orchestration"></span></td>
     <td>9</td>
     <td><span data-qmd="{{< var w09.date-md >}}"></span></td>
-    <td><span data-qmd="{{< var w09.title >}}"></span></td>
+    <td><a href='./w09' target='_blank'><span data-qmd="{{< var w09.title >}}"></span></a></td>
+</tr>
+<tr>
+    <td></td>
+    <td>10</td>
+    <td><span data-qmd="{{< var w10.date-md >}}"></span></td>
+    <td><a href='./w10' target='_blank'><span data-qmd="{{< var w10.title >}}"></span></a></td>
 </tr>
 <tr>
     <td></td>
     <td></td>
     <td><span data-qmd="{{< var hw3.date-md >}}"></span></td>
-    <td><span data-qmd="**HW3 ({{< var hw3.title >}}) Due**"></span></td>
+    <td><span data-qmd="*HW3 ({{< var hw3.title >}}) Due*"></span></td>
 </tr>
 
 <!-- Parallel Computing -->
 
 <tr class='new-unit'>
     <td><span data-qmd="**Unit 4**: {{< var hw4.title >}}"></span></td>
-    <td>10</td>
-    <td><span data-qmd="{{< var w10.date-md >}}"></span></td>
-    <td><span data-qmd="{{< var w10.title >}}"></span></td>
-</tr>
-<tr>
-    <td></td>
-    <td></td>
-    <td><span data-qmd="*Apr 1*"></span></td>
-    <td><span data-qmd="*No Class (Easter Break)*"></span></td>
-</tr>
-<tr>
-    <td></td>
     <td>11</td>
     <td><span data-qmd="{{< var w11.date-md >}}"></span></td>
-    <td><span data-qmd="{{< var w11.title >}}"></span></td>
+    <td><a href='./w11' target='_blank'><span data-qmd="{{< var w11.title >}}"></span></a></td>
 </tr>
 <tr>
     <td></td>
     <td>12</td>
     <td><span data-qmd="{{< var w12.date-md >}}"></span></td>
-    <td><span data-qmd="{{< var w12.title >}}"></span></td>
+    <td><a href='./w12' target='_blank'><span data-qmd="{{< var w12.title >}}"></span></a></td>
 </tr>
 <tr>
     <td></td>
     <td></td>
-    <td>Apr 19 (Friday), 11:59pm EST</td>
-    <td><span data-qmd="**HW4 (Parallel Computing) Due**"></span></td>
+    <td><span data-qmd="{{< var hw4.date-md >}}"></span></td>
+    <td><span data-qmd="*HW4 ({{< var hw4.title >}}) Due*"></span></td>
 </tr>
 
 <!-- Advanced Topics and Applications -->
 
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 5**: Advanced Topics and Applications"></span></td>
+    <td><span data-qmd="**Unit 5**: Final Project Topics and Applications"></span></td>
     <td>13</td>
     <td><span data-qmd="{{< var w13.date-md >}}"></span></td>
-    <td><span data-qmd="{{< var w13.title >}}"></span></td>
+    <td><a href='./w13' target='_blank'><span data-qmd="{{< var w13.title >}}"></span></a></td>
 </tr>
 <tr>
     <td></td>
     <td>14</td>
     <td><span data-qmd="{{< var w14.date-md >}}"></span></td>
-    <td><span data-qmd="{{< var w14.title >}}"></span></td>
+    <td><a href='./w14' target='_blank'><span data-qmd="{{< var w14.title >}}"></span></a></td>
+</tr>
+<tr>
+    <td></td>
+    <td>15</td>
+    <td><span data-qmd="{{< var w15.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w15.title >}}"></span></td>
 </tr>
 <tr>
     <td></td>

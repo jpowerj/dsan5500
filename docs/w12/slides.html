@@ -664,7 +664,7 @@ Jeff Jacobs
 <img data-src="images/all_three.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="in-action" class="slide level2 crunch-title crunch-details">
 <h2>In Action</h2>
-<div id="5c535fbc" class="cell" data-execution_count="1">
+<div id="ea8d4a96" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> time</span>
 <span id="cb1-2"><a></a><span class="im">from</span> sympy.ntheory <span class="im">import</span> factorint</span>
 <span id="cb1-3"><a></a><span class="im">from</span> joblib <span class="im">import</span> Parallel, delayed</span>
@@ -677,7 +677,7 @@ Jeff Jacobs
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="1502f511" class="cell" data-execution_count="2">
+<div id="3c38cbe6" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>serial_start <span class="op">=</span> time.time()</span>
@@ -689,11 +689,11 @@ Jeff Jacobs
 <span id="cb2-7"><a></a>disp_time(serial_start, serial_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.9757 s</code></pre>
+<pre><code>0.9593 s</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="9b945b8d" class="cell" data-execution_count="3">
+<div id="a68052ba" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>par_start <span class="op">=</span> time.time()</span>
@@ -705,7 +705,7 @@ Jeff Jacobs
 <span id="cb4-7"><a></a>disp_time(par_start, par_end)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>2.2072 s</code></pre>
+<pre><code>2.2730 s</code></pre>
 </div>
 </div>
 </div></div>
@@ -733,7 +733,7 @@ Jeff Jacobs
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>DSAN 5500 Week 12: Final Projects, Interfaces</p>
+<p>DSAN 5500 Week 12: Parallel Pipelines and Map-Reduce</p>
 </div>
 </div>
 </section></section>

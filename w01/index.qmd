@@ -1,7 +1,7 @@
 ---
 title: "Week 1: {{< var w01.title >}}"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
-date: 2024-01-09
+date: 2025-01-09
 date-format: full
 lecnum: 1
 categories:
@@ -409,7 +409,3 @@ $$
 
 * We now have a **different recurrence relation**: $T(N) = \underbrace{7T(N/2)}_{\text{Multiplications}} + \underbrace{\Theta(N^2)}_{\text{Additions}}$
 * And it turns out, somewhat miraculously, that the additional time required for the **increased number of additions** is **significantly less** than the **time savings** we obtain by doing 7 instead of 8 multiplications, since this method now runs in $T(N) = O(N^{\log_2(7)}) \approx O(N^{2.807}) < O(N^3)$ 🤯
-
-# Lab: Assignment Workflow
-
-* <a href='https://classroom.google.com/c/NjM5MzE2MTE4NTgx' target='_blank'>Google Classroom <i class='bi bi-box-arrow-up-right ps-1'></i></a>

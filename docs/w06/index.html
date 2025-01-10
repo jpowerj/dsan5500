@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>Week 6: Code Examples and Midterm Prep – DSAN 5500</title>
+<title>Week 6: Depth-First and Breadth-First Search – DSAN 5500</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -229,86 +229,98 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../w02/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 2: Jan 22</span></a>
+ <span class="menu-text">Week 2: Jan 16</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../w03/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3: Jan 29</span></a>
+ <span class="menu-text">Week 3: Jan 23</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../w04/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4: Feb 5</span></a>
+ <span class="menu-text">Week 4: Jan 30</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../w05/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5: Feb 12</span></a>
+ <span class="menu-text">Week 5: Feb 6</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../w06/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Week 6: Feb 20</span></a>
+ <span class="menu-text">Week 6: Feb 13</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../w07/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 7: Feb 26</span></a>
+ <span class="menu-text">Week 7: Feb 20</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../w08/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8: Mar 11</span></a>
+ <span class="menu-text">Week 8: Feb 27</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../w09/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 9: Mar 18</span></a>
+ <span class="menu-text">Week 9: Mar 13</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../w10/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 10: Mar 25</span></a>
+ <span class="menu-text">Week 10: Mar 20</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../w11/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 11: Apr 8</span></a>
+ <span class="menu-text">Week 11: Mar 27</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../w12/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 12: Apr 15</span></a>
+ <span class="menu-text">Week 12: Apr 3</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w13/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 13: Apr 10</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w14/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 14: Apr 24</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://classroom.google.com/c/NzQzMzM5MzA3OTEx?cjc=v4aodxe" class="sidebar-item-text sidebar-link" target="_blank">
- <span class="menu-text">Google Classroom</span></a>
+ <span class="menu-text">Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://chat.google.com/room/AAAAhimoYoA?cls=7" class="sidebar-item-text sidebar-link" target="_blank">
- <span class="menu-text">Google Space</span></a>
+ <span class="menu-text">Google Space <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
   </div>
 </li>
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-01-09, 06:35:28 PM</em></p>
+<p><em>Updated 2025-01-10, 06:08:01 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -346,7 +358,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 6: Code Examples and Midterm Prep</h1>
+<h1 class="title">Week 6: Depth-First and Breadth-First Search</h1>
 <p class="subtitle lead"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
   <div class="quarto-categories">
     <div class="quarto-category">Class Sessions</div>
