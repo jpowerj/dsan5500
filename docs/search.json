@@ -496,7 +496,7 @@
     "href": "w01/slides.html#primitive-types",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Primitive Types",
-    "text": "Primitive Types\n\nBoolean (True or False)\nNumbers (Integers, Decimals)\nStrings\nNone"
+    "text": "Primitive Types\n\nBoolean (True or False)\nNumbers (Integers, Decimals)\nNone"
   },
   {
     "objectID": "w01/slides.html#stack-and-heap",
@@ -695,7 +695,7 @@
     "href": "w01/index.html#primitive-types",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Primitive Types",
-    "text": "Primitive Types\n\nBoolean (True or False)\nNumbers (Integers, Decimals)\nStrings\nNone",
+    "text": "Primitive Types\n\nBoolean (True or False)\nNumbers (Integers, Decimals)\nNone",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -1334,6 +1334,41 @@
     "text": "Week\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\n11\n\n\nWeek 11: Moving from Serial to Parallel Pipelines\n\n\nMonday Apr 8, 2024\n\n\n\n\n10\n\n\nWeek 10: Data Pipeline Orchestration\n\n\nMonday Mar 25, 2024\n\n\n\n\n9\n\n\nWeek 9: Data Validation, Data Processing Pipelines\n\n\nMonday Mar 18, 2024\n\n\n\n\n8\n\n\nWeek 8: In-Class Midterm\n\n\nMonday Mar 11, 2024\n\n\n\n\n6\n\n\nWeek 6: Code Examples and Midterm Prep\n\n\nTuesday Feb 20, 2024\n\n\n\n\n5\n\n\nWeek 5: Binary Search Trees\n\n\nMonday Feb 12, 2024\n\n\n\n\n4\n\n\nWeek 4: Heaps, Stacks, Hash Maps\n\n\nMonday Feb 5, 2024\n\n\n\n\n3\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nMonday Jan 29, 2024\n\n\n\n\n2\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nMonday Jan 22, 2024\n\n\n\n\n1\n\n\nWeek 1: Course Intro and Motivation\n\n\nWednesday Jan 10, 2024\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "w02/slides.html#hammers-vs.-structures-built-whammers",
+    "href": "w02/slides.html#hammers-vs.-structures-built-whammers",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Hammers vs. Structures Built w/Hammers",
+    "text": "Hammers vs. Structures Built w/Hammers\n\n\nHow I see the course title:\n\nData Structures!\nObjects!, and\nAlgorithms! (in Python)\n\nHow my opps see the course title: (Data Structures, Objects, and Algorithms) in Python!"
+  },
+  {
+    "objectID": "w02/slides.html#primitive-types-in-general",
+    "href": "w02/slides.html#primitive-types-in-general",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Primitive Types in General",
+    "text": "Primitive Types in General\n\nVariable types for which [language] knows in advance exactly how much memory is going to be required\nBooleans (True or False): Exactly 1 bit (0 or 1)\nint: 32 or 64 bits (depending on OS)\nNone / null / NA: Since we want it to serve as a “blank” value (easily cast to other primitive types), usually the same number of bits as int\n\nHence, in C for example, null is actually just shorthand for an int with value 0"
+  },
+  {
+    "objectID": "w02/slides.html#primitive-types-python-weirdness-edition",
+    "href": "w02/slides.html#primitive-types-python-weirdness-edition",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Primitive Types: Python Weirdness Edition",
+    "text": "Primitive Types: Python Weirdness Edition\n\n\n\nBoolean (True or False): Exactly 1 bit (0 or 1)\n\nimport sys\nsys.getsizeof(True)\n\n28\n\n\nint: 32 or 64 bits (depending on OS)\n\nsys.maxsize\n\n9223372036854775807\n\n\nNone\n\nsys.getsizeof(None)\n\n16\n\n\n\n\n\n\n\n\n\n\nWhy is this happening?"
+  },
+  {
+    "objectID": "w02/slides.html#stack-and-heap-in-c-java",
+    "href": "w02/slides.html#stack-and-heap-in-c-java",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Stack and Heap in C / Java",
+    "text": "Stack and Heap in C / Java\n\n\n\n\nmy_beautiful_app.c\n\ntime_t current_time = time(NULL);\nint num_rows = 13;\nbool filled = true;\nbool empty = false;\nint num_cols = 2;\nchar username[] = \"Jeff\";\nint i = 0;\nint j = None;\nvoid z = NULL;"
+  },
+  {
+    "objectID": "w02/slides.html#stack-and-heap-in-python",
+    "href": "w02/slides.html#stack-and-heap-in-python",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Stack and Heap in Python",
+    "text": "Stack and Heap in Python\n\n\n\n\nmy_beautiful_app.py\n\nimport datetime\ncur_date = datetime.datetime.now()\nnum_rows = 13\nfilled = True\nempty = False\nnum_cols = 2\nusername = \"Jeff\"\ni = 0\nj = None\nz = 314"
+  },
+  {
     "objectID": "w02/slides.html#why-does-the-nyc-subway-have-express-lines",
     "href": "w02/slides.html#why-does-the-nyc-subway-have-express-lines",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
@@ -1598,6 +1633,56 @@
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "",
     "text": "Open slides in new window →",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#hammers-vs.-structures-built-whammers",
+    "href": "w02/index.html#hammers-vs.-structures-built-whammers",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Hammers vs. Structures Built w/Hammers",
+    "text": "Hammers vs. Structures Built w/Hammers\n\n\nHow I see the course title:\n\nData Structures!\nObjects!, and\nAlgorithms! (in Python)\n\nHow my opps see the course title: (Data Structures, Objects, and Algorithms) in Python!",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#primitive-types-in-general",
+    "href": "w02/index.html#primitive-types-in-general",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Primitive Types in General",
+    "text": "Primitive Types in General\n\nVariable types for which [language] knows in advance exactly how much memory is going to be required\nBooleans (True or False): Exactly 1 bit (0 or 1)\nint: 32 or 64 bits (depending on OS)\nNone / null / NA: Since we want it to serve as a “blank” value (easily cast to other primitive types), usually the same number of bits as int\n\nHence, in C for example, null is actually just shorthand for an int with value 0",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#primitive-types-python-weirdness-edition",
+    "href": "w02/index.html#primitive-types-python-weirdness-edition",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Primitive Types: Python Weirdness Edition",
+    "text": "Primitive Types: Python Weirdness Edition\n\n\n\nBoolean (True or False): Exactly 1 bit (0 or 1)\n\nimport sys\nsys.getsizeof(True)\n\n28\n\n\nint: 32 or 64 bits (depending on OS)\n\nsys.maxsize\n\n9223372036854775807\n\n\nNone\n\nsys.getsizeof(None)\n\n16\n\n\n\n\n\n\n\n\n\n\nWhy is this happening?",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#stack-and-heap-in-c-java",
+    "href": "w02/index.html#stack-and-heap-in-c-java",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Stack and Heap in C / Java",
+    "text": "Stack and Heap in C / Java\n\n\n\n\nmy_beautiful_app.c\n\ntime_t current_time = time(NULL);\nint num_rows = 13;\nbool filled = true;\nbool empty = false;\nint num_cols = 2;\nchar username[] = \"Jeff\";\nint i = 0;\nint j = None;\nvoid z = NULL;",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#stack-and-heap-in-python",
+    "href": "w02/index.html#stack-and-heap-in-python",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Stack and Heap in Python",
+    "text": "Stack and Heap in Python\n\n\n\n\nmy_beautiful_app.py\n\nimport datetime\ncur_date = datetime.datetime.now()\nnum_rows = 13\nfilled = True\nempty = False\nnum_cols = 2\nusername = \"Jeff\"\ni = 0\nj = None\nz = 314",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -2509,7 +2594,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'lizard', 'bird', 'fish', 'cat'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'dog', 'bird', 'lizard', 'cat', 'fish'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}",
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'bird', 'lizard', 'fish', 'cat'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'bird', 'lizard', 'fish', 'cat', 'dog'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2881,7 +2966,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'bird', 'cat', 'fish', 'lizard'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'dog', 'bird', 'cat', 'fish', 'lizard'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'fish', 'bird', 'lizard', 'cat'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'bird', 'lizard'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'lizard', 'cat', 'dog', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",

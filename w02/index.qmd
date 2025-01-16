@@ -19,9 +19,9 @@ format:
     scrollable: true
     slide-number: true
     html-math-method: mathjax
-    theme: ["../_jjslides.scss"]
+    css: "../dsan-globals/jjstyles.css"
     include-in-header:
-      text: "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous'><script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL' crossorigin='anonymous'></script><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js' integrity='sha512-wW8K3TEH5ZViD4aMPzwPdhXKs/Kb5MAm7qLRd3QliYlHy0u9utSKZsZzqlZAgJ9xxXp81acwnrZVZ8oTfoLG1g==' crossorigin='anonymous' referrerpolicy='no-referrer'></script>"
+      text: "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous'><script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL' crossorigin='anonymous'></script><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link href='https://fonts.googleapis.com/css2?family=Honk&display=swap' rel='stylesheet'>"
     simplemenu:
       flat: true
       barhtml:
@@ -44,6 +44,153 @@ format:
 </center>
 
 :::
+
+# Quick Recap {.smaller data-stack-name="Recap"}
+
+:::: {.columns}
+::: {.column width="20%"}
+
+[Parallel Programming &rarr;]{.absolute top=200 left=164 width="350" height="300"}
+[Functional Programming &rarr;]{.absolute top=340 left=127 width="350" height="300"}
+[**This Week** &rarr;]{.absolute top=480 left=300 width="350" height="300"}
+[Last Week &rarr;]{.absolute top=604 left=300 width="350" height="300"}
+
+:::
+::: {.column width="80%"}
+
+![](images/plato.jpg){fig-align="center" width="360"}
+
+:::
+::::
+
+## Hammers vs. Structures Built w/Hammers {.crunch-title .title-09 .crunch-ul}
+
+```{=html}
+<style>
+.honk-honk {
+  font-size: 180% !important;
+  /* font-family: "Bungee Spice", sans-serif; */
+  font-family: "Honk", sans-serif;
+  /* font-optical-sizing: auto; */
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
+```
+
+* How I see the course title:
+  * [Data Structures!]{.honk-honk}
+  * [Objects!]{.honk-honk}, and
+  * [Algorithms!]{.honk-honk} (in Python)
+* How my opps see the course title: (Data Structures, Objects, and Algorithms) in [Python!]{.honk-honk}
+
+## Primitive Types *in General*
+
+*   Variable types for which [language] **knows in advance *exactly* how much memory** is going to be required
+*   Booleans (`True` or `False`): Exactly **1** bit (`0` or `1`)
+* `int`: [32 or 64 bits](https://docs.python.org/3/library/sys.html#sys.maxsize) (depending on OS)
+* `None` / `null` / `NA`: Since we want it to serve as a "blank" value (easily **cast** to other primitive types), usually the same number of bits as `int`
+    * Hence, in `C` for example, `null` is actually just shorthand for an `int` with value `0`
+
+## Primitive Types: Python Weirdness Edition {.title-09 .crunch-title .crunch-ul .crunch-quarto-figure}
+
+:::: {.columns}
+::: {.column width="50%"}
+
+*   Boolean (`True` or `False`): Exactly **1** bit (`0` or `1`)
+
+    ```{python}
+    #| label: bool-size
+    #| echo: true
+    #| code-fold: false
+    import sys
+    sys.getsizeof(True)
+    ```
+
+*   `int`: [32 or 64 bits](https://docs.python.org/3/library/sys.html#sys.maxsize) (depending on OS)
+
+    ```{python}
+    #| label: int-size
+    #| echo: true
+    #| code-fold: false
+    sys.maxsize
+    ```
+
+*   `None`
+
+    ```{python}
+    #| label: none-size
+    #| echo: true
+    #| code-fold: false
+    sys.getsizeof(None)
+    ```
+
+:::
+::: {.column width="50%"}
+
+![](images/atrick_nocap.jpg){fig-align="center"}
+
+* Why is this happening?
+
+:::
+::::
+
+## Stack and Heap *in C / Java* {.smaller}
+
+::: columns
+::: {.column width="40%"}
+
+``` {.c filename="my_beautiful_app.c"}
+time_t current_time = time(NULL);
+int num_rows = 13;
+bool filled = true;
+bool empty = false;
+int num_cols = 2;
+char username[] = "Jeff";
+int i = 0;
+int j = None;
+void z = NULL;
+```
+
+:::
+::: {.column width="60%"}
+
+
+
+<!-- https://kroki.io/graphviz/svg/eNqVkl1v2jAUhq_hV1hmF60EWj6AUkQsTeyjqrZetNVuKKpMfEy8BjuynQIj-e-zQwudVmntuXB07LyPz3t8mFhqWmRoiXZt5EJT-cCETr5fN2mqZArSamohudUltFumXOwVaV4aC_pb4JStVk4XkCf4B6yU3qKTT9wdoaligL5sIC2tUPJ0jKboI7qkjxQ7xT-gsAEdUDeWpg-4qeJlGPtItZk1P6EE4d1uIukKQpKW-p65OitZru61WpuKizwHVsGqsNtmN1W5qUoD2isqUf2qftfVbkIZ0yEJNqPRYgjx8Lya8JCEsftExJtGJ-GpS_rkK82NywKfDUjk1qGT8TOe9mMIXDoifj0nV0qCpwQkDvt1jbsmowX4cjWkSjPc5UpaX0WCp6rUAjSeO_P1a32J_u7LBdDiZVuyEM2ejj47-7MoiOJecNaLovlr13QLkGvBbJYE84bSaiDxAXKHL4HzO_wm8T46KBsc9N77f7Xe6rMa758Uj5t3QD2CcBbi8XIwM3abO4JRuXAtc7No3CQKaZtRnKNOd_N0508Ba3ysqPPhCOX9IzF6JjJqMngX8sgbel4Wt52D-g9b6P_t -->
+
+![](images/stack-heap-c.svg){fig-align="center"}
+
+:::
+:::
+
+## Stack and Heap *in Python* {.smaller}
+
+:::: {.columns}
+::: {.column width="40%"}
+
+``` {.python filename="my_beautiful_app.py"}
+import datetime
+cur_date = datetime.datetime.now()
+num_rows = 13
+filled = True
+empty = False
+num_cols = 2
+username = "Jeff"
+i = 0
+j = None
+z = 314
+```
+
+:::
+::: {.column width="60%"}
+
+<!-- https://kroki.io/graphviz/svg/eNqVk0uP0zAUhdftr7A8LEBqRd59KImEhscIAUKA2HSqkZPcNGZSO7Id2tLkv-O47bSILKZeOLo-vp-PTuyMrgSpCrRC-yHSQxD2mFERffpmypSzFJgSREH0Q9QwHMg6OXSkZS0ViA-W7hwMSpJAGeHPsOZih16-ybWEbnkG6N0W0lpRzl7N0dedKjjDev9_GNtgnkDfFUkfsfFwOaT6TYRcmE0oQni_DxlZgx2ntXjItMuG1esHwTeyyWlZQtbAulI7s5ryUja1BNF1NLT51fxpm31IskzYsbWdTpMA3GDWhLkd267-OHo1cV0_nXiBLj1dBnbgkRw61Y8dPQd6MZ_kqeeCpctp3M2zAy6xrFm307Zi1_baFo9kQSrofAtIucjwKOdMdXYifMtrQUHgpU6h7QvI-TegOyDVZT6FjRZH6a3OYeFYjju2JmPHWfYdM6qAbWimishaGsrAQNwnyD3-CHl-j5_VfLTgnbrDMIm76xK-TuL4CoB_CXhPSnk1IbgkfOHseYAu8hMCH-4YnpuLgcYxwoWN5yt_IdWu1ATJS6p_nX4aUj8MypR5GUt0M9oes_tJYYPPtm5enKG5dyY6J2JGZAFXIc88p-MVXo8SGMXtUYyHwu9RZkYJhjqP9i_dCD4S -->
+
+![](images/stack-heap-py.svg){fig-align="center"}
+
+:::
+::::
 
 # Data Structures: Motivation {data-stack-name="Data Structures"}
 
