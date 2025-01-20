@@ -73,7 +73,6 @@ website:
       - text: "Anonymous Feedback <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://forms.gle/i9axXQq5wL7S4KWH9"
         target: "_blank"
-      
 
 format:
   html:

@@ -12,7 +12,7 @@ listing:
   fields: [title,date]
   sort: "lecnum asc"
   table-hover: true
-#  date-format: full
+  # date-format: full
   date-format: "MMMM D"
 ---
 
