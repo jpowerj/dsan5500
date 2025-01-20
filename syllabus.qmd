@@ -42,19 +42,23 @@ The graded components for the course consist of **five** homework assignments, a
 </tr>
 <tr>
     <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW1**: {{< var hw1.title >}}"></span></td>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>10%"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw1.pct >}}%"></span></td>
 </tr>
 <tr>
     <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW2**: {{< var hw2.title >}}"></span></td>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>10%"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw2.pct >}}%"></span></td>
 </tr>
 <tr>
     <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW3**: {{< var hw3.title >}}"></span></td>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>10%"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw3.pct >}}%"></span></td>
 </tr>
 <tr>
     <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW4**: {{< var hw4.title >}}"></span></td>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>10%"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw4.pct >}}%"></span></td>
+</tr>
+<tr>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW5**: {{< var hw5.title >}}"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw5.pct >}}%"></span></td>
 </tr>
 </tbody>
 </table>
@@ -89,8 +93,11 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="{{< var w02.date-md >}}"></span></td>
     <td><a href='./w02/' target='_blank'><span data-qmd="{{< var w02.title >}}"></span></a></td>
 </tr>
-<tr>
-    <td></td>
+
+<!-- OOP -->
+
+<tr class='new-unit'>
+    <td><span data-qmd="**Unit 2**: {{< var hw2.title >}}"></span></td>
     <td>3</td>
     <td><span data-qmd="{{< var w03.date-md >}}"></span></td>
     <td><a href='./w03/' target='_blank'><span data-qmd="{{< var w03.title >}}"></span></a></td>
@@ -101,20 +108,23 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="{{< var hw1.date-md >}}"></span></td>
     <td><span data-qmd="*HW1 (Python Fundamentals) Due*"></span></td>
 </tr>
-
-<!-- Data structures -->
-
-<tr class='new-unit'>
-    <td><span data-qmd="**Unit 2**: {{< var hw2.title >}}"></span></td>
+<tr>
+    <td></td>
     <td>4</td>
     <td><span data-qmd="{{< var w04.date-md >}}"></span></td>
     <td><a href='./w04/' target='_blank'><span data-qmd="{{< var w04.title >}}"></span></a></td>
 </tr>
-<tr>
-    <td></td>
+<tr class='new-unit'>
+    <td><span data-qmd="**Unit 3**: {{< var hw3.title >}}"></span></td>
     <td>5</td>
     <td><span data-qmd="{{< var w05.date-md >}}"></span></td>
     <td><a href='./w05/' target='_blank'><span data-qmd="{{< var w05.title >}}"></span></a></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="{{< var hw2.date-md >}}"></span></td>
+    <td><span data-qmd="*HW2 ({{< var hw2.title >}}) Due*"></span></td>
 </tr>
 <tr>
     <td></td>
@@ -122,7 +132,6 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="{{< var w06.date-md >}}"></span></td>
     <td><a href='./w06' target='_blank'><span data-qmd="{{< var w06.title >}}"></span></a></td>
 </tr>
-
 <tr>
     <td></td>
     <td>7</td>
@@ -132,8 +141,8 @@ The following is a rough map of what we will work through together throughout th
 <tr>
     <td></td>
     <td></td>
-    <td><span data-qmd="{{< var hw2.date-md >}}"></span></td>
-    <td><span data-qmd="*HW2 ({{< var hw2.title >}}) Due*"></span></td>
+    <td><span data-qmd="{{< var hw3.date-md >}}"></span></td>
+    <td><span data-qmd="*HW3 ({{< var hw3.title >}}) Due*"></span></td>
 </tr>
 
 <!-- Midterm -->
@@ -154,7 +163,7 @@ The following is a rough map of what we will work through together throughout th
 <!-- Data-Processing Pipelines -->
 
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 3**: Data Pipeline Orchestration"></span></td>
+    <td><span data-qmd="**Unit 4**: {{< var hw4.title >}}"></span></td>
     <td>9</td>
     <td><span data-qmd="{{< var w09.date-md >}}"></span></td>
     <td><a href='./w09' target='_blank'><span data-qmd="{{< var w09.title >}}"></span></a></td>
@@ -168,14 +177,14 @@ The following is a rough map of what we will work through together throughout th
 <tr>
     <td></td>
     <td></td>
-    <td><span data-qmd="{{< var hw3.date-md >}}"></span></td>
-    <td><span data-qmd="*HW3 ({{< var hw3.title >}}) Due*"></span></td>
+    <td><span data-qmd="{{< var hw4.date-md >}}"></span></td>
+    <td><span data-qmd="*HW4 ({{< var hw4.title >}}) Due*"></span></td>
 </tr>
 
 <!-- Parallel Computing -->
 
-<tr class='new-unit'>
-    <td><span data-qmd="**Unit 4**: {{< var hw4.title >}}"></span></td>
+<tr>
+    <td></td>
     <td>11</td>
     <td><span data-qmd="{{< var w11.date-md >}}"></span></td>
     <td><a href='./w11' target='_blank'><span data-qmd="{{< var w11.title >}}"></span></a></td>
@@ -189,8 +198,8 @@ The following is a rough map of what we will work through together throughout th
 <tr>
     <td></td>
     <td></td>
-    <td><span data-qmd="{{< var hw4.date-md >}}"></span></td>
-    <td><span data-qmd="*HW4 ({{< var hw4.title >}}) Due*"></span></td>
+    <td><span data-qmd="{{< var hw5.date-md >}}"></span></td>
+    <td><span data-qmd="*HW5 ({{< var hw5.title >}}) Due*"></span></td>
 </tr>
 
 <!-- Advanced Topics and Applications -->

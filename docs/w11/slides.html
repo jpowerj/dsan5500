@@ -498,7 +498,7 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-7 \pm \sqrt{49 - 4(6)(-3)}}{2(6)
 <li>Computing pieces separately:</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="bu">map</span>(do_something_with_piece, list_of_pieces)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="6a0a7049" class="cell" data-execution_count="1">
+<div id="8268cea2" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>my_map <span class="op">=</span> <span class="bu">map</span>(<span class="kw">lambda</span> <span class="bu">input</span>: <span class="bu">input</span><span class="op">**</span><span class="dv">2</span>, [(<span class="dv">1</span><span class="op">-</span><span class="dv">2</span>), (<span class="dv">3</span><span class="op">-</span><span class="dv">5</span>), (<span class="dv">2</span><span class="op">-</span><span class="dv">0</span>)])</span>
@@ -513,7 +513,7 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-7 \pm \sqrt{49 - 4(6)(-3)}}{2(6)
 <li>Combining solved pieces</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="bu">reduce</span>(how_to_combine_pair_of_pieces, pieces_to_combine)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="45e8698c" class="cell" data-execution_count="2">
+<div id="a331b792" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
@@ -537,7 +537,7 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-7 \pm \sqrt{49 - 4(6)(-3)}}{2(6)
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="b4083b0c" class="cell" data-execution_count="3">
+<div id="34cff99e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">def</span> add_5(num):</span>
 <span id="cb7-2"><a></a>  <span class="cf">return</span> num <span class="op">+</span> <span class="dv">5</span></span>
 <span id="cb7-3"><a></a>add_5(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -546,7 +546,7 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-7 \pm \sqrt{49 - 4(6)(-3)}}{2(6)
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="c339696b" class="cell" data-execution_count="4">
+<div id="a7d39ca6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="kw">def</span> apply_twice(fn, arg):</span>
 <span id="cb9-2"><a></a>  <span class="cf">return</span> fn(fn(arg))</span>
 <span id="cb9-3"><a></a>apply_twice(add_5, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -558,7 +558,7 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-7 \pm \sqrt{49 - 4(6)(-3)}}{2(6)
 <ul>
 <li>In Python, functions <strong>can be used as</strong> vars (Hence <code class="sourceCode python"><span class="kw">lambda</span></code>):</li>
 </ul>
-<div id="3465fdd2" class="cell" data-execution_count="5">
+<div id="b968cc43" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>add_5 <span class="op">=</span> <span class="kw">lambda</span> num: num <span class="op">+</span> <span class="dv">5</span></span>
 <span id="cb11-2"><a></a>apply_twice(add_5, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
