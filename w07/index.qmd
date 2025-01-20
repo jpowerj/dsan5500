@@ -1,7 +1,7 @@
 ---
 title: "Week 7: {{< var w07.title >}}"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
-date: "Monday, February 26, 2024"
+date: 2025-02-20
 date-format: full
 author: "Jeff Jacobs"
 institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
@@ -17,4 +17,163 @@ format:
     html-math-method: mathjax
 ---
 
-Link to midterm will be posted on Google Classroom.
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Micro $\rightarrow$ Meso $\rightarrow$ Macro {.title-11 .crunch-title .crunch-ul .crunch-li-8 .not-title-slide data-stack-name="Intro"}
+
+* ✅ Micro-level: Individual, **"core" algorithms/data structures** and their big-$O$ runtimes
+  * e.g., `LinkedList`, [Merge-Sort]{.alg}
+* ✅ Meso-level: Algorithms/data structures that "piece together" a small collection of core algorithms
+  * **Hash tables**: Fixed-Length Array + Hashing Algorithm + Collision Handling Algorithm (BST)
+
+<div style="border: 3px solid black !important;">
+
+* 🤔 **Macro-level**: **Pipelines** of data structures and algorithms:
+  * **raw data source** $\rightarrow$ **processing** $\rightarrow$ **storage**
+
+</div>
+
+## Most Common HW1-to-Midterm Struggles {.title-09 .crunch-title .crunch-ul}
+
+* Ingesting data (HW1: `Swimmer` class)
+  * $\implies$ Data-processing pipelines!
+* Maintaining **invariants** as dataset grows (HW2: `None` &rarr; `InventoryItem` &rarr; `BinarySearchTree`)
+  * $\implies$ Data validation!
+
+# Data Validation {data-stack-name="Validation"}
+
+* What you already know: Type hints
+* Type hints on steroids: Pydantic 😎
+
+## Pydantic
+
+![](images/pydantic_logo.png){fig-align="center"}
+
+## Pydantic in Action {.crunch-title .crunch-details}
+
+```{python}
+from pydantic import BaseModel
+class InventoryItem(BaseModel):
+    item_name: str
+    price: float
+my_item = InventoryItem(item_name="Banana", price=10)
+my_item
+```
+
+```{python}
+#| error: true
+invalid_item = InventoryItem(item_name="Banana", price="100 dollar")
+```
+
+## Pydantic in Even-Cooler Action {.crunch-title .crunch-details}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{python}
+#| error: true
+from pydantic import BaseModel, EmailStr, PositiveInt
+class Employee(BaseModel):
+    name: str
+    email: EmailStr
+    age: PositiveInt
+invalid_employee = Employee(
+  name="Jeef",
+  email="fakeemail!!!",
+  age=50
+)
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+#| error: true
+invalid_employee2 = Employee(
+  name="Jeeferson",
+  email="valid@email.com",
+  age=-3
+)
+```
+
+:::
+:::
+
+# Data-Processing Pipelines {data-stack-name="Pipelines"}
+
+## Two Generations of Python Pipeline Libraries
+
+* Gen 1: Airflow (AirBnB), Luigi (Spotify)
+* Gen 2: Dagster, Prefect
+
+![](images/Prefect.webp){fig-align="center"}
+
+## For Now: Prefect!
+
+* But, the **principles** (**ETL**) remain the same!
+
+![](images/flow-run-page.png){fig-align="center"}
+
+## ETL = Extract, Transform, Load
+
+![From <a href='https://www.analyticsvidhya.com/blog/2022/06/a-complete-guide-on-building-an-etl-pipeline-for-beginners/' target='_blank'>Analytics Vidhya</a>](images/etl.png){fig-align="center"}
+
+## You Have Already Been Doing This! {.crunch-title .crunch-ul}
+
+* HW1: Swim team example
+  * **Extract**: Load data from .csv
+  * **Transform**: Convert times to milliseconds
+  * **Load**: Store into `Team` object
+* HW2 (Throughout)
+  * **Extract**: Load products from .csv into Pandas
+  * **Transform**: (Construct `InventoryItem` object for each row)
+  * **Load**: Store into `LogarithmicHashTable`
+
+## (And You Have Already Run into the Need for Validation!)
+
+* HW1: Are the times in seconds or milliseconds?
+* HW2: Are users providing `key` and `value` separately, or together?
+* If together: as `tuple`s or `InventoryItem`s?
+* If `InventoryItem`s: What type(s) for `item_name`? What type(s) for `price`? 😵
+* $\implies$ One of the **two** main focuses for **HW3** will be **validation** of input data!
+
+## Can't We Just Skip to the Cool, Fun ML Part? (The T Step)
+
+* (Hopefully things from previous slide have taught you the dangers of this!)
+* It's like **Anscombe's Quartet** from DSAN 5000/5100/5200: We can be misled by fancy tools if we don't take time for the (sometimes boring) step of **looking at** the data
+* Example: ETL for processing text data (books for now)
+
+## BookshelfScan (An Example I Use IRL!) {.title-09 .crunch-title .crunc-ul}
+
+* **Extract**: Dropbox folder containing ebooks
+* **Transform**: Compute word counts
+* **Load**: Save word counts into a database
+* Enables me to figure out **which books** talk about a topic $t$ (data structures, algorithms, data ethics and policy, etc.)!
+* **BUT** (Devil is in the details): Can look very different for `txt`, `epub` (can contain images), `pdf` (sometimes text is embedded, sometimes not), images of scans, audiobooks
+* $\implies$ (Sad but true) Pipleline will **crash and burn** if you don't handle these **before** using <a href='https://www.trychroma.com/' target='_blank'>Cool NLP things</a> in T step
+
+## HW3 Possibility 1: Pet Store Inventory
+
+* <a href='https://petstore.swagger.io/v2/store/inventory' target='_blank'>https://petstore.swagger.io/v2/store/inventory</a>
+
+## HW3 Possibility 2: Books to Scrape
+
+* <a href='http://books.toscrape.com/' target='_blank'>Books to Scrape homepage</a>
+
+# Lab(!): Data Validation {data-stack-name="Lab: Data Validation"}
+
+## Google Classroom Link
+
+* <a href='https://classroom.google.com/c/NjM5MzE2MTE4NTgx/m/NjY4NDU0NTk0MTk4/details' target='_blank'>Open in Google Classroom <i class='bi bi-box-arrow-up-right ps-1'></i></a>
+
+## References
+
+::: {#refs}
+:::

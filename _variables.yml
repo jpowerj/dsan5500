@@ -2,6 +2,7 @@ zoom_url: https://georgetown.zoom.us/j/99019126324?pwd=wrcBediyQ3JO2y7IP1UrzlE6p
 panopto_url: https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=3ada6168-ed11-47c8-8936-b25a00667770
 spaces_url: https://chat.google.com/room/AAAAhimoYoA?cls=7
 classroom_url: https://classroom.google.com/c/NzQzMzM5MzA3OTEx?cjc=v4aodxe
+feedback_url: https://forms.gle/i9axXQq5wL7S4KWH9
 tas:
   - name: Renee DeMaio
     email: jrd154@georgetown.edu
@@ -35,7 +36,7 @@ w05:
   footer: "Binary Search Trees"
   date-md: "Feb 6"
 w06:
-  weeknum: 8
+  weeknum: 6
   title: "Depth-First and Breadth-First Search"
   footer: "Depth-First and Breadth-First Search"
   date-md: "Feb 13"

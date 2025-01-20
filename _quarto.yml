@@ -17,9 +17,6 @@ website:
     contents:
       - text: "<i class='bi bi-house pe-1'></i> Home"
         href: index.qmd
-      - text: "Zoom Link <i class='bi bi-box-arrow-up-right ps-1'></i>"
-        href: "https://georgetown.zoom.us/j/99019126324?pwd=wrcBediyQ3JO2y7IP1UrzlE6pz2FaF.1"
-        target: "_blank"
       - text: "Syllabus"
         href: syllabus.qmd
       - text: "Resources"
@@ -30,7 +27,11 @@ website:
         href: final.qmd
       - text: "Extra Writeups"
         href: "writeups/index.qmd"
-      - text: "Recordings"
+      - "---"
+      - text: "Zoom Link <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://georgetown.zoom.us/j/99019126324?pwd=wrcBediyQ3JO2y7IP1UrzlE6pz2FaF.1"
+        target: "_blank"
+      - text: "Recordings <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=3ada6168-ed11-47c8-8936-b25a00667770"
         target: "_blank"
       - "---"
@@ -68,6 +69,9 @@ website:
         target: "_blank"
       - text: "Google Space <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://chat.google.com/room/AAAAhimoYoA?cls=7"
+        target: "_blank"
+      - text: "Anonymous Feedback <i class='bi bi-box-arrow-up-right ps-1'></i>"
+        href: "https://forms.gle/i9axXQq5wL7S4KWH9"
         target: "_blank"
       
 

@@ -1028,7 +1028,7 @@
     "href": "index.html",
     "title": "DSAN 5500: Data Structures, Objects, and Algorithms in Python",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5500: Data Structures, Objects, and Algorithms in Python, Spring 2025, at Georgetown University! The course takes place on Thursdays from 6:30 to 9:00pm in Healy 104. More details are provided on the syllabus.\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Course Intro and Motivation\n\n\nJanuary 9\n\n\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nJanuary 16\n\n\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nJanuary 23\n\n\n\n\nWeek 4: Heaps, Stacks, Hash Maps\n\n\nFebruary 5\n\n\n\n\nWeek 5: Binary Search Trees\n\n\nFebruary 12\n\n\n\n\nWeek 6: Depth-First and Breadth-First Search\n\n\nFebruary 20\n\n\n\n\nWeek 7: Code Examples and Midterm Prep\n\n\nFebruary 26\n\n\n\n\nWeek 8: In-Class Midterm\n\n\nMarch 11\n\n\n\n\nWeek 9: Data Validation, Data Processing Pipelines\n\n\nMarch 18\n\n\n\n\nWeek 10: Data Pipeline Orchestration\n\n\nMarch 25\n\n\n\n\nWeek 11: Parallel Pipelines and Map-Reduce\n\n\nApril 8\n\n\n\n\nWeek 12: Final Projects, Interfaces\n\n\nApril 15\n\n\n\n\nWeek 13: Applications in NLP\n\n\nApril 22\n\n\n\n\nWeek 14: Applications in Bioinformatics\n\n\nApril 24\n\n\n\n\n\nNo matching items",
+    "text": "Welcome to the homepage for DSAN 5500: Data Structures, Objects, and Algorithms in Python, Spring 2025, at Georgetown University! The course takes place on Thursdays from 6:30 to 9:00pm in Healy 104. More details are provided on the syllabus.\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Course Intro and Motivation\n\n\nJanuary 9\n\n\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nJanuary 16\n\n\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nJanuary 23\n\n\n\n\nWeek 4: Heaps, Stacks, Hash Maps\n\n\nJanuary 30\n\n\n\n\nWeek 5: Binary Search Trees\n\n\nFebruary 6\n\n\n\n\nWeek 6: Depth-First and Breadth-First Search\n\n\nFebruary 13\n\n\n\n\nWeek 7: Code Examples and Midterm Prep\n\n\nFebruary 20\n\n\n\n\nWeek 8: In-Class Midterm\n\n\nFebruary 27\n\n\n\n\nWeek 9: Data Validation, Data Processing Pipelines\n\n\nMarch 13\n\n\n\n\nWeek 10: Data Pipeline Orchestration\n\n\nMarch 20\n\n\n\n\nWeek 11: Parallel Pipelines and Map-Reduce\n\n\nMarch 27\n\n\n\n\nWeek 12: Final Projects, Interfaces\n\n\nApril 3\n\n\n\n\nWeek 13: Applications in NLP\n\n\nApril 10\n\n\n\n\nWeek 14: Applications in Bioinformatics\n\n\nApril 24\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]
@@ -2594,7 +2594,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'lizard', 'cat', 'fish', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'lizard', 'dog', 'cat', 'fish', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}",
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'cat', 'fish', 'lizard', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'dog', 'cat', 'fish', 'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2966,7 +2966,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'lizard', 'fish', 'cat', 'bird'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'dog', 'lizard', 'cat', 'fish', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'fish', 'cat'}\nAnimals you saw that I didn't see: {'dog'}"
+    "text": "Sets\n\n\n\nExtremely helpful + efficient for finding unique elements:\n\n\n\nCode\nanimals_i_saw = ['bird','bird','fish','bird','cat','bird','lizard']\nprint(f\"Number of animals I saw: {len(animals_i_saw)}\")\n\n\nNumber of animals I saw: 7\n\n\n\n\nCode\nunique_animals_me = set(animals_i_saw)\nprint(f\"Set of unique animals: {unique_animals_me}\")\nprint(f\"Number of unique animals: {len(unique_animals_me)}\")\n\n\nSet of unique animals: {'lizard', 'cat', 'bird', 'fish'}\nNumber of unique animals: 4\n\n\n\n\nSupports all set operators from math:\n\n\n\nCode\nanimals_you_saw = ['lizard','dog','bird','bird','bird']\nunique_animals_you = set(animals_you_saw)\nunique_animals_both = unique_animals_me.intersection(unique_animals_you)\nprint(f\"Animals we both saw: {unique_animals_both}\")\n\n\nAnimals we both saw: {'lizard', 'bird'}\n\n\n\n\nCode\nunique_animals_either = unique_animals_me.union(unique_animals_you)\nprint(f\"Animals either of us saw: {unique_animals_either}\")\n\n\nAnimals either of us saw: {'fish', 'dog', 'lizard', 'cat', 'bird'}\n\n\n\n\nCode\nunique_animals_meonly = unique_animals_me - unique_animals_you\nprint(f\"Animals I saw that you didn't see: {unique_animals_meonly}\")\nunique_animals_youonly = unique_animals_you - unique_animals_me\nprint(f\"Animals you saw that I didn't see: {unique_animals_youonly}\")\n\n\nAnimals I saw that you didn't see: {'cat', 'fish'}\nAnimals you saw that I didn't see: {'dog'}"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -3929,7 +3929,157 @@
     "href": "w07/index.html",
     "title": "Week 7: Code Examples and Midterm Prep",
     "section": "",
-    "text": "Link to midterm will be posted on Google Classroom.",
+    "text": "Open slides in new window →",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#most-common-hw1-to-midterm-struggles",
+    "href": "w07/index.html#most-common-hw1-to-midterm-struggles",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "Most Common HW1-to-Midterm Struggles",
+    "text": "Most Common HW1-to-Midterm Struggles\n\nIngesting data (HW1: Swimmer class)\n\n\\(\\implies\\) Data-processing pipelines!\n\nMaintaining invariants as dataset grows (HW2: None → InventoryItem → BinarySearchTree)\n\n\\(\\implies\\) Data validation!",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#pydantic",
+    "href": "w07/index.html#pydantic",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "Pydantic",
+    "text": "Pydantic",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#pydantic-in-action",
+    "href": "w07/index.html#pydantic-in-action",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "Pydantic in Action",
+    "text": "Pydantic in Action\n\n\nCode\nfrom pydantic import BaseModel\nclass InventoryItem(BaseModel):\n    item_name: str\n    price: float\nmy_item = InventoryItem(item_name=\"Banana\", price=10)\nmy_item\n\n\nInventoryItem(item_name='Banana', price=10.0)\n\n\n\n\nCode\ninvalid_item = InventoryItem(item_name=\"Banana\", price=\"100 dollar\")\n\n\n\n---------------------------------------------------------------------------\nValidationError                           Traceback (most recent call last)\nCell In[2], line 1\n----&gt; 1 invalid_item = InventoryItem(item_name=\"Banana\", price=\"100 dollar\")\n\nFile ~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176, in BaseModel.__init__(self, **data)\n    174 # `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks\n    175 __tracebackhide__ = True\n--&gt; 176 self.__pydantic_validator__.validate_python(data, self_instance=self)\n\nValidationError: 1 validation error for InventoryItem\nprice\n  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='100 dollar', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.7/v/float_parsing",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#pydantic-in-even-cooler-action",
+    "href": "w07/index.html#pydantic-in-even-cooler-action",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "Pydantic in Even-Cooler Action",
+    "text": "Pydantic in Even-Cooler Action\n\n\n\n\nCode\nfrom pydantic import BaseModel, EmailStr, PositiveInt\nclass Employee(BaseModel):\n    name: str\n    email: EmailStr\n    age: PositiveInt\ninvalid_employee = Employee(\n  name=\"Jeef\",\n  email=\"fakeemail!!!\",\n  age=50\n)\n\n\n\n---------------------------------------------------------------------------\nValidationError                           Traceback (most recent call last)\nCell In[3], line 6\n      4     email: EmailStr\n      5     age: PositiveInt\n----&gt; 6 invalid_employee = Employee(\n      7   name=\"Jeef\",\n      8   email=\"fakeemail!!!\",\n      9   age=50\n     10 )\n\nFile ~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176, in BaseModel.__init__(self, **data)\n    174 # `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks\n    175 __tracebackhide__ = True\n--&gt; 176 self.__pydantic_validator__.validate_python(data, self_instance=self)\n\nValidationError: 1 validation error for Employee\nemail\n  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]\n\n\n\n\n\n\nCode\ninvalid_employee2 = Employee(\n  name=\"Jeeferson\",\n  email=\"valid@email.com\",\n  age=-3\n)\n\n\n\n---------------------------------------------------------------------------\nValidationError                           Traceback (most recent call last)\nCell In[4], line 1\n----&gt; 1 invalid_employee2 = Employee(\n      2   name=\"Jeeferson\",\n      3   email=\"valid@email.com\",\n      4   age=-3\n      5 )\n\nFile ~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176, in BaseModel.__init__(self, **data)\n    174 # `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks\n    175 __tracebackhide__ = True\n--&gt; 176 self.__pydantic_validator__.validate_python(data, self_instance=self)\n\nValidationError: 1 validation error for Employee\nage\n  Input should be greater than 0 [type=greater_than, input_value=-3, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.7/v/greater_than",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#two-generations-of-python-pipeline-libraries",
+    "href": "w07/index.html#two-generations-of-python-pipeline-libraries",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "Two Generations of Python Pipeline Libraries",
+    "text": "Two Generations of Python Pipeline Libraries\n\nGen 1: Airflow (AirBnB), Luigi (Spotify)\nGen 2: Dagster, Prefect",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#for-now-prefect",
+    "href": "w07/index.html#for-now-prefect",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "For Now: Prefect!",
+    "text": "For Now: Prefect!\n\nBut, the principles (ETL) remain the same!",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#etl-extract-transform-load",
+    "href": "w07/index.html#etl-extract-transform-load",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "ETL = Extract, Transform, Load",
+    "text": "ETL = Extract, Transform, Load\n\n\n\nFrom Analytics Vidhya",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#you-have-already-been-doing-this",
+    "href": "w07/index.html#you-have-already-been-doing-this",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "You Have Already Been Doing This!",
+    "text": "You Have Already Been Doing This!\n\nHW1: Swim team example\n\nExtract: Load data from .csv\nTransform: Convert times to milliseconds\nLoad: Store into Team object\n\nHW2 (Throughout)\n\nExtract: Load products from .csv into Pandas\nTransform: (Construct InventoryItem object for each row)\nLoad: Store into LogarithmicHashTable",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#and-you-have-already-run-into-the-need-for-validation",
+    "href": "w07/index.html#and-you-have-already-run-into-the-need-for-validation",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "(And You Have Already Run into the Need for Validation!)",
+    "text": "(And You Have Already Run into the Need for Validation!)\n\nHW1: Are the times in seconds or milliseconds?\nHW2: Are users providing key and value separately, or together?\nIf together: as tuples or InventoryItems?\nIf InventoryItems: What type(s) for item_name? What type(s) for price? 😵\n\\(\\implies\\) One of the two main focuses for HW3 will be validation of input data!",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step",
+    "href": "w07/index.html#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)",
+    "text": "Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)\n\n(Hopefully things from previous slide have taught you the dangers of this!)\nIt’s like Anscombe’s Quartet from DSAN 5000/5100/5200: We can be misled by fancy tools if we don’t take time for the (sometimes boring) step of looking at the data\nExample: ETL for processing text data (books for now)",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#bookshelfscan-an-example-i-use-irl",
+    "href": "w07/index.html#bookshelfscan-an-example-i-use-irl",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "BookshelfScan (An Example I Use IRL!)",
+    "text": "BookshelfScan (An Example I Use IRL!)\n\nExtract: Dropbox folder containing ebooks\nTransform: Compute word counts\nLoad: Save word counts into a database\nEnables me to figure out which books talk about a topic \\(t\\) (data structures, algorithms, data ethics and policy, etc.)!\nBUT (Devil is in the details): Can look very different for txt, epub (can contain images), pdf (sometimes text is embedded, sometimes not), images of scans, audiobooks\n\\(\\implies\\) (Sad but true) Pipleline will crash and burn if you don’t handle these before using Cool NLP things in T step",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#hw3-possibility-1-pet-store-inventory",
+    "href": "w07/index.html#hw3-possibility-1-pet-store-inventory",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "HW3 Possibility 1: Pet Store Inventory",
+    "text": "HW3 Possibility 1: Pet Store Inventory\n\nhttps://petstore.swagger.io/v2/store/inventory",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#hw3-possibility-2-books-to-scrape",
+    "href": "w07/index.html#hw3-possibility-2-books-to-scrape",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "HW3 Possibility 2: Books to Scrape",
+    "text": "HW3 Possibility 2: Books to Scrape\n\nBooks to Scrape homepage",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#google-classroom-link",
+    "href": "w07/index.html#google-classroom-link",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "Google Classroom Link",
+    "text": "Google Classroom Link\n\nOpen in Google Classroom",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#references",
+    "href": "w07/index.html#references",
+    "title": "Week 7: Code Examples and Midterm Prep",
+    "section": "References",
+    "text": "References",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
@@ -3939,265 +4089,10 @@
     "href": "w08/index.html",
     "title": "Week 8: In-Class Midterm",
     "section": "",
-    "text": "Open slides in new window →",
+    "text": "Link to midterm will be posted on Google Classroom.",
     "crumbs": [
       "Week 8: {{< var w08.date-md >}}"
     ]
-  },
-  {
-    "objectID": "w08/index.html#most-common-hw1-to-midterm-struggles",
-    "href": "w08/index.html#most-common-hw1-to-midterm-struggles",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Most Common HW1-to-Midterm Struggles",
-    "text": "Most Common HW1-to-Midterm Struggles\n\nIngesting data (HW1: Swimmer class)\n\n\\(\\implies\\) Data-processing pipelines!\n\nMaintaining invariants as dataset grows (HW2: None → InventoryItem → BinarySearchTree)\n\n\\(\\implies\\) Data validation!",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#pydantic",
-    "href": "w08/index.html#pydantic",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Pydantic",
-    "text": "Pydantic",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#pydantic-in-action",
-    "href": "w08/index.html#pydantic-in-action",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Pydantic in Action",
-    "text": "Pydantic in Action\n\n\nCode\nfrom pydantic import BaseModel\nclass InventoryItem(BaseModel):\n    item_name: str\n    price: float\nmy_item = InventoryItem(item_name=\"Banana\", price=10)\nmy_item\n\n\nInventoryItem(item_name='Banana', price=10.0)\n\n\n\n\nCode\ninvalid_item = InventoryItem(item_name=\"Banana\", price=\"100 dollar\")\n\n\n\n---------------------------------------------------------------------------\nValidationError                           Traceback (most recent call last)\nCell In[2], line 1\n----&gt; 1 invalid_item = InventoryItem(item_name=\"Banana\", price=\"100 dollar\")\n\nFile ~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176, in BaseModel.__init__(self, **data)\n    174 # `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks\n    175 __tracebackhide__ = True\n--&gt; 176 self.__pydantic_validator__.validate_python(data, self_instance=self)\n\nValidationError: 1 validation error for InventoryItem\nprice\n  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='100 dollar', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.7/v/float_parsing",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#pydantic-in-even-cooler-action",
-    "href": "w08/index.html#pydantic-in-even-cooler-action",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Pydantic in Even-Cooler Action",
-    "text": "Pydantic in Even-Cooler Action\n\n\n\n\nCode\nfrom pydantic import BaseModel, EmailStr, PositiveInt\nclass Employee(BaseModel):\n    name: str\n    email: EmailStr\n    age: PositiveInt\ninvalid_employee = Employee(\n  name=\"Jeef\",\n  email=\"fakeemail!!!\",\n  age=50\n)\n\n\n\n---------------------------------------------------------------------------\nValidationError                           Traceback (most recent call last)\nCell In[3], line 6\n      4     email: EmailStr\n      5     age: PositiveInt\n----&gt; 6 invalid_employee = Employee(\n      7   name=\"Jeef\",\n      8   email=\"fakeemail!!!\",\n      9   age=50\n     10 )\n\nFile ~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176, in BaseModel.__init__(self, **data)\n    174 # `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks\n    175 __tracebackhide__ = True\n--&gt; 176 self.__pydantic_validator__.validate_python(data, self_instance=self)\n\nValidationError: 1 validation error for Employee\nemail\n  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]\n\n\n\n\n\n\nCode\ninvalid_employee2 = Employee(\n  name=\"Jeeferson\",\n  email=\"valid@email.com\",\n  age=-3\n)\n\n\n\n---------------------------------------------------------------------------\nValidationError                           Traceback (most recent call last)\nCell In[4], line 1\n----&gt; 1 invalid_employee2 = Employee(\n      2   name=\"Jeeferson\",\n      3   email=\"valid@email.com\",\n      4   age=-3\n      5 )\n\nFile ~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176, in BaseModel.__init__(self, **data)\n    174 # `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks\n    175 __tracebackhide__ = True\n--&gt; 176 self.__pydantic_validator__.validate_python(data, self_instance=self)\n\nValidationError: 1 validation error for Employee\nage\n  Input should be greater than 0 [type=greater_than, input_value=-3, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.7/v/greater_than",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#two-generations-of-python-pipeline-libraries",
-    "href": "w08/index.html#two-generations-of-python-pipeline-libraries",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Two Generations of Python Pipeline Libraries",
-    "text": "Two Generations of Python Pipeline Libraries\n\nGen 1: Airflow (AirBnB), Luigi (Spotify)\nGen 2: Dagster, Prefect",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#for-now-prefect",
-    "href": "w08/index.html#for-now-prefect",
-    "title": "Week 8: In-Class Midterm",
-    "section": "For Now: Prefect!",
-    "text": "For Now: Prefect!\n\nBut, the principles (ETL) remain the same!",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#etl-extract-transform-load",
-    "href": "w08/index.html#etl-extract-transform-load",
-    "title": "Week 8: In-Class Midterm",
-    "section": "ETL = Extract, Transform, Load",
-    "text": "ETL = Extract, Transform, Load\n\n\n\nFrom Analytics Vidhya",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#you-have-already-been-doing-this",
-    "href": "w08/index.html#you-have-already-been-doing-this",
-    "title": "Week 8: In-Class Midterm",
-    "section": "You Have Already Been Doing This!",
-    "text": "You Have Already Been Doing This!\n\nHW1: Swim team example\n\nExtract: Load data from .csv\nTransform: Convert times to milliseconds\nLoad: Store into Team object\n\nHW2 (Throughout)\n\nExtract: Load products from .csv into Pandas\nTransform: (Construct InventoryItem object for each row)\nLoad: Store into LogarithmicHashTable",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#and-you-have-already-run-into-the-need-for-validation",
-    "href": "w08/index.html#and-you-have-already-run-into-the-need-for-validation",
-    "title": "Week 8: In-Class Midterm",
-    "section": "(And You Have Already Run into the Need for Validation!)",
-    "text": "(And You Have Already Run into the Need for Validation!)\n\nHW1: Are the times in seconds or milliseconds?\nHW2: Are users providing key and value separately, or together?\nIf together: as tuples or InventoryItems?\nIf InventoryItems: What type(s) for item_name? What type(s) for price? 😵\n\\(\\implies\\) One of the two main focuses for HW3 will be validation of input data!",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step",
-    "href": "w08/index.html#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)",
-    "text": "Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)\n\n(Hopefully things from previous slide have taught you the dangers of this!)\nIt’s like Anscombe’s Quartet from DSAN 5000/5100/5200: We can be misled by fancy tools if we don’t take time for the (sometimes boring) step of looking at the data\nExample: ETL for processing text data (books for now)",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#bookshelfscan-an-example-i-use-irl",
-    "href": "w08/index.html#bookshelfscan-an-example-i-use-irl",
-    "title": "Week 8: In-Class Midterm",
-    "section": "BookshelfScan (An Example I Use IRL!)",
-    "text": "BookshelfScan (An Example I Use IRL!)\n\nExtract: Dropbox folder containing ebooks\nTransform: Compute word counts\nLoad: Save word counts into a database\nEnables me to figure out which books talk about a topic \\(t\\) (data structures, algorithms, data ethics and policy, etc.)!\nBUT (Devil is in the details): Can look very different for txt, epub (can contain images), pdf (sometimes text is embedded, sometimes not), images of scans, audiobooks\n\\(\\implies\\) (Sad but true) Pipleline will crash and burn if you don’t handle these before using Cool NLP things in T step",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#hw3-possibility-1-pet-store-inventory",
-    "href": "w08/index.html#hw3-possibility-1-pet-store-inventory",
-    "title": "Week 8: In-Class Midterm",
-    "section": "HW3 Possibility 1: Pet Store Inventory",
-    "text": "HW3 Possibility 1: Pet Store Inventory\n\nhttps://petstore.swagger.io/v2/store/inventory",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#hw3-possibility-2-books-to-scrape",
-    "href": "w08/index.html#hw3-possibility-2-books-to-scrape",
-    "title": "Week 8: In-Class Midterm",
-    "section": "HW3 Possibility 2: Books to Scrape",
-    "text": "HW3 Possibility 2: Books to Scrape\n\nBooks to Scrape homepage",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#google-classroom-link",
-    "href": "w08/index.html#google-classroom-link",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Google Classroom Link",
-    "text": "Google Classroom Link\n\nOpen in Google Classroom",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/index.html#references",
-    "href": "w08/index.html#references",
-    "title": "Week 8: In-Class Midterm",
-    "section": "References",
-    "text": "References",
-    "crumbs": [
-      "Week 8: {{< var w08.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w08/slides.html#most-common-hw1-to-midterm-struggles",
-    "href": "w08/slides.html#most-common-hw1-to-midterm-struggles",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Most Common HW1-to-Midterm Struggles",
-    "text": "Most Common HW1-to-Midterm Struggles\n\nIngesting data (HW1: Swimmer class)\n\n\\(\\implies\\) Data-processing pipelines!\n\nMaintaining invariants as dataset grows (HW2: None → InventoryItem → BinarySearchTree)\n\n\\(\\implies\\) Data validation!"
-  },
-  {
-    "objectID": "w08/slides.html#pydantic",
-    "href": "w08/slides.html#pydantic",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Pydantic",
-    "text": "Pydantic"
-  },
-  {
-    "objectID": "w08/slides.html#pydantic-in-action",
-    "href": "w08/slides.html#pydantic-in-action",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Pydantic in Action",
-    "text": "Pydantic in Action\n\n\nCode\nfrom pydantic import BaseModel\nclass InventoryItem(BaseModel):\n    item_name: str\n    price: float\nmy_item = InventoryItem(item_name=\"Banana\", price=10)\nmy_item\n\n\nInventoryItem(item_name='Banana', price=10.0)\n\n\n\n\nCode\ninvalid_item = InventoryItem(item_name=\"Banana\", price=\"100 dollar\")\n\n\n\n---------------------------------------------------------------------------\nValidationError                           Traceback (most recent call last)\nCell In[2], line 1\n----&gt; 1 invalid_item = InventoryItem(item_name=\"Banana\", price=\"100 dollar\")\n\nFile ~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176, in BaseModel.__init__(self, **data)\n    174 # `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks\n    175 __tracebackhide__ = True\n--&gt; 176 self.__pydantic_validator__.validate_python(data, self_instance=self)\n\nValidationError: 1 validation error for InventoryItem\nprice\n  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='100 dollar', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.7/v/float_parsing"
-  },
-  {
-    "objectID": "w08/slides.html#pydantic-in-even-cooler-action",
-    "href": "w08/slides.html#pydantic-in-even-cooler-action",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Pydantic in Even-Cooler Action",
-    "text": "Pydantic in Even-Cooler Action\n\n\n\n\nCode\nfrom pydantic import BaseModel, EmailStr, PositiveInt\nclass Employee(BaseModel):\n    name: str\n    email: EmailStr\n    age: PositiveInt\ninvalid_employee = Employee(\n  name=\"Jeef\",\n  email=\"fakeemail!!!\",\n  age=50\n)\n\n\n\n---------------------------------------------------------------------------\nValidationError                           Traceback (most recent call last)\nCell In[3], line 6\n      4     email: EmailStr\n      5     age: PositiveInt\n----&gt; 6 invalid_employee = Employee(\n      7   name=\"Jeef\",\n      8   email=\"fakeemail!!!\",\n      9   age=50\n     10 )\n\nFile ~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176, in BaseModel.__init__(self, **data)\n    174 # `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks\n    175 __tracebackhide__ = True\n--&gt; 176 self.__pydantic_validator__.validate_python(data, self_instance=self)\n\nValidationError: 1 validation error for Employee\nemail\n  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]\n\n\n\n\n\n\nCode\ninvalid_employee2 = Employee(\n  name=\"Jeeferson\",\n  email=\"valid@email.com\",\n  age=-3\n)\n\n\n\n---------------------------------------------------------------------------\nValidationError                           Traceback (most recent call last)\nCell In[4], line 1\n----&gt; 1 invalid_employee2 = Employee(\n      2   name=\"Jeeferson\",\n      3   email=\"valid@email.com\",\n      4   age=-3\n      5 )\n\nFile ~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176, in BaseModel.__init__(self, **data)\n    174 # `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks\n    175 __tracebackhide__ = True\n--&gt; 176 self.__pydantic_validator__.validate_python(data, self_instance=self)\n\nValidationError: 1 validation error for Employee\nage\n  Input should be greater than 0 [type=greater_than, input_value=-3, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.7/v/greater_than"
-  },
-  {
-    "objectID": "w08/slides.html#two-generations-of-python-pipeline-libraries",
-    "href": "w08/slides.html#two-generations-of-python-pipeline-libraries",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Two Generations of Python Pipeline Libraries",
-    "text": "Two Generations of Python Pipeline Libraries\n\nGen 1: Airflow (AirBnB), Luigi (Spotify)\nGen 2: Dagster, Prefect"
-  },
-  {
-    "objectID": "w08/slides.html#for-now-prefect",
-    "href": "w08/slides.html#for-now-prefect",
-    "title": "Week 8: In-Class Midterm",
-    "section": "For Now: Prefect!",
-    "text": "For Now: Prefect!\n\nBut, the principles (ETL) remain the same!"
-  },
-  {
-    "objectID": "w08/slides.html#etl-extract-transform-load",
-    "href": "w08/slides.html#etl-extract-transform-load",
-    "title": "Week 8: In-Class Midterm",
-    "section": "ETL = Extract, Transform, Load",
-    "text": "ETL = Extract, Transform, Load\n\nFrom Analytics Vidhya"
-  },
-  {
-    "objectID": "w08/slides.html#you-have-already-been-doing-this",
-    "href": "w08/slides.html#you-have-already-been-doing-this",
-    "title": "Week 8: In-Class Midterm",
-    "section": "You Have Already Been Doing This!",
-    "text": "You Have Already Been Doing This!\n\nHW1: Swim team example\n\nExtract: Load data from .csv\nTransform: Convert times to milliseconds\nLoad: Store into Team object\n\nHW2 (Throughout)\n\nExtract: Load products from .csv into Pandas\nTransform: (Construct InventoryItem object for each row)\nLoad: Store into LogarithmicHashTable"
-  },
-  {
-    "objectID": "w08/slides.html#and-you-have-already-run-into-the-need-for-validation",
-    "href": "w08/slides.html#and-you-have-already-run-into-the-need-for-validation",
-    "title": "Week 8: In-Class Midterm",
-    "section": "(And You Have Already Run into the Need for Validation!)",
-    "text": "(And You Have Already Run into the Need for Validation!)\n\nHW1: Are the times in seconds or milliseconds?\nHW2: Are users providing key and value separately, or together?\nIf together: as tuples or InventoryItems?\nIf InventoryItems: What type(s) for item_name? What type(s) for price? 😵\n\\(\\implies\\) One of the two main focuses for HW3 will be validation of input data!"
-  },
-  {
-    "objectID": "w08/slides.html#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step",
-    "href": "w08/slides.html#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)",
-    "text": "Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)\n\n(Hopefully things from previous slide have taught you the dangers of this!)\nIt’s like Anscombe’s Quartet from DSAN 5000/5100/5200: We can be misled by fancy tools if we don’t take time for the (sometimes boring) step of looking at the data\nExample: ETL for processing text data (books for now)"
-  },
-  {
-    "objectID": "w08/slides.html#bookshelfscan-an-example-i-use-irl",
-    "href": "w08/slides.html#bookshelfscan-an-example-i-use-irl",
-    "title": "Week 8: In-Class Midterm",
-    "section": "BookshelfScan (An Example I Use IRL!)",
-    "text": "BookshelfScan (An Example I Use IRL!)\n\nExtract: Dropbox folder containing ebooks\nTransform: Compute word counts\nLoad: Save word counts into a database\nEnables me to figure out which books talk about a topic \\(t\\) (data structures, algorithms, data ethics and policy, etc.)!\nBUT (Devil is in the details): Can look very different for txt, epub (can contain images), pdf (sometimes text is embedded, sometimes not), images of scans, audiobooks\n\\(\\implies\\) (Sad but true) Pipleline will crash and burn if you don’t handle these before using Cool NLP things in T step"
-  },
-  {
-    "objectID": "w08/slides.html#hw3-possibility-1-pet-store-inventory",
-    "href": "w08/slides.html#hw3-possibility-1-pet-store-inventory",
-    "title": "Week 8: In-Class Midterm",
-    "section": "HW3 Possibility 1: Pet Store Inventory",
-    "text": "HW3 Possibility 1: Pet Store Inventory\n\nhttps://petstore.swagger.io/v2/store/inventory"
-  },
-  {
-    "objectID": "w08/slides.html#hw3-possibility-2-books-to-scrape",
-    "href": "w08/slides.html#hw3-possibility-2-books-to-scrape",
-    "title": "Week 8: In-Class Midterm",
-    "section": "HW3 Possibility 2: Books to Scrape",
-    "text": "HW3 Possibility 2: Books to Scrape\n\nBooks to Scrape homepage"
-  },
-  {
-    "objectID": "w08/slides.html#google-classroom-link",
-    "href": "w08/slides.html#google-classroom-link",
-    "title": "Week 8: In-Class Midterm",
-    "section": "Google Classroom Link",
-    "text": "Google Classroom Link\n\nOpen in Google Classroom"
-  },
-  {
-    "objectID": "w08/slides.html#references",
-    "href": "w08/slides.html#references",
-    "title": "Week 8: In-Class Midterm",
-    "section": "References",
-    "text": "References\n\n\n\n\n\n\nDSAN 5500 Week 8: In-Class Midterm"
   },
   {
     "objectID": "w06/index.html",

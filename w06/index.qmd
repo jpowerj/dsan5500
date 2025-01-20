@@ -1,7 +1,7 @@
 ---
 title: "Week 6: {{< var w06.title >}}"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
-date: "Tuesday, February 20, 2024"
+date: 2025-02-13
 date-format: full
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
