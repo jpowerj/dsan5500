@@ -22,7 +22,7 @@ website:
       - text: "Resources"
         href: resources.qmd
       - text: "Assignments"
-        href: "assignments/index.qmd"
+        href: assignments.qmd
       - text: "Final Project"
         href: final.qmd
       - text: "Extra Writeups"

@@ -89,22 +89,27 @@ hw1:
   title: "Python Fundamentals"
   date-md: "Jan 27 (Monday), 11:59pm EST"
   pct: 8
+  url: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx/a/NzQ1OTIwODUxNzU0/details"
 hw2:
   title: "Object-Oriented Programming"
   date-md: "Feb 7 (Friday), 5:59pm EST"
   pct: 8
+  url: "#"
 hw3:
   title: "Data Structures, Algorithms, and Complexity"
   date-md: "Feb 21 (Friday), 5:59pm EST"
   pct: 8
+  url: "#"
 hw4:
   title: "Data-Processing Pipelines"
   date-md: "Mar 21 (Friday), 5:59pm EDT"
   pct: 8
+  url: "#"
 hw5:
   title: "Parallel Computing"
   date-md: "Apr 4 (Friday), 5:59pm EDT"
   pct: 8
+  url: "#"
 final:
   title: "Final Project"
   date-md: "May 2 (Friday), 5:59pm EDT"
