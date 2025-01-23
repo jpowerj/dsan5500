@@ -1,0 +1,77 @@
+---
+title: "Midterm Study Guide"
+format:
+  html:
+    html-math-method: mathjax
+    css: "dsan-globals/jjstyles.css"
+---
+
+## Midterm Structure
+
+* **Coding Portion**: Modifications of `LinkedList` (Circular / jump-to-end / doubly-linked); non-scary OOP skeleton 🙈
+* **Multiple Choice Portion**: Lots more to cover...
+    * Hash Tables: $O(1 + \epsilon \log_2(n))$, but think about it as:
+    * $1 + (\text{Collision rate}) \cdot (\text{Collision handler efficiency})$
+    * Linked List $\rightarrow$ Binary Search Tree
+    * Depth-First vs. Breadth-First: Picture of a tree $\rightarrow$ (a) what is BFS result, (b) what is (in/pre/post)-order DFS result?
+    * Lastly: Cormen, Leiserson, Rivest, Stein (CLRS), pgs. 17-106
+
+## The Two Boxes That Most Things In This Course Can Be Sorted Into {.title-11 .crunch-title .crunch-ul}
+
+* Box 1: Linear Things
+* Box 2: Logarithmic Things
+* Things that go into the boxes:
+  * Algorithms
+  * Data Structures
+  * Software Development Patterns
+
+## The Boxes {.smaller .title-10 .crunch-title .crunch-images .crunch-quarto-figure .crunch-table}
+
+```{=html}
+<table style="table-layout: fixed; width: 100% !important;">
+<thead>
+<tr>
+  <th style="width: 25% !important;"></th>
+  <th style="width: 30% !important;"><span data-qmd="Linear Things: $O(N)$"></span></th>
+  <th style="width: 45% !important;"><span data-qmd="Logarithmic Things: $O(\lg{N})$"></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="width: 25% !important;"><span data-qmd="**Data Structures**"></span></td>
+  <td><div data-qmd="`LinkedList`
+  
+![](images/linked_list.svg){width=270}"></div></td>
+  <td><div data-qmd="`BinarySearchTree`
+
+![](images/bst.svg){fig-align=center width=200}"></div></td>
+</tr>
+<tr>
+  <td style="vertical-align: middle !important;"><span data-qmd="**Sorting Algorithms**"></span></td>
+  <td><span data-qmd="[Insertion-Sort]{.alg}"></span></td>
+  <td><span data-qmd="[Merge-Sort]{.alg}"></span></td>
+</tr>
+<tr>
+  <td style="vertical-align: middle !important;"><span data-qmd="**Search Algorithms**"></span></td>
+  <td><span data-qmd="[Linear-Search]{.alg}"></span></td>
+  <td><span data-qmd="[Binary-Search]{.alg}"></span></td>
+</tr>
+<tr>
+  <td><span data-qmd="**General Pattern**"></span></td>
+  <td>One-by-One</td>
+  <td>Divide-and-Conquer</td>
+</tr>
+<tr>
+  <td><span data-qmd="**Steps to Look Up a Word**"></span></td>
+  <td><span data-qmd="$N = 102118$"></span></td>
+  <td><span data-qmd="$\lceil \log_2(N) \rceil = 17$"></span></td>
+</tr>
+</tbody>
+</table>
+```
+
+* **Hash Table**: A "trick" that gets us close to $O(1)$, **by pre-allocating lots of memory!**
+
+$$
+O(N) \; \underbrace{\leadsto O(\log_2(N))}_{\mathclap{\substack{\text{More Efficient Algorithm} \\ \text{(Free!)}}}} \; \underbrace{\leadsto O(1 + \epsilon\log_2(N))}_{\substack{\text{More Memory} \\ \text{(\$\$\$)}}}
+$$

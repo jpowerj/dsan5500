@@ -23,6 +23,8 @@ website:
         href: resources.qmd
       - text: "Assignments"
         href: assignments.qmd
+      - text: "Midterm"
+        href: midterm.qmd
       - text: "Final Project"
         href: final.qmd
       - text: "Extra Writeups"

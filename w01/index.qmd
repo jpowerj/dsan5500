@@ -4,6 +4,7 @@ subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: 2025-01-09
 date-format: full
 lecnum: 1
+jupyter: python3
 categories:
   - "Class Sessions"
 author: "Jeff Jacobs"

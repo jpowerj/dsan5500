@@ -6,6 +6,7 @@ date-format: full
 author: "Jeff Jacobs"
 institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
 lecnum: 12
+jupyter: python3
 bibliography: "../_DSAN5500.bib"
 categories:
   - "Class Sessions"

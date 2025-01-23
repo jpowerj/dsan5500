@@ -6,6 +6,7 @@ date-format: full
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
 lecnum: 5
+jupyter: python3
 categories:
   - "Class Sessions"
 format:

@@ -9,6 +9,7 @@ categories:
 author: "Jeff Jacobs"
 institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
 bibliography: "../_DSAN5500.bib"
+jupyter: python3
 format:
   revealjs:
     df-print: kable
@@ -336,7 +337,7 @@ $$
 * Notice how, at each point:
   1. There is a card we're currently "looking at", called the [**key**]{.cb2}, and
   2. There is an **invariant**: everything in the list [**before the key**]{.cb1} is **already sorted**
-   
+
 ## Complexity Analysis {.smaller .crunch-title .crunch-ul .crunch-p .crunch-math}
 
 * Let $t_i$ be the number of times the while loop runs, $\widetilde{n} = n - 1$:
