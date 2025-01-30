@@ -29,6 +29,8 @@ website:
         href: final.qmd
       - text: "Extra Writeups"
         href: "writeups/index.qmd"
+      - text: "Labs / Demos"
+        href: "labs/index.qmd"
       - "---"
       - text: "Zoom Link <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://georgetown.zoom.us/j/99019126324?pwd=wrcBediyQ3JO2y7IP1UrzlE6pz2FaF.1"
@@ -72,7 +74,7 @@ website:
       - text: "Google Space <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://chat.google.com/room/AAAAhimoYoA?cls=7"
         target: "_blank"
-      - text: "Anonymous Feedback <i class='bi bi-box-arrow-up-right ps-1'></i>"
+      - text: "Anon Feedback <i class='bi bi-box-arrow-up-right ps-1'></i>"
         href: "https://forms.gle/i9axXQq5wL7S4KWH9"
         target: "_blank"
 

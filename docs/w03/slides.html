@@ -538,7 +538,7 @@ Jeff Jacobs
 <li><p><strong>Fixed-size</strong> collection of <span class="math inline">\(N\)</span> objects</p></li>
 <li><p>Unless otherwise specified, we’re talking about <span class="math inline">\(2\)</span>-tuples</p></li>
 <li><p>Example: We can locate something on the Earth by specifying two <code>floats</code>: latitude and longitude!</p>
-<div id="f4eb7f2c" class="cell" data-execution_count="1">
+<div id="c71b3655" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>gtown_loc <span class="op">=</span> (<span class="fl">38.9076</span>, <span class="op">-</span><span class="fl">77.0723</span>)</span>
@@ -584,7 +584,7 @@ c
 <ul>
 <li>Python:</li>
 </ul>
-<div id="3d5ef07f" class="cell" data-execution_count="2">
+<div id="10badd0d" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>my_list <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>]</span>
@@ -603,7 +603,7 @@ c</code></pre>
 <h2><em>List Comprehensions</em>: Apply [Operation] to Each Element</h2>
 <ul>
 <li><p>Construct <strong>new</strong> list by applying operation to each element:</p>
-<div id="745bdf79" class="cell" data-execution_count="3">
+<div id="d8cdbe14" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>my_nums <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
@@ -615,7 +615,7 @@ c</code></pre>
 </div>
 </div></li>
 <li><p>Can also <strong>filter</strong> the elements of the list with <code>if</code>:</p>
-<div id="2661fb6b" class="cell" data-execution_count="4">
+<div id="4405a71f" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>my_odd_squares <span class="op">=</span> [num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> my_nums <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>]</span>
@@ -684,7 +684,7 @@ Cell <span class="ansi-green-fg">In[7], line 1</span>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>unique_prefs_both <span class="op">=</span> unique_prefs_morn.intersection(unique_prefs_eve)</span>
 <span id="cb17-2"><a></a><span class="bu">print</span>(<span class="ss">f"Preferences in both events: </span><span class="sc">{</span>unique_prefs_both<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Preferences in both events: {'Vegan', 'None'}</code></pre>
+<pre><code>Preferences in both events: {'None', 'Vegan'}</code></pre>
 </div>
 </div>
 <p>Set Difference (<span class="math inline">\(M \setminus E\)</span> or <span class="math inline">\(E \setminus M\)</span>):</p>
@@ -705,7 +705,7 @@ Preferences only in the evening: set()</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>While other language like Java have lots of fancy types of Map, Python has a single type, the <strong>dictionary</strong>:</p>
-<div id="9c2ab50b" class="cell" data-execution_count="11">
+<div id="daa1b58d" class="cell" data-execution_count="11">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>gtown_data <span class="op">=</span> {</span>
@@ -728,7 +728,7 @@ dict_values(['Georgetown University', 1789, (38.9076, -77.0723), {'city': 'Washi
 </div>
 </div><div class="column" style="width:50%;">
 <p>Be careful when looping! Default behavior is iteration over <strong>keys</strong>:</p>
-<div id="779b6028" class="cell" data-execution_count="12">
+<div id="e0012a5c" class="cell" data-execution_count="12">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="cf">for</span> k <span class="kw">in</span> gtown_data:</span>
@@ -742,7 +742,7 @@ location</code></pre>
 </div>
 </div>
 <p>For <strong>key-value pairs</strong> use <code>.items()</code>:</p>
-<div id="c65186d8" class="cell" data-execution_count="13">
+<div id="880da47b" class="cell" data-execution_count="13">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="cf">for</span> k, v <span class="kw">in</span> gtown_data.items():</span>
@@ -787,7 +787,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>-40
-&lt;__main__.MyNTuple object at 0x15daa5810&gt; 🧐</code></pre>
+&lt;__main__.MyNTuple object at 0x15e4dab50&gt; 🧐</code></pre>
 </div>
 </div></li>
 </ul>
@@ -805,7 +805,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </section>
 <section id="tuples-1" class="slide level2">
 <h2>Tuples</h2>
-<div id="6d6f5444" class="cell" data-execution_count="15">
+<div id="02a89346" class="cell" data-execution_count="15">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="kw">class</span> MyTuple:</span>
@@ -835,7 +835,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>The list itself just <strong>points</strong> to a root item:</p>
-<div id="f28f4931" class="cell" data-execution_count="16">
+<div id="a9b5e5cb" class="cell" data-execution_count="16">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="kw">class</span> MyList:</span>
@@ -854,7 +854,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>An item has contents, pointer to next item:</p>
-<div id="e23ed257" class="cell" data-execution_count="17">
+<div id="143eb5dc" class="cell" data-execution_count="17">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="kw">class</span> MyListItem:</span>
@@ -874,7 +874,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </details>
 </div>
 </div></div>
-<div id="1d7a109b" class="cell" data-execution_count="18">
+<div id="0d4d7dc5" class="cell" data-execution_count="18">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a>users <span class="op">=</span> MyList()</span>
@@ -902,7 +902,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>With a <code>MyTuple</code>:</p>
-<div id="da1990d6" class="cell" data-execution_count="19">
+<div id="bb0128f8" class="cell" data-execution_count="19">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a>t1.thing1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -912,7 +912,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
-<div id="47f27c0f" class="cell" data-execution_count="20">
+<div id="791488cb" class="cell" data-execution_count="20">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a>t1.thing2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -924,7 +924,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
 </div><div class="column" style="width:50%;">
 <p>With a <code>MyList</code>:</p>
-<div id="d859454e" class="cell" data-execution_count="21">
+<div id="04533994" class="cell" data-execution_count="21">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a><span class="bu">print</span>(users.root.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -934,7 +934,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
-<div id="4fa74689" class="cell" data-execution_count="22">
+<div id="fc4c6782" class="cell" data-execution_count="22">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a>current_node <span class="op">=</span> users.root</span>
@@ -954,7 +954,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <h2>Pairwise-Concatenating List Elements</h2>
 <ul>
 <li><p>Now rather than just printing, let’s pairwise concatenate:</p>
-<div id="8d63e62d" class="cell" data-execution_count="23">
+<div id="1ad6b711" class="cell" data-execution_count="23">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a>cur_pointer1 <span class="op">=</span> users.root</span>
@@ -982,7 +982,7 @@ BoBo</code></pre>
 </section>
 <section id="last-example-pairwise-concat-end-check" class="slide level2 smaller crunch-title title-12 crunch-details">
 <h2>Last Example: Pairwise-Concat + End Check</h2>
-<div id="3feb0d61" class="cell" data-execution_count="24">
+<div id="4f7845c3" class="cell" data-execution_count="24">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a>printed_items <span class="op">=</span> []</span>
@@ -1159,7 +1159,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </section>
 <section id="the-figure-you-should-make-in-your-brain-every-time" class="slide level2 smaller crunch-title title-10 crunch-quarto-figure">
 <h2>The Figure You Should Make In Your Brain Every Time</h2>
-<div id="dea69c08" class="cell" data-execution_count="25">
+<div id="256ff976" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1216,7 +1216,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <ul>
 <li>(Though this is harder to see, without a log-log plot:)</li>
 </ul>
-<div id="0000e10a" class="cell" data-execution_count="26">
+<div id="2bed0faa" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>
@@ -1393,454 +1393,6 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <li><p><span class="alg">Merge-Sort</span>: <span class="math inline">\(k = 0\)</span> works! <span class="math inline">\(\Theta(n^{\log_2(2)}\log_2^0(n)) = \Theta(n)\)</span></p></li>
 <li><p>Thus <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n)) = \boxed{\Theta(n\log_2n)}\)</span> 😎</p></li>
 </ul>
-</section></section>
-<section>
-<section id="object-oriented-programming" class="title-slide slide level1 center" data-stack-name="OOP">
-<h1>Object-Oriented Programming</h1>
-
-</section>
-<section id="breaking-a-problem-into-interacting-parts" class="slide level2 title-08 crunch-title">
-<h2>Breaking a Problem into (Interacting) Parts</h2>
-<ul>
-<li><strong>Python so far</strong>: “Data science mode”
-<ul>
-<li>Start at top of file with raw data</li>
-<li>Write lines of code until problem solved</li>
-</ul></li>
-<li><strong>Python in this class</strong>: “Software engineering mode”
-<ul>
-<li>Break system down into parts</li>
-<li>Write each part separately</li>
-<li>Link parts together to create the whole</li>
-</ul></li>
-<li><em>(One implication: <code>.py</code> files may be easier than <code>.ipynb</code> for development!)</em></li>
-</ul>
-</section>
-<section id="how-does-a-calculator-work" class="slide level2">
-<h2>How Does A Calculator Work?</h2>
-
-<img data-src="images/Calculator.drawio.svg" class="r-stretch quarto-figure-center"><p class="caption">(Calculator image from <a href="//commons.wikimedia.org/wiki/User:LoMit" title="User:LoMit">Wikimedia Commons</a>)</p></section>
-<section id="key-oop-feature-1-encapsulation" class="slide level2">
-<h2>Key OOP Feature #1: <em>Encapsulation</em></h2>
-<ul>
-<li>Imagine you’re on a <strong>team</strong> trying to make a calculator</li>
-<li>One person can write the <code>Screen</code> class, another person can write the <code>Button</code> class, and so on</li>
-<li>Natural division of labor! (May seem silly for a calculator, but imagine as your app <strong>scales up</strong>)</li>
-</ul>
-</section>
-<section id="key-oop-feature-2-abstraction" class="slide level2">
-<h2>Key OOP Feature #2: <em>Abstraction</em></h2>
-<ul>
-<li><strong>Abstraction</strong> complements this <strong>Encapsulation</strong>: the <code>Screen</code> team <strong>doesn’t need to know</strong> the <strong>internal details</strong> of <code>Button</code> (just it’s API), and vice-versa</li>
-<li>Relevant data and functions can be “public”, irrelevant internal data and functions “private”</li>
-<li>(Like with <em>type hints</em>), Python doesn’t <strong>enforce</strong> this distinction, <strong>but</strong> (unlike with <em>type hints</em>) most libraries <strong>do</strong> separate public from private by a <strong>variable-naming convention</strong>…</li>
-</ul>
-</section>
-<section id="public-protected-private-attributes-in-python" class="slide level2 smaller crunch-title title-11">
-<h2>Public, Protected, Private Attributes in Python</h2>
-<ul>
-<li>[<strong>Public</strong> (default)] No underscores: <code>public_var</code></li>
-<li>[<strong>Protected</strong>] One underscore: <code>_protected_var</code></li>
-<li>[<strong>Private</strong>] Two underscores: <code>__private_var</code></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div id="44e18cb0" class="cell" data-execution_count="27">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a></a><span class="kw">class</span> MyTopSecretInfo:</span>
-<span id="cb49-2"><a></a>  __the_info <span class="op">=</span> <span class="st">"I love Carly Rae Jepsen"</span></span>
-<span id="cb49-3"><a></a></span>
-<span id="cb49-4"><a></a>info_obj <span class="op">=</span> MyTopSecretInfo()</span>
-<span id="cb49-5"><a></a>info_obj.__the_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[27], line 5</span>
-<span class="ansi-green-fg ansi-bold">      2</span>   __the_info <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">I love Carly Rae Jepsen</span><span style="color:rgb(175,0,0)">"</span>
-<span class="ansi-green-fg ansi-bold">      4</span> info_obj <span style="color:rgb(98,98,98)">=</span> MyTopSecretInfo()
-<span class="ansi-green-fg">----&gt; 5</span> <span class="ansi-yellow-bg">info_obj</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">__the_info</span>
-
-<span class="ansi-red-fg">AttributeError</span>: 'MyTopSecretInfo' object has no attribute '__the_info'</pre>
-</div>
-</div>
-</div>
-<p>Guess we can’t access it then, right? 😮‍💨</p>
-</div><div class="column" style="width:50%;">
-<div id="9ef048b2" class="cell" data-execution_count="28">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a></a>info_obj._MyTopSecretInfo__the_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>'I love Carly Rae Jepsen'</code></pre>
-</div>
-</div>
-<ul>
-<li>NOO MY SECRET!!! 😭</li>
-<li>Pls don’t tell anyone</li>
-</ul>
-</div></div>
-</section>
-<section id="key-oop-features-3-4-inheritance-polymorphism" class="slide level2 crunch-title title-07 crunch-ul">
-<h2>Key OOP Features #3-4: Inheritance, Polymorphism</h2>
-<ul>
-<li>Better explained in <strong>diagrams</strong> than <strong>words</strong> (next 10 slides!), but we can get a sense by thinking about their <strong>etymology</strong>:</li>
-<li><strong>“Inheritance”</strong> comes from <strong>“heir”</strong>, like “heir to the throne”
-<ul>
-<li><em>Parent</em> passes on [things they possess] to their <em>children</em></li>
-</ul></li>
-<li><strong>“Polymorphism”</strong>: <strong>Poly</strong> = “many”, <strong>Morphe</strong> = “forms”
-<ul>
-<li>How does Python know what to do when we <code>print()</code>?</li>
-<li>It “just works” because <code>print()</code> (through <code>__str__()</code>) takes on <strong>many</strong> (!) <strong>forms</strong> (!): each type of object has its own <strong>implementation</strong> of <code>__str__()</code></li>
-</ul></li>
-</ul>
-</section>
-<section id="use-case-bookstore-inventory-management" class="slide level2 smaller title-12">
-<h2>Use Case: Bookstore Inventory Management</h2>
-
-<img data-src="images/spencerbeck_exterior-of-capitol-hill-books_yesmydccool.jpg" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://washington.org/visit-dc/bookstores-sure-charm-you-washington-dc" target="_blank">Image source</a></p></section>
-<section id="in-pictures" class="slide level2 smaller">
-<h2>In Pictures</h2>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div id="bookstore-diagram">
-<div>
-<svg width="960" height="480" viewbox="0.00 0.00 594.24 317.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 313.4)">
-<title>G</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-313.4 590.24,-313.4 590.24,4 -4,4"></polygon>
-<text text-anchor="middle" x="293.12" y="-292.8" font-family="Times,serif" font-size="14.00">Bookstore Relational Diagram</text>
-<!-- Bookstore -->
-<g id="node1" class="node">
-<title>Bookstore</title>
-<polygon fill="none" stroke="black" points="0,-135.3 0,-284.1 150.42,-284.1 150.42,-135.3 0,-135.3"></polygon>
-<text text-anchor="middle" x="75.21" y="-267.5" font-family="Courier,monospace" font-size="14.00">Bookstore</text>
-<polyline fill="none" stroke="black" points="0,-259.3 150.42,-259.3 "></polyline>
-<text text-anchor="start" x="8" y="-242.7" font-family="Courier,monospace" font-size="14.00">Name</text>
-<polyline fill="none" stroke="black" points="0,-234.5 150.42,-234.5 "></polyline>
-<text text-anchor="start" x="8" y="-217.9" font-family="Courier,monospace" font-size="14.00">Location</text>
-<polyline fill="none" stroke="black" points="0,-209.7 150.42,-209.7 "></polyline>
-<text text-anchor="start" x="8" y="-193.1" font-family="Courier,monospace" font-size="14.00">Booklist</text>
-<polyline fill="none" stroke="black" points="0,-184.9 150.42,-184.9 "></polyline>
-<text text-anchor="start" x="8" y="-168.3" font-family="Courier,monospace" font-size="14.00">Get_Inventory()</text>
-<polyline fill="none" stroke="black" points="0,-160.1 150.42,-160.1 "></polyline>
-<text text-anchor="start" x="8" y="-143.5" font-family="Courier,monospace" font-size="14.00">Sort_Inventory()</text>
-</g>
-<!-- Place -->
-<g id="node2" class="node">
-<title>Place</title>
-<polygon fill="none" stroke="black" points="259.92,-143.7 259.92,-267.7 368.33,-267.7 368.33,-143.7 259.92,-143.7"></polygon>
-<text text-anchor="middle" x="314.12" y="-251.1" font-family="Courier,monospace" font-size="14.00">Place</text>
-<polyline fill="none" stroke="black" points="259.92,-242.9 368.33,-242.9 "></polyline>
-<text text-anchor="start" x="267.92" y="-226.3" font-family="Courier,monospace" font-size="14.00">City</text>
-<polyline fill="none" stroke="black" points="259.92,-218.1 368.33,-218.1 "></polyline>
-<text text-anchor="start" x="267.92" y="-201.5" font-family="Courier,monospace" font-size="14.00">State</text>
-<polyline fill="none" stroke="black" points="259.92,-193.3 368.33,-193.3 "></polyline>
-<text text-anchor="start" x="267.92" y="-176.7" font-family="Courier,monospace" font-size="14.00">Country</text>
-<polyline fill="none" stroke="black" points="259.92,-168.5 368.33,-168.5 "></polyline>
-<text text-anchor="start" x="267.92" y="-151.9" font-family="Courier,monospace" font-size="14.00">Print_Map()</text>
-</g>
-<!-- Bookstore&#45;&gt;Place -->
-<g id="edge1" class="edge">
-<title>Bookstore:loc-&gt;Place:placehead</title>
-<path fill="none" stroke="black" d="M150.42,-221.7C197.79,-221.7 207.68,-251.09 249.78,-255.22"></path>
-<polygon fill="black" stroke="black" points="249.76,-258.72 259.92,-255.7 250.09,-251.73 249.76,-258.72"></polygon>
-<text text-anchor="middle" x="205.17" y="-257.9" font-family="Times,serif" font-size="14.00">Has One</text>
-</g>
-<!-- Book -->
-<g id="node3" class="node">
-<title>Book</title>
-<polygon fill="none" stroke="black" points="268.32,-0.7 268.32,-124.7 359.93,-124.7 359.93,-0.7 268.32,-0.7"></polygon>
-<text text-anchor="middle" x="314.12" y="-108.1" font-family="Courier,monospace" font-size="14.00">Book</text>
-<polyline fill="none" stroke="black" points="268.32,-99.9 359.93,-99.9 "></polyline>
-<text text-anchor="start" x="276.32" y="-83.3" font-family="Courier,monospace" font-size="14.00">Title</text>
-<polyline fill="none" stroke="black" points="268.32,-75.1 359.93,-75.1 "></polyline>
-<text text-anchor="start" x="276.32" y="-58.5" font-family="Courier,monospace" font-size="14.00">Authors</text>
-<polyline fill="none" stroke="black" points="268.32,-50.3 359.93,-50.3 "></polyline>
-<text text-anchor="start" x="276.32" y="-33.7" font-family="Courier,monospace" font-size="14.00">Num Pages</text>
-<polyline fill="none" stroke="black" points="268.32,-25.5 359.93,-25.5 "></polyline>
-<text text-anchor="middle" x="314.12" y="-8.9" font-family="Courier,monospace" font-size="14.00">Preview()</text>
-</g>
-<!-- Bookstore&#45;&gt;Book -->
-<g id="edge2" class="edge">
-<title>Bookstore:bl-&gt;Book:bookhead</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M150.42,-197.7C210.95,-197.7 204.03,-122.06 256.92,-113.49"></path>
-<polygon fill="black" stroke="black" points="257.42,-116.96 267.12,-112.7 256.88,-109.98 257.42,-116.96"></polygon>
-<text text-anchor="middle" x="205.17" y="-197.9" font-family="Times,serif" font-size="14.00">Has Multiple</text>
-</g>
-<!-- Person -->
-<g id="node4" class="node">
-<title>Person</title>
-<polygon fill="none" stroke="black" points="477.82,-0.5 477.82,-74.9 586.24,-74.9 586.24,-0.5 477.82,-0.5"></polygon>
-<text text-anchor="middle" x="532.03" y="-58.3" font-family="Courier,monospace" font-size="14.00">Person</text>
-<polyline fill="none" stroke="black" points="477.82,-50.1 586.24,-50.1 "></polyline>
-<text text-anchor="middle" x="532.03" y="-33.5" font-family="Courier,monospace" font-size="14.00">Family Name</text>
-<polyline fill="none" stroke="black" points="477.82,-25.3 586.24,-25.3 "></polyline>
-<text text-anchor="middle" x="532.03" y="-8.7" font-family="Courier,monospace" font-size="14.00">Given Name</text>
-</g>
-<!-- Book&#45;&gt;Person -->
-<g id="edge3" class="edge">
-<title>Book:auths-&gt;Person:personhead</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M361.12,-62.7C409.44,-62.7 424,-62.7 467.71,-62.7"></path>
-<polygon fill="black" stroke="black" points="467.82,-66.2 477.82,-62.7 467.82,-59.2 467.82,-66.2"></polygon>
-<text text-anchor="middle" x="423.08" y="-66.9" font-family="Times,serif" font-size="14.00">Has Multiple</text>
-</g>
-</g>
-</svg>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="creating-classes" class="slide level2 smaller crunch-title crunch-ul crunch-details">
-<h2>Creating Classes</h2>
-<ul>
-<li>Use case: Creating an inventory system for a <strong>Bookstore</strong></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div id="basic-class" class="cell" data-execution_count="29">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a></a><span class="kw">class</span> Bookstore:</span>
-<span id="cb52-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, location):</span>
-<span id="cb52-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb52-4"><a></a>        <span class="va">self</span>.location <span class="op">=</span> location</span>
-<span id="cb52-5"><a></a>        <span class="va">self</span>.books <span class="op">=</span> []</span>
-<span id="cb52-6"><a></a></span>
-<span id="cb52-7"><a></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, index):</span>
-<span id="cb52-8"><a></a>        <span class="cf">return</span> <span class="va">self</span>.books[index]</span>
-<span id="cb52-9"><a></a></span>
-<span id="cb52-10"><a></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
-<span id="cb52-11"><a></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
-<span id="cb52-12"><a></a></span>
-<span id="cb52-13"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb52-14"><a></a>        <span class="cf">return</span> <span class="ss">f"Bookstore[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_books()<span class="sc">}</span><span class="ss"> books]"</span></span>
-<span id="cb52-15"><a></a></span>
-<span id="cb52-16"><a></a>    <span class="kw">def</span> add_books(<span class="va">self</span>, book_list):</span>
-<span id="cb52-17"><a></a>        <span class="va">self</span>.books.extend(book_list)</span>
-<span id="cb52-18"><a></a></span>
-<span id="cb52-19"><a></a>    <span class="kw">def</span> get_books(<span class="va">self</span>):</span>
-<span id="cb52-20"><a></a>        <span class="cf">return</span> <span class="va">self</span>.books</span>
-<span id="cb52-21"><a></a></span>
-<span id="cb52-22"><a></a>    <span class="kw">def</span> get_inventory(<span class="va">self</span>):</span>
-<span id="cb52-23"><a></a>        book_lines <span class="op">=</span> []</span>
-<span id="cb52-24"><a></a>        <span class="cf">for</span> book_index, book <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.get_books()):</span>
-<span id="cb52-25"><a></a>            cur_book_line <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>book_index<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span><span class="bu">str</span>(book)<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb52-26"><a></a>            book_lines.append(cur_book_line)</span>
-<span id="cb52-27"><a></a>        <span class="cf">return</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(book_lines)</span>
-<span id="cb52-28"><a></a></span>
-<span id="cb52-29"><a></a>    <span class="kw">def</span> get_num_books(<span class="va">self</span>):</span>
-<span id="cb52-30"><a></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.get_books())</span>
-<span id="cb52-31"><a></a></span>
-<span id="cb52-32"><a></a>    <span class="kw">def</span> sort_books(<span class="va">self</span>, sort_key):</span>
-<span id="cb52-33"><a></a>        <span class="va">self</span>.books.sort(key<span class="op">=</span>sort_key)</span>
-<span id="cb52-34"><a></a></span>
-<span id="cb52-35"><a></a><span class="kw">class</span> Book:</span>
-<span id="cb52-36"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages):</span>
-<span id="cb52-37"><a></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
-<span id="cb52-38"><a></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
-<span id="cb52-39"><a></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
-<span id="cb52-40"><a></a></span>
-<span id="cb52-41"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb52-42"><a></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_title()<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_authors()<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_pages()<span class="sc">}</span><span class="ss">]"</span></span>
-<span id="cb52-43"><a></a></span>
-<span id="cb52-44"><a></a>    <span class="kw">def</span> get_authors(<span class="va">self</span>):</span>
-<span id="cb52-45"><a></a>        <span class="cf">return</span> <span class="va">self</span>.authors</span>
-<span id="cb52-46"><a></a></span>
-<span id="cb52-47"><a></a>    <span class="kw">def</span> get_first_author(<span class="va">self</span>):</span>
-<span id="cb52-48"><a></a>        <span class="cf">return</span> <span class="va">self</span>.authors[<span class="dv">0</span>]</span>
-<span id="cb52-49"><a></a></span>
-<span id="cb52-50"><a></a>    <span class="kw">def</span> get_num_pages(<span class="va">self</span>):</span>
-<span id="cb52-51"><a></a>        <span class="cf">return</span> <span class="va">self</span>.num_pages</span>
-<span id="cb52-52"><a></a></span>
-<span id="cb52-53"><a></a>    <span class="kw">def</span> get_title(<span class="va">self</span>):</span>
-<span id="cb52-54"><a></a>        <span class="cf">return</span> <span class="va">self</span>.title</span>
-<span id="cb52-55"><a></a></span>
-<span id="cb52-56"><a></a><span class="kw">class</span> Person:</span>
-<span id="cb52-57"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, family_name, given_name):</span>
-<span id="cb52-58"><a></a>        <span class="va">self</span>.family_name <span class="op">=</span> family_name</span>
-<span id="cb52-59"><a></a>        <span class="va">self</span>.given_name <span class="op">=</span> given_name</span>
-<span id="cb52-60"><a></a></span>
-<span id="cb52-61"><a></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
-<span id="cb52-62"><a></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
-<span id="cb52-63"><a></a></span>
-<span id="cb52-64"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb52-65"><a></a>        <span class="cf">return</span> <span class="ss">f"Person[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_family_name()<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_given_name()<span class="sc">}</span><span class="ss">]"</span></span>
-<span id="cb52-66"><a></a></span>
-<span id="cb52-67"><a></a>    <span class="kw">def</span> get_family_name(<span class="va">self</span>):</span>
-<span id="cb52-68"><a></a>        <span class="cf">return</span> <span class="va">self</span>.family_name</span>
-<span id="cb52-69"><a></a></span>
-<span id="cb52-70"><a></a>    <span class="kw">def</span> get_given_name(<span class="va">self</span>):</span>
-<span id="cb52-71"><a></a>        <span class="cf">return</span> <span class="va">self</span>.given_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</div><div class="column" style="width:50%;">
-<div id="create-objs" class="cell" data-execution_count="30">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a></a>my_bookstore <span class="op">=</span> Bookstore(<span class="st">"Bookland"</span>, <span class="st">"Washington, DC"</span>)</span>
-<span id="cb53-2"><a></a>plath <span class="op">=</span> Person(<span class="st">"Plath"</span>, <span class="st">"Sylvia"</span>)</span>
-<span id="cb53-3"><a></a>bell_jar <span class="op">=</span> Book(<span class="st">"The Bell Jar"</span>, [plath], <span class="dv">244</span>)</span>
-<span id="cb53-4"><a></a>marx <span class="op">=</span> Person(<span class="st">"Marx"</span>, <span class="st">"Karl"</span>)</span>
-<span id="cb53-5"><a></a>engels <span class="op">=</span> Person(<span class="st">"Engels"</span>, <span class="st">"Friedrich"</span>)</span>
-<span id="cb53-6"><a></a>manifesto <span class="op">=</span> Book(<span class="st">"The Communist Manifesto"</span>, [marx, engels], <span class="dv">43</span>)</span>
-<span id="cb53-7"><a></a>elster <span class="op">=</span> Person(<span class="st">"Elster"</span>, <span class="st">"Jon"</span>)</span>
-<span id="cb53-8"><a></a>cement <span class="op">=</span> Book(<span class="st">"The Cement of Society"</span>, [elster], <span class="dv">311</span>)</span>
-<span id="cb53-9"><a></a>my_bookstore.add_books([bell_jar, manifesto, cement])</span>
-<span id="cb53-10"><a></a><span class="bu">print</span>(my_bookstore)</span>
-<span id="cb53-11"><a></a><span class="bu">print</span>(my_bookstore[<span class="dv">0</span>])</span>
-<span id="cb53-12"><a></a><span class="bu">print</span>(<span class="st">"Inventory:"</span>)</span>
-<span id="cb53-13"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bookstore[3 books]
-Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]
-Inventory:
-0. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]
-1. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]
-2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]</code></pre>
-</div>
-</div>
-</div></div>
-</section>
-<section id="doing-things-with-classes" class="slide level2 smaller">
-<h2>Doing Things With Classes</h2>
-<ul>
-<li>Now we can <strong>use</strong> our OOP structure, for example to sort the inventory in different ways!</li>
-</ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<center>
-<strong>Alphabetical (By First Author)</strong>
-</center>
-<div id="sort-alpha" class="cell" data-execution_count="31">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a></a>sort_alpha <span class="op">=</span> <span class="kw">lambda</span> x: x.get_first_author().get_family_name()</span>
-<span id="cb55-2"><a></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_alpha)</span>
-<span id="cb55-3"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>0. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]
-1. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]
-2. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<center>
-<strong>By Page Count</strong>
-</center>
-<div id="sort-pages" class="cell" data-execution_count="32">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a></a>sort_pages <span class="op">=</span> <span class="kw">lambda</span> x: x.get_num_pages()</span>
-<span id="cb57-2"><a></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_pages)</span>
-<span id="cb57-3"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>0. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]
-1. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]
-2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]</code></pre>
-</div>
-</div>
-</div></div>
-</section>
-<section id="inheritance-and-polymorphism" class="slide level2 smaller crunch-title">
-<h2><em>Inheritance</em> and <em>Polymorphism</em></h2>
-<ul>
-<li>Encapsulate <strong>general properties</strong> in <strong>parent</strong> class, <strong>specific properties</strong> in <strong>child classes</strong></li>
-</ul>
-
-<img data-src="images/Inheritance.drawio.svg" class="r-stretch quarto-figure-center"><p class="caption">(You can edit this or make your own UML diagrams in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7C%0A%20%20numDoors%3A%20int%3B%20numWheels%3A%20int%3B%20balanced%3A%20bool%3B%7C%0A%20%20turnOn()%3B%20accelerate()%3B%20brake()%3B%20turnOff()%3B%0A%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%20balanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3Bbalanced%20%3D%20true%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3Bbalanced%20%3D%20true%3B%5D%0A%0A%5BVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BCar%5D%0A%5BVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a>!)</p></section>
-<section id="or-is-this-better" class="slide level2 smaller crunch-title">
-<h2>Or… Is This Better?</h2>
-
-<img data-src="images/vehicle-fancy.svg" class="r-stretch quarto-figure-center"><p class="caption">Edit in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7CnumDoors%3A%20int%3BnumWheels%3A%20int%3Bbalanced%3A%20bool%3B%7CturnOn()%3Baccelerate()%3Bbrake()%3BturnOff()%3B%5D%0A%5B%3Cabstract%3E%20UnbalancedVehicle%7Cbalanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20BalancedVehicle%7Cbalanced%20%3D%20true%3B%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3B%5D%0A%0A%5BVehicle%5D--%3A%3E%5BUnbalancedVehicle%5D%0A%5BUnbalancedVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BBalancedVehicle%5D%0A%5BBalancedVehicle%5D--%3A%3E%5BCar%5D%0A%5BBalancedVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a></p></section>
-<section id="design-choices" class="slide level2 smaller crunch-title crunch-details crunch-ul">
-<h2>Design Choices</h2>
-<ul>
-<li>The goal is to <strong>encapsulate</strong> as best as possible: which <strong>objects</strong> should have which <strong>properties</strong>, and which <strong>methods</strong>?</li>
-<li>Example: Fiction vs.&nbsp;Non-Fiction. How important is this distinction <strong>for your use case?</strong></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<center>
-<strong>Option 1: As Property of <code>Book</code></strong>
-</center>
-<div id="fiction-property" class="cell" data-execution_count="33">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a></a><span class="im">from</span> enum <span class="im">import</span> Enum</span>
-<span id="cb59-2"><a></a><span class="kw">class</span> BookType(Enum):</span>
-<span id="cb59-3"><a></a>    NONFICTION <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb59-4"><a></a>    FICTION <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb59-5"><a></a></span>
-<span id="cb59-6"><a></a><span class="kw">class</span> Book:</span>
-<span id="cb59-7"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title: <span class="bu">str</span>, authors: <span class="bu">list</span>[Person], num_pages: <span class="bu">int</span>, <span class="bu">type</span>: BookType):</span>
-<span id="cb59-8"><a></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
-<span id="cb59-9"><a></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
-<span id="cb59-10"><a></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
-<span id="cb59-11"><a></a>        <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="bu">type</span></span>
-<span id="cb59-12"><a></a></span>
-<span id="cb59-13"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
-<span id="cb59-14"><a></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>title<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>authors<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>num_pages<span class="sc">}</span><span class="ss">, type=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">type</span><span class="sc">}</span><span class="ss">]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="use-fiction-property" class="cell" data-execution_count="34">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
-<span id="cb60-2"><a></a>ulysses <span class="op">=</span> Book(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, BookType.FICTION)</span>
-<span id="cb60-3"><a></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
-<span id="cb60-4"><a></a>micromotives <span class="op">=</span> Book(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, BookType.NONFICTION)</span>
-<span id="cb60-5"><a></a><span class="bu">print</span>(ulysses)</span>
-<span id="cb60-6"><a></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Book[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]
-Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252, type=BookType.NONFICTION]</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<center>
-<strong>Option 2: Separate Classes</strong>
-</center>
-<div id="fiction-separate-classes" class="cell" data-execution_count="36">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a></a><span class="co"># class Book defined as earlier</span></span>
-<span id="cb62-2"><a></a><span class="kw">class</span> FictionBook(Book):</span>
-<span id="cb62-3"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, characters):</span>
-<span id="cb62-4"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
-<span id="cb62-5"><a></a>        <span class="va">self</span>.characters <span class="op">=</span> characters</span>
-<span id="cb62-6"><a></a></span>
-<span id="cb62-7"><a></a><span class="kw">class</span> NonfictionBook(Book):</span>
-<span id="cb62-8"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, topic):</span>
-<span id="cb62-9"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
-<span id="cb62-10"><a></a>        <span class="va">self</span>.topic <span class="op">=</span> topic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="use-fiction-separate-classes" class="cell" data-execution_count="37">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
-<span id="cb63-2"><a></a>ulysses <span class="op">=</span> FictionBook(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, [<span class="st">"Daedalus"</span>])</span>
-<span id="cb63-3"><a></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
-<span id="cb63-4"><a></a>micromotives <span class="op">=</span> NonfictionBook(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, <span class="st">"Economics"</span>)</span>
-<span id="cb63-5"><a></a><span class="bu">print</span>(ulysses)</span>
-<span id="cb63-6"><a></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Book[title=Ulysses, authors=[Person[Joyce, James]], pages=732]
-Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]</code></pre>
-</div>
-</div>
-</div></div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>

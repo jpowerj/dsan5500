@@ -25,8 +25,8 @@ w03:
   date-md: "Jan 23"
 w04:
   weeknum: 4
-  title: "Heaps, Stacks, Hash Maps"
-  footer: "Heaps, Stacks, Hash Maps"
+  title: "Data Structures from Scratch with OOP"
+  footer: "Data Structures from Scratch with OOP"
   date-md: "Jan 30"
 w05:
   weeknum: 5

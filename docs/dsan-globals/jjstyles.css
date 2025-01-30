@@ -87,6 +87,13 @@ a.disabled {
 .code-90 code {
   font-size: 90% !important;
 }
+.code-80 code {
+  font-size: 80% !important;
+}
+
+.cols-clip .column {
+  overflow-x: clip !important;
+}
 
 /* Vertical-align columns */
 .cols-va .column {
@@ -231,6 +238,10 @@ figcaption {
   font-size: 1em !important;
 }
 
+.fn-span {
+  font-size: 80% !important;
+}
+
 .inline-90 .math.inline {
   font-size: 90% !important;
 }
@@ -240,8 +251,14 @@ figcaption {
 .math-90 .math.display {
   font-size: 90% !important;
 }
+.math-85 .math.display {
+  font-size: 85% !important;
+}
 .math-80 .math.display {
   font-size: 80% !important;
+}
+.math-75 .math.display {
+  font-size: 75% !important;
 }
 
 .footnotes-0 aside {
@@ -256,6 +273,13 @@ figcaption {
 .not-title-slide {
   display: block !important;
   top: 0px !important;
+}
+
+.output-80 .cell-output {
+  font-size: 80% !important;
+}
+.output-75 .cell-output {
+  font-size: 75% !important;
 }
 
 .p-60 p {
@@ -415,6 +439,9 @@ table thead th {
   font-size: 95% !important;
 }
 
+.title-07 h2, .title-07 h1 {
+  font-size: calc(0.7 * var(--r-heading2-size)) !important;
+}
 .title-08 h2, .title-08 h1 {
   font-size: calc(0.8 * var(--r-heading2-size)) !important;
 }

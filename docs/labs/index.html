@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jeff Jacobs">
 
-<title>Extra Writeups – DSAN 5500</title>
+<title>In-Class Labs / Demos – DSAN 5500</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,9 +79,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-week','listing-title','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: ["listing-week","listing-title","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -143,7 +142,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../writeups/index.html">Extra Writeups</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/index.html">Labs / Demos</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -206,13 +205,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../writeups/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../writeups/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra Writeups</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Labs / Demos</span></a>
   </div>
 </li>
@@ -340,28 +339,21 @@ window.Quarto = {
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Colab Notebook">Colab Notebook <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Interactive Demo">Interactive Demo <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Extra Writeups</h1>
-<p class="subtitle lead"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
+<h1 class="title">In-Class Labs / Demos</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jeff Jacobs </p>
-          </div>
-  </div>
     
   
     
@@ -372,6 +364,8 @@ window.Quarto = {
 </header>
 
 
+<p>The table below collects the <strong>pre-made</strong> labs used in the course together in one place.</p>
+<p>Any of the “impromptu” notebooks I make in-class, e.g.&nbsp;to show how something works when executed or just to respond to in-class questions, can instead be found (sorted by week) in <strong><a href="https://drive.google.com/drive/folders/1Mgc5HX3s0nJuRGHdx64Y01_GMbT9pPMW?usp=drive_link">this GDrive folder</a></strong></p>
 
 
 
@@ -381,7 +375,7 @@ window.Quarto = {
 <thead>
 <tr>
 <th>
-Date
+Week
 </th>
 <th>
 Title
@@ -392,16 +386,40 @@ Category
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="HW3 Clarification" data-listing-date-sort="1712203200000" data-listing-file-modified-sort="1712443340000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1173" data-listing-title-sort="'Serving' Code to Prefect from Colab" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-categories="Colab Notebook" data-listing-title-sort="[Advanced Data Validation with Pydantic](https://colab.research.google.com/drive/15Qsh26T0AZyxFRoGwTwFE_rMW7TBWEbr?usp=drive_link)" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<span class="listing-date">Apr 4, 2024</span>
+<span class="listing-week">8</span>
 </td>
 <td>
-<a href="../writeups/prefect/index.html" class="title listing-title">‘Serving’ Code to Prefect from Colab</a>
+<span class="listing-title"><a href="https://colab.research.google.com/drive/15Qsh26T0AZyxFRoGwTwFE_rMW7TBWEbr?usp=drive_link">Advanced Data Validation with Pydantic</a></span>
 </td>
 <td>
-<span class="listing-categories">HW3 Clarification</span>
+<span class="listing-categories">Colab Notebook</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="Interactive Demo" data-listing-title-sort="[Dictionary Lookup: Linear vs. Logarithmic](https://dict-lookup.streamlit.app/)" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-week">1</span>
+</td>
+<td>
+<span class="listing-title"><a href="https://dict-lookup.streamlit.app/">Dictionary Lookup: Linear vs.&nbsp;Logarithmic</a></span>
+</td>
+<td>
+<span class="listing-categories">Interactive Demo</span>
+</td>
+</tr>
+<tr data-index="2" data-categories="Colab Notebook" data-listing-title-sort="[Basic Data Validation with Pydantic](https://colab.research.google.com/drive/1XMw3vOYK8NJl9MgMjfhYfK3lXg0KjnkE?usp=sharing)" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-week">1</span>
+</td>
+<td>
+<span class="listing-title"><a href="https://colab.research.google.com/drive/1XMw3vOYK8NJl9MgMjfhYfK3lXg0KjnkE?usp=sharing">Basic Data Validation with Pydantic</a></span>
+</td>
+<td>
+<span class="listing-categories">Colab Notebook</span>
 </td>
 </tr>
 </tbody>
@@ -842,4 +860,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5500/blob/main/writeups/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5500/blob/main/labs/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>

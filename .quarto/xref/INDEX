@@ -101,5 +101,8 @@
   },
   "midterm.qmd": {
     "midterm.html": "25c6385a"
+  },
+  "labs/index.qmd": {
+    "index.html": "8602ecce"
   }
 }

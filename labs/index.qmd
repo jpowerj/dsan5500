@@ -1,0 +1,27 @@
+---
+title: "In-Class Labs / Demos"
+format: html
+listing:
+  sort-ui: false
+  filter-ui: false
+  contents:
+    - lab-links.yml
+  type: table
+  categories: true
+  fields: [week,title,categories]
+  field-display-names:
+    week: "Week"
+    title: "Title"
+    categories: "Category"
+  sort:
+    - "week desc"
+    - "title desc"
+  table-hover: true
+  #date-format: full
+  #date-format: "dddd MMM D, YYYY, HH:mm:ss"
+  date-format: "dddd MMM D, YYYY"
+---
+
+The table below collects the **pre-made** labs used in the course together in one place.
+
+Any of the "impromptu" notebooks I make in-class, e.g. to show how something works when executed or just to respond to in-class questions, can instead be found (sorted by week) in **[this GDrive folder](https://drive.google.com/drive/folders/1Mgc5HX3s0nJuRGHdx64Y01_GMbT9pPMW?usp=drive_link)**
