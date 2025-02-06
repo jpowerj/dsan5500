@@ -339,7 +339,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-01-30, 06:06:32 PM</em></p>
+<p><em>Updated 2025-02-06, 05:01:47 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -348,20 +348,33 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#week-4-recap-wrapup" id="toc-week-4-recap-wrapup" class="nav-link active" data-scroll-target="#week-4-recap-wrapup">Week 4 Recap + Wrapup</a>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#hash-tables" id="toc-hash-tables" class="nav-link" data-scroll-target="#hash-tables">Hash Tables</a>
   <ul class="collapse">
-  <li><a href="#hash-tables-tldr-edition" id="toc-hash-tables-tldr-edition" class="nav-link" data-scroll-target="#hash-tables-tldr-edition">Hash Tables: tldr Edition</a></li>
+  <li><a href="#our-list-of-item-price-pairs" id="toc-our-list-of-item-price-pairs" class="nav-link" data-scroll-target="#our-list-of-item-price-pairs">Our List of (Item, Price) Pairs</a></li>
+  <li><a href="#strange-at-first-technique-for-algorithm-analysis-oracles" id="toc-strange-at-first-technique-for-algorithm-analysis-oracles" class="nav-link" data-scroll-target="#strange-at-first-technique-for-algorithm-analysis-oracles">Strange-At-First Technique for Algorithm Analysis: Oracles</a></li>
+  <li><a href="#mathematical-strategy-of-oracles" id="toc-mathematical-strategy-of-oracles" class="nav-link" data-scroll-target="#mathematical-strategy-of-oracles">Mathematical Strategy of Oracles</a></li>
+  <li><a href="#back-to-the-price-list" id="toc-back-to-the-price-list" class="nav-link" data-scroll-target="#back-to-the-price-list">Back to the Price List</a></li>
+  <li><a href="#the-importance-of-differentiating-operations-insertion-vs.-lookup" id="toc-the-importance-of-differentiating-operations-insertion-vs.-lookup" class="nav-link" data-scroll-target="#the-importance-of-differentiating-operations-insertion-vs.-lookup">The Importance of Differentiating Operations: <em>Insertion</em> vs.&nbsp;<em>Lookup</em></a></li>
+  <li><a href="#so-whats-the-catch" id="toc-so-whats-the-catch" class="nav-link" data-scroll-target="#so-whats-the-catch">So What’s the Catch???</a></li>
+  <li><a href="#arrays-vs.-linked-lists" id="toc-arrays-vs.-linked-lists" class="nav-link" data-scroll-target="#arrays-vs.-linked-lists">Arrays vs.&nbsp;Linked Lists</a></li>
+  <li><a href="#look-how-far-we-came" id="toc-look-how-far-we-came" class="nav-link" data-scroll-target="#look-how-far-we-came">Look How Far We Came!</a></li>
+  <li><a href="#hash-tables-tldr-edition" id="toc-hash-tables-tldr-edition" class="nav-link" data-scroll-target="#hash-tables-tldr-edition">Hash Tables: tl;dr Edition</a></li>
   </ul></li>
   <li><a href="#binary-search-trees" id="toc-binary-search-trees" class="nav-link" data-scroll-target="#binary-search-trees">Binary Search Trees</a>
   <ul class="collapse">
+  <li><a href="#bst-the-final-missing-piece" id="toc-bst-the-final-missing-piece" class="nav-link" data-scroll-target="#bst-the-final-missing-piece">BST: The Final Missing Piece</a></li>
   <li><a href="#linked-lists-divide-and-conquer-bsts" id="toc-linked-lists-divide-and-conquer-bsts" class="nav-link" data-scroll-target="#linked-lists-divide-and-conquer-bsts">Linked Lists + Divide-and-Conquer = BSTs</a></li>
   <li><a href="#hiromi-uehara" id="toc-hiromi-uehara" class="nav-link" data-scroll-target="#hiromi-uehara">Hiromi Uehara</a></li>
   <li><a href="#the-metaphor-goes-deep" id="toc-the-metaphor-goes-deep" class="nav-link" data-scroll-target="#the-metaphor-goes-deep">The Metaphor Goes Deep!</a></li>
-  <li><a href="#visualizing-the-structures" id="toc-visualizing-the-structures" class="nav-link" data-scroll-target="#visualizing-the-structures">Visualizing the Structures</a></li>
+  <li><a href="#visualizing-bsts" id="toc-visualizing-bsts" class="nav-link" data-scroll-target="#visualizing-bsts">Visualizing BSTs</a></li>
   <li><a href="#practical-considerations" id="toc-practical-considerations" class="nav-link" data-scroll-target="#practical-considerations">Practical Considerations</a></li>
   <li><a href="#why-just-work" id="toc-why-just-work" class="nav-link" data-scroll-target="#why-just-work">Why <code>==</code>, <code>&lt;</code>, <code>&gt;=</code> “Just Work”</a></li>
   <li><a href="#ordering-vectors-via-pareto-dominance" id="toc-ordering-vectors-via-pareto-dominance" class="nav-link" data-scroll-target="#ordering-vectors-via-pareto-dominance">Ordering Vectors via Pareto Dominance</a></li>
   <li><a href="#back-to-bsts" id="toc-back-to-bsts" class="nav-link" data-scroll-target="#back-to-bsts">Back to BSTs</a></li>
+  </ul></li>
+  <li><a href="#node-traversal-computational-tree-climbing" id="toc-node-traversal-computational-tree-climbing" class="nav-link" data-scroll-target="#node-traversal-computational-tree-climbing">Node Traversal: Computational Tree-Climbing</a>
+  <ul class="collapse">
   <li><a href="#lls-rightarrow-bsts-the-hard-part" id="toc-lls-rightarrow-bsts-the-hard-part" class="nav-link" data-scroll-target="#lls-rightarrow-bsts-the-hard-part">LLs <span class="math inline">\(\rightarrow\)</span> BSTs: The Hard Part</a></li>
   <li><a href="#two-ways-to-traverse-irl-version" id="toc-two-ways-to-traverse-irl-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-irl-version">Two Ways to Traverse: IRL Version</a></li>
   <li><a href="#two-ways-to-traverse-picture-version" id="toc-two-ways-to-traverse-picture-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-picture-version">Two Ways to Traverse: Picture Version</a></li>
@@ -424,10 +437,155 @@ window.Quarto = {
 <center>
 <a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
 </center>
-<section id="week-4-recap-wrapup" class="level1" data-stack-name="Week 4 Wrapup">
-<h1 data-stack-name="Week 4 Wrapup">Week 4 Recap + Wrapup</h1>
-<section id="hash-tables-tldr-edition" class="level2 crunch-title crunch-ul">
-<h2 class="crunch-title crunch-ul anchored" data-anchor-id="hash-tables-tldr-edition">Hash Tables: tldr Edition</h2>
+<section id="schedule" class="level1 smaller small-title crunch-title crunch-callout code-90" data-name="Schedule">
+<h1 class="smaller small-title crunch-title crunch-callout code-90" data-name="Schedule">Schedule</h1>
+<p>Today’s Planned Schedule:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 64%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Start</th>
+<th style="text-align: left;">End</th>
+<th style="text-align: left;">Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;">6:30pm</td>
+<td style="text-align: left;">7:30pm</td>
+<td style="text-align: left;"><a href="#hash-tables"><code>HashTable</code>: Linear to <em>Constant</em> Efficiency 🤯 →</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">7:30pm</td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;"><a href="#onwards-and-upwards-fancier-algorithms"><code>BinarySearchTree</code>: The Final Missing Piece! →</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Break!</strong></td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;">9:00pm</td>
+<td style="text-align: left;"><a href="#onwards-and-upwards-fancier-algorithms"><code>BinarySearchTree</code>: The Final Missing Piece! →</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hash-tables" class="level1" data-stack-name="HashTable">
+<h1 data-stack-name="HashTable">Hash Tables</h1>
+<ul>
+<li><em>(Spoiler alert, so you know I’m not lying to you: this is a <strong>LinkedList</strong> with some <strong>additional structure!</strong>)</em></li>
+<li>You just got hired as a <strong>cashier</strong> (Safeway cashiering alum myself 🫡)</li>
+<li>The scanner is broken (spoiler #2: the scanner uses a hash table), so you start writing down <strong>items</strong> along with their <strong>prices</strong>, one-by-one, as items come in…</li>
+</ul>
+<section id="our-list-of-item-price-pairs" class="level2 crunch-title crunch-details crunch-ul small-summary">
+<h2 class="crunch-title crunch-details crunch-ul small-summary anchored" data-anchor-id="our-list-of-item-price-pairs">Our List of (Item, Price) Pairs</h2>
+<div id="648b5296" class="cell" data-execution_count="1">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>price_list <span class="op">=</span> []</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>price_list.append((<span class="st">'Banana'</span>, <span class="dv">10</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>price_list.append((<span class="st">'Apple'</span>, <span class="dv">2</span>))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>price_list.append((<span class="st">'Four Loko'</span>, <span class="dv">5</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>price_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>[('Banana', 10), ('Apple', 2), ('Four Loko', 5)]</code></pre>
+</div>
+</div>
+<ul>
+<li>As the list gets longer, it gets harder and harder to <strong>find where you wrote down a specific item and its price</strong></li>
+<li>As you now know, you could use <strong>linear search</strong>, <span class="math inline">\(\overline{O}(n)\)</span>, or if you ensure alphabetical order (an <strong>invariant!</strong>), you could use <strong>binary, divide-and-conquer search</strong>, <span class="math inline">\(\overline{O}(\log_2(n))\)</span></li>
+<li>We can do <strong>even better</strong>: <span class="math inline">\(\overline{O}(1)\)</span>. First w/magic, but then math</li>
+</ul>
+</section>
+<section id="strange-at-first-technique-for-algorithm-analysis-oracles" class="level2">
+<h2 class="anchored" data-anchor-id="strange-at-first-technique-for-algorithm-analysis-oracles">Strange-At-First Technique for Algorithm Analysis: Oracles</h2>
+<ul>
+<li>What if we had a magical wizard who could just <strong>tell us</strong> where to find an item we were looking for?</li>
+<li>Sounds like I’m joking or saying <em>“what if we had a billion $ and infinite aura and we could fly and walk through walls”</em></li>
+<li>And yet, through the magic of math and computer science, there are concrete <strong>hashing algorithms</strong> which ensure (in a mathematically-provable way!) “almost certain” <span class="math inline">\(\overline{O}(1)\)</span> lookup time</li>
+</ul>
+</section>
+<section id="mathematical-strategy-of-oracles" class="level2 crunch-title crunch-math math-75 crunch-ul">
+<h2 class="crunch-title crunch-math math-75 crunch-ul anchored" data-anchor-id="mathematical-strategy-of-oracles">Mathematical Strategy of Oracles</h2>
+<ul>
+<li>We’ll use a <strong>concrete</strong>, <strong>simplified hash function</strong> to illustrate</li>
+<li>Mathematically we’ll be able to get something like</li>
+</ul>
+<p><span class="math display">\[
+T(n) = \overline{O}(1 + \underbrace{\epsilon}_{\mathclap{\text{Collision rate}}} \cdot n)
+\]</span></p>
+<ul>
+<li>Which tells us: <strong>if</strong> we had an oracle who could ensure near-0 collision rates, <strong>then</strong> <span class="math inline">\(T(n) = \overline{O}(1)\)</span>.</li>
+<li>And, by a beautiful division-of-labor, <strong>other</strong> computer scientists <a href="https://www.youtube.com/watch?v=OXuDhejxz_c">figure out</a> the near-0 collision rates part, giving us</li>
+</ul>
+<p><span class="math display">\[
+p^{✅} = [T(n) = \overline{O}(1 + \epsilon n)], q^{✅} = [\epsilon \approx 0],\text{ so } p \wedge q \implies T(n) \overset{✅}{=} \overline{O}(1).
+\]</span></p>
+</section>
+<section id="back-to-the-price-list" class="level2 crunch-title crunch-math crunch-ul">
+<h2 class="crunch-title crunch-math crunch-ul anchored" data-anchor-id="back-to-the-price-list">Back to the Price List</h2>
+<ul>
+<li>Our hash function: <strong><code>hash(item)</code></strong> = <strong>first letter of <code>item</code></strong></li>
+</ul>
+<p><span class="math display">\[
+h(\texttt{x}) = \texttt{x[0]}
+\]</span></p>
+<ul>
+<li><code>h('Banana') = 'B'</code>, <code>h('Monkey') = 'M'</code></li>
+<li>With this function in hand, we can create a length-26 <strong>array</strong>, one slot for each letter in alphabet, and then <strong>write down (item, price) pairs</strong> in <strong>whatever slot <code>item</code> hashes to</strong></li>
+</ul>
+</section>
+<section id="the-importance-of-differentiating-operations-insertion-vs.-lookup" class="level2">
+<h2 class="anchored" data-anchor-id="the-importance-of-differentiating-operations-insertion-vs.-lookup">The Importance of Differentiating Operations: <em>Insertion</em> vs.&nbsp;<em>Lookup</em></h2>
+<ul>
+<li>So far, we have <span class="math inline">\(\overline{O}(1)\)</span> <strong>insertion</strong> via hashing</li>
+<li>We also get <span class="math inline">\(\overline{O}(1)\)</span> <strong>lookup!</strong></li>
+<li>When customer hands us an item (say, <code>'Banana'</code>), we compute the hash (<code>B</code>), look in that slot, and obtain the price for bananas.</li>
+<li>We also get <span class="math inline">\(\overline{O}(1)\)</span> <strong>updating</strong> (hash to find the old price, update it to have new price) and <span class="math inline">\(\overline{O}(1)\)</span> <strong>deletion</strong> (hash to find the slot containing the item, then erase it from that slot)</li>
+</ul>
+</section>
+<section id="so-whats-the-catch" class="level2">
+<h2 class="anchored" data-anchor-id="so-whats-the-catch">So What’s the Catch???</h2>
+<ul>
+<li><strong>BLUEBERRIES</strong> show up to ruin our day (as usual 😞)</li>
+<li>We hash, so far so good: <code>h('Blueberries') = 'B'</code></li>
+<li>But then we go to the <code>B</code> slot and see that <code>(Bananas, 10)</code> is already there!!! Wtf do we do here… don’t panic!</li>
+<li>The answer? We open our HW2 from DSAN 5500 and remember that we have our lovely friend the <code>LinkedList</code> that we can use whenever and however we want!</li>
+</ul>
+</section>
+<section id="arrays-vs.-linked-lists" class="level2">
+<h2 class="anchored" data-anchor-id="arrays-vs.-linked-lists">Arrays vs.&nbsp;Linked Lists</h2>
+<ul>
+<li>Jeff is hiding something here… Why jump to <code>LinkedList</code>? Why not just… another length-26 array, for example?</li>
+<li>For this we open up our Week 1 slides and remember the <strong>stack</strong> vs.&nbsp;<strong>heap</strong> distinction: we <strong>know</strong> how many letters in the alphabet, we <strong>don’t know</strong> how many items starting with <code>B</code> (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)</li>
+<li>Terminology for this kind of “hybrid” data structure: <code>HashTable</code> is an <code>Array</code> that <strong>“degenerates into”</strong> a <code>LinkedList</code> (when there are <strong>collisions</strong>)</li>
+</ul>
+</section>
+<section id="look-how-far-we-came" class="level2 crunch-title crunch-ul inline-90 code-90">
+<h2 class="crunch-title crunch-ul inline-90 code-90 anchored" data-anchor-id="look-how-far-we-came">Look How Far We Came!</h2>
+<ul>
+<li>Last week: Only structure we knew allowing insertion (<code>LinkedList</code>) was <span class="math inline">\(\overline{O}(n)\)</span> for everythihg</li>
+<li>This week: New structure where suddenly everything is <span class="math inline">\(\overline{O}(1)\)</span>, except in “unlucky” cases, in which it partially <strong>“degenerates”</strong> into a <code>LinkedList</code></li>
+<li><span class="math inline">\(\implies\)</span> The “inevitable” <span class="math inline">\(\overline{O}(n)\)</span> runtime has transformed into the unlucky worst-case <strong>upper bound</strong> <span style="font-size: 45% !important;">(<a href="https://www.youtube.com/watch?v=CmghyKonz8E">feels like yesterday, all this was a dream</a>)</span></li>
+<li><span class="math inline">\(\implies\)</span> By taking <strong>core</strong> data structures/algorithms from your toolkit, you can “piece together” <strong>hybrid structures</strong> whose <em>whole (runtime) is better than the sum of its parts</em></li>
+</ul>
+</section>
+<section id="hash-tables-tldr-edition" class="level2 crunch-title crunch-ul inline-90">
+<h2 class="crunch-title crunch-ul inline-90 anchored" data-anchor-id="hash-tables-tldr-edition">Hash Tables: tl;dr Edition</h2>
 <ul>
 <li><strong>Keys</strong> <span class="math inline">\(k \in \mathcal{K}\)</span> are plugged into a (deterministic) <strong>hash function</strong> <span class="math inline">\(h: \mathcal{K} \rightarrow \{1, \ldots, N\}\)</span>, producing an <strong>index</strong> where <span class="math inline">\(k\)</span> is stored</li>
 <li>If <strong>nothing at that index yet</strong>, store <span class="math inline">\((k,v)\)</span> in empty slot</li>
@@ -444,6 +602,18 @@ window.Quarto = {
 <ul>
 <li>If you’ve been annoyed by how long we’ve talked about Linked Lists for… this is where it finally pays off!</li>
 </ul>
+<section id="bst-the-final-missing-piece" class="level2 crunch-title crunch-ul code-90 inline-90">
+<h2 class="crunch-title crunch-ul code-90 inline-90 anchored" data-anchor-id="bst-the-final-missing-piece">BST: The Final Missing Piece</h2>
+<ul>
+<li>Just a glorified <code>LinkedList</code>! We’ll be able to take our <code>HashMap</code> and “drop in” the <code>BST</code> to play the role <code>LinkedList</code> is playing right now</li>
+<li>If collision, we’ll create a <code>BST</code> with its <span class="math inline">\(\overline{O}(\log(n))\)</span> operations, rather than a <code>LinkedList</code> with its <span class="math inline">\(\overline{O}(n)\)</span> operations</li>
+<li><span class="math inline">\(\implies\)</span> <code>HashMap</code> will go from:
+<ul>
+<li><span class="math inline">\(\overline{O}(1)\)</span> best-case but <span class="math inline">\(\overline{O}(n)\)</span> worst-case to</li>
+<li><span class="math inline">\(\overline{O}(1)\)</span> best-case but <span class="math inline">\(\overline{O}(\log_2(n))\)</span> worst-case!</li>
+</ul></li>
+</ul>
+</section>
 <section id="linked-lists-divide-and-conquer-bsts" class="level2 crunch-title title-11">
 <h2 class="crunch-title title-11 anchored" data-anchor-id="linked-lists-divide-and-conquer-bsts">Linked Lists + Divide-and-Conquer = BSTs</h2>
 <ul>
@@ -472,69 +642,50 @@ window.Quarto = {
 <div class="quarto-layout-panel" data-layout="[1,1]">
 <div class="quarto-layout-row">
 <div id="metaphor-left" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LinkedListNode:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> content</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> <span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LinkedListNode:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> content</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> <span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="metaphor-right" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BinarySearchTreeNode:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> content</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> left</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> right</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BinarySearchTreeNode:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> content</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> left</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span> right</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="visualizing-the-structures" class="level2 smaller crunch-title crunch-col-output crunch-details">
-<h2 class="smaller crunch-title crunch-col-output crunch-details anchored" data-anchor-id="visualizing-the-structures">Visualizing the Structures</h2>
-<div class="vcenter">
-<div id="4f49acd2" class="cell" data-output-location="column" data-execution_count="2">
+<section id="visualizing-bsts" class="level2 smaller crunch-title crunch-col-output crunch-details cols-va">
+<h2 class="smaller crunch-title crunch-col-output crunch-details cols-va anchored" data-anchor-id="visualizing-bsts">Visualizing BSTs</h2>
+<div id="78a64fa8" class="cell" data-output-location="column" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> LinkedList, InventoryItem</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ll <span class="op">=</span> LinkedList()</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>item1 <span class="op">=</span> InventoryItem(<span class="st">'Mango'</span>, <span class="dv">50</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ll.append(item1)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>item2 <span class="op">=</span> InventoryItem(<span class="st">'Pickle'</span>, <span class="dv">60</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ll.append(item2)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>item3 <span class="op">=</span> InventoryItem(<span class="st">'Artichoke'</span>, <span class="dv">55</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ll.append(item3)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>item5 <span class="op">=</span> InventoryItem(<span class="st">'Banana'</span>, <span class="dv">123</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ll.append(item5)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>item6 <span class="op">=</span> InventoryItem(<span class="st">'Aardvark'</span>, <span class="dv">11</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>ll.append(item6)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>HTML(visualize_ll(ll))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> LinkedList, InventoryItem, BinarySearchTree</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>bst <span class="op">=</span> BinarySearchTree()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>item1 <span class="op">=</span> InventoryItem(<span class="st">'Mango'</span>, <span class="dv">50</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>bst.add(item1)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>item2 <span class="op">=</span> InventoryItem(<span class="st">'Pickle'</span>, <span class="dv">60</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>bst.add(item2)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>item3 <span class="op">=</span> InventoryItem(<span class="st">'Artichoke'</span>, <span class="dv">55</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>bst.add(item3)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>item5 <span class="op">=</span> InventoryItem(<span class="st">'Banana'</span>, <span class="dv">123</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>bst.add(item5)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>item6 <span class="op">=</span> InventoryItem(<span class="st">'Aardvark'</span>, <span class="dv">11</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>bst.add(item6)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>HTML(visualize(bst))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: node None_0, port f1 unrecognized
+Warning: node None_1, port f1 unrecognized
+Warning: node None_2, port f1 unrecognized
+Warning: node None_3, port f1 unrecognized
+Warning: node None_4, port f1 unrecognized
+Warning: node None_5, port f1 unrecognized</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-3-output-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="85b416ad" class="cell" data-output-location="column" data-execution_count="3">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> BinarySearchTree</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bst <span class="op">=</span> BinarySearchTree()</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>item1 <span class="op">=</span> InventoryItem(<span class="st">'Mango'</span>, <span class="dv">50</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>bst.add(item1)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>item2 <span class="op">=</span> InventoryItem(<span class="st">'Pickle'</span>, <span class="dv">60</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>bst.add(item2)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>item3 <span class="op">=</span> InventoryItem(<span class="st">'Artichoke'</span>, <span class="dv">55</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>bst.add(item3)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>item5 <span class="op">=</span> InventoryItem(<span class="st">'Banana'</span>, <span class="dv">123</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>bst.add(item5)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>item6 <span class="op">=</span> InventoryItem(<span class="st">'Aardvark'</span>, <span class="dv">11</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>bst.add(item6)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>HTML(visualize(bst))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-4-output-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="index_files/figure-html/cell-4-output-2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
@@ -568,71 +719,71 @@ window.Quarto = {
 </section>
 <section id="ordering-vectors-via-pareto-dominance" class="level2 smaller crunch-title title-12">
 <h2 class="smaller crunch-title title-12 anchored" data-anchor-id="ordering-vectors-via-pareto-dominance">Ordering Vectors via Pareto Dominance</h2>
-<div id="3dbe52a5" class="cell" data-output-location="column" data-execution_count="4">
+<div id="b1016c5b" class="cell" data-output-location="column" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UtilVector:</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, u1, u2):</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.u1 <span class="op">=</span> u1</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.u2 <span class="op">=</span> u2</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__eq__</span>(<span class="va">self</span>, other):</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(other, UtilVector):</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">NotImplemented</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.u1 <span class="op">==</span> other.u1 <span class="kw">and</span> <span class="va">self</span>.u2 <span class="op">==</span> other.u2</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__ne__</span>(<span class="va">self</span>, other):</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(other, UtilVector):</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">NotImplemented</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.u1 <span class="op">!=</span> other.u1 <span class="kw">or</span> <span class="va">self</span>.u2 <span class="op">!=</span> other.u2</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__gt__</span>(<span class="va">self</span>, other):</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(other, UtilVector):</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">NotImplemented</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.u1 <span class="op">&gt;</span> other.u1 <span class="kw">and</span> <span class="va">self</span>.u2 <span class="op">&gt;=</span> other.u2 <span class="kw">or</span> <span class="va">self</span>.u1 <span class="op">&gt;=</span> other.u1 <span class="kw">and</span> <span class="va">self</span>.u2 <span class="op">&gt;</span> other.u2</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__ge__</span>(<span class="va">self</span>, other):</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__gt__</span>(other) <span class="kw">or</span> <span class="va">self</span>.<span class="fu">__eq__</span>(other)</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__lt__</span>(<span class="va">self</span>, other):</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(other, UtilVector):</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">NotImplemented</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> other.<span class="fu">__gt__</span>(<span class="va">self</span>)</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__le__</span>(<span class="va">self</span>, other):</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__lt__</span>(other) <span class="kw">or</span> <span class="va">self</span>.<span class="fu">__eq__</span>(other)</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>xA <span class="op">=</span> UtilVector(<span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>xB <span class="op">=</span> UtilVector(<span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(xB <span class="op">&gt;</span> xA)</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>xC <span class="op">=</span> UtilVector(<span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(xC <span class="op">&gt;</span> xB)</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> UtilVector(<span class="dv">4</span>, <span class="dv">6</span>)</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>util_vals <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">11</span>, <span class="fl">0.5</span>)</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>util_pairs <span class="op">=</span> <span class="bu">list</span>(itertools.product(util_vals, util_vals))</span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>util_df <span class="op">=</span> pd.DataFrame(util_pairs, columns<span class="op">=</span>[<span class="st">'x'</span>,<span class="st">'y'</span>])</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_to_x0(row):</span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    row_vec <span class="op">=</span> UtilVector(row[<span class="st">'x'</span>], row[<span class="st">'y'</span>])</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    gt_result <span class="op">=</span> <span class="bu">int</span>(row_vec <span class="op">&gt;</span> x0)</span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    lt_result <span class="op">=</span> <span class="bu">int</span>(row_vec <span class="op">&lt;</span> x0)</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gt_result <span class="op">-</span> lt_result</span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>util_df[<span class="st">'greater'</span>] <span class="op">=</span> util_df.<span class="bu">apply</span>(compare_to_x0, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co">#my_palette = sns.color_palette(['#E69F00','lightgray','#CCFFCC'])</span></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>my_palette <span class="op">=</span> sns.color_palette([<span class="st">'#FF3535'</span>,<span class="st">'lightgray'</span>,<span class="st">'#35FF35'</span>])</span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>sns.relplot(</span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>util_df,</span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>,</span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">'greater'</span>,</span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span>my_palette,</span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    marker<span class="op">=</span><span class="st">'X'</span>, s<span class="op">=</span><span class="dv">150</span></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>x0_df <span class="op">=</span> pd.DataFrame({<span class="st">'x'</span>: [<span class="dv">4</span>], <span class="st">'y'</span>: [<span class="dv">6</span>]})</span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>plt.scatter(data<span class="op">=</span>x0_df, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>plt.gca().set_aspect(<span class="st">'equal'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UtilVector:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, u1, u2):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.u1 <span class="op">=</span> u1</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.u2 <span class="op">=</span> u2</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__eq__</span>(<span class="va">self</span>, other):</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(other, UtilVector):</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">NotImplemented</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.u1 <span class="op">==</span> other.u1 <span class="kw">and</span> <span class="va">self</span>.u2 <span class="op">==</span> other.u2</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__ne__</span>(<span class="va">self</span>, other):</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(other, UtilVector):</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">NotImplemented</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.u1 <span class="op">!=</span> other.u1 <span class="kw">or</span> <span class="va">self</span>.u2 <span class="op">!=</span> other.u2</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__gt__</span>(<span class="va">self</span>, other):</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(other, UtilVector):</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">NotImplemented</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.u1 <span class="op">&gt;</span> other.u1 <span class="kw">and</span> <span class="va">self</span>.u2 <span class="op">&gt;=</span> other.u2 <span class="kw">or</span> <span class="va">self</span>.u1 <span class="op">&gt;=</span> other.u1 <span class="kw">and</span> <span class="va">self</span>.u2 <span class="op">&gt;</span> other.u2</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__ge__</span>(<span class="va">self</span>, other):</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__gt__</span>(other) <span class="kw">or</span> <span class="va">self</span>.<span class="fu">__eq__</span>(other)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__lt__</span>(<span class="va">self</span>, other):</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(other, UtilVector):</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">NotImplemented</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> other.<span class="fu">__gt__</span>(<span class="va">self</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__le__</span>(<span class="va">self</span>, other):</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__lt__</span>(other) <span class="kw">or</span> <span class="va">self</span>.<span class="fu">__eq__</span>(other)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>xA <span class="op">=</span> UtilVector(<span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>xB <span class="op">=</span> UtilVector(<span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(xB <span class="op">&gt;</span> xA)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>xC <span class="op">=</span> UtilVector(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(xC <span class="op">&gt;</span> xB)</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> UtilVector(<span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>util_vals <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">11</span>, <span class="fl">0.5</span>)</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>util_pairs <span class="op">=</span> <span class="bu">list</span>(itertools.product(util_vals, util_vals))</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>util_df <span class="op">=</span> pd.DataFrame(util_pairs, columns<span class="op">=</span>[<span class="st">'x'</span>,<span class="st">'y'</span>])</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_to_x0(row):</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    row_vec <span class="op">=</span> UtilVector(row[<span class="st">'x'</span>], row[<span class="st">'y'</span>])</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    gt_result <span class="op">=</span> <span class="bu">int</span>(row_vec <span class="op">&gt;</span> x0)</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>    lt_result <span class="op">=</span> <span class="bu">int</span>(row_vec <span class="op">&lt;</span> x0)</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gt_result <span class="op">-</span> lt_result</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>util_df[<span class="st">'greater'</span>] <span class="op">=</span> util_df.<span class="bu">apply</span>(compare_to_x0, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="co">#my_palette = sns.color_palette(['#E69F00','lightgray','#CCFFCC'])</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>my_palette <span class="op">=</span> sns.color_palette([<span class="st">'#FF3535'</span>,<span class="st">'lightgray'</span>,<span class="st">'#35FF35'</span>])</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>sns.relplot(</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>util_df,</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>,</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>    hue<span class="op">=</span><span class="st">'greater'</span>,</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span>my_palette,</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    marker<span class="op">=</span><span class="st">'X'</span>, s<span class="op">=</span><span class="dv">150</span></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>x0_df <span class="op">=</span> pd.DataFrame({<span class="st">'x'</span>: [<span class="dv">4</span>], <span class="st">'y'</span>: [<span class="dv">6</span>]})</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>plt.scatter(data<span class="op">=</span>x0_df, x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>plt.gca().set_aspect(<span class="st">'equal'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>True
@@ -663,6 +814,9 @@ False</code></pre>
 <li>Bonus: <code>__repr__()</code> and <code>__str__()</code></li>
 </ul>
 </section>
+</section>
+<section id="node-traversal-computational-tree-climbing" class="level1" data-stack-name="Tree Traversal">
+<h1 data-stack-name="Tree Traversal">Node Traversal: Computational Tree-Climbing</h1>
 <section id="lls-rightarrow-bsts-the-hard-part" class="level2">
 <h2 class="anchored" data-anchor-id="lls-rightarrow-bsts-the-hard-part">LLs <span class="math inline">\(\rightarrow\)</span> BSTs: The Hard Part</h2>
 <ul>
@@ -721,33 +875,41 @@ False</code></pre>
 <h2 class="smaller crunch-title crunch-details anchored" data-anchor-id="two-ways-to-traverse-picture-version">Two Ways to Traverse: Picture Version</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="aaa51947" class="cell" data-execution_count="5">
+<div id="38aef41e" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> IterAlgorithm, NodeProcessor</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>visualize(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> IterAlgorithm, NodeProcessor</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>visualize(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: node None_0, port f1 unrecognized
+Warning: node None_1, port f1 unrecognized
+Warning: node None_2, port f1 unrecognized
+Warning: node None_3, port f1 unrecognized
+Warning: node None_4, port f1 unrecognized
+Warning: node None_5, port f1 unrecognized</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-6-output-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="index_files/figure-html/cell-6-output-2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="ac9c8616" class="cell" data-execution_count="6">
+<div id="cb26b377" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"DFS:"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dfs_processor <span class="op">=</span> NodeProcessor(IterAlgorithm.DEPTH_FIRST)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#print(type(dfs_processor.node_container))</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>dfs_processor.iterate_over(bst)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">BFS:"</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>bfs_processor <span class="op">=</span> NodeProcessor(IterAlgorithm.BREADTH_FIRST)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#print(type(bfs_processor.node_container))</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>bfs_processor.iterate_over(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"DFS:"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dfs_processor <span class="op">=</span> NodeProcessor(IterAlgorithm.DEPTH_FIRST)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#print(type(dfs_processor.node_container))</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>dfs_processor.iterate_over(bst)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">BFS:"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>bfs_processor <span class="op">=</span> NodeProcessor(IterAlgorithm.BREADTH_FIRST)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#print(type(bfs_processor.node_container))</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>bfs_processor.iterate_over(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>DFS:
@@ -860,15 +1022,23 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
 </section>
 <section id="the-three-animals-traverse-our-inventory-tree" class="level2 smaller crunch-title title-10">
 <h2 class="smaller crunch-title title-10 anchored" data-anchor-id="the-three-animals-traverse-our-inventory-tree">The Three Animals Traverse our Inventory Tree</h2>
-<div id="c4d0b695" class="cell" data-execution_count="7">
+<div id="0afc7725" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>visualize(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>visualize(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: node None_0, port f1 unrecognized
+Warning: node None_1, port f1 unrecognized
+Warning: node None_2, port f1 unrecognized
+Warning: node None_3, port f1 unrecognized
+Warning: node None_4, port f1 unrecognized
+Warning: node None_5, port f1 unrecognized</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-8-output-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="index_files/figure-html/cell-8-output-2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
