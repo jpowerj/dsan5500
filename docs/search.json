@@ -2051,7 +2051,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'None', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'Vegan', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Gluten Free', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Vegan', 'Gluten Free', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2383,7 +2383,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Gluten Free', 'None', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'None', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Gluten Free', 'Vegan', 'None'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'Vegan', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -3121,7 +3121,7 @@
   {
     "objectID": "w05/index.html",
     "href": "w05/index.html",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "",
     "text": "Open slides in new window →",
     "crumbs": [
@@ -3131,7 +3131,7 @@
   {
     "objectID": "w05/index.html#our-list-of-item-price-pairs",
     "href": "w05/index.html#our-list-of-item-price-pairs",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Our List of (Item, Price) Pairs",
     "text": "Our List of (Item, Price) Pairs\n\n\nCode\nprice_list = []\nprice_list.append(('Banana', 10))\nprice_list.append(('Apple', 2))\nprice_list.append(('Four Loko', 5))\nprice_list\n\n\n[('Banana', 10), ('Apple', 2), ('Four Loko', 5)]\n\n\n\nAs the list gets longer, it gets harder and harder to find where you wrote down a specific item and its price\nAs you now know, you could use linear search, \\(\\overline{O}(n)\\), or if you ensure alphabetical order (an invariant!), you could use binary, divide-and-conquer search, \\(\\overline{O}(\\log_2(n))\\)\nWe can do even better: \\(\\overline{O}(1)\\). First w/magic, but then math",
     "crumbs": [
@@ -3141,7 +3141,7 @@
   {
     "objectID": "w05/index.html#strange-at-first-technique-for-algorithm-analysis-oracles",
     "href": "w05/index.html#strange-at-first-technique-for-algorithm-analysis-oracles",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Strange-At-First Technique for Algorithm Analysis: Oracles",
     "text": "Strange-At-First Technique for Algorithm Analysis: Oracles\n\nWhat if we had a magical wizard who could just tell us where to find an item we were looking for?\nSounds like I’m joking or saying “what if we had a billion $ and infinite aura and we could fly and walk through walls”\nAnd yet, through the magic of math and computer science, there are concrete hashing algorithms which ensure (in a mathematically-provable way!) “almost certain” \\(\\overline{O}(1)\\) lookup time",
     "crumbs": [
@@ -3151,7 +3151,7 @@
   {
     "objectID": "w05/index.html#mathematical-strategy-of-oracles",
     "href": "w05/index.html#mathematical-strategy-of-oracles",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Mathematical Strategy of Oracles",
     "text": "Mathematical Strategy of Oracles\n\nWe’ll use a concrete, simplified hash function to illustrate\nMathematically we’ll be able to get something like\n\n\\[\nT(n) = \\overline{O}(1 + \\underbrace{\\epsilon}_{\\mathclap{\\text{Collision rate}}} \\cdot n)\n\\]\n\nWhich tells us: if we had an oracle who could ensure near-0 collision rates, then \\(T(n) = \\overline{O}(1)\\).\nAnd, by a beautiful division-of-labor, other computer scientists figure out the near-0 collision rates part, giving us\n\n\\[\np^{✅} = [T(n) = \\overline{O}(1 + \\epsilon n)], q^{✅} = [\\epsilon \\approx 0],\\text{ so } p \\wedge q \\implies T(n) \\overset{✅}{=} \\overline{O}(1).\n\\]",
     "crumbs": [
@@ -3161,7 +3161,7 @@
   {
     "objectID": "w05/index.html#back-to-the-price-list",
     "href": "w05/index.html#back-to-the-price-list",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Back to the Price List",
     "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, and then write down (item, price) pairs in whatever slot item hashes to",
     "crumbs": [
@@ -3171,7 +3171,7 @@
   {
     "objectID": "w05/index.html#the-importance-of-differentiating-operations-insertion-vs.-lookup",
     "href": "w05/index.html#the-importance-of-differentiating-operations-insertion-vs.-lookup",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "The Importance of Differentiating Operations: Insertion vs. Lookup",
     "text": "The Importance of Differentiating Operations: Insertion vs. Lookup\n\nSo far, we have \\(\\overline{O}(1)\\) insertion via hashing\nWe also get \\(\\overline{O}(1)\\) lookup!\nWhen customer hands us an item (say, 'Banana'), we compute the hash (B), look in that slot, and obtain the price for bananas.\nWe also get \\(\\overline{O}(1)\\) updating (hash to find the old price, update it to have new price) and \\(\\overline{O}(1)\\) deletion (hash to find the slot containing the item, then erase it from that slot)",
     "crumbs": [
@@ -3181,7 +3181,7 @@
   {
     "objectID": "w05/index.html#so-whats-the-catch",
     "href": "w05/index.html#so-whats-the-catch",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "So What’s the Catch???",
     "text": "So What’s the Catch???\n\nBLUEBERRIES show up to ruin our day (as usual 😞)\nWe hash, so far so good: h('Blueberries') = 'B'\nBut then we go to the B slot and see that (Bananas, 10) is already there!!! Wtf do we do here… don’t panic!\nThe answer? We open our HW2 from DSAN 5500 and remember that we have our lovely friend the LinkedList that we can use whenever and however we want!",
     "crumbs": [
@@ -3191,7 +3191,7 @@
   {
     "objectID": "w05/index.html#arrays-vs.-linked-lists",
     "href": "w05/index.html#arrays-vs.-linked-lists",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Arrays vs. Linked Lists",
     "text": "Arrays vs. Linked Lists\n\nJeff is hiding something here… Why jump to LinkedList? Why not just… another length-26 array, for example?\nFor this we open up our Week 1 slides and remember the stack vs. heap distinction: we know how many letters in the alphabet, we don’t know how many items starting with B (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)\nTerminology for this kind of “hybrid” data structure: HashTable is an Array that “degenerates into” a LinkedList (when there are collisions)",
     "crumbs": [
@@ -3201,7 +3201,7 @@
   {
     "objectID": "w05/index.html#look-how-far-we-came",
     "href": "w05/index.html#look-how-far-we-came",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Look How Far We Came!",
     "text": "Look How Far We Came!\n\nLast week: Only structure we knew allowing insertion (LinkedList) was \\(\\overline{O}(n)\\) for everythihg\nThis week: New structure where suddenly everything is \\(\\overline{O}(1)\\), except in “unlucky” cases, in which it partially “degenerates” into a LinkedList\n\\(\\implies\\) The “inevitable” \\(\\overline{O}(n)\\) runtime has transformed into the unlucky worst-case upper bound (feels like yesterday, all this was a dream)\n\\(\\implies\\) By taking core data structures/algorithms from your toolkit, you can “piece together” hybrid structures whose whole (runtime) is better than the sum of its parts",
     "crumbs": [
@@ -3211,7 +3211,7 @@
   {
     "objectID": "w05/index.html#hash-tables-tldr-edition",
     "href": "w05/index.html#hash-tables-tldr-edition",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Hash Tables: tl;dr Edition",
     "text": "Hash Tables: tl;dr Edition\n\nKeys \\(k \\in \\mathcal{K}\\) are plugged into a (deterministic) hash function \\(h: \\mathcal{K} \\rightarrow \\{1, \\ldots, N\\}\\), producing an index where \\(k\\) is stored\nIf nothing at that index yet, store \\((k,v)\\) in empty slot\nIf already an item at that index, we have a ⚠️collision⚠️\nWe could just throw away the old value (HW2 Part 1)\nOtherwise, need a way to store multiple items in one slot… (a way to dynamically grow storage at given index)\nSolution you know so far: Linked Lists\nNew solution: Binary Search Trees!",
     "crumbs": [
@@ -3221,7 +3221,7 @@
   {
     "objectID": "w05/index.html#bst-the-final-missing-piece",
     "href": "w05/index.html#bst-the-final-missing-piece",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "BST: The Final Missing Piece",
     "text": "BST: The Final Missing Piece\n\nJust a glorified LinkedList! We’ll be able to take our HashMap and “drop in” the BST to play the role LinkedList is playing right now\nIf collision, we’ll create a BST with its \\(\\overline{O}(\\log(n))\\) operations, rather than a LinkedList with its \\(\\overline{O}(n)\\) operations\n\\(\\implies\\) HashMap will go from:\n\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(n)\\) worst-case to\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(\\log_2(n))\\) worst-case!",
     "crumbs": [
@@ -3231,7 +3231,7 @@
   {
     "objectID": "w05/index.html#linked-lists-divide-and-conquer-bsts",
     "href": "w05/index.html#linked-lists-divide-and-conquer-bsts",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Linked Lists + Divide-and-Conquer = BSTs",
     "text": "Linked Lists + Divide-and-Conquer = BSTs\n\nBy now, the word “Linked List” should make you groan, cross your arms and start tapping your feet with impatience\n“Here we go again… the Linked List is gonna make us traverse through every single element before we reach the one we’re looking for” 😖\nLinked List = Canon in D\nBinary Search Tree = Canon in D played by Hiromi Uehara…",
     "crumbs": [
@@ -3241,7 +3241,7 @@
   {
     "objectID": "w05/index.html#hiromi-uehara",
     "href": "w05/index.html#hiromi-uehara",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Hiromi Uehara",
     "text": "Hiromi Uehara",
     "crumbs": [
@@ -3251,7 +3251,7 @@
   {
     "objectID": "w05/index.html#the-metaphor-goes-deep",
     "href": "w05/index.html#the-metaphor-goes-deep",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "The Metaphor Goes Deep!",
     "text": "The Metaphor Goes Deep!\n\nUehara’s Canon in D = Pachelbel’s + Fancier notes/rhythms on top of it\nBinary Search Trees = Linked Lists + Fancier structure built on top of it\n\nSpecifically: “next” pointer can now branch left or right, to ensure ordering of nodes\n\n\n\n\n\n\n\n\nclass LinkedListNode:\n    @property content\n    @property next\n\n\nclass BinarySearchTreeNode:\n    @property content\n    @property left\n    @property right",
     "crumbs": [
@@ -3261,7 +3261,7 @@
   {
     "objectID": "w05/index.html#visualizing-bsts",
     "href": "w05/index.html#visualizing-bsts",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Visualizing BSTs",
     "text": "Visualizing BSTs\n\n\nCode\nfrom hw2 import LinkedList, InventoryItem, BinarySearchTree\nbst = BinarySearchTree()\nitem1 = InventoryItem('Mango', 50)\nbst.add(item1)\nitem2 = InventoryItem('Pickle', 60)\nbst.add(item2)\nitem3 = InventoryItem('Artichoke', 55)\nbst.add(item3)\nitem5 = InventoryItem('Banana', 123)\nbst.add(item5)\nitem6 = InventoryItem('Aardvark', 11)\nbst.add(item6)\nHTML(visualize(bst))\n\n\nWarning: node None_0, port f1 unrecognized\nWarning: node None_1, port f1 unrecognized\nWarning: node None_2, port f1 unrecognized\nWarning: node None_3, port f1 unrecognized\nWarning: node None_4, port f1 unrecognized\nWarning: node None_5, port f1 unrecognized",
     "crumbs": [
@@ -3271,7 +3271,7 @@
   {
     "objectID": "w05/index.html#practical-considerations",
     "href": "w05/index.html#practical-considerations",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Practical Considerations",
     "text": "Practical Considerations\n\nHash Maps: Only useful if keys are hashable\n\nPython has a built-in collections.abc.Hashable class, such that hash(my_obj) works iff isinstance(my_obj, Hashable)\n\nBinary Search Trees: Only useful if keys have an ordering\n\n“Standard” classes (int, str, datetime) come with implementations of ordering, but if you make your own class you need to implement the ordering for it!\n\n(Linked Lists still work for non-hashable/orderable objects!)",
     "crumbs": [
@@ -3281,7 +3281,7 @@
   {
     "objectID": "w05/index.html#why-just-work",
     "href": "w05/index.html#why-just-work",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Why ==, <, >= “Just Work”",
     "text": "Why ==, &lt;, &gt;= “Just Work”\n\nNot magic! Someone has explicitly written a set of functions telling Python what to do when it sees e.g. obj1 &lt; obj2\nExample: let’s implement an ordering of vectors \\(\\mathbf{x} \\in \\mathbb{R}^2\\) based on Pareto dominance",
     "crumbs": [
@@ -3291,7 +3291,7 @@
   {
     "objectID": "w05/index.html#ordering-vectors-via-pareto-dominance",
     "href": "w05/index.html#ordering-vectors-via-pareto-dominance",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Ordering Vectors via Pareto Dominance",
     "text": "Ordering Vectors via Pareto Dominance\n\n\nCode\nclass UtilVector:\n    def __init__(self, u1, u2):\n        self.u1 = u1\n        self.u2 = u2\n    \n    def __eq__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return self.u1 == other.u1 and self.u2 == other.u2\n\n    def __ne__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return self.u1 != other.u1 or self.u2 != other.u2\n    \n    def __gt__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return self.u1 &gt; other.u1 and self.u2 &gt;= other.u2 or self.u1 &gt;= other.u1 and self.u2 &gt; other.u2\n\n    def __ge__(self, other):\n        return self.__gt__(other) or self.__eq__(other)\n        \n    def __lt__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return other.__gt__(self)\n\n    def __le__(self, other):\n        return self.__lt__(other) or self.__eq__(other)\nxA = UtilVector(2, 2)\nxB = UtilVector(3, 2)\nprint(xB &gt; xA)\nxC = UtilVector(2, 3)\nprint(xC &gt; xB)\nimport itertools\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nx0 = UtilVector(4, 6)\nutil_vals = np.arange(0, 11, 0.5)\nutil_pairs = list(itertools.product(util_vals, util_vals))\nutil_df = pd.DataFrame(util_pairs, columns=['x','y'])\ndef compare_to_x0(row):\n    row_vec = UtilVector(row['x'], row['y'])\n    gt_result = int(row_vec &gt; x0)\n    lt_result = int(row_vec &lt; x0)\n    return gt_result - lt_result\nutil_df['greater'] = util_df.apply(compare_to_x0, axis=1)\n#my_palette = sns.color_palette(['#E69F00','lightgray','#CCFFCC'])\nmy_palette = sns.color_palette(['#FF3535','lightgray','#35FF35'])\nsns.relplot(\n    data=util_df,\n    x='x', y='y',\n    hue='greater',\n    palette=my_palette,\n    marker='X', s=150\n);\nx0_df = pd.DataFrame({'x': [4], 'y': [6]})\nplt.scatter(data=x0_df, x='x', y='y', color='black')\nplt.gca().set_aspect('equal')\n\n\nTrue\nFalse",
     "crumbs": [
@@ -3301,7 +3301,7 @@
   {
     "objectID": "w05/index.html#back-to-bsts",
     "href": "w05/index.html#back-to-bsts",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Back to BSTs",
     "text": "Back to BSTs\n\nFor HW2, we provide you with an InventoryItem class\nTwo instance variables: item_name and price\nEquivalence relations:\n\n__eq__(other), __ne__(other)\n\nOrdering relations:\n\n__lt__(other), __le__(other), __gt__(other), __ge__(other)\n\nBonus: __repr__() and __str__()",
     "crumbs": [
@@ -3311,7 +3311,7 @@
   {
     "objectID": "w05/index.html#lls-rightarrow-bsts-the-hard-part",
     "href": "w05/index.html#lls-rightarrow-bsts-the-hard-part",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "LLs \\(\\rightarrow\\) BSTs: The Hard Part",
     "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.\nBut… for a BinarySearchTree, since our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node in our BST\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!",
     "crumbs": [
@@ -3321,7 +3321,7 @@
   {
     "objectID": "w05/index.html#two-ways-to-traverse-irl-version",
     "href": "w05/index.html#two-ways-to-traverse-irl-version",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Two Ways to Traverse: IRL Version",
     "text": "Two Ways to Traverse: IRL Version\n\nImagine we’re trying to learn about a topic \\(\\tau\\) using Wikipedia, so we find its article \\(\\tau_0\\)\nThere are two “extremes” in terms of strategies we could follow for learning, given the contents of the article as well as the links it contains to other articles\n\n\n\n\n\n\n\n Depth-First Search (DFS)\n\n\n\n\nOpen \\(\\tau_0\\) and start reading it; When we encounter a link we always click it and immediately start reading the new article.\nIf we hit an article with no links (or a dead end/broken link), we finish reading it and click the back button, picking up where we left off in the previous article. When we reach the end of \\(\\tau_0\\), we’re done!\n\n\n\n\n\n\n\n\n\n Breadth-First Search (BFS)\n\n\n\n\nBookmark \\(\\tau_0\\) in a folder called “Level 0 Articles”; open and start reading it\nWhen we encounter a link, we put it in a “Level 1 Articles” folder, but continue reading \\(\\tau_0\\) until we reach the end.\nWe then open all “Level 1 Articles” in new tabs, placing links we encounter in these articles into a “Level 2 Articles” folder, that we only start reading once all “Level 1 Articles” are read\nWe continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the “opposite” of DFS?)\n\n\n\n\n…Let’s try them out! I clicked “Random Article” and got Eustache de Saint Pierre",
     "crumbs": [
@@ -3331,7 +3331,7 @@
   {
     "objectID": "w05/index.html#two-ways-to-traverse-picture-version",
     "href": "w05/index.html#two-ways-to-traverse-picture-version",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Two Ways to Traverse: Picture Version",
     "text": "Two Ways to Traverse: Picture Version\n\n\n\n\nCode\nfrom hw2 import IterAlgorithm, NodeProcessor\nvisualize(bst)\n\n\nWarning: node None_0, port f1 unrecognized\nWarning: node None_1, port f1 unrecognized\nWarning: node None_2, port f1 unrecognized\nWarning: node None_3, port f1 unrecognized\nWarning: node None_4, port f1 unrecognized\nWarning: node None_5, port f1 unrecognized\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nprint(\"DFS:\")\ndfs_processor = NodeProcessor(IterAlgorithm.DEPTH_FIRST)\n#print(type(dfs_processor.node_container))\ndfs_processor.iterate_over(bst)\n\nprint(\"\\nBFS:\")\nbfs_processor = NodeProcessor(IterAlgorithm.BREADTH_FIRST)\n#print(type(bfs_processor.node_container))\nbfs_processor.iterate_over(bst)\n\n\nDFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Banana,price=123]\nInventoryItem[item_name=Aardvark,price=11]\n\nBFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Aardvark,price=11]\nInventoryItem[item_name=Banana,price=123]",
     "crumbs": [
@@ -3341,7 +3341,7 @@
   {
     "objectID": "w05/index.html#two-ways-to-traverse-in-words-version",
     "href": "w05/index.html#two-ways-to-traverse-in-words-version",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Two Ways to Traverse: In-Words Version",
     "text": "Two Ways to Traverse: In-Words Version\n\nDepth-First Search (DFS): With this approach, we iterate through the BST by always taking the left child as the “next” child until we hit a leaf node (which means, we cannot follow this left-child pointer any longer, since a leaf node does not have a left child or a right child!), and only at that point do we back up and take the right children we skipped.\nBreadth-First Search (BFS): This is the “opposite” of DFS in the sense that we traverse the tree level-by-level, never moving to the next level of the tree until we’re sure that we have visited every node on the current level.",
     "crumbs": [
@@ -3351,7 +3351,7 @@
   {
     "objectID": "w05/index.html#two-ways-to-traverse-animated-version",
     "href": "w05/index.html#two-ways-to-traverse-animated-version",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Two Ways to Traverse: Animated Version",
     "text": "Two Ways to Traverse: Animated Version\n\n\n\n\n\n\n\n\n\nDepth-First Search (from Wikimedia Commons)\n\n\n\n\n\n\n\nBreadth-First Search (from Wikimedia Commons)",
     "crumbs": [
@@ -3361,7 +3361,7 @@
   {
     "objectID": "w05/index.html#two-ways-to-traverse-underlying-data-structures-version",
     "href": "w05/index.html#two-ways-to-traverse-underlying-data-structures-version",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Two Ways to Traverse: Underlying Data Structures Version",
     "text": "Two Ways to Traverse: Underlying Data Structures Version\n\nNow that you have some intuition, you may be thinking that they might require very different code to implement 🤔\nThis is where the mathematical-formal linkage between the two becomes ultra helpful!\nIt turns out (and a full-on algorithmic theory course makes you prove) that\n\n\nDepth-First Search can be accomplished by processing nodes in an order determined by adding each to a stack, while\nBreadth-First Search can be accomplished by processing nodes in an order determined by adding each to a queue!\n\n\n\\(\\implies\\) Literally identical code, “pulling out” the word stack and replacing it with the word queue within your code (or vice-versa).\nIf you have your Software Engineer Hats on, you’ll recognize this as a job for an abstraction layer!",
     "crumbs": [
@@ -3371,7 +3371,7 @@
   {
     "objectID": "w05/index.html#two-ways-to-traverse-hw2-version",
     "href": "w05/index.html#two-ways-to-traverse-hw2-version",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Two Ways to Traverse: HW2 Version",
     "text": "Two Ways to Traverse: HW2 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\nIt will take in a ThingContainer (could be a stack or a queue, you won’t know which), which has two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()",
     "crumbs": [
@@ -3381,7 +3381,7 @@
   {
     "objectID": "w05/index.html#three-animals-in-the-dfs-species",
     "href": "w05/index.html#three-animals-in-the-dfs-species",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Three Animals in the DFS Species",
     "text": "Three Animals in the DFS Species\n\n\n\n\n\n\n\nDFS Procedure\nAlgorithm\n\n\n\n\nPre-Order Traversal\n1. Print node2. Traverse left subtree3. Traverse right subtree\n\n\nIn-Order Traversal 🧐‼️\n1. Traverse left subtree2. Print node3. Traverse right subtree\n\n\nPost-Order Traversal\n1. Traverse left subtree2. Traverse right subtree3. Print node",
     "crumbs": [
@@ -3391,7 +3391,7 @@
   {
     "objectID": "w05/index.html#the-three-animals-traverse-our-inventory-tree",
     "href": "w05/index.html#the-three-animals-traverse-our-inventory-tree",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "The Three Animals Traverse our Inventory Tree",
     "text": "The Three Animals Traverse our Inventory Tree\n\n\nCode\nvisualize(bst)\n\n\nWarning: node None_0, port f1 unrecognized\nWarning: node None_1, port f1 unrecognized\nWarning: node None_2, port f1 unrecognized\nWarning: node None_3, port f1 unrecognized\nWarning: node None_4, port f1 unrecognized\nWarning: node None_5, port f1 unrecognized",
     "crumbs": [
@@ -3401,7 +3401,7 @@
   {
     "objectID": "w05/index.html#final-notes-for-hw2",
     "href": "w05/index.html#final-notes-for-hw2",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Final Notes for HW2",
     "text": "Final Notes for HW2\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔",
     "crumbs": [
@@ -3411,196 +3411,196 @@
   {
     "objectID": "w05/slides.html#our-list-of-item-price-pairs",
     "href": "w05/slides.html#our-list-of-item-price-pairs",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Our List of (Item, Price) Pairs",
     "text": "Our List of (Item, Price) Pairs\n\n\nCode\nprice_list = []\nprice_list.append(('Banana', 10))\nprice_list.append(('Apple', 2))\nprice_list.append(('Four Loko', 5))\nprice_list\n\n\n[('Banana', 10), ('Apple', 2), ('Four Loko', 5)]\n\n\n\nAs the list gets longer, it gets harder and harder to find where you wrote down a specific item and its price\nAs you now know, you could use linear search, \\(\\overline{O}(n)\\), or if you ensure alphabetical order (an invariant!), you could use binary, divide-and-conquer search, \\(\\overline{O}(\\log_2(n))\\)\nWe can do even better: \\(\\overline{O}(1)\\). First w/magic, but then math"
   },
   {
     "objectID": "w05/slides.html#strange-at-first-technique-for-algorithm-analysis-oracles",
     "href": "w05/slides.html#strange-at-first-technique-for-algorithm-analysis-oracles",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Strange-At-First Technique for Algorithm Analysis: Oracles",
     "text": "Strange-At-First Technique for Algorithm Analysis: Oracles\n\nWhat if we had a magical wizard who could just tell us where to find an item we were looking for?\nSounds like I’m joking or saying “what if we had a billion $ and infinite aura and we could fly and walk through walls”\nAnd yet, through the magic of math and computer science, there are concrete hashing algorithms which ensure (in a mathematically-provable way!) “almost certain” \\(\\overline{O}(1)\\) lookup time"
   },
   {
     "objectID": "w05/slides.html#mathematical-strategy-of-oracles",
     "href": "w05/slides.html#mathematical-strategy-of-oracles",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Mathematical Strategy of Oracles",
     "text": "Mathematical Strategy of Oracles\n\nWe’ll use a concrete, simplified hash function to illustrate\nMathematically we’ll be able to get something like\n\n\\[\nT(n) = \\overline{O}(1 + \\underbrace{\\epsilon}_{\\mathclap{\\text{Collision rate}}} \\cdot n)\n\\]\n\nWhich tells us: if we had an oracle who could ensure near-0 collision rates, then \\(T(n) = \\overline{O}(1)\\).\nAnd, by a beautiful division-of-labor, other computer scientists figure out the near-0 collision rates part, giving us\n\n\\[\np^{✅} = [T(n) = \\overline{O}(1 + \\epsilon n)], q^{✅} = [\\epsilon \\approx 0],\\text{ so } p \\wedge q \\implies T(n) \\overset{✅}{=} \\overline{O}(1).\n\\]"
   },
   {
     "objectID": "w05/slides.html#back-to-the-price-list",
     "href": "w05/slides.html#back-to-the-price-list",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Back to the Price List",
     "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, and then write down (item, price) pairs in whatever slot item hashes to"
   },
   {
     "objectID": "w05/slides.html#the-importance-of-differentiating-operations-insertion-vs.-lookup",
     "href": "w05/slides.html#the-importance-of-differentiating-operations-insertion-vs.-lookup",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "The Importance of Differentiating Operations: Insertion vs. Lookup",
     "text": "The Importance of Differentiating Operations: Insertion vs. Lookup\n\nSo far, we have \\(\\overline{O}(1)\\) insertion via hashing\nWe also get \\(\\overline{O}(1)\\) lookup!\nWhen customer hands us an item (say, 'Banana'), we compute the hash (B), look in that slot, and obtain the price for bananas.\nWe also get \\(\\overline{O}(1)\\) updating (hash to find the old price, update it to have new price) and \\(\\overline{O}(1)\\) deletion (hash to find the slot containing the item, then erase it from that slot)"
   },
   {
     "objectID": "w05/slides.html#so-whats-the-catch",
     "href": "w05/slides.html#so-whats-the-catch",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "So What’s the Catch???",
     "text": "So What’s the Catch???\n\nBLUEBERRIES show up to ruin our day (as usual 😞)\nWe hash, so far so good: h('Blueberries') = 'B'\nBut then we go to the B slot and see that (Bananas, 10) is already there!!! Wtf do we do here… don’t panic!\nThe answer? We open our HW2 from DSAN 5500 and remember that we have our lovely friend the LinkedList that we can use whenever and however we want!"
   },
   {
     "objectID": "w05/slides.html#arrays-vs.-linked-lists",
     "href": "w05/slides.html#arrays-vs.-linked-lists",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Arrays vs. Linked Lists",
     "text": "Arrays vs. Linked Lists\n\nJeff is hiding something here… Why jump to LinkedList? Why not just… another length-26 array, for example?\nFor this we open up our Week 1 slides and remember the stack vs. heap distinction: we know how many letters in the alphabet, we don’t know how many items starting with B (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)\nTerminology for this kind of “hybrid” data structure: HashTable is an Array that “degenerates into” a LinkedList (when there are collisions)"
   },
   {
     "objectID": "w05/slides.html#look-how-far-we-came",
     "href": "w05/slides.html#look-how-far-we-came",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Look How Far We Came!",
     "text": "Look How Far We Came!\n\nLast week: Only structure we knew allowing insertion (LinkedList) was \\(\\overline{O}(n)\\) for everythihg\nThis week: New structure where suddenly everything is \\(\\overline{O}(1)\\), except in “unlucky” cases, in which it partially “degenerates” into a LinkedList\n\\(\\implies\\) The “inevitable” \\(\\overline{O}(n)\\) runtime has transformed into the unlucky worst-case upper bound (feels like yesterday, all this was a dream)\n\\(\\implies\\) By taking core data structures/algorithms from your toolkit, you can “piece together” hybrid structures whose whole (runtime) is better than the sum of its parts"
   },
   {
     "objectID": "w05/slides.html#hash-tables-tldr-edition",
     "href": "w05/slides.html#hash-tables-tldr-edition",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Hash Tables: tl;dr Edition",
     "text": "Hash Tables: tl;dr Edition\n\nKeys \\(k \\in \\mathcal{K}\\) are plugged into a (deterministic) hash function \\(h: \\mathcal{K} \\rightarrow \\{1, \\ldots, N\\}\\), producing an index where \\(k\\) is stored\nIf nothing at that index yet, store \\((k,v)\\) in empty slot\nIf already an item at that index, we have a ⚠️collision⚠️\nWe could just throw away the old value (HW2 Part 1)\nOtherwise, need a way to store multiple items in one slot… (a way to dynamically grow storage at given index)\nSolution you know so far: Linked Lists\nNew solution: Binary Search Trees!"
   },
   {
     "objectID": "w05/slides.html#bst-the-final-missing-piece",
     "href": "w05/slides.html#bst-the-final-missing-piece",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "BST: The Final Missing Piece",
     "text": "BST: The Final Missing Piece\n\nJust a glorified LinkedList! We’ll be able to take our HashMap and “drop in” the BST to play the role LinkedList is playing right now\nIf collision, we’ll create a BST with its \\(\\overline{O}(\\log(n))\\) operations, rather than a LinkedList with its \\(\\overline{O}(n)\\) operations\n\\(\\implies\\) HashMap will go from:\n\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(n)\\) worst-case to\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(\\log_2(n))\\) worst-case!"
   },
   {
     "objectID": "w05/slides.html#linked-lists-divide-and-conquer-bsts",
     "href": "w05/slides.html#linked-lists-divide-and-conquer-bsts",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Linked Lists + Divide-and-Conquer = BSTs",
     "text": "Linked Lists + Divide-and-Conquer = BSTs\n\nBy now, the word “Linked List” should make you groan, cross your arms and start tapping your feet with impatience\n“Here we go again… the Linked List is gonna make us traverse through every single element before we reach the one we’re looking for” 😖\nLinked List = Canon in D\nBinary Search Tree = Canon in D played by Hiromi Uehara…"
   },
   {
     "objectID": "w05/slides.html#hiromi-uehara",
     "href": "w05/slides.html#hiromi-uehara",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Hiromi Uehara",
     "text": "Hiromi Uehara"
   },
   {
     "objectID": "w05/slides.html#the-metaphor-goes-deep",
     "href": "w05/slides.html#the-metaphor-goes-deep",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "The Metaphor Goes Deep!",
     "text": "The Metaphor Goes Deep!\n\nUehara’s Canon in D = Pachelbel’s + Fancier notes/rhythms on top of it\nBinary Search Trees = Linked Lists + Fancier structure built on top of it\n\nSpecifically: “next” pointer can now branch left or right, to ensure ordering of nodes\n\n\n\n\n\n\n\n\nclass LinkedListNode:\n    @property content\n    @property next\n\n\nclass BinarySearchTreeNode:\n    @property content\n    @property left\n    @property right"
   },
   {
     "objectID": "w05/slides.html#visualizing-bsts",
     "href": "w05/slides.html#visualizing-bsts",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Visualizing BSTs",
     "text": "Visualizing BSTs\n\n\n\nCode\nfrom hw2 import LinkedList, InventoryItem, BinarySearchTree\nbst = BinarySearchTree()\nitem1 = InventoryItem('Mango', 50)\nbst.add(item1)\nitem2 = InventoryItem('Pickle', 60)\nbst.add(item2)\nitem3 = InventoryItem('Artichoke', 55)\nbst.add(item3)\nitem5 = InventoryItem('Banana', 123)\nbst.add(item5)\nitem6 = InventoryItem('Aardvark', 11)\nbst.add(item6)\nHTML(visualize(bst))"
   },
   {
     "objectID": "w05/slides.html#practical-considerations",
     "href": "w05/slides.html#practical-considerations",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Practical Considerations",
     "text": "Practical Considerations\n\nHash Maps: Only useful if keys are hashable\n\nPython has a built-in collections.abc.Hashable class, such that hash(my_obj) works iff isinstance(my_obj, Hashable)\n\nBinary Search Trees: Only useful if keys have an ordering\n\n“Standard” classes (int, str, datetime) come with implementations of ordering, but if you make your own class you need to implement the ordering for it!\n\n(Linked Lists still work for non-hashable/orderable objects!)"
   },
   {
     "objectID": "w05/slides.html#why-just-work",
     "href": "w05/slides.html#why-just-work",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Why ==, <, >= “Just Work”",
     "text": "Why ==, &lt;, &gt;= “Just Work”\n\nNot magic! Someone has explicitly written a set of functions telling Python what to do when it sees e.g. obj1 &lt; obj2\nExample: let’s implement an ordering of vectors \\(\\mathbf{x} \\in \\mathbb{R}^2\\) based on Pareto dominance"
   },
   {
     "objectID": "w05/slides.html#ordering-vectors-via-pareto-dominance",
     "href": "w05/slides.html#ordering-vectors-via-pareto-dominance",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Ordering Vectors via Pareto Dominance",
     "text": "Ordering Vectors via Pareto Dominance\n\n\n\nCode\nclass UtilVector:\n    def __init__(self, u1, u2):\n        self.u1 = u1\n        self.u2 = u2\n    \n    def __eq__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return self.u1 == other.u1 and self.u2 == other.u2\n\n    def __ne__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return self.u1 != other.u1 or self.u2 != other.u2\n    \n    def __gt__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return self.u1 &gt; other.u1 and self.u2 &gt;= other.u2 or self.u1 &gt;= other.u1 and self.u2 &gt; other.u2\n\n    def __ge__(self, other):\n        return self.__gt__(other) or self.__eq__(other)\n        \n    def __lt__(self, other):\n        if not isinstance(other, UtilVector):\n            return NotImplemented\n        return other.__gt__(self)\n\n    def __le__(self, other):\n        return self.__lt__(other) or self.__eq__(other)\nxA = UtilVector(2, 2)\nxB = UtilVector(3, 2)\nprint(xB &gt; xA)\nxC = UtilVector(2, 3)\nprint(xC &gt; xB)\nimport itertools\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nx0 = UtilVector(4, 6)\nutil_vals = np.arange(0, 11, 0.5)\nutil_pairs = list(itertools.product(util_vals, util_vals))\nutil_df = pd.DataFrame(util_pairs, columns=['x','y'])\ndef compare_to_x0(row):\n    row_vec = UtilVector(row['x'], row['y'])\n    gt_result = int(row_vec &gt; x0)\n    lt_result = int(row_vec &lt; x0)\n    return gt_result - lt_result\nutil_df['greater'] = util_df.apply(compare_to_x0, axis=1)\n#my_palette = sns.color_palette(['#E69F00','lightgray','#CCFFCC'])\nmy_palette = sns.color_palette(['#FF3535','lightgray','#35FF35'])\nsns.relplot(\n    data=util_df,\n    x='x', y='y',\n    hue='greater',\n    palette=my_palette,\n    marker='X', s=150\n);\nx0_df = pd.DataFrame({'x': [4], 'y': [6]})\nplt.scatter(data=x0_df, x='x', y='y', color='black')\nplt.gca().set_aspect('equal')\n\n\n\nTrue\nFalse"
   },
   {
     "objectID": "w05/slides.html#back-to-bsts",
     "href": "w05/slides.html#back-to-bsts",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Back to BSTs",
     "text": "Back to BSTs\n\nFor HW2, we provide you with an InventoryItem class\nTwo instance variables: item_name and price\nEquivalence relations:\n\n__eq__(other), __ne__(other)\n\nOrdering relations:\n\n__lt__(other), __le__(other), __gt__(other), __ge__(other)\n\nBonus: __repr__() and __str__()"
   },
   {
     "objectID": "w05/slides.html#lls-rightarrow-bsts-the-hard-part",
     "href": "w05/slides.html#lls-rightarrow-bsts-the-hard-part",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "LLs \\(\\rightarrow\\) BSTs: The Hard Part",
     "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.\nBut… for a BinarySearchTree, since our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node in our BST\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!"
   },
   {
     "objectID": "w05/slides.html#two-ways-to-traverse-irl-version",
     "href": "w05/slides.html#two-ways-to-traverse-irl-version",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Two Ways to Traverse: IRL Version",
     "text": "Two Ways to Traverse: IRL Version\n\nImagine we’re trying to learn about a topic \\(\\tau\\) using Wikipedia, so we find its article \\(\\tau_0\\)\nThere are two “extremes” in terms of strategies we could follow for learning, given the contents of the article as well as the links it contains to other articles\n\n\n\n\n\n Depth-First Search (DFS)\n\n\n\nOpen \\(\\tau_0\\) and start reading it; When we encounter a link we always click it and immediately start reading the new article.\nIf we hit an article with no links (or a dead end/broken link), we finish reading it and click the back button, picking up where we left off in the previous article. When we reach the end of \\(\\tau_0\\), we’re done!\n\n\n\n\n\n\n\n\n\n Breadth-First Search (BFS)\n\n\n\nBookmark \\(\\tau_0\\) in a folder called “Level 0 Articles”; open and start reading it\nWhen we encounter a link, we put it in a “Level 1 Articles” folder, but continue reading \\(\\tau_0\\) until we reach the end.\nWe then open all “Level 1 Articles” in new tabs, placing links we encounter in these articles into a “Level 2 Articles” folder, that we only start reading once all “Level 1 Articles” are read\nWe continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the “opposite” of DFS?)\n\n\n\n\n\n\n…Let’s try them out! I clicked “Random Article” and got Eustache de Saint Pierre"
   },
   {
     "objectID": "w05/slides.html#two-ways-to-traverse-picture-version",
     "href": "w05/slides.html#two-ways-to-traverse-picture-version",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Two Ways to Traverse: Picture Version",
     "text": "Two Ways to Traverse: Picture Version\n\n\n\n\nCode\nfrom hw2 import IterAlgorithm, NodeProcessor\nvisualize(bst)\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nprint(\"DFS:\")\ndfs_processor = NodeProcessor(IterAlgorithm.DEPTH_FIRST)\n#print(type(dfs_processor.node_container))\ndfs_processor.iterate_over(bst)\n\nprint(\"\\nBFS:\")\nbfs_processor = NodeProcessor(IterAlgorithm.BREADTH_FIRST)\n#print(type(bfs_processor.node_container))\nbfs_processor.iterate_over(bst)\n\n\nDFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Banana,price=123]\nInventoryItem[item_name=Aardvark,price=11]\n\nBFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Aardvark,price=11]\nInventoryItem[item_name=Banana,price=123]"
   },
   {
     "objectID": "w05/slides.html#two-ways-to-traverse-in-words-version",
     "href": "w05/slides.html#two-ways-to-traverse-in-words-version",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Two Ways to Traverse: In-Words Version",
     "text": "Two Ways to Traverse: In-Words Version\n\nDepth-First Search (DFS): With this approach, we iterate through the BST by always taking the left child as the “next” child until we hit a leaf node (which means, we cannot follow this left-child pointer any longer, since a leaf node does not have a left child or a right child!), and only at that point do we back up and take the right children we skipped.\nBreadth-First Search (BFS): This is the “opposite” of DFS in the sense that we traverse the tree level-by-level, never moving to the next level of the tree until we’re sure that we have visited every node on the current level."
   },
   {
     "objectID": "w05/slides.html#two-ways-to-traverse-animated-version",
     "href": "w05/slides.html#two-ways-to-traverse-animated-version",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Two Ways to Traverse: Animated Version",
     "text": "Two Ways to Traverse: Animated Version\n\n\n\n\n\n\n\n\n\nDepth-First Search (from Wikimedia Commons)\n\n\n\n\n\n\n\nBreadth-First Search (from Wikimedia Commons)"
   },
   {
     "objectID": "w05/slides.html#two-ways-to-traverse-underlying-data-structures-version",
     "href": "w05/slides.html#two-ways-to-traverse-underlying-data-structures-version",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Two Ways to Traverse: Underlying Data Structures Version",
     "text": "Two Ways to Traverse: Underlying Data Structures Version\n\nNow that you have some intuition, you may be thinking that they might require very different code to implement 🤔\nThis is where the mathematical-formal linkage between the two becomes ultra helpful!\nIt turns out (and a full-on algorithmic theory course makes you prove) that\n\n\nDepth-First Search can be accomplished by processing nodes in an order determined by adding each to a stack, while\nBreadth-First Search can be accomplished by processing nodes in an order determined by adding each to a queue!\n\n\n\\(\\implies\\) Literally identical code, “pulling out” the word stack and replacing it with the word queue within your code (or vice-versa).\nIf you have your Software Engineer Hats on, you’ll recognize this as a job for an abstraction layer!"
   },
   {
     "objectID": "w05/slides.html#two-ways-to-traverse-hw2-version",
     "href": "w05/slides.html#two-ways-to-traverse-hw2-version",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Two Ways to Traverse: HW2 Version",
     "text": "Two Ways to Traverse: HW2 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\nIt will take in a ThingContainer (could be a stack or a queue, you won’t know which), which has two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()"
   },
   {
     "objectID": "w05/slides.html#three-animals-in-the-dfs-species",
     "href": "w05/slides.html#three-animals-in-the-dfs-species",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Three Animals in the DFS Species",
     "text": "Three Animals in the DFS Species\n\n\n\n\n\n\n\nDFS Procedure\nAlgorithm\n\n\n\n\nPre-Order Traversal\n1. Print node2. Traverse left subtree3. Traverse right subtree\n\n\nIn-Order Traversal 🧐‼️\n1. Traverse left subtree2. Print node3. Traverse right subtree\n\n\nPost-Order Traversal\n1. Traverse left subtree2. Traverse right subtree3. Print node"
   },
   {
     "objectID": "w05/slides.html#the-three-animals-traverse-our-inventory-tree",
     "href": "w05/slides.html#the-three-animals-traverse-our-inventory-tree",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "The Three Animals Traverse our Inventory Tree",
     "text": "The Three Animals Traverse our Inventory Tree\n\n\nCode\nvisualize(bst)"
   },
   {
     "objectID": "w05/slides.html#final-notes-for-hw2",
     "href": "w05/slides.html#final-notes-for-hw2",
-    "title": "Week 5: Binary Search Trees",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Final Notes for HW2",
     "text": "Final Notes for HW2\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔\n\n\n\n\nDSAN 5500 Week 5: Binary Search Trees"
   },
@@ -3909,7 +3909,7 @@
     "href": "index.html",
     "title": "DSAN 5500: Data Structures, Objects, and Algorithms in Python",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5500: Data Structures, Objects, and Algorithms in Python, Spring 2025, at Georgetown University! The course takes place on Thursdays from 6:30 to 9:00pm in Healy 104. More details are provided on the syllabus.\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Course Intro and Motivation\n\n\nJanuary 9\n\n\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nJanuary 16\n\n\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nJanuary 23\n\n\n\n\nWeek 4: Data Structures from Scratch with OOP\n\n\nJanuary 30\n\n\n\n\nWeek 5: Binary Search Trees\n\n\nFebruary 6\n\n\n\n\nWeek 6: Depth-First and Breadth-First Search\n\n\nFebruary 13\n\n\n\n\nWeek 7: Code Examples and Midterm Prep\n\n\nFebruary 20\n\n\n\n\nWeek 8: In-Class Midterm\n\n\nFebruary 27\n\n\n\n\nWeek 9: Data Validation, Data Processing Pipelines\n\n\nMarch 13\n\n\n\n\nWeek 10: Data Pipeline Orchestration\n\n\nMarch 20\n\n\n\n\nWeek 11: Parallel Pipelines and Map-Reduce\n\n\nMarch 27\n\n\n\n\nWeek 12: Final Projects, Interfaces\n\n\nApril 3\n\n\n\n\nWeek 13: Applications in NLP\n\n\nApril 10\n\n\n\n\nWeek 14: Applications in Bioinformatics\n\n\nApril 24\n\n\n\n\n\nNo matching items",
+    "text": "Welcome to the homepage for DSAN 5500: Data Structures, Objects, and Algorithms in Python, Spring 2025, at Georgetown University! The course takes place on Thursdays from 6:30 to 9:00pm in Healy 104. More details are provided on the syllabus.\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Course Intro and Motivation\n\n\nJanuary 9\n\n\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nJanuary 16\n\n\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nJanuary 23\n\n\n\n\nWeek 4: Data Structures from Scratch with OOP\n\n\nJanuary 30\n\n\n\n\nWeek 5: Hash Tables and Binary Search Trees\n\n\nFebruary 6\n\n\n\n\nWeek 6: Depth-First and Breadth-First Search\n\n\nFebruary 13\n\n\n\n\nWeek 7: Code Examples and Midterm Prep\n\n\nFebruary 20\n\n\n\n\nWeek 8: In-Class Midterm\n\n\nFebruary 27\n\n\n\n\nWeek 9: Data Validation, Data Processing Pipelines\n\n\nMarch 13\n\n\n\n\nWeek 10: Data Pipeline Orchestration\n\n\nMarch 20\n\n\n\n\nWeek 11: Parallel Pipelines and Map-Reduce\n\n\nMarch 27\n\n\n\n\nWeek 12: Final Projects, Interfaces\n\n\nApril 3\n\n\n\n\nWeek 13: Applications in NLP\n\n\nApril 10\n\n\n\n\nWeek 14: Applications in Bioinformatics\n\n\nApril 24\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]

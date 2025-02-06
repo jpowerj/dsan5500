@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5500 – Week 5: Binary Search Trees</title>
+  <title>DSAN 5500 – Week 5: Hash Tables and Binary Search Trees</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -396,7 +396,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 5: Binary Search Trees</h1>
+  <h1 class="title">Week 5: Hash Tables and Binary Search Trees</h1>
   <p class="subtitle"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
 
 <div class="quarto-title-authors">
@@ -470,7 +470,7 @@ Jeff Jacobs
 </section>
 <section id="our-list-of-item-price-pairs" class="slide level2 crunch-title crunch-details crunch-ul small-summary">
 <h2>Our List of (Item, Price) Pairs</h2>
-<div id="ec4207e5" class="cell" data-execution_count="1">
+<div id="23ca2363" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>price_list <span class="op">=</span> []</span>
@@ -636,7 +636,7 @@ h(\texttt{x}) = \texttt{x[0]}
 </section>
 <section id="visualizing-bsts" class="slide level2 smaller crunch-title crunch-col-output crunch-details cols-va">
 <h2>Visualizing BSTs</h2>
-<div id="9bfeb5b9" class="cell columns column-output-location" data-execution_count="3">
+<div id="c66a2b9a" class="cell columns column-output-location" data-execution_count="3">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -688,7 +688,7 @@ h(\texttt{x}) = \texttt{x[0]}
 <img data-src="images/pareto.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="ordering-vectors-via-pareto-dominance" class="slide level2 smaller crunch-title title-12">
 <h2>Ordering Vectors via Pareto Dominance</h2>
-<div id="d45c964c" class="cell columns column-output-location" data-execution_count="4">
+<div id="b766f68d" class="cell columns column-output-location" data-execution_count="4">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -846,7 +846,7 @@ False</code></pre>
 <h2>Two Ways to Traverse: Picture Version</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="137b9630" class="cell" data-execution_count="5">
+<div id="5ca025f4" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">from</span> hw2 <span class="im">import</span> IterAlgorithm, NodeProcessor</span>
@@ -861,7 +861,7 @@ False</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="e96d2dd0" class="cell" data-execution_count="6">
+<div id="c6c21402" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="bu">print</span>(<span class="st">"DFS:"</span>)</span>
@@ -984,7 +984,7 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
 </section>
 <section id="the-three-animals-traverse-our-inventory-tree" class="slide level2 smaller crunch-title title-10">
 <h2>The Three Animals Traverse our Inventory Tree</h2>
-<div id="dcddc714" class="cell" data-execution_count="7">
+<div id="986b8d41" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>visualize(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

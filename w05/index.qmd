@@ -1,5 +1,5 @@
 ---
-title: "Week 5: {{< var w05.title >}}"
+title: "Week 5: Hash Tables and Binary Search Trees"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: 2025-02-06
 date-format: full
