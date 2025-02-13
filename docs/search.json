@@ -534,6 +534,27 @@
     "text": "Two Ways to Traverse: HW3 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\n\nThat’s a hint: lose points if there’s an if statement! 👀 (bc, the whole point of OOP! Encapsulation, abstraction)\n\nConstructor takes in a ThingContainer (could be a stack or a queue, you won’t know which), with two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()"
   },
   {
+    "objectID": "w06/slides.html#thingcontainer-the-oop-structure-you-see",
+    "href": "w06/slides.html#thingcontainer-the-oop-structure-you-see",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "ThingContainer: The OOP Structure You See",
+    "text": "ThingContainer: The OOP Structure You See"
+  },
+  {
+    "objectID": "w06/slides.html#secret-full-oop-structure-you-dont-see",
+    "href": "w06/slides.html#secret-full-oop-structure-you-dont-see",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Secret Full OOP Structure You Don’t See",
+    "text": "Secret Full OOP Structure You Don’t See"
+  },
+  {
+    "objectID": "w06/slides.html#one-animal-in-the-bfs-species",
+    "href": "w06/slides.html#one-animal-in-the-bfs-species",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "One Animal in the BFS Species",
+    "text": "One Animal in the BFS Species\n\nFor this and next slide, constant-time preliminary step: “Add root to container” (a ThingContainer object)\n\n\n\n\n\n\n\n\nProcedure\nAlgorithm\n\n\n\n\nBreadth-First Search\nwhile [container not empty]:    1. Take thing out    2. Print thing content    3. Add left child to container    4. Add right child to container"
+  },
+  {
     "objectID": "w06/slides.html#three-animals-in-the-dfs-species",
     "href": "w06/slides.html#three-animals-in-the-dfs-species",
     "title": "Week 6: Depth-First and Breadth-First Search",
@@ -664,7 +685,7 @@
     "href": "w06/index.html#lls-rightarrow-bsts-the-hard-part",
     "title": "Week 6: Depth-First and Breadth-First Search",
     "section": "LLs \\(\\rightarrow\\) BSTs: The Hard Part",
-    "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.\nBut… for a BinarySearchTree, since our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node in our BST\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!",
+    "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.\nBut… for a BST, our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!",
     "crumbs": [
       "Week 6: {{< var w06.date-md >}}"
     ]
@@ -714,7 +735,7 @@
     "href": "w06/index.html#two-ways-to-traverse-underlying-data-structures",
     "title": "Week 6: Depth-First and Breadth-First Search",
     "section": "Two Ways to Traverse: Underlying Data Structures",
-    "text": "Two Ways to Traverse: Underlying Data Structures\n\nNow that you have some intuition, you may be thinking that they might require very different code to implement 🤔\nThis is where the mathematical-formal linkage between the two becomes ultra helpful!\nIt turns out (and a full-on algorithmic theory course makes you prove) that\n\n\nDepth-First Search can be accomplished by processing nodes in an order determined by adding each to a stack, while\nBreadth-First Search can be accomplished by processing nodes in an order determined by adding each to a queue!\n\n\n\\(\\implies\\) Literally identical code, “pulling out” the word stack and replacing it with the word queue within your code (or vice-versa).\nIf you have your Software Engineer Hats on, you’ll recognize this as a job for an abstraction layer!",
+    "text": "Two Ways to Traverse: Underlying Data Structures\n\nNow that you have some intuition, you may be thinking that they might require very different code to implement 🤔\nThis is where mathematically-formal link between the two becomes ultra helpful!\nIt turns out (and a full-on algorithmic theory course makes you prove) that\n\nDepth-First Search can be accomplished by processing nodes in an order determined by adding each to a stack, while\nBreadth-First Search can be accomplished by processing nodes in an order determined by adding each to a queue!\n\n\\(\\implies\\) Literally identical code, “pulling out” the word stack and replacing it with the word queue within your code (or vice-versa).\nPut your Software Engineer Hat on: this calls for an abstraction layer!\n\n(OOP hint: Notice how we’re not teaching you how Queue and Stack work, and not asking you to implement it 🤨)",
     "crumbs": [
       "Week 6: {{< var w06.date-md >}}"
     ]
@@ -724,7 +745,37 @@
     "href": "w06/index.html#two-ways-to-traverse-hw3-version",
     "title": "Week 6: Depth-First and Breadth-First Search",
     "section": "Two Ways to Traverse: HW3 Version",
-    "text": "Two Ways to Traverse: HW3 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\nIt will take in a ThingContainer (could be a stack or a queue, you won’t know which), which has two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()",
+    "text": "Two Ways to Traverse: HW3 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\n\nThat’s a hint: lose points if there’s an if statement! 👀 (bc, the whole point of OOP! Encapsulation, abstraction)\n\nConstructor takes in a ThingContainer (could be a stack or a queue, you won’t know which), with two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()",
+    "crumbs": [
+      "Week 6: {{< var w06.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w06/index.html#thingcontainer-the-oop-structure-you-see",
+    "href": "w06/index.html#thingcontainer-the-oop-structure-you-see",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "ThingContainer: The OOP Structure You See",
+    "text": "ThingContainer: The OOP Structure You See",
+    "crumbs": [
+      "Week 6: {{< var w06.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w06/index.html#secret-full-oop-structure-you-dont-see",
+    "href": "w06/index.html#secret-full-oop-structure-you-dont-see",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Secret Full OOP Structure You Don’t See",
+    "text": "Secret Full OOP Structure You Don’t See",
+    "crumbs": [
+      "Week 6: {{< var w06.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w06/index.html#one-animal-in-the-bfs-species",
+    "href": "w06/index.html#one-animal-in-the-bfs-species",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "One Animal in the BFS Species",
+    "text": "One Animal in the BFS Species\n\nFor this and next slide, constant-time preliminary step: “Add root to container” (a ThingContainer object)\n\n\n\n\n\n\n\n\nProcedure\nAlgorithm\n\n\n\n\nBreadth-First Search\nwhile [container not empty]:    1. Take thing out    2. Print thing content    3. Add left child to container    4. Add right child to container",
     "crumbs": [
       "Week 6: {{< var w06.date-md >}}"
     ]
@@ -734,7 +785,7 @@
     "href": "w06/index.html#three-animals-in-the-dfs-species",
     "title": "Week 6: Depth-First and Breadth-First Search",
     "section": "Three Animals in the DFS Species",
-    "text": "Three Animals in the DFS Species\n\n\n\n\n\n\n\nDFS Procedure\nAlgorithm\n\n\n\n\nPre-Order Traversal\n1. Print node2. Traverse left subtree3. Traverse right subtree\n\n\nIn-Order Traversal 🧐‼️\n1. Traverse left subtree2. Print node3. Traverse right subtree\n\n\nPost-Order Traversal\n1. Traverse left subtree2. Traverse right subtree3. Print node",
+    "text": "Three Animals in the DFS Species\n\n\n\n\n\n\n\nDFS Procedure\nAlgorithm\n\n\n\n\nPre-Order Traversal\n1. Print node2. DFS left subtree3. DFS right subtree\n\n\nIn-Order Traversal 🧐‼️\n1. DFS left subtree2. Print node3. DFS right subtree\n\n\nPost-Order Traversal\n1. DFS left subtree2. DFS right subtree3. Print node",
     "crumbs": [
       "Week 6: {{< var w06.date-md >}}"
     ]
@@ -2204,7 +2255,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Gluten Free', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'Vegan', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'None', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Vegan', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2536,7 +2587,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Gluten Free', 'None', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Vegan', 'Gluten Free', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Vegan', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Vegan', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -4778,75 +4829,5 @@
     "title": "Week 13: Applications in NLP",
     "section": "References",
     "text": "References"
-  },
-  {
-    "objectID": "w06/slides.html#thingcontainer-structure",
-    "href": "w06/slides.html#thingcontainer-structure",
-    "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "ThingContainer Structure",
-    "text": "ThingContainer Structure"
-  },
-  {
-    "objectID": "w06/slides.html#thingcontainer-oop-structure",
-    "href": "w06/slides.html#thingcontainer-oop-structure",
-    "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "ThingContainer: OOP Structure",
-    "text": "ThingContainer: OOP Structure"
-  },
-  {
-    "objectID": "w06/slides.html#thingcontainer-full-oop-structure",
-    "href": "w06/slides.html#thingcontainer-full-oop-structure",
-    "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "ThingContainer: Full OOP Structure",
-    "text": "ThingContainer: Full OOP Structure"
-  },
-  {
-    "objectID": "w06/slides.html#thingcontainer-the-oop-structure-you-see",
-    "href": "w06/slides.html#thingcontainer-the-oop-structure-you-see",
-    "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "ThingContainer: The OOP Structure You See",
-    "text": "ThingContainer: The OOP Structure You See"
-  },
-  {
-    "objectID": "w06/slides.html#thingcontainer-secret-full-oop-structure",
-    "href": "w06/slides.html#thingcontainer-secret-full-oop-structure",
-    "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "ThingContainer: Secret Full OOP Structure",
-    "text": "ThingContainer: Secret Full OOP Structure"
-  },
-  {
-    "objectID": "w06/slides.html#the-secret-full-oop-structure",
-    "href": "w06/slides.html#the-secret-full-oop-structure",
-    "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "The Secret Full OOP Structure",
-    "text": "The Secret Full OOP Structure"
-  },
-  {
-    "objectID": "w06/slides.html#the-secret-full-oop-structure-you-dont-see",
-    "href": "w06/slides.html#the-secret-full-oop-structure-you-dont-see",
-    "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "The Secret Full OOP Structure You Don’t See",
-    "text": "The Secret Full OOP Structure You Don’t See"
-  },
-  {
-    "objectID": "w06/slides.html#secret-full-oop-structure-you-dont-see",
-    "href": "w06/slides.html#secret-full-oop-structure-you-dont-see",
-    "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "Secret Full OOP Structure You Don’t See",
-    "text": "Secret Full OOP Structure You Don’t See"
-  },
-  {
-    "objectID": "w06/slides.html#one-animal-in-the-bfs-species",
-    "href": "w06/slides.html#one-animal-in-the-bfs-species",
-    "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "One Animal in the BFS Species",
-    "text": "One Animal in the BFS Species\n\nFor this and next slide, constant-time preliminary step: “Add root to container” (a ThingContainer object)\n\n\n\n\n\n\n\n\nProcedure\nAlgorithm\n\n\n\n\nBreadth-First Search\nwhile [container not empty]:    1. Take thing out    2. Print thing content    3. Add left child to container    4. Add right child to container"
-  },
-  {
-    "objectID": "w06/slides.html#three-animals-in-the-dfs-species-1",
-    "href": "w06/slides.html#three-animals-in-the-dfs-species-1",
-    "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "Three Animals in the DFS Species",
-    "text": "Three Animals in the DFS Species\n\n\n\n\n\n\n\nDFS Procedure\nAlgorithm\n\n\n\n\nPre-Order Traversal\n1. Print node2. Traverse left subtree3. Traverse right subtree\n\n\nIn-Order Traversal 🧐‼️\n1. Traverse left subtree2. Print node3. Traverse right subtree\n\n\nPost-Order Traversal\n1. Traverse left subtree2. Traverse right subtree3. Print node"
   }
 ]

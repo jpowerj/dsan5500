@@ -317,7 +317,7 @@ Jeff Jacobs
 </ul>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div id="f9374870" class="cell" data-execution_count="1">
+<div id="ab61b787" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">class</span> MySecretInfo:</span>
@@ -341,7 +341,7 @@ Cell <span class="ansi-green-fg">In[1], line 5</span>
 </div>
 <p>Guess we can’t access it then, right? 😮‍💨</p>
 </div><div class="column" style="width:40%;">
-<div id="d786bda6" class="cell" data-execution_count="2">
+<div id="926ea774" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>info_obj._MySecretInfo__the_info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -732,7 +732,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 </section>
 <section id="tuples" class="slide level2">
 <h2>Tuples</h2>
-<div id="63b9c616" class="cell" data-execution_count="12">
+<div id="81da89cb" class="cell" data-execution_count="12">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="kw">class</span> MyTuple:</span>
@@ -762,7 +762,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>The list itself just <strong>points</strong> to a root item:</p>
-<div id="4390c2b0" class="cell" data-execution_count="13">
+<div id="00217d05" class="cell" data-execution_count="13">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="kw">class</span> MyList:</span>
@@ -781,7 +781,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 </div>
 </div><div class="column" style="width:50%;">
 <p>An item has contents, pointer to next item:</p>
-<div id="4b076811" class="cell" data-execution_count="14">
+<div id="8d7c5c7d" class="cell" data-execution_count="14">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="kw">class</span> MyListItem:</span>
@@ -801,7 +801,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 </details>
 </div>
 </div></div>
-<div id="e7a5ac85" class="cell" data-execution_count="15">
+<div id="e3360162" class="cell" data-execution_count="15">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>users <span class="op">=</span> MyList()</span>
@@ -829,7 +829,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>With a <code>MyTuple</code>:</p>
-<div id="12d6901d" class="cell" data-execution_count="16">
+<div id="42537ff9" class="cell" data-execution_count="16">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>t1.thing1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -839,7 +839,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 </div>
 </div>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
-<div id="0253a5aa" class="cell" data-execution_count="17">
+<div id="38a96536" class="cell" data-execution_count="17">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>t1.thing2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -851,7 +851,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
 </div><div class="column" style="width:50%;">
 <p>With a <code>MyList</code>:</p>
-<div id="3563bc88" class="cell" data-execution_count="18">
+<div id="cb496257" class="cell" data-execution_count="18">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="bu">print</span>(users.root.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -861,7 +861,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 </div>
 </div>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
-<div id="f4457088" class="cell" data-execution_count="19">
+<div id="5e721b2d" class="cell" data-execution_count="19">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a>current_node <span class="op">=</span> users.root</span>
@@ -996,7 +996,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 </section>
 <section id="visualizing-binarysearchtree" class="slide level2 smaller crunch-title cols-va">
 <h2>Visualizing <code>BinarySearchTree</code></h2>
-<div id="7690f78e" class="cell columns column-output-location" data-execution_count="22">
+<div id="8829e287" class="cell columns column-output-location" data-execution_count="22">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1045,7 +1045,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 </section>
 <section id="our-list-of-item-price-pairs" class="slide level2 crunch-title crunch-details crunch-ul small-summary">
 <h2>Our List of (Item, Price) Pairs</h2>
-<div id="dcf674fe" class="cell" data-execution_count="23">
+<div id="94c5ad0f" class="cell" data-execution_count="23">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a>price_list <span class="op">=</span> []</span>

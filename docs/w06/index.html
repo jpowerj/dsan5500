@@ -344,7 +344,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-02-13, 04:46:17 PM</em></p>
+<p><em>Updated 2025-02-13, 06:35:40 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -372,6 +372,9 @@ window.Quarto = {
   <li><a href="#two-ways-to-traverse-animated-version" id="toc-two-ways-to-traverse-animated-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-animated-version">Two Ways to Traverse: Animated Version</a></li>
   <li><a href="#two-ways-to-traverse-underlying-data-structures" id="toc-two-ways-to-traverse-underlying-data-structures" class="nav-link" data-scroll-target="#two-ways-to-traverse-underlying-data-structures">Two Ways to Traverse: Underlying Data Structures</a></li>
   <li><a href="#two-ways-to-traverse-hw3-version" id="toc-two-ways-to-traverse-hw3-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-hw3-version">Two Ways to Traverse: HW3 Version</a></li>
+  <li><a href="#thingcontainer-the-oop-structure-you-see" id="toc-thingcontainer-the-oop-structure-you-see" class="nav-link" data-scroll-target="#thingcontainer-the-oop-structure-you-see"><code>ThingContainer</code>: The OOP Structure You See</a></li>
+  <li><a href="#secret-full-oop-structure-you-dont-see" id="toc-secret-full-oop-structure-you-dont-see" class="nav-link" data-scroll-target="#secret-full-oop-structure-you-dont-see">Secret Full OOP Structure You <em>Don’t</em> See</a></li>
+  <li><a href="#one-animal-in-the-bfs-species" id="toc-one-animal-in-the-bfs-species" class="nav-link" data-scroll-target="#one-animal-in-the-bfs-species">One Animal in the BFS Species</a></li>
   <li><a href="#three-animals-in-the-dfs-species" id="toc-three-animals-in-the-dfs-species" class="nav-link" data-scroll-target="#three-animals-in-the-dfs-species">Three Animals in the DFS Species</a></li>
   <li><a href="#the-three-animals-traverse-our-inventory-tree" id="toc-the-three-animals-traverse-our-inventory-tree" class="nav-link" data-scroll-target="#the-three-animals-traverse-our-inventory-tree">The Three Animals Traverse our Inventory Tree</a></li>
   </ul></li>
@@ -616,12 +619,12 @@ Approach 2
 <li>Bonus: <code>__repr__()</code> and <code>__str__()</code></li>
 </ul>
 </section>
-<section id="lls-rightarrow-bsts-the-hard-part" class="level2">
-<h2 class="anchored" data-anchor-id="lls-rightarrow-bsts-the-hard-part">LLs <span class="math inline">\(\rightarrow\)</span> BSTs: The Hard Part</h2>
+<section id="lls-rightarrow-bsts-the-hard-part" class="level2 crunch-title crunch-ul">
+<h2 class="crunch-title crunch-ul anchored" data-anchor-id="lls-rightarrow-bsts-the-hard-part">LLs <span class="math inline">\(\rightarrow\)</span> BSTs: The Hard Part</h2>
 <ul>
 <li>When we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.</li>
-<li>But… for a BinarySearchTree, since our structure can now <strong>branch</strong> as we traverse it… How do we “loop through” a BST?</li>
-<li><strong>Two fundamentally different ways</strong> to traverse every node in our BST</li>
+<li>But… for a BST, our structure can now <strong>branch</strong> as we traverse it… How do we “loop through” a BST?</li>
+<li><strong>Two fundamentally different ways</strong> to traverse every node</li>
 <li>“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task</li>
 <li>Your job as a data scientist is to <strong>think carefully</strong> about which one is <strong>more efficient</strong> for a given goal!</li>
 </ul>
@@ -708,7 +711,7 @@ Warning: node None_5, port f1 unrecognized</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="2ca66e32" class="cell" data-execution_count="3">
+<div id="16ea280e" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> IterAlgorithm, NodeProcessor</span>
@@ -777,30 +780,74 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
 <section id="two-ways-to-traverse-underlying-data-structures" class="level2 smaller crunch-title title-09">
 <h2 class="smaller crunch-title title-09 anchored" data-anchor-id="two-ways-to-traverse-underlying-data-structures">Two Ways to Traverse: Underlying Data Structures</h2>
 <ul>
-<li>Now that you have some intuition, you may be thinking that they might require very different code to implement 🤔</li>
-<li>This is where the <strong>mathematical-formal linkage</strong> between the two becomes ultra helpful!</li>
-<li>It turns out (and a full-on algorithmic theory course makes you prove) that</li>
-</ul>
+<li><p>Now that you have some intuition, you may be thinking that they might require very different code to implement 🤔</p></li>
+<li><p>This is where <strong>mathematically-formal link</strong> between the two becomes ultra helpful!</p></li>
+<li><p>It turns out (and a full-on algorithmic theory course makes you prove) that</p>
 <ol type="1">
 <li><strong>Depth-First Search</strong> can be accomplished by <strong>processing nodes in an order determined by adding each to a <em>stack</em></strong>, while</li>
 <li><strong>Breadth-First Search</strong> can be accomplished by <strong>processing nodes in an order determined by adding each to a <em>queue</em></strong>!</li>
-</ol>
+</ol></li>
+<li><p><span class="math inline">\(\implies\)</span> Literally <strong>identical code</strong>, “pulling out” the word <strong>stack</strong> and replacing it with the word <strong>queue</strong> within your code (or vice-versa).</p></li>
+<li><p>Put your Software Engineer Hat on: this calls for an <strong>abstraction layer!</strong></p>
 <ul>
-<li><span class="math inline">\(\implies\)</span> Literally <strong>identical code</strong>, “pulling out” the word <strong>stack</strong> and replacing it with the word <strong>queue</strong> within your code (or vice-versa).</li>
-<li>If you have your Software Engineer Hats on, you’ll recognize this as a job for an <strong>abstraction layer!</strong></li>
+<li><em>(OOP hint: Notice how we’re <strong>not</strong> teaching you how <code>Queue</code> and <code>Stack</code> work, and <strong>not</strong> asking you to implement it </em>🤨<em>)</em></li>
+</ul></li>
 </ul>
 </section>
-<section id="two-ways-to-traverse-hw3-version" class="level2 title-09">
-<h2 class="title-09 anchored" data-anchor-id="two-ways-to-traverse-hw3-version">Two Ways to Traverse: HW3 Version</h2>
+<section id="two-ways-to-traverse-hw3-version" class="level2 title-09 crunch-title crunch-ul crunch-li-8">
+<h2 class="title-09 crunch-title crunch-ul crunch-li-8 anchored" data-anchor-id="two-ways-to-traverse-hw3-version">Two Ways to Traverse: HW3 Version</h2>
 <ul>
 <li>You’ll make a class called <code>NodeProcessor</code>, with a <strong>single</strong> <code>iterate_over(tree)</code> function</li>
-<li>This function—<strong>without any changes in the code or even any if statements!</strong>—will be capable of both DFS and BFS</li>
-<li>It will take in a <code>ThingContainer</code> (could be a <strong>stack</strong> or a <strong>queue</strong>, you won’t know which), which has two functions:
+<li>This function—<strong>without any changes in the code or even any if statements!</strong>—will be capable of <strong>both</strong> DFS and BFS
+<ul>
+<li>That’s a hint: lose points if there’s an if statement! 👀 <em>(bc, the whole point of OOP! Encapsulation, abstraction)</em></li>
+</ul></li>
+<li>Constructor takes in a <code>ThingContainer</code> (could be a <strong>stack</strong> or a <strong>queue</strong>, you won’t know which), with two functions:
 <ul>
 <li><code>put_new_thing_in(new_thing)</code></li>
 <li><code>take_existing_thing_out()</code></li>
 </ul></li>
 </ul>
+</section>
+<section id="thingcontainer-the-oop-structure-you-see" class="level2">
+<h2 class="anchored" data-anchor-id="thingcontainer-the-oop-structure-you-see"><code>ThingContainer</code>: The OOP Structure You See</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/thing_container_notfull.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="secret-full-oop-structure-you-dont-see" class="level2 title-08">
+<h2 class="title-08 anchored" data-anchor-id="secret-full-oop-structure-you-dont-see">Secret Full OOP Structure You <em>Don’t</em> See</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/thing_container_full.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="one-animal-in-the-bfs-species" class="level2">
+<h2 class="anchored" data-anchor-id="one-animal-in-the-bfs-species">One Animal in the BFS Species</h2>
+<ul>
+<li>For this and next slide, constant-time preliminary step: “Add <code>root</code> to <code>container</code>” (a <code>ThingContainer</code> object)</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 62%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Procedure</th>
+<th>Algorithm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Breadth-First Search</td>
+<td><code>while</code> [<code>container</code> not empty]:<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Take thing out<br>&nbsp;&nbsp;&nbsp;&nbsp;2. <strong>Print thing content</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;3. Add left child to container<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Add right child to container</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="three-animals-in-the-dfs-species" class="level2">
 <h2 class="anchored" data-anchor-id="three-animals-in-the-dfs-species">Three Animals in the DFS Species</h2>
@@ -818,22 +865,22 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
 <tbody>
 <tr class="odd">
 <td>Pre-Order Traversal</td>
-<td>1. <strong>Print node</strong><br>2. Traverse left subtree<br>3. Traverse right subtree</td>
+<td>1. <strong>Print node</strong><br>2. DFS left subtree<br>3. DFS right subtree</td>
 </tr>
 <tr class="even">
 <td><strong>In-Order</strong> Traversal 🧐‼️</td>
-<td>1. Traverse left subtree<br>2. <strong>Print node</strong><br>3. Traverse right subtree</td>
+<td>1. DFS left subtree<br>2. <strong>Print node</strong><br>3. DFS right subtree</td>
 </tr>
 <tr class="odd">
 <td>Post-Order Traversal</td>
-<td>1. Traverse left subtree<br>2. Traverse right subtree<br>3. <strong>Print node</strong></td>
+<td>1. DFS left subtree<br>2. DFS right subtree<br>3. <strong>Print node</strong></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="the-three-animals-traverse-our-inventory-tree" class="level2 smaller crunch-title title-10">
 <h2 class="smaller crunch-title title-10 anchored" data-anchor-id="the-three-animals-traverse-our-inventory-tree">The Three Animals Traverse our Inventory Tree</h2>
-<div id="17237358" class="cell" data-execution_count="4">
+<div id="cell-viz-bst-for-dfs" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>visualize(bst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -849,7 +896,7 @@ Warning: node None_5, port f1 unrecognized</code></pre>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-5-output-2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="index_files/figure-html/viz-bst-for-dfs-output-2.svg" id="viz-bst-for-dfs" class="img-fluid quarto-figure quarto-figure-center anchored figure-img"></p>
 </figure>
 </div>
 </div>
