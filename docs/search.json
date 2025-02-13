@@ -18,7 +18,7 @@
     "href": "w14/slides.html#references",
     "title": "Week 14: Applications in Bioinformatics",
     "section": "References",
-    "text": "References\n\n\n\n\n\n\nDSAN 5500 Week 14: NLP Applications"
+    "text": "References"
   },
   {
     "objectID": "w14/index.html",
@@ -149,7 +149,7 @@
     "href": "w12/slides.html#in-action",
     "title": "Week 12: Final Projects, Interfaces",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9725 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.1998 s"
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9837 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.2902 s"
   },
   {
     "objectID": "w12/slides.html#python-rightarrow-prefect",
@@ -170,7 +170,7 @@
     "href": "w12/slides.html#references",
     "title": "Week 12: Final Projects, Interfaces",
     "section": "References",
-    "text": "References\n\n\n\n\n\n\nDSAN 5500 Week 12: Parallel Pipelines and Map-Reduce"
+    "text": "References"
   },
   {
     "objectID": "w12/index.html",
@@ -307,7 +307,7 @@
     "href": "w12/index.html#in-action",
     "title": "Week 12: Final Projects, Interfaces",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9702 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.1238 s",
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9728 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.2737 s",
     "crumbs": [
       "Week 12: {{< var w12.date-md >}}"
     ]
@@ -468,28 +468,91 @@
     "href": "w06/slides.html#applies-equally-well-whether",
     "title": "Week 6: Depth-First and Breadth-First Search",
     "section": "Applies Equally Well Whether…",
-    "text": "Applies Equally Well Whether…\n\n\n\n\n\n\nYou’re a sappy socialist like me…\n\n\n\n\n\n\n\n…OR u just want that data sci BAG bruh! 💰"
+    "text": "Applies Equally Well Whether…\n\n\nYou’re in Cuba…\n\n\n\n\n\n\n…OR u just want that data sci BAG! 💰"
   },
   {
-    "objectID": "w06/slides.html#midterm-structure",
-    "href": "w06/slides.html#midterm-structure",
+    "objectID": "w06/slides.html#midterm-metadata",
+    "href": "w06/slides.html#midterm-metadata",
     "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "Midterm Structure",
-    "text": "Midterm Structure\n\nCoding Portion: Modifications of LinkedList (Circular / jump-to-end / doubly-linked); non-scary OOP skeleton 🙈\nMultiple Choice Portion: Lots more to cover…\nHash Tables: \\(O(1 + \\epsilon \\log_2(n))\\), but think about it as:\n\\(1 + (\\text{Collision rate}) \\cdot (\\text{Collision handler efficiency})\\)\nLinked List \\(\\rightarrow\\) Binary Search Tree\nDepth-First vs. Breadth-First: Picture of a tree \\(\\rightarrow\\) (a) what is BFS result, (b) what is (in/pre/post)-order DFS result?\nLastly: Cormen, Leiserson, Rivest, Stein (CLRS), pgs. 17-106"
+    "section": "Midterm Metadata",
+    "text": "Midterm Metadata\n\nCoding Portion: Modifications of LinkedList (Circular / jump-to-end / doubly-linked); non-scary OOP skeleton 🙈\nMultiple Choice Portion: Lots more to cover…\nHash Tables: \\(O(1 + \\epsilon \\log_2(n))\\), but think about it as:\n\\(1 + (\\text{Collision rate}) \\cdot (\\text{Collision handler efficiency})\\)\nLinked List \\(\\rightarrow\\) Binary Search Tree\nDepth-First vs. Breadth-First: Picture of a tree \\(\\rightarrow\\) (a) what is BFS result, (b) what is (in/pre/post)-order DFS result?\nLastly: Cormen, Leiserson, Rivest, Stein (CLRS), pgs. 17-106"
   },
   {
-    "objectID": "w06/slides.html#the-two-boxes-that-most-things-in-this-course-can-be-sorted-into",
-    "href": "w06/slides.html#the-two-boxes-that-most-things-in-this-course-can-be-sorted-into",
+    "objectID": "w06/slides.html#bst-building-blocks-on-hw3",
+    "href": "w06/slides.html#bst-building-blocks-on-hw3",
     "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "The Two Boxes That Most Things In This Course Can Be Sorted Into",
-    "text": "The Two Boxes That Most Things In This Course Can Be Sorted Into\n\nBox 1: Linear Things\nBox 2: Logarithmic Things\nThings that go into the boxes:\n\nAlgorithms\nData Structures\nSoftware Development Patterns"
+    "section": "BST Building Blocks on HW3",
+    "text": "BST Building Blocks on HW3\n\nFor HW3, we provide you with an InventoryItem class\nTwo instance variables: item_name and price\nEquivalence relations:\n\n__eq__(other), __ne__(other)\n\nOrdering relations:\n\n__lt__(other), __le__(other), __gt__(other), __ge__(other)\n\nBonus: __repr__() and __str__()"
   },
   {
-    "objectID": "w06/slides.html#the-boxes",
-    "href": "w06/slides.html#the-boxes",
+    "objectID": "w06/slides.html#lls-rightarrow-bsts-the-hard-part",
+    "href": "w06/slides.html#lls-rightarrow-bsts-the-hard-part",
     "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "The Boxes",
-    "text": "The Boxes\n\n\n\n\n\n\n\n\n\nLinear Things: \\(O(N)\\)\nLogarithmic Things: \\(O(\\lg{N})\\)\n\n\n\n\nData Structures\nLinkedList\n\nBinarySearchTree\n\n\n\n\n\n\n\nSorting Algorithms\nInsertion-Sort\nMerge-Sort\n\n\nSearch Algorithms\nLinear-Search\nBinary-Search\n\n\nGeneral Pattern\nOne-by-One\nDivide-and-Conquer\n\n\nSteps to Look Up a Word\n\\(N = 102118\\)\n\\(\\lceil \\log_2(N) \\rceil = 17\\)\n\n\n\n\nHash Table: A “trick” that gets us close to \\(O(1)\\), by pre-allocating lots of memory!\n\n\\[\nO(N) \\; \\underbrace{\\leadsto O(\\log_2(N))}_{\\mathclap{\\substack{\\text{More Efficient Algorithm} \\\\ \\text{(Free!)}}}} \\; \\underbrace{\\leadsto O(1 + \\epsilon\\log_2(N))}_{\\substack{\\text{More Memory} \\\\ \\text{(\\$\\$\\$)}}}\n\\]"
+    "section": "LLs \\(\\rightarrow\\) BSTs: The Hard Part",
+    "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.\nBut… for a BST, our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!"
+  },
+  {
+    "objectID": "w06/slides.html#two-ways-to-traverse-irl-version",
+    "href": "w06/slides.html#two-ways-to-traverse-irl-version",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Two Ways to Traverse: IRL Version",
+    "text": "Two Ways to Traverse: IRL Version\n\nImagine we’re trying to learn about a topic \\(\\tau\\) using Wikipedia, so we find its article \\(\\tau_0\\)\nThere are two “extremes” in terms of strategies we could follow for learning, given the contents of the article as well as the links it contains to other articles\n\n\n\n\n\n Depth-First Search (DFS)\n\n\n\nOpen \\(\\tau_0\\) and start reading; When we encounter a link we always click it, immediately start reading the new article.\nIf we hit an article with no links (or a dead end/broken link), we finish reading it and click the back button, picking up where we left off in the previous article. When we reach the end of \\(\\tau_0\\), we’re done!\n\n\n\n\n\n\n\n\n\n Breadth-First Search (BFS)\n\n\n\nBookmark \\(\\tau_0\\) in a folder called “Level 0 Articles”; open and start reading it\nWhen we encounter a link, we put it in a “Level 1 Articles” folder, but continue reading \\(\\tau_0\\) until we reach the end.\nWe then open all “Level 1 Articles” in new tabs, placing links we encounter in these articles into a “Level 2 Articles” folder, that we only start reading once all “Level 1 Articles” are read\nWe continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the “opposite” of DFS?)\n\n\n\n\n\n\n…Let’s try them out! I clicked “Random Article” and got Eustache de Saint Pierre"
+  },
+  {
+    "objectID": "w06/slides.html#two-ways-to-traverse-picture-version",
+    "href": "w06/slides.html#two-ways-to-traverse-picture-version",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Two Ways to Traverse: Picture Version",
+    "text": "Two Ways to Traverse: Picture Version\n\n\n\n\nCode\nfrom hw2 import LinkedList, InventoryItem, BinarySearchTree\nbst = BinarySearchTree()\nitem1 = InventoryItem('Mango', 50)\nbst.add(item1)\nitem2 = InventoryItem('Pickle', 60)\nbst.add(item2)\nitem3 = InventoryItem('Artichoke', 55)\nbst.add(item3)\nitem5 = InventoryItem('Banana', 123)\nbst.add(item5)\nitem6 = InventoryItem('Aardvark', 11)\nbst.add(item6)\nHTML(visualize(bst))\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nfrom hw2 import IterAlgorithm, NodeProcessor\nprint(\"DFS:\")\ndfs_processor = NodeProcessor(IterAlgorithm.DEPTH_FIRST)\n#print(type(dfs_processor.node_container))\ndfs_processor.iterate_over(bst)\n\nprint(\"\\nBFS:\")\nbfs_processor = NodeProcessor(IterAlgorithm.BREADTH_FIRST)\n#print(type(bfs_processor.node_container))\nbfs_processor.iterate_over(bst)\n\n\nDFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Banana,price=123]\nInventoryItem[item_name=Aardvark,price=11]\n\nBFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Aardvark,price=11]\nInventoryItem[item_name=Banana,price=123]"
+  },
+  {
+    "objectID": "w06/slides.html#two-ways-to-traverse-in-words-version",
+    "href": "w06/slides.html#two-ways-to-traverse-in-words-version",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Two Ways to Traverse: In-Words Version",
+    "text": "Two Ways to Traverse: In-Words Version\n\nDepth-First Search (DFS): With this approach, we iterate through the BST by always taking the left child as the “next” child until we hit a leaf node (which means, we cannot follow this left-child pointer any longer, since a leaf node does not have a left child or a right child!), and only at that point do we back up and take the right children we skipped.\nBreadth-First Search (BFS): This is the “opposite” of DFS in the sense that we traverse the tree level-by-level, never moving to the next level of the tree until we’re sure that we have visited every node on the current level."
+  },
+  {
+    "objectID": "w06/slides.html#two-ways-to-traverse-animated-version",
+    "href": "w06/slides.html#two-ways-to-traverse-animated-version",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Two Ways to Traverse: Animated Version",
+    "text": "Two Ways to Traverse: Animated Version\n\n\n\n\n\n\n\n\n\nDepth-First Search (from Wikimedia Commons)\n\n\n\n\n\n\n\nBreadth-First Search (from Wikimedia Commons)"
+  },
+  {
+    "objectID": "w06/slides.html#two-ways-to-traverse-underlying-data-structures",
+    "href": "w06/slides.html#two-ways-to-traverse-underlying-data-structures",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Two Ways to Traverse: Underlying Data Structures",
+    "text": "Two Ways to Traverse: Underlying Data Structures\n\nNow that you have some intuition, you may be thinking that they might require very different code to implement 🤔\nThis is where mathematically-formal link between the two becomes ultra helpful!\nIt turns out (and a full-on algorithmic theory course makes you prove) that\n\nDepth-First Search can be accomplished by processing nodes in an order determined by adding each to a stack, while\nBreadth-First Search can be accomplished by processing nodes in an order determined by adding each to a queue!\n\n\\(\\implies\\) Literally identical code, “pulling out” the word stack and replacing it with the word queue within your code (or vice-versa).\nPut your Software Engineer Hat on: this calls for an abstraction layer!\n\n(OOP hint: Notice how we’re not teaching you how Queue and Stack work, and not asking you to implement it 🤨)"
+  },
+  {
+    "objectID": "w06/slides.html#two-ways-to-traverse-hw3-version",
+    "href": "w06/slides.html#two-ways-to-traverse-hw3-version",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Two Ways to Traverse: HW3 Version",
+    "text": "Two Ways to Traverse: HW3 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\n\nThat’s a hint: lose points if there’s an if statement! 👀 (bc, the whole point of OOP! Encapsulation, abstraction)\n\nConstructor takes in a ThingContainer (could be a stack or a queue, you won’t know which), with two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()"
+  },
+  {
+    "objectID": "w06/slides.html#three-animals-in-the-dfs-species",
+    "href": "w06/slides.html#three-animals-in-the-dfs-species",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Three Animals in the DFS Species",
+    "text": "Three Animals in the DFS Species\n\n\n\n\n\n\n\nDFS Procedure\nAlgorithm\n\n\n\n\nPre-Order Traversal\n1. Print node2. DFS left subtree3. DFS right subtree\n\n\nIn-Order Traversal 🧐‼️\n1. DFS left subtree2. Print node3. DFS right subtree\n\n\nPost-Order Traversal\n1. DFS left subtree2. DFS right subtree3. Print node"
+  },
+  {
+    "objectID": "w06/slides.html#the-three-animals-traverse-our-inventory-tree",
+    "href": "w06/slides.html#the-three-animals-traverse-our-inventory-tree",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "The Three Animals Traverse our Inventory Tree",
+    "text": "The Three Animals Traverse our Inventory Tree\n\n\nCode\nvisualize(bst)"
+  },
+  {
+    "objectID": "w06/slides.html#more-memory-more-performance",
+    "href": "w06/slides.html#more-memory-more-performance",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "More Memory, More Performance",
+    "text": "More Memory, More Performance\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔"
   },
   {
     "objectID": "w06/slides.html#alphahasher-vs.-customhasher",
@@ -524,7 +587,7 @@
     "href": "w06/slides.html#alphahasher2-part-5",
     "title": "Week 6: Depth-First and Breadth-First Search",
     "section": "AlphaHasher2 (Part 5)",
-    "text": "AlphaHasher2 (Part 5)\n# @title define-alpha-hasher-2\nclass AlphaHasher2(CustomHasher):\n  def __init__(self):\n    self.alphabet_size = 26 * 26\n\n  def get_alphabet_size(self):\n    return self.alphabet_size\n\n  def hash(self, str_to_hash: str) -&gt; int:\n    if len(str_to_hash) == 0:\n      first_two_letters = 'AA'\n    elif len(str_to_hash) == 1:\n      first_letter = str_to_hash.upper()[0]\n      second_letter = 'A'\n    else:\n      first_letter = str_to_hash.upper()[0]\n      second_letter = str_to_hash.upper()[1]\n    #print(f'First two letters for {str_to_hash}: {first_letter}{second_letter}')\n    # And return its index:\n    # 'AA' has index 0, 'AB' has index 1, etc.\n    first_letter_pos = AlphaHasher2.compute_position_in_alphabet(first_letter)\n    second_letter_pos = AlphaHasher2.compute_position_in_alphabet(second_letter)\n    # The position in the two-letter alphabet is just 26*first + second\n    final_pos = 26 * first_letter_pos + second_letter_pos\n    return final_pos\n\n  def compute_position_in_alphabet(self, uppercase_key: str) -&gt; int:\n    if uppercase_key in string.ascii_uppercase:\n      return string.ascii_uppercase.index(uppercase_key)\n    return 0\n\n  def compute_key_for_index(self, index: int) -&gt; str:\n    first_letter_part = int(index / 26)\n    second_letter_part = index % 26\n    # In case you need to debug!\n    #print(f'alpha2_index: {index}, first_letter_part: {first_letter_part}, second_letter_part: {second_letter_part}')\n    return string.ascii_uppercase[first_letter_part] + string.ascii_uppercase[second_letter_part]\n\n\n\nDSAN 5500 Week 6: Depth-First and Breadth-First Search"
+    "text": "AlphaHasher2 (Part 5)\n# @title define-alpha-hasher-2\nclass AlphaHasher2(CustomHasher):\n  def __init__(self):\n    self.alphabet_size = 26 * 26\n\n  def get_alphabet_size(self):\n    return self.alphabet_size\n\n  def hash(self, str_to_hash: str) -&gt; int:\n    if len(str_to_hash) == 0:\n      first_two_letters = 'AA'\n    elif len(str_to_hash) == 1:\n      first_letter = str_to_hash.upper()[0]\n      second_letter = 'A'\n    else:\n      first_letter = str_to_hash.upper()[0]\n      second_letter = str_to_hash.upper()[1]\n    #print(f'First two letters for {str_to_hash}: {first_letter}{second_letter}')\n    # And return its index:\n    # 'AA' has index 0, 'AB' has index 1, etc.\n    first_letter_pos = AlphaHasher2.compute_position_in_alphabet(first_letter)\n    second_letter_pos = AlphaHasher2.compute_position_in_alphabet(second_letter)\n    # The position in the two-letter alphabet is just 26*first + second\n    final_pos = 26 * first_letter_pos + second_letter_pos\n    return final_pos\n\n  def compute_position_in_alphabet(self, uppercase_key: str) -&gt; int:\n    if uppercase_key in string.ascii_uppercase:\n      return string.ascii_uppercase.index(uppercase_key)\n    return 0\n\n  def compute_key_for_index(self, index: int) -&gt; str:\n    first_letter_part = int(index / 26)\n    second_letter_part = index % 26\n    # In case you need to debug!\n    #print(f'alpha2_index: {index}, first_letter_part: {first_letter_part}, second_letter_part: {second_letter_part}')\n    return string.ascii_uppercase[first_letter_part] + string.ascii_uppercase[second_letter_part]"
   },
   {
     "objectID": "w06/index.html",
@@ -571,37 +634,127 @@
     "href": "w06/index.html#applies-equally-well-whether",
     "title": "Week 6: Depth-First and Breadth-First Search",
     "section": "Applies Equally Well Whether…",
-    "text": "Applies Equally Well Whether…\n\n\n\n\n\n\nYou’re a sappy socialist like me…\n\n\n\n\n\n\n\n…OR u just want that data sci BAG bruh! 💰",
+    "text": "Applies Equally Well Whether…\n\n\nYou’re in Cuba…\n\n\n\n\n\n\n…OR u just want that data sci BAG! 💰",
     "crumbs": [
       "Week 6: {{< var w06.date-md >}}"
     ]
   },
   {
-    "objectID": "w06/index.html#midterm-structure",
-    "href": "w06/index.html#midterm-structure",
+    "objectID": "w06/index.html#midterm-metadata",
+    "href": "w06/index.html#midterm-metadata",
     "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "Midterm Structure",
-    "text": "Midterm Structure\n\nCoding Portion: Modifications of LinkedList (Circular / jump-to-end / doubly-linked); non-scary OOP skeleton 🙈\nMultiple Choice Portion: Lots more to cover…\nHash Tables: \\(O(1 + \\epsilon \\log_2(n))\\), but think about it as:\n\\(1 + (\\text{Collision rate}) \\cdot (\\text{Collision handler efficiency})\\)\nLinked List \\(\\rightarrow\\) Binary Search Tree\nDepth-First vs. Breadth-First: Picture of a tree \\(\\rightarrow\\) (a) what is BFS result, (b) what is (in/pre/post)-order DFS result?\nLastly: Cormen, Leiserson, Rivest, Stein (CLRS), pgs. 17-106",
+    "section": "Midterm Metadata",
+    "text": "Midterm Metadata\n\nCoding Portion: Modifications of LinkedList (Circular / jump-to-end / doubly-linked); non-scary OOP skeleton 🙈\nMultiple Choice Portion: Lots more to cover…\nHash Tables: \\(O(1 + \\epsilon \\log_2(n))\\), but think about it as:\n\\(1 + (\\text{Collision rate}) \\cdot (\\text{Collision handler efficiency})\\)\nLinked List \\(\\rightarrow\\) Binary Search Tree\nDepth-First vs. Breadth-First: Picture of a tree \\(\\rightarrow\\) (a) what is BFS result, (b) what is (in/pre/post)-order DFS result?\nLastly: Cormen, Leiserson, Rivest, Stein (CLRS), pgs. 17-106",
     "crumbs": [
       "Week 6: {{< var w06.date-md >}}"
     ]
   },
   {
-    "objectID": "w06/index.html#the-two-boxes-that-most-things-in-this-course-can-be-sorted-into",
-    "href": "w06/index.html#the-two-boxes-that-most-things-in-this-course-can-be-sorted-into",
+    "objectID": "w06/index.html#bst-building-blocks-on-hw3",
+    "href": "w06/index.html#bst-building-blocks-on-hw3",
     "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "The Two Boxes That Most Things In This Course Can Be Sorted Into",
-    "text": "The Two Boxes That Most Things In This Course Can Be Sorted Into\n\nBox 1: Linear Things\nBox 2: Logarithmic Things\nThings that go into the boxes:\n\nAlgorithms\nData Structures\nSoftware Development Patterns",
+    "section": "BST Building Blocks on HW3",
+    "text": "BST Building Blocks on HW3\n\nFor HW3, we provide you with an InventoryItem class\nTwo instance variables: item_name and price\nEquivalence relations:\n\n__eq__(other), __ne__(other)\n\nOrdering relations:\n\n__lt__(other), __le__(other), __gt__(other), __ge__(other)\n\nBonus: __repr__() and __str__()",
     "crumbs": [
       "Week 6: {{< var w06.date-md >}}"
     ]
   },
   {
-    "objectID": "w06/index.html#the-boxes",
-    "href": "w06/index.html#the-boxes",
+    "objectID": "w06/index.html#lls-rightarrow-bsts-the-hard-part",
+    "href": "w06/index.html#lls-rightarrow-bsts-the-hard-part",
     "title": "Week 6: Depth-First and Breadth-First Search",
-    "section": "The Boxes",
-    "text": "The Boxes\n\n\n\n\n\n\n\n\n\nLinear Things: \\(O(N)\\)\nLogarithmic Things: \\(O(\\lg{N})\\)\n\n\n\n\nData Structures\nLinkedList\n\nBinarySearchTree\n\n\n\n\n\n\n\nSorting Algorithms\nInsertion-Sort\nMerge-Sort\n\n\nSearch Algorithms\nLinear-Search\nBinary-Search\n\n\nGeneral Pattern\nOne-by-One\nDivide-and-Conquer\n\n\nSteps to Look Up a Word\n\\(N = 102118\\)\n\\(\\lceil \\log_2(N) \\rceil = 17\\)\n\n\n\n\nHash Table: A “trick” that gets us close to \\(O(1)\\), by pre-allocating lots of memory!\n\n\\[\nO(N) \\; \\underbrace{\\leadsto O(\\log_2(N))}_{\\mathclap{\\substack{\\text{More Efficient Algorithm} \\\\ \\text{(Free!)}}}} \\; \\underbrace{\\leadsto O(1 + \\epsilon\\log_2(N))}_{\\substack{\\text{More Memory} \\\\ \\text{(\\$\\$\\$)}}}\n\\]",
+    "section": "LLs \\(\\rightarrow\\) BSTs: The Hard Part",
+    "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.\nBut… for a BinarySearchTree, since our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node in our BST\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!",
+    "crumbs": [
+      "Week 6: {{< var w06.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w06/index.html#two-ways-to-traverse-irl-version",
+    "href": "w06/index.html#two-ways-to-traverse-irl-version",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Two Ways to Traverse: IRL Version",
+    "text": "Two Ways to Traverse: IRL Version\n\nImagine we’re trying to learn about a topic \\(\\tau\\) using Wikipedia, so we find its article \\(\\tau_0\\)\nThere are two “extremes” in terms of strategies we could follow for learning, given the contents of the article as well as the links it contains to other articles\n\n\n\n\n\n\n\n Depth-First Search (DFS)\n\n\n\n\nOpen \\(\\tau_0\\) and start reading; When we encounter a link we always click it, immediately start reading the new article.\nIf we hit an article with no links (or a dead end/broken link), we finish reading it and click the back button, picking up where we left off in the previous article. When we reach the end of \\(\\tau_0\\), we’re done!\n\n\n\n\n\n\n\n\n\n Breadth-First Search (BFS)\n\n\n\n\nBookmark \\(\\tau_0\\) in a folder called “Level 0 Articles”; open and start reading it\nWhen we encounter a link, we put it in a “Level 1 Articles” folder, but continue reading \\(\\tau_0\\) until we reach the end.\nWe then open all “Level 1 Articles” in new tabs, placing links we encounter in these articles into a “Level 2 Articles” folder, that we only start reading once all “Level 1 Articles” are read\nWe continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the “opposite” of DFS?)\n\n\n\n\n…Let’s try them out! I clicked “Random Article” and got Eustache de Saint Pierre",
+    "crumbs": [
+      "Week 6: {{< var w06.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w06/index.html#two-ways-to-traverse-picture-version",
+    "href": "w06/index.html#two-ways-to-traverse-picture-version",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Two Ways to Traverse: Picture Version",
+    "text": "Two Ways to Traverse: Picture Version\n\n\n\n\nCode\nfrom hw2 import LinkedList, InventoryItem, BinarySearchTree\nbst = BinarySearchTree()\nitem1 = InventoryItem('Mango', 50)\nbst.add(item1)\nitem2 = InventoryItem('Pickle', 60)\nbst.add(item2)\nitem3 = InventoryItem('Artichoke', 55)\nbst.add(item3)\nitem5 = InventoryItem('Banana', 123)\nbst.add(item5)\nitem6 = InventoryItem('Aardvark', 11)\nbst.add(item6)\nHTML(visualize(bst))\n\n\nWarning: node None_0, port f1 unrecognized\nWarning: node None_1, port f1 unrecognized\nWarning: node None_2, port f1 unrecognized\nWarning: node None_3, port f1 unrecognized\nWarning: node None_4, port f1 unrecognized\nWarning: node None_5, port f1 unrecognized\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nfrom hw2 import IterAlgorithm, NodeProcessor\nprint(\"DFS:\")\ndfs_processor = NodeProcessor(IterAlgorithm.DEPTH_FIRST)\n#print(type(dfs_processor.node_container))\ndfs_processor.iterate_over(bst)\n\nprint(\"\\nBFS:\")\nbfs_processor = NodeProcessor(IterAlgorithm.BREADTH_FIRST)\n#print(type(bfs_processor.node_container))\nbfs_processor.iterate_over(bst)\n\n\nDFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Banana,price=123]\nInventoryItem[item_name=Aardvark,price=11]\n\nBFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Aardvark,price=11]\nInventoryItem[item_name=Banana,price=123]",
+    "crumbs": [
+      "Week 6: {{< var w06.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w06/index.html#two-ways-to-traverse-in-words-version",
+    "href": "w06/index.html#two-ways-to-traverse-in-words-version",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Two Ways to Traverse: In-Words Version",
+    "text": "Two Ways to Traverse: In-Words Version\n\nDepth-First Search (DFS): With this approach, we iterate through the BST by always taking the left child as the “next” child until we hit a leaf node (which means, we cannot follow this left-child pointer any longer, since a leaf node does not have a left child or a right child!), and only at that point do we back up and take the right children we skipped.\nBreadth-First Search (BFS): This is the “opposite” of DFS in the sense that we traverse the tree level-by-level, never moving to the next level of the tree until we’re sure that we have visited every node on the current level.",
+    "crumbs": [
+      "Week 6: {{< var w06.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w06/index.html#two-ways-to-traverse-animated-version",
+    "href": "w06/index.html#two-ways-to-traverse-animated-version",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Two Ways to Traverse: Animated Version",
+    "text": "Two Ways to Traverse: Animated Version\n\n\n\n\n\n\n\n\n\nDepth-First Search (from Wikimedia Commons)\n\n\n\n\n\n\n\nBreadth-First Search (from Wikimedia Commons)",
+    "crumbs": [
+      "Week 6: {{< var w06.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w06/index.html#two-ways-to-traverse-underlying-data-structures",
+    "href": "w06/index.html#two-ways-to-traverse-underlying-data-structures",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Two Ways to Traverse: Underlying Data Structures",
+    "text": "Two Ways to Traverse: Underlying Data Structures\n\nNow that you have some intuition, you may be thinking that they might require very different code to implement 🤔\nThis is where the mathematical-formal linkage between the two becomes ultra helpful!\nIt turns out (and a full-on algorithmic theory course makes you prove) that\n\n\nDepth-First Search can be accomplished by processing nodes in an order determined by adding each to a stack, while\nBreadth-First Search can be accomplished by processing nodes in an order determined by adding each to a queue!\n\n\n\\(\\implies\\) Literally identical code, “pulling out” the word stack and replacing it with the word queue within your code (or vice-versa).\nIf you have your Software Engineer Hats on, you’ll recognize this as a job for an abstraction layer!",
+    "crumbs": [
+      "Week 6: {{< var w06.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w06/index.html#two-ways-to-traverse-hw3-version",
+    "href": "w06/index.html#two-ways-to-traverse-hw3-version",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Two Ways to Traverse: HW3 Version",
+    "text": "Two Ways to Traverse: HW3 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\nIt will take in a ThingContainer (could be a stack or a queue, you won’t know which), which has two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()",
+    "crumbs": [
+      "Week 6: {{< var w06.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w06/index.html#three-animals-in-the-dfs-species",
+    "href": "w06/index.html#three-animals-in-the-dfs-species",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Three Animals in the DFS Species",
+    "text": "Three Animals in the DFS Species\n\n\n\n\n\n\n\nDFS Procedure\nAlgorithm\n\n\n\n\nPre-Order Traversal\n1. Print node2. Traverse left subtree3. Traverse right subtree\n\n\nIn-Order Traversal 🧐‼️\n1. Traverse left subtree2. Print node3. Traverse right subtree\n\n\nPost-Order Traversal\n1. Traverse left subtree2. Traverse right subtree3. Print node",
+    "crumbs": [
+      "Week 6: {{< var w06.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w06/index.html#the-three-animals-traverse-our-inventory-tree",
+    "href": "w06/index.html#the-three-animals-traverse-our-inventory-tree",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "The Three Animals Traverse our Inventory Tree",
+    "text": "The Three Animals Traverse our Inventory Tree\n\n\nCode\nvisualize(bst)\n\n\nWarning: node None_0, port f1 unrecognized\nWarning: node None_1, port f1 unrecognized\nWarning: node None_2, port f1 unrecognized\nWarning: node None_3, port f1 unrecognized\nWarning: node None_4, port f1 unrecognized\nWarning: node None_5, port f1 unrecognized",
+    "crumbs": [
+      "Week 6: {{< var w06.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w06/index.html#more-memory-more-performance",
+    "href": "w06/index.html#more-memory-more-performance",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "More Memory, More Performance",
+    "text": "More Memory, More Performance\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔",
     "crumbs": [
       "Week 6: {{< var w06.date-md >}}"
     ]
@@ -950,7 +1103,7 @@
     "href": "w10/slides.html#hw4-draft-part-1-parallelized-hw3",
     "title": "Week 10: Data Pipeline Orchestration",
     "section": "HW4 Draft Part 1 = Parallelized HW3",
-    "text": "HW4 Draft Part 1 = Parallelized HW3\n\n\\(N\\) random quotes on the page rather than just one\nIs it embarrassingly parallel?\nPart 2 TBD!\n\n\n\n\nDSAN 5500 Week 10: Pipeline Orchestration"
+    "text": "HW4 Draft Part 1 = Parallelized HW3\n\n\\(N\\) random quotes on the page rather than just one\nIs it embarrassingly parallel?\nPart 2 TBD!"
   },
   {
     "objectID": "w10/index.html",
@@ -1514,7 +1667,7 @@
     "href": "w02/slides.html#appendix-the-full-master-theorem",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Appendix: The Full Master Theorem",
-    "text": "Appendix: The Full Master Theorem\nMaster Theorem: Let \\(a &gt; 0\\) and \\(b &gt; 1\\) be constants, and let \\(f(n)\\) be a driving function defined and nonnegative on all sufficiently large reals. Define \\(T(n)\\) on \\(n \\in \\mathbb{N}\\) by\n\\[\nT(n) = aT(n/b) + f(n)\n\\]\nwhere \\(aT(n/b) = a'T(\\lfloor n/b \\rfloor) + a''T(\\lceil n/b \\rceil)\\) for some \\(a' \\geq 0\\) and \\(a'' \\geq 0\\) satisfying \\(a = a' + a''\\). Then the asymptotic behavior of \\(T(n)\\) can be characterized as follows:\n\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = O(n^{\\log_b(a) - \\epsilon})\\), then \\(T(n) = \\Theta(n^{\\log_b(a)})\\)\nIf there exists \\(k \\geq 0\\) such that \\(f(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\), then \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\).\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = \\Omega(n^{\\log_b(a) + \\epsilon})\\), and if \\(f(n)\\) satisfies the regularity condition \\(af(n/b) \\leq cf(n)\\) for some constant \\(c &lt; 1\\) and all sufficiently large \\(n\\), then \\(T(n) = \\Theta(f(n))\\).\n\n\nProof. See Cormen et al. (2001), pg. 107-114.\n\n(← Back to Merge Sort slides)\n\n\n\nDSAN 5500 Week 2: Software Design Patterns and OOP"
+    "text": "Appendix: The Full Master Theorem\nMaster Theorem: Let \\(a &gt; 0\\) and \\(b &gt; 1\\) be constants, and let \\(f(n)\\) be a driving function defined and nonnegative on all sufficiently large reals. Define \\(T(n)\\) on \\(n \\in \\mathbb{N}\\) by\n\\[\nT(n) = aT(n/b) + f(n)\n\\]\nwhere \\(aT(n/b) = a'T(\\lfloor n/b \\rfloor) + a''T(\\lceil n/b \\rceil)\\) for some \\(a' \\geq 0\\) and \\(a'' \\geq 0\\) satisfying \\(a = a' + a''\\). Then the asymptotic behavior of \\(T(n)\\) can be characterized as follows:\n\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = O(n^{\\log_b(a) - \\epsilon})\\), then \\(T(n) = \\Theta(n^{\\log_b(a)})\\)\nIf there exists \\(k \\geq 0\\) such that \\(f(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\), then \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\).\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = \\Omega(n^{\\log_b(a) + \\epsilon})\\), and if \\(f(n)\\) satisfies the regularity condition \\(af(n/b) \\leq cf(n)\\) for some constant \\(c &lt; 1\\) and all sufficiently large \\(n\\), then \\(T(n) = \\Theta(f(n))\\).\n\n\nProof. See Cormen et al. (2001), pg. 107-114.\n\n(← Back to Merge Sort slides)"
   },
   {
     "objectID": "w02/index.html",
@@ -2051,7 +2204,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Gluten Free', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Vegan', 'Gluten Free', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Gluten Free', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'Vegan', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2383,7 +2536,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Gluten Free', 'Vegan', 'None'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'Vegan', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Gluten Free', 'None', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Vegan', 'Gluten Free', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -2579,7 +2732,7 @@
     "href": "w03/slides.html#appendix-3-the-full-master-theorem",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Appendix 3: The Full Master Theorem",
-    "text": "Appendix 3: The Full Master Theorem\nMaster Theorem: Let \\(a &gt; 0\\) and \\(b &gt; 1\\) be constants, and let \\(f(n)\\) be a driving function defined and nonnegative on all sufficiently large reals. Define \\(T(n)\\) on \\(n \\in \\mathbb{N}\\) by\n\\[\nT(n) = aT(n/b) + f(n)\n\\]\nwhere \\(aT(n/b) = a'T(\\lfloor n/b \\rfloor) + a''T(\\lceil n/b \\rceil)\\) for some \\(a' \\geq 0\\) and \\(a'' \\geq 0\\) satisfying \\(a = a' + a''\\). Then the asymptotic behavior of \\(T(n)\\) can be characterized as follows:\n\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = O(n^{\\log_b(a) - \\epsilon})\\), then \\(T(n) = \\Theta(n^{\\log_b(a)})\\)\nIf there exists \\(k \\geq 0\\) such that \\(f(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\), then \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\).\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = \\Omega(n^{\\log_b(a) + \\epsilon})\\), and if \\(f(n)\\) satisfies the regularity condition \\(af(n/b) \\leq cf(n)\\) for some constant \\(c &lt; 1\\) and all sufficiently large \\(n\\), then \\(T(n) = \\Theta(f(n))\\).\n\n\nProof. See Cormen et al. (2001), pg. 107-114.\n\n(← Back to Merge Sort slides)\n\n\n\nDSAN 5500 Week 3: Data Structures and Computational Complexity"
+    "text": "Appendix 3: The Full Master Theorem\nMaster Theorem: Let \\(a &gt; 0\\) and \\(b &gt; 1\\) be constants, and let \\(f(n)\\) be a driving function defined and nonnegative on all sufficiently large reals. Define \\(T(n)\\) on \\(n \\in \\mathbb{N}\\) by\n\\[\nT(n) = aT(n/b) + f(n)\n\\]\nwhere \\(aT(n/b) = a'T(\\lfloor n/b \\rfloor) + a''T(\\lceil n/b \\rceil)\\) for some \\(a' \\geq 0\\) and \\(a'' \\geq 0\\) satisfying \\(a = a' + a''\\). Then the asymptotic behavior of \\(T(n)\\) can be characterized as follows:\n\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = O(n^{\\log_b(a) - \\epsilon})\\), then \\(T(n) = \\Theta(n^{\\log_b(a)})\\)\nIf there exists \\(k \\geq 0\\) such that \\(f(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\), then \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\).\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = \\Omega(n^{\\log_b(a) + \\epsilon})\\), and if \\(f(n)\\) satisfies the regularity condition \\(af(n/b) \\leq cf(n)\\) for some constant \\(c &lt; 1\\) and all sufficiently large \\(n\\), then \\(T(n) = \\Theta(f(n))\\).\n\n\nProof. See Cormen et al. (2001), pg. 107-114.\n\n(← Back to Merge Sort slides)"
   },
   {
     "objectID": "w04/index.html",
@@ -3116,7 +3269,7 @@
     "href": "w04/slides.html#taking-this-idea-and-running-with-it",
     "title": "Week 4: Data Structures from Scratch with OOP",
     "section": "Taking This Idea and Running With It",
-    "text": "Taking This Idea and Running With It\n\nNext week we’ll look at BinarySearchTree (BST)\nSince it’s just a glorified LinkedList, we’ll be able to take our HashMap from today and “drop in” the BST to play the role the LinkedList is playing right now\nIf collision, we’ll create a BST with its \\(\\overline{O}(\\log(n))\\) operations, rather than a LinkedList with its \\(\\overline{O}(n)\\) operations\n\\(\\implies\\) HashMap will go from:\n\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(n)\\) worst-case to\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(\\log_2(n))\\) worst-case!\n\n\n\n\n\nDSAN 5500 Week 4: Data Structures from Scratch with OOP"
+    "text": "Taking This Idea and Running With It\n\nNext week we’ll look at BinarySearchTree (BST)\nSince it’s just a glorified LinkedList, we’ll be able to take our HashMap from today and “drop in” the BST to play the role the LinkedList is playing right now\nIf collision, we’ll create a BST with its \\(\\overline{O}(\\log(n))\\) operations, rather than a LinkedList with its \\(\\overline{O}(n)\\) operations\n\\(\\implies\\) HashMap will go from:\n\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(n)\\) worst-case to\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(\\log_2(n))\\) worst-case!"
   },
   {
     "objectID": "w05/index.html",
@@ -3602,7 +3755,7 @@
     "href": "w05/slides.html#final-notes-for-hw2",
     "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Final Notes for HW2",
-    "text": "Final Notes for HW2\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔\n\n\n\n\nDSAN 5500 Week 5: Binary Search Trees"
+    "text": "Final Notes for HW2\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔"
   },
   {
     "objectID": "recordings/index.html",
@@ -3902,7 +4055,7 @@
     "href": "w11/slides.html#references",
     "title": "Week 11: Parallel Pipelines and Map-Reduce",
     "section": "References",
-    "text": "References\n\n\nLeskovec, Jure, Anand Rajaraman, and Jeffrey David Ullman. 2014. Mining of Massive Datasets. Cambridge University Press.\n\n\n\n\n\nDSAN 5500 Week 11: Moving from Serial to Parallel Pipelines"
+    "text": "References\n\n\nLeskovec, Jure, Anand Rajaraman, and Jeffrey David Ullman. 2014. Mining of Massive Datasets. Cambridge University Press."
   },
   {
     "objectID": "index.html",
@@ -4075,7 +4228,7 @@
     "href": "w09/slides.html#lab-time",
     "title": "Week 9: Data Validation, Data Processing Pipelines",
     "section": "Lab Time!",
-    "text": "Lab Time!\n\nWeek 9 Lab: Pipeline Orchestration with Prefect \n\n\n\n\nDSAN 5500 Week 9: Data Validation, Pipelines"
+    "text": "Lab Time!\n\nWeek 9 Lab: Pipeline Orchestration with Prefect"
   },
   {
     "objectID": "w01/index.html",
@@ -4493,7 +4646,7 @@
     "href": "w01/slides.html#block-partitioned-matrix-magic",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Block-Partitioned Matrix Magic",
-    "text": "Block-Partitioned Matrix Magic\n\nUsing the previous slide as our base case and applying this same method to the block-paritioned big matrices, we get the same result, but where the four entries in \\(AB\\) here are now matrices rather than scalars:\n\n\\[\nAB = \\begin{bmatrix}\nM_1 + M_4 - M_5 + M_7 & M_3 + M_5 \\\\\nM_2 + M_4 & M_1 - M_2 + M_3 + M_6\n\\end{bmatrix}\n\\]\n\nWe now have a different recurrence relation: \\(T(N) = \\underbrace{7T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(N^2)}_{\\text{Additions}}\\)\nAnd it turns out, somewhat miraculously, that the additional time required for the increased number of additions is significantly less than the time savings we obtain by doing 7 instead of 8 multiplications, since this method now runs in \\(T(N) = O(N^{\\log_2(7)}) \\approx O(N^{2.807}) &lt; O(N^3)\\) 🤯\n\n\n\n\nDSAN 5500 Week 1: Course Intro and Motivation"
+    "text": "Block-Partitioned Matrix Magic\n\nUsing the previous slide as our base case and applying this same method to the block-paritioned big matrices, we get the same result, but where the four entries in \\(AB\\) here are now matrices rather than scalars:\n\n\\[\nAB = \\begin{bmatrix}\nM_1 + M_4 - M_5 + M_7 & M_3 + M_5 \\\\\nM_2 + M_4 & M_1 - M_2 + M_3 + M_6\n\\end{bmatrix}\n\\]\n\nWe now have a different recurrence relation: \\(T(N) = \\underbrace{7T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(N^2)}_{\\text{Additions}}\\)\nAnd it turns out, somewhat miraculously, that the additional time required for the increased number of additions is significantly less than the time savings we obtain by doing 7 instead of 8 multiplications, since this method now runs in \\(T(N) = O(N^{\\log_2(7)}) \\approx O(N^{2.807}) &lt; O(N^3)\\) 🤯"
   },
   {
     "objectID": "midterm.html",
@@ -4624,6 +4777,76 @@
     "href": "w13/slides.html#references",
     "title": "Week 13: Applications in NLP",
     "section": "References",
-    "text": "References\n\n\n\n\n\n\nDSAN 5500 Week 13: Final Projects, Interfaces"
+    "text": "References"
+  },
+  {
+    "objectID": "w06/slides.html#thingcontainer-structure",
+    "href": "w06/slides.html#thingcontainer-structure",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "ThingContainer Structure",
+    "text": "ThingContainer Structure"
+  },
+  {
+    "objectID": "w06/slides.html#thingcontainer-oop-structure",
+    "href": "w06/slides.html#thingcontainer-oop-structure",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "ThingContainer: OOP Structure",
+    "text": "ThingContainer: OOP Structure"
+  },
+  {
+    "objectID": "w06/slides.html#thingcontainer-full-oop-structure",
+    "href": "w06/slides.html#thingcontainer-full-oop-structure",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "ThingContainer: Full OOP Structure",
+    "text": "ThingContainer: Full OOP Structure"
+  },
+  {
+    "objectID": "w06/slides.html#thingcontainer-the-oop-structure-you-see",
+    "href": "w06/slides.html#thingcontainer-the-oop-structure-you-see",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "ThingContainer: The OOP Structure You See",
+    "text": "ThingContainer: The OOP Structure You See"
+  },
+  {
+    "objectID": "w06/slides.html#thingcontainer-secret-full-oop-structure",
+    "href": "w06/slides.html#thingcontainer-secret-full-oop-structure",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "ThingContainer: Secret Full OOP Structure",
+    "text": "ThingContainer: Secret Full OOP Structure"
+  },
+  {
+    "objectID": "w06/slides.html#the-secret-full-oop-structure",
+    "href": "w06/slides.html#the-secret-full-oop-structure",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "The Secret Full OOP Structure",
+    "text": "The Secret Full OOP Structure"
+  },
+  {
+    "objectID": "w06/slides.html#the-secret-full-oop-structure-you-dont-see",
+    "href": "w06/slides.html#the-secret-full-oop-structure-you-dont-see",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "The Secret Full OOP Structure You Don’t See",
+    "text": "The Secret Full OOP Structure You Don’t See"
+  },
+  {
+    "objectID": "w06/slides.html#secret-full-oop-structure-you-dont-see",
+    "href": "w06/slides.html#secret-full-oop-structure-you-dont-see",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Secret Full OOP Structure You Don’t See",
+    "text": "Secret Full OOP Structure You Don’t See"
+  },
+  {
+    "objectID": "w06/slides.html#one-animal-in-the-bfs-species",
+    "href": "w06/slides.html#one-animal-in-the-bfs-species",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "One Animal in the BFS Species",
+    "text": "One Animal in the BFS Species\n\nFor this and next slide, constant-time preliminary step: “Add root to container” (a ThingContainer object)\n\n\n\n\n\n\n\n\nProcedure\nAlgorithm\n\n\n\n\nBreadth-First Search\nwhile [container not empty]:    1. Take thing out    2. Print thing content    3. Add left child to container    4. Add right child to container"
+  },
+  {
+    "objectID": "w06/slides.html#three-animals-in-the-dfs-species-1",
+    "href": "w06/slides.html#three-animals-in-the-dfs-species-1",
+    "title": "Week 6: Depth-First and Breadth-First Search",
+    "section": "Three Animals in the DFS Species",
+    "text": "Three Animals in the DFS Species\n\n\n\n\n\n\n\nDFS Procedure\nAlgorithm\n\n\n\n\nPre-Order Traversal\n1. Print node2. Traverse left subtree3. Traverse right subtree\n\n\nIn-Order Traversal 🧐‼️\n1. Traverse left subtree2. Print node3. Traverse right subtree\n\n\nPost-Order Traversal\n1. Traverse left subtree2. Traverse right subtree3. Print node"
   }
 ]
