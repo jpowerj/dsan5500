@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>Week 7: Code Examples and Midterm Prep – DSAN 5500</title>
+<title>Week 7: Code Examples and Midterm Review – DSAN 5500</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,60 +21,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -363,7 +310,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-02-13, 06:35:40 PM</em></p>
+<p><em>Updated 2025-02-20, 06:22:27 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -372,42 +319,44 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#micro-rightarrow-meso-rightarrow-macro" id="toc-micro-rightarrow-meso-rightarrow-macro" class="nav-link active" data-scroll-target="#micro-rightarrow-meso-rightarrow-macro">Micro <span class="math inline">\(\rightarrow\)</span> Meso <span class="math inline">\(\rightarrow\)</span> Macro</a>
+  <li><a href="#midterm-dress-rehearsal" id="toc-midterm-dress-rehearsal" class="nav-link active" data-scroll-target="#midterm-dress-rehearsal">Midterm Dress Rehearsal</a>
   <ul class="collapse">
-  <li><a href="#most-common-hw1-to-midterm-struggles" id="toc-most-common-hw1-to-midterm-struggles" class="nav-link" data-scroll-target="#most-common-hw1-to-midterm-struggles">Most Common HW1-to-Midterm Struggles</a></li>
+  <li><a href="#the-great-wheel-of-data-structural-and-algorithmic-fate" id="toc-the-great-wheel-of-data-structural-and-algorithmic-fate" class="nav-link" data-scroll-target="#the-great-wheel-of-data-structural-and-algorithmic-fate">The Great Wheel of Data-Structural and Algorithmic Fate</a></li>
   </ul></li>
-  <li><a href="#data-validation" id="toc-data-validation" class="nav-link" data-scroll-target="#data-validation">Data Validation</a>
+  <li><a href="#mini-topics" id="toc-mini-topics" class="nav-link" data-scroll-target="#mini-topics">Mini-Topics</a>
   <ul class="collapse">
-  <li><a href="#pydantic" id="toc-pydantic" class="nav-link" data-scroll-target="#pydantic">Pydantic</a></li>
-  <li><a href="#pydantic-in-action" id="toc-pydantic-in-action" class="nav-link" data-scroll-target="#pydantic-in-action">Pydantic in Action</a></li>
-  <li><a href="#pydantic-in-even-cooler-action" id="toc-pydantic-in-even-cooler-action" class="nav-link" data-scroll-target="#pydantic-in-even-cooler-action">Pydantic in Even-Cooler Action</a></li>
+  <li><a href="#stack-heap-distinction" id="toc-stack-heap-distinction" class="nav-link" data-scroll-target="#stack-heap-distinction">Stack-Heap Distinction</a></li>
+  <li><a href="#big-overlineo-notation" id="toc-big-overlineo-notation" class="nav-link" data-scroll-target="#big-overlineo-notation">Big-<span class="math inline">\(\overline{O}\)</span> Notation</a></li>
+  <li><a href="#data-validation" id="toc-data-validation" class="nav-link" data-scroll-target="#data-validation">Data Validation</a></li>
+  <li><a href="#linear-vs.-logarithmic-design" id="toc-linear-vs.-logarithmic-design" class="nav-link" data-scroll-target="#linear-vs.-logarithmic-design">Linear vs.&nbsp;Logarithmic Design</a></li>
+  <li><a href="#depth-first-vs.-breadth-first-search" id="toc-depth-first-vs.-breadth-first-search" class="nav-link" data-scroll-target="#depth-first-vs.-breadth-first-search">Depth-First vs.&nbsp;Breadth-First Search</a></li>
+  <li><a href="#trees-vs.-graphs-cycles" id="toc-trees-vs.-graphs-cycles" class="nav-link" data-scroll-target="#trees-vs.-graphs-cycles">Trees vs.&nbsp;Graphs (Cycles)</a></li>
   </ul></li>
-  <li><a href="#data-processing-pipelines" id="toc-data-processing-pipelines" class="nav-link" data-scroll-target="#data-processing-pipelines">Data-Processing Pipelines</a>
+  <li><a href="#full-topics" id="toc-full-topics" class="nav-link" data-scroll-target="#full-topics">Full Topics</a>
   <ul class="collapse">
-  <li><a href="#two-generations-of-python-pipeline-libraries" id="toc-two-generations-of-python-pipeline-libraries" class="nav-link" data-scroll-target="#two-generations-of-python-pipeline-libraries">Two Generations of Python Pipeline Libraries</a></li>
-  <li><a href="#for-now-prefect" id="toc-for-now-prefect" class="nav-link" data-scroll-target="#for-now-prefect">For Now: Prefect!</a></li>
-  <li><a href="#etl-extract-transform-load" id="toc-etl-extract-transform-load" class="nav-link" data-scroll-target="#etl-extract-transform-load">ETL = Extract, Transform, Load</a></li>
-  <li><a href="#you-have-already-been-doing-this" id="toc-you-have-already-been-doing-this" class="nav-link" data-scroll-target="#you-have-already-been-doing-this">You Have Already Been Doing This!</a></li>
-  <li><a href="#and-you-have-already-run-into-the-need-for-validation" id="toc-and-you-have-already-run-into-the-need-for-validation" class="nav-link" data-scroll-target="#and-you-have-already-run-into-the-need-for-validation">(And You Have Already Run into the Need for Validation!)</a></li>
-  <li><a href="#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step" id="toc-cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step" class="nav-link" data-scroll-target="#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step">Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)</a></li>
-  <li><a href="#bookshelfscan-an-example-i-use-irl" id="toc-bookshelfscan-an-example-i-use-irl" class="nav-link" data-scroll-target="#bookshelfscan-an-example-i-use-irl">BookshelfScan (An Example I Use IRL!)</a></li>
-  <li><a href="#hw3-possibility-1-pet-store-inventory" id="toc-hw3-possibility-1-pet-store-inventory" class="nav-link" data-scroll-target="#hw3-possibility-1-pet-store-inventory">HW3 Possibility 1: Pet Store Inventory</a></li>
-  <li><a href="#hw3-possibility-2-books-to-scrape" id="toc-hw3-possibility-2-books-to-scrape" class="nav-link" data-scroll-target="#hw3-possibility-2-books-to-scrape">HW3 Possibility 2: Books to Scrape</a></li>
+  <li><a href="#variations-on-linkedlist" id="toc-variations-on-linkedlist" class="nav-link" data-scroll-target="#variations-on-linkedlist">Variations on <code>LinkedList</code></a></li>
+  <li><a href="#frontbacklinkedlist" id="toc-frontbacklinkedlist" class="nav-link" data-scroll-target="#frontbacklinkedlist"><code>FrontBackLinkedList</code></a></li>
+  <li><a href="#doublylinkedlist" id="toc-doublylinkedlist" class="nav-link" data-scroll-target="#doublylinkedlist"><code>DoublyLinkedList</code></a></li>
+  <li><a href="#deque" id="toc-deque" class="nav-link" data-scroll-target="#deque"><code>Deque</code></a></li>
+  <li><a href="#collision-resistant-hashing" id="toc-collision-resistant-hashing" class="nav-link" data-scroll-target="#collision-resistant-hashing">Collision-Resistant Hashing</a></li>
+  <li><a href="#object-oriented-design" id="toc-object-oriented-design" class="nav-link" data-scroll-target="#object-oriented-design">Object-Oriented Design</a></li>
+  <li><a href="#sorting" id="toc-sorting" class="nav-link" data-scroll-target="#sorting">Sorting</a></li>
   </ul></li>
-  <li><a href="#lab-data-validation" id="toc-lab-data-validation" class="nav-link" data-scroll-target="#lab-data-validation">Lab(!): Data Validation</a>
+  <li><a href="#midterm-metadata" id="toc-midterm-metadata" class="nav-link" data-scroll-target="#midterm-metadata">Midterm Metadata</a>
   <ul class="collapse">
-  <li><a href="#google-classroom-link" id="toc-google-classroom-link" class="nav-link" data-scroll-target="#google-classroom-link">Google Classroom Link</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#midterm-structure" id="toc-midterm-structure" class="nav-link" data-scroll-target="#midterm-structure">Midterm Structure</a></li>
+  <li><a href="#the-two-boxes-that-most-things-in-this-course-can-be-sorted-into" id="toc-the-two-boxes-that-most-things-in-this-course-can-be-sorted-into" class="nav-link" data-scroll-target="#the-two-boxes-that-most-things-in-this-course-can-be-sorted-into">The Two Boxes That Most Things In This Course Can Be Sorted Into</a></li>
+  <li><a href="#the-boxes" id="toc-the-boxes" class="nav-link" data-scroll-target="#the-boxes">The Boxes</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5500/blob/main/w07/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5500/blob/main/w07/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 7: Code Examples and Midterm Prep</h1>
+<h1 class="title">Week 7: Code Examples and Midterm Review</h1>
 <p class="subtitle lead"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
   <div class="quarto-categories">
     <div class="quarto-category">Class Sessions</div>
@@ -424,7 +373,7 @@ window.Quarto = {
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
-            <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a>
+            <a href="mailto:jj1088@georgetown.edu"><code>jj1088@georgetown.edu</code></a>
           </p>
       </div>
   </div>
@@ -450,280 +399,368 @@ window.Quarto = {
 <center>
 <a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
 </center>
-<section id="micro-rightarrow-meso-rightarrow-macro" class="level1 title-11 crunch-title crunch-ul crunch-li-8 not-title-slide" data-stack-name="Intro">
-<h1 class="title-11 crunch-title crunch-ul crunch-li-8 not-title-slide" data-stack-name="Intro">Micro <span class="math inline">\(\rightarrow\)</span> Meso <span class="math inline">\(\rightarrow\)</span> Macro</h1>
-<ul>
-<li>✅ Micro-level: Individual, <strong>“core” algorithms/data structures</strong> and their big-<span class="math inline">\(O\)</span> runtimes
-<ul>
-<li>e.g., <code>LinkedList</code>, <span class="alg">Merge-Sort</span></li>
-</ul></li>
-<li>✅ Meso-level: Algorithms/data structures that “piece together” a small collection of core algorithms
-<ul>
-<li><strong>Hash tables</strong>: Fixed-Length Array + Hashing Algorithm + Collision Handling Algorithm (BST)</li>
-</ul></li>
-</ul>
-<div style="border: 3px solid black !important;">
-<ul>
-<li>🤔 <strong>Macro-level</strong>: <strong>Pipelines</strong> of data structures and algorithms:
-<ul>
-<li><strong>raw data source</strong> <span class="math inline">\(\rightarrow\)</span> <strong>processing</strong> <span class="math inline">\(\rightarrow\)</span> <strong>storage</strong></li>
-</ul></li>
-</ul>
-</div>
-<section id="most-common-hw1-to-midterm-struggles" class="level2 title-09 crunch-title crunch-ul">
-<h2 class="title-09 crunch-title crunch-ul anchored" data-anchor-id="most-common-hw1-to-midterm-struggles">Most Common HW1-to-Midterm Struggles</h2>
-<ul>
-<li>Ingesting data (HW1: <code>Swimmer</code> class)
-<ul>
-<li><span class="math inline">\(\implies\)</span> Data-processing pipelines!</li>
-</ul></li>
-<li>Maintaining <strong>invariants</strong> as dataset grows (HW2: <code>None</code> → <code>InventoryItem</code> → <code>BinarySearchTree</code>)
-<ul>
-<li><span class="math inline">\(\implies\)</span> Data validation!</li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="data-validation" class="level1" data-stack-name="Validation">
-<h1 data-stack-name="Validation">Data Validation</h1>
-<ul>
-<li>What you already know: Type hints</li>
-<li>Type hints on steroids: Pydantic 😎</li>
-</ul>
-<section id="pydantic" class="level2">
-<h2 class="anchored" data-anchor-id="pydantic">Pydantic</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/pydantic_logo.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</section>
-<section id="pydantic-in-action" class="level2 crunch-title crunch-details">
-<h2 class="crunch-title crunch-details anchored" data-anchor-id="pydantic-in-action">Pydantic in Action</h2>
-<div id="41f8088c" class="cell" data-execution_count="1">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> InventoryItem(BaseModel):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    item_name: <span class="bu">str</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    price: <span class="bu">float</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>my_item <span class="op">=</span> InventoryItem(item_name<span class="op">=</span><span class="st">"Banana"</span>, price<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>my_item</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>InventoryItem(item_name='Banana', price=10.0)</code></pre>
-</div>
-</div>
-<div id="4369b77b" class="cell" data-execution_count="2">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>invalid_item <span class="op">=</span> InventoryItem(item_name<span class="op">=</span><span class="st">"Banana"</span>, price<span class="op">=</span><span class="st">"100 dollar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValidationError</span>                           Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[2], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> invalid_item <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">InventoryItem</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">item_name</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Banana</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">price</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">100 dollar</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176</span>, in <span class="ansi-cyan-fg">BaseModel.__init__</span><span class="ansi-blue-fg">(self, **data)</span>
-<span class="ansi-green-fg ansi-bold">    174</span> <span style="font-style:italic;color:rgb(95,135,135)"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
-<span class="ansi-green-fg ansi-bold">    175</span> __tracebackhide__ <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-<span class="ansi-green-fg">--&gt; 176</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">__pydantic_validator__</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">validate_python</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">self_instance</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-red-fg">ValidationError</span>: 1 validation error for InventoryItem
-price
-  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='100 dollar', input_type=str]
-    For further information visit https://errors.pydantic.dev/2.7/v/float_parsing</pre>
-</div>
-</div>
-</div>
-</section>
-<section id="pydantic-in-even-cooler-action" class="level2 crunch-title crunch-details">
-<h2 class="crunch-title crunch-details anchored" data-anchor-id="pydantic-in-even-cooler-action">Pydantic in Even-Cooler Action</h2>
+<section id="midterm-dress-rehearsal" class="level1 smaller small-title crunch-title crunch-callout code-90" data-stack-name="Schedule">
+<h1 class="smaller small-title crunch-title crunch-callout code-90" data-stack-name="Schedule">Midterm Dress Rehearsal</h1>
+<p>Today’s Planned Schedule:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Start</th>
+<th style="text-align: left;">End</th>
+<th style="text-align: left;">Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;">6:30pm</td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;"><a href="#mini-topics">Parts ա-գ: Three Mini-Topics →</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;">7:20pm</td>
+<td style="text-align: left;"><a href="#full-topics">Part Ա: Full Topic →</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">7:20pm</td>
+<td style="text-align: left;">7:30pm</td>
+<td style="text-align: left;"><a href="#mini-topics">Part դ: Mini-Topic →</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">7:30pm</td>
+<td style="text-align: left;">7:50pm</td>
+<td style="text-align: left;"><a href="#full-topics">Part Բ: Full Topic →</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Break!</strong></td>
+<td style="text-align: left;">7:50pm</td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;">8:40pm</td>
+<td style="text-align: left;"><a href="#full-topics">Parts Գ-Դ: Two Full Topics →</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">8:40pm</td>
+<td style="text-align: left;">9:00pm</td>
+<td style="text-align: left;"><a href="#mini-topics">Parts ե-զ: Two Mini-Topics →</a></td>
+</tr>
+</tbody>
+</table>
+<section id="the-great-wheel-of-data-structural-and-algorithmic-fate" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="the-great-wheel-of-data-structural-and-algorithmic-fate">The Great Wheel of Data-Structural and Algorithmic Fate</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<div id="ed52ddc2" class="cell" data-execution_count="3">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, EmailStr, PositiveInt</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Employee(BaseModel):</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    name: <span class="bu">str</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    email: EmailStr</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    age: PositiveInt</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>invalid_employee <span class="op">=</span> Employee(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  name<span class="op">=</span><span class="st">"Jeef"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  email<span class="op">=</span><span class="st">"fakeemail!!!"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  age<span class="op">=</span><span class="dv">50</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValidationError</span>                           Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[3], line 6</span>
-<span class="ansi-green-fg ansi-bold">      4</span>     email: EmailStr
-<span class="ansi-green-fg ansi-bold">      5</span>     age: PositiveInt
-<span class="ansi-green-fg">----&gt; 6</span> invalid_employee <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Employee</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg ansi-bold">      7</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">name</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Jeef</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">      8</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">email</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">fakeemail!!!</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">      9</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">age</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">50</span>
-<span class="ansi-green-fg ansi-bold">     10</span> <span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176</span>, in <span class="ansi-cyan-fg">BaseModel.__init__</span><span class="ansi-blue-fg">(self, **data)</span>
-<span class="ansi-green-fg ansi-bold">    174</span> <span style="font-style:italic;color:rgb(95,135,135)"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
-<span class="ansi-green-fg ansi-bold">    175</span> __tracebackhide__ <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-<span class="ansi-green-fg">--&gt; 176</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">__pydantic_validator__</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">validate_python</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">self_instance</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-red-fg">ValidationError</span>: 1 validation error for Employee
-email
-  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]</pre>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div id="0a830297" class="cell" data-execution_count="4">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>invalid_employee2 <span class="op">=</span> Employee(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  name<span class="op">=</span><span class="st">"Jeeferson"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  email<span class="op">=</span><span class="st">"valid@email.com"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  age<span class="op">=-</span><span class="dv">3</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValidationError</span>                           Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[4], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> invalid_employee2 <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Employee</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg ansi-bold">      2</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">name</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Jeeferson</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">      3</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">email</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">valid@email.com</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">      4</span> <span class="ansi-yellow-bg">  </span><span class="ansi-yellow-bg">age</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">-</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">3</span>
-<span class="ansi-green-fg ansi-bold">      5</span> <span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176</span>, in <span class="ansi-cyan-fg">BaseModel.__init__</span><span class="ansi-blue-fg">(self, **data)</span>
-<span class="ansi-green-fg ansi-bold">    174</span> <span style="font-style:italic;color:rgb(95,135,135)"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
-<span class="ansi-green-fg ansi-bold">    175</span> __tracebackhide__ <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-<span class="ansi-green-fg">--&gt; 176</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">__pydantic_validator__</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">validate_python</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">self_instance</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-red-fg">ValidationError</span>: 1 validation error for Employee
-age
-  Input should be greater than 0 [type=greater_than, input_value=-3, input_type=int]
-    For further information visit https://errors.pydantic.dev/2.7/v/greater_than</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="data-processing-pipelines" class="level1" data-stack-name="Pipelines">
-<h1 data-stack-name="Pipelines">Data-Processing Pipelines</h1>
-<section id="two-generations-of-python-pipeline-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="two-generations-of-python-pipeline-libraries">Two Generations of Python Pipeline Libraries</h2>
+<div class="column" style="width:33%;">
+<center>
+<strong>Full Topics (20 mins):</strong>
+</center>
 <ul>
-<li>Gen 1: Airflow (AirBnB), Luigi (Spotify)</li>
-<li>Gen 2: Dagster, Prefect</li>
+<li><a href="#variations-on-linkedlist"><code>LinkedList</code> variations</a></li>
+<li><a href="#object-oriented-design">Object-Oriented Design</a></li>
+<li><a href="#collision-resistant-hashing">Collision-Resistant Hashing</a></li>
+<li><a href="#sorting">Sorting</a></li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Prefect.webp" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</section>
-<section id="for-now-prefect" class="level2">
-<h2 class="anchored" data-anchor-id="for-now-prefect">For Now: Prefect!</h2>
+</div><div class="column" style="width:33%;">
+<center>
+<strong>Mini Topics (10 mins):</strong>
+</center>
 <ul>
-<li>But, the <strong>principles</strong> (<strong>ETL</strong>) remain the same!</li>
+<li><a href="#stack-heap-distinction">Stack-Heap Distinction</a></li>
+<li><a href="#big-overlineo-notation">Big-<span class="math inline">\(\overline{O}\)</span> Notation</a></li>
+<li><a href="#data-validation">Data Validation</a></li>
+<li><a href="#linear-vs.-logarithmic-design">Linear vs.&nbsp;Logarithmic Design</a></li>
+<li><a href="#depth-first-vs.-breadth-first-search">BSTs: DFS vs.&nbsp;BFS</a></li>
+<li><a href="#trees-vs.-graphs-cycles">Trees vs.&nbsp;Graphs (Cycles)</a></li>
 </ul>
+</div><div class="column" style="width:34%;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/flow-run-page.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/wheel.png" class="img-fluid figure-img"></p>
+<figcaption><a href="https://wheelofnames.com/">https://wheelofnames.com/</a></figcaption>
 </figure>
 </div>
-</section>
-<section id="etl-extract-transform-load" class="level2">
-<h2 class="anchored" data-anchor-id="etl-extract-transform-load">ETL = Extract, Transform, Load</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/etl.png" class="img-fluid figure-img"></p>
-<figcaption>From <a href="https://www.analyticsvidhya.com/blog/2022/06/a-complete-guide-on-building-an-etl-pipeline-for-beginners/" target="_blank">Analytics Vidhya</a></figcaption>
-</figure>
+</div>
 </div>
 </section>
-<section id="you-have-already-been-doing-this" class="level2 crunch-title crunch-ul">
-<h2 class="crunch-title crunch-ul anchored" data-anchor-id="you-have-already-been-doing-this">You Have Already Been Doing This!</h2>
+</section>
+<section id="mini-topics" class="level1" data-stack-name="Mini-Topics">
+<h1 data-stack-name="Mini-Topics">Mini-Topics</h1>
 <ul>
-<li>HW1: Swim team example
+<li><a href="#stack-heap-distinction">Stack-Heap Distinction →</a></li>
+<li><a href="#big-o-notation">Big-<span class="math inline">\(\overline{O}\)</span> Notation →</a></li>
+<li><a href="#data-validation">Data Validation →</a></li>
+<li><a href="#linear-vs-logarithmic-design">Linear vs.&nbsp;Logarithmic Design →</a></li>
+<li><a href="#depth-first-vs.-breadth-first-search">BSTs: DFS vs.&nbsp;BFS →</a></li>
+<li><a href="#trees-vs.-graphs-cycles">Trees vs.&nbsp;Graphs (Cycles) →</a></li>
+</ul>
+<section id="stack-heap-distinction" class="level2 crunch-title crunch-ul crunch-li-10">
+<h2 class="crunch-title crunch-ul crunch-li-10 anchored" data-anchor-id="stack-heap-distinction">Stack-Heap Distinction</h2>
 <ul>
-<li><strong>Extract</strong>: Load data from .csv</li>
-<li><strong>Transform</strong>: Convert times to milliseconds</li>
-<li><strong>Load</strong>: Store into <code>Team</code> object</li>
+<li><strong>The</strong> Stack (<span class="math inline">\(\neq\)</span> <code>Stack</code> data structure)
+<ul>
+<li>Fixed-length things go here, <em>including</em> <strong>Pointers</strong> to Heap</li>
 </ul></li>
-<li>HW2 (Throughout)
+<li><strong>The</strong> Heap (<span class="math inline">\(\neq\)</span> <code>Heap</code> data structure)
 <ul>
-<li><strong>Extract</strong>: Load products from .csv into Pandas</li>
-<li><strong>Transform</strong>: (Construct <code>InventoryItem</code> object for each row)</li>
-<li><strong>Load</strong>: Store into <code>LogarithmicHashTable</code></li>
+<li>Variable-length things go here</li>
+</ul></li>
+<li><strong>Heap elves</strong> manage The Heap, by…
+<ul>
+<li>Constantly “claiming” additional memory from the OS (<code>malloc()</code>), in case objects need to <strong>grow</strong></li>
+<li>“Freeing” memory back for use by the OS (<code>free()</code>), when objects <strong>shrink</strong> / <strong>deleted</strong> / Python execution ends</li>
 </ul></li>
 </ul>
 </section>
-<section id="and-you-have-already-run-into-the-need-for-validation" class="level2">
-<h2 class="anchored" data-anchor-id="and-you-have-already-run-into-the-need-for-validation">(And You Have Already Run into the Need for Validation!)</h2>
+<section id="big-overlineo-notation" class="level2 crunch-title crunch-ul inline-90">
+<h2 class="crunch-title crunch-ul inline-90 anchored" data-anchor-id="big-overlineo-notation">Big-<span class="math inline">\(\overline{O}\)</span> Notation</h2>
 <ul>
-<li>HW1: Are the times in seconds or milliseconds?</li>
-<li>HW2: Are users providing <code>key</code> and <code>value</code> separately, or together?</li>
-<li>If together: as <code>tuple</code>s or <code>InventoryItem</code>s?</li>
-<li>If <code>InventoryItem</code>s: What type(s) for <code>item_name</code>? What type(s) for <code>price</code>? 😵</li>
-<li><span class="math inline">\(\implies\)</span> One of the <strong>two</strong> main focuses for <strong>HW3</strong> will be <strong>validation</strong> of input data!</li>
+<li>These are <strong>equivalence classes</strong> (not numbers or functions)</li>
+<li><i class="bi bi-1-circle"></i> Compute the runtime <span class="math inline">\(T(n)\)</span> of an algorithm</li>
+<li><i class="bi bi-2-circle"></i> Worry about how it <strong>scales</strong> as <span class="math inline">\(n\)</span> gets large: <span class="math inline">\(\lim_{n \rightarrow \infty}T(n)\)</span></li>
+<li><i class="bi bi-3-circle"></i> Decide whether to use it or not based on which <strong>equivalence class</strong> it converges to:
+<ul>
+<li><span class="math inline">\(O(1)\)</span></li>
+<li><span class="math inline">\(O(\log(n))\)</span></li>
+<li><span class="math inline">\(O(n)\)</span></li>
+<li><span class="math inline">\(O(n^2)\)</span></li>
+</ul></li>
 </ul>
 </section>
-<section id="cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step" class="level2">
-<h2 class="anchored" data-anchor-id="cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step">Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)</h2>
+<section id="data-validation" class="level2">
+<h2 class="anchored" data-anchor-id="data-validation">Data Validation</h2>
 <ul>
-<li>(Hopefully things from previous slide have taught you the dangers of this!)</li>
-<li>It’s like <strong>Anscombe’s Quartet</strong> from DSAN 5000/5100/5200: We can be misled by fancy tools if we don’t take time for the (sometimes boring) step of <strong>looking at</strong> the data</li>
-<li>Example: ETL for processing text data (books for now)</li>
+<li>To know: <strong>Type Hints</strong> in Python</li>
+<li>To know: <a href="https://docs.pydantic.dev/latest/">Pydantic</a></li>
+<li>To think about: <a href="https://pandera.readthedocs.io/en/stable/">Pandera</a></li>
 </ul>
 </section>
-<section id="bookshelfscan-an-example-i-use-irl" class="level2 title-09 crunch-title crunc-ul">
-<h2 class="title-09 crunch-title crunc-ul anchored" data-anchor-id="bookshelfscan-an-example-i-use-irl">BookshelfScan (An Example I Use IRL!)</h2>
+<section id="linear-vs.-logarithmic-design" class="level2">
+<h2 class="anchored" data-anchor-id="linear-vs.-logarithmic-design">Linear vs.&nbsp;Logarithmic Design</h2>
 <ul>
-<li><strong>Extract</strong>: Dropbox folder containing ebooks</li>
-<li><strong>Transform</strong>: Compute word counts</li>
-<li><strong>Load</strong>: Save word counts into a database</li>
-<li>Enables me to figure out <strong>which books</strong> talk about a topic <span class="math inline">\(t\)</span> (data structures, algorithms, data ethics and policy, etc.)!</li>
-<li><strong>BUT</strong> (Devil is in the details): Can look very different for <code>txt</code>, <code>epub</code> (can contain images), <code>pdf</code> (sometimes text is embedded, sometimes not), images of scans, audiobooks</li>
-<li><span class="math inline">\(\implies\)</span> (Sad but true) Pipleline will <strong>crash and burn</strong> if you don’t handle these <strong>before</strong> using <a href="https://www.trychroma.com/" target="_blank">Cool NLP things</a> in T step</li>
+<li><a href="https://dict-lookup.streamlit.app/">Enter the Logarithm</a> demo app</li>
 </ul>
 </section>
-<section id="hw3-possibility-1-pet-store-inventory" class="level2">
-<h2 class="anchored" data-anchor-id="hw3-possibility-1-pet-store-inventory">HW3 Possibility 1: Pet Store Inventory</h2>
+<section id="depth-first-vs.-breadth-first-search" class="level2">
+<h2 class="anchored" data-anchor-id="depth-first-vs.-breadth-first-search">Depth-First vs.&nbsp;Breadth-First Search</h2>
 <ul>
-<li><a href="https://petstore.swagger.io/v2/store/inventory" target="_blank">https://petstore.swagger.io/v2/store/inventory</a></li>
+<li>Depth-First is <strong>greedy</strong>: At any given node, algorithm <em>starts</em> by just following first link until it hits <code>None</code>!
+<ul>
+<li>Only once it hits <code>None</code> does it “back up” and follow second link</li>
+</ul></li>
+<li>Breadth-First is <strong>patient</strong>: Nodes at level <span class="math inline">\(t + 1\)</span> are not processed (printed) until all nodes at level <span class="math inline">\(t\)</span> have been processed (printed)</li>
 </ul>
 </section>
-<section id="hw3-possibility-2-books-to-scrape" class="level2">
-<h2 class="anchored" data-anchor-id="hw3-possibility-2-books-to-scrape">HW3 Possibility 2: Books to Scrape</h2>
+<section id="trees-vs.-graphs-cycles" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="trees-vs.-graphs-cycles">Trees vs.&nbsp;Graphs (Cycles)</h2>
 <ul>
-<li><a href="http://books.toscrape.com/" target="_blank">Books to Scrape homepage</a></li>
+<li>In terms of <strong>creating</strong> and <strong>managing</strong> data structures, we start with <strong>Trees</strong> and move to <strong>Graphs</strong></li>
+<li>But, in terms of <strong>defining</strong> these structures, it helps to start with <strong>Graphs</strong></li>
+<li>A <strong>graph</strong> is just a collection of linked nodes (any number of links): <em>connected</em> if some possible path between any two nodes</li>
+<li>A <strong>tree</strong> is a connected graph <strong>without cycles</strong></li>
+<li>A <strong>binary tree</strong> is a tree where each node has only <strong>two outward links</strong> (called <strong>children</strong>)</li>
+<li>A <strong>binary search tree</strong> is a binary tree where
+<ul>
+<li><i class="bi bi-1-circle"></i> Outward links are labeled <code>left</code> and <code>right</code></li>
+<li><i class="bi bi-2-circle"></i> [All contents after following <code>left</code>] <span class="math inline">\(&lt;\)</span> [current content]</li>
+<li><i class="bi bi-3-circle"></i> [All contents after following <code>right</code>] <span class="math inline">\(&gt;\)</span> [current content]</li>
+</ul></li>
 </ul>
 </section>
 </section>
-<section id="lab-data-validation" class="level1" data-stack-name="Lab: Data Validation">
-<h1 data-stack-name="Lab: Data Validation">Lab(!): Data Validation</h1>
-<section id="google-classroom-link" class="level2">
-<h2 class="anchored" data-anchor-id="google-classroom-link">Google Classroom Link</h2>
+<section id="full-topics" class="level1" data-stack-name="Full Topics">
+<h1 data-stack-name="Full Topics">Full Topics</h1>
 <ul>
-<li><a href="https://classroom.google.com/c/NjM5MzE2MTE4NTgx/m/NjY4NDU0NTk0MTk4/details" target="_blank">Open in Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
+<li><a href="#variations-on-linkedlist">Variations on <code>LinkedList</code> →</a></li>
+<li><a href="#object-oriented-design">Object-Oriented Design →</a></li>
+<li><a href="#collision-resistant-hashing">Collision-Resistant Hashing →</a></li>
+<li><a href="#sorting">Sorting →</a></li>
+</ul>
+<section id="variations-on-linkedlist" class="level2">
+<h2 class="anchored" data-anchor-id="variations-on-linkedlist">Variations on <code>LinkedList</code></h2>
+<ul>
+<li><code>FrontBackLinkedList</code></li>
+<li><code>Deque</code> (Pronounced like “Deck”)</li>
+<li><code>DoublyLinkedList</code></li>
 </ul>
 </section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<div id="refs" role="list">
-
+<section id="frontbacklinkedlist" class="level2">
+<h2 class="anchored" data-anchor-id="frontbacklinkedlist"><code>FrontBackLinkedList</code></h2>
+<ul>
+<li>This isn’t exactly a separate data structure from a <code>LinkedList</code>, but instead an “expansion pack” for <code>LinkedList</code> which adds an <code>insert_front()</code> function</li>
+</ul>
+</section>
+<section id="doublylinkedlist" class="level2">
+<h2 class="anchored" data-anchor-id="doublylinkedlist"><code>DoublyLinkedList</code></h2>
+<ul>
+<li>For when we need to be able to <strong>reverse directions</strong> at any point during iteration</li>
+<li><code>LinkedListNode</code> had only a <code>next</code> pointer</li>
+<li><code>DoublyLinkedListNode</code> has <strong>two</strong> pointers: <code>prev</code> and <code>next</code></li>
+</ul>
+</section>
+<section id="deque" class="level2">
+<h2 class="anchored" data-anchor-id="deque"><code>Deque</code></h2>
+<ul>
+<li>May seem similar to <code>FrontBackLinkedList</code>, but this time we <strong>do</strong> have a (slightly) different data structure!</li>
+<li>For when we need to iterate through a list in-order or in <strong>reverse</strong> order, with exact same complexity!
+<ul>
+<li>(Who can think of a case where this would be immediately useful?)</li>
+</ul></li>
+<li>Like in <code>FrontBackLinkedList</code>, we have a new <code>insert_front()</code> function</li>
+<li>Like in <code>DoublyLinkedList</code>, we have both <code>prev</code> and <code>next</code> pointers in each <code>DequeNode</code></li>
+<li>But, we also add a new <strong>pointer</strong> in the <code>Deque</code> class itself (<em>not</em> the <code>DequeNode</code> class), <code>tail</code>, so that we now have <code>head</code> (formerly called root) and <code>tail</code> (pointing to the last element in the LL)</li>
+</ul>
+</section>
+<section id="collision-resistant-hashing" class="level2">
+<h2 class="anchored" data-anchor-id="collision-resistant-hashing">Collision-Resistant Hashing</h2>
+<ul>
+<li>In general: What properties do we think a “good” hashing algorithm should have?</li>
+<li>More specific: Given <span class="math inline">\(N\)</span> objects to store and <span class="math inline">\(M\)</span> available memory slots, what are the limits to <span class="math inline">\(\overline{O}(1)\)</span>?
+<ul>
+<li>Efficiency when <span class="math inline">\(N &lt; M\)</span>?</li>
+<li>Efficiency when <span class="math inline">\(N = M\)</span>?</li>
+<li>Efficiency when <span class="math inline">\(N &gt; M\)</span>?</li>
+<li>How do these change if we move from <code>LinkedList</code>-backed to <code>BST</code>-backed?</li>
+</ul></li>
+</ul>
+</section>
+<section id="object-oriented-design" class="level2">
+<h2 class="anchored" data-anchor-id="object-oriented-design">Object-Oriented Design</h2>
+<ul>
+<li>First: What are the two kinds of “things” that an <strong>object</strong> has?</li>
+<li>What is the difference between a <strong>class</strong> and an <strong>object</strong>?</li>
+<li>OML without Polymorphism</li>
+<li>OML <em>with</em> Polymorphism</li>
+<li>Abstract Base Classes (<code>ABC</code> in Python)</li>
+</ul>
+</section>
+<section id="sorting" class="level2 smaller crunch-title crunch-ul crunch-quarto-figure">
+<h2 class="smaller crunch-title crunch-ul crunch-quarto-figure anchored" data-anchor-id="sorting">Sorting</h2>
+<ul>
+<li>How is <span class="alg">Merge-Sort</span> “better”? What role does <span class="alg">Merge</span> subroutine play?</li>
+<li>What/where exactly are the <strong>invariants</strong> in these diagrams?</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:45%;">
+<center>
+<span class="alg">Insertion-Sort</span>
+</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/insertion_zero.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
 </div>
+</div><div class="column" style="width:55%;">
+<center>
+<span class="alg">Merge-Sort</span>
+</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/merge.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="midterm-metadata" class="level1" data-stack-name="Metadata">
+<h1 data-stack-name="Metadata">Midterm Metadata</h1>
+<section id="midterm-structure" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="midterm-structure">Midterm Structure</h2>
+<ul>
+<li><strong>Coding Portion</strong>: Modifications of <code>LinkedList</code> (Circular / jump-to-end / doubly-linked); non-scary OOP skeleton 🙈</li>
+<li><strong>Multiple Choice Portion</strong>: Lots more to cover…
+<ul>
+<li>Hash Tables: <span class="math inline">\(O(1 + \epsilon \log_2(n))\)</span>, but think about it as:</li>
+<li><span class="math inline">\(1 + (\text{Collision rate}) \cdot (\text{Collision handler efficiency})\)</span></li>
+<li>Linked List <span class="math inline">\(\rightarrow\)</span> Binary Search Tree</li>
+<li>Depth-First vs.&nbsp;Breadth-First: Picture of a tree <span class="math inline">\(\rightarrow\)</span> (a) what is BFS result, (b) what is (in/pre/post)-order DFS result?</li>
+<li>Lastly: Cormen, Leiserson, Rivest, Stein (CLRS), pgs. 17-106</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-two-boxes-that-most-things-in-this-course-can-be-sorted-into" class="level2 title-11 crunch-title crunch-ul">
+<h2 class="title-11 crunch-title crunch-ul anchored" data-anchor-id="the-two-boxes-that-most-things-in-this-course-can-be-sorted-into">The Two Boxes That Most Things In This Course Can Be Sorted Into</h2>
+<ul>
+<li>Box 1: Linear Things</li>
+<li>Box 2: Logarithmic Things</li>
+<li>Things that go into the boxes:
+<ul>
+<li>Algorithms</li>
+<li>Data Structures</li>
+<li>Software Development Patterns</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-boxes" class="level2 smaller title-10 crunch-title crunch-images crunch-quarto-figure crunch-table">
+<h2 class="smaller title-10 crunch-title crunch-images crunch-quarto-figure crunch-table anchored" data-anchor-id="the-boxes">The Boxes</h2>
+<table class="caption-top table" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="width: 25% !important"></th>
+<th data-quarto-table-cell-role="th" style="width: 30% !important">Linear Things: <span class="math inline">\(O(N)\)</span></th>
+<th data-quarto-table-cell-role="th" style="width: 45% !important">Logarithmic Things: <span class="math inline">\(O(\lg{N})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="width: 25% !important"><strong>Data Structures</strong></td>
+<td><p><code>LinkedList</code></p>
+<p><img src="images/linked_list.svg" class="img-fluid" width="270"></p></td>
+<td><p><code>BinarySearchTree</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/bst.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div></td>
+</tr>
+<tr class="even">
+<td style="vertical-align: middle !important"><strong>Sorting Algorithms</strong></td>
+<td><span class="alg">Insertion-Sort</span></td>
+<td><span class="alg">Merge-Sort</span></td>
+</tr>
+<tr class="odd">
+<td style="vertical-align: middle !important"><strong>Search Algorithms</strong></td>
+<td><span class="alg">Linear-Search</span></td>
+<td><span class="alg">Binary-Search</span></td>
+</tr>
+<tr class="even">
+<td><strong>General Pattern</strong></td>
+<td>One-by-One</td>
+<td>Divide-and-Conquer</td>
+</tr>
+<tr class="odd">
+<td><strong>Steps to Look Up a Word</strong></td>
+<td><span class="math inline">\(N = 102118\)</span></td>
+<td><span class="math inline">\(\lceil \log_2(N) \rceil = 17\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Hash Table</strong>: A “trick” that gets us close to <span class="math inline">\(O(1)\)</span>, <strong>by pre-allocating lots of memory!</strong></li>
+</ul>
+<p><span class="math display">\[
+O(N) \; \underbrace{\leadsto O(\log_2(N))}_{\mathclap{\substack{\text{More Efficient Algorithm} \\ \text{(Free!)}}}} \; \underbrace{\leadsto O(1 + \epsilon\log_2(N))}_{\substack{\text{More Memory} \\ \text{(\$\$\$)}}}
+\]</span></p>
 
 
 </section>

@@ -871,9 +871,128 @@
     ]
   },
   {
+    "objectID": "w07/slides.html#the-great-wheel-of-data-structural-and-algorithmic-fate",
+    "href": "w07/slides.html#the-great-wheel-of-data-structural-and-algorithmic-fate",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "The Great Wheel of Data-Structural and Algorithmic Fate",
+    "text": "The Great Wheel of Data-Structural and Algorithmic Fate\n\n\n\nFull Topics (20 mins):\n\n\nLinkedList variations\nObject-Oriented Design\nCollision-Resistant Hashing\nSorting\n\n\n\nMini Topics (10 mins):\n\n\nStack-Heap Distinction\nBig-\\(\\overline{O}\\) Notation\nData Validation\nLinear vs. Logarithmic Design\nBSTs: DFS vs. BFS\nTrees vs. Graphs (Cycles)\n\n\n\n\n\nhttps://wheelofnames.com/"
+  },
+  {
+    "objectID": "w07/slides.html#stack-heap-distinction",
+    "href": "w07/slides.html#stack-heap-distinction",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Stack-Heap Distinction",
+    "text": "Stack-Heap Distinction\n\nThe Stack (\\(\\neq\\) Stack data structure)\n\nFixed-length things go here, including Pointers to Heap\n\nThe Heap (\\(\\neq\\) Heap data structure)\n\nVariable-length things go here\n\nHeap elves manage The Heap, by…\n\nConstantly “claiming” additional memory from the OS (malloc()), in case objects need to grow\n“Freeing” memory back for use by the OS (free()), when objects shrink / deleted / Python execution ends"
+  },
+  {
+    "objectID": "w07/slides.html#big-overlineo-notation",
+    "href": "w07/slides.html#big-overlineo-notation",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Big-\\(\\overline{O}\\) Notation",
+    "text": "Big-\\(\\overline{O}\\) Notation\n\nThese are equivalence classes (not numbers or functions)\n Compute the runtime \\(T(n)\\) of an algorithm\n Worry about how it scales as \\(n\\) gets large: \\(\\lim_{n \\rightarrow \\infty}T(n)\\)\n Decide whether to use it or not based on which equivalence class it converges to:\n\n\\(O(1)\\)\n\\(O(\\log(n))\\)\n\\(O(n)\\)\n\\(O(n^2)\\)"
+  },
+  {
+    "objectID": "w07/slides.html#data-validation",
+    "href": "w07/slides.html#data-validation",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Data Validation",
+    "text": "Data Validation\n\nTo know: Type Hints in Python\nTo know: Pydantic\nTo think about: Pandera"
+  },
+  {
+    "objectID": "w07/slides.html#linear-vs.-logarithmic-design",
+    "href": "w07/slides.html#linear-vs.-logarithmic-design",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Linear vs. Logarithmic Design",
+    "text": "Linear vs. Logarithmic Design\n\nEnter the Logarithm demo app"
+  },
+  {
+    "objectID": "w07/slides.html#depth-first-vs.-breadth-first-search",
+    "href": "w07/slides.html#depth-first-vs.-breadth-first-search",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Depth-First vs. Breadth-First Search",
+    "text": "Depth-First vs. Breadth-First Search\n\nDepth-First is greedy: At any given node, algorithm starts by just following first link until it hits None!\n\nOnly once it hits None does it “back up” and follow second link\n\nBreadth-First is patient: Nodes at level \\(t + 1\\) are not processed (printed) until all nodes at level \\(t\\) have been processed (printed)"
+  },
+  {
+    "objectID": "w07/slides.html#trees-vs.-graphs-cycles",
+    "href": "w07/slides.html#trees-vs.-graphs-cycles",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Trees vs. Graphs (Cycles)",
+    "text": "Trees vs. Graphs (Cycles)\n\nIn terms of creating and managing data structures, we start with Trees and move to Graphs\nBut, in terms of defining these structures, it helps to start with Graphs\nA graph is just a collection of linked nodes (any number of links): connected if some possible path between any two nodes\nA tree is a connected graph without cycles\nA binary tree is a tree where each node has only two outward links (called children)\nA binary search tree is a binary tree where\n\n Outward links are labeled left and right\n [All contents after following left] \\(&lt;\\) [current content]\n [All contents after following right] \\(&gt;\\) [current content]"
+  },
+  {
+    "objectID": "w07/slides.html#variations-on-linkedlist",
+    "href": "w07/slides.html#variations-on-linkedlist",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Variations on LinkedList",
+    "text": "Variations on LinkedList\n\nFrontBackLinkedList\nDeque (Pronounced like “Deck”)\nDoublyLinkedList"
+  },
+  {
+    "objectID": "w07/slides.html#frontbacklinkedlist",
+    "href": "w07/slides.html#frontbacklinkedlist",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "FrontBackLinkedList",
+    "text": "FrontBackLinkedList\n\nThis isn’t exactly a separate data structure from a LinkedList, but instead an “expansion pack” for LinkedList which adds an insert_front() function"
+  },
+  {
+    "objectID": "w07/slides.html#doublylinkedlist",
+    "href": "w07/slides.html#doublylinkedlist",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "DoublyLinkedList",
+    "text": "DoublyLinkedList\n\nFor when we need to be able to reverse directions at any point during iteration\nLinkedListNode had only a next pointer\nDoublyLinkedListNode has two pointers: prev and next"
+  },
+  {
+    "objectID": "w07/slides.html#deque",
+    "href": "w07/slides.html#deque",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Deque",
+    "text": "Deque\n\nMay seem similar to FrontBackLinkedList, but this time we do have a (slightly) different data structure!\nFor when we need to iterate through a list in-order or in reverse order, with exact same complexity!\n\n(Who can think of a case where this would be immediately useful?)\n\nLike in FrontBackLinkedList, we have a new insert_front() function\nLike in DoublyLinkedList, we have both prev and next pointers in each DequeNode\nBut, we also add a new pointer in the Deque class itself (not the DequeNode class), tail, so that we now have head (formerly called root) and tail (pointing to the last element in the LL)"
+  },
+  {
+    "objectID": "w07/slides.html#collision-resistant-hashing",
+    "href": "w07/slides.html#collision-resistant-hashing",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Collision-Resistant Hashing",
+    "text": "Collision-Resistant Hashing\n\nIn general: What properties do we think a “good” hashing algorithm should have?\nMore specific: Given \\(N\\) objects to store and \\(M\\) available memory slots, what are the limits to \\(\\overline{O}(1)\\)?\n\nEfficiency when \\(N &lt; M\\)?\nEfficiency when \\(N = M\\)?\nEfficiency when \\(N &gt; M\\)?\nHow do these change if we move from LinkedList-backed to BST-backed?"
+  },
+  {
+    "objectID": "w07/slides.html#object-oriented-design",
+    "href": "w07/slides.html#object-oriented-design",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Object-Oriented Design",
+    "text": "Object-Oriented Design\n\nFirst: What are the two kinds of “things” that an object has?\nWhat is the difference between a class and an object?\nOML without Polymorphism\nOML with Polymorphism\nAbstract Base Classes (ABC in Python)"
+  },
+  {
+    "objectID": "w07/slides.html#sorting",
+    "href": "w07/slides.html#sorting",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Sorting",
+    "text": "Sorting\n\nHow is Merge-Sort “better”? What role does Merge subroutine play?\nWhat/where exactly are the invariants in these diagrams?\n\n\n\n\nInsertion-Sort\n\n\n\n\n\n\n\n\nMerge-Sort"
+  },
+  {
+    "objectID": "w07/slides.html#midterm-structure",
+    "href": "w07/slides.html#midterm-structure",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Midterm Structure",
+    "text": "Midterm Structure\n\nCoding Portion: Modifications of LinkedList (Circular / jump-to-end / doubly-linked); non-scary OOP skeleton 🙈\nMultiple Choice Portion: Lots more to cover…\n\nHash Tables: \\(O(1 + \\epsilon \\log_2(n))\\), but think about it as:\n\\(1 + (\\text{Collision rate}) \\cdot (\\text{Collision handler efficiency})\\)\nLinked List \\(\\rightarrow\\) Binary Search Tree\nDepth-First vs. Breadth-First: Picture of a tree \\(\\rightarrow\\) (a) what is BFS result, (b) what is (in/pre/post)-order DFS result?\nLastly: Cormen, Leiserson, Rivest, Stein (CLRS), pgs. 17-106"
+  },
+  {
+    "objectID": "w07/slides.html#the-two-boxes-that-most-things-in-this-course-can-be-sorted-into",
+    "href": "w07/slides.html#the-two-boxes-that-most-things-in-this-course-can-be-sorted-into",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "The Two Boxes That Most Things In This Course Can Be Sorted Into",
+    "text": "The Two Boxes That Most Things In This Course Can Be Sorted Into\n\nBox 1: Linear Things\nBox 2: Logarithmic Things\nThings that go into the boxes:\n\nAlgorithms\nData Structures\nSoftware Development Patterns"
+  },
+  {
+    "objectID": "w07/slides.html#the-boxes",
+    "href": "w07/slides.html#the-boxes",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "The Boxes",
+    "text": "The Boxes\n\n\n\n\n\n\n\n\n\nLinear Things: \\(O(N)\\)\nLogarithmic Things: \\(O(\\lg{N})\\)\n\n\n\n\nData Structures\nLinkedList\n\nBinarySearchTree\n\n\n\n\n\n\n\nSorting Algorithms\nInsertion-Sort\nMerge-Sort\n\n\nSearch Algorithms\nLinear-Search\nBinary-Search\n\n\nGeneral Pattern\nOne-by-One\nDivide-and-Conquer\n\n\nSteps to Look Up a Word\n\\(N = 102118\\)\n\\(\\lceil \\log_2(N) \\rceil = 17\\)\n\n\n\n\nHash Table: A “trick” that gets us close to \\(O(1)\\), by pre-allocating lots of memory!\n\n\\[\nO(N) \\; \\underbrace{\\leadsto O(\\log_2(N))}_{\\mathclap{\\substack{\\text{More Efficient Algorithm} \\\\ \\text{(Free!)}}}} \\; \\underbrace{\\leadsto O(1 + \\epsilon\\log_2(N))}_{\\substack{\\text{More Memory} \\\\ \\text{(\\$\\$\\$)}}}\n\\]"
+  },
+  {
     "objectID": "w07/index.html",
     "href": "w07/index.html",
-    "title": "Week 7: Code Examples and Midterm Prep",
+    "title": "Week 7: Code Examples and Midterm Review",
     "section": "",
     "text": "Open slides in new window →",
     "crumbs": [
@@ -881,151 +1000,171 @@
     ]
   },
   {
-    "objectID": "w07/index.html#most-common-hw1-to-midterm-struggles",
-    "href": "w07/index.html#most-common-hw1-to-midterm-struggles",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "Most Common HW1-to-Midterm Struggles",
-    "text": "Most Common HW1-to-Midterm Struggles\n\nIngesting data (HW1: Swimmer class)\n\n\\(\\implies\\) Data-processing pipelines!\n\nMaintaining invariants as dataset grows (HW2: None → InventoryItem → BinarySearchTree)\n\n\\(\\implies\\) Data validation!",
+    "objectID": "w07/index.html#the-great-wheel-of-data-structural-and-algorithmic-fate",
+    "href": "w07/index.html#the-great-wheel-of-data-structural-and-algorithmic-fate",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "The Great Wheel of Data-Structural and Algorithmic Fate",
+    "text": "The Great Wheel of Data-Structural and Algorithmic Fate\n\n\n\nFull Topics (20 mins):\n\n\nLinkedList variations\nObject-Oriented Design\nCollision-Resistant Hashing\nSorting\n\n\n\nMini Topics (10 mins):\n\n\nStack-Heap Distinction\nBig-\\(\\overline{O}\\) Notation\nData Validation\nLinear vs. Logarithmic Design\nBSTs: DFS vs. BFS\nTrees vs. Graphs (Cycles)\n\n\n\n\n\nhttps://wheelofnames.com/",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#pydantic",
-    "href": "w07/index.html#pydantic",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "Pydantic",
-    "text": "Pydantic",
+    "objectID": "w07/index.html#stack-heap-distinction",
+    "href": "w07/index.html#stack-heap-distinction",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Stack-Heap Distinction",
+    "text": "Stack-Heap Distinction\n\nThe Stack (\\(\\neq\\) Stack data structure)\n\nFixed-length things go here, including Pointers to Heap\n\nThe Heap (\\(\\neq\\) Heap data structure)\n\nVariable-length things go here\n\nHeap elves manage The Heap, by…\n\nConstantly “claiming” additional memory from the OS (malloc()), in case objects need to grow\n“Freeing” memory back for use by the OS (free()), when objects shrink / deleted / Python execution ends",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#pydantic-in-action",
-    "href": "w07/index.html#pydantic-in-action",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "Pydantic in Action",
-    "text": "Pydantic in Action\n\n\nCode\nfrom pydantic import BaseModel\nclass InventoryItem(BaseModel):\n    item_name: str\n    price: float\nmy_item = InventoryItem(item_name=\"Banana\", price=10)\nmy_item\n\n\nInventoryItem(item_name='Banana', price=10.0)\n\n\n\n\nCode\ninvalid_item = InventoryItem(item_name=\"Banana\", price=\"100 dollar\")\n\n\n\n---------------------------------------------------------------------------\nValidationError                           Traceback (most recent call last)\nCell In[2], line 1\n----&gt; 1 invalid_item = InventoryItem(item_name=\"Banana\", price=\"100 dollar\")\n\nFile ~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176, in BaseModel.__init__(self, **data)\n    174 # `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks\n    175 __tracebackhide__ = True\n--&gt; 176 self.__pydantic_validator__.validate_python(data, self_instance=self)\n\nValidationError: 1 validation error for InventoryItem\nprice\n  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='100 dollar', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.7/v/float_parsing",
+    "objectID": "w07/index.html#big-overlineo-notation",
+    "href": "w07/index.html#big-overlineo-notation",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Big-\\(\\overline{O}\\) Notation",
+    "text": "Big-\\(\\overline{O}\\) Notation\n\nThese are equivalence classes (not numbers or functions)\n Compute the runtime \\(T(n)\\) of an algorithm\n Worry about how it scales as \\(n\\) gets large: \\(\\lim_{n \\rightarrow \\infty}T(n)\\)\n Decide whether to use it or not based on which equivalence class it converges to:\n\n\\(O(1)\\)\n\\(O(\\log(n))\\)\n\\(O(n)\\)\n\\(O(n^2)\\)",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#pydantic-in-even-cooler-action",
-    "href": "w07/index.html#pydantic-in-even-cooler-action",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "Pydantic in Even-Cooler Action",
-    "text": "Pydantic in Even-Cooler Action\n\n\n\n\nCode\nfrom pydantic import BaseModel, EmailStr, PositiveInt\nclass Employee(BaseModel):\n    name: str\n    email: EmailStr\n    age: PositiveInt\ninvalid_employee = Employee(\n  name=\"Jeef\",\n  email=\"fakeemail!!!\",\n  age=50\n)\n\n\n\n---------------------------------------------------------------------------\nValidationError                           Traceback (most recent call last)\nCell In[3], line 6\n      4     email: EmailStr\n      5     age: PositiveInt\n----&gt; 6 invalid_employee = Employee(\n      7   name=\"Jeef\",\n      8   email=\"fakeemail!!!\",\n      9   age=50\n     10 )\n\nFile ~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176, in BaseModel.__init__(self, **data)\n    174 # `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks\n    175 __tracebackhide__ = True\n--&gt; 176 self.__pydantic_validator__.validate_python(data, self_instance=self)\n\nValidationError: 1 validation error for Employee\nemail\n  value is not a valid email address: The email address is not valid. It must have exactly one @-sign. [type=value_error, input_value='fakeemail!!!', input_type=str]\n\n\n\n\n\n\nCode\ninvalid_employee2 = Employee(\n  name=\"Jeeferson\",\n  email=\"valid@email.com\",\n  age=-3\n)\n\n\n\n---------------------------------------------------------------------------\nValidationError                           Traceback (most recent call last)\nCell In[4], line 1\n----&gt; 1 invalid_employee2 = Employee(\n      2   name=\"Jeeferson\",\n      3   email=\"valid@email.com\",\n      4   age=-3\n      5 )\n\nFile ~/.pyenv/versions/3.11.5/lib/python3.11/site-packages/pydantic/main.py:176, in BaseModel.__init__(self, **data)\n    174 # `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks\n    175 __tracebackhide__ = True\n--&gt; 176 self.__pydantic_validator__.validate_python(data, self_instance=self)\n\nValidationError: 1 validation error for Employee\nage\n  Input should be greater than 0 [type=greater_than, input_value=-3, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.7/v/greater_than",
+    "objectID": "w07/index.html#data-validation",
+    "href": "w07/index.html#data-validation",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Data Validation",
+    "text": "Data Validation\n\nTo know: Type Hints in Python\nTo know: Pydantic\nTo think about: Pandera",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#two-generations-of-python-pipeline-libraries",
-    "href": "w07/index.html#two-generations-of-python-pipeline-libraries",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "Two Generations of Python Pipeline Libraries",
-    "text": "Two Generations of Python Pipeline Libraries\n\nGen 1: Airflow (AirBnB), Luigi (Spotify)\nGen 2: Dagster, Prefect",
+    "objectID": "w07/index.html#linear-vs.-logarithmic-design",
+    "href": "w07/index.html#linear-vs.-logarithmic-design",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Linear vs. Logarithmic Design",
+    "text": "Linear vs. Logarithmic Design\n\nEnter the Logarithm demo app",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#for-now-prefect",
-    "href": "w07/index.html#for-now-prefect",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "For Now: Prefect!",
-    "text": "For Now: Prefect!\n\nBut, the principles (ETL) remain the same!",
+    "objectID": "w07/index.html#depth-first-vs.-breadth-first-search",
+    "href": "w07/index.html#depth-first-vs.-breadth-first-search",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Depth-First vs. Breadth-First Search",
+    "text": "Depth-First vs. Breadth-First Search\n\nDepth-First is greedy: At any given node, algorithm starts by just following first link until it hits None!\n\nOnly once it hits None does it “back up” and follow second link\n\nBreadth-First is patient: Nodes at level \\(t + 1\\) are not processed (printed) until all nodes at level \\(t\\) have been processed (printed)",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#etl-extract-transform-load",
-    "href": "w07/index.html#etl-extract-transform-load",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "ETL = Extract, Transform, Load",
-    "text": "ETL = Extract, Transform, Load\n\n\n\nFrom Analytics Vidhya",
+    "objectID": "w07/index.html#trees-vs.-graphs-cycles",
+    "href": "w07/index.html#trees-vs.-graphs-cycles",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Trees vs. Graphs (Cycles)",
+    "text": "Trees vs. Graphs (Cycles)\n\nIn terms of creating and managing data structures, we start with Trees and move to Graphs\nBut, in terms of defining these structures, it helps to start with Graphs\nA graph is just a collection of linked nodes (any number of links): connected if some possible path between any two nodes\nA tree is a connected graph without cycles\nA binary tree is a tree where each node has only two outward links (called children)\nA binary search tree is a binary tree where\n\n Outward links are labeled left and right\n [All contents after following left] \\(&lt;\\) [current content]\n [All contents after following right] \\(&gt;\\) [current content]",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#you-have-already-been-doing-this",
-    "href": "w07/index.html#you-have-already-been-doing-this",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "You Have Already Been Doing This!",
-    "text": "You Have Already Been Doing This!\n\nHW1: Swim team example\n\nExtract: Load data from .csv\nTransform: Convert times to milliseconds\nLoad: Store into Team object\n\nHW2 (Throughout)\n\nExtract: Load products from .csv into Pandas\nTransform: (Construct InventoryItem object for each row)\nLoad: Store into LogarithmicHashTable",
+    "objectID": "w07/index.html#variations-on-linkedlist",
+    "href": "w07/index.html#variations-on-linkedlist",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Variations on LinkedList",
+    "text": "Variations on LinkedList\n\nFrontBackLinkedList\nDeque (Pronounced like “Deck”)\nDoublyLinkedList",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#and-you-have-already-run-into-the-need-for-validation",
-    "href": "w07/index.html#and-you-have-already-run-into-the-need-for-validation",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "(And You Have Already Run into the Need for Validation!)",
-    "text": "(And You Have Already Run into the Need for Validation!)\n\nHW1: Are the times in seconds or milliseconds?\nHW2: Are users providing key and value separately, or together?\nIf together: as tuples or InventoryItems?\nIf InventoryItems: What type(s) for item_name? What type(s) for price? 😵\n\\(\\implies\\) One of the two main focuses for HW3 will be validation of input data!",
+    "objectID": "w07/index.html#frontbacklinkedlist",
+    "href": "w07/index.html#frontbacklinkedlist",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "FrontBackLinkedList",
+    "text": "FrontBackLinkedList\n\nThis isn’t exactly a separate data structure from a LinkedList, but instead an “expansion pack” for LinkedList which adds an insert_front() function",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step",
-    "href": "w07/index.html#cant-we-just-skip-to-the-cool-fun-ml-part-the-t-step",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)",
-    "text": "Can’t We Just Skip to the Cool, Fun ML Part? (The T Step)\n\n(Hopefully things from previous slide have taught you the dangers of this!)\nIt’s like Anscombe’s Quartet from DSAN 5000/5100/5200: We can be misled by fancy tools if we don’t take time for the (sometimes boring) step of looking at the data\nExample: ETL for processing text data (books for now)",
+    "objectID": "w07/index.html#doublylinkedlist",
+    "href": "w07/index.html#doublylinkedlist",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "DoublyLinkedList",
+    "text": "DoublyLinkedList\n\nFor when we need to be able to reverse directions at any point during iteration\nLinkedListNode had only a next pointer\nDoublyLinkedListNode has two pointers: prev and next",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#bookshelfscan-an-example-i-use-irl",
-    "href": "w07/index.html#bookshelfscan-an-example-i-use-irl",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "BookshelfScan (An Example I Use IRL!)",
-    "text": "BookshelfScan (An Example I Use IRL!)\n\nExtract: Dropbox folder containing ebooks\nTransform: Compute word counts\nLoad: Save word counts into a database\nEnables me to figure out which books talk about a topic \\(t\\) (data structures, algorithms, data ethics and policy, etc.)!\nBUT (Devil is in the details): Can look very different for txt, epub (can contain images), pdf (sometimes text is embedded, sometimes not), images of scans, audiobooks\n\\(\\implies\\) (Sad but true) Pipleline will crash and burn if you don’t handle these before using Cool NLP things in T step",
+    "objectID": "w07/index.html#deque",
+    "href": "w07/index.html#deque",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Deque",
+    "text": "Deque\n\nMay seem similar to FrontBackLinkedList, but this time we do have a (slightly) different data structure!\nFor when we need to iterate through a list in-order or in reverse order, with exact same complexity!\n\n(Who can think of a case where this would be immediately useful?)\n\nLike in FrontBackLinkedList, we have a new insert_front() function\nLike in DoublyLinkedList, we have both prev and next pointers in each DequeNode\nBut, we also add a new pointer in the Deque class itself (not the DequeNode class), tail, so that we now have head (formerly called root) and tail (pointing to the last element in the LL)",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#hw3-possibility-1-pet-store-inventory",
-    "href": "w07/index.html#hw3-possibility-1-pet-store-inventory",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "HW3 Possibility 1: Pet Store Inventory",
-    "text": "HW3 Possibility 1: Pet Store Inventory\n\nhttps://petstore.swagger.io/v2/store/inventory",
+    "objectID": "w07/index.html#collision-resistant-hashing",
+    "href": "w07/index.html#collision-resistant-hashing",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Collision-Resistant Hashing",
+    "text": "Collision-Resistant Hashing\n\nIn general: What properties do we think a “good” hashing algorithm should have?\nMore specific: Given \\(N\\) objects to store and \\(M\\) available memory slots, what are the limits to \\(\\overline{O}(1)\\)?\n\nEfficiency when \\(N &lt; M\\)?\nEfficiency when \\(N = M\\)?\nEfficiency when \\(N &gt; M\\)?\nHow do these change if we move from LinkedList-backed to BST-backed?",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#hw3-possibility-2-books-to-scrape",
-    "href": "w07/index.html#hw3-possibility-2-books-to-scrape",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "HW3 Possibility 2: Books to Scrape",
-    "text": "HW3 Possibility 2: Books to Scrape\n\nBooks to Scrape homepage",
+    "objectID": "w07/index.html#object-oriented-design",
+    "href": "w07/index.html#object-oriented-design",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Object-Oriented Design",
+    "text": "Object-Oriented Design\n\nFirst: What are the two kinds of “things” that an object has?\nWhat is the difference between a class and an object?\nOML without Polymorphism\nOML with Polymorphism\nAbstract Base Classes (ABC in Python)",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#google-classroom-link",
-    "href": "w07/index.html#google-classroom-link",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "Google Classroom Link",
-    "text": "Google Classroom Link\n\nOpen in Google Classroom",
+    "objectID": "w07/index.html#sorting",
+    "href": "w07/index.html#sorting",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Sorting",
+    "text": "Sorting\n\nHow is Merge-Sort “better”? What role does Merge subroutine play?\nWhat/where exactly are the invariants in these diagrams?\n\n\n\n\nInsertion-Sort\n\n\n\n\n\n\n\n\nMerge-Sort",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
   },
   {
-    "objectID": "w07/index.html#references",
-    "href": "w07/index.html#references",
-    "title": "Week 7: Code Examples and Midterm Prep",
-    "section": "References",
-    "text": "References",
+    "objectID": "w07/index.html#midterm-structure",
+    "href": "w07/index.html#midterm-structure",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Midterm Structure",
+    "text": "Midterm Structure\n\nCoding Portion: Modifications of LinkedList (Circular / jump-to-end / doubly-linked); non-scary OOP skeleton 🙈\nMultiple Choice Portion: Lots more to cover…\n\nHash Tables: \\(O(1 + \\epsilon \\log_2(n))\\), but think about it as:\n\\(1 + (\\text{Collision rate}) \\cdot (\\text{Collision handler efficiency})\\)\nLinked List \\(\\rightarrow\\) Binary Search Tree\nDepth-First vs. Breadth-First: Picture of a tree \\(\\rightarrow\\) (a) what is BFS result, (b) what is (in/pre/post)-order DFS result?\nLastly: Cormen, Leiserson, Rivest, Stein (CLRS), pgs. 17-106",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#the-two-boxes-that-most-things-in-this-course-can-be-sorted-into",
+    "href": "w07/index.html#the-two-boxes-that-most-things-in-this-course-can-be-sorted-into",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "The Two Boxes That Most Things In This Course Can Be Sorted Into",
+    "text": "The Two Boxes That Most Things In This Course Can Be Sorted Into\n\nBox 1: Linear Things\nBox 2: Logarithmic Things\nThings that go into the boxes:\n\nAlgorithms\nData Structures\nSoftware Development Patterns",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#the-boxes",
+    "href": "w07/index.html#the-boxes",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "The Boxes",
+    "text": "The Boxes\n\n\n\n\n\n\n\n\n\nLinear Things: \\(O(N)\\)\nLogarithmic Things: \\(O(\\lg{N})\\)\n\n\n\n\nData Structures\nLinkedList\n\nBinarySearchTree\n\n\n\n\n\n\n\nSorting Algorithms\nInsertion-Sort\nMerge-Sort\n\n\nSearch Algorithms\nLinear-Search\nBinary-Search\n\n\nGeneral Pattern\nOne-by-One\nDivide-and-Conquer\n\n\nSteps to Look Up a Word\n\\(N = 102118\\)\n\\(\\lceil \\log_2(N) \\rceil = 17\\)\n\n\n\n\nHash Table: A “trick” that gets us close to \\(O(1)\\), by pre-allocating lots of memory!\n\n\\[\nO(N) \\; \\underbrace{\\leadsto O(\\log_2(N))}_{\\mathclap{\\substack{\\text{More Efficient Algorithm} \\\\ \\text{(Free!)}}}} \\; \\underbrace{\\leadsto O(1 + \\epsilon\\log_2(N))}_{\\substack{\\text{More Memory} \\\\ \\text{(\\$\\$\\$)}}}\n\\]",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
@@ -2255,7 +2394,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'None', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Vegan', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Gluten Free', 'None', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'None', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2587,7 +2726,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Vegan', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Vegan', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Gluten Free', 'None', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Vegan', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -4113,7 +4252,7 @@
     "href": "index.html",
     "title": "DSAN 5500: Data Structures, Objects, and Algorithms in Python",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5500: Data Structures, Objects, and Algorithms in Python, Spring 2025, at Georgetown University! The course takes place on Thursdays from 6:30 to 9:00pm in Healy 104. More details are provided on the syllabus.\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Course Intro and Motivation\n\n\nJanuary 9\n\n\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nJanuary 16\n\n\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nJanuary 23\n\n\n\n\nWeek 4: Data Structures from Scratch with OOP\n\n\nJanuary 30\n\n\n\n\nWeek 5: Hash Tables and Binary Search Trees\n\n\nFebruary 6\n\n\n\n\nWeek 6: Depth-First and Breadth-First Search\n\n\nFebruary 13\n\n\n\n\nWeek 7: Code Examples and Midterm Prep\n\n\nFebruary 20\n\n\n\n\nWeek 8: In-Class Midterm\n\n\nFebruary 27\n\n\n\n\nWeek 9: Data Validation, Data Processing Pipelines\n\n\nMarch 13\n\n\n\n\nWeek 10: Data Pipeline Orchestration\n\n\nMarch 20\n\n\n\n\nWeek 11: Parallel Pipelines and Map-Reduce\n\n\nMarch 27\n\n\n\n\nWeek 12: Final Projects, Interfaces\n\n\nApril 3\n\n\n\n\nWeek 13: Applications in NLP\n\n\nApril 10\n\n\n\n\nWeek 14: Applications in Bioinformatics\n\n\nApril 24\n\n\n\n\n\nNo matching items",
+    "text": "Welcome to the homepage for DSAN 5500: Data Structures, Objects, and Algorithms in Python, Spring 2025, at Georgetown University! The course takes place on Thursdays from 6:30 to 9:00pm in Healy 104. More details are provided on the syllabus.\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Course Intro and Motivation\n\n\nJanuary 9\n\n\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nJanuary 16\n\n\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nJanuary 23\n\n\n\n\nWeek 4: Data Structures from Scratch with OOP\n\n\nJanuary 30\n\n\n\n\nWeek 5: Hash Tables and Binary Search Trees\n\n\nFebruary 6\n\n\n\n\nWeek 6: Depth-First and Breadth-First Search\n\n\nFebruary 13\n\n\n\n\nWeek 7: Code Examples and Midterm Review\n\n\nFebruary 20\n\n\n\n\nWeek 8: In-Class Midterm\n\n\nFebruary 27\n\n\n\n\nWeek 9: Data Validation, Data Processing Pipelines\n\n\nMarch 13\n\n\n\n\nWeek 10: Data Pipeline Orchestration\n\n\nMarch 20\n\n\n\n\nWeek 11: Parallel Pipelines and Map-Reduce\n\n\nMarch 27\n\n\n\n\nWeek 12: Final Projects, Interfaces\n\n\nApril 3\n\n\n\n\nWeek 13: Applications in NLP\n\n\nApril 10\n\n\n\n\nWeek 14: Applications in Bioinformatics\n\n\nApril 24\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]
