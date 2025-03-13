@@ -1,12 +1,11 @@
 ---
-title: "Week 9: {{< var w09.title >}}"
+title: "Week 9: ETL Pipelines with Prefect"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: 2025-03-13
 date-format: full
 author: "Jeff Jacobs"
 institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
 lecnum: 9
-jupyter: python3
 categories:
   - "Class Sessions"
 format:
@@ -20,10 +19,8 @@ format:
     slide-number: true
     html-math-method: mathjax
     include-in-header:
-      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='preconnect' href='https://fonts.googleapis.com'>
-<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-<link href='https://fonts.googleapis.com/css2?family=Honk&display=swap' rel='stylesheet'>"
-    theme: ["../_jjslides.scss"]
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+    theme: [default, "../dsan-globals/jjquarto.scss"]
     simplemenu:
       flat: true
       barhtml:
@@ -47,23 +44,38 @@ format:
 
 :::
 
-<!-- # Absorbing Buzzwords Now $\leadsto$ Quickly Harnessing the Full Power of Prefect! {data-stack-name="Key Concepts"} -->
+# Schedule {.smaller .small-title .crunch-title .crunch-callout .code-90 data-name="Schedule"}
 
-## The Necessary Buzzwords {data-name="Key Concepts"}
+Today's Planned Schedule:
 
-*(Underlined words link to "Concepts" section of Prefect's docs)*
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 6:30pm | 6:50pm | [Key Concepts &rarr;](#key-concepts) |
+| | 6:50pm | 7:00pm | [Execution Graphs &rarr;](#deployments-rightarrow-run-flows-programmatically) |
+| | 7:00pm | 7:15pm | [Deployments (Preview) &rarr;](#the-power-of-deployments-(more-next-week))
+| | 7:15pm | 8:00pm | [Lab Part 1 &rarr;](#lab-time) |
+| **Break!** | 8:00pm | 8:10pm | |
+| | 8:10pm | 9:00pm | [Lab Part 2 &rarr;](#lab-time) |
+
+: {tbl-colwidths="[12,12,12,64]"}
+
+# Key Concepts {data-stack-name="Key Concepts"}
+
+## The Three Main Buzzwords {.crunch-title}
+
+*(Underlined terms link to relevant section of [docs](https://docs.prefect.io/v3/get-started/index))*
 
 * <a class='under' href='https://docs.prefect.io/latest/concepts/flows/' target='_blank'>**`Flow`**</a>: The "main thing" your pipeline is doing!
   * Except in simple cases, will consist of **multiple <a class='under' href='https://docs.prefect.io/latest/concepts/tasks/' target='_blank'>`Tasks`</a>**
 * `Flow`s and `Task`s alone already provide much more functionality than "basic" functions...
 * <a class='under' href='https://docs.prefect.io/latest/concepts/deployments/' target='_blank'>**`Deployment`s**</a>: `Flow`s + `Task`s + **Metadata** about **how** and **when** you want them to run.
-  * Prefect docs: "**Deployments** elevate workflows from [functions that you call manually] to [API-managed entities]."
+  * "**Deployments** elevate workflows from [functions that you call manually] to [API-managed entities]."
 
 ## Deployments $\Rightarrow$ Run Flows Programmatically {.crunch-title .title-11 .smaller}
 
 ![](images/flow-run-details-crop.png){fig-align="center"}
 
-## The Power of `Deployment`s {.crunch-title .crunch-ul data-name="Fancier Concepts"}
+# The Power of `Deployment`s (More Next Week) {.smaller .crunch-title .crunch-ul .title-10 data-stack-name="Deployments"}
 
 * "Packaging" code as **`Deployments`** enables <a class='under' href='https://docs.prefect.io/latest/concepts/automations/' target='_blank'>**`Triggers`**</a>:
   * On a particular <a href='https://docs.prefect.io/latest/concepts/schedules/' target='_blank' class='under'>**`Schedules`**</a>: every 4 hours, every day at noon, once per week, etc.
@@ -223,7 +235,7 @@ $\leadsto$
 :::
 :::
 
-## Lab Time! {data-name="Lab"}
+# Lab Time! {data-name="Lab"}
 
 * <a href='https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing' target='_blank'>Week 9 Lab: Pipeline Orchestration with Prefect <i class='bi bi-box-arrow-up-right ps-1'></i></a>
 

@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.6.40">
 
   <meta name="author" content="Jeff Jacobs">
-  <title>DSAN 5500 – Week 9: Data Validation, Data Processing Pipelines</title>
+  <title>DSAN 5500 – Week 9: ETL Pipelines with Prefect</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d2a89da1bebd663fba316e8d88eb75f2.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-c01bc887bfaaebc8a1c28afd5494c425.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -189,14 +189,14 @@
       margin-right: 0; 
     }
   </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""> <link href="https://fonts.googleapis.com/css2?family=Honk&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Week 9: Data Validation, Data Processing Pipelines</h1>
+  <h1 class="title">Week 9: ETL Pipelines with Prefect</h1>
   <p class="subtitle"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
 
 <div class="quarto-title-authors">
@@ -212,13 +212,73 @@ Jeff Jacobs
 
   <p class="date">Thursday, March 13, 2025</p>
 </section>
-<section class="slide level2">
-
-<!-- # Absorbing Buzzwords Now $\leadsto$ Quickly Harnessing the Full Power of Prefect! {data-stack-name="Key Concepts"} -->
+<section id="schedule" class="title-slide slide level1 smaller small-title crunch-title crunch-callout code-90 center" data-name="Schedule">
+<h1>Schedule</h1>
+<p>Today’s Planned Schedule:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 64%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Start</th>
+<th style="text-align: left;">End</th>
+<th style="text-align: left;">Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;">6:30pm</td>
+<td style="text-align: left;">6:50pm</td>
+<td style="text-align: left;"><a href="#/key-concepts">Key Concepts →</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">6:50pm</td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;"><a href="#/deployments-rightarrow-run-flows-programmatically">Execution Graphs →</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;">7:15pm</td>
+<td style="text-align: left;"><a href="#/the-power-of-deployments-(more-next-week)">Deployments (Preview) →</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">7:15pm</td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;"><a href="#/lab-time">Lab Part 1 →</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Break!</strong></td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;">9:00pm</td>
+<td style="text-align: left;"><a href="#/lab-time">Lab Part 2 →</a></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="the-necessary-buzzwords" class="slide level2" data-name="Key Concepts">
-<h2>The Necessary Buzzwords</h2>
-<p><em>(Underlined words link to “Concepts” section of Prefect’s docs)</em></p>
+
+<section>
+<section id="key-concepts" class="title-slide slide level1 center" data-stack-name="Key Concepts">
+<h1>Key Concepts</h1>
+
+</section>
+<section id="the-three-main-buzzwords" class="slide level2 crunch-title">
+<h2>The Three Main Buzzwords</h2>
+<p><em>(Underlined terms link to relevant section of <a href="https://docs.prefect.io/v3/get-started/index">docs</a>)</em></p>
 <ul>
 <li><a class="under" href="https://docs.prefect.io/latest/concepts/flows/" target="_blank"><strong><code>Flow</code></strong></a>: The “main thing” your pipeline is doing!
 <ul>
@@ -227,16 +287,17 @@ Jeff Jacobs
 <li><code>Flow</code>s and <code>Task</code>s alone already provide much more functionality than “basic” functions…</li>
 <li><a class="under" href="https://docs.prefect.io/latest/concepts/deployments/" target="_blank"><strong><code>Deployment</code>s</strong></a>: <code>Flow</code>s + <code>Task</code>s + <strong>Metadata</strong> about <strong>how</strong> and <strong>when</strong> you want them to run.
 <ul>
-<li>Prefect docs: “<strong>Deployments</strong> elevate workflows from [functions that you call manually] to [API-managed entities].”</li>
+<li>“<strong>Deployments</strong> elevate workflows from [functions that you call manually] to [API-managed entities].”</li>
 </ul></li>
 </ul>
 </section>
 <section id="deployments-rightarrow-run-flows-programmatically" class="slide level2 crunch-title title-11 smaller">
 <h2>Deployments <span class="math inline">\(\Rightarrow\)</span> Run Flows Programmatically</h2>
 
-<img data-src="images/flow-run-details-crop.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="the-power-of-deployments" class="slide level2 crunch-title crunch-ul" data-name="Fancier Concepts">
-<h2>The Power of <code>Deployment</code>s</h2>
+<img data-src="images/flow-run-details-crop.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
+<section>
+<section id="the-power-of-deployments-more-next-week" class="title-slide slide level1 smaller crunch-title crunch-ul title-10 center" data-stack-name="Deployments">
+<h1>The Power of <code>Deployment</code>s (More Next Week)</h1>
 <ul>
 <li>“Packaging” code as <strong><code>Deployments</code></strong> enables <a class="under" href="https://docs.prefect.io/latest/concepts/automations/" target="_blank"><strong><code>Triggers</code></strong></a>:
 <ul>
@@ -393,9 +454,9 @@ Jeff Jacobs
   <li>getting sturdy</li>
 </ul>
 </div></div>
-</section>
-<section id="lab-time" class="slide level2" data-name="Lab">
-<h2>Lab Time!</h2>
+</section></section>
+<section id="lab-time" class="title-slide slide level1 center" data-name="Lab">
+<h1>Lab Time!</h1>
 <ul>
 <li><a href="https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing" target="_blank">Week 9 Lab: Pipeline Orchestration with Prefect <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
 </ul>
@@ -405,7 +466,7 @@ Jeff Jacobs
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>DSAN 5500 Week 9: Data Validation, Pipelines</p>
+<p>DSAN 5500 Week 9: ETL Pipelines</p>
 </div>
 </div></div>
 

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>Week 9: Data Validation, Data Processing Pipelines – DSAN 5500</title>
+<title>Week 9: ETL Pipelines with Prefect – DSAN 5500</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-179845235eea022aa456b9149080a7bf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-b2257be66986a2c7e0806c615952c4d6.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-75706a7b6923ab29e39a12199bf538fb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-06797c3e7c5e8369eafd7ade716d25c9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -344,7 +344,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-03-05, 02:38:17 PM</em></p>
+<p><em>Updated 2025-03-13, 06:07:08 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -353,14 +353,20 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-necessary-buzzwords" id="toc-the-necessary-buzzwords" class="nav-link active" data-scroll-target="#the-necessary-buzzwords">The Necessary Buzzwords</a></li>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a>
+  <ul class="collapse">
+  <li><a href="#the-three-main-buzzwords" id="toc-the-three-main-buzzwords" class="nav-link" data-scroll-target="#the-three-main-buzzwords">The Three Main Buzzwords</a></li>
   <li><a href="#deployments-rightarrow-run-flows-programmatically" id="toc-deployments-rightarrow-run-flows-programmatically" class="nav-link" data-scroll-target="#deployments-rightarrow-run-flows-programmatically">Deployments <span class="math inline">\(\Rightarrow\)</span> Run Flows Programmatically</a></li>
-  <li><a href="#the-power-of-deployments" id="toc-the-power-of-deployments" class="nav-link" data-scroll-target="#the-power-of-deployments">The Power of <code>Deployment</code>s</a></li>
+  </ul></li>
+  <li><a href="#the-power-of-deployments-more-next-week" id="toc-the-power-of-deployments-more-next-week" class="nav-link" data-scroll-target="#the-power-of-deployments-more-next-week">The Power of <code>Deployment</code>s (More Next Week)</a>
+  <ul class="collapse">
   <li><a href="#schedules" id="toc-schedules" class="nav-link" data-scroll-target="#schedules"><code>Schedules</code></a></li>
   <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events"><code>Events</code></a></li>
   <li><a href="#logging" id="toc-logging" class="nav-link" data-scroll-target="#logging"><code>Logging</code></a></li>
   <li><a href="#notifications" id="toc-notifications" class="nav-link" data-scroll-target="#notifications"><code>Notifications</code></a></li>
   <li><a href="#jinja-example" id="toc-jinja-example" class="nav-link" data-scroll-target="#jinja-example"><code>Jinja</code> Example</a></li>
+  </ul></li>
   <li><a href="#lab-time" id="toc-lab-time" class="nav-link" data-scroll-target="#lab-time">Lab Time!</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5500/blob/main/w09/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
@@ -370,7 +376,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 9: Data Validation, Data Processing Pipelines</h1>
+<h1 class="title">Week 9: ETL Pipelines with Prefect</h1>
 <p class="subtitle lead"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
   <div class="quarto-categories">
     <div class="quarto-category">Class Sessions</div>
@@ -413,10 +419,69 @@ window.Quarto = {
 <center>
 <a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
 </center>
-<!-- # Absorbing Buzzwords Now $\leadsto$ Quickly Harnessing the Full Power of Prefect! {data-stack-name="Key Concepts"} -->
-<section id="the-necessary-buzzwords" class="level2" data-name="Key Concepts">
-<h2 data-name="Key Concepts" class="anchored" data-anchor-id="the-necessary-buzzwords">The Necessary Buzzwords</h2>
-<p><em>(Underlined words link to “Concepts” section of Prefect’s docs)</em></p>
+<section id="schedule" class="level1 smaller small-title crunch-title crunch-callout code-90" data-name="Schedule">
+<h1 class="smaller small-title crunch-title crunch-callout code-90" data-name="Schedule">Schedule</h1>
+<p>Today’s Planned Schedule:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 64%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Start</th>
+<th style="text-align: left;">End</th>
+<th style="text-align: left;">Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;">6:30pm</td>
+<td style="text-align: left;">6:50pm</td>
+<td style="text-align: left;"><a href="#key-concepts">Key Concepts →</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">6:50pm</td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;"><a href="#deployments-rightarrow-run-flows-programmatically">Execution Graphs →</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;">7:15pm</td>
+<td style="text-align: left;"><a href="#the-power-of-deployments-(more-next-week)">Deployments (Preview) →</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">7:15pm</td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;"><a href="#lab-time">Lab Part 1 →</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Break!</strong></td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;">9:00pm</td>
+<td style="text-align: left;"><a href="#lab-time">Lab Part 2 →</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="key-concepts" class="level1" data-stack-name="Key Concepts">
+<h1 data-stack-name="Key Concepts">Key Concepts</h1>
+<section id="the-three-main-buzzwords" class="level2 crunch-title">
+<h2 class="crunch-title anchored" data-anchor-id="the-three-main-buzzwords">The Three Main Buzzwords</h2>
+<p><em>(Underlined terms link to relevant section of <a href="https://docs.prefect.io/v3/get-started/index">docs</a>)</em></p>
 <ul>
 <li><a class="under" href="https://docs.prefect.io/latest/concepts/flows/" target="_blank"><strong><code>Flow</code></strong></a>: The “main thing” your pipeline is doing!
 <ul>
@@ -425,7 +490,7 @@ window.Quarto = {
 <li><code>Flow</code>s and <code>Task</code>s alone already provide much more functionality than “basic” functions…</li>
 <li><a class="under" href="https://docs.prefect.io/latest/concepts/deployments/" target="_blank"><strong><code>Deployment</code>s</strong></a>: <code>Flow</code>s + <code>Task</code>s + <strong>Metadata</strong> about <strong>how</strong> and <strong>when</strong> you want them to run.
 <ul>
-<li>Prefect docs: “<strong>Deployments</strong> elevate workflows from [functions that you call manually] to [API-managed entities].”</li>
+<li>“<strong>Deployments</strong> elevate workflows from [functions that you call manually] to [API-managed entities].”</li>
 </ul></li>
 </ul>
 </section>
@@ -437,8 +502,9 @@ window.Quarto = {
 </figure>
 </div>
 </section>
-<section id="the-power-of-deployments" class="level2 crunch-title crunch-ul" data-name="Fancier Concepts">
-<h2 class="crunch-title crunch-ul anchored" data-name="Fancier Concepts" data-anchor-id="the-power-of-deployments">The Power of <code>Deployment</code>s</h2>
+</section>
+<section id="the-power-of-deployments-more-next-week" class="level1 smaller crunch-title crunch-ul title-10" data-stack-name="Deployments">
+<h1 class="smaller crunch-title crunch-ul title-10" data-stack-name="Deployments">The Power of <code>Deployment</code>s (More Next Week)</h1>
 <ul>
 <li>“Packaging” code as <strong><code>Deployments</code></strong> enables <a class="under" href="https://docs.prefect.io/latest/concepts/automations/" target="_blank"><strong><code>Triggers</code></strong></a>:
 <ul>
@@ -448,7 +514,6 @@ window.Quarto = {
 <li><a class="under" href="https://docs.prefect.io/latest/guides/logs/" target="_blank"><strong><code>Logging</code></strong></a>, <a class="under" href="https://docs.prefect.io/latest/guides/host/#notifications" target="_blank"><strong><code>Notifications</code></strong></a> (Slack, email, text messages)</li>
 <li><a class="under" href="https://docs.prefect.io/latest/concepts/results/" target="_blank"><strong><code>Results</code></strong></a> as natural-language explanations (produced by Prefect) or <strong>custom summaries</strong>, called <a class="under" href="https://docs.prefect.io/latest/concepts/artifacts/" target="_blank"><strong><code>Artifacts</code></strong></a>, that you define as part of your flows</li>
 </ul>
-</section>
 <section id="schedules" class="level2 smaller crunch-title crunch-ul">
 <h2 class="smaller crunch-title crunch-ul anchored" data-anchor-id="schedules"><code>Schedules</code></h2>
 <ul>
@@ -607,8 +672,9 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="lab-time" class="level2" data-name="Lab">
-<h2 data-name="Lab" class="anchored" data-anchor-id="lab-time">Lab Time!</h2>
+</section>
+<section id="lab-time" class="level1" data-name="Lab">
+<h1 data-name="Lab">Lab Time!</h1>
 <ul>
 <li><a href="https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing" target="_blank">Week 9 Lab: Pipeline Orchestration with Prefect <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
 </ul>

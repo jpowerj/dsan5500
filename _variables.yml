@@ -50,8 +50,8 @@ w08:
   date-md: "Feb 27"
 w09:
   weeknum: 9
-  title: "Data Validation, Data Processing Pipelines"
-  footer: "Data Validation, Pipelines"
+  title: "ETL Data Processing Pipelines"
+  footer: "ETL Pipelines"
   date-md: "Mar 13"
 w10:
   weeknum: 10
