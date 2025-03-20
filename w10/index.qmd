@@ -1,12 +1,11 @@
 ---
-title: "Week 10: {{< var w10.title >}}"
+title: "Week 10: Data Pipeline Orchestration"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: 2025-03-20
 date-format: full
 author: "Jeff Jacobs"
 institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
 lecnum: 10
-jupyter: python3
 categories:
   - "Class Sessions"
 format:
@@ -19,11 +18,11 @@ format:
     scrollable: true
     slide-number: true
     html-math-method: mathjax
+    link-external-icon: true
+    link-external-newwindow: true
     include-in-header:
-      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='preconnect' href='https://fonts.googleapis.com'>
-<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-<link href='https://fonts.googleapis.com/css2?family=Honk&display=swap' rel='stylesheet'>"
-    css: "../dsan-globals/jjstyles.css"
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+    theme: [default, "../dsan-globals/jjquarto.scss"]
     simplemenu:
       flat: true
       barhtml:
@@ -47,7 +46,52 @@ format:
 
 :::
 
-# HW3: Final Pieces of the Data-Pipelines Puzzle {data-stack-name="Serial Pipelines"}
+# Schedule {.smaller .small-title .crunch-title .crunch-callout .code-90 data-name="Schedule"}
+
+Today's Planned Schedule:
+
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 6:30pm | 7:00pm | [JupyterHub and Final Project &rarr;](#logistical-tings) |
+| | 7:00pm | 7:30pm | [Prefect Intro Part 2 &rarr;]() |
+| | 7:30pm | 8:00pm | [Data Mining Intro &rarr;](#the-power-of-deployments-(more-next-week))
+| **Break!** | 8:00pm | 8:10pm | |
+| | 8:10pm | 9:00pm | [Data Mining in Parallel &rarr;](#lab-time) |
+
+# Logistical Tings
+
+## Project Management Tings {.smaller}
+
+| Ting | Pros | Cons | Verdict |
+| - | - | - | - |
+| [TasksBoard](https://tasksboard.com/app) | Integrated with Google Workspace (`@georgetown.edu` emails) | Free version useless (no share) | ❌ |
+| [Jira](https://dsan.atlassian.net/jira/) | Maybe most popular? | 30-day free trial | ❌ |
+| [Trello](https://trello.com/) | Simpler than Jira (both owned by Atlassian) | 14-day free trial | ❌ |
+| [Airtable](https://airtable.com/) | Jeff uses this every day | .edu plan doesn't include free users | ❌ |
+| [Notion](https://www.notion.so/) | Jeff uses this v often, .edu plan has hackish way to include users for free | Force yall to sign up for new ting | ✅ |
+
+<center>
+
+👉 [**Notion: Example 5500 Project**](https://jjacobs.notion.site/5500-template) 👈
+
+</center>
+
+## JupyterHub
+
+<center>
+
+👉 [**JupyterHub Login: `guhub.io`**](https://guhub.io) 👈
+
+</center>
+
+* Username = NetID (mine is `jj1088`)
+* Password = Whatever you type in the first time(!)
+
+# Prefect Lab Part 2 {data-name="Prefect Lab"}
+
+* [Week 9-10 Lab: Pipeline Orchestration with Prefect](https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing' target='_blank)
+
+## HW4: Final Pieces of the Data-Pipelines Puzzle {data-stack-name="Serial Pipelines"}
 
 * Overview (Quotes to Scrape)
 * Web Scraping with BeautifulSoup
@@ -65,7 +109,7 @@ format:
 * Our case: Not **harder** than the "main" site, just a different task to simulate a different environment
 * Could take the HW3 pipeline and "plug in" **Twitter**, **stock data**, etc.
 
-## First Pipeline: One Quote Per Second
+## First Pipeline: One Quote Per Second {.title-09}
 
 * **E**xtract: Scrape the quote data from the webpage's HTML
 * **T**ransform: Filter out **function** words, compute **frequencies** for **content** words

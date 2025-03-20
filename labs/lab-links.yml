@@ -10,3 +10,7 @@
   title: "[Advanced Data Validation with Pydantic](https://colab.research.google.com/drive/15Qsh26T0AZyxFRoGwTwFE_rMW7TBWEbr?usp=drive_link)"
   categories:
     - Colab Notebook
+- week: 9
+  title: "[ETL Pipelines with Prefect](https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing)"
+  categories:
+    - Colab Notebook

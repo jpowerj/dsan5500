@@ -18,6 +18,8 @@ format:
     scrollable: true
     slide-number: true
     html-math-method: mathjax
+    link-external-icon: true
+    link-external-newwindow: true
     include-in-header:
       text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
     theme: [default, "../dsan-globals/jjquarto.scss"]
@@ -237,5 +239,5 @@ $\leadsto$
 
 # Lab Time! {data-name="Lab"}
 
-* <a href='https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing' target='_blank'>Week 9 Lab: Pipeline Orchestration with Prefect <i class='bi bi-box-arrow-up-right ps-1'></i></a>
+* <a href='https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing' target='_blank'>Week 9 Lab: Pipeline Orchestration with Prefect</a>
 

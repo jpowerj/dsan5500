@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-c01bc887bfaaebc8a1c28afd5494c425.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-77aac8b5674e5ea96365409cefbec22f.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -458,7 +458,7 @@ Jeff Jacobs
 <section id="lab-time" class="title-slide slide level1 center" data-name="Lab">
 <h1>Lab Time!</h1>
 <ul>
-<li><a href="https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing" target="_blank">Week 9 Lab: Pipeline Orchestration with Prefect <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
+<li><a href="https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing" target="_blank">Week 9 Lab: Pipeline Orchestration with Prefect</a></li>
 </ul>
 
 
@@ -781,6 +781,13 @@ Jeff Jacobs
             if (link.dataset.originalHref !== undefined) {
               link.href = link.dataset.originalHref;
             }
+              // target, if specified
+              link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
+              // default icon
+              link.classList.add("external");
           }
         }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

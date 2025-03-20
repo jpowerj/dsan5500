@@ -1170,6 +1170,27 @@
     ]
   },
   {
+    "objectID": "w10/slides.html#project-management-tings",
+    "href": "w10/slides.html#project-management-tings",
+    "title": "Week 10: Data Pipeline Orchestration",
+    "section": "Project Management Tings",
+    "text": "Project Management Tings\n\n\n\nTing\nPros\nCons\nVerdict\n\n\n\n\nTasksBoard\nIntegrated with Google Workspace (@georgetown.edu emails)\nFree version useless (no share)\n❌\n\n\nJira\nMaybe most popular?\n30-day free trial\n❌\n\n\nTrello\nSimpler than Jira (both owned by Atlassian)\n14-day free trial\n❌\n\n\nAirtable\nJeff uses this every day\n.edu plan doesn’t include free users\n❌\n\n\nNotion\nJeff uses this v often, .edu plan has hackish way to include users for free\nForce yall to sign up for new ting\n✅\n\n\n\n\n👉 Notion: Example 5500 Project 👈"
+  },
+  {
+    "objectID": "w10/slides.html#jupyterhub",
+    "href": "w10/slides.html#jupyterhub",
+    "title": "Week 10: Data Pipeline Orchestration",
+    "section": "JupyterHub",
+    "text": "JupyterHub\n\n👉 JupyterHub Login: guhub.io 👈\n\n\nUsername = NetID (mine is jj1088)\nPassword = Whatever you type in the first time(!)"
+  },
+  {
+    "objectID": "w10/slides.html#hw4-final-pieces-of-the-data-pipelines-puzzle",
+    "href": "w10/slides.html#hw4-final-pieces-of-the-data-pipelines-puzzle",
+    "title": "Week 10: Data Pipeline Orchestration",
+    "section": "HW4: Final Pieces of the Data-Pipelines Puzzle",
+    "text": "HW4: Final Pieces of the Data-Pipelines Puzzle\n\nOverview (Quotes to Scrape)\nWeb Scraping with BeautifulSoup\nPython’s Counter class\nRRule.js"
+  },
+  {
     "objectID": "w10/slides.html#data-mining",
     "href": "w10/slides.html#data-mining",
     "title": "Week 10: Data Pipeline Orchestration",
@@ -1301,6 +1322,36 @@
     "title": "Week 10: Data Pipeline Orchestration",
     "section": "",
     "text": "Open slides in new window →",
+    "crumbs": [
+      "Week 10: {{< var w10.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w10/index.html#project-management-tings",
+    "href": "w10/index.html#project-management-tings",
+    "title": "Week 10: Data Pipeline Orchestration",
+    "section": "Project Management Tings",
+    "text": "Project Management Tings\n\n\n\nTing\nPros\nCons\nVerdict\n\n\n\n\nTasksBoard\nIntegrated with Google Workspace (@georgetown.edu emails)\nFree version useless (no share)\n❌\n\n\nJira\nMaybe most popular?\n30-day free trial\n❌\n\n\nTrello\nSimpler than Jira (both owned by Atlassian)\n14-day free trial\n❌\n\n\nAirtable\nJeff uses this every day\n.edu plan doesn’t include free users\n❌\n\n\nNotion\nJeff uses this v often, .edu plan has hackish way to include users for free\nForce yall to sign up for new ting\n✅\n\n\n\n\n👉 Notion: Example 5500 Project 👈",
+    "crumbs": [
+      "Week 10: {{< var w10.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w10/index.html#jupyterhub",
+    "href": "w10/index.html#jupyterhub",
+    "title": "Week 10: Data Pipeline Orchestration",
+    "section": "JupyterHub",
+    "text": "JupyterHub\n\n👉 JupyterHub Login: guhub.io 👈\n\n\nUsername = NetID (mine is jj1088)\nPassword = Whatever you type in the first time(!)",
+    "crumbs": [
+      "Week 10: {{< var w10.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w10/index.html#hw4-final-pieces-of-the-data-pipelines-puzzle",
+    "href": "w10/index.html#hw4-final-pieces-of-the-data-pipelines-puzzle",
+    "title": "Week 10: Data Pipeline Orchestration",
+    "section": "HW4: Final Pieces of the Data-Pipelines Puzzle",
+    "text": "HW4: Final Pieces of the Data-Pipelines Puzzle\n\nOverview (Quotes to Scrape)\nWeb Scraping with BeautifulSoup\nPython’s Counter class\nRRule.js",
     "crumbs": [
       "Week 10: {{< var w10.date-md >}}"
     ]
@@ -2314,7 +2365,7 @@
     "href": "labs/index.html",
     "title": "In-Class Labs / Demos",
     "section": "",
-    "text": "The table below collects the pre-made labs used in the course together in one place.\nAny of the “impromptu” notebooks I make in-class, e.g. to show how something works when executed or just to respond to in-class questions, can instead be found (sorted by week) in this GDrive folder\n\n\n\n\n\n\n\n\n\nWeek\n\n\nTitle\n\n\nCategory\n\n\n\n\n\n\n8\n\n\nAdvanced Data Validation with Pydantic\n\n\nColab Notebook\n\n\n\n\n1\n\n\nDictionary Lookup: Linear vs. Logarithmic\n\n\nInteractive Demo\n\n\n\n\n1\n\n\nBasic Data Validation with Pydantic\n\n\nColab Notebook\n\n\n\n\n\nNo matching items",
+    "text": "The table below collects the pre-made labs used in the course together in one place.\nAny of the “impromptu” notebooks I make in-class, e.g. to show how something works when executed or just to respond to in-class questions, can instead be found (sorted by week) in this GDrive folder\n\n\n\n\n\n\n\n\n\nWeek\n\n\nTitle\n\n\nCategory\n\n\n\n\n\n\n9\n\n\nETL Pipelines with Prefect\n\n\nColab Notebook\n\n\n\n\n8\n\n\nAdvanced Data Validation with Pydantic\n\n\nColab Notebook\n\n\n\n\n1\n\n\nDictionary Lookup: Linear vs. Logarithmic\n\n\nInteractive Demo\n\n\n\n\n1\n\n\nBasic Data Validation with Pydantic\n\n\nColab Notebook\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Labs / Demos"
     ]
@@ -2394,7 +2445,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Gluten Free', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Gluten Free', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Gluten Free', 'None', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'None', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2726,7 +2777,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Vegan', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'None', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Vegan', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Vegan', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
