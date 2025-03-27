@@ -223,8 +223,3 @@ Today's Planned Schedule:
 * Hence the usefulness of Prefect for visualizing tradeoff:
   * **Tasks** which used to run in serial will now run at same time, but will **take longer** (unless embarrassingly parallel) due to setup+communication overhead
 
-## HW4 Draft Part 1 = Parallelized HW3
-
-* $N$ random quotes on the page rather than just one
-* Is it embarrassingly parallel?
-* Part 2 TBD!
