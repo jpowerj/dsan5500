@@ -43,7 +43,7 @@ In pretty much **any** course on algorithms and data structures, whether in a Da
     <p class="card-text">
     <ul>
       <li><b>Example 2.1</b>: Binary Search Trees <b>lose their logarithmic efficiency</b> if items are added to them <b>in order</b> (since newly-added items are always added to the <i>right subtree</i> of all existing items, thus "degenerating" into a linear linked list structure), an issue which fancier versions of the BST like <a href='https://en.wikipedia.org/wiki/AVL_tree' target='_blank'>AVL Trees</a> and <a href='https://en.wikipedia.org/wiki/Red%E2%80%93black_tree' target='_blank'>Red-Black Trees</a> resolve.</li>
-      <li><b>Example 2.2</b>: As you saw in the Midterm, hash tables "degenerate" from (approximate) $O(1)$ efficiency to $O(\log_2(n))$ efficiency if the **hashing function** we use is not **efficient** or not <a href='https://en.wikipedia.org/wiki/Collision_resistance' target='_blank'>**collision-resistant**</a>. So, your project could be to explore and summarize how efficient and collision-resistant hash functions work, and then implement one such hash function in Python.</li>
+      <li><b>Example 2.2</b>: As you saw in the Midterm, hash tables "degenerate" from (approximate) \( O(1) \) efficiency to \( O(\log_2(n)) \) efficiency if the <b>hashing function</b> we use is not <b>efficient</b> or not <a href='https://en.wikipedia.org/wiki/Collision_resistance' target='_blank'><b>collision-resistant</b></a>. So, your project could be to explore and summarize how efficient and collision-resistant hash functions work, and then implement one such hash function in Python.</li>
     </ul>
     </p>
   </div>

@@ -142,14 +142,7 @@
     "href": "w12/slides.html#joblib",
     "title": "Week 12: Final Projects, Interfaces",
     "section": "…Joblib",
-    "text": "…Joblib"
-  },
-  {
-    "objectID": "w12/slides.html#in-action",
-    "href": "w12/slides.html#in-action",
-    "title": "Week 12: Final Projects, Interfaces",
-    "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9837 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.2902 s"
+    "text": "…Joblib\n\nColab Notebook"
   },
   {
     "objectID": "w12/slides.html#python-rightarrow-prefect",
@@ -159,18 +152,81 @@
     "text": "Python \\(\\rightarrow\\) Prefect\n\nCan think of code on prev slide as (implicitly) submitting numbers to the find_prime_factors() task…\nSo, let’s make this explicit by using Prefect’s @task annotation!\nLab Time!"
   },
   {
-    "objectID": "w12/slides.html#hw4",
-    "href": "w12/slides.html#hw4",
+    "objectID": "w12/slides.html#functions-vs.-functionals",
+    "href": "w12/slides.html#functions-vs.-functionals",
     "title": "Week 12: Final Projects, Interfaces",
-    "section": "HW4",
-    "text": "HW4\n\nDo that but for quotes!\nScrape (one, and then many) page(s) from the default interface, in parallel!"
+    "section": "Functions vs. Functionals",
+    "text": "Functions vs. Functionals\n\nYou may have noticed: map() and reduce() are “meta-functions”: functions that take other functions as inputs\n\n\n\n\ndef add_5(num):\n  return num + 5\nadd_5(10)\n\n15\n\n\n\n\ndef apply_twice(fn, arg):\n  return fn(fn(arg))\napply_twice(add_5, 10)\n\n20\n\n\n\n\nIn Python, functions can be used as vars (Hence lambda):\n\n\nadd_5 = lambda num: num + 5\napply_twice(add_5, 10)\n\n20\n\n\n\nThis relates to a whole paradigm, “functional programming”: mostly outside scope of course, but lots of important+useful takeaways/rules-of-thumb! →"
+  },
+  {
+    "objectID": "w12/slides.html#train-your-brain-for-functional-approach-implies-master-debugging",
+    "href": "w12/slides.html#train-your-brain-for-functional-approach-implies-master-debugging",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!",
+    "text": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!\n\nIn CS Theory: enables formal proofs of correctness\nIn CS practice:\n\n\nWhen a program doesn’t work, each function is an interface point where you can check that the data are correct. You can look at the intermediate inputs and outputs to quickly isolate the function that’s responsible for a bug.(from Python’s “Functional Programming HowTo”)"
+  },
+  {
+    "objectID": "w12/slides.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
+    "href": "w12/slides.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines",
+    "text": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines\n\n\nScenario: Run code, check the output, and… it’s wrong 😵 what do you do?\nUsual approach: Read lines one-by-one, figuring out what they do, seeing if something pops out that seems wrong; adding comments like # Convert to lowercase\n\n\n\n\nEasy case: found typo in punctuation removal code. Fix the error, add comment like # Remove punctuation\n Rule 1 of FP: transform these comments into function names\n\n\n\nHard case: Something in load_text() modifies a variable that later on breaks remove_punct() (Called a side-effect)\n Rule 2 of FP: NO SIDE-EFFECTS!\n\n\n\n\n\n\n\n\n\nG\n\n\n\ninput\nin.txt\n\n\n\nload_text\nload_text\n(Verb)\n\n\n\n\ninput-&gt;load_text\n\n\n\n\n\nlowercase\nlowercase\n(Verb)\n\n\n\n\nload_text-&gt;lowercase\n\n\n🧐 ✅\n\n\n\nremove_punct\nremove_punct\n(Verb)\n\n\n\n\nlowercase-&gt;remove_punct\n\n\n🧐 ✅\n\n\n\nremove_stopwords\nremove_stopwords\n(Verb)\n\n\n\n\nremove_punct-&gt;remove_stopwords\n\n\n🧐 ❌❗️\n\n\n\noutput\nout.txt\n\n\n\nremove_stopwords-&gt;output\n\n\n\n\n\n\n (Does this way of diagramming a program look familiar?) \n\n\n\n\nWith side effects: ❌ \\(\\implies\\) issue is somewhere earlier in the chain 😩🏃‍♂️\nNo side effects: ❌ \\(\\implies\\) issue must be in remove_punct()!!! 😎 ⏱️ = 💰"
+  },
+  {
+    "objectID": "w12/slides.html#if-its-so-useful-why-doesnt-everyone-do-it",
+    "href": "w12/slides.html#if-its-so-useful-why-doesnt-everyone-do-it",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "If It’s So Useful, Why Doesn’t Everyone Do It?",
+    "text": "If It’s So Useful, Why Doesn’t Everyone Do It?\n\nTrapped in imperative (sequential) coding mindset: Path dependency / QWERTY\nReason we need to start thinking like this is: it’s 1000x harder to debug parallel code! So we need to be less ad hoc in how we write+debug, from here on out! 🙇‍♂️🙏\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014)\nThe title relates to a classic Economics joke (the best kind of joke): “An economist and a CEO are walking down the street, when the CEO points at the ground and tells the economist, ‘look! A $20 bill on the ground!’ The economist keeps on walking, scoffing at the CEO: ‘don’t be silly, if there was a $20 bill on the ground, somebody would have picked it up already’.”"
+  },
+  {
+    "objectID": "w12/slides.html#the-killer-application-matrix-multiplication",
+    "href": "w12/slides.html#the-killer-application-matrix-multiplication",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "The “Killer Application”: Matrix Multiplication",
+    "text": "The “Killer Application”: Matrix Multiplication\n\n(I learned from Jeff Ullman, who did the obnoxious Stanford thing of mentioning in passing how “two previous students in the class did this for a cool final project on web crawling and, well, it escalated quickly”, aka became Google)\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014), which is (legally) free online!"
+  },
+  {
+    "objectID": "w12/slides.html#the-killer-way-to-learn-text-counts",
+    "href": "w12/slides.html#the-killer-way-to-learn-text-counts",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "The Killer Way-To-Learn: Text Counts!",
+    "text": "The Killer Way-To-Learn: Text Counts!\n\n(2014): Text counts (2.2) \\(\\rightarrow\\) Matrix multiplication (2.3) \\(\\rightarrow \\cdots \\rightarrow\\) PageRank (5.1)\n(And yall thought it was just busywork for HW3 😏)\nThe goal: User searches “Denzel Curry”… How relevant is a given webpage?\nScenario 1: Entire internet fits on CPU \\(\\implies\\) We can just make a big big hash table:\n\n\n\n\n\n\n\n\nG\n\n\n\ninternet\n\nScan in O(n):\nToday Denzel Washington\nate a big bowl of Yum's\ncurry. Denzel allegedly\nrubbed his tum and said\n\"yum yum yum\" when he\ntasted today's curry.\n\"Yum! It is me Denzel,\ncurry is my fav!\", he\nexclaimed. According to\nhis friend Steph, curry\nis indeed Denzel's fav.\nWe are live with Del\nCurry in Washington for\na Denzel curry update.\n\n\n\n\nccounts\n\nOverall Counts\n\n('according',1)\n('allegedly',1)\n('ate',1)\n('big',1)\n('bowl',1)\n('curry',6)\n('del',1)\n('denzel',5)\n('exclaimed',1)\n('fav',2)\n('friend',1)\n('indeed',1)\n('live',1)\n('rubbed',1)\n('said',1)\n('steph',1)\n('tasted',1)\n('today',2)\n('tum',1)\n('update',1)\n('washington',2)\n('yum',4)\n\n\n\n\ninternet-&gt;ccounts\n\n\nHash Table"
+  },
+  {
+    "objectID": "w12/slides.html#if-everything-doesnt-fit-on-cpu",
+    "href": "w12/slides.html#if-everything-doesnt-fit-on-cpu",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "If Everything Doesn’t Fit on CPU…",
+    "text": "If Everything Doesn’t Fit on CPU…\n\nFrom Cornell Virtual Workshop, “Understanding GPU Architecture”"
+  },
+  {
+    "objectID": "w12/slides.html#break-problem-into-chunks-for-the-green-bois",
+    "href": "w12/slides.html#break-problem-into-chunks-for-the-green-bois",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "Break Problem into Chunks for the Green Bois!",
+    "text": "Break Problem into Chunks for the Green Bois!\n\n\n\n\n\n\n\nG\n\n\n\nchunked\n\nChunked Document\n\nToday Denzel Washington\nate a big bowl of Yum's\ncurry. Denzel allegedly\nrubbed his tum and said\n\n\"yum yum yum\" when he\ntasted today's curry.\n\"Yum! It is me Denzel,\ncurry is my fav!\", he\n\nexclaimed. According to\nhis friend Steph, curry\nis indeed Denzel's fav.\nWe are live with Del\nCurry in Washington for\na Denzel curry update.\n\n\n\n\nchcounts\n\nChunked Counts\n\n('today',1)\n('denzel',1)\n...\n('tum',1)\n('said',1)\n\n('yum',1)\n('yum',1)\n('yum',1)\n...\n('fav',1)\n\n('exclaimed',1)\n...\n('del',1)\n('curry',1)\n('washington',1)\n('denzel',1)\n('curry',1)\n('update',1)\n\n\n\n\nchunked:p1-&gt;chcounts:p1\n\n\nO(n/4)\n\n\n\nchunked:p2-&gt;chcounts:p2\n\n\nO(n/4)\n\n\n\nchunked:p3-&gt;chcounts:p3\n\n\nO(n/4)\n\n\n\nchunked:p4-&gt;chcounts:p4\n\n\nO(n/4)\n\n\n\nscounts\n\nHashed Counts\n\n('allegedly',1)\n...\n('curry',1)\n('denzel',2)\n...\n('yum',1)\n\n('curry',2)\n('denzel',1)\n...\n('yum',4)\n\n('according',1)\n('curry',1)\n('del',1)\n('denzel',1)\n...\n('curry',2)\n('denzel',1)\n('update',1)\n('washington',1)\n\n\n\n\nchcounts:p1-&gt;scounts:p1\n\n\nO(n/4)\n\n\n\nchcounts:p2-&gt;scounts:p2\n\n\nO(n/4)\n\n\n\nchcounts:p3-&gt;scounts:p3\n\n\nO(n/4)\n\n\n\nchcounts:p4-&gt;scounts:p4\n\n\nO(n/4)\n\n\n\nccounts\n\nOverall Counts\n('according',1)\n('allegedly',1)\n('ate',1)\n('big',1)\n('bowl',1)\n('curry',6)\n('del',1)\n('denzel',5)\n('exclaimed',1)\n('fav',2)\n('friend',1)\n('indeed',1)\n('live',1)\n('rubbed',1)\n('said',1)\n('steph',1)\n('tasted',1)\n('today',2)\n('tum',1)\n('update',1)\n('washington',2)\n('yum',4)\n\n\n\n\nscounts:p1-&gt;ccounts:p1\n\n\n\n\n\nscounts:p2-&gt;ccounts:p1\n\n\n\n\n\nscounts:p3-&gt;ccounts:p1\n\n\n\n\n\nscounts:p4-&gt;ccounts:p1\n\n\n\n\n\nscounts:p2-&gt;ccounts\n\n\n \n\nMerge in\nO(n)\n\n\n\n\n\n\n\n\n\n\\(\\implies\\) Total = \\(O(3n) = O(n)\\)\nBut also optimized in terms of constants, because of sequential memory reads"
+  },
+  {
+    "objectID": "w12/slides.html#hw5a",
+    "href": "w12/slides.html#hw5a",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "HW5A",
+    "text": "HW5A\n\nScrape quotes in parallel!\nAdvantage: Builds on HW4\nDisadvantage: Embarrassingly parallel, so… no Map-Reduce coding practice"
+  },
+  {
+    "objectID": "w12/slides.html#hw5b",
+    "href": "w12/slides.html#hw5b",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "HW5B",
+    "text": "HW5B\n\nMap-Reduced Matrix-Vector Multiplication\n\n\nImage source"
   },
   {
     "objectID": "w12/slides.html#references",
     "href": "w12/slides.html#references",
     "title": "Week 12: Final Projects, Interfaces",
     "section": "References",
-    "text": "References"
+    "text": "References\n\n\nLeskovec, Jure, Anand Rajaraman, and Jeffrey David Ullman. 2014. Mining of Massive Datasets. Cambridge University Press."
   },
   {
     "objectID": "w12/index.html",
@@ -297,17 +353,7 @@
     "href": "w12/index.html#joblib",
     "title": "Week 12: Final Projects, Interfaces",
     "section": "…Joblib",
-    "text": "…Joblib",
-    "crumbs": [
-      "Week 12: {{< var w12.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w12/index.html#in-action",
-    "href": "w12/index.html#in-action",
-    "title": "Week 12: Final Projects, Interfaces",
-    "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9728 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.2737 s",
+    "text": "…Joblib\n\nColab Notebook",
     "crumbs": [
       "Week 12: {{< var w12.date-md >}}"
     ]
@@ -323,11 +369,101 @@
     ]
   },
   {
-    "objectID": "w12/index.html#hw4",
-    "href": "w12/index.html#hw4",
+    "objectID": "w12/index.html#functions-vs.-functionals",
+    "href": "w12/index.html#functions-vs.-functionals",
     "title": "Week 12: Final Projects, Interfaces",
-    "section": "HW4",
-    "text": "HW4\n\nDo that but for quotes!\nScrape (one, and then many) page(s) from the default interface, in parallel!",
+    "section": "Functions vs. Functionals",
+    "text": "Functions vs. Functionals\n\nYou may have noticed: map() and reduce() are “meta-functions”: functions that take other functions as inputs\n\n\n\n\ndef add_5(num):\n  return num + 5\nadd_5(10)\n\n15\n\n\n\n\ndef apply_twice(fn, arg):\n  return fn(fn(arg))\napply_twice(add_5, 10)\n\n20\n\n\n\n\n\nIn Python, functions can be used as vars (Hence lambda):\n\n\nadd_5 = lambda num: num + 5\napply_twice(add_5, 10)\n\n20\n\n\n\nThis relates to a whole paradigm, “functional programming”: mostly outside scope of course, but lots of important+useful takeaways/rules-of-thumb! →",
+    "crumbs": [
+      "Week 12: {{< var w12.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w12/index.html#train-your-brain-for-functional-approach-implies-master-debugging",
+    "href": "w12/index.html#train-your-brain-for-functional-approach-implies-master-debugging",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!",
+    "text": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!\n\nIn CS Theory: enables formal proofs of correctness\nIn CS practice:\n\n\nWhen a program doesn’t work, each function is an interface point where you can check that the data are correct. You can look at the intermediate inputs and outputs to quickly isolate the function that’s responsible for a bug.(from Python’s “Functional Programming HowTo”)",
+    "crumbs": [
+      "Week 12: {{< var w12.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w12/index.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
+    "href": "w12/index.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines",
+    "text": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines\n\n\nScenario: Run code, check the output, and… it’s wrong 😵 what do you do?\nUsual approach: Read lines one-by-one, figuring out what they do, seeing if something pops out that seems wrong; adding comments like # Convert to lowercase\n\n\n\n\nEasy case: found typo in punctuation removal code. Fix the error, add comment like # Remove punctuation\n Rule 1 of FP: transform these comments into function names\n\n\n\nHard case: Something in load_text() modifies a variable that later on breaks remove_punct() (Called a side-effect)\n Rule 2 of FP: NO SIDE-EFFECTS!\n\n\n\n\n\n\n\n\n\n\nG\n\n\n\ninput\nin.txt\n\n\n\nload_text\nload_text\n(Verb)\n\n\n\n\ninput-&gt;load_text\n\n\n\n\n\nlowercase\nlowercase\n(Verb)\n\n\n\n\nload_text-&gt;lowercase\n\n\n🧐 ✅\n\n\n\nremove_punct\nremove_punct\n(Verb)\n\n\n\n\nlowercase-&gt;remove_punct\n\n\n🧐 ✅\n\n\n\nremove_stopwords\nremove_stopwords\n(Verb)\n\n\n\n\nremove_punct-&gt;remove_stopwords\n\n\n🧐 ❌❗️\n\n\n\noutput\nout.txt\n\n\n\nremove_stopwords-&gt;output\n\n\n\n\n\n\n (Does this way of diagramming a program look familiar?) \n\n\n\n\nWith side effects: ❌ \\(\\implies\\) issue is somewhere earlier in the chain 😩🏃‍♂️\nNo side effects: ❌ \\(\\implies\\) issue must be in remove_punct()!!! 😎 ⏱️ = 💰",
+    "crumbs": [
+      "Week 12: {{< var w12.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w12/index.html#if-its-so-useful-why-doesnt-everyone-do-it",
+    "href": "w12/index.html#if-its-so-useful-why-doesnt-everyone-do-it",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "If It’s So Useful, Why Doesn’t Everyone Do It?",
+    "text": "If It’s So Useful, Why Doesn’t Everyone Do It?\n\nTrapped in imperative (sequential) coding mindset: Path dependency / QWERTY\nReason we need to start thinking like this is: it’s 1000x harder to debug parallel code! So we need to be less ad hoc in how we write+debug, from here on out! 🙇‍♂️🙏\n\n\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014)\n\n\n\nThe title relates to a classic Economics joke (the best kind of joke): “An economist and a CEO are walking down the street, when the CEO points at the ground and tells the economist, ‘look! A $20 bill on the ground!’ The economist keeps on walking, scoffing at the CEO: ‘don’t be silly, if there was a $20 bill on the ground, somebody would have picked it up already’.”",
+    "crumbs": [
+      "Week 12: {{< var w12.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w12/index.html#the-killer-application-matrix-multiplication",
+    "href": "w12/index.html#the-killer-application-matrix-multiplication",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "The “Killer Application”: Matrix Multiplication",
+    "text": "The “Killer Application”: Matrix Multiplication\n\n(I learned from Jeff Ullman, who did the obnoxious Stanford thing of mentioning in passing how “two previous students in the class did this for a cool final project on web crawling and, well, it escalated quickly”, aka became Google)\n\n\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014), which is (legally) free online!",
+    "crumbs": [
+      "Week 12: {{< var w12.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w12/index.html#the-killer-way-to-learn-text-counts",
+    "href": "w12/index.html#the-killer-way-to-learn-text-counts",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "The Killer Way-To-Learn: Text Counts!",
+    "text": "The Killer Way-To-Learn: Text Counts!\n\n(2014): Text counts (2.2) \\(\\rightarrow\\) Matrix multiplication (2.3) \\(\\rightarrow \\cdots \\rightarrow\\) PageRank (5.1)\n(And yall thought it was just busywork for HW3 😏)\nThe goal: User searches “Denzel Curry”… How relevant is a given webpage?\nScenario 1: Entire internet fits on CPU \\(\\implies\\) We can just make a big big hash table:\n\n\n\n\n\n\n\n\nG\n\n\n\ninternet\n\nScan in O(n):\nToday Denzel Washington\nate a big bowl of Yum's\ncurry. Denzel allegedly\nrubbed his tum and said\n\"yum yum yum\" when he\ntasted today's curry.\n\"Yum! It is me Denzel,\ncurry is my fav!\", he\nexclaimed. According to\nhis friend Steph, curry\nis indeed Denzel's fav.\nWe are live with Del\nCurry in Washington for\na Denzel curry update.\n\n\n\n\nccounts\n\nOverall Counts\n\n('according',1)\n('allegedly',1)\n('ate',1)\n('big',1)\n('bowl',1)\n('curry',6)\n('del',1)\n('denzel',5)\n('exclaimed',1)\n('fav',2)\n('friend',1)\n('indeed',1)\n('live',1)\n('rubbed',1)\n('said',1)\n('steph',1)\n('tasted',1)\n('today',2)\n('tum',1)\n('update',1)\n('washington',2)\n('yum',4)\n\n\n\n\ninternet-&gt;ccounts\n\n\nHash Table",
+    "crumbs": [
+      "Week 12: {{< var w12.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w12/index.html#if-everything-doesnt-fit-on-cpu",
+    "href": "w12/index.html#if-everything-doesnt-fit-on-cpu",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "If Everything Doesn’t Fit on CPU…",
+    "text": "If Everything Doesn’t Fit on CPU…\n\n\n\nFrom Cornell Virtual Workshop, “Understanding GPU Architecture”",
+    "crumbs": [
+      "Week 12: {{< var w12.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w12/index.html#break-problem-into-chunks-for-the-green-bois",
+    "href": "w12/index.html#break-problem-into-chunks-for-the-green-bois",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "Break Problem into Chunks for the Green Bois!",
+    "text": "Break Problem into Chunks for the Green Bois!\n\n\n\n\n\n\n\nG\n\n\n\nchunked\n\nChunked Document\n\nToday Denzel Washington\nate a big bowl of Yum's\ncurry. Denzel allegedly\nrubbed his tum and said\n\n\"yum yum yum\" when he\ntasted today's curry.\n\"Yum! It is me Denzel,\ncurry is my fav!\", he\n\nexclaimed. According to\nhis friend Steph, curry\nis indeed Denzel's fav.\nWe are live with Del\nCurry in Washington for\na Denzel curry update.\n\n\n\n\nchcounts\n\nChunked Counts\n\n('today',1)\n('denzel',1)\n...\n('tum',1)\n('said',1)\n\n('yum',1)\n('yum',1)\n('yum',1)\n...\n('fav',1)\n\n('exclaimed',1)\n...\n('del',1)\n('curry',1)\n('washington',1)\n('denzel',1)\n('curry',1)\n('update',1)\n\n\n\n\nchunked:p1-&gt;chcounts:p1\n\n\nO(n/4)\n\n\n\nchunked:p2-&gt;chcounts:p2\n\n\nO(n/4)\n\n\n\nchunked:p3-&gt;chcounts:p3\n\n\nO(n/4)\n\n\n\nchunked:p4-&gt;chcounts:p4\n\n\nO(n/4)\n\n\n\nscounts\n\nHashed Counts\n\n('allegedly',1)\n...\n('curry',1)\n('denzel',2)\n...\n('yum',1)\n\n('curry',2)\n('denzel',1)\n...\n('yum',4)\n\n('according',1)\n('curry',1)\n('del',1)\n('denzel',1)\n...\n('curry',2)\n('denzel',1)\n('update',1)\n('washington',1)\n\n\n\n\nchcounts:p1-&gt;scounts:p1\n\n\nO(n/4)\n\n\n\nchcounts:p2-&gt;scounts:p2\n\n\nO(n/4)\n\n\n\nchcounts:p3-&gt;scounts:p3\n\n\nO(n/4)\n\n\n\nchcounts:p4-&gt;scounts:p4\n\n\nO(n/4)\n\n\n\nccounts\n\nOverall Counts\n('according',1)\n('allegedly',1)\n('ate',1)\n('big',1)\n('bowl',1)\n('curry',6)\n('del',1)\n('denzel',5)\n('exclaimed',1)\n('fav',2)\n('friend',1)\n('indeed',1)\n('live',1)\n('rubbed',1)\n('said',1)\n('steph',1)\n('tasted',1)\n('today',2)\n('tum',1)\n('update',1)\n('washington',2)\n('yum',4)\n\n\n\n\nscounts:p1-&gt;ccounts:p1\n\n\n\n\n\nscounts:p2-&gt;ccounts:p1\n\n\n\n\n\nscounts:p3-&gt;ccounts:p1\n\n\n\n\n\nscounts:p4-&gt;ccounts:p1\n\n\n\n\n\nscounts:p2-&gt;ccounts\n\n\n \n\nMerge in\nO(n)\n\n\n\n\n\n\n\n\n\n\\(\\implies\\) Total = \\(O(3n) = O(n)\\)\nBut also optimized in terms of constants, because of sequential memory reads",
+    "crumbs": [
+      "Week 12: {{< var w12.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w12/index.html#hw5a",
+    "href": "w12/index.html#hw5a",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "HW5A",
+    "text": "HW5A\n\nScrape quotes in parallel!\nAdvantage: Builds on HW4\nDisadvantage: Embarrassingly parallel, so… no Map-Reduce coding practice",
+    "crumbs": [
+      "Week 12: {{< var w12.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w12/index.html#hw5b",
+    "href": "w12/index.html#hw5b",
+    "title": "Week 12: Final Projects, Interfaces",
+    "section": "HW5B",
+    "text": "HW5B\n\nMap-Reduced Matrix-Vector Multiplication\n\n\n\n\nImage source",
     "crumbs": [
       "Week 12: {{< var w12.date-md >}}"
     ]
@@ -337,7 +473,7 @@
     "href": "w12/index.html#references",
     "title": "Week 12: Final Projects, Interfaces",
     "section": "References",
-    "text": "References",
+    "text": "References\n\n\nLeskovec, Jure, Anand Rajaraman, and Jeffrey David Ullman. 2014. Mining of Massive Datasets. Cambridge University Press.",
     "crumbs": [
       "Week 12: {{< var w12.date-md >}}"
     ]
@@ -1524,7 +1660,7 @@
     "href": "final.html",
     "title": "Final Project Details",
     "section": "",
-    "text": "The idea for your final project is as follows:\nIn pretty much any course on algorithms and data structures, whether in a Data Science, Computer Science, or Applied Math context, there’s only so much that can be covered in a given unit. This means that, for all of the topics we’ve covered thus far, there’s a next step that could be taken in learning about the topic. In general this could mean one of the following four options, where I’ve provided a concrete example specific to the class under each heading:\n\n  \n    Option 1: A Deeper Dive\n  \n  \n    \n    \n    \n          Example 1.1: Efficient implementations of deletion in linked lists, rather than just the insertion and retrieval operations on linked lists that we looked at.\n          Example 1.2: Expanding the Binary Search Tree into a Quadtree\n          Example 1.3: Creating an interactive visualization (using Streamlit, for example) of a data structure or algorithm.\n    \n    \n  \n\n\n  \n    Option 2: Fixing an Issue\n  \n  \n    \n    \n    \n      Example 2.1: Binary Search Trees lose their logarithmic efficiency if items are added to them in order (since newly-added items are always added to the right subtree of all existing items, thus \"degenerating\" into a linear linked list structure), an issue which fancier versions of the BST like AVL Trees and Red-Black Trees resolve.\n      Example 2.2: As you saw in the Midterm, hash tables \"degenerate\" from (approximate) $O(1)$ efficiency to $O(\\log_2(n))$ efficiency if the **hashing function** we use is not **efficient** or not **collision-resistant**. So, your project could be to explore and summarize how efficient and collision-resistant hash functions work, and then implement one such hash function in Python.\n    \n    \n  \n\n\n  \n    Option 3: Exploring Applications\n  \n  \n    \n    \n    \n      Example 3.1: In bioinformatics, the sorting algorithms we did learn are helpful for genetic sequence searching, but can be made even more efficient for genetic sequence searches by applying the Burrows-Wheeler Transform to a collection of genetic sequences before applying the sorting algorithms.\n      Example 3.2: We learned Breadth-First Search (BFS) and Depth-First Search (DFS) in somewhat of a hurry, as a way to traverse over the nodes in a Binary Search Tree, but they both have many more exciting applications! For example, if you're interested in web scraping, you could adapt the code from HW2 to create a polymorphic web-scraper, where each node is a webpage, and processing a node means adding each link in the page to the stack/queue.\n    \n    \n  \n\n\n  \n    Option 4: Proving Correctness and/or Efficiency\n  \n  \n    \n    \n    \n      Example 4.1: In the lecture on Insertion-Sort, I hinted at the notion of a correctness proof using invariants---how it would proceed along the same lines as a proof by induction that you might have seen in a previous math class---but never formally walked you through how to do one.\n      Example 4.2: Over the first half of the course, we were able to gradually improve retrieval of elements from data structures in a progression like:\n      \n      \n\n\n\nLinear\n\nLogarithmic\n\nConstant\n\n\n\n\nLinkedList\\(O(n)\\)\n\\(\\rightarrow\\)\nBST\\(O(\\log_2(n))\\)\n\\(\\rightarrow\\)\nHashTable\\(O(1 + \\varepsilon)\\)\n\n\n\n\n      \n      But then, for search, something was missing 🧐:\n\n      \n\n\n\nLinear\n\nLogarithmic\n\nConstant\n\n\n\n\nInsertion-Sort\\(O(n^2)\\)\n\\(\\rightarrow\\)\nMerge-Sort\\(O(n\\log_2(n))\\)\n\\(\\rightarrow\\)\n???\n\n\n\n\n\n  Prove that it's in fact not possible to make that additional \"jump\" to constant-time search in \\(O(n)\\), except in very special cases.\n      \n      \n    \n    \n  \n\n\n  \n    Option 5: Building an ETL Pipeline\n  \n  \n    \n    \n    \n      Example 5.1: If there is some task you currently handle manually---say, entering receipts from your email into a spreadsheet, or (the example I mentioned in class) making a fulltext index of ebooks in your library---your project can explore automating this task using Pydantic and Prefect\n      Example 5.2: If there are particular APIs and Database solutions that you've been hoping to explore, now's your chance! Create an ETL pipeline which Extracts data from the API, Transforms it in some interesting way, then Loads it into (for example) an SQL or MongoDB database.\n    \n\n    (For this option, note that we used Pydantic in the course because of its OOP orientation, but if your task is more DataFrame-heavy, you can use Pandera for DataFrame validation in place of Pydantic! Feel free to schedule an office hour with Jeff for more on Pandera)\n    \n  \n\nSo, your task for the final project will be to\n\nChoose one of the topics we covered\nDetermine or work with your mentor to find an interesting “next step” with respect to this topic\nCarry out this next step (details below, since this will look different for different choices from the above options!)\nWrite up what you did in a report, including any of the code or math or data analysis that you did in Step 3",
+    "text": "The idea for your final project is as follows:\nIn pretty much any course on algorithms and data structures, whether in a Data Science, Computer Science, or Applied Math context, there’s only so much that can be covered in a given unit. This means that, for all of the topics we’ve covered thus far, there’s a next step that could be taken in learning about the topic. In general this could mean one of the following four options, where I’ve provided a concrete example specific to the class under each heading:\n\n  \n    Option 1: A Deeper Dive\n  \n  \n    \n    \n    \n          Example 1.1: Efficient implementations of deletion in linked lists, rather than just the insertion and retrieval operations on linked lists that we looked at.\n          Example 1.2: Expanding the Binary Search Tree into a Quadtree\n          Example 1.3: Creating an interactive visualization (using Streamlit, for example) of a data structure or algorithm.\n    \n    \n  \n\n\n  \n    Option 2: Fixing an Issue\n  \n  \n    \n    \n    \n      Example 2.1: Binary Search Trees lose their logarithmic efficiency if items are added to them in order (since newly-added items are always added to the right subtree of all existing items, thus \"degenerating\" into a linear linked list structure), an issue which fancier versions of the BST like AVL Trees and Red-Black Trees resolve.\n      Example 2.2: As you saw in the Midterm, hash tables \"degenerate\" from (approximate) \\( O(1) \\) efficiency to \\( O(\\log_2(n)) \\) efficiency if the hashing function we use is not efficient or not collision-resistant. So, your project could be to explore and summarize how efficient and collision-resistant hash functions work, and then implement one such hash function in Python.\n    \n    \n  \n\n\n  \n    Option 3: Exploring Applications\n  \n  \n    \n    \n    \n      Example 3.1: In bioinformatics, the sorting algorithms we did learn are helpful for genetic sequence searching, but can be made even more efficient for genetic sequence searches by applying the Burrows-Wheeler Transform to a collection of genetic sequences before applying the sorting algorithms.\n      Example 3.2: We learned Breadth-First Search (BFS) and Depth-First Search (DFS) in somewhat of a hurry, as a way to traverse over the nodes in a Binary Search Tree, but they both have many more exciting applications! For example, if you're interested in web scraping, you could adapt the code from HW2 to create a polymorphic web-scraper, where each node is a webpage, and processing a node means adding each link in the page to the stack/queue.\n    \n    \n  \n\n\n  \n    Option 4: Proving Correctness and/or Efficiency\n  \n  \n    \n    \n    \n      Example 4.1: In the lecture on Insertion-Sort, I hinted at the notion of a correctness proof using invariants---how it would proceed along the same lines as a proof by induction that you might have seen in a previous math class---but never formally walked you through how to do one.\n      Example 4.2: Over the first half of the course, we were able to gradually improve retrieval of elements from data structures in a progression like:\n      \n      \n\n\n\nLinear\n\nLogarithmic\n\nConstant\n\n\n\n\nLinkedList\\(O(n)\\)\n\\(\\rightarrow\\)\nBST\\(O(\\log_2(n))\\)\n\\(\\rightarrow\\)\nHashTable\\(O(1 + \\varepsilon)\\)\n\n\n\n\n      \n      But then, for search, something was missing 🧐:\n\n      \n\n\n\nLinear\n\nLogarithmic\n\nConstant\n\n\n\n\nInsertion-Sort\\(O(n^2)\\)\n\\(\\rightarrow\\)\nMerge-Sort\\(O(n\\log_2(n))\\)\n\\(\\rightarrow\\)\n???\n\n\n\n\n\n  Prove that it's in fact not possible to make that additional \"jump\" to constant-time search in \\(O(n)\\), except in very special cases.\n      \n      \n    \n    \n  \n\n\n  \n    Option 5: Building an ETL Pipeline\n  \n  \n    \n    \n    \n      Example 5.1: If there is some task you currently handle manually---say, entering receipts from your email into a spreadsheet, or (the example I mentioned in class) making a fulltext index of ebooks in your library---your project can explore automating this task using Pydantic and Prefect\n      Example 5.2: If there are particular APIs and Database solutions that you've been hoping to explore, now's your chance! Create an ETL pipeline which Extracts data from the API, Transforms it in some interesting way, then Loads it into (for example) an SQL or MongoDB database.\n    \n\n    (For this option, note that we used Pydantic in the course because of its OOP orientation, but if your task is more DataFrame-heavy, you can use Pandera for DataFrame validation in place of Pydantic! Feel free to schedule an office hour with Jeff for more on Pandera)\n    \n  \n\nSo, your task for the final project will be to\n\nChoose one of the topics we covered\nDetermine or work with your mentor to find an interesting “next step” with respect to this topic\nCarry out this next step (details below, since this will look different for different choices from the above options!)\nWrite up what you did in a report, including any of the code or math or data analysis that you did in Step 3",
     "crumbs": [
       "Final Project"
     ]
@@ -1534,7 +1670,7 @@
     "href": "final.html#overview",
     "title": "Final Project Details",
     "section": "",
-    "text": "The idea for your final project is as follows:\nIn pretty much any course on algorithms and data structures, whether in a Data Science, Computer Science, or Applied Math context, there’s only so much that can be covered in a given unit. This means that, for all of the topics we’ve covered thus far, there’s a next step that could be taken in learning about the topic. In general this could mean one of the following four options, where I’ve provided a concrete example specific to the class under each heading:\n\n  \n    Option 1: A Deeper Dive\n  \n  \n    \n    \n    \n          Example 1.1: Efficient implementations of deletion in linked lists, rather than just the insertion and retrieval operations on linked lists that we looked at.\n          Example 1.2: Expanding the Binary Search Tree into a Quadtree\n          Example 1.3: Creating an interactive visualization (using Streamlit, for example) of a data structure or algorithm.\n    \n    \n  \n\n\n  \n    Option 2: Fixing an Issue\n  \n  \n    \n    \n    \n      Example 2.1: Binary Search Trees lose their logarithmic efficiency if items are added to them in order (since newly-added items are always added to the right subtree of all existing items, thus \"degenerating\" into a linear linked list structure), an issue which fancier versions of the BST like AVL Trees and Red-Black Trees resolve.\n      Example 2.2: As you saw in the Midterm, hash tables \"degenerate\" from (approximate) $O(1)$ efficiency to $O(\\log_2(n))$ efficiency if the **hashing function** we use is not **efficient** or not **collision-resistant**. So, your project could be to explore and summarize how efficient and collision-resistant hash functions work, and then implement one such hash function in Python.\n    \n    \n  \n\n\n  \n    Option 3: Exploring Applications\n  \n  \n    \n    \n    \n      Example 3.1: In bioinformatics, the sorting algorithms we did learn are helpful for genetic sequence searching, but can be made even more efficient for genetic sequence searches by applying the Burrows-Wheeler Transform to a collection of genetic sequences before applying the sorting algorithms.\n      Example 3.2: We learned Breadth-First Search (BFS) and Depth-First Search (DFS) in somewhat of a hurry, as a way to traverse over the nodes in a Binary Search Tree, but they both have many more exciting applications! For example, if you're interested in web scraping, you could adapt the code from HW2 to create a polymorphic web-scraper, where each node is a webpage, and processing a node means adding each link in the page to the stack/queue.\n    \n    \n  \n\n\n  \n    Option 4: Proving Correctness and/or Efficiency\n  \n  \n    \n    \n    \n      Example 4.1: In the lecture on Insertion-Sort, I hinted at the notion of a correctness proof using invariants---how it would proceed along the same lines as a proof by induction that you might have seen in a previous math class---but never formally walked you through how to do one.\n      Example 4.2: Over the first half of the course, we were able to gradually improve retrieval of elements from data structures in a progression like:\n      \n      \n\n\n\nLinear\n\nLogarithmic\n\nConstant\n\n\n\n\nLinkedList\\(O(n)\\)\n\\(\\rightarrow\\)\nBST\\(O(\\log_2(n))\\)\n\\(\\rightarrow\\)\nHashTable\\(O(1 + \\varepsilon)\\)\n\n\n\n\n      \n      But then, for search, something was missing 🧐:\n\n      \n\n\n\nLinear\n\nLogarithmic\n\nConstant\n\n\n\n\nInsertion-Sort\\(O(n^2)\\)\n\\(\\rightarrow\\)\nMerge-Sort\\(O(n\\log_2(n))\\)\n\\(\\rightarrow\\)\n???\n\n\n\n\n\n  Prove that it's in fact not possible to make that additional \"jump\" to constant-time search in \\(O(n)\\), except in very special cases.\n      \n      \n    \n    \n  \n\n\n  \n    Option 5: Building an ETL Pipeline\n  \n  \n    \n    \n    \n      Example 5.1: If there is some task you currently handle manually---say, entering receipts from your email into a spreadsheet, or (the example I mentioned in class) making a fulltext index of ebooks in your library---your project can explore automating this task using Pydantic and Prefect\n      Example 5.2: If there are particular APIs and Database solutions that you've been hoping to explore, now's your chance! Create an ETL pipeline which Extracts data from the API, Transforms it in some interesting way, then Loads it into (for example) an SQL or MongoDB database.\n    \n\n    (For this option, note that we used Pydantic in the course because of its OOP orientation, but if your task is more DataFrame-heavy, you can use Pandera for DataFrame validation in place of Pydantic! Feel free to schedule an office hour with Jeff for more on Pandera)\n    \n  \n\nSo, your task for the final project will be to\n\nChoose one of the topics we covered\nDetermine or work with your mentor to find an interesting “next step” with respect to this topic\nCarry out this next step (details below, since this will look different for different choices from the above options!)\nWrite up what you did in a report, including any of the code or math or data analysis that you did in Step 3",
+    "text": "The idea for your final project is as follows:\nIn pretty much any course on algorithms and data structures, whether in a Data Science, Computer Science, or Applied Math context, there’s only so much that can be covered in a given unit. This means that, for all of the topics we’ve covered thus far, there’s a next step that could be taken in learning about the topic. In general this could mean one of the following four options, where I’ve provided a concrete example specific to the class under each heading:\n\n  \n    Option 1: A Deeper Dive\n  \n  \n    \n    \n    \n          Example 1.1: Efficient implementations of deletion in linked lists, rather than just the insertion and retrieval operations on linked lists that we looked at.\n          Example 1.2: Expanding the Binary Search Tree into a Quadtree\n          Example 1.3: Creating an interactive visualization (using Streamlit, for example) of a data structure or algorithm.\n    \n    \n  \n\n\n  \n    Option 2: Fixing an Issue\n  \n  \n    \n    \n    \n      Example 2.1: Binary Search Trees lose their logarithmic efficiency if items are added to them in order (since newly-added items are always added to the right subtree of all existing items, thus \"degenerating\" into a linear linked list structure), an issue which fancier versions of the BST like AVL Trees and Red-Black Trees resolve.\n      Example 2.2: As you saw in the Midterm, hash tables \"degenerate\" from (approximate) \\( O(1) \\) efficiency to \\( O(\\log_2(n)) \\) efficiency if the hashing function we use is not efficient or not collision-resistant. So, your project could be to explore and summarize how efficient and collision-resistant hash functions work, and then implement one such hash function in Python.\n    \n    \n  \n\n\n  \n    Option 3: Exploring Applications\n  \n  \n    \n    \n    \n      Example 3.1: In bioinformatics, the sorting algorithms we did learn are helpful for genetic sequence searching, but can be made even more efficient for genetic sequence searches by applying the Burrows-Wheeler Transform to a collection of genetic sequences before applying the sorting algorithms.\n      Example 3.2: We learned Breadth-First Search (BFS) and Depth-First Search (DFS) in somewhat of a hurry, as a way to traverse over the nodes in a Binary Search Tree, but they both have many more exciting applications! For example, if you're interested in web scraping, you could adapt the code from HW2 to create a polymorphic web-scraper, where each node is a webpage, and processing a node means adding each link in the page to the stack/queue.\n    \n    \n  \n\n\n  \n    Option 4: Proving Correctness and/or Efficiency\n  \n  \n    \n    \n    \n      Example 4.1: In the lecture on Insertion-Sort, I hinted at the notion of a correctness proof using invariants---how it would proceed along the same lines as a proof by induction that you might have seen in a previous math class---but never formally walked you through how to do one.\n      Example 4.2: Over the first half of the course, we were able to gradually improve retrieval of elements from data structures in a progression like:\n      \n      \n\n\n\nLinear\n\nLogarithmic\n\nConstant\n\n\n\n\nLinkedList\\(O(n)\\)\n\\(\\rightarrow\\)\nBST\\(O(\\log_2(n))\\)\n\\(\\rightarrow\\)\nHashTable\\(O(1 + \\varepsilon)\\)\n\n\n\n\n      \n      But then, for search, something was missing 🧐:\n\n      \n\n\n\nLinear\n\nLogarithmic\n\nConstant\n\n\n\n\nInsertion-Sort\\(O(n^2)\\)\n\\(\\rightarrow\\)\nMerge-Sort\\(O(n\\log_2(n))\\)\n\\(\\rightarrow\\)\n???\n\n\n\n\n\n  Prove that it's in fact not possible to make that additional \"jump\" to constant-time search in \\(O(n)\\), except in very special cases.\n      \n      \n    \n    \n  \n\n\n  \n    Option 5: Building an ETL Pipeline\n  \n  \n    \n    \n    \n      Example 5.1: If there is some task you currently handle manually---say, entering receipts from your email into a spreadsheet, or (the example I mentioned in class) making a fulltext index of ebooks in your library---your project can explore automating this task using Pydantic and Prefect\n      Example 5.2: If there are particular APIs and Database solutions that you've been hoping to explore, now's your chance! Create an ETL pipeline which Extracts data from the API, Transforms it in some interesting way, then Loads it into (for example) an SQL or MongoDB database.\n    \n\n    (For this option, note that we used Pydantic in the course because of its OOP orientation, but if your task is more DataFrame-heavy, you can use Pandera for DataFrame validation in place of Pydantic! Feel free to schedule an office hour with Jeff for more on Pandera)\n    \n  \n\nSo, your task for the final project will be to\n\nChoose one of the topics we covered\nDetermine or work with your mentor to find an interesting “next step” with respect to this topic\nCarry out this next step (details below, since this will look different for different choices from the above options!)\nWrite up what you did in a report, including any of the code or math or data analysis that you did in Step 3",
     "crumbs": [
       "Final Project"
     ]
@@ -2428,7 +2564,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Gluten Free', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Vegan', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Vegan', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'None', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2760,7 +2896,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Gluten Free', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Gluten Free', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'None', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Vegan', 'None', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -4131,7 +4267,7 @@
     "href": "w11/index.html#in-action",
     "title": "Week 11: Parallel Pipelines and Map-Reduce",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9800 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.6410 s",
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9740 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.5915 s",
     "crumbs": [
       "Week 11: {{< var w11.date-md >}}"
     ]
@@ -4351,7 +4487,7 @@
     "href": "w11/slides.html#in-action",
     "title": "Week 11: Parallel Pipelines and Map-Reduce",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9725 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.6583 s"
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9648 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.5744 s"
   },
   {
     "objectID": "w11/slides.html#what-happens-when-not-embarrassingly-parallel",
