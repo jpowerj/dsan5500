@@ -50,7 +50,7 @@ w08:
   date-md: "Feb 27"
 w09:
   weeknum: 9
-  title: "ETL Data Processing Pipelines"
+  title: "ETL Pipelines with Prefect"
   footer: "ETL Pipelines"
   date-md: "Mar 13"
 w10:
@@ -60,29 +60,29 @@ w10:
   date-md: "Mar 20"
 w11:
   weeknum: 11
-  title: "Moving from Serial to Parallel Pipelines"
-  footer: "Moving from Serial to Parallel Pipelines"
+  title: "From Serial to Parallel Pipelines"
+  footer: "Serial to Parallel Pipelines"
   date-md: "Mar 27"
 w12:
   weeknum: 12
-  title: "Parallel Pipelines and Map-Reduce"
-  footer: "Parallel Pipelines and Map-Reduce"
+  title: "Final Projects, Map-Reduce"
+  footer: "Final Projects, Map-Reduce"
   date-md: "Apr 3"
 w13:
   weeknum: 13
-  title: "Final Projects, Interfaces"
-  footer: "Final Projects, Interfaces"
+  title: "Applications: Bioinformatics"
+  footer: "Algorithms in Bioinformatics"
   date-md: "Apr 10"
 w14:
   weeknum: 14
-  title: "Applications: NLP and Bioinformatics"
+  title: "Applications: NLP"
   footer: "NLP Applications"
   date-md: "Apr 24"
-w15:
-  weeknum: 15
-  title: "Final Projects Celebration"
-  footer: "Final Projects Celebration"
-  date-md: "May 1"
+# w15:
+#   weeknum: 15
+#   title: "Final Projects Celebration"
+#   footer: "Final Projects Celebration"
+#   date-md: "May 1"
 hw1:
   title: "Python Fundamentals"
   date-md: "Jan 27 (Monday), 11:59pm EST"
@@ -92,20 +92,20 @@ hw2:
   title: "Object-Oriented Programming"
   date-md: "Feb 7 (Friday), 5:59pm EST"
   pct: 8
-  url: "#"
+  url: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx/a/NzQ4MTk4MTg3Mjc2/details"
 hw3:
   title: "Data Structures, Algorithms, and Complexity"
   date-md: "Feb 21 (Friday), 5:59pm EST"
   pct: 8
-  url: "#"
+  url: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx/a/NzUwNTIxNDM4NjQ3/details"
 hw4:
   title: "Data-Processing Pipelines"
-  date-md: "Mar 21 (Friday), 5:59pm EDT"
+  date-md: "Apr 11 (Wednesday), 11:59pm EDT"
   pct: 8
-  url: "#"
+  url: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx/a/NzYyMDA5MjM5NjU5/details"
 hw5:
-  title: "Parallel Computing"
-  date-md: "Apr 4 (Friday), 5:59pm EDT"
+  title: "Parallel Pipelines and Map-Reduce"
+  date-md: "Apr 25 (Friday), 5:59pm EDT"
   pct: 8
   url: "#"
 final:

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>Week 12: Final Projects, Interfaces – DSAN 5500</title>
+<title>Week 12: Final Projects, Map-Reduce – DSAN 5500</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -364,7 +364,7 @@ window.Quarto = {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2025-04-03, 06:27:13 PM</em></p>
+<p><em>Updated 2025-04-10, 04:09:40 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -424,7 +424,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 12: Final Projects, Interfaces</h1>
+<h1 class="title">Week 12: Final Projects, Map-Reduce</h1>
 <p class="subtitle lead"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
   <div class="quarto-categories">
     <div class="quarto-category">Class Sessions</div>
@@ -763,7 +763,7 @@ window.Quarto = {
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="1f01e733" class="cell" data-execution_count="1">
+<div id="1f01e733" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_5(num):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> num <span class="op">+</span> <span class="dv">5</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>add_5(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -772,7 +772,7 @@ window.Quarto = {
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="9af7bb40" class="cell" data-execution_count="2">
+<div id="9af7bb40" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_twice(fn, arg):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> fn(fn(arg))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>apply_twice(add_5, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -785,7 +785,7 @@ window.Quarto = {
 <ul>
 <li>In Python, functions <strong>can be used as</strong> vars (Hence <code class="sourceCode python"><span class="kw">lambda</span></code>):</li>
 </ul>
-<div id="c4c4815b" class="cell" data-execution_count="3">
+<div id="c4c4815b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>add_5 <span class="op">=</span> <span class="kw">lambda</span> num: num <span class="op">+</span> <span class="dv">5</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>apply_twice(add_5, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">

@@ -7,7 +7,7 @@ title: "Syllabus"
 ## Course Staff
 
 * Prof. Jeff Jacobs, <a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>
-  * Office hours (Click to reserve): [Tuesdays 3-6pm](https://jjacobs.me/meet), Car Barn 207-03
+  * Office hours (Click to reserve): [Tuesdays 3:30-6pm, Thursdays 3-4:30pm](https://jjacobs.me/meet), Car Barn 207-03
 * TA Renee DeMaio, <a href='mailto:jrd154@georgetown.edu' target='_blank'>`jrd154@georgetown.edu`</a>
 * TA Jiatong Liu, <a href='mailto:jl3081@georgetown.edu' target='_blank'>`jl3081@georgetown.edu`</a>
 
@@ -43,15 +43,15 @@ The graded components for the course consist of **five** homework assignments, a
     <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw1.pct >}}%"></span></td>
 </tr>
 <tr>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW2**: {{< var hw2.title >}}"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW2**: [{{< var hw2.title >}}]({{< var hw2.url >}})"></span></td>
     <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw2.pct >}}%"></span></td>
 </tr>
 <tr>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW3**: {{< var hw3.title >}}"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW3**: [{{< var hw3.title >}}]({{< var hw3.url >}})"></span></td>
     <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw3.pct >}}%"></span></td>
 </tr>
 <tr>
-    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW4**: {{< var hw4.title >}}"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW4**: [{{< var hw4.title >}}]({{< var hw4.url >}})"></span></td>
     <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw4.pct >}}%"></span></td>
 </tr>
 <tr>
@@ -104,7 +104,7 @@ The following is a rough map of what we will work through together throughout th
     <td></td>
     <td></td>
     <td><span data-qmd="{{< var hw1.date-md >}}"></span></td>
-    <td><span data-qmd="*[HW1 (Python Fundamentals)]({{< var hw1.url >}}) Due*"></span></td>
+    <td><span data-qmd="*HW1 [(Python Fundamentals)]({{< var hw1.url >}}) Due*"></span></td>
 </tr>
 <tr>
     <td></td>
@@ -122,7 +122,7 @@ The following is a rough map of what we will work through together throughout th
     <td></td>
     <td></td>
     <td><span data-qmd="{{< var hw2.date-md >}}"></span></td>
-    <td><span data-qmd="*HW2 ({{< var hw2.title >}}) Due*"></span></td>
+    <td><span data-qmd="*HW2 [({{< var hw2.title >}})]({{< var hw2.url >}}) Due*"></span></td>
 </tr>
 <tr>
     <td></td>
@@ -140,7 +140,7 @@ The following is a rough map of what we will work through together throughout th
     <td></td>
     <td></td>
     <td><span data-qmd="{{< var hw3.date-md >}}"></span></td>
-    <td><span data-qmd="*HW3 ({{< var hw3.title >}}) Due*"></span></td>
+    <td><span data-qmd="*HW3 [({{< var hw3.title >}})]({{< var hw3.url >}}) Due*"></span></td>
 </tr>
 
 <!-- Midterm -->
@@ -176,7 +176,7 @@ The following is a rough map of what we will work through together throughout th
     <td></td>
     <td></td>
     <td><span data-qmd="{{< var hw4.date-md >}}"></span></td>
-    <td><span data-qmd="*HW4 ({{< var hw4.title >}}) Due*"></span></td>
+    <td><span data-qmd="*HW4 [({{< var hw4.title >}})]({{< var hw4.url >}}) Due*"></span></td>
 </tr>
 
 <!-- Parallel Computing -->
@@ -193,32 +193,26 @@ The following is a rough map of what we will work through together throughout th
     <td><span data-qmd="{{< var w12.date-md >}}"></span></td>
     <td><a href='./w12' target='_blank'><span data-qmd="{{< var w12.title >}}"></span></a></td>
 </tr>
-<tr>
-    <td></td>
-    <td></td>
-    <td><span data-qmd="{{< var hw5.date-md >}}"></span></td>
-    <td><span data-qmd="*HW5 ({{< var hw5.title >}}) Due*"></span></td>
-</tr>
 
 <!-- Advanced Topics and Applications -->
 
 <tr class='new-unit'>
-    <td><span data-qmd="**Unit 5**: Final Project Topics and Applications"></span></td>
+    <td><span data-qmd="**Unit 5**: Final Project Application Areas"></span></td>
     <td>13</td>
     <td><span data-qmd="{{< var w13.date-md >}}"></span></td>
-    <td><a href='./w13' target='_blank'><span data-qmd="{{< var w13.title >}}"></span></a></td>
+    <td>(6:30-7:30pm) <a href='./w13' target='_blank'><span data-qmd="{{< var w13.title >}}"></span></a><br>(7:30-9pm) Final Project office hours (Jeff and Renee)</td>
 </tr>
 <tr>
     <td></td>
     <td>14</td>
     <td><span data-qmd="{{< var w14.date-md >}}"></span></td>
-    <td><a href='./w14' target='_blank'><span data-qmd="{{< var w14.title >}}"></span></a></td>
+    <td>(6:30-7:30pm) <a href='./w14' target='_blank'><span data-qmd="{{< var w14.title >}}"></span></a><br>(7:30-9pm) Final Project office hours (Jeff, Renee, Jiatong)</td>
 </tr>
 <tr>
     <td></td>
-    <td>15</td>
-    <td><span data-qmd="{{< var w15.date-md >}}"></span></td>
-    <td><span data-qmd="{{< var w15.title >}}"></span></td>
+    <td></td>
+    <td><span data-qmd="{{< var hw5.date-md >}}"></span></td>
+    <td><span data-qmd="*HW5 ({{< var hw5.title >}}) Due*"></span></td>
 </tr>
 <tr>
     <td></td>
@@ -236,7 +230,7 @@ The programming assignments for the course will be managed through Google Classr
 
 1. Open the `.ipynb` file for the assignment from within Google Classroom
 2. Work on the problems within the file, saving your progress early and often! You can **try things out** or **create drafts** of your solutions however you'd like (for example, in VSCode or JupyterLab or any other IDE), but your final response to each question must be included in your Colab notebook as accessed through Google Classroom!
-3. Submit the completed version of the assignment by clicking the "Submit" button generated by the last cell in each assignment's Colab notebook.
+3. Submit the completed version of the assignment by clicking the "Submit" button generated by the last cell in each assignment's Colab notebook, or (if the Submit button does not work) by clicking the blue "Hand in" button above the link to the notebook in Google Classroom's interface.
 
 ## Late Policy
 

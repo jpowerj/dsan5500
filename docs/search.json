@@ -63,175 +63,175 @@
   {
     "objectID": "w12/slides.html#how-do-i-pick-a-topic",
     "href": "w12/slides.html#how-do-i-pick-a-topic",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "How Do I Pick A Topic?",
     "text": "How Do I Pick A Topic?\n\nI know that “whatever is interesting to you” can be way overly-vague!\nSo, one approach is: imagine yourself in a job interview for your dream job, and they bring up DSAN 5450: “Interesting, what did you do in that class?”\n[Insert final project elevator pitch] “Wow, that’s such a cool project, we really want someone who can [say] take a data-driven approach to a policy question like that. You’re hired!”\n(Jeff gets a commission: 10% of your salary)"
   },
   {
     "objectID": "w12/slides.html#getting-from-here-to-there",
     "href": "w12/slides.html#getting-from-here-to-there",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Getting From Here to There",
     "text": "Getting From Here to There\n\n\nMinimum Viable Product (MVP)\n\\(\\leadsto\\) Final Product (but… Hofstadter’s Law)\n\n\n\n\n\n Hofstadter’s Law (Paraphrase)\n\n\nThe pieces of your DSAN final project will take longer than you expect, even if you take Hofstadter’s Law into account"
   },
   {
     "objectID": "w12/slides.html#a-deeper-dive",
     "href": "w12/slides.html#a-deeper-dive",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "1. A Deeper Dive",
     "text": "1. A Deeper Dive\n\nExample 1.3: Creating an interactive visualization (using Streamlit, for example) of a data structure or algorithm. (Streamlit demo coming in next section of slides!)"
   },
   {
     "objectID": "w12/slides.html#fixing-an-issue",
     "href": "w12/slides.html#fixing-an-issue",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "2. Fixing an Issue",
     "text": "2. Fixing an Issue\n\nExample 2.2: As you saw in the Midterm, hash tables “degenerate” from (approximate) \\(O(1)\\) efficiency to \\(O(\\log_2(n))\\) efficiency if the hashing function we use is not efficient or not collision-resistant.\nSo, your project could be to:\n\nExplore and summarize how efficient and collision-resistant hash functions work, and then\nImplement one such hash function in Python."
   },
   {
     "objectID": "w12/slides.html#exploring-applications",
     "href": "w12/slides.html#exploring-applications",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "3. Exploring Applications",
     "text": "3. Exploring Applications\n\nExample 3.2: We learned Breadth-First Search (BFS) and Depth-First Search (DFS) in somewhat of a hurry, as a way to traverse over the nodes in a Binary Search Tree, but they both have many more exciting applications!\nFor example, if you’re interested in web scraping, you could adapt the HW2 code to create a polymorphic web-scraper:\n\nEach node is a webpage\nProcessing a node means adding each link in that page to the ThingContainer."
   },
   {
     "objectID": "w12/slides.html#proving-things",
     "href": "w12/slides.html#proving-things",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "4. Proving Things",
     "text": "4. Proving Things\n\nExample 4.2: We were able to gradually improve retrieval:\n\n\n\n\n\n\n\n\n\n\n\nLinear\n\nLogarithmic\n\nConstant\n\n\n\n\nLinkedList\\(O(n)\\)\n\\(\\rightarrow\\)\nBST\\(O(\\log_2(n))\\)\n\\(\\rightarrow\\)\nHashTable\\(O(1 + \\varepsilon)\\)\n\n\n\n\nBut then for search, something was missing 🧐:\n\n\n\n\n\n\n\n\n\n\n\nLinear\n\nLogarithmic\n\nConstant\n\n\n\n\nInsertion-Sort\\(O(n^2)\\)\n\\(\\rightarrow\\)\nMerge-Sort\\(O(n\\log_2(n))\\)\n\\(\\rightarrow\\)\n???\n\n\n\n\nProve that it’s not possible to make the additional “jump” to constant-time search in \\(O(n)\\), except in very special cases."
   },
   {
     "objectID": "w12/slides.html#building-an-etl-pipeline",
     "href": "w12/slides.html#building-an-etl-pipeline",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "5. Building an ETL Pipeline",
     "text": "5. Building an ETL Pipeline\n\nExample 5.2: If there are particular APIs and Database solutions that you’ve been hoping to explore, now’s your chance! Create an ETL pipeline which Extracts data from the API, Transforms it in some interesting way, then Loads it into (for example) an SQL or MongoDB database."
   },
   {
     "objectID": "w12/slides.html#fake-data",
     "href": "w12/slides.html#fake-data",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Fake Data!",
     "text": "Fake Data!\n\nWhen developing (as opposed to deploying) your projects, real data can add additional complexity beyond the MVP!: It might cost $$$, it might be rate-limited, or they might catch you scraping their website and ban you ☠️\n\n(Also: might be too complicated to handle in the time available, even if you use Prefect 😉)\n\nInstead, use Faker!\nIn particular, see Standard Providers page for listing of all the types of data you can fake!"
   },
   {
     "objectID": "w12/slides.html#visual-interfaces",
     "href": "w12/slides.html#visual-interfaces",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Visual Interfaces",
     "text": "Visual Interfaces\n\nA good number of you are interested in visualizing or allowing interaction with the structures/algorithms from class\nOne quick way to allow this: Streamlit!\nHowever, Streamlit’s “default” is form-based interaction (form in sidebar \\(\\rightarrow\\) results in main panel); a bit more work required to make everything interactive\nDemo to see what I mean, code that you can steal!"
   },
   {
     "objectID": "w12/slides.html#a-reminder-w10",
     "href": "w12/slides.html#a-reminder-w10",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "A Reminder (W10)",
     "text": "A Reminder (W10)\n\nHumans are not capable of true multitasking! In CS terms, this would be called multiprocessing (more on this later)\nWe are capable, however, of various modes of concurrency!\n\n\n\n\n\n\n\n\n\n\nMultithreading\nAsynchronous Execution\n\n\n\n\nUnconsciously(you do it already, “naturally”)\nFocus on one speaker within a loud room, with tons of other conversations entering your ears\nPut something in oven, set alarm, go do something else, take out of oven once alarm goes off\n\n\nConsciously(you can do it with effort/practice)\nPat head (up and down) and rub stomach (circular motion) “simultaneously”\nThrow a ball in the air, clap 3 times, catch ball"
   },
   {
     "objectID": "w12/slides.html#parallel-in-python-the-hard-way",
     "href": "w12/slides.html#parallel-in-python-the-hard-way",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Parallel in Python: The Hard Way",
     "text": "Parallel in Python: The Hard Way\n\nthreading\nmultiprocessing\nasyncio"
   },
   {
     "objectID": "w12/slides.html#joblib",
     "href": "w12/slides.html#joblib",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "…Joblib",
     "text": "…Joblib\n\nColab Notebook"
   },
   {
     "objectID": "w12/slides.html#python-rightarrow-prefect",
     "href": "w12/slides.html#python-rightarrow-prefect",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Python \\(\\rightarrow\\) Prefect",
     "text": "Python \\(\\rightarrow\\) Prefect\n\nCan think of code on prev slide as (implicitly) submitting numbers to the find_prime_factors() task…\nSo, let’s make this explicit by using Prefect’s @task annotation!\nLab Time!"
   },
   {
     "objectID": "w12/slides.html#functions-vs.-functionals",
     "href": "w12/slides.html#functions-vs.-functionals",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Functions vs. Functionals",
     "text": "Functions vs. Functionals\n\nYou may have noticed: map() and reduce() are “meta-functions”: functions that take other functions as inputs\n\n\n\n\ndef add_5(num):\n  return num + 5\nadd_5(10)\n\n15\n\n\n\n\ndef apply_twice(fn, arg):\n  return fn(fn(arg))\napply_twice(add_5, 10)\n\n20\n\n\n\n\nIn Python, functions can be used as vars (Hence lambda):\n\n\nadd_5 = lambda num: num + 5\napply_twice(add_5, 10)\n\n20\n\n\n\nThis relates to a whole paradigm, “functional programming”: mostly outside scope of course, but lots of important+useful takeaways/rules-of-thumb! →"
   },
   {
     "objectID": "w12/slides.html#train-your-brain-for-functional-approach-implies-master-debugging",
     "href": "w12/slides.html#train-your-brain-for-functional-approach-implies-master-debugging",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!",
     "text": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!\n\nIn CS Theory: enables formal proofs of correctness\nIn CS practice:\n\n\nWhen a program doesn’t work, each function is an interface point where you can check that the data are correct. You can look at the intermediate inputs and outputs to quickly isolate the function that’s responsible for a bug.(from Python’s “Functional Programming HowTo”)"
   },
   {
     "objectID": "w12/slides.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
     "href": "w12/slides.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines",
     "text": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines\n\n\nScenario: Run code, check the output, and… it’s wrong 😵 what do you do?\nUsual approach: Read lines one-by-one, figuring out what they do, seeing if something pops out that seems wrong; adding comments like # Convert to lowercase\n\n\n\n\nEasy case: found typo in punctuation removal code. Fix the error, add comment like # Remove punctuation\n Rule 1 of FP: transform these comments into function names\n\n\n\nHard case: Something in load_text() modifies a variable that later on breaks remove_punct() (Called a side-effect)\n Rule 2 of FP: NO SIDE-EFFECTS!\n\n\n\n\n\n\n\n\n\nG\n\n\n\ninput\nin.txt\n\n\n\nload_text\nload_text\n(Verb)\n\n\n\n\ninput-&gt;load_text\n\n\n\n\n\nlowercase\nlowercase\n(Verb)\n\n\n\n\nload_text-&gt;lowercase\n\n\n🧐 ✅\n\n\n\nremove_punct\nremove_punct\n(Verb)\n\n\n\n\nlowercase-&gt;remove_punct\n\n\n🧐 ✅\n\n\n\nremove_stopwords\nremove_stopwords\n(Verb)\n\n\n\n\nremove_punct-&gt;remove_stopwords\n\n\n🧐 ❌❗️\n\n\n\noutput\nout.txt\n\n\n\nremove_stopwords-&gt;output\n\n\n\n\n\n\n (Does this way of diagramming a program look familiar?) \n\n\n\n\nWith side effects: ❌ \\(\\implies\\) issue is somewhere earlier in the chain 😩🏃‍♂️\nNo side effects: ❌ \\(\\implies\\) issue must be in remove_punct()!!! 😎 ⏱️ = 💰"
   },
   {
     "objectID": "w12/slides.html#if-its-so-useful-why-doesnt-everyone-do-it",
     "href": "w12/slides.html#if-its-so-useful-why-doesnt-everyone-do-it",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "If It’s So Useful, Why Doesn’t Everyone Do It?",
     "text": "If It’s So Useful, Why Doesn’t Everyone Do It?\n\nTrapped in imperative (sequential) coding mindset: Path dependency / QWERTY\nReason we need to start thinking like this is: it’s 1000x harder to debug parallel code! So we need to be less ad hoc in how we write+debug, from here on out! 🙇‍♂️🙏\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014)\nThe title relates to a classic Economics joke (the best kind of joke): “An economist and a CEO are walking down the street, when the CEO points at the ground and tells the economist, ‘look! A $20 bill on the ground!’ The economist keeps on walking, scoffing at the CEO: ‘don’t be silly, if there was a $20 bill on the ground, somebody would have picked it up already’.”"
   },
   {
     "objectID": "w12/slides.html#the-killer-application-matrix-multiplication",
     "href": "w12/slides.html#the-killer-application-matrix-multiplication",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "The “Killer Application”: Matrix Multiplication",
     "text": "The “Killer Application”: Matrix Multiplication\n\n(I learned from Jeff Ullman, who did the obnoxious Stanford thing of mentioning in passing how “two previous students in the class did this for a cool final project on web crawling and, well, it escalated quickly”, aka became Google)\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014), which is (legally) free online!"
   },
   {
     "objectID": "w12/slides.html#the-killer-way-to-learn-text-counts",
     "href": "w12/slides.html#the-killer-way-to-learn-text-counts",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "The Killer Way-To-Learn: Text Counts!",
     "text": "The Killer Way-To-Learn: Text Counts!\n\n(2014): Text counts (2.2) \\(\\rightarrow\\) Matrix multiplication (2.3) \\(\\rightarrow \\cdots \\rightarrow\\) PageRank (5.1)\n(And yall thought it was just busywork for HW3 😏)\nThe goal: User searches “Denzel Curry”… How relevant is a given webpage?\nScenario 1: Entire internet fits on CPU \\(\\implies\\) We can just make a big big hash table:\n\n\n\n\n\n\n\n\nG\n\n\n\ninternet\n\nScan in O(n):\nToday Denzel Washington\nate a big bowl of Yum's\ncurry. Denzel allegedly\nrubbed his tum and said\n\"yum yum yum\" when he\ntasted today's curry.\n\"Yum! It is me Denzel,\ncurry is my fav!\", he\nexclaimed. According to\nhis friend Steph, curry\nis indeed Denzel's fav.\nWe are live with Del\nCurry in Washington for\na Denzel curry update.\n\n\n\n\nccounts\n\nOverall Counts\n\n('according',1)\n('allegedly',1)\n('ate',1)\n('big',1)\n('bowl',1)\n('curry',6)\n('del',1)\n('denzel',5)\n('exclaimed',1)\n('fav',2)\n('friend',1)\n('indeed',1)\n('live',1)\n('rubbed',1)\n('said',1)\n('steph',1)\n('tasted',1)\n('today',2)\n('tum',1)\n('update',1)\n('washington',2)\n('yum',4)\n\n\n\n\ninternet-&gt;ccounts\n\n\nHash Table"
   },
   {
     "objectID": "w12/slides.html#if-everything-doesnt-fit-on-cpu",
     "href": "w12/slides.html#if-everything-doesnt-fit-on-cpu",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "If Everything Doesn’t Fit on CPU…",
     "text": "If Everything Doesn’t Fit on CPU…\n\nFrom Cornell Virtual Workshop, “Understanding GPU Architecture”"
   },
   {
     "objectID": "w12/slides.html#break-problem-into-chunks-for-the-green-bois",
     "href": "w12/slides.html#break-problem-into-chunks-for-the-green-bois",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Break Problem into Chunks for the Green Bois!",
     "text": "Break Problem into Chunks for the Green Bois!\n\n\n\n\n\n\n\nG\n\n\n\nchunked\n\nChunked Document\n\nToday Denzel Washington\nate a big bowl of Yum's\ncurry. Denzel allegedly\nrubbed his tum and said\n\n\"yum yum yum\" when he\ntasted today's curry.\n\"Yum! It is me Denzel,\ncurry is my fav!\", he\n\nexclaimed. According to\nhis friend Steph, curry\nis indeed Denzel's fav.\nWe are live with Del\nCurry in Washington for\na Denzel curry update.\n\n\n\n\nchcounts\n\nChunked Counts\n\n('today',1)\n('denzel',1)\n...\n('tum',1)\n('said',1)\n\n('yum',1)\n('yum',1)\n('yum',1)\n...\n('fav',1)\n\n('exclaimed',1)\n...\n('del',1)\n('curry',1)\n('washington',1)\n('denzel',1)\n('curry',1)\n('update',1)\n\n\n\n\nchunked:p1-&gt;chcounts:p1\n\n\nO(n/4)\n\n\n\nchunked:p2-&gt;chcounts:p2\n\n\nO(n/4)\n\n\n\nchunked:p3-&gt;chcounts:p3\n\n\nO(n/4)\n\n\n\nchunked:p4-&gt;chcounts:p4\n\n\nO(n/4)\n\n\n\nscounts\n\nHashed Counts\n\n('allegedly',1)\n...\n('curry',1)\n('denzel',2)\n...\n('yum',1)\n\n('curry',2)\n('denzel',1)\n...\n('yum',4)\n\n('according',1)\n('curry',1)\n('del',1)\n('denzel',1)\n...\n('curry',2)\n('denzel',1)\n('update',1)\n('washington',1)\n\n\n\n\nchcounts:p1-&gt;scounts:p1\n\n\nO(n/4)\n\n\n\nchcounts:p2-&gt;scounts:p2\n\n\nO(n/4)\n\n\n\nchcounts:p3-&gt;scounts:p3\n\n\nO(n/4)\n\n\n\nchcounts:p4-&gt;scounts:p4\n\n\nO(n/4)\n\n\n\nccounts\n\nOverall Counts\n('according',1)\n('allegedly',1)\n('ate',1)\n('big',1)\n('bowl',1)\n('curry',6)\n('del',1)\n('denzel',5)\n('exclaimed',1)\n('fav',2)\n('friend',1)\n('indeed',1)\n('live',1)\n('rubbed',1)\n('said',1)\n('steph',1)\n('tasted',1)\n('today',2)\n('tum',1)\n('update',1)\n('washington',2)\n('yum',4)\n\n\n\n\nscounts:p1-&gt;ccounts:p1\n\n\n\n\n\nscounts:p2-&gt;ccounts:p1\n\n\n\n\n\nscounts:p3-&gt;ccounts:p1\n\n\n\n\n\nscounts:p4-&gt;ccounts:p1\n\n\n\n\n\nscounts:p2-&gt;ccounts\n\n\n \n\nMerge in\nO(n)\n\n\n\n\n\n\n\n\n\n\\(\\implies\\) Total = \\(O(3n) = O(n)\\)\nBut also optimized in terms of constants, because of sequential memory reads"
   },
   {
     "objectID": "w12/slides.html#hw5a",
     "href": "w12/slides.html#hw5a",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "HW5A",
     "text": "HW5A\n\nScrape quotes in parallel!\nAdvantage: Builds on HW4\nDisadvantage: Embarrassingly parallel, so… no Map-Reduce coding practice"
   },
   {
     "objectID": "w12/slides.html#hw5b",
     "href": "w12/slides.html#hw5b",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "HW5B",
     "text": "HW5B\n\nMap-Reduced Matrix-Vector Multiplication\n\n\nImage source"
   },
   {
     "objectID": "w12/slides.html#references",
     "href": "w12/slides.html#references",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "References",
     "text": "References\n\n\nLeskovec, Jure, Anand Rajaraman, and Jeffrey David Ullman. 2014. Mining of Massive Datasets. Cambridge University Press."
   },
   {
     "objectID": "w12/index.html",
     "href": "w12/index.html",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "",
     "text": "Open slides in new window →",
     "crumbs": [
@@ -241,7 +241,7 @@
   {
     "objectID": "w12/index.html#how-do-i-pick-a-topic",
     "href": "w12/index.html#how-do-i-pick-a-topic",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "How Do I Pick A Topic?",
     "text": "How Do I Pick A Topic?\n\nI know that “whatever is interesting to you” can be way overly-vague!\nSo, one approach is: imagine yourself in a job interview for your dream job, and they bring up DSAN 5450: “Interesting, what did you do in that class?”\n[Insert final project elevator pitch] “Wow, that’s such a cool project, we really want someone who can [say] take a data-driven approach to a policy question like that. You’re hired!”\n(Jeff gets a commission: 10% of your salary)",
     "crumbs": [
@@ -251,7 +251,7 @@
   {
     "objectID": "w12/index.html#getting-from-here-to-there",
     "href": "w12/index.html#getting-from-here-to-there",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Getting From Here to There",
     "text": "Getting From Here to There\n\n\nMinimum Viable Product (MVP)\n\\(\\leadsto\\) Final Product (but… Hofstadter’s Law)\n\n\n\n\n\n\n\n Hofstadter’s Law (Paraphrase)\n\n\n\nThe pieces of your DSAN final project will take longer than you expect, even if you take Hofstadter’s Law into account",
     "crumbs": [
@@ -261,7 +261,7 @@
   {
     "objectID": "w12/index.html#a-deeper-dive",
     "href": "w12/index.html#a-deeper-dive",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "1. A Deeper Dive",
     "text": "1. A Deeper Dive\n\nExample 1.3: Creating an interactive visualization (using Streamlit, for example) of a data structure or algorithm. (Streamlit demo coming in next section of slides!)",
     "crumbs": [
@@ -271,7 +271,7 @@
   {
     "objectID": "w12/index.html#fixing-an-issue",
     "href": "w12/index.html#fixing-an-issue",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "2. Fixing an Issue",
     "text": "2. Fixing an Issue\n\nExample 2.2: As you saw in the Midterm, hash tables “degenerate” from (approximate) \\(O(1)\\) efficiency to \\(O(\\log_2(n))\\) efficiency if the hashing function we use is not efficient or not collision-resistant.\nSo, your project could be to:\n\nExplore and summarize how efficient and collision-resistant hash functions work, and then\nImplement one such hash function in Python.",
     "crumbs": [
@@ -281,7 +281,7 @@
   {
     "objectID": "w12/index.html#exploring-applications",
     "href": "w12/index.html#exploring-applications",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "3. Exploring Applications",
     "text": "3. Exploring Applications\n\nExample 3.2: We learned Breadth-First Search (BFS) and Depth-First Search (DFS) in somewhat of a hurry, as a way to traverse over the nodes in a Binary Search Tree, but they both have many more exciting applications!\nFor example, if you’re interested in web scraping, you could adapt the HW2 code to create a polymorphic web-scraper:\n\nEach node is a webpage\nProcessing a node means adding each link in that page to the ThingContainer.",
     "crumbs": [
@@ -291,7 +291,7 @@
   {
     "objectID": "w12/index.html#proving-things",
     "href": "w12/index.html#proving-things",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "4. Proving Things",
     "text": "4. Proving Things\n\nExample 4.2: We were able to gradually improve retrieval:\n\n\n\n\n\n\n\n\n\n\n\nLinear\n\nLogarithmic\n\nConstant\n\n\n\n\nLinkedList\\(O(n)\\)\n\\(\\rightarrow\\)\nBST\\(O(\\log_2(n))\\)\n\\(\\rightarrow\\)\nHashTable\\(O(1 + \\varepsilon)\\)\n\n\n\n\nBut then for search, something was missing 🧐:\n\n\n\n\n\n\n\n\n\n\n\nLinear\n\nLogarithmic\n\nConstant\n\n\n\n\nInsertion-Sort\\(O(n^2)\\)\n\\(\\rightarrow\\)\nMerge-Sort\\(O(n\\log_2(n))\\)\n\\(\\rightarrow\\)\n???\n\n\n\n\nProve that it’s not possible to make the additional “jump” to constant-time search in \\(O(n)\\), except in very special cases.",
     "crumbs": [
@@ -301,7 +301,7 @@
   {
     "objectID": "w12/index.html#building-an-etl-pipeline",
     "href": "w12/index.html#building-an-etl-pipeline",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "5. Building an ETL Pipeline",
     "text": "5. Building an ETL Pipeline\n\nExample 5.2: If there are particular APIs and Database solutions that you’ve been hoping to explore, now’s your chance! Create an ETL pipeline which Extracts data from the API, Transforms it in some interesting way, then Loads it into (for example) an SQL or MongoDB database.",
     "crumbs": [
@@ -311,7 +311,7 @@
   {
     "objectID": "w12/index.html#fake-data",
     "href": "w12/index.html#fake-data",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Fake Data!",
     "text": "Fake Data!\n\nWhen developing (as opposed to deploying) your projects, real data can add additional complexity beyond the MVP!: It might cost $$$, it might be rate-limited, or they might catch you scraping their website and ban you ☠️\n\n(Also: might be too complicated to handle in the time available, even if you use Prefect 😉)\n\nInstead, use Faker!\nIn particular, see Standard Providers page for listing of all the types of data you can fake!",
     "crumbs": [
@@ -321,7 +321,7 @@
   {
     "objectID": "w12/index.html#visual-interfaces",
     "href": "w12/index.html#visual-interfaces",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Visual Interfaces",
     "text": "Visual Interfaces\n\nA good number of you are interested in visualizing or allowing interaction with the structures/algorithms from class\nOne quick way to allow this: Streamlit!\nHowever, Streamlit’s “default” is form-based interaction (form in sidebar \\(\\rightarrow\\) results in main panel); a bit more work required to make everything interactive\nDemo to see what I mean, code that you can steal!",
     "crumbs": [
@@ -331,7 +331,7 @@
   {
     "objectID": "w12/index.html#a-reminder-w10",
     "href": "w12/index.html#a-reminder-w10",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "A Reminder (W10)",
     "text": "A Reminder (W10)\n\nHumans are not capable of true multitasking! In CS terms, this would be called multiprocessing (more on this later)\nWe are capable, however, of various modes of concurrency!\n\n\n\n\n\n\n\n\n\n\nMultithreading\nAsynchronous Execution\n\n\n\n\nUnconsciously(you do it already, “naturally”)\nFocus on one speaker within a loud room, with tons of other conversations entering your ears\nPut something in oven, set alarm, go do something else, take out of oven once alarm goes off\n\n\nConsciously(you can do it with effort/practice)\nPat head (up and down) and rub stomach (circular motion) “simultaneously”\nThrow a ball in the air, clap 3 times, catch ball",
     "crumbs": [
@@ -341,7 +341,7 @@
   {
     "objectID": "w12/index.html#parallel-in-python-the-hard-way",
     "href": "w12/index.html#parallel-in-python-the-hard-way",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Parallel in Python: The Hard Way",
     "text": "Parallel in Python: The Hard Way\n\nthreading\nmultiprocessing\nasyncio",
     "crumbs": [
@@ -351,7 +351,7 @@
   {
     "objectID": "w12/index.html#joblib",
     "href": "w12/index.html#joblib",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "…Joblib",
     "text": "…Joblib\n\nColab Notebook",
     "crumbs": [
@@ -361,7 +361,7 @@
   {
     "objectID": "w12/index.html#python-rightarrow-prefect",
     "href": "w12/index.html#python-rightarrow-prefect",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Python \\(\\rightarrow\\) Prefect",
     "text": "Python \\(\\rightarrow\\) Prefect\n\nCan think of code on prev slide as (implicitly) submitting numbers to the find_prime_factors() task…\nSo, let’s make this explicit by using Prefect’s @task annotation!\nLab Time!",
     "crumbs": [
@@ -371,7 +371,7 @@
   {
     "objectID": "w12/index.html#functions-vs.-functionals",
     "href": "w12/index.html#functions-vs.-functionals",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Functions vs. Functionals",
     "text": "Functions vs. Functionals\n\nYou may have noticed: map() and reduce() are “meta-functions”: functions that take other functions as inputs\n\n\n\n\ndef add_5(num):\n  return num + 5\nadd_5(10)\n\n15\n\n\n\n\ndef apply_twice(fn, arg):\n  return fn(fn(arg))\napply_twice(add_5, 10)\n\n20\n\n\n\n\n\nIn Python, functions can be used as vars (Hence lambda):\n\n\nadd_5 = lambda num: num + 5\napply_twice(add_5, 10)\n\n20\n\n\n\nThis relates to a whole paradigm, “functional programming”: mostly outside scope of course, but lots of important+useful takeaways/rules-of-thumb! →",
     "crumbs": [
@@ -381,7 +381,7 @@
   {
     "objectID": "w12/index.html#train-your-brain-for-functional-approach-implies-master-debugging",
     "href": "w12/index.html#train-your-brain-for-functional-approach-implies-master-debugging",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!",
     "text": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!\n\nIn CS Theory: enables formal proofs of correctness\nIn CS practice:\n\n\nWhen a program doesn’t work, each function is an interface point where you can check that the data are correct. You can look at the intermediate inputs and outputs to quickly isolate the function that’s responsible for a bug.(from Python’s “Functional Programming HowTo”)",
     "crumbs": [
@@ -391,7 +391,7 @@
   {
     "objectID": "w12/index.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
     "href": "w12/index.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines",
     "text": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines\n\n\nScenario: Run code, check the output, and… it’s wrong 😵 what do you do?\nUsual approach: Read lines one-by-one, figuring out what they do, seeing if something pops out that seems wrong; adding comments like # Convert to lowercase\n\n\n\n\nEasy case: found typo in punctuation removal code. Fix the error, add comment like # Remove punctuation\n Rule 1 of FP: transform these comments into function names\n\n\n\nHard case: Something in load_text() modifies a variable that later on breaks remove_punct() (Called a side-effect)\n Rule 2 of FP: NO SIDE-EFFECTS!\n\n\n\n\n\n\n\n\n\n\nG\n\n\n\ninput\nin.txt\n\n\n\nload_text\nload_text\n(Verb)\n\n\n\n\ninput-&gt;load_text\n\n\n\n\n\nlowercase\nlowercase\n(Verb)\n\n\n\n\nload_text-&gt;lowercase\n\n\n🧐 ✅\n\n\n\nremove_punct\nremove_punct\n(Verb)\n\n\n\n\nlowercase-&gt;remove_punct\n\n\n🧐 ✅\n\n\n\nremove_stopwords\nremove_stopwords\n(Verb)\n\n\n\n\nremove_punct-&gt;remove_stopwords\n\n\n🧐 ❌❗️\n\n\n\noutput\nout.txt\n\n\n\nremove_stopwords-&gt;output\n\n\n\n\n\n\n (Does this way of diagramming a program look familiar?) \n\n\n\n\nWith side effects: ❌ \\(\\implies\\) issue is somewhere earlier in the chain 😩🏃‍♂️\nNo side effects: ❌ \\(\\implies\\) issue must be in remove_punct()!!! 😎 ⏱️ = 💰",
     "crumbs": [
@@ -401,7 +401,7 @@
   {
     "objectID": "w12/index.html#if-its-so-useful-why-doesnt-everyone-do-it",
     "href": "w12/index.html#if-its-so-useful-why-doesnt-everyone-do-it",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "If It’s So Useful, Why Doesn’t Everyone Do It?",
     "text": "If It’s So Useful, Why Doesn’t Everyone Do It?\n\nTrapped in imperative (sequential) coding mindset: Path dependency / QWERTY\nReason we need to start thinking like this is: it’s 1000x harder to debug parallel code! So we need to be less ad hoc in how we write+debug, from here on out! 🙇‍♂️🙏\n\n\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014)\n\n\n\nThe title relates to a classic Economics joke (the best kind of joke): “An economist and a CEO are walking down the street, when the CEO points at the ground and tells the economist, ‘look! A $20 bill on the ground!’ The economist keeps on walking, scoffing at the CEO: ‘don’t be silly, if there was a $20 bill on the ground, somebody would have picked it up already’.”",
     "crumbs": [
@@ -411,7 +411,7 @@
   {
     "objectID": "w12/index.html#the-killer-application-matrix-multiplication",
     "href": "w12/index.html#the-killer-application-matrix-multiplication",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "The “Killer Application”: Matrix Multiplication",
     "text": "The “Killer Application”: Matrix Multiplication\n\n(I learned from Jeff Ullman, who did the obnoxious Stanford thing of mentioning in passing how “two previous students in the class did this for a cool final project on web crawling and, well, it escalated quickly”, aka became Google)\n\n\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014), which is (legally) free online!",
     "crumbs": [
@@ -421,7 +421,7 @@
   {
     "objectID": "w12/index.html#the-killer-way-to-learn-text-counts",
     "href": "w12/index.html#the-killer-way-to-learn-text-counts",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "The Killer Way-To-Learn: Text Counts!",
     "text": "The Killer Way-To-Learn: Text Counts!\n\n(2014): Text counts (2.2) \\(\\rightarrow\\) Matrix multiplication (2.3) \\(\\rightarrow \\cdots \\rightarrow\\) PageRank (5.1)\n(And yall thought it was just busywork for HW3 😏)\nThe goal: User searches “Denzel Curry”… How relevant is a given webpage?\nScenario 1: Entire internet fits on CPU \\(\\implies\\) We can just make a big big hash table:\n\n\n\n\n\n\n\n\nG\n\n\n\ninternet\n\nScan in O(n):\nToday Denzel Washington\nate a big bowl of Yum's\ncurry. Denzel allegedly\nrubbed his tum and said\n\"yum yum yum\" when he\ntasted today's curry.\n\"Yum! It is me Denzel,\ncurry is my fav!\", he\nexclaimed. According to\nhis friend Steph, curry\nis indeed Denzel's fav.\nWe are live with Del\nCurry in Washington for\na Denzel curry update.\n\n\n\n\nccounts\n\nOverall Counts\n\n('according',1)\n('allegedly',1)\n('ate',1)\n('big',1)\n('bowl',1)\n('curry',6)\n('del',1)\n('denzel',5)\n('exclaimed',1)\n('fav',2)\n('friend',1)\n('indeed',1)\n('live',1)\n('rubbed',1)\n('said',1)\n('steph',1)\n('tasted',1)\n('today',2)\n('tum',1)\n('update',1)\n('washington',2)\n('yum',4)\n\n\n\n\ninternet-&gt;ccounts\n\n\nHash Table",
     "crumbs": [
@@ -431,7 +431,7 @@
   {
     "objectID": "w12/index.html#if-everything-doesnt-fit-on-cpu",
     "href": "w12/index.html#if-everything-doesnt-fit-on-cpu",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "If Everything Doesn’t Fit on CPU…",
     "text": "If Everything Doesn’t Fit on CPU…\n\n\n\nFrom Cornell Virtual Workshop, “Understanding GPU Architecture”",
     "crumbs": [
@@ -441,7 +441,7 @@
   {
     "objectID": "w12/index.html#break-problem-into-chunks-for-the-green-bois",
     "href": "w12/index.html#break-problem-into-chunks-for-the-green-bois",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "Break Problem into Chunks for the Green Bois!",
     "text": "Break Problem into Chunks for the Green Bois!\n\n\n\n\n\n\n\nG\n\n\n\nchunked\n\nChunked Document\n\nToday Denzel Washington\nate a big bowl of Yum's\ncurry. Denzel allegedly\nrubbed his tum and said\n\n\"yum yum yum\" when he\ntasted today's curry.\n\"Yum! It is me Denzel,\ncurry is my fav!\", he\n\nexclaimed. According to\nhis friend Steph, curry\nis indeed Denzel's fav.\nWe are live with Del\nCurry in Washington for\na Denzel curry update.\n\n\n\n\nchcounts\n\nChunked Counts\n\n('today',1)\n('denzel',1)\n...\n('tum',1)\n('said',1)\n\n('yum',1)\n('yum',1)\n('yum',1)\n...\n('fav',1)\n\n('exclaimed',1)\n...\n('del',1)\n('curry',1)\n('washington',1)\n('denzel',1)\n('curry',1)\n('update',1)\n\n\n\n\nchunked:p1-&gt;chcounts:p1\n\n\nO(n/4)\n\n\n\nchunked:p2-&gt;chcounts:p2\n\n\nO(n/4)\n\n\n\nchunked:p3-&gt;chcounts:p3\n\n\nO(n/4)\n\n\n\nchunked:p4-&gt;chcounts:p4\n\n\nO(n/4)\n\n\n\nscounts\n\nHashed Counts\n\n('allegedly',1)\n...\n('curry',1)\n('denzel',2)\n...\n('yum',1)\n\n('curry',2)\n('denzel',1)\n...\n('yum',4)\n\n('according',1)\n('curry',1)\n('del',1)\n('denzel',1)\n...\n('curry',2)\n('denzel',1)\n('update',1)\n('washington',1)\n\n\n\n\nchcounts:p1-&gt;scounts:p1\n\n\nO(n/4)\n\n\n\nchcounts:p2-&gt;scounts:p2\n\n\nO(n/4)\n\n\n\nchcounts:p3-&gt;scounts:p3\n\n\nO(n/4)\n\n\n\nchcounts:p4-&gt;scounts:p4\n\n\nO(n/4)\n\n\n\nccounts\n\nOverall Counts\n('according',1)\n('allegedly',1)\n('ate',1)\n('big',1)\n('bowl',1)\n('curry',6)\n('del',1)\n('denzel',5)\n('exclaimed',1)\n('fav',2)\n('friend',1)\n('indeed',1)\n('live',1)\n('rubbed',1)\n('said',1)\n('steph',1)\n('tasted',1)\n('today',2)\n('tum',1)\n('update',1)\n('washington',2)\n('yum',4)\n\n\n\n\nscounts:p1-&gt;ccounts:p1\n\n\n\n\n\nscounts:p2-&gt;ccounts:p1\n\n\n\n\n\nscounts:p3-&gt;ccounts:p1\n\n\n\n\n\nscounts:p4-&gt;ccounts:p1\n\n\n\n\n\nscounts:p2-&gt;ccounts\n\n\n \n\nMerge in\nO(n)\n\n\n\n\n\n\n\n\n\n\\(\\implies\\) Total = \\(O(3n) = O(n)\\)\nBut also optimized in terms of constants, because of sequential memory reads",
     "crumbs": [
@@ -451,7 +451,7 @@
   {
     "objectID": "w12/index.html#hw5a",
     "href": "w12/index.html#hw5a",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "HW5A",
     "text": "HW5A\n\nScrape quotes in parallel!\nAdvantage: Builds on HW4\nDisadvantage: Embarrassingly parallel, so… no Map-Reduce coding practice",
     "crumbs": [
@@ -461,7 +461,7 @@
   {
     "objectID": "w12/index.html#hw5b",
     "href": "w12/index.html#hw5b",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "HW5B",
     "text": "HW5B\n\nMap-Reduced Matrix-Vector Multiplication\n\n\n\n\nImage source",
     "crumbs": [
@@ -471,7 +471,7 @@
   {
     "objectID": "w12/index.html#references",
     "href": "w12/index.html#references",
-    "title": "Week 12: Final Projects, Interfaces",
+    "title": "Week 12: Final Projects, Map-Reduce",
     "section": "References",
     "text": "References\n\n\nLeskovec, Jure, Anand Rajaraman, and Jeffrey David Ullman. 2014. Mining of Massive Datasets. Cambridge University Press.",
     "crumbs": [
@@ -493,7 +493,7 @@
     "href": "syllabus.html#course-staff",
     "title": "Syllabus",
     "section": "Course Staff",
-    "text": "Course Staff\n\nProf. Jeff Jacobs, jj1088@georgetown.edu\n\nOffice hours (Click to reserve): Tuesdays 3-6pm, Car Barn 207-03\n\nTA Renee DeMaio, jrd154@georgetown.edu\nTA Jiatong Liu, jl3081@georgetown.edu",
+    "text": "Course Staff\n\nProf. Jeff Jacobs, jj1088@georgetown.edu\n\nOffice hours (Click to reserve): Tuesdays 3:30-6pm, Thursdays 3-4:30pm, Car Barn 207-03\n\nTA Renee DeMaio, jrd154@georgetown.edu\nTA Jiatong Liu, jl3081@georgetown.edu",
     "crumbs": [
       "Syllabus"
     ]
@@ -503,7 +503,7 @@
     "href": "syllabus.html#course-overview",
     "title": "Syllabus",
     "section": "Course Overview",
-    "text": "Course Overview\nMy goal, in creating the course, is to take the general, language-agnostic data science concepts you’ve learned in (e.g.) DSAN 5000 and work through how to implement these concepts efficiently in Python, where we can define “efficient” in different ways based on different goals that we may have in different settings while working as Data Scientists.\nThe graded components for the course consist of five homework assignments, an in-class midterm, and a final project. Grades will be allocated as follows:\n\n\n\nCategory\nPercent of Final Grade\n\n\n\n\nIn-Class Midterm\n30%\n\n\nFinal Project\n30%\n\n\nHomeworks\n40%\n\n\nHW1: Python Fundamentals\n8%\n\n\nHW2: Object-Oriented Programming\n8%\n\n\nHW3: Data Structures, Algorithms, and Complexity\n8%\n\n\nHW4: Data-Processing Pipelines\n8%\n\n\nHW5: Parallel Computing\n8%\n\n\n\nThe course does not have any “official” prerequisites, but a general comfort with Python is strongly recommended. If you have never used Python before, however (or if you haven’t used it in a while and feel like your skills are rusty), you can browse the materials on the Resources page!",
+    "text": "Course Overview\nMy goal, in creating the course, is to take the general, language-agnostic data science concepts you’ve learned in (e.g.) DSAN 5000 and work through how to implement these concepts efficiently in Python, where we can define “efficient” in different ways based on different goals that we may have in different settings while working as Data Scientists.\nThe graded components for the course consist of five homework assignments, an in-class midterm, and a final project. Grades will be allocated as follows:\n\n\n\nCategory\nPercent of Final Grade\n\n\n\n\nIn-Class Midterm\n30%\n\n\nFinal Project\n30%\n\n\nHomeworks\n40%\n\n\nHW1: Python Fundamentals\n8%\n\n\nHW2: Object-Oriented Programming\n8%\n\n\nHW3: Data Structures, Algorithms, and Complexity\n8%\n\n\nHW4: Data-Processing Pipelines\n8%\n\n\nHW5: Parallel Pipelines and Map-Reduce\n8%\n\n\n\nThe course does not have any “official” prerequisites, but a general comfort with Python is strongly recommended. If you have never used Python before, however (or if you haven’t used it in a while and feel like your skills are rusty), you can browse the materials on the Resources page!",
     "crumbs": [
       "Syllabus"
     ]
@@ -513,7 +513,7 @@
     "href": "syllabus.html#course-topics-calendar",
     "title": "Syllabus",
     "section": "Course Topics / Calendar",
-    "text": "Course Topics / Calendar\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: Python Fundamentals\n1\nJan 9\nCourse Intro and Motivation\n\n\n\n2\nJan 16\nSoftware Design Patterns and Object-Oriented Programming\n\n\nUnit 2: Object-Oriented Programming\n3\nJan 23\nData Structures and Computational Complexity\n\n\n\n\nJan 27 (Monday), 11:59pm EST\nHW1 (Python Fundamentals) Due\n\n\n\n4\nJan 30\nData Structures from Scratch with OOP\n\n\nUnit 3: Data Structures, Algorithms, and Complexity\n5\nFeb 6\nBinary Search Trees\n\n\n\n\nFeb 7 (Friday), 5:59pm EST\nHW2 (Object-Oriented Programming) Due\n\n\n\n6\nFeb 13\nDepth-First and Breadth-First Search\n\n\n\n7\nFeb 20\nCode Examples and Midterm Prep\n\n\n\n\nFeb 21 (Friday), 5:59pm EST\nHW3 (Data Structures, Algorithms, and Complexity) Due\n\n\nMidterm\n8\nFeb 27\nIn-Class Midterm\n\n\n\n\nMar 6\nNo Class (Spring Break)\n\n\nUnit 4: Data-Processing Pipelines\n9\nMar 13\nETL Data Processing Pipelines\n\n\n\n10\nMar 20\nData Pipeline Orchestration\n\n\n\n\nMar 21 (Friday), 5:59pm EDT\nHW4 (Data-Processing Pipelines) Due\n\n\n\n11\nMar 27\nMoving from Serial to Parallel Pipelines\n\n\n\n12\nApr 3\nParallel Pipelines and Map-Reduce\n\n\n\n\nApr 4 (Friday), 5:59pm EDT\nHW5 (Parallel Computing) Due\n\n\nUnit 5: Final Project Topics and Applications\n13\nApr 10\nFinal Projects, Interfaces\n\n\n\n14\nApr 24\nApplications: NLP and Bioinformatics\n\n\n\n15\nMay 1\nFinal Projects Celebration\n\n\n\n\nMay 3 (Friday), 11:59pm EST\nFinal Project Due",
+    "text": "Course Topics / Calendar\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\n\n\n\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: Python Fundamentals\n1\nJan 9\nCourse Intro and Motivation\n\n\n\n2\nJan 16\nSoftware Design Patterns and Object-Oriented Programming\n\n\nUnit 2: Object-Oriented Programming\n3\nJan 23\nData Structures and Computational Complexity\n\n\n\n\nJan 27 (Monday), 11:59pm EST\nHW1 (Python Fundamentals) Due\n\n\n\n4\nJan 30\nData Structures from Scratch with OOP\n\n\nUnit 3: Data Structures, Algorithms, and Complexity\n5\nFeb 6\nBinary Search Trees\n\n\n\n\nFeb 7 (Friday), 5:59pm EST\nHW2 (Object-Oriented Programming) Due\n\n\n\n6\nFeb 13\nDepth-First and Breadth-First Search\n\n\n\n7\nFeb 20\nCode Examples and Midterm Prep\n\n\n\n\nFeb 21 (Friday), 5:59pm EST\nHW3 (Data Structures, Algorithms, and Complexity) Due\n\n\nMidterm\n8\nFeb 27\nIn-Class Midterm\n\n\n\n\nMar 6\nNo Class (Spring Break)\n\n\nUnit 4: Data-Processing Pipelines\n9\nMar 13\nETL Pipelines with Prefect\n\n\n\n10\nMar 20\nData Pipeline Orchestration\n\n\n\n\nApr 11 (Wednesday), 11:59pm EDT\nHW4 (Data-Processing Pipelines) Due\n\n\n\n11\nMar 27\nFrom Serial to Parallel Pipelines\n\n\n\n12\nApr 3\nFinal Projects, Map-Reduce\n\n\nUnit 5: Final Project Application Areas\n13\nApr 10\n(6:30-7:30pm) Applications: Bioinformatics\n(7:30-9pm) Final Project office hours (Jeff and Renee)\n\n\n\n14\nApr 24\n(6:30-7:30pm) Applications: NLP\n(7:30-9pm) Final Project office hours (Jeff, Renee, Jiatong)\n\n\n\n\nApr 25 (Friday), 5:59pm EDT\nHW5 (Parallel Pipelines and Map-Reduce) Due\n\n\n\n\nMay 3 (Friday), 11:59pm EST\nFinal Project Due",
     "crumbs": [
       "Syllabus"
     ]
@@ -523,7 +523,7 @@
     "href": "syllabus.html#assignment-distribution-submission-and-grading",
     "title": "Syllabus",
     "section": "Assignment Distribution, Submission, and Grading",
-    "text": "Assignment Distribution, Submission, and Grading\nThe programming assignments for the course will be managed through Google Classroom. This means that, to work on and submit the assignments, you will use the following workflow:\n\nOpen the .ipynb file for the assignment from within Google Classroom\nWork on the problems within the file, saving your progress early and often! You can try things out or create drafts of your solutions however you’d like (for example, in VSCode or JupyterLab or any other IDE), but your final response to each question must be included in your Colab notebook as accessed through Google Classroom!\nSubmit the completed version of the assignment by clicking the “Submit” button generated by the last cell in each assignment’s Colab notebook.",
+    "text": "Assignment Distribution, Submission, and Grading\nThe programming assignments for the course will be managed through Google Classroom. This means that, to work on and submit the assignments, you will use the following workflow:\n\nOpen the .ipynb file for the assignment from within Google Classroom\nWork on the problems within the file, saving your progress early and often! You can try things out or create drafts of your solutions however you’d like (for example, in VSCode or JupyterLab or any other IDE), but your final response to each question must be included in your Colab notebook as accessed through Google Classroom!\nSubmit the completed version of the assignment by clicking the “Submit” button generated by the last cell in each assignment’s Colab notebook, or (if the Submit button does not work) by clicking the blue “Hand in” button above the link to the notebook in Google Classroom’s interface.",
     "crumbs": [
       "Syllabus"
     ]
@@ -1700,7 +1700,7 @@
     "href": "final.html#timeline",
     "title": "Final Project Details",
     "section": "Timeline",
-    "text": "Timeline\nIn general, the only “true” due date is the due date for the final submission, but the project will go most smoothly if you are able to hold yourself to the following schedule:\n\nProposal: Approved by mentor by Wednesday, April 10th\nFinal Draft: Sent to mentor for review by Monday, April 29th\nSubmission: Completed project submitted via Google Classroom by Friday, May 6th, 5:59pm EDT",
+    "text": "Timeline\nIn general, the only “true” due date is the due date for the final submission, but the project will go most smoothly if you are able to hold yourself to the following schedule:\n\nBasic Idea Proposal: Approved by instructor (Jeff, Renee, or Jiatong) by end of day Thursday, April 10th (in-class office hour session, 7:30-9pm)\nFinal Draft: Sent to instructors (dsan5500-instructors@georgetown.edu) or brought into class for review on Thursday, April 24th (in-class office hour session, 7:30-9pm)\nSubmission: Completed project submitted via Google Classroom by Thursday, May 1st, 11:59pm EDT",
     "crumbs": [
       "Final Project"
     ]
@@ -2564,7 +2564,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Vegan', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'None', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'None', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Vegan', 'None', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2896,7 +2896,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'None', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Vegan', 'None', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Vegan', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Vegan', 'None', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -4122,7 +4122,7 @@
     "href": "recordings/index.html",
     "title": "Lecture Recordings",
     "section": "",
-    "text": "Week\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\n11\n\n\nWeek 11: Moving from Serial to Parallel Pipelines\n\n\nMonday Apr 8, 2024\n\n\n\n\n10\n\n\nWeek 10: Data Pipeline Orchestration\n\n\nMonday Mar 25, 2024\n\n\n\n\n9\n\n\nWeek 9: ETL Data Processing Pipelines\n\n\nMonday Mar 18, 2024\n\n\n\n\n8\n\n\nWeek 8: In-Class Midterm\n\n\nMonday Mar 11, 2024\n\n\n\n\n6\n\n\nWeek 6: Code Examples and Midterm Prep\n\n\nTuesday Feb 20, 2024\n\n\n\n\n5\n\n\nWeek 5: Binary Search Trees\n\n\nMonday Feb 12, 2024\n\n\n\n\n4\n\n\nWeek 4: Heaps, Stacks, Hash Maps\n\n\nMonday Feb 5, 2024\n\n\n\n\n3\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nMonday Jan 29, 2024\n\n\n\n\n2\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nMonday Jan 22, 2024\n\n\n\n\n1\n\n\nWeek 1: Course Intro and Motivation\n\n\nWednesday Jan 10, 2024\n\n\n\n\n\nNo matching items"
+    "text": "Week\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\n11\n\n\nWeek 11: From Serial to Parallel Pipelines\n\n\nMonday Apr 8, 2024\n\n\n\n\n10\n\n\nWeek 10: Data Pipeline Orchestration\n\n\nMonday Mar 25, 2024\n\n\n\n\n9\n\n\nWeek 9: ETL Pipelines with Prefect\n\n\nMonday Mar 18, 2024\n\n\n\n\n8\n\n\nWeek 8: In-Class Midterm\n\n\nMonday Mar 11, 2024\n\n\n\n\n6\n\n\nWeek 6: Code Examples and Midterm Prep\n\n\nTuesday Feb 20, 2024\n\n\n\n\n5\n\n\nWeek 5: Binary Search Trees\n\n\nMonday Feb 12, 2024\n\n\n\n\n4\n\n\nWeek 4: Heaps, Stacks, Hash Maps\n\n\nMonday Feb 5, 2024\n\n\n\n\n3\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nMonday Jan 29, 2024\n\n\n\n\n2\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nMonday Jan 22, 2024\n\n\n\n\n1\n\n\nWeek 1: Course Intro and Motivation\n\n\nWednesday Jan 10, 2024\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "writeups/prefect/index.html",
@@ -4155,7 +4155,7 @@
   {
     "objectID": "w11/index.html",
     "href": "w11/index.html",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "",
     "text": "Open slides in new window →",
     "crumbs": [
@@ -4165,7 +4165,7 @@
   {
     "objectID": "w11/index.html#quick-survey-question-for-intuition-building",
     "href": "w11/index.html#quick-survey-question-for-intuition-building",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Quick Survey Question, for Intuition-Building",
     "text": "Quick Survey Question, for Intuition-Building\n\nAre humans capable of “true” multi-tasking?\n\nAs in, doing two things at the exact same time?\n\n(Or, do we instead rapidly switch back and forth between tasks?)",
     "crumbs": [
@@ -4175,7 +4175,7 @@
   {
     "objectID": "w11/index.html#the-answer",
     "href": "w11/index.html#the-answer",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The Answer",
     "text": "The Answer\n\n(From what we understand, at the moment, by way of studies in neuroscience/cognitive science/etc…)\nHumans are not capable of true multitasking! In CS terms, this would be called multiprocessing (more on this later)\nWe are capable, however, of various modes of concurrency!\n\n\n\n\n\n\n\n\n\n\nMultithreading\nAsynchronous Execution\n\n\n\n\nUnconsciously(you do it already, “naturally”)\nFocus on one speaker within a loud room, with tons of other conversations entering your ears\nPut something in oven, set alarm, go do something else, take out of oven once alarm goes off\n\n\nConsciously(you can do it with effort/practice)\nPat head (up and down) and rub stomach (circular motion) “simultaneously”\nThrow a ball in the air, clap 3 times, catch ball",
     "crumbs": [
@@ -4185,7 +4185,7 @@
   {
     "objectID": "w11/index.html#helpful-specifically-for-programming",
     "href": "w11/index.html#helpful-specifically-for-programming",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Helpful Specifically for Programming",
     "text": "Helpful Specifically for Programming\n\nCourse notes from MIT’s class on parallel computing phrases it like: if implemented thoughtfully, concurrency is a power multiplier for your code (do 10 things in 1 second instead of 10 seconds…)",
     "crumbs": [
@@ -4195,7 +4195,7 @@
   {
     "objectID": "w11/index.html#helpful-in-general-as-a-way-of-thinking",
     "href": "w11/index.html#helpful-in-general-as-a-way-of-thinking",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Helpful In General as a Way of Thinking!",
     "text": "Helpful In General as a Way of Thinking!\n\nSay you get hired as a Project Manager…\nPart of your job will fundamentally involve pipelines!\n\nNeed to know when Task \\(B\\) does/does not require Task \\(A\\) as a prerequisite\nNeed to know whether Task \\(A\\) and Task \\(B\\) can share one resource or need their own individual resources\nOnce Task \\(A\\) and \\(B\\) both complete, how do we merge their results together?",
     "crumbs": [
@@ -4205,7 +4205,7 @@
   {
     "objectID": "w11/index.html#avoiding-the-rabbithole",
     "href": "w11/index.html#avoiding-the-rabbithole",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Avoiding the Rabbithole",
     "text": "Avoiding the Rabbithole\n\nParallel computing is a rabbithole, but one you can safely avoid via simple heuristics (“rules of thumb”)!\n\n\nCheck for optimizations to serial code first,\nCheck for embarrassingly parallel code blocks\nUse map-reduce approach for more complicated cases",
     "crumbs": [
@@ -4215,7 +4215,7 @@
   {
     "objectID": "w11/index.html#embarrassingly-parallel-pipelines",
     "href": "w11/index.html#embarrassingly-parallel-pipelines",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "“Embarrassingly Parallel” Pipelines",
     "text": "“Embarrassingly Parallel” Pipelines\n\nTechnical definition: tasks within pipeline can easily be parallelized bc no dependence and no need for communication (see next slide). Better video explanation:",
     "crumbs": [
@@ -4225,7 +4225,7 @@
   {
     "objectID": "w11/index.html#parallelizing-non-embarrassingly-parallel-pipelines",
     "href": "w11/index.html#parallelizing-non-embarrassingly-parallel-pipelines",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Parallelizing Non-Embarrassingly-Parallel Pipelines",
     "text": "Parallelizing Non-Embarrassingly-Parallel Pipelines\n\n\n\nepic_bacon_lifehack.jpeg",
     "crumbs": [
@@ -4235,7 +4235,7 @@
   {
     "objectID": "w11/index.html#buzzkill-complications-to-come",
     "href": "w11/index.html#buzzkill-complications-to-come",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Buzzkill: Complications to Come 😰",
     "text": "Buzzkill: Complications to Come 😰\n\nIf it’s such a magical powerup, shouldn’t we just parallelize everything? Answer: No 😞 because overhead.\nOverhead source 1: Beyond “embarrassingly parallel” cases, threads may require their own separate stacks and heaps\nOverhead source 2: Even after setting up new stacks and heaps, threads may need to communicate with each other (e.g. if they need to synchronize at some point(s))\nIn fact, probably the earliest super-popular parallelization library was created to handle Source 2, not Source 1: Message Passing Interface (C, C++, and Fortran)",
     "crumbs": [
@@ -4245,7 +4245,7 @@
   {
     "objectID": "w11/index.html#the-worst-part-imo",
     "href": "w11/index.html#the-worst-part-imo",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The Worst Part, IMO",
     "text": "The Worst Part, IMO\n\nPlenty of problems in CS/data science have these kinds of complications… (if they weren’t complicated, we wouldn’t have as many jobs)\nWe saw for example, with hash tables, how we can work to minimize collisions (MD5 and other provably-optimal hash functions), but can’t eliminate them entirely\n\nSo, we tackle this complication by also developing efficient collision-handling structures like BSTs!\n\nWith parallel overhead costs, however… I don’t know of any easily-accessible “thing” like the theory of hash tables that can be used to optimize parallelization\n\nIn other words, you would think we could do a similar optimization: paralellize if benefits &gt; costs, keep as serial otherwise\nBut, if you try to find a “framework” for this, you’ll mostly find StackOverflow posts, textbooks, etc. which say “stuff varies too much between different chipsets, languages, operating systems, etc… sorry!”",
     "crumbs": [
@@ -4255,7 +4255,7 @@
   {
     "objectID": "w11/index.html#the-solution",
     "href": "w11/index.html#the-solution",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The Solution?",
     "text": "The Solution?\n\nAgain, as far as I can tell (despite workshops/courses and two summer internships just parallelizing stuff)…\nYou just start trying to parallelize, carefully measure and test the performance gains/losses, and then\nDecide whether to commit to parallel or stick to serial, via an estimate of how your analysis/app will need to scale!\nHence the usefulness of Prefect for visualizing tradeoff:\n\nTasks which used to run in serial will now run at same time, but will take longer (unless embarrassingly parallel) due to setup+communication overhead",
     "crumbs": [
@@ -4265,9 +4265,9 @@
   {
     "objectID": "w11/index.html#in-action",
     "href": "w11/index.html#in-action",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9740 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.5915 s",
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9668 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.7822 s",
     "crumbs": [
       "Week 11: {{< var w11.date-md >}}"
     ]
@@ -4275,7 +4275,7 @@
   {
     "objectID": "w11/index.html#what-happens-when-not-embarrassingly-parallel",
     "href": "w11/index.html#what-happens-when-not-embarrassingly-parallel",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "What Happens When Not Embarrassingly Parallel?",
     "text": "What Happens When Not Embarrassingly Parallel?\n\nThink of the difference between linear and quadratic equations in algebra:\n\\(3x - 1 = 0\\) is “embarrassingly” solvable, on its own: you can solve it directly, by adding 3 to both sides \\(\\implies x = \\frac{1}{3}\\). Same for \\(2x + 3 = 0 \\implies x = -\\frac{3}{2}\\)\nNow consider \\(6x^2 + 7x - 3 = 0\\): Harder to solve “directly”, so your instinct might be to turn to the laborious quadratic equation:\n\n\\[\n\\begin{align*}\nx = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} = \\frac{-7 \\pm \\sqrt{49 - 4(6)(-3)}}{2(6)} = \\frac{-7 \\pm 11}{12} = \\left\\{\\frac{1}{3},-\\frac{3}{2}\\right\\}\n\\end{align*}\n\\]\n\nAnd yet, \\(6x^2 + 7x - 3 = (3x - 1)(2x + 3)\\), meaning that we could have split the problem into two “embarrassingly” solvable pieces, then multiplied to get result!",
     "crumbs": [
@@ -4285,7 +4285,7 @@
   {
     "objectID": "w11/index.html#the-analogy-to-map-reduce",
     "href": "w11/index.html#the-analogy-to-map-reduce",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The Analogy to Map-Reduce",
     "text": "The Analogy to Map-Reduce\n\n\n\n\n\n\n\n\\(\\leadsto\\) If code is not embarrassingly parallel (instinctually requiring laborious serial execution),\n\\(\\underbrace{6x^2 + 7x - 3 = 0}_{\\text{Solve using Quadratic Eqn}}\\)\n\n\nBut can be split into…\n\\((3x - 1)(2x + 3) = 0\\)\n\n\nEmbarrassingly parallel pieces which combine to same result,\n\\(\\underbrace{3x - 1 = 0}_{\\text{Solve directly}}, \\underbrace{2x + 3 = 0}_{\\text{Solve directly}}\\)\n\n\nWe can use map-reduce to achieve ultra speedup (running “pieces” on GPU!)\n\\(\\underbrace{(3x-1)(2x+3) = 0}_{\\text{Solutions satisfy this product}}\\)",
     "crumbs": [
@@ -4295,7 +4295,7 @@
   {
     "objectID": "w11/index.html#the-direct-analogy-map-reduce",
     "href": "w11/index.html#the-direct-analogy-map-reduce",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The Direct Analogy: Map-Reduce!",
     "text": "The Direct Analogy: Map-Reduce!\n\nProblem from DSAN 5000/5100: Computing SSR (Sum of Squared Residuals)\n\\(y = (1,3,2), \\widehat{y} = (2, 5, 0) \\implies \\text{SSR} = (1-2)^2 + (3-5)^2 + (2-0)^2 = 9\\)\nComputing pieces separately:\n\nmap(do_something_with_piece, list_of_pieces)\n\n\nCode\nmy_map = map(lambda input: input**2, [(1-2), (3-5), (2-0)])\nmap_result = list(my_map)\nmap_result\n\n\n[1, 4, 4]\n\n\n\nCombining solved pieces\n\nreduce(how_to_combine_pair_of_pieces, pieces_to_combine)\n\n\nCode\nfrom functools import reduce\nmy_reduce = reduce(lambda piece1, piece2: piece1 + piece2, map_result)\nmy_reduce\n\n\n9",
     "crumbs": [
@@ -4305,7 +4305,7 @@
   {
     "objectID": "w11/index.html#functions-vs.-functionals",
     "href": "w11/index.html#functions-vs.-functionals",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Functions vs. Functionals",
     "text": "Functions vs. Functionals\n\nYou may have noticed: map() and reduce() are “meta-functions”: functions that take other functions as inputs\n\n\n\n\ndef add_5(num):\n  return num + 5\nadd_5(10)\n\n15\n\n\n\n\ndef apply_twice(fn, arg):\n  return fn(fn(arg))\napply_twice(add_5, 10)\n\n20\n\n\n\n\n\nIn Python, functions can be used as vars (Hence lambda):\n\n\nadd_5 = lambda num: num + 5\napply_twice(add_5, 10)\n\n20\n\n\n\nThis relates to a whole paradigm, “functional programming”: mostly outside scope of course, but lots of important+useful takeaways/rules-of-thumb! →",
     "crumbs": [
@@ -4315,7 +4315,7 @@
   {
     "objectID": "w11/index.html#train-your-brain-for-functional-approach-implies-master-debugging",
     "href": "w11/index.html#train-your-brain-for-functional-approach-implies-master-debugging",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!",
     "text": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!\n\nIn CS Theory: enables formal proofs of correctness\nIn CS practice:\n\n\nWhen a program doesn’t work, each function is an interface point where you can check that the data are correct. You can look at the intermediate inputs and outputs to quickly isolate the function that’s responsible for a bug.(from Python’s “Functional Programming HowTo”)",
     "crumbs": [
@@ -4325,7 +4325,7 @@
   {
     "objectID": "w11/index.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
     "href": "w11/index.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines",
     "text": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines\n\n\nScenario: Run code, check the output, and… it’s wrong 😵 what do you do?\nUsual approach: Read lines one-by-one, figuring out what they do, seeing if something pops out that seems wrong; adding comments like # Convert to lowercase\n\n\n\n\nEasy case: found typo in punctuation removal code. Fix the error, add comment like # Remove punctuation\n Rule 1 of FP: transform these comments into function names\n\n\n\nHard case: Something in load_text() modifies a variable that later on breaks remove_punct() (Called a side-effect)\n Rule 2 of FP: NO SIDE-EFFECTS!\n\n\n\n\n\n\n\n\n\n\nG\n\n\n\ninput\nin.txt\n\n\n\nload_text\nload_text\n(Verb)\n\n\n\n\ninput-&gt;load_text\n\n\n\n\n\nlowercase\nlowercase\n(Verb)\n\n\n\n\nload_text-&gt;lowercase\n\n\n🧐 ✅\n\n\n\nremove_punct\nremove_punct\n(Verb)\n\n\n\n\nlowercase-&gt;remove_punct\n\n\n🧐 ✅\n\n\n\nremove_stopwords\nremove_stopwords\n(Verb)\n\n\n\n\nremove_punct-&gt;remove_stopwords\n\n\n🧐 ❌❗️\n\n\n\noutput\nout.txt\n\n\n\nremove_stopwords-&gt;output\n\n\n\n\n\n\n (Does this way of diagramming a program look familiar?) \n\n\n\n\nWith side effects: ❌ \\(\\implies\\) issue is somewhere earlier in the chain 😩🏃‍♂️\nNo side effects: ❌ \\(\\implies\\) issue must be in remove_punct()!!! 😎 ⏱️ = 💰",
     "crumbs": [
@@ -4335,7 +4335,7 @@
   {
     "objectID": "w11/index.html#if-its-so-useful-why-doesnt-everyone-do-it",
     "href": "w11/index.html#if-its-so-useful-why-doesnt-everyone-do-it",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "If It’s So Useful, Why Doesn’t Everyone Do It?",
     "text": "If It’s So Useful, Why Doesn’t Everyone Do It?\n\nTrapped in imperative (sequential) coding mindset: Path dependency / QWERTY\nReason we need to start thinking like this is: it’s 1000x harder to debug parallel code! So we need to be less ad hoc in how we write+debug, from here on out! 🙇‍♂️🙏\n\n\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014)\n\n\n\nThe title relates to a classic Economics joke (the best kind of joke): “An economist and a CEO are walking down the street, when the CEO points at the ground and tells the economist, ‘look! A $20 bill on the ground!’ The economist keeps on walking, scoffing at the CEO: ‘don’t be silly, if there was a $20 bill on the ground, somebody would have picked it up already’.”",
     "crumbs": [
@@ -4345,7 +4345,7 @@
   {
     "objectID": "w11/index.html#the-killer-application-matrix-multiplication",
     "href": "w11/index.html#the-killer-application-matrix-multiplication",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The “Killer Application”: Matrix Multiplication",
     "text": "The “Killer Application”: Matrix Multiplication\n\n(I learned from Jeff Ullman, who did the obnoxious Stanford thing of mentioning in passing how “two previous students in the class did this for a cool final project on web crawling and, well, it escalated quickly”, aka became Google)\n\n\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014), which is (legally) free online!",
     "crumbs": [
@@ -4355,7 +4355,7 @@
   {
     "objectID": "w11/index.html#the-killer-way-to-learn-text-counts",
     "href": "w11/index.html#the-killer-way-to-learn-text-counts",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The Killer Way-To-Learn: Text Counts!",
     "text": "The Killer Way-To-Learn: Text Counts!\n\n(2014): Text counts (2.2) \\(\\rightarrow\\) Matrix multiplication (2.3) \\(\\rightarrow \\cdots \\rightarrow\\) PageRank (5.1)\n(And yall thought it was just busywork for HW3 😏)\nThe goal: User searches “Denzel Curry”… How relevant is a given webpage?\nScenario 1: Entire internet fits on CPU \\(\\implies\\) We can just make a big big hash table:\n\n\n\n\n\n\n\n\nG\n\n\n\ninternet\n\nScan in O(n):\nToday Denzel Washington\nate a big bowl of Yum's\ncurry. Denzel allegedly\nrubbed his tum and said\n\"yum yum yum\" when he\ntasted today's curry.\n\"Yum! It is me Denzel,\ncurry is my fav!\", he\nexclaimed. According to\nhis friend Steph, curry\nis indeed Denzel's fav.\nWe are live with Del\nCurry in Washington for\na Denzel curry update.\n\n\n\n\nccounts\n\nOverall Counts\n\n('according',1)\n('allegedly',1)\n('ate',1)\n('big',1)\n('bowl',1)\n('curry',6)\n('del',1)\n('denzel',5)\n('exclaimed',1)\n('fav',2)\n('friend',1)\n('indeed',1)\n('live',1)\n('rubbed',1)\n('said',1)\n('steph',1)\n('tasted',1)\n('today',2)\n('tum',1)\n('update',1)\n('washington',2)\n('yum',4)\n\n\n\n\ninternet-&gt;ccounts\n\n\nHash Table",
     "crumbs": [
@@ -4365,7 +4365,7 @@
   {
     "objectID": "w11/index.html#if-everything-doesnt-fit-on-cpu",
     "href": "w11/index.html#if-everything-doesnt-fit-on-cpu",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "If Everything Doesn’t Fit on CPU…",
     "text": "If Everything Doesn’t Fit on CPU…\n\n\n\nFrom Cornell Virtual Workshop, “Understanding GPU Architecture”",
     "crumbs": [
@@ -4375,7 +4375,7 @@
   {
     "objectID": "w11/index.html#break-problem-into-chunks-for-the-green-bois",
     "href": "w11/index.html#break-problem-into-chunks-for-the-green-bois",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Break Problem into Chunks for the Green Bois!",
     "text": "Break Problem into Chunks for the Green Bois!\n\n\n\n\n\n\n\nG\n\n\n\nchunked\n\nChunked Document\n\nToday Denzel Washington\nate a big bowl of Yum's\ncurry. Denzel allegedly\nrubbed his tum and said\n\n\"yum yum yum\" when he\ntasted today's curry.\n\"Yum! It is me Denzel,\ncurry is my fav!\", he\n\nexclaimed. According to\nhis friend Steph, curry\nis indeed Denzel's fav.\nWe are live with Del\nCurry in Washington for\na Denzel curry update.\n\n\n\n\nchcounts\n\nChunked Counts\n\n('today',1)\n('denzel',1)\n...\n('tum',1)\n('said',1)\n\n('yum',1)\n('yum',1)\n('yum',1)\n...\n('fav',1)\n\n('exclaimed',1)\n...\n('del',1)\n('curry',1)\n('washington',1)\n('denzel',1)\n('curry',1)\n('update',1)\n\n\n\n\nchunked:p1-&gt;chcounts:p1\n\n\nO(n/4)\n\n\n\nchunked:p2-&gt;chcounts:p2\n\n\nO(n/4)\n\n\n\nchunked:p3-&gt;chcounts:p3\n\n\nO(n/4)\n\n\n\nchunked:p4-&gt;chcounts:p4\n\n\nO(n/4)\n\n\n\nscounts\n\nHashed Counts\n\n('allegedly',1)\n...\n('curry',1)\n('denzel',2)\n...\n('yum',1)\n\n('curry',2)\n('denzel',1)\n...\n('yum',4)\n\n('according',1)\n('curry',1)\n('del',1)\n('denzel',1)\n...\n('curry',2)\n('denzel',1)\n('update',1)\n('washington',1)\n\n\n\n\nchcounts:p1-&gt;scounts:p1\n\n\nO(n/4)\n\n\n\nchcounts:p2-&gt;scounts:p2\n\n\nO(n/4)\n\n\n\nchcounts:p3-&gt;scounts:p3\n\n\nO(n/4)\n\n\n\nchcounts:p4-&gt;scounts:p4\n\n\nO(n/4)\n\n\n\nccounts\n\nOverall Counts\n('according',1)\n('allegedly',1)\n('ate',1)\n('big',1)\n('bowl',1)\n('curry',6)\n('del',1)\n('denzel',5)\n('exclaimed',1)\n('fav',2)\n('friend',1)\n('indeed',1)\n('live',1)\n('rubbed',1)\n('said',1)\n('steph',1)\n('tasted',1)\n('today',2)\n('tum',1)\n('update',1)\n('washington',2)\n('yum',4)\n\n\n\n\nscounts:p1-&gt;ccounts:p1\n\n\n\n\n\nscounts:p2-&gt;ccounts:p1\n\n\n\n\n\nscounts:p3-&gt;ccounts:p1\n\n\n\n\n\nscounts:p4-&gt;ccounts:p1\n\n\n\n\n\nscounts:p2-&gt;ccounts\n\n\n \n\nMerge in\nO(n)\n\n\n\n\n\n\n\n\n\n\\(\\implies\\) Total = \\(O(3n) = O(n)\\)\nBut also optimized in terms of constants, because of sequential memory reads",
     "crumbs": [
@@ -4385,7 +4385,7 @@
   {
     "objectID": "w11/index.html#hw5-possibility-1",
     "href": "w11/index.html#hw5-possibility-1",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "HW5: Possibility 1",
     "text": "HW5: Possibility 1\n\nMap-Reduced Matrix-Vector Multiplication\n\n\n\n\nImage source",
     "crumbs": [
@@ -4395,7 +4395,7 @@
   {
     "objectID": "w11/index.html#hw5-possibility-2-more-likely",
     "href": "w11/index.html#hw5-possibility-2-more-likely",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "HW5: Possibility 2 (More Likely?)",
     "text": "HW5: Possibility 2 (More Likely?)\n\nScrape quotes in parallel!\nAdvantage: Builds on HW4\nDisadvantage: Embarrassingly parallel, so… no Map-Reduce coding practice\n(Probable tiebreaker: If you’re interested in Map-Reduce, do Matrix Multiplication as Final Project!)",
     "crumbs": [
@@ -4405,7 +4405,7 @@
   {
     "objectID": "w11/index.html#references",
     "href": "w11/index.html#references",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "References",
     "text": "References\n\n\nLeskovec, Jure, Anand Rajaraman, and Jeffrey David Ullman. 2014. Mining of Massive Datasets. Cambridge University Press.",
     "crumbs": [
@@ -4415,175 +4415,175 @@
   {
     "objectID": "w11/slides.html#quick-survey-question-for-intuition-building",
     "href": "w11/slides.html#quick-survey-question-for-intuition-building",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Quick Survey Question, for Intuition-Building",
     "text": "Quick Survey Question, for Intuition-Building\n\nAre humans capable of “true” multi-tasking?\n\nAs in, doing two things at the exact same time?\n\n(Or, do we instead rapidly switch back and forth between tasks?)"
   },
   {
     "objectID": "w11/slides.html#the-answer",
     "href": "w11/slides.html#the-answer",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The Answer",
     "text": "The Answer\n\n(From what we understand, at the moment, by way of studies in neuroscience/cognitive science/etc…)\nHumans are not capable of true multitasking! In CS terms, this would be called multiprocessing (more on this later)\nWe are capable, however, of various modes of concurrency!\n\n\n\n\n\n\n\n\n\n\nMultithreading\nAsynchronous Execution\n\n\n\n\nUnconsciously(you do it already, “naturally”)\nFocus on one speaker within a loud room, with tons of other conversations entering your ears\nPut something in oven, set alarm, go do something else, take out of oven once alarm goes off\n\n\nConsciously(you can do it with effort/practice)\nPat head (up and down) and rub stomach (circular motion) “simultaneously”\nThrow a ball in the air, clap 3 times, catch ball"
   },
   {
     "objectID": "w11/slides.html#helpful-specifically-for-programming",
     "href": "w11/slides.html#helpful-specifically-for-programming",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Helpful Specifically for Programming",
     "text": "Helpful Specifically for Programming\n\nCourse notes from MIT’s class on parallel computing phrases it like: if implemented thoughtfully, concurrency is a power multiplier for your code (do 10 things in 1 second instead of 10 seconds…)"
   },
   {
     "objectID": "w11/slides.html#helpful-in-general-as-a-way-of-thinking",
     "href": "w11/slides.html#helpful-in-general-as-a-way-of-thinking",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Helpful In General as a Way of Thinking!",
     "text": "Helpful In General as a Way of Thinking!\n\nSay you get hired as a Project Manager…\nPart of your job will fundamentally involve pipelines!\n\nNeed to know when Task \\(B\\) does/does not require Task \\(A\\) as a prerequisite\nNeed to know whether Task \\(A\\) and Task \\(B\\) can share one resource or need their own individual resources\nOnce Task \\(A\\) and \\(B\\) both complete, how do we merge their results together?"
   },
   {
     "objectID": "w11/slides.html#avoiding-the-rabbithole",
     "href": "w11/slides.html#avoiding-the-rabbithole",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Avoiding the Rabbithole",
     "text": "Avoiding the Rabbithole\n\nParallel computing is a rabbithole, but one you can safely avoid via simple heuristics (“rules of thumb”)!\n\n\nCheck for optimizations to serial code first,\nCheck for embarrassingly parallel code blocks\nUse map-reduce approach for more complicated cases"
   },
   {
     "objectID": "w11/slides.html#embarrassingly-parallel-pipelines",
     "href": "w11/slides.html#embarrassingly-parallel-pipelines",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "“Embarrassingly Parallel” Pipelines",
     "text": "“Embarrassingly Parallel” Pipelines\n\nTechnical definition: tasks within pipeline can easily be parallelized bc no dependence and no need for communication (see next slide). Better video explanation:"
   },
   {
     "objectID": "w11/slides.html#parallelizing-non-embarrassingly-parallel-pipelines",
     "href": "w11/slides.html#parallelizing-non-embarrassingly-parallel-pipelines",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Parallelizing Non-Embarrassingly-Parallel Pipelines",
     "text": "Parallelizing Non-Embarrassingly-Parallel Pipelines\n\nepic_bacon_lifehack.jpeg"
   },
   {
     "objectID": "w11/slides.html#buzzkill-complications-to-come",
     "href": "w11/slides.html#buzzkill-complications-to-come",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Buzzkill: Complications to Come 😰",
     "text": "Buzzkill: Complications to Come 😰\n\nIf it’s such a magical powerup, shouldn’t we just parallelize everything? Answer: No 😞 because overhead.\nOverhead source 1: Beyond “embarrassingly parallel” cases, threads may require their own separate stacks and heaps\nOverhead source 2: Even after setting up new stacks and heaps, threads may need to communicate with each other (e.g. if they need to synchronize at some point(s))\nIn fact, probably the earliest super-popular parallelization library was created to handle Source 2, not Source 1: Message Passing Interface (C, C++, and Fortran)"
   },
   {
     "objectID": "w11/slides.html#the-worst-part-imo",
     "href": "w11/slides.html#the-worst-part-imo",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The Worst Part, IMO",
     "text": "The Worst Part, IMO\n\nPlenty of problems in CS/data science have these kinds of complications… (if they weren’t complicated, we wouldn’t have as many jobs)\nWe saw for example, with hash tables, how we can work to minimize collisions (MD5 and other provably-optimal hash functions), but can’t eliminate them entirely\n\nSo, we tackle this complication by also developing efficient collision-handling structures like BSTs!\n\nWith parallel overhead costs, however… I don’t know of any easily-accessible “thing” like the theory of hash tables that can be used to optimize parallelization\n\nIn other words, you would think we could do a similar optimization: paralellize if benefits &gt; costs, keep as serial otherwise\nBut, if you try to find a “framework” for this, you’ll mostly find StackOverflow posts, textbooks, etc. which say “stuff varies too much between different chipsets, languages, operating systems, etc… sorry!”"
   },
   {
     "objectID": "w11/slides.html#the-solution",
     "href": "w11/slides.html#the-solution",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The Solution?",
     "text": "The Solution?\n\nAgain, as far as I can tell (despite workshops/courses and two summer internships just parallelizing stuff)…\nYou just start trying to parallelize, carefully measure and test the performance gains/losses, and then\nDecide whether to commit to parallel or stick to serial, via an estimate of how your analysis/app will need to scale!\nHence the usefulness of Prefect for visualizing tradeoff:\n\nTasks which used to run in serial will now run at same time, but will take longer (unless embarrassingly parallel) due to setup+communication overhead"
   },
   {
     "objectID": "w11/slides.html#in-action",
     "href": "w11/slides.html#in-action",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9648 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.5744 s"
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9803 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n2.6299 s"
   },
   {
     "objectID": "w11/slides.html#what-happens-when-not-embarrassingly-parallel",
     "href": "w11/slides.html#what-happens-when-not-embarrassingly-parallel",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "What Happens When Not Embarrassingly Parallel?",
     "text": "What Happens When Not Embarrassingly Parallel?\n\nThink of the difference between linear and quadratic equations in algebra:\n\\(3x - 1 = 0\\) is “embarrassingly” solvable, on its own: you can solve it directly, by adding 3 to both sides \\(\\implies x = \\frac{1}{3}\\). Same for \\(2x + 3 = 0 \\implies x = -\\frac{3}{2}\\)\nNow consider \\(6x^2 + 7x - 3 = 0\\): Harder to solve “directly”, so your instinct might be to turn to the laborious quadratic equation:\n\n\\[\n\\begin{align*}\nx = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} = \\frac{-7 \\pm \\sqrt{49 - 4(6)(-3)}}{2(6)} = \\frac{-7 \\pm 11}{12} = \\left\\{\\frac{1}{3},-\\frac{3}{2}\\right\\}\n\\end{align*}\n\\]\n\nAnd yet, \\(6x^2 + 7x - 3 = (3x - 1)(2x + 3)\\), meaning that we could have split the problem into two “embarrassingly” solvable pieces, then multiplied to get result!"
   },
   {
     "objectID": "w11/slides.html#the-analogy-to-map-reduce",
     "href": "w11/slides.html#the-analogy-to-map-reduce",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The Analogy to Map-Reduce",
     "text": "The Analogy to Map-Reduce\n\n\n\n\n\n\n\n\\(\\leadsto\\) If code is not embarrassingly parallel (instinctually requiring laborious serial execution),\n\\(\\underbrace{6x^2 + 7x - 3 = 0}_{\\text{Solve using Quadratic Eqn}}\\)\n\n\nBut can be split into…\n\\((3x - 1)(2x + 3) = 0\\)\n\n\nEmbarrassingly parallel pieces which combine to same result,\n\\(\\underbrace{3x - 1 = 0}_{\\text{Solve directly}}, \\underbrace{2x + 3 = 0}_{\\text{Solve directly}}\\)\n\n\nWe can use map-reduce to achieve ultra speedup (running “pieces” on GPU!)\n\\(\\underbrace{(3x-1)(2x+3) = 0}_{\\text{Solutions satisfy this product}}\\)"
   },
   {
     "objectID": "w11/slides.html#the-direct-analogy-map-reduce",
     "href": "w11/slides.html#the-direct-analogy-map-reduce",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The Direct Analogy: Map-Reduce!",
     "text": "The Direct Analogy: Map-Reduce!\n\nProblem from DSAN 5000/5100: Computing SSR (Sum of Squared Residuals)\n\\(y = (1,3,2), \\widehat{y} = (2, 5, 0) \\implies \\text{SSR} = (1-2)^2 + (3-5)^2 + (2-0)^2 = 9\\)\nComputing pieces separately:\n\nmap(do_something_with_piece, list_of_pieces)\n\n\nCode\nmy_map = map(lambda input: input**2, [(1-2), (3-5), (2-0)])\nmap_result = list(my_map)\nmap_result\n\n\n[1, 4, 4]\n\n\n\nCombining solved pieces\n\nreduce(how_to_combine_pair_of_pieces, pieces_to_combine)\n\n\nCode\nfrom functools import reduce\nmy_reduce = reduce(lambda piece1, piece2: piece1 + piece2, map_result)\nmy_reduce\n\n\n9"
   },
   {
     "objectID": "w11/slides.html#functions-vs.-functionals",
     "href": "w11/slides.html#functions-vs.-functionals",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Functions vs. Functionals",
     "text": "Functions vs. Functionals\n\nYou may have noticed: map() and reduce() are “meta-functions”: functions that take other functions as inputs\n\n\n\n\ndef add_5(num):\n  return num + 5\nadd_5(10)\n\n15\n\n\n\n\ndef apply_twice(fn, arg):\n  return fn(fn(arg))\napply_twice(add_5, 10)\n\n20\n\n\n\n\nIn Python, functions can be used as vars (Hence lambda):\n\n\nadd_5 = lambda num: num + 5\napply_twice(add_5, 10)\n\n20\n\n\n\nThis relates to a whole paradigm, “functional programming”: mostly outside scope of course, but lots of important+useful takeaways/rules-of-thumb! →"
   },
   {
     "objectID": "w11/slides.html#train-your-brain-for-functional-approach-implies-master-debugging",
     "href": "w11/slides.html#train-your-brain-for-functional-approach-implies-master-debugging",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!",
     "text": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!\n\nIn CS Theory: enables formal proofs of correctness\nIn CS practice:\n\n\nWhen a program doesn’t work, each function is an interface point where you can check that the data are correct. You can look at the intermediate inputs and outputs to quickly isolate the function that’s responsible for a bug.(from Python’s “Functional Programming HowTo”)"
   },
   {
     "objectID": "w11/slides.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
     "href": "w11/slides.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines",
     "text": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines\n\n\nScenario: Run code, check the output, and… it’s wrong 😵 what do you do?\nUsual approach: Read lines one-by-one, figuring out what they do, seeing if something pops out that seems wrong; adding comments like # Convert to lowercase\n\n\n\n\nEasy case: found typo in punctuation removal code. Fix the error, add comment like # Remove punctuation\n Rule 1 of FP: transform these comments into function names\n\n\n\nHard case: Something in load_text() modifies a variable that later on breaks remove_punct() (Called a side-effect)\n Rule 2 of FP: NO SIDE-EFFECTS!\n\n\n\n\n\n\n\n\n\nG\n\n\n\ninput\nin.txt\n\n\n\nload_text\nload_text\n(Verb)\n\n\n\n\ninput-&gt;load_text\n\n\n\n\n\nlowercase\nlowercase\n(Verb)\n\n\n\n\nload_text-&gt;lowercase\n\n\n🧐 ✅\n\n\n\nremove_punct\nremove_punct\n(Verb)\n\n\n\n\nlowercase-&gt;remove_punct\n\n\n🧐 ✅\n\n\n\nremove_stopwords\nremove_stopwords\n(Verb)\n\n\n\n\nremove_punct-&gt;remove_stopwords\n\n\n🧐 ❌❗️\n\n\n\noutput\nout.txt\n\n\n\nremove_stopwords-&gt;output\n\n\n\n\n\n\n (Does this way of diagramming a program look familiar?) \n\n\n\n\nWith side effects: ❌ \\(\\implies\\) issue is somewhere earlier in the chain 😩🏃‍♂️\nNo side effects: ❌ \\(\\implies\\) issue must be in remove_punct()!!! 😎 ⏱️ = 💰"
   },
   {
     "objectID": "w11/slides.html#if-its-so-useful-why-doesnt-everyone-do-it",
     "href": "w11/slides.html#if-its-so-useful-why-doesnt-everyone-do-it",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "If It’s So Useful, Why Doesn’t Everyone Do It?",
     "text": "If It’s So Useful, Why Doesn’t Everyone Do It?\n\nTrapped in imperative (sequential) coding mindset: Path dependency / QWERTY\nReason we need to start thinking like this is: it’s 1000x harder to debug parallel code! So we need to be less ad hoc in how we write+debug, from here on out! 🙇‍♂️🙏\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014)\nThe title relates to a classic Economics joke (the best kind of joke): “An economist and a CEO are walking down the street, when the CEO points at the ground and tells the economist, ‘look! A $20 bill on the ground!’ The economist keeps on walking, scoffing at the CEO: ‘don’t be silly, if there was a $20 bill on the ground, somebody would have picked it up already’.”"
   },
   {
     "objectID": "w11/slides.html#the-killer-application-matrix-multiplication",
     "href": "w11/slides.html#the-killer-application-matrix-multiplication",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The “Killer Application”: Matrix Multiplication",
     "text": "The “Killer Application”: Matrix Multiplication\n\n(I learned from Jeff Ullman, who did the obnoxious Stanford thing of mentioning in passing how “two previous students in the class did this for a cool final project on web crawling and, well, it escalated quickly”, aka became Google)\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014), which is (legally) free online!"
   },
   {
     "objectID": "w11/slides.html#the-killer-way-to-learn-text-counts",
     "href": "w11/slides.html#the-killer-way-to-learn-text-counts",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "The Killer Way-To-Learn: Text Counts!",
     "text": "The Killer Way-To-Learn: Text Counts!\n\n(2014): Text counts (2.2) \\(\\rightarrow\\) Matrix multiplication (2.3) \\(\\rightarrow \\cdots \\rightarrow\\) PageRank (5.1)\n(And yall thought it was just busywork for HW3 😏)\nThe goal: User searches “Denzel Curry”… How relevant is a given webpage?\nScenario 1: Entire internet fits on CPU \\(\\implies\\) We can just make a big big hash table:\n\n\n\n\n\n\n\n\nG\n\n\n\ninternet\n\nScan in O(n):\nToday Denzel Washington\nate a big bowl of Yum's\ncurry. Denzel allegedly\nrubbed his tum and said\n\"yum yum yum\" when he\ntasted today's curry.\n\"Yum! It is me Denzel,\ncurry is my fav!\", he\nexclaimed. According to\nhis friend Steph, curry\nis indeed Denzel's fav.\nWe are live with Del\nCurry in Washington for\na Denzel curry update.\n\n\n\n\nccounts\n\nOverall Counts\n\n('according',1)\n('allegedly',1)\n('ate',1)\n('big',1)\n('bowl',1)\n('curry',6)\n('del',1)\n('denzel',5)\n('exclaimed',1)\n('fav',2)\n('friend',1)\n('indeed',1)\n('live',1)\n('rubbed',1)\n('said',1)\n('steph',1)\n('tasted',1)\n('today',2)\n('tum',1)\n('update',1)\n('washington',2)\n('yum',4)\n\n\n\n\ninternet-&gt;ccounts\n\n\nHash Table"
   },
   {
     "objectID": "w11/slides.html#if-everything-doesnt-fit-on-cpu",
     "href": "w11/slides.html#if-everything-doesnt-fit-on-cpu",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "If Everything Doesn’t Fit on CPU…",
     "text": "If Everything Doesn’t Fit on CPU…\n\nFrom Cornell Virtual Workshop, “Understanding GPU Architecture”"
   },
   {
     "objectID": "w11/slides.html#break-problem-into-chunks-for-the-green-bois",
     "href": "w11/slides.html#break-problem-into-chunks-for-the-green-bois",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "Break Problem into Chunks for the Green Bois!",
     "text": "Break Problem into Chunks for the Green Bois!\n\n\n\n\n\n\n\nG\n\n\n\nchunked\n\nChunked Document\n\nToday Denzel Washington\nate a big bowl of Yum's\ncurry. Denzel allegedly\nrubbed his tum and said\n\n\"yum yum yum\" when he\ntasted today's curry.\n\"Yum! It is me Denzel,\ncurry is my fav!\", he\n\nexclaimed. According to\nhis friend Steph, curry\nis indeed Denzel's fav.\nWe are live with Del\nCurry in Washington for\na Denzel curry update.\n\n\n\n\nchcounts\n\nChunked Counts\n\n('today',1)\n('denzel',1)\n...\n('tum',1)\n('said',1)\n\n('yum',1)\n('yum',1)\n('yum',1)\n...\n('fav',1)\n\n('exclaimed',1)\n...\n('del',1)\n('curry',1)\n('washington',1)\n('denzel',1)\n('curry',1)\n('update',1)\n\n\n\n\nchunked:p1-&gt;chcounts:p1\n\n\nO(n/4)\n\n\n\nchunked:p2-&gt;chcounts:p2\n\n\nO(n/4)\n\n\n\nchunked:p3-&gt;chcounts:p3\n\n\nO(n/4)\n\n\n\nchunked:p4-&gt;chcounts:p4\n\n\nO(n/4)\n\n\n\nscounts\n\nHashed Counts\n\n('allegedly',1)\n...\n('curry',1)\n('denzel',2)\n...\n('yum',1)\n\n('curry',2)\n('denzel',1)\n...\n('yum',4)\n\n('according',1)\n('curry',1)\n('del',1)\n('denzel',1)\n...\n('curry',2)\n('denzel',1)\n('update',1)\n('washington',1)\n\n\n\n\nchcounts:p1-&gt;scounts:p1\n\n\nO(n/4)\n\n\n\nchcounts:p2-&gt;scounts:p2\n\n\nO(n/4)\n\n\n\nchcounts:p3-&gt;scounts:p3\n\n\nO(n/4)\n\n\n\nchcounts:p4-&gt;scounts:p4\n\n\nO(n/4)\n\n\n\nccounts\n\nOverall Counts\n('according',1)\n('allegedly',1)\n('ate',1)\n('big',1)\n('bowl',1)\n('curry',6)\n('del',1)\n('denzel',5)\n('exclaimed',1)\n('fav',2)\n('friend',1)\n('indeed',1)\n('live',1)\n('rubbed',1)\n('said',1)\n('steph',1)\n('tasted',1)\n('today',2)\n('tum',1)\n('update',1)\n('washington',2)\n('yum',4)\n\n\n\n\nscounts:p1-&gt;ccounts:p1\n\n\n\n\n\nscounts:p2-&gt;ccounts:p1\n\n\n\n\n\nscounts:p3-&gt;ccounts:p1\n\n\n\n\n\nscounts:p4-&gt;ccounts:p1\n\n\n\n\n\nscounts:p2-&gt;ccounts\n\n\n \n\nMerge in\nO(n)\n\n\n\n\n\n\n\n\n\n\\(\\implies\\) Total = \\(O(3n) = O(n)\\)\nBut also optimized in terms of constants, because of sequential memory reads"
   },
   {
     "objectID": "w11/slides.html#hw5-possibility-1",
     "href": "w11/slides.html#hw5-possibility-1",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "HW5: Possibility 1",
     "text": "HW5: Possibility 1\n\nMap-Reduced Matrix-Vector Multiplication\n\n\nImage source"
   },
   {
     "objectID": "w11/slides.html#hw5-possibility-2-more-likely",
     "href": "w11/slides.html#hw5-possibility-2-more-likely",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "HW5: Possibility 2 (More Likely?)",
     "text": "HW5: Possibility 2 (More Likely?)\n\nScrape quotes in parallel!\nAdvantage: Builds on HW4\nDisadvantage: Embarrassingly parallel, so… no Map-Reduce coding practice\n(Probable tiebreaker: If you’re interested in Map-Reduce, do Matrix Multiplication as Final Project!)"
   },
   {
     "objectID": "w11/slides.html#references",
     "href": "w11/slides.html#references",
-    "title": "Week 11: Parallel Pipelines and Map-Reduce",
+    "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "References",
     "text": "References\n\n\nLeskovec, Jure, Anand Rajaraman, and Jeffrey David Ullman. 2014. Mining of Massive Datasets. Cambridge University Press."
   },
@@ -4592,7 +4592,7 @@
     "href": "index.html",
     "title": "DSAN 5500: Data Structures, Objects, and Algorithms in Python",
     "section": "",
-    "text": "Welcome to the homepage for DSAN 5500: Data Structures, Objects, and Algorithms in Python, Spring 2025, at Georgetown University! The course takes place on Thursdays from 6:30 to 9:00pm in Healy 104. More details are provided on the syllabus.\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Course Intro and Motivation\n\n\nJanuary 9\n\n\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nJanuary 16\n\n\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nJanuary 23\n\n\n\n\nWeek 4: Data Structures from Scratch with OOP\n\n\nJanuary 30\n\n\n\n\nWeek 5: Hash Tables and Binary Search Trees\n\n\nFebruary 6\n\n\n\n\nWeek 6: Depth-First and Breadth-First Search\n\n\nFebruary 13\n\n\n\n\nWeek 7: Code Examples and Midterm Review\n\n\nFebruary 20\n\n\n\n\nWeek 8: In-Class Midterm\n\n\nFebruary 27\n\n\n\n\nWeek 9: ETL Pipelines with Prefect\n\n\nMarch 13\n\n\n\n\nWeek 10: Data Pipeline Orchestration\n\n\nMarch 20\n\n\n\n\nWeek 11: Parallel Pipelines and Map-Reduce\n\n\nMarch 27\n\n\n\n\nWeek 12: Final Projects, Interfaces\n\n\nApril 3\n\n\n\n\nWeek 13: Applications in NLP\n\n\nApril 10\n\n\n\n\nWeek 14: Applications in Bioinformatics\n\n\nApril 24\n\n\n\n\n\nNo matching items",
+    "text": "Welcome to the homepage for DSAN 5500: Data Structures, Objects, and Algorithms in Python, Spring 2025, at Georgetown University! The course takes place on Thursdays from 6:30 to 9:00pm in Healy 104. More details are provided on the syllabus.\n\n\n\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nWeek 1: Course Intro and Motivation\n\n\nJanuary 9\n\n\n\n\nWeek 2: Software Design Patterns and Object-Oriented Programming\n\n\nJanuary 16\n\n\n\n\nWeek 3: Data Structures and Computational Complexity\n\n\nJanuary 23\n\n\n\n\nWeek 4: Data Structures from Scratch with OOP\n\n\nJanuary 30\n\n\n\n\nWeek 5: Hash Tables and Binary Search Trees\n\n\nFebruary 6\n\n\n\n\nWeek 6: Depth-First and Breadth-First Search\n\n\nFebruary 13\n\n\n\n\nWeek 7: Code Examples and Midterm Review\n\n\nFebruary 20\n\n\n\n\nWeek 8: In-Class Midterm\n\n\nFebruary 27\n\n\n\n\nWeek 9: ETL Pipelines with Prefect\n\n\nMarch 13\n\n\n\n\nWeek 10: Data Pipeline Orchestration\n\n\nMarch 20\n\n\n\n\nWeek 11: From Serial to Parallel Pipelines\n\n\nMarch 27\n\n\n\n\nWeek 12: Final Projects, Map-Reduce\n\n\nApril 3\n\n\n\n\nWeek 13: Applications in NLP\n\n\nApril 10\n\n\n\n\nWeek 14: Applications in Bioinformatics\n\n\nApril 24\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "<i class='bi bi-house pe-1'></i> Home"
     ]

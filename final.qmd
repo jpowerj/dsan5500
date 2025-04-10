@@ -253,17 +253,17 @@ Expectations for group projects will **scale** based on the number of members in
 
 In general, the only "true" due date is the due date for the final submission, but the project will go most smoothly if you are able to hold yourself to the following schedule:
 
-* **Proposal**: Approved by mentor by Wednesday, April 10th
-* **Final Draft**: Sent to mentor for review by Monday, April 29th
-* **Submission**: Completed project submitted via Google Classroom by Friday, May 6th, 5:59pm EDT
+* **Basic Idea Proposal**: Approved by instructor (Jeff, Renee, or Jiatong) by end of day **Thursday, April 10th** (in-class office hour session, 7:30-9pm)
+* **Final Draft**: Sent to instructors ([`dsan5500-instructors@georgetown.edu`](mailto:dsan5500-instructors@georgetown.edu)) or brought into class for review on **Thursday, April 24th** (in-class office hour session, 7:30-9pm)
+* **Submission**: Completed project submitted via Google Classroom by **Thursday, May 1st, 11:59pm EDT**
 
 ## Submission Format
 
 There is now an <a href='https://classroom.google.com/c/NjM5MzE2MTE4NTgx/a/NjUyMzY1MTY3NDAz/details' target='_blank'>assignment page</a> for the final project on Google Classroom, where you will upload your final submission for grading. The following is a rough sketch of what we're looking for in terms of the structure of your submission:
 
-* HTML format, as a rendered <a href='https://quarto.org/docs/manuscripts/' target='_blank'>Quarto manuscript</a>, would be optimal, but can be PDF if preferred---for example, if you choose Option 4 (involving mathematical proofs), you might instead want to use LaTeX rendered to PDF.
+* HTML format, as a rendered [Quarto manuscript](https://quarto.org/docs/manuscripts/), would be optimal, but can be PDF if preferred---for example, if you choose Option 4 (involving mathematical proofs), you might instead want to use LaTeX rendered to PDF.
 * A requirement in terms of **number of pages** is difficult, but a reasonable range for the **PDF format** would be 3-10 pages double-spaced. Therefore, for a **Quarto** document or **Jupyter** notebook, the length can be the equivalent of this (for example, you can print-preview the Quarto doc to see how many pages it would produce if printed)
 * It should have an **abstract**, a 250-500 word paragraph at the very top of the manuscript, summarizing what you did
-* Citations, if used, should be set up so that they're handled automatically. By <a href='https://quarto.org/docs/authoring/footnotes-and-citations.html' target='_blank'>Quarto's citation manager</a> for example, or by <a href='https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex' target='_blank'>Bibtex/Biber</a> if you're using LaTeX.
+* Citations, if used, should be set up so that they're handled automatically. By [Quarto's citation manager](https://quarto.org/docs/authoring/footnotes-and-citations.html) for example, or by [Bibtex/Biber](https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex) if you're using LaTeX.
 
 [^group]: This detail is not something we're trying to explicitly measure or be harsh about, but is included here since otherwise (if the expectations for individual and group projects were the exact same) the work would scale the other way: that each person in a two-person project would be doing half the amount of work that a person doing an individual project is doing... Hopefully that makes sense from a fairness perspective!

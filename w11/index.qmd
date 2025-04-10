@@ -1,5 +1,5 @@
 ---
-title: "Week 11: Parallel Pipelines and Map-Reduce"
+title: "Week 11: From Serial to Parallel Pipelines"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: 2025-03-27
 date-format: full
