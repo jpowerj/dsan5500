@@ -1,7 +1,7 @@
 ---
 title: "Week 4: Data Structures from Scratch with OOP"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
-date: 2025-01-30
+date: 2026-01-30
 date-format: full
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
@@ -14,6 +14,7 @@ format:
     df-print: kable
     output-file: "slides.html"
     footer: "DSAN 5500 Week 4: {{< var w04.footer >}}"
+    theme: [default, "../dsan-globals/jjquarto.scss"]
     echo: true
     code-fold: show
     scrollable: true
@@ -100,6 +101,7 @@ Today's Planned Schedule:
 ::: {.column width="60%"}
 
 ```{python}
+#| label: my-secret-info
 #| error: true
 class MySecretInfo:
   __the_info = "I love Carly Rae Jepsen"
@@ -114,6 +116,7 @@ Guess we can't access it then, right? 😮‍💨
 ::: {.column width="40%"}
 
 ```{python}
+#| label: access-secret
 info_obj._MySecretInfo__the_info
 ```
 
@@ -428,6 +431,7 @@ print(micromotives)
 ## Tuples
 
 ```{python}
+#| label: mytuple-definition
 class MyTuple:
   def __init__(self, thing1, thing2):
     self.thing1 = thing1
@@ -453,6 +457,7 @@ print(t2)
 The list itself just **points** to a root item:
 
 ```{python}
+#| label: mylist-definition
 class MyList:
   def __init__(self):
     self.root = None
@@ -473,6 +478,7 @@ class MyList:
 An item has contents, pointer to next item:
 
 ```{python}
+#| label: mylistitem-definition
 class MyListItem:
   def __init__(self, content):
     self.content = content
@@ -493,6 +499,7 @@ class MyListItem:
 :::
 
 ```{python}
+#| label: mylist-append
 users = MyList()
 users.append('Jeff')
 users.append('Alma')
@@ -515,12 +522,14 @@ print(users)
 With a `MyTuple`:
 
 ```{python}
+#| label: steps-thing1
 t1.thing1
 ```
 
 $\implies$ 1 step
 
 ```{python}
+#| label: steps-thing2
 t1.thing2
 ```
 
@@ -532,12 +541,14 @@ $\implies$ 1 step
 With a `MyList`:
 
 ```{python}
+#| label: mylist-root-content
 print(users.root.content)
 ```
 
 $\implies$ 1 step
 
 ```{python}
+#| label: mylist-last
 current_node = users.root
 while current_node.next is not None:
   current_node = current_node.next
@@ -557,7 +568,8 @@ $\implies$ (3 steps)
 #| label: graphviz-setup
 #| echo: false
 import sys
-sys.path.append('../../dsan5500-local/HW2/')
+# Important! Allows us to use HW2 classes within these slides...
+sys.path.append('../../dsan5500-local/hw2/')
 from IPython.display import display, HTML
 import graphviz as gv # for visualizing a tree using Digraph
 from graphviz import Digraph, nohtml

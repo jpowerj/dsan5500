@@ -272,12 +272,6 @@ print(multiply("fiveee", 3))
 :::
 :::
 
-```{python}
-from mypy import api
-result = api.run(['-c',_i])
-print(result[0])
-```
-
 ## Unit Testing
 
 * For your life: test-driven development

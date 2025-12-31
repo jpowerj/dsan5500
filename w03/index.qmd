@@ -111,17 +111,18 @@ Today's Planned Schedule:
 
 ## Looping Over Sequences {.smaller}
 
-::: columns
+:::: {.columns}
 ::: {.column width="50%"}
 
 * C/C++/Java:
 
-```java
+``` {.java}
 List<String> myList = Arrays.asList("a", "b", "c");
 for (int i = 0; i < x.size(); i++) {
     System.out.println(myList.get(i));
 }
 ```
+
 <pre>
 a
 b
@@ -140,7 +141,7 @@ for list_element in my_list:
 ```
 
 :::
-:::
+::::
 
 ## *List Comprehensions*: Apply [Operation] to Each Element {.crunch-title .title-08}
 
@@ -162,7 +163,7 @@ for list_element in my_list:
 ## Sets {.smaller .crunch-title .inline-90}
 
 :::: {.columns}
-::: {.column width="50%" style="overflow-x: clip;"}
+::: {.column width="50%"}
 
 Efficient for finding **unique** elements:
 
@@ -242,7 +243,7 @@ print(f"Preferences only in the evening: {unique_prefs_eveonly}")
 
 ## Maps / Dictionaries {.smaller .crunch-title}
 
-::: columns
+:::: {.columns}
 ::: {.column width="50%"}
 
 While other language like Java have lots of fancy types of Map, Python has a single type, the **dictionary**:
@@ -280,9 +281,9 @@ for k, v in gtown_data.items():
 ```
 
 :::
-:::
+::::
 
-# Complexity With Respect To A *Structure*{data-stack-name="Complexity" .smaller .crunch-title .title-12 .crunch-li-8}
+# Complexity With Respect To A *Structure* {data-stack-name="Complexity" .smaller .crunch-title .title-12 .crunch-li-8}
 
 * Last week: analyzing complexity of an **algorithm** (no broader context): [Insertion-Sort]{.alg}
 * This week: analyzing complexity of a **structure** as a **collection** of variables + algorithms
@@ -337,7 +338,7 @@ print(t2)
 
 ## Lists {.crunch-title .smaller}
 
-::: columns
+:::: {.columns}
 ::: {.column width="50%"}
 
 The list itself just **points** to a root item:
@@ -380,7 +381,7 @@ class MyListItem:
 ```
 
 :::
-:::
+::::
 
 ```{python}
 users = MyList()
@@ -399,7 +400,7 @@ print(users)
 
 ## How Many Steps? {.smaller}
 
-::: columns
+:::: {.columns}
 ::: {.column width="50%"}
 
 With a `MyTuple`:
@@ -439,7 +440,7 @@ $\implies$ (3 steps)
 ...But why 3? How many steps if the list contained 5 elements? $N$ elements?
 
 :::
-:::
+::::
 
 ## Pairwise-Concatenating List Elements {.smaller .crunch-title}
 
