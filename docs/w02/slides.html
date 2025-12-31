@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.40">
+
+  <meta name="author" content="Jeff Jacobs">
+  <title>DSAN 5500 – Week 2: Software Design Patterns and Object-Oriented Programming</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
+  <link rel="stylesheet" href="../dsan-globals/jjstyles.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/simplemenu/simplemenu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Honk&amp;display=swap" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Week 2: Software Design Patterns and Object-Oriented Programming</h1>
+  <p class="subtitle"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Jeff Jacobs 
+</div>
+        <p class="quarto-title-affiliation">
+            <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a>
+          </p>
+    </div>
+</div>
+
+  <p class="date">Thursday, January 16, 2025</p>
+</section>
+<section>
+<section id="quick-recap" class="title-slide slide level1 smaller center" data-stack-name="Recap">
+<h1>Quick Recap</h1>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><span class="absolute" style="top: 200px; left: 164px; width: 350px; height: 300px; ">Parallel Programming →</span> <span class="absolute" style="top: 340px; left: 127px; width: 350px; height: 300px; ">Functional Programming →</span> <span class="absolute" style="top: 480px; left: 300px; width: 350px; height: 300px; "><strong>This Week</strong> →</span> <span class="absolute" style="top: 604px; left: 300px; width: 350px; height: 300px; ">Last Week →</span></p>
+</div><div class="column" style="width:80%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/plato.jpg" class="quarto-figure quarto-figure-center" width="360"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="hammers-vs.-structures-built-whammers" class="slide level2 crunch-title title-09 crunch-ul">
+<h2>Hammers vs.&nbsp;Structures Built w/Hammers</h2>
+<style>
+.honk-honk {
+  font-size: 180% !important;
+  /* font-family: "Bungee Spice", sans-serif; */
+  font-family: "Honk", sans-serif;
+  /* font-optical-sizing: auto; */
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
+<ul>
+<li>How I see the course title:
+<ul>
+<li><span class="honk-honk">Data Structures!</span></li>
+<li><span class="honk-honk">Objects!</span>, and</li>
+<li><span class="honk-honk">Algorithms!</span> (in Python)</li>
+</ul></li>
+<li>How my opps see the course title: (Data Structures, Objects, and Algorithms) in <span class="honk-honk">Python!</span></li>
+</ul>
+</section>
+<section id="primitive-types-in-general" class="slide level2">
+<h2>Primitive Types <em>in General</em></h2>
+<ul>
+<li>Variable types for which [language] <strong>knows in advance <em>exactly</em> how much memory</strong> is going to be required</li>
+<li>Booleans (<code>True</code> or <code>False</code>): Exactly <strong>1</strong> bit (<code>0</code> or <code>1</code>)</li>
+<li><code>int</code>: <a href="https://docs.python.org/3/library/sys.html#sys.maxsize">32 or 64 bits</a> (depending on OS)</li>
+<li><code>None</code> / <code>null</code> / <code>NA</code>: Since we want it to serve as a “blank” value (easily <strong>cast</strong> to other primitive types), usually the same number of bits as <code>int</code>
+<ul>
+<li>Hence, in <code>C</code> for example, <code>null</code> is actually just shorthand for an <code>int</code> with value <code>0</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="primitive-types-python-weirdness-edition" class="slide level2 title-09 crunch-title crunch-ul crunch-quarto-figure">
+<h2>Primitive Types: Python Weirdness Edition</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Boolean (<code>True</code> or <code>False</code>): Exactly <strong>1</strong> bit (<code>0</code> or <code>1</code>)</p>
+<div id="cell-bool-size" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> sys</span>
+<span id="cb1-2"><a></a>sys.getsizeof(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bool-size" class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>28</code></pre>
+</div>
+</div></li>
+<li><p><code>int</code>: <a href="https://docs.python.org/3/library/sys.html#sys.maxsize">32 or 64 bits</a> (depending on OS)</p>
+<div id="cell-int-size" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>sys.maxsize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="int-size" class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>9223372036854775807</code></pre>
+</div>
+</div></li>
+<li><p><code>None</code></p>
+<div id="cell-none-size" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>sys.getsizeof(<span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="none-size" class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>16</code></pre>
+</div>
+</div></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/atrick_nocap.jpg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<ul>
+<li>Why is this happening?</li>
+</ul>
+</div></div>
+</section>
+<section id="stack-and-heap-in-c-java" class="slide level2 smaller">
+<h2>Stack and Heap <em>in C / Java</em></h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>my_beautiful_app.c</strong></pre>
+</div>
+<div class="sourceCode" id="cb7" data-filename="my_beautiful_app.c"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a></a><span class="dt">time_t</span> current_time <span class="op">=</span> time<span class="op">(</span>NULL<span class="op">);</span></span>
+<span id="cb7-2"><a></a><span class="dt">int</span> num_rows <span class="op">=</span> <span class="dv">13</span><span class="op">;</span></span>
+<span id="cb7-3"><a></a><span class="dt">bool</span> filled <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb7-4"><a></a><span class="dt">bool</span> empty <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb7-5"><a></a><span class="dt">int</span> num_cols <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb7-6"><a></a><span class="dt">char</span> username<span class="op">[]</span> <span class="op">=</span> <span class="st">"Jeff"</span><span class="op">;</span></span>
+<span id="cb7-7"><a></a><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-8"><a></a><span class="dt">int</span> j <span class="op">=</span> None<span class="op">;</span></span>
+<span id="cb7-9"><a></a><span class="dt">void</span> z <span class="op">=</span> NULL<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<!-- https://kroki.io/graphviz/svg/eNqVkl1v2jAUhq_hV1hmF60EWj6AUkQsTeyjqrZetNVuKKpMfEy8BjuynQIj-e-zQwudVmntuXB07LyPz3t8mFhqWmRoiXZt5EJT-cCETr5fN2mqZArSamohudUltFumXOwVaV4aC_pb4JStVk4XkCf4B6yU3qKTT9wdoaligL5sIC2tUPJ0jKboI7qkjxQ7xT-gsAEdUDeWpg-4qeJlGPtItZk1P6EE4d1uIukKQpKW-p65OitZru61WpuKizwHVsGqsNtmN1W5qUoD2isqUf2qftfVbkIZ0yEJNqPRYgjx8Lya8JCEsftExJtGJ-GpS_rkK82NywKfDUjk1qGT8TOe9mMIXDoifj0nV0qCpwQkDvt1jbsmowX4cjWkSjPc5UpaX0WCp6rUAjSeO_P1a32J_u7LBdDiZVuyEM2ejj47-7MoiOJecNaLovlr13QLkGvBbJYE84bSaiDxAXKHL4HzO_wm8T46KBsc9N77f7Xe6rMa758Uj5t3QD2CcBbi8XIwM3abO4JRuXAtc7No3CQKaZtRnKNOd_N0508Ba3ysqPPhCOX9IzF6JjJqMngX8sgbel4Wt52D-g9b6P_t -->
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/stack-heap-c.svg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="stack-and-heap-in-python" class="slide level2 smaller">
+<h2>Stack and Heap <em>in Python</em></h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>my_beautiful_app.py</strong></pre>
+</div>
+<div class="sourceCode" id="cb8" data-filename="my_beautiful_app.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> datetime</span>
+<span id="cb8-2"><a></a>cur_date <span class="op">=</span> datetime.datetime.now()</span>
+<span id="cb8-3"><a></a>num_rows <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb8-4"><a></a>filled <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb8-5"><a></a>empty <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb8-6"><a></a>num_cols <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb8-7"><a></a>username <span class="op">=</span> <span class="st">"Jeff"</span></span>
+<span id="cb8-8"><a></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-9"><a></a>j <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb8-10"><a></a>z <span class="op">=</span> <span class="dv">314</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:60%;">
+<!-- https://kroki.io/graphviz/svg/eNqVk0uP0zAUhdftr7A8LEBqRd59KImEhscIAUKA2HSqkZPcNGZSO7Id2tLkv-O47bSILKZeOLo-vp-PTuyMrgSpCrRC-yHSQxD2mFERffpmypSzFJgSREH0Q9QwHMg6OXSkZS0ViA-W7hwMSpJAGeHPsOZih16-ybWEbnkG6N0W0lpRzl7N0dedKjjDev9_GNtgnkDfFUkfsfFwOaT6TYRcmE0oQni_DxlZgx2ntXjItMuG1esHwTeyyWlZQtbAulI7s5ryUja1BNF1NLT51fxpm31IskzYsbWdTpMA3GDWhLkd267-OHo1cV0_nXiBLj1dBnbgkRw61Y8dPQd6MZ_kqeeCpctp3M2zAy6xrFm307Zi1_baFo9kQSrofAtIucjwKOdMdXYifMtrQUHgpU6h7QvI-TegOyDVZT6FjRZH6a3OYeFYjju2JmPHWfYdM6qAbWimishaGsrAQNwnyD3-CHl-j5_VfLTgnbrDMIm76xK-TuL4CoB_CXhPSnk1IbgkfOHseYAu8hMCH-4YnpuLgcYxwoWN5yt_IdWu1ATJS6p_nX4aUj8MypR5GUt0M9oes_tJYYPPtm5enKG5dyY6J2JGZAFXIc88p-MVXo8SGMXtUYyHwu9RZkYJhjqP9i_dCD4S -->
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/stack-heap-py.svg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="data-structures-motivation" class="title-slide slide level1 center" data-stack-name="Data Structures">
+<h1>Data Structures: Motivation</h1>
+
+</section>
+<section id="why-does-the-nyc-subway-have-express-lines" class="slide level2 smaller title-11">
+<h2>Why Does The NYC Subway Have Express Lines?</h2>
+
+<img data-src="images/subway_map_nyc.jpg" class="r-stretch quarto-figure-center"><p class="caption">From <a href="https://www.centralpark.com/visitor-info/get-directions/" target="_blank">NYC Central Park website</a></p></section>
+<section id="why-stop-at-two-levels" class="slide level2 smaller">
+<h2>Why Stop At Two Levels?</h2>
+
+<img data-src="images/nyc-7.png" class="r-stretch quarto-figure-center"><p class="caption">From <a href="https://blog.reachsumit.com/posts/2020/07/skip-list/" target="_blank">Skip List Data Structure Explained</a>, Sumit’s Diary blog</p></section>
+<section id="how-tf-does-google-maps-work" class="slide level2 smaller crunch-iframe crunch-title crunch-ul">
+<h2>How TF Does Google Maps Work?</h2>
+<ul>
+<li>A (mostly) full-on answer: soon to come! Data structures for spatial data</li>
+<li>A step in that direction: <strong>Quadtrees</strong>! (<strong>Fractal DC</strong>)</li>
+</ul>
+<iframe src="https://jimkang.com/quadtreevis/" width="100%" height="450"></iframe>
+<p><a href="https://jimkang.com/quadtreevis/" target="_blank">Jim Kang’s Quadtree Visualizations <i class="bi bi-box-arrow-up-right"></i></a></p>
+</section></section>
+<section>
+<section id="algorithmic-complexity-motivation" class="title-slide slide level1 center" data-stack-name="Complexity">
+<h1>Algorithmic Complexity: Motivation</h1>
+
+</section>
+<section id="the-secretly-exciting-world-of-matrix-multiplication" class="slide level2">
+<h2>The Secretly Exciting World of Matrix Multiplication</h2>
+<ul>
+<li>Fun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations</li>
+<li>Fun Fact 2: The way we’ve all learned how to multiply matrices requires <span class="math inline">\(O(N^3)\)</span> operations, for two <span class="math inline">\(N \times N\)</span> matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></li>
+<li>Fun Fact 3: <span class="math inline">\(\underbrace{x^2 - y^2}_{\mathclap{\times\text{ twice, }\pm\text{ once}}} = \underbrace{(x+y)(x-y)}_{\times\text{once, }\pm\text{ twice}}\)</span></li>
+<li>Fun Fact 4: These are not very fun facts at all</li>
+</ul>
+</section>
+<section id="why-is-jeff-rambling-about-matrix-math-from-300-years-ago" class="slide level2 smaller">
+<h2>Why Is Jeff Rambling About Matrix Math From 300 Years Ago?</h2>
+<ul>
+<li>The way we all learned it in school (for <span class="math inline">\(N = 2\)</span>):</li>
+</ul>
+<p><span class="math display">\[
+AB = \begin{bmatrix}
+a_{11} &amp; a_{12} \\
+a_{21} &amp; a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} &amp; b_{12} \\
+b_{21} &amp; b_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+a_{11}b_{11} + a_{12}b_{21} &amp; a_{11}b_{12} + a_{12}b_{22} \\
+a_{21}b_{11} + a_{22}b_{21} &amp; a_{21}b_{12} + a_{22}b_{22}
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li>12 operations: 8 multiplications, 4 additions <span class="math inline">\(\implies O(N^3) = O(2^3) = O(8)\)</span></li>
+<li>Are we trapped? Like… what is there to do besides performing these <span class="math inline">\(N^3\)</span> operations, if we want to multiply two <span class="math inline">\(N \times N\)</span> matrices? Why are we about to move onto yet another slide about this?</li>
+</ul>
+</section>
+<section id="block-partitioning-matrices" class="slide level2 smaller">
+<h2>Block-Partitioning Matrices</h2>
+<ul>
+<li>Now let’s consider <strong>big</strong> matrices, whose dimensions are a power of 2 (for ease of illustration): <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are now <span class="math inline">\(N \times N = 2^n \times 2^n\)</span> matrices</li>
+<li>We can “decompose” the matrix product <span class="math inline">\(AB\)</span> as:</li>
+</ul>
+<p><span class="math display">\[
+AB = \begin{bmatrix}
+A_{11} &amp; A_{12} \\
+A_{21} &amp; A_{22}
+\end{bmatrix}
+\begin{bmatrix}
+B_{11} &amp; B_{12} \\
+B_{21} &amp; B_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+A_{11}B_{11} + A_{12}B_{21} &amp; A_{11}B_{12} + A_{12}B_{22} \\
+A_{21}B_{11} + A_{22}B_{21} &amp; A_{21}B_{12} + A_{22}B_{22}
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li>Which gives us a <strong>recurrence relation</strong> representing the total number of computations required for this big-matrix multiplication: <span class="math inline">\(T(N) = \underbrace{8T(N/2)}_{\text{Multiplications}} + \underbrace{\Theta(1)}_{\text{Additions}}\)</span></li>
+<li>It turns out that (using a method we’ll learn in Week 3), given this recurrence relation and our <strong>base case</strong> from the previous slide, this divide-and-conquer approach via block-partitioning doesn’t help us: we still get <span class="math inline">\(T(n) = O(n^3)\)</span>…</li>
+<li>So why is Jeff still torturing us with this example?</li>
+</ul>
+</section>
+<section id="time-for-some-matrix-magic" class="slide level2 smaller crunch-title crunch-ul crunch-math crunch-li title-12">
+<h2>Time For Some 🪄MATRIX MAGIC!🪄</h2>
+<div id="matrix-magic-defn">
+<ul>
+<li>If we define</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+m_1 &amp;= (a_{11}+a_{22})(b_{11}+b_{22}) \\
+m_2 &amp;= (a_{21}+a_{22})b_{11} \\
+m_3 &amp;= a_{11}(b_{12}-b_{22}) \\
+m_4 &amp;= a_{22}(b_{21}-b_{11}) \\
+m_5 &amp;= (a_{11}+a_{12})b_{22} \\
+m_6 &amp;= (a_{21}-a_{11})(b_{11}+b_{12}) \\
+m_7 &amp;= (a_{12}-a_{22})(b_{21}+b_{22})
+\end{align*}
+\]</span></p>
+</div>
+<div id="matrix-magic-result">
+<ul>
+<li>Then we can combine these <strong>seven</strong> scalar products to obtain our matrix product:</li>
+</ul>
+<p><span class="math display">\[
+AB = \begin{bmatrix}
+m_1 + m_4 - m_5 + m_7 &amp; m_3 + m_5 \\
+m_2 + m_4 &amp; m_1 - m_2 + m_3 + m_6
+\end{bmatrix}
+\]</span></p>
+</div>
+<ul>
+<li>Total operations: 7 multiplications, 18 additions</li>
+</ul>
+</section>
+<section id="block-partitioned-matrix-magic" class="slide level2 smaller">
+<h2>Block-Partitioned Matrix Magic</h2>
+<ul>
+<li>Using the previous slide as our <strong>base case</strong> and applying this same method to the block-paritioned big matrices, we get the same result, but where the four entries in <span class="math inline">\(AB\)</span> here are now <strong>matrices</strong> rather than scalars:</li>
+</ul>
+<p><span class="math display">\[
+AB = \begin{bmatrix}
+M_1 + M_4 - M_5 + M_7 &amp; M_3 + M_5 \\
+M_2 + M_4 &amp; M_1 - M_2 + M_3 + M_6
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li>We now have a <strong>different recurrence relation</strong>: <span class="math inline">\(T(N) = \underbrace{7T(N/2)}_{\text{Multiplications}} + \underbrace{\Theta(N^2)}_{\text{Additions}}\)</span></li>
+<li>And it turns out, somewhat miraculously, that the additional time required for the <strong>increased number of additions</strong> is <strong>significantly less</strong> than the <strong>time savings</strong> we obtain by doing 7 instead of 8 multiplications, since this method now runs in <span class="math inline">\(T(N) = O(N^{\log_2(7)}) \approx O(N^{2.807}) &lt; O(N^3)\)</span> 🤯</li>
+</ul>
+</section></section>
+<section>
+<section id="sorting" class="title-slide slide level1 center" data-stack-name="Sorting">
+<h1>Sorting</h1>
+<ul>
+<li>Your first “use case” for both <strong>using a data structure</strong> and <strong>analyzing the complexity</strong> of an operation on it!</li>
+<li>We’ll start with simple approach (<strong>insertion sort</strong>), then more complicated approach (<strong>merge sort</strong>)</li>
+<li>Using complexity analysis, we’ll see how (much like the matrix-multiplication example) simplest isn’t always best D:</li>
+</ul>
+</section>
+<section id="insertion-sort" class="slide level2">
+<h2>Insertion Sort</h2>
+<ul>
+<li>Think of how you might sort a deck of cards in your hand</li>
+</ul>
+
+<img data-src="images/cards.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="cards-rightarrow-list-elements" class="slide level2 smaller scrollable">
+<h2>Cards <span class="math inline">\(\rightarrow\)</span> List Elements</h2>
+<ul>
+<li>Input list: <code>[5, 2, 4, 6, 1, 3]</code></li>
+</ul>
+
+<img data-src="images/insertion_zero.svg" class="quarto-figure quarto-figure-center r-stretch"><ul>
+<li>Notice how, at each point:
+<ol type="1">
+<li>There is a card we’re currently “looking at”, called the <span class="cb2"><strong>key</strong></span>, and</li>
+<li>There is an <strong>invariant</strong>: everything in the list <span class="cb1"><strong>before the key</strong></span> is <strong>already sorted</strong></li>
+</ol></li>
+</ul>
+</section>
+<section id="complexity-analysis" class="slide level2 smaller crunch-title crunch-ul crunch-p crunch-math">
+<h2>Complexity Analysis</h2>
+<ul>
+<li>Let <span class="math inline">\(t_i\)</span> be the number of times the while loop runs, <span class="math inline">\(\widetilde{n} = n - 1\)</span>:</li>
+</ul>
+<table class="caption-top" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Code</th>
+<th data-quarto-table-cell-role="th">Cost</th>
+<th data-quarto-table-cell-role="th">Times Run</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td><span class="bold-code"><code>for</code></span><code> i = 1 </code><span class="bold-code"><code>to</code></span><code> n-1:</code></td>
+<td><span class="math inline">\(c_1\)</span></td>
+<td><span class="math inline">\(\widetilde{n}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td><code>&nbsp;&nbsp;key = A[i]</code></td>
+<td><span class="math inline">\(c_2\)</span></td>
+<td><span class="math inline">\(\widetilde{n}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td><code style="color: #699754 !important;">&nbsp;&nbsp;# Insert A[i] into sorted subarray A[0:i-1]</code></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(\widetilde{n}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td><code>&nbsp;&nbsp;j = i - 1</code></td>
+<td><span class="math inline">\(c_4\)</span></td>
+<td><span class="math inline">\(\widetilde{n}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td><code>&nbsp;&nbsp;</code><span class="bold-code"><code>while</code></span><code> j &gt;= 0 </code><span class="bold-code"><code>and</code></span><code> A[j] &gt; key:</code></td>
+<td><span class="math inline">\(c_5\)</span></td>
+<td><span class="math inline">\(\sum_{i=2}^n t_i\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td><code>&nbsp;&nbsp;&nbsp;&nbsp;A[j + 1] = A[j]</code></td>
+<td><span class="math inline">\(c_6\)</span></td>
+<td><span class="math inline">\(\sum_{i=2}^n(t_i - 1)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td><code>&nbsp;&nbsp;&nbsp;&nbsp;j = j - 1</code></td>
+<td><span class="math inline">\(c_7\)</span></td>
+<td><span class="math inline">\(\sum_{i=2}^n(t_i - 1)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td><code>&nbsp;&nbsp;A[j + 1] = key</code></td>
+<td><span class="math inline">\(c_8\)</span></td>
+<td><span class="math inline">\(\widetilde{n}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+T(n) = c_1\widetilde{n} + c_2\widetilde{n} + c_4\widetilde{n} + c_5\sum_{i=2}^nt_i + c_6\sum_{i=2}^n(t_i - 1) + c_7\sum_{i=2}^n(t_i-1) + c_8\widetilde{n}
+\]</span></p>
+</section>
+<section id="simplifying" class="slide level2 smaller crunch-title crunch-ul crunch-math math-95">
+<h2>Simplifying</h2>
+<ul>
+<li>The original, scary-looking equation:</li>
+</ul>
+<p><span class="math display">\[
+T(n) = c_1n + c_2\widetilde{n} + c_4\widetilde{n} + c_5{\color{orange}\boxed{\color{black}\sum_{i=2}^nt_i}} + c_6{\color{lightblue}\boxed{\color{black}\sum_{i=2}^n(t_i - 1)}} + c_7{\color{lightblue}\boxed{\color{black}\sum_{i=2}^n(t_i-1)}} + c_8\widetilde{n}
+\]</span></p>
+<ul>
+<li>But <span class="math inline">\(\sum_{i=1}^ni = \frac{n(n+1)}{2}\)</span>, so:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+{\color{orange}\boxed{\color{black}\sum_{i=2}^ni}} &amp;= \sum_{i=1}^ni - \sum_{i=1}^1i = \frac{n(n+1)}{2} - 1 \\
+{\color{lightblue}\boxed{\color{black}\sum_{i=2}^n(i-1)}} &amp;= \sum_{i=1}^{n-1}i = \frac{(n-1)(n-1+1)}{2} = \frac{n(n-1)}{2}
+\end{align*}
+\]</span></p>
+<ul>
+<li>And the scary-looking equation simplifies to</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+T(n) = &amp;{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac{c_7}{2}\right)}{\color{green}n^2} + {\color{gray}\left(c_1 + c_2 + c_4 + \frac{c_5}{2} - \frac{c_6}{2} - \frac{c_7}{2} + c_8\right)}{\color{green}n^1} \\
+\phantom{T(n) = }&amp; - {\color{gray}(c_2 + c_4 + c_5 + c_8)}{\color{green}n^0}
+\end{align*}
+\]</span></p>
+</section>
+<section id="remember-asymptotic-analysis" class="slide level2 smaller">
+<h2>Remember: Asymptotic Analysis!</h2>
+<ul>
+<li>It still looks pretty messy, but remember: we care about efficiency <strong>as a function of <span class="math inline">\(n\)</span>!</strong></li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac{c_7}{2}\right)}}_{\text{Constant}}\underbrace{\phantom{(}{\color{green}n^2}\phantom{)}}_{\text{Quadratic}} \\
+\phantom{T(n) = }&amp;+ \underbrace{{\color{gray}\left(c_1 + c_2 + c_4 + \frac{c_5}{2} - \frac{c_6}{2} - \frac{c_7}{2} + c_8\right)}}_{\text{Constant}}\underbrace{\phantom{(}{\color{green}n^1}\phantom{)}}_{\text{Linear}} \\
+\phantom{T(n) = }&amp; - \underbrace{{\color{gray}(c_2 + c_4 + c_5 + c_8)}}_{\text{Constant}}\underbrace{{\color{green}n^0}}_{\text{Constant}}
+\end{align*}
+\]</span></p>
+<ul>
+<li>So, there’s a sense in which <span class="math inline">\(T(n) \approx n^2\)</span>, for “sufficiently large” values of <span class="math inline">\(n\)</span>…</li>
+<li>Let’s work our way towards formalizing the <span class="math inline">\(\approx\)</span>!</li>
+</ul>
+</section>
+<section id="the-figure-you-should-make-in-your-brain-every-time" class="slide level2 smaller crunch-title title-10 crunch-quarto-figure">
+<h2>The Figure You Should Make In Your Brain Every Time</h2>
+<div id="5afa5525" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-4"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb9-5"><a></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="fl">2.75</span>, <span class="fl">0.25</span>)]</span>
+<span id="cb9-6"><a></a>runtime_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
+<span id="cb9-7"><a></a>runtime_df[<span class="st">'$n^2 + 50n$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">50</span><span class="op">*</span>x)</span>
+<span id="cb9-8"><a></a>runtime_df[<span class="st">'$n^2 + 10000$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">10000</span>)</span>
+<span id="cb9-9"><a></a>runtime_df[<span class="st">'$O(n)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].copy()</span>
+<span id="cb9-10"><a></a>runtime_df[<span class="st">'$O(nlogn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">*</span> np.log(x))</span>
+<span id="cb9-11"><a></a>runtime_df[<span class="st">'$O(n^2)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>))</span>
+<span id="cb9-12"><a></a>runtime_df[<span class="st">'$O(n^2logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.log(x))</span>
+<span id="cb9-13"><a></a>runtime_df[<span class="st">'$O(n^3)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>))</span>
+<span id="cb9-14"><a></a>runtime_df[<span class="st">'$O(n^3logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>) <span class="op">*</span> np.log(x))</span>
+<span id="cb9-15"><a></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
+<span id="cb9-16"><a></a>max_vals <span class="op">=</span> runtime_df.<span class="bu">max</span>().to_dict()</span>
+<span id="cb9-17"><a></a>plot_df <span class="op">=</span> runtime_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
+<span id="cb9-18"><a></a><span class="co">#print(plot_df)</span></span>
+<span id="cb9-19"><a></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (col <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> runtime_df.columns}</span>
+<span id="cb9-20"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
+<span id="cb9-21"><a></a>sns.lineplot(plot_df, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
+<span id="cb9-22"><a></a><span class="co">#plt.xscale('log')</span></span>
+<span id="cb9-23"><a></a>plt.yscale(<span class="st">'log'</span>)</span>
+<span id="cb9-24"><a></a><span class="co"># extract the existing handles and labels</span></span>
+<span id="cb9-25"><a></a>h, l <span class="op">=</span> ax.get_legend_handles_labels()</span>
+<span id="cb9-26"><a></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
+<span id="cb9-27"><a></a>ax.legend(h[<span class="dv">0</span>:<span class="dv">2</span>], l[<span class="dv">0</span>:<span class="dv">2</span>])</span>
+<span id="cb9-28"><a></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
+<span id="cb9-29"><a></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>):</span>
+<span id="cb9-30"><a></a>    <span class="cf">continue</span></span>
+<span id="cb9-31"><a></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
+<span id="cb9-32"><a></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'\log(n)'</span>)</span>
+<span id="cb9-33"><a></a>  ax.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">2</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb9-34"><a></a><span class="co"># Hide the right and top spines</span></span>
+<span id="cb9-35"><a></a>ax.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb9-36"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="index_files/figure-revealjs/cell-5-output-1.png" class="quarto-figure quarto-figure-center" width="932" height="429"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Takeaway: As <span class="math inline">\(n \rightarrow \infty\)</span>, <strong>highest-degree terms dominate!</strong></li>
+</ul>
+</section>
+<section id="constants-on-highest-degree-terms-also-go-away" class="slide level2 smaller crunch-title title-10">
+<h2>Constants On Highest-Degree Terms Also Go Away</h2>
+<ul>
+<li>(Though this is harder to see, without a log-log plot:)</li>
+</ul>
+<div id="4e1ee336" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>
+<span id="cb10-2"><a></a>rt_const_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
+<span id="cb10-3"><a></a>rt_const_df[<span class="st">'$20n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">20</span><span class="op">*</span>np.power(x,<span class="dv">2</span>))</span>
+<span id="cb10-4"><a></a>rt_const_df[<span class="st">'$n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>))</span>
+<span id="cb10-5"><a></a>rt_const_df[<span class="st">'$n^2logn$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.power(np.log(x),<span class="dv">2</span>))</span>
+<span id="cb10-6"><a></a>rt_const_df[<span class="st">'$n^3$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">3</span>))</span>
+<span id="cb10-7"><a></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
+<span id="cb10-8"><a></a>max_vals <span class="op">=</span> rt_const_df.<span class="bu">max</span>().to_dict()</span>
+<span id="cb10-9"><a></a>plot_df_const <span class="op">=</span> rt_const_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
+<span id="cb10-10"><a></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$20n^2$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> rt_const_df.columns}</span>
+<span id="cb10-11"><a></a>fig_const, ax_const <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
+<span id="cb10-12"><a></a>sns.lineplot(plot_df_const, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
+<span id="cb10-13"><a></a>plt.xscale(<span class="st">'log'</span>)</span>
+<span id="cb10-14"><a></a>plt.yscale(<span class="st">'log'</span>)</span>
+<span id="cb10-15"><a></a><span class="co"># extract the existing handles and labels</span></span>
+<span id="cb10-16"><a></a>h_const, l_const <span class="op">=</span> ax_const.get_legend_handles_labels()</span>
+<span id="cb10-17"><a></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
+<span id="cb10-18"><a></a>ax_const.legend(h_const[<span class="dv">0</span>:<span class="dv">1</span>], l_const[<span class="dv">0</span>:<span class="dv">1</span>])</span>
+<span id="cb10-19"><a></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
+<span id="cb10-20"><a></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$20n^2$'</span>):</span>
+<span id="cb10-21"><a></a>    <span class="cf">continue</span></span>
+<span id="cb10-22"><a></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
+<span id="cb10-23"><a></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'\log(n)'</span>)</span>
+<span id="cb10-24"><a></a>  ax_const.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">10</span><span class="op">**</span><span class="dv">4</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb10-25"><a></a><span class="co"># Hide the right and top spines</span></span>
+<span id="cb10-26"><a></a>ax_const.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb10-27"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/cell-6-output-1.png" width="914" height="431"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="formalizing-big-o-notation" class="slide level2">
+<h2>Formalizing Big-O Notation</h2>
+<ul>
+<li>Let <span class="math inline">\(f, g: \mathbb{N} \rightarrow \mathbb{N}\)</span>. Then we write <span class="math inline">\(f(n) = O(g(n))\)</span> when there exists a <strong>threshold</strong> <span class="math inline">\(n_0 &gt; 0\)</span> and a <strong>constant</strong> <span class="math inline">\(K &gt; 0\)</span> such that <span class="math display">\[
+\forall n \geq n_0 \left[ f(n) \leq K\cdot g(n) \right]
+\]</span></li>
+<li>In words: beyond a certain point <span class="math inline">\(n_0\)</span>, <span class="math inline">\(f(n)\)</span> is <strong>bounded above</strong> by <span class="math inline">\(K\cdot g(n)\)</span>.</li>
+<li><em>Definition from <span class="citation" data-cites="savage_models_1998">Savage (<a href="#/references" role="doc-biblioref" onclick="">1998</a>, pg. 13)</span></em></li>
+</ul>
+</section>
+<section id="intuition-rightarrow-proof" class="slide level2 crunch-title crunch-ul">
+<h2>Intuition <span class="math inline">\(\rightarrow\)</span> Proof</h2>
+<ul>
+<li>Using this definition, we can now <strong>prove</strong> <span class="math inline">\(f(n) = n^2 + 50n = O(n^2)\)</span>!</li>
+<li>Here <span class="math inline">\(f(n) = n^2 + 50n\)</span>, <span class="math inline">\(g(n) = n^2\)</span></li>
+<li><strong>Theorem</strong>: <span class="math inline">\(\exists \; n_0 \; \text{ s.t. } \forall n \geq n_0 \left[ n^2 + 50n \leq Kn^2 \right]\)</span></li>
+<li><strong>Proof</strong>: Let <span class="math inline">\(K = 50\)</span>. Then <span class="math display">\[
+\begin{align*}
+&amp;n^2 + 50n \leq 50n^2 \iff n + 50 \leq 50n \\
+&amp;\iff 49n \geq 50 \iff n \geq \frac{50}{49}.
+\end{align*}
+\]</span></li>
+<li>So if we choose <span class="math inline">\(n_0 = 2\)</span>, the chain of statements holds. <span class="math inline">\(\blacksquare\)</span></li>
+</ul>
+</section>
+<section id="bounding-insertion-sort-runtime" class="slide level2 crunch-title crunch-ul">
+<h2>Bounding Insertion Sort Runtime</h2>
+<ul>
+<li>Runs in <span class="math inline">\(T(n) = O(n^2)\)</span> (use constants from prev slide)</li>
+<li>Can similarly define <strong>lower bound</strong> <span class="math inline">\(T(n) = \Omega(f(n))\)</span>
+<ul>
+<li><span class="math inline">\(O\)</span> = “Big-Oh”, <span class="math inline">\(\Omega\)</span> = “Big-Omega”</li>
+</ul></li>
+<li>Need to be careful with <span class="math inline">\(O(f(n))\)</span> vs.&nbsp;<span class="math inline">\(\Omega(f(n))\)</span> however: difference between “for all inputs” vs.&nbsp;“for some inputs”:</li>
+</ul>
+<div title="Bounding Worst-Case Runtime">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Bounding Worst-Case Runtime</strong></p>
+</div>
+<div class="callout-content">
+<p>By saying that the worst-case running time of an algorithm is <span class="math inline">\(\Omega(n^2)\)</span>, we mean that for every input size <span class="math inline">\(n\)</span> above a certain threshold, there is <strong>at least one input</strong> of size <span class="math inline">\(n\)</span> for which the algorithm takes at least <span class="math inline">\(cn^2\)</span> time, for some positive constant <span class="math inline">\(n\)</span>. It does <strong>not</strong> necessarily mean that the algorithm takes at least <span class="math inline">\(cn^2\)</span> time for <strong>all</strong> inputs.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="intuition-for-lower-bound" class="slide level2 smaller crunch-title">
+<h2>Intuition for Lower Bound</h2>
+<ul>
+<li>Spoiler: Insertion sort <strong>also</strong> runs in <span class="math inline">\(T(n) = \Omega(n^2)\)</span> time. How could we prove this?</li>
+<li>Given <strong>any value <span class="math inline">\(n &gt; n_0\)</span></strong>, we need to <strong>construct an input</strong> for which Insertion-Sort requires <span class="math inline">\(cn^2\)</span> steps: consider a list where <span class="math inline">\(n/3\)</span> <strong>greatest values</strong> are in <strong>first <span class="math inline">\(n/3\)</span> slots</strong>:</li>
+</ul>
+
+<img data-src="images/insertion_lower_bound_alt.svg" width="600" class="r-stretch quarto-figure-center"><p class="caption">All <span class="math inline">\(n/3\)</span> values in <span class="math inline">\(\textrm{L}\)</span> pass, one-by-one, through the <span class="math inline">\(n/3\)</span> slots in <span class="math inline">\(\textrm{M}\)</span> (since they must end up in <span class="math inline">\(\textrm{R}\)</span>) <span class="math inline">\(\implies (n/3)(n/3) = n^2/9 = \Omega(n^2)\)</span> steps!</p><ul>
+<li>Final definition (a <strong>theorem</strong> you could prove if you want!): <span class="math inline">\(\Theta\)</span> = “Big-Theta”
+<ul>
+<li>If <span class="math inline">\(T(n) = \overline{O}(g(n))\)</span> and <span class="math inline">\(T(n) = \Omega(g(n))\)</span>, then <span class="math inline">\(T(n) = \Theta(n)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\implies\)</span> <strong>most “informative” way</strong> to characterize insertion sort is <span class="math inline">\(\boxed{T(n) = \Theta(n^2)}\)</span></li>
+</ul>
+</section>
+<section id="doing-better-than-insertion-sort" class="slide level2">
+<h2>Doing Better Than Insertion Sort</h2>
+<ul>
+<li><em>Intuition Break</em> 🥳: <strong>Finding a word in a dictionary!</strong> <a href="https://dsan.io/dict-lookup" target="_blank" class="font-monospace">dsan.io/dict-lookup<i class="bi bi-box-arrow-up-right ps-2"></i></a></li>
+</ul>
+</section>
+<section id="how-can-merge-sort-work-that-much-better" class="slide level2 crunch-title title-08 crunch-ul crunch-quarto-layout-panel crunch-quarto-figure">
+<h2>How Can Merge Sort Work <em>That</em> Much Better!?</h2>
+<ul>
+<li>With the <strong>linear</strong> approach, each time we check a word and it’s not our word we eliminate… one measly word 😞</li>
+<li>But with the <strong>divide-and-conquer</strong> approach… we eliminate 🔥<strong>HALF OF THE REMAINING WORDS</strong>🔥</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1,1]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/lakers.gif" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/tuck_em_in.jpeg" class="quarto-figure quarto-figure-center" width="270"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="merging-two-sorted-lists-in-on-time" class="slide level2 smaller title-11 crunch-figcaption crunch-quarto-figure">
+<h2>Merging Two Sorted Lists in <span class="math inline">\(O(n)\)</span> Time</h2>
+
+<img data-src="images/merge.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 37</p></section>
+<section id="merge-sort-merging-as-subroutine" class="slide level2">
+<h2>Merge Sort (Merging as Subroutine)</h2>
+
+<img data-src="images/merge_tree.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 40</p></section>
+<section id="complexity-analysis-1" class="slide level2 crunch-title">
+<h2>Complexity Analysis</h2>
+<ul>
+<li>Hard way: re-do the line-by-line analysis we did for <span class="alg">Insertion-Sort</span> 😣 Easy way: stand on shoulders of giants!</li>
+<li>Using a famous+fun theorem (the <strong>Master Theorem</strong>): Given a recurrence <span class="math inline">\(T(n) = aT(n/b) + f(n)\)</span>, compute its:
+<ul>
+<li><strong>Watershed function</strong> <span class="math inline">\(W(n) = n^{\log_b(a)}\)</span> and</li>
+<li><strong>Driving function</strong> <span class="math inline">\(D(n) = f(n)\)</span></li>
+</ul></li>
+<li>The Master Theorem gives <strong>closed-form</strong> asymptotic solution for <span class="math inline">\(T(n)\)</span>, split into three cases:</li>
+<li><strong>(1)</strong> <span class="math inline">\(W(n)\)</span> grows <strong>faster</strong> than <span class="math inline">\(D(n)\)</span>, <strong>(2)</strong> grows at <strong>same rate</strong> as <span class="math inline">\(D(n)\)</span>, or <strong>(3)</strong> grows <strong>slower</strong> than <span class="math inline">\(D(n)\)</span></li>
+</ul>
+</section>
+<section id="bounding-the-runtime-of-merge-sort" class="slide level2 crunch-title crunch-ul crunch-callout crunch-footnotes scrollable">
+<h2>Bounding the Runtime of Merge Sort</h2>
+<ul>
+<li>How about <span class="alg">Merge-Sort</span>? <span class="math inline">\(T(n) = 2T(n/2) + \Theta(n)\)</span>
+<ul>
+<li><span class="math inline">\(a = b = 2\)</span>, <span class="math inline">\(W(n) = n^{\log_2(2)} = n\)</span>, <span class="math inline">\(D(n) = \Theta(n)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(W(n)\)</span> and <span class="math inline">\(D(n)\)</span> grow at <strong>same rate</strong> <span class="math inline">\(\implies\)</span> <em>Case 2</em><sup>1</sup>:</li>
+</ul>
+<div title="Applying the Master Theorem When $W(n) = \Theta(D(n))$ (Case 2)">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Applying the Master Theorem When <span class="math inline">\(W(n) = \Theta(D(n))\)</span> (Case 2)</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>Is there a <span class="math inline">\(k \geq 0\)</span> satisfying <span class="math inline">\(D(n) = \Theta(n^{\log_b(a)}\log_2^k(n))\)</span>?</li>
+<li>If so, your solution is <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))\)</span></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li><span class="alg">Merge-Sort</span>: <span class="math inline">\(k = 0\)</span> works! <span class="math inline">\(\Theta(n^{\log_2(2)}\log_2^0(n)) = \Theta(n)\)</span></li>
+<li>Thus <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n)) = \boxed{\Theta(n\log_2n)}\)</span> 😎</li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>See <a href="#/appendix-the-full-master-theorem">appendix slide</a> for all 3 cases, if you’re some kind of masochist</p></li></ol></aside></section></section>
+<section>
+<section id="object-oriented-programming" class="title-slide slide level1 center" data-stack-name="OOP">
+<h1>Object-Oriented Programming</h1>
+
+</section>
+<section id="breaking-a-problem-into-interacting-parts" class="slide level2 title-08 crunch-title">
+<h2>Breaking a Problem into (Interacting) Parts</h2>
+<ul>
+<li><strong>Python so far</strong>: “Data science mode”
+<ul>
+<li>Start at top of file with raw data</li>
+<li>Write lines of code until problem solved</li>
+</ul></li>
+<li><strong>Python in this class</strong>: “Software engineering mode”
+<ul>
+<li>Break system down into parts</li>
+<li>Write each part separately</li>
+<li>Link parts together to create the whole</li>
+</ul></li>
+<li><em>(One implication: <code>.py</code> files may be easier than <code>.ipynb</code> for development!)</em></li>
+</ul>
+</section>
+<section id="how-does-a-calculator-work" class="slide level2">
+<h2>How Does A Calculator Work?</h2>
+
+<img data-src="images/Calculator.drawio.svg" class="r-stretch quarto-figure-center"><p class="caption">(Calculator image from <a href="//commons.wikimedia.org/wiki/User:LoMit" title="User:LoMit">Wikimedia Commons</a>)</p></section>
+<section id="key-oop-feature-1-encapsulation" class="slide level2">
+<h2>Key OOP Feature #1: <em>Encapsulation</em></h2>
+<ul>
+<li>Imagine you’re on a <strong>team</strong> trying to make a calculator</li>
+<li>One person can write the <code>Screen</code> class, another person can write the <code>Button</code> class, and so on</li>
+<li>Natural division of labor! (May seem silly for a calculator, but imagine as your app <strong>scales up</strong>)</li>
+</ul>
+</section>
+<section id="use-case-bookstore-inventory-management" class="slide level2 smaller title-12">
+<h2>Use Case: Bookstore Inventory Management</h2>
+
+<img data-src="images/spencerbeck_exterior-of-capitol-hill-books_yesmydccool.jpg" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://washington.org/visit-dc/bookstores-sure-charm-you-washington-dc" target="_blank">Image source</a></p></section>
+<section id="in-pictures" class="slide level2 smaller">
+<h2>In Pictures</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="bookstore-diagram">
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 594.24 317.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 313.4)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-313.4 590.24,-313.4 590.24,4 -4,4"></polygon>
+<text text-anchor="middle" x="293.12" y="-292.8" font-family="Times,serif" font-size="14.00">Bookstore Relational Diagram</text>
+<!-- Bookstore -->
+<g id="node1" class="node">
+<title>Bookstore</title>
+<polygon fill="none" stroke="black" points="0,-135.3 0,-284.1 150.42,-284.1 150.42,-135.3 0,-135.3"></polygon>
+<text text-anchor="middle" x="75.21" y="-267.5" font-family="Courier,monospace" font-size="14.00">Bookstore</text>
+<polyline fill="none" stroke="black" points="0,-259.3 150.42,-259.3 "></polyline>
+<text text-anchor="start" x="8" y="-242.7" font-family="Courier,monospace" font-size="14.00">Name</text>
+<polyline fill="none" stroke="black" points="0,-234.5 150.42,-234.5 "></polyline>
+<text text-anchor="start" x="8" y="-217.9" font-family="Courier,monospace" font-size="14.00">Location</text>
+<polyline fill="none" stroke="black" points="0,-209.7 150.42,-209.7 "></polyline>
+<text text-anchor="start" x="8" y="-193.1" font-family="Courier,monospace" font-size="14.00">Booklist</text>
+<polyline fill="none" stroke="black" points="0,-184.9 150.42,-184.9 "></polyline>
+<text text-anchor="start" x="8" y="-168.3" font-family="Courier,monospace" font-size="14.00">Get_Inventory()</text>
+<polyline fill="none" stroke="black" points="0,-160.1 150.42,-160.1 "></polyline>
+<text text-anchor="start" x="8" y="-143.5" font-family="Courier,monospace" font-size="14.00">Sort_Inventory()</text>
+</g>
+<!-- Place -->
+<g id="node2" class="node">
+<title>Place</title>
+<polygon fill="none" stroke="black" points="259.92,-143.7 259.92,-267.7 368.33,-267.7 368.33,-143.7 259.92,-143.7"></polygon>
+<text text-anchor="middle" x="314.12" y="-251.1" font-family="Courier,monospace" font-size="14.00">Place</text>
+<polyline fill="none" stroke="black" points="259.92,-242.9 368.33,-242.9 "></polyline>
+<text text-anchor="start" x="267.92" y="-226.3" font-family="Courier,monospace" font-size="14.00">City</text>
+<polyline fill="none" stroke="black" points="259.92,-218.1 368.33,-218.1 "></polyline>
+<text text-anchor="start" x="267.92" y="-201.5" font-family="Courier,monospace" font-size="14.00">State</text>
+<polyline fill="none" stroke="black" points="259.92,-193.3 368.33,-193.3 "></polyline>
+<text text-anchor="start" x="267.92" y="-176.7" font-family="Courier,monospace" font-size="14.00">Country</text>
+<polyline fill="none" stroke="black" points="259.92,-168.5 368.33,-168.5 "></polyline>
+<text text-anchor="start" x="267.92" y="-151.9" font-family="Courier,monospace" font-size="14.00">Print_Map()</text>
+</g>
+<!-- Bookstore&#45;&gt;Place -->
+<g id="edge1" class="edge">
+<title>Bookstore:loc-&gt;Place:placehead</title>
+<path fill="none" stroke="black" d="M150.42,-221.7C197.79,-221.7 207.68,-251.09 249.78,-255.22"></path>
+<polygon fill="black" stroke="black" points="249.76,-258.72 259.92,-255.7 250.09,-251.73 249.76,-258.72"></polygon>
+<text text-anchor="middle" x="205.17" y="-257.9" font-family="Times,serif" font-size="14.00">Has One</text>
+</g>
+<!-- Book -->
+<g id="node3" class="node">
+<title>Book</title>
+<polygon fill="none" stroke="black" points="268.32,-0.7 268.32,-124.7 359.93,-124.7 359.93,-0.7 268.32,-0.7"></polygon>
+<text text-anchor="middle" x="314.12" y="-108.1" font-family="Courier,monospace" font-size="14.00">Book</text>
+<polyline fill="none" stroke="black" points="268.32,-99.9 359.93,-99.9 "></polyline>
+<text text-anchor="start" x="276.32" y="-83.3" font-family="Courier,monospace" font-size="14.00">Title</text>
+<polyline fill="none" stroke="black" points="268.32,-75.1 359.93,-75.1 "></polyline>
+<text text-anchor="start" x="276.32" y="-58.5" font-family="Courier,monospace" font-size="14.00">Authors</text>
+<polyline fill="none" stroke="black" points="268.32,-50.3 359.93,-50.3 "></polyline>
+<text text-anchor="start" x="276.32" y="-33.7" font-family="Courier,monospace" font-size="14.00">Num Pages</text>
+<polyline fill="none" stroke="black" points="268.32,-25.5 359.93,-25.5 "></polyline>
+<text text-anchor="middle" x="314.12" y="-8.9" font-family="Courier,monospace" font-size="14.00">Preview()</text>
+</g>
+<!-- Bookstore&#45;&gt;Book -->
+<g id="edge2" class="edge">
+<title>Bookstore:bl-&gt;Book:bookhead</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M150.42,-197.7C210.95,-197.7 204.03,-122.06 256.92,-113.49"></path>
+<polygon fill="black" stroke="black" points="257.42,-116.96 267.12,-112.7 256.88,-109.98 257.42,-116.96"></polygon>
+<text text-anchor="middle" x="205.17" y="-197.9" font-family="Times,serif" font-size="14.00">Has Multiple</text>
+</g>
+<!-- Person -->
+<g id="node4" class="node">
+<title>Person</title>
+<polygon fill="none" stroke="black" points="477.82,-0.5 477.82,-74.9 586.24,-74.9 586.24,-0.5 477.82,-0.5"></polygon>
+<text text-anchor="middle" x="532.03" y="-58.3" font-family="Courier,monospace" font-size="14.00">Person</text>
+<polyline fill="none" stroke="black" points="477.82,-50.1 586.24,-50.1 "></polyline>
+<text text-anchor="middle" x="532.03" y="-33.5" font-family="Courier,monospace" font-size="14.00">Family Name</text>
+<polyline fill="none" stroke="black" points="477.82,-25.3 586.24,-25.3 "></polyline>
+<text text-anchor="middle" x="532.03" y="-8.7" font-family="Courier,monospace" font-size="14.00">Given Name</text>
+</g>
+<!-- Book&#45;&gt;Person -->
+<g id="edge3" class="edge">
+<title>Book:auths-&gt;Person:personhead</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M361.12,-62.7C409.44,-62.7 424,-62.7 467.71,-62.7"></path>
+<polygon fill="black" stroke="black" points="467.82,-66.2 477.82,-62.7 467.82,-59.2 467.82,-66.2"></polygon>
+<text text-anchor="middle" x="423.08" y="-66.9" font-family="Times,serif" font-size="14.00">Has Multiple</text>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-classes" class="slide level2 smaller crunch-title">
+<h2>Creating Classes</h2>
+<ul>
+<li>Use case: Creating an inventory system for a <strong>Bookstore</strong></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="basic-class" class="cell" data-execution_count="6">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="kw">class</span> Bookstore:</span>
+<span id="cb11-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, location):</span>
+<span id="cb11-3"><a></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb11-4"><a></a>        <span class="va">self</span>.location <span class="op">=</span> location</span>
+<span id="cb11-5"><a></a>        <span class="va">self</span>.books <span class="op">=</span> []</span>
+<span id="cb11-6"><a></a></span>
+<span id="cb11-7"><a></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, index):</span>
+<span id="cb11-8"><a></a>        <span class="cf">return</span> <span class="va">self</span>.books[index]</span>
+<span id="cb11-9"><a></a></span>
+<span id="cb11-10"><a></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb11-11"><a></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
+<span id="cb11-12"><a></a></span>
+<span id="cb11-13"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb11-14"><a></a>        <span class="cf">return</span> <span class="ss">f"Bookstore[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_books()<span class="sc">}</span><span class="ss"> books]"</span></span>
+<span id="cb11-15"><a></a></span>
+<span id="cb11-16"><a></a>    <span class="kw">def</span> add_books(<span class="va">self</span>, book_list):</span>
+<span id="cb11-17"><a></a>        <span class="va">self</span>.books.extend(book_list)</span>
+<span id="cb11-18"><a></a></span>
+<span id="cb11-19"><a></a>    <span class="kw">def</span> get_books(<span class="va">self</span>):</span>
+<span id="cb11-20"><a></a>        <span class="cf">return</span> <span class="va">self</span>.books</span>
+<span id="cb11-21"><a></a></span>
+<span id="cb11-22"><a></a>    <span class="kw">def</span> get_inventory(<span class="va">self</span>):</span>
+<span id="cb11-23"><a></a>        book_lines <span class="op">=</span> []</span>
+<span id="cb11-24"><a></a>        <span class="cf">for</span> book_index, book <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.get_books()):</span>
+<span id="cb11-25"><a></a>            cur_book_line <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>book_index<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span><span class="bu">str</span>(book)<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb11-26"><a></a>            book_lines.append(cur_book_line)</span>
+<span id="cb11-27"><a></a>        <span class="cf">return</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(book_lines)</span>
+<span id="cb11-28"><a></a></span>
+<span id="cb11-29"><a></a>    <span class="kw">def</span> get_num_books(<span class="va">self</span>):</span>
+<span id="cb11-30"><a></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.get_books())</span>
+<span id="cb11-31"><a></a></span>
+<span id="cb11-32"><a></a>    <span class="kw">def</span> sort_books(<span class="va">self</span>, sort_key):</span>
+<span id="cb11-33"><a></a>        <span class="va">self</span>.books.sort(key<span class="op">=</span>sort_key)</span>
+<span id="cb11-34"><a></a></span>
+<span id="cb11-35"><a></a><span class="kw">class</span> Book:</span>
+<span id="cb11-36"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages):</span>
+<span id="cb11-37"><a></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
+<span id="cb11-38"><a></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
+<span id="cb11-39"><a></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
+<span id="cb11-40"><a></a></span>
+<span id="cb11-41"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb11-42"><a></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_title()<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_authors()<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_num_pages()<span class="sc">}</span><span class="ss">]"</span></span>
+<span id="cb11-43"><a></a></span>
+<span id="cb11-44"><a></a>    <span class="kw">def</span> get_authors(<span class="va">self</span>):</span>
+<span id="cb11-45"><a></a>        <span class="cf">return</span> <span class="va">self</span>.authors</span>
+<span id="cb11-46"><a></a></span>
+<span id="cb11-47"><a></a>    <span class="kw">def</span> get_first_author(<span class="va">self</span>):</span>
+<span id="cb11-48"><a></a>        <span class="cf">return</span> <span class="va">self</span>.authors[<span class="dv">0</span>]</span>
+<span id="cb11-49"><a></a></span>
+<span id="cb11-50"><a></a>    <span class="kw">def</span> get_num_pages(<span class="va">self</span>):</span>
+<span id="cb11-51"><a></a>        <span class="cf">return</span> <span class="va">self</span>.num_pages</span>
+<span id="cb11-52"><a></a></span>
+<span id="cb11-53"><a></a>    <span class="kw">def</span> get_title(<span class="va">self</span>):</span>
+<span id="cb11-54"><a></a>        <span class="cf">return</span> <span class="va">self</span>.title</span>
+<span id="cb11-55"><a></a></span>
+<span id="cb11-56"><a></a><span class="kw">class</span> Person:</span>
+<span id="cb11-57"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, family_name, given_name):</span>
+<span id="cb11-58"><a></a>        <span class="va">self</span>.family_name <span class="op">=</span> family_name</span>
+<span id="cb11-59"><a></a>        <span class="va">self</span>.given_name <span class="op">=</span> given_name</span>
+<span id="cb11-60"><a></a></span>
+<span id="cb11-61"><a></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb11-62"><a></a>        <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__str__</span>()</span>
+<span id="cb11-63"><a></a></span>
+<span id="cb11-64"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb11-65"><a></a>        <span class="cf">return</span> <span class="ss">f"Person[</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_family_name()<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>get_given_name()<span class="sc">}</span><span class="ss">]"</span></span>
+<span id="cb11-66"><a></a></span>
+<span id="cb11-67"><a></a>    <span class="kw">def</span> get_family_name(<span class="va">self</span>):</span>
+<span id="cb11-68"><a></a>        <span class="cf">return</span> <span class="va">self</span>.family_name</span>
+<span id="cb11-69"><a></a></span>
+<span id="cb11-70"><a></a>    <span class="kw">def</span> get_given_name(<span class="va">self</span>):</span>
+<span id="cb11-71"><a></a>        <span class="cf">return</span> <span class="va">self</span>.given_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="create-objs" class="cell" data-execution_count="7">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>my_bookstore <span class="op">=</span> Bookstore(<span class="st">"Bookland"</span>, <span class="st">"Washington, DC"</span>)</span>
+<span id="cb12-2"><a></a>plath <span class="op">=</span> Person(<span class="st">"Plath"</span>, <span class="st">"Sylvia"</span>)</span>
+<span id="cb12-3"><a></a>bell_jar <span class="op">=</span> Book(<span class="st">"The Bell Jar"</span>, [plath], <span class="dv">244</span>)</span>
+<span id="cb12-4"><a></a>marx <span class="op">=</span> Person(<span class="st">"Marx"</span>, <span class="st">"Karl"</span>)</span>
+<span id="cb12-5"><a></a>engels <span class="op">=</span> Person(<span class="st">"Engels"</span>, <span class="st">"Friedrich"</span>)</span>
+<span id="cb12-6"><a></a>manifesto <span class="op">=</span> Book(<span class="st">"The Communist Manifesto"</span>, [marx, engels], <span class="dv">43</span>)</span>
+<span id="cb12-7"><a></a>elster <span class="op">=</span> Person(<span class="st">"Elster"</span>, <span class="st">"Jon"</span>)</span>
+<span id="cb12-8"><a></a>cement <span class="op">=</span> Book(<span class="st">"The Cement of Society"</span>, [elster], <span class="dv">311</span>)</span>
+<span id="cb12-9"><a></a>my_bookstore.add_books([bell_jar, manifesto, cement])</span>
+<span id="cb12-10"><a></a><span class="bu">print</span>(my_bookstore)</span>
+<span id="cb12-11"><a></a><span class="bu">print</span>(my_bookstore[<span class="dv">0</span>])</span>
+<span id="cb12-12"><a></a><span class="bu">print</span>(<span class="st">"Inventory:"</span>)</span>
+<span id="cb12-13"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bookstore[3 books]
+Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]
+Inventory:
+0. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]
+1. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]
+2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="doing-things-with-classes" class="slide level2 smaller">
+<h2>Doing Things With Classes</h2>
+<ul>
+<li>Now we can <strong>use</strong> our OOP structure, for example to sort the inventory in different ways!</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<center>
+<strong>Alphabetical (By First Author)</strong>
+</center>
+<div id="sort-alpha" class="cell" data-execution_count="8">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>sort_alpha <span class="op">=</span> <span class="kw">lambda</span> x: x.get_first_author().get_family_name()</span>
+<span id="cb14-2"><a></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_alpha)</span>
+<span id="cb14-3"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>0. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]
+1. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]
+2. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<center>
+<strong>By Page Count</strong>
+</center>
+<div id="sort-pages" class="cell" data-execution_count="9">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>sort_pages <span class="op">=</span> <span class="kw">lambda</span> x: x.get_num_pages()</span>
+<span id="cb16-2"><a></a>my_bookstore.sort_books(sort_key <span class="op">=</span> sort_pages)</span>
+<span id="cb16-3"><a></a><span class="bu">print</span>(my_bookstore.get_inventory())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>0. Book[title=The Communist Manifesto, authors=[Person[Marx, Karl], Person[Engels, Friedrich]], pages=43]
+1. Book[title=The Bell Jar, authors=[Person[Plath, Sylvia]], pages=244]
+2. Book[title=The Cement of Society, authors=[Person[Elster, Jon]], pages=311]</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="key-oop-feature-2-polymorphism" class="slide level2 smaller crunch-title">
+<h2>Key OOP Feature #2: <em>Polymorphism</em></h2>
+<ul>
+<li>Encapsulate <strong>general properties</strong> in <strong>parent</strong> class, <strong>specific properties</strong> in <strong>child classes</strong></li>
+</ul>
+
+<img data-src="images/vehicle-basic.svg" class="r-stretch quarto-figure-center"><p class="caption">(You can edit this or make your own UML diagrams in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7C%0A%20%20numDoors%3A%20int%3B%20numWheels%3A%20int%3B%20balanced%3A%20bool%3B%7C%0A%20%20turnOn()%3B%20accelerate()%3B%20brake()%3B%20turnOff()%3B%0A%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%20balanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3Bbalanced%20%3D%20true%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3Bbalanced%20%3D%20true%3B%5D%0A%0A%5BVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BCar%5D%0A%5BVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a>!)</p></section>
+<section id="or-is-this-better" class="slide level2 smaller crunch-title">
+<h2>Or… Is This Better?</h2>
+
+<img data-src="images/vehicle-fancy.svg" class="r-stretch quarto-figure-center"><p class="caption">Edit in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7CnumDoors%3A%20int%3BnumWheels%3A%20int%3Bbalanced%3A%20bool%3B%7CturnOn()%3Baccelerate()%3Bbrake()%3BturnOff()%3B%5D%0A%5B%3Cabstract%3E%20UnbalancedVehicle%7Cbalanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20BalancedVehicle%7Cbalanced%20%3D%20true%3B%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3B%5D%0A%0A%5BVehicle%5D--%3A%3E%5BUnbalancedVehicle%5D%0A%5BUnbalancedVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BBalancedVehicle%5D%0A%5BBalancedVehicle%5D--%3A%3E%5BCar%5D%0A%5BBalancedVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A" target="_blank">nomnoml<i class="bi bi-box-arrow-up-right ps-1"></i></a></p></section>
+<section id="design-choices" class="slide level2 smaller">
+<h2>Design Choices</h2>
+<ul>
+<li>The goal is to <strong>encapsulate</strong> as best as possible: which <strong>objects</strong> should have which <strong>properties</strong>, and which <strong>methods</strong>?</li>
+<li>Example: Fiction vs.&nbsp;Non-Fiction. How important is this distinction <strong>for your use case?</strong></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<center>
+<strong>Option 1: As Property of <code>Book</code></strong>
+</center>
+<div id="fiction-property" class="cell" data-execution_count="10">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">from</span> enum <span class="im">import</span> Enum</span>
+<span id="cb18-2"><a></a><span class="kw">class</span> BookType(Enum):</span>
+<span id="cb18-3"><a></a>    NONFICTION <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb18-4"><a></a>    FICTION <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb18-5"><a></a></span>
+<span id="cb18-6"><a></a><span class="kw">class</span> Book:</span>
+<span id="cb18-7"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title: <span class="bu">str</span>, authors: <span class="bu">list</span>[Person], num_pages: <span class="bu">int</span>, <span class="bu">type</span>: BookType):</span>
+<span id="cb18-8"><a></a>        <span class="va">self</span>.title <span class="op">=</span> title</span>
+<span id="cb18-9"><a></a>        <span class="va">self</span>.authors <span class="op">=</span> authors</span>
+<span id="cb18-10"><a></a>        <span class="va">self</span>.num_pages <span class="op">=</span> num_pages</span>
+<span id="cb18-11"><a></a>        <span class="va">self</span>.<span class="bu">type</span> <span class="op">=</span> <span class="bu">type</span></span>
+<span id="cb18-12"><a></a></span>
+<span id="cb18-13"><a></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb18-14"><a></a>        <span class="cf">return</span> <span class="ss">f"Book[title=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>title<span class="sc">}</span><span class="ss">, authors=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>authors<span class="sc">}</span><span class="ss">, pages=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>num_pages<span class="sc">}</span><span class="ss">, type=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">type</span><span class="sc">}</span><span class="ss">]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="use-fiction-property" class="cell" data-execution_count="11">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
+<span id="cb19-2"><a></a>ulysses <span class="op">=</span> Book(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, BookType.FICTION)</span>
+<span id="cb19-3"><a></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
+<span id="cb19-4"><a></a>micromotives <span class="op">=</span> Book(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, BookType.NONFICTION)</span>
+<span id="cb19-5"><a></a><span class="bu">print</span>(ulysses)</span>
+<span id="cb19-6"><a></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Book[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]
+Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252, type=BookType.NONFICTION]</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<center>
+<strong>Option 2: Separate Classes</strong>
+</center>
+<div id="fiction-separate-classes" class="cell" data-execution_count="13">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="co"># class Book defined as earlier</span></span>
+<span id="cb21-2"><a></a><span class="kw">class</span> FictionBook(Book):</span>
+<span id="cb21-3"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, characters):</span>
+<span id="cb21-4"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
+<span id="cb21-5"><a></a>        <span class="va">self</span>.characters <span class="op">=</span> characters</span>
+<span id="cb21-6"><a></a></span>
+<span id="cb21-7"><a></a><span class="kw">class</span> NonfictionBook(Book):</span>
+<span id="cb21-8"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, title, authors, num_pages, topic):</span>
+<span id="cb21-9"><a></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(title, authors, num_pages)</span>
+<span id="cb21-10"><a></a>        <span class="va">self</span>.topic <span class="op">=</span> topic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="use-fiction-separate-classes" class="cell" data-execution_count="14">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>joyce <span class="op">=</span> Person(<span class="st">"Joyce"</span>, <span class="st">"James"</span>)</span>
+<span id="cb22-2"><a></a>ulysses <span class="op">=</span> FictionBook(<span class="st">"Ulysses"</span>, [joyce], <span class="dv">732</span>, [<span class="st">"Daedalus"</span>])</span>
+<span id="cb22-3"><a></a>schelling <span class="op">=</span> Person(<span class="st">"Schelling"</span>, <span class="st">"Thomas"</span>)</span>
+<span id="cb22-4"><a></a>micromotives <span class="op">=</span> NonfictionBook(<span class="st">"Micromotives and Macrobehavior"</span>, [schelling], <span class="dv">252</span>, <span class="st">"Economics"</span>)</span>
+<span id="cb22-5"><a></a><span class="bu">print</span>(ulysses)</span>
+<span id="cb22-6"><a></a><span class="bu">print</span>(micromotives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Book[title=Ulysses, authors=[Person[Joyce, James]], pages=732]
+Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]</code></pre>
+</div>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="hw1-python-fundamentals" class="title-slide slide level1 center" data-name="HW1">
+<h1>HW1: Python Fundamentals</h1>
+<ul>
+<li><a href="https://classroom.google.com/c/NjM5MzE2MTE4NTgx" target="_blank">Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
+</ul>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cormen_introduction_2001" class="csl-entry" role="listitem">
+Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. <em>Introduction <span>To Algorithms</span></em>. MIT Press.
+</div>
+<div id="ref-savage_models_1998" class="csl-entry" role="listitem">
+Savage, John E. 1998. <em>Models of <span>Computation</span>: <span>Exploring</span> the <span>Power</span> of <span>Computing</span></em>. Addison-Wesley.
+</div>
+</div>
+</section>
+<section id="appendix-the-full-master-theorem" class="slide level2 smaller crunch-title crunch-ol scrollable">
+<h2>Appendix: The Full Master Theorem</h2>
+<p><strong>Master Theorem</strong>: Let <span class="math inline">\(a &gt; 0\)</span> and <span class="math inline">\(b &gt; 1\)</span> be constants, and let <span class="math inline">\(f(n)\)</span> be a driving function defined and nonnegative on all sufficiently large reals. Define <span class="math inline">\(T(n)\)</span> on <span class="math inline">\(n \in \mathbb{N}\)</span> by</p>
+<p><span class="math display">\[
+T(n) = aT(n/b) + f(n)
+\]</span></p>
+<p>where <span class="math inline">\(aT(n/b) = a'T(\lfloor n/b \rfloor) + a''T(\lceil n/b \rceil)\)</span> for some <span class="math inline">\(a' \geq 0\)</span> and <span class="math inline">\(a'' \geq 0\)</span> satisfying <span class="math inline">\(a = a' + a''\)</span>. Then the asymptotic behavior of <span class="math inline">\(T(n)\)</span> can be characterized as follows:</p>
+<ol type="1">
+<li>If there exists <span class="math inline">\(\epsilon &gt; 0\)</span> such that <span class="math inline">\(f(n) = O(n^{\log_b(a) - \epsilon})\)</span>, then <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)})\)</span></li>
+<li>If there exists <span class="math inline">\(k \geq 0\)</span> such that <span class="math inline">\(f(n) = \Theta(n^{\log_b(a)}\log_2^k(n))\)</span>, then <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))\)</span>.</li>
+<li>If there exists <span class="math inline">\(\epsilon &gt; 0\)</span> such that <span class="math inline">\(f(n) = \Omega(n^{\log_b(a) + \epsilon})\)</span>, and if <span class="math inline">\(f(n)\)</span> satisfies the <strong>regularity condition</strong> <span class="math inline">\(af(n/b) \leq cf(n)\)</span> for some constant <span class="math inline">\(c &lt; 1\)</span> and all sufficiently large <span class="math inline">\(n\)</span>, then <span class="math inline">\(T(n) = \Theta(f(n))\)</span>.</li>
+</ol>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>See <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 107-114.</p>
+</div>
+<p><em>(<a href="#/bounding-the-runtime-of-merge-sort">← Back to Merge Sort slides</a>)</em></p>
+
+
+</section></section>
+
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>DSAN 5500 Week 2: Software Design Patterns and OOP</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/simplemenu/simplemenu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'simplemenu': {"menubarclass":"menubar","menuclass":"menu","activeclass":"active","activeelement":"li","flat":true,"barhtml":{"header":"<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>","footer":""},"scale":0.5},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, Simplemenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

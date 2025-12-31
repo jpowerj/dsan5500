@@ -1,0 +1,19 @@
+---
+title: "DSAN 5500: Data Structures, Objects, and Algorithms in Python"
+subtitle: "Thursdays, 6:30-9pm, Healy 104"
+author: "Jeff Jacobs<br>[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
+institute: "Georgetown University<br>Spring 2025"
+listing:
+  sort-ui: false
+  filter-ui: false
+  type: table
+  include:
+    categories: "{Class Sessions}"
+  fields: [title,date]
+  sort: "lecnum asc"
+  table-hover: true
+  # date-format: full
+  date-format: "MMMM D"
+---
+
+Welcome to the homepage for **DSAN 5500: Data Structures, Objects, and Algorithms in Python**, Spring 2025, at Georgetown University! The course takes place on **Thursdays** from **6:30 to 9:00pm** in **Healy 104**. More details are provided on the [syllabus](syllabus.qmd).

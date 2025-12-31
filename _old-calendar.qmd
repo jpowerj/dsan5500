@@ -1,0 +1,18 @@
+
+| Unit | Week | Date | Topic |
+| - | - | - | - |
+| **Unit 1**: Python Fundamentals | 1 | Jan 10 (**Wednesday**) | Python Fundamentals |
+| | | |
+| | 2 | Jan 22 | Object-Oriented Programming (OOP) |
+| | 3 | Jan 29 | Data Science Applications of OOP |
+| **Unit 2**: Computational Complexity | 4 | Feb 5 | Computational Complexity Basics |
+| | 5 | Feb 12 | Complexity of Common Data Science Operations |
+| **Unit 3**: Data Structures | 6 | Feb 19 | Sequences, Sets, and Maps |
+| | 7 | Feb 26 | Heaps and Stacks |
+| | 8 | Trees and Graphs |
+| **Unit 4**: Algorithms | 9 | Search Trees |
+| | 10 | Sorting Algorithms |
+| | 11 | Graph Algorithms |
+| **Unit 5**: Advanced Topics and/or Applications | 12 | Geographic Informatin Systems (GIS) |
+| | 13 | Applications in Bioinformatics |
+| | 14 | Applications in NLP |

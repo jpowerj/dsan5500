@@ -1,0 +1,81 @@
+---
+title: "Assignment Point Distributions"
+subtitle: "DSAN 5500: Data Structures, Objects, and Algorithms in Python"
+sidebar: mainnav
+format:
+  html:
+    df-print: kable
+---
+
+Use the **tabs below** to view the point distributions for different assignments.
+
+The distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!
+
+```{r}
+#| label: points-table-fn
+#| warning: false
+#| echo: false
+library(tidyverse)
+gen_points_table <- function(hw_url) {
+  hw_df <- read_csv(hw_url, col_types="cccdc")
+  # print(hw_df)
+  hw_df <- hw_df |> drop_na(points)
+  hw_df$points <- as.character(hw_df$points)
+  hw_df$part_total <- as.character(hw_df$part_total)
+  hw_df <- hw_df |> mutate(
+    part = replace_na(part, ""),
+    part_total = replace_na(part_total, ""),
+    qid = replace_na(qid, ""),
+    test_type = replace_na(test_type, "")
+  )
+  return(hw_df)
+}
+```
+
+::: {.panel-tabset}
+
+## HW1
+
+<div style="height: 400px !important; max-height: 400px !important; overflow-y: scroll !important;">
+
+```{r}
+#| label: hw1-points-table
+#| warning: false
+#| echo: false
+hw1_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQfTwlDTqsHcaS8KQ-4NCUxB-JS7Aa0AIuP84dX2YQ1T2x2zXIbs7qTZUbrlxwvzf636LW_4sbpV-Y0/pub?output=csv"
+gen_points_table(hw1_url)
+```
+
+</div>
+
+## HW2
+
+<div style="height: 400px !important; max-height: 400px !important; overflow-y: scroll !important;">
+
+```{r}
+#| label: hw2-points-table
+#| warning: false
+#| echo: false
+hw2_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmSdcnLYxlB1-C6myAE57njrPpn8nLId7ETeprcYQrQf7lm-jDCkj47LDD5Qog7K69GW6qmKzTiOzA/pub?output=csv"
+gen_points_table(hw2_url)
+```
+
+</div>
+
+## HW3
+
+<div style="height: 400px !important; max-height: 400px !important; overflow-y: scroll !important;">
+
+
+```{r}
+#| label: hw3-points-table
+#| warning: false
+#| echo: false
+hw3_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSmo1y2RuJo4NZS1GQjtUvt_6Dd0PCmduqU6G-1e1GqJ1ECTTk9dSHaBYf6rv2M93PiL3GuZHcatOTp/pub?output=csv"
+gen_points_table(hw3_url)
+```
+
+</div>
+
+:::
+

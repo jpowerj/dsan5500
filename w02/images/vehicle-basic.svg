@@ -1,0 +1,166 @@
+<svg version="1.1" baseProfile="full" width="534.0" height="458.0" viewbox="0 0 534 458" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+		<desc >[&lt;abstract&gt; Vehicle|
+	  numDoors: int; numWheels: int; balanced: bool;|
+	  turnOn(); accelerate(); brake(); turnOff();
+	]
+	[Motorcycle|numDoors = 0;numWheels = 2; balanced = false;]
+	[&lt;abstract&gt; Car|numWheels = 4;balanced = true;]
+	[Coupe|numDoors = 2;]
+	[Sedan|numDoors = 4;]
+	[Truck|numDoors = 2;numWheels = 18;balanced = true;]
+	
+	[Vehicle]-:&gt;[Motorcycle]
+	[Vehicle]--:&gt;[Car]
+	[Vehicle]-:&gt;[Truck]
+	[Car]-:&gt;[Coupe]
+	[Car]-:&gt;[Sedan]
+	</desc>
+	<g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="12pt" font-family="Helvetica" font-weight="normal" font-style="normal">
+			<g font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" stroke-width="3.0" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+				<g stroke="transparent" fill="transparent">
+					<rect x="0.0" y="0.0" height="458.0" width="534.0" stroke="none"></rect>
+				</g>
+			<g transform="translate(8, 8)" fill="#33322E">
+					<g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal">
+						<path d="M174.0 122.4 L66.5 188 L66.5 194.66666666666666 L66.5 194.7 " fill="none"></path>
+					<path d="M61.2 194.7 L66.5 194.7 L71.8 194.7 L66.5 208.0 Z"></path>
+					<g stroke-dasharray="6 6">
+							<path d="M237.0 168.0 L237 188 L237 202.16666666666666 L237.0 202.2 " fill="none"></path>
+						</g>
+					<path d="M231.7 202.2 L237.0 202.2 L242.3 202.2 L237.0 215.5 Z"></path>
+					<path d="M300.0 122.0 L409.5 188 L409.5 194.66666666666666 L409.5 194.7 " fill="none"></path>
+					<path d="M404.2 194.7 L409.5 194.7 L414.8 194.7 L409.5 208.0 Z"></path>
+					<path d="M191.2 292.5 L158.5 320 L158.5 326.6666666666667 L158.5 326.7 " fill="none"></path>
+					<path d="M153.2 326.7 L158.5 326.7 L163.8 326.7 L158.5 340.0 Z"></path>
+					<path d="M282.8 292.5 L315.5 320 L315.5 326.6666666666667 L315.5 326.7 " fill="none"></path>
+					<path d="M310.2 326.7 L315.5 326.7 L320.8 326.7 L315.5 340.0 Z"></path>
+					<g data-name="Vehicle">
+							<g fill="#eee8d5" stroke="#33322E" data-name="Vehicle">
+								<rect x="174.0" y="0.0" height="168.0" width="126.0" data-name="Vehicle"></rect>
+							<path d="M174.0 31.0 L300.0 31.0" fill="none" data-name="Vehicle"></path>
+							<path d="M174.0 92.0 L300.0 92.0" fill="none" data-name="Vehicle"></path>
+							</g>
+						<g transform="translate(174, 0)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="italic" data-name="Vehicle">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Vehicle">
+									<text x="55.0" y="13.5" stroke="none" text-anchor="middle" data-name="Vehicle">Vehicle</text>
+								
+								</g>
+							</g>
+						<g transform="translate(174, 31)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Vehicle">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Vehicle">
+									<text x="0.0" y="13.5" stroke="none" data-name="Vehicle">numDoors: int</text>
+								<text x="0.0" y="28.5" stroke="none" data-name="Vehicle">numWheels: int</text>
+								<text x="0.0" y="43.5" stroke="none" data-name="Vehicle">balanced: bool</text>
+								
+								</g>
+							</g>
+						<g transform="translate(174, 92)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Vehicle">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Vehicle">
+									<text x="0.0" y="13.5" stroke="none" data-name="Vehicle">turnOn()</text>
+								<text x="0.0" y="28.5" stroke="none" data-name="Vehicle">accelerate()</text>
+								<text x="0.0" y="43.5" stroke="none" data-name="Vehicle">brake()</text>
+								<text x="0.0" y="58.5" stroke="none" data-name="Vehicle">turnOff()</text>
+								
+								</g>
+							</g>
+						</g>
+					<g data-name="Motorcycle">
+							<g fill="#eee8d5" stroke="#33322E" data-name="Motorcycle">
+								<rect x="0.0" y="208.0" height="92.0" width="133.0" data-name="Motorcycle"></rect>
+							<path d="M0.0 239.0 L133.0 239.0" fill="none" data-name="Motorcycle"></path>
+							</g>
+						<g transform="translate(0, 208)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Motorcycle">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Motorcycle">
+									<text x="58.5" y="13.5" stroke="none" text-anchor="middle" data-name="Motorcycle">Motorcycle</text>
+								
+								</g>
+							</g>
+						<g transform="translate(0, 239)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Motorcycle">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Motorcycle">
+									<text x="0.0" y="13.5" stroke="none" data-name="Motorcycle">numDoors = 0</text>
+								<text x="0.0" y="28.5" stroke="none" data-name="Motorcycle">numWheels = 2</text>
+								<text x="0.0" y="43.5" stroke="none" data-name="Motorcycle">balanced = false</text>
+								
+								</g>
+							</g>
+						</g>
+					<g data-name="Car">
+							<g fill="#eee8d5" stroke="#33322E" data-name="Car">
+								<rect x="173.0" y="215.5" height="77.0" width="128.0" data-name="Car"></rect>
+							<path d="M173.0 246.5 L301.0 246.5" fill="none" data-name="Car"></path>
+							</g>
+						<g transform="translate(173, 215.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="italic" data-name="Car">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Car">
+									<text x="56.0" y="13.5" stroke="none" text-anchor="middle" data-name="Car">Car</text>
+								
+								</g>
+							</g>
+						<g transform="translate(173, 246.5)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Car">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Car">
+									<text x="0.0" y="13.5" stroke="none" data-name="Car">numWheels = 4</text>
+								<text x="0.0" y="28.5" stroke="none" data-name="Car">balanced = true</text>
+								
+								</g>
+							</g>
+						</g>
+					<g data-name="Coupe">
+							<g fill="#eee8d5" stroke="#33322E" data-name="Coupe">
+								<rect x="100.0" y="340.0" height="62.0" width="117.0" data-name="Coupe"></rect>
+							<path d="M100.0 371.0 L217.0 371.0" fill="none" data-name="Coupe"></path>
+							</g>
+						<g transform="translate(100, 340)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Coupe">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Coupe">
+									<text x="50.5" y="13.5" stroke="none" text-anchor="middle" data-name="Coupe">Coupe</text>
+								
+								</g>
+							</g>
+						<g transform="translate(100, 371)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Coupe">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Coupe">
+									<text x="0.0" y="13.5" stroke="none" data-name="Coupe">numDoors = 2</text>
+								
+								</g>
+							</g>
+						</g>
+					<g data-name="Sedan">
+							<g fill="#eee8d5" stroke="#33322E" data-name="Sedan">
+								<rect x="257.0" y="340.0" height="62.0" width="117.0" data-name="Sedan"></rect>
+							<path d="M257.0 371.0 L374.0 371.0" fill="none" data-name="Sedan"></path>
+							</g>
+						<g transform="translate(257, 340)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Sedan">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Sedan">
+									<text x="50.5" y="13.5" stroke="none" text-anchor="middle" data-name="Sedan">Sedan</text>
+								
+								</g>
+							</g>
+						<g transform="translate(257, 371)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Sedan">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Sedan">
+									<text x="0.0" y="13.5" stroke="none" data-name="Sedan">numDoors = 4</text>
+								
+								</g>
+							</g>
+						</g>
+					<g data-name="Truck">
+							<g fill="#eee8d5" stroke="#33322E" data-name="Truck">
+								<rect x="341.0" y="208.0" height="92.0" width="137.0" data-name="Truck"></rect>
+							<path d="M341.0 239.0 L478.0 239.0" fill="none" data-name="Truck"></path>
+							</g>
+						<g transform="translate(341, 208)" font-family="Helvetica" font-size="12pt" font-weight="bold" font-style="normal" data-name="Truck">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Truck">
+									<text x="60.5" y="13.5" stroke="none" text-anchor="middle" data-name="Truck">Truck</text>
+								
+								</g>
+							</g>
+						<g transform="translate(341, 239)" font-family="Helvetica" font-size="12pt" font-weight="normal" font-style="normal" data-name="Truck">
+								<g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Truck">
+									<text x="0.0" y="13.5" stroke="none" data-name="Truck">numDoors = 2</text>
+								<text x="0.0" y="28.5" stroke="none" data-name="Truck">numWheels = 18</text>
+								<text x="0.0" y="43.5" stroke="none" data-name="Truck">balanced = true</text>
+								
+								</g>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</svg>

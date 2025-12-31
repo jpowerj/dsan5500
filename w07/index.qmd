@@ -1,0 +1,304 @@
+---
+title: "Week 7: Code Examples and Midterm Review"
+subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
+date: 2025-02-20
+date-format: full
+author: "Jeff Jacobs"
+institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
+lecnum: 7
+categories:
+  - "Class Sessions"
+format:
+  revealjs:
+    df-print: kable
+    output-file: "slides.html"
+    footer: "DSAN 5500 Week 7: {{< var w07.footer >}}"
+    echo: true
+    code-fold: show
+    scrollable: true
+    slide-number: true
+    html-math-method: mathjax
+    link-external-icon: true
+    link-external-newwindow: true
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
+    theme: [default, "../dsan-globals/jjquarto.scss"]
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    echo: true
+    code-fold: show
+    html-math-method: mathjax
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Midterm Dress Rehearsal {.smaller .small-title .crunch-title .crunch-callout .code-90 data-stack-name="Schedule"}
+
+Today's Planned Schedule:
+
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 6:30pm | 7:00pm | [Parts ա-գ: Three Mini-Topics &rarr;](#mini-topics) |
+| | 7:00pm | 7:20pm | [Part Ա: Full Topic &rarr;](#full-topics) |
+| | 7:20pm | 7:30pm | [Part դ: Mini-Topic &rarr;](#mini-topics) |
+| | 7:30pm | 7:50pm | [Part Բ: Full Topic &rarr;](#full-topics)
+| **Break!** | 7:50pm | 8:00pm | |
+| | 8:00pm | 8:40pm | [Parts Գ-Դ: Two Full Topics &rarr;](#full-topics) |
+| | 8:40pm | 9:00pm | [Parts ե-զ: Two Mini-Topics &rarr;](#mini-topics) |
+
+: {tbl-colwidths="[12,12,16,60]"}
+
+## The Great Wheel of Data-Structural and Algorithmic Fate {.smaller}
+
+:::: {.columns}
+::: {.column width="33%"}
+
+<center>
+**Full Topics (20 mins):**
+</center>
+
+* [`LinkedList` variations](#variations-on-linkedlist)
+* [Object-Oriented Design](#object-oriented-design)
+* [Collision-Resistant Hashing](#collision-resistant-hashing)
+* [Sorting](#sorting)
+
+:::
+::: {.column width="33%"}
+
+<center>
+**Mini Topics (10 mins):**
+</center>
+
+* [Stack-Heap Distinction](#stack-heap-distinction)
+* [Big-$\overline{O}$ Notation](#big-overlineo-notation)
+* [Data Validation](#data-validation)
+* [Linear vs. Logarithmic Design](#linear-vs.-logarithmic-design)
+* [BSTs: DFS vs. BFS](#depth-first-vs.-breadth-first-search)
+* [Trees vs. Graphs (Cycles)](#trees-vs.-graphs-cycles)
+
+:::
+::: {.column width="34%"}
+
+![[https://wheelofnames.com/](https://wheelofnames.com/)](images/wheel.png){fig-align="center"}
+
+:::
+::::
+
+# Mini-Topics {data-stack-name="Mini-Topics"}
+
+* [Stack-Heap Distinction &rarr;](#stack-heap-distinction)
+* [Big-$\overline{O}$ Notation &rarr;](#big-o-notation)
+* [Data Validation &rarr;](#data-validation)
+* [Linear vs. Logarithmic Design &rarr;](#linear-vs-logarithmic-design)
+* [BSTs: DFS vs. BFS &rarr;](#depth-first-vs.-breadth-first-search)
+* [Trees vs. Graphs (Cycles) &rarr;](#trees-vs.-graphs-cycles)
+
+## Stack-Heap Distinction {.crunch-title .crunch-ul .crunch-li-10}
+
+* **The** Stack ($\neq$ `Stack` data structure)
+  * Fixed-length things go here, *including* **Pointers** to Heap
+* **The** Heap ($\neq$ `Heap` data structure)
+  * Variable-length things go here
+* **Heap elves** manage The Heap, by...
+  * Constantly "claiming" additional memory from the OS (`malloc()`), in case objects need to **grow**
+  * "Freeing" memory back for use by the OS (`free()`), when objects **shrink** / **deleted** / Python execution ends
+
+## Big-$\overline{O}$ Notation {.crunch-title .crunch-ul .inline-90}
+
+* These are **equivalence classes** (not numbers or functions)
+* <i class='bi bi-1-circle'></i> Compute the runtime $T(n)$ of an algorithm
+* <i class='bi bi-2-circle'></i> Worry about how it **scales** as $n$ gets large: $\lim_{n \rightarrow \infty}T(n)$
+* <i class='bi bi-3-circle'></i> Decide whether to use it or not based on which **equivalence class** it converges to:
+  * $O(1)$
+  * $O(\log(n))$
+  * $O(n)$
+  * $O(n^2)$
+
+## Data Validation
+
+* To know: **Type Hints** in Python
+* To know: [Pydantic](https://docs.pydantic.dev/latest/)
+* To think about: [Pandera](https://pandera.readthedocs.io/en/stable/)
+
+## Linear vs. Logarithmic Design
+
+* [Enter the Logarithm](https://dict-lookup.streamlit.app/) demo app
+
+## Depth-First vs. Breadth-First Search
+
+* Depth-First is **greedy**: At any given node, algorithm *starts* by just following first link until it hits `None`!
+  * Only once it hits `None` does it "back up" and follow second link
+* Breadth-First is **patient**: Nodes at level $t + 1$ are not processed (printed) until all nodes at level $t$ have been processed (printed)
+
+## Trees vs. Graphs (Cycles) {.smaller}
+
+* In terms of **creating** and **managing** data structures, we start with **Trees** and move to **Graphs**
+* But, in terms of **defining** these structures, it helps to start with **Graphs**
+* A **graph** is just a collection of linked nodes (any number of links): *connected* if some possible path between any two nodes
+* A **tree** is a connected graph **without cycles**
+* A **binary tree** is a tree where each node has only **two outward links** (called **children**)
+* A **binary search tree** is a binary tree where
+  * <i class='bi bi-1-circle'></i> Outward links are labeled `left` and `right`
+  * <i class='bi bi-2-circle'></i> [All contents after following `left`] $<$ [current content]
+  * <i class='bi bi-3-circle'></i> [All contents after following `right`] $>$ [current content]
+
+# Full Topics {data-stack-name="Full Topics"}
+
+* [Variations on `LinkedList` &rarr;](#variations-on-linkedlist)
+* [Object-Oriented Design &rarr;](#object-oriented-design)
+* [Collision-Resistant Hashing &rarr;](#collision-resistant-hashing)
+* [Sorting &rarr;](#sorting)
+
+## Variations on `LinkedList`
+
+* `FrontBackLinkedList`
+* `Deque` (Pronounced like "Deck")
+* `DoublyLinkedList`
+
+## `FrontBackLinkedList`
+
+* This isn't exactly a separate data structure from a `LinkedList`, but instead an "expansion pack" for `LinkedList` which adds an `insert_front()` function 
+
+## `DoublyLinkedList`
+
+* For when we need to be able to **reverse directions** at any point during iteration
+* `LinkedListNode` had only a `next` pointer
+* `DoublyLinkedListNode` has **two** pointers: `prev` and `next`
+
+## `Deque`
+
+* May seem similar to `FrontBackLinkedList`, but this time we **do** have a (slightly) different data structure!
+* For when we need to iterate through a list in-order or in **reverse** order, with exact same complexity!
+  * (Who can think of a case where this would be immediately useful?)
+* Like in `FrontBackLinkedList`, we have a new `insert_front()` function
+* Like in `DoublyLinkedList`, we have both `prev` and `next` pointers in each `DequeNode`
+* But, we also add a new **pointer** in the `Deque` class itself (*not* the `DequeNode` class), `tail`, so that we now have `head` (formerly called root) and `tail` (pointing to the last element in the LL)
+
+## Collision-Resistant Hashing
+
+* In general: What properties do we think a "good" hashing algorithm should have?
+* More specific: Given $N$ objects to store and $M$ available memory slots, what are the limits to $\overline{O}(1)$?
+  * Efficiency when $N < M$?
+  * Efficiency when $N = M$?
+  * Efficiency when $N > M$?
+  * How do these change if we move from `LinkedList`-backed to `BST`-backed?
+
+## Object-Oriented Design
+
+* First: What are the two kinds of "things" that an **object** has?
+* What is the difference between a **class** and an **object**?
+* OML without Polymorphism
+* OML *with* Polymorphism
+* Abstract Base Classes (`ABC` in Python)
+
+## Sorting {.smaller .crunch-title .crunch-ul .crunch-quarto-figure}
+
+* How is [Merge-Sort]{.alg} "better"? What role does [Merge]{.alg} subroutine play?
+* What/where exactly are the **invariants** in these diagrams?
+
+:::: {.columns}
+::: {.column width="45%"}
+
+<center>
+[Insertion-Sort]{.alg}
+</center>
+
+![](images/insertion_zero.svg){fig-align="center"}
+
+:::
+::: {.column width="55%"}
+
+<center>
+[Merge-Sort]{.alg}
+</center>
+
+![](images/merge.svg){fig-align="center"}
+
+:::
+::::
+
+# Midterm Metadata {data-stack-name="Metadata"}
+
+## Midterm Structure {.smaller}
+
+* **Coding Portion**: Modifications of `LinkedList` (Circular / jump-to-end / doubly-linked); non-scary OOP skeleton 🙈
+* **Multiple Choice Portion**: Lots more to cover...
+    * Hash Tables: $O(1 + \epsilon \log_2(n))$, but think about it as:
+    * $1 + (\text{Collision rate}) \cdot (\text{Collision handler efficiency})$
+    * Linked List $\rightarrow$ Binary Search Tree
+    * Depth-First vs. Breadth-First: Picture of a tree $\rightarrow$ (a) what is BFS result, (b) what is (in/pre/post)-order DFS result?
+    * Lastly: Cormen, Leiserson, Rivest, Stein (CLRS), pgs. 17-106
+
+## The Two Boxes That Most Things In This Course Can Be Sorted Into {.title-11 .crunch-title .crunch-ul}
+
+* Box 1: Linear Things
+* Box 2: Logarithmic Things
+* Things that go into the boxes:
+  * Algorithms
+  * Data Structures
+  * Software Development Patterns
+
+## The Boxes {.smaller .title-10 .crunch-title .crunch-images .crunch-quarto-figure .crunch-table}
+
+```{=html}
+<table style="table-layout: fixed; width: 100% !important;">
+<thead>
+<tr>
+  <th style="width: 25% !important;"></th>
+  <th style="width: 30% !important;"><span data-qmd="Linear Things: $O(N)$"></span></th>
+  <th style="width: 45% !important;"><span data-qmd="Logarithmic Things: $O(\lg{N})$"></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="width: 25% !important;"><span data-qmd="**Data Structures**"></span></td>
+  <td><div data-qmd="`LinkedList`
+  
+![](images/linked_list.svg){width=270}"></div></td>
+  <td><div data-qmd="`BinarySearchTree`
+
+![](images/bst.svg){fig-align=center width=200}"></div></td>
+</tr>
+<tr>
+  <td style="vertical-align: middle !important;"><span data-qmd="**Sorting Algorithms**"></span></td>
+  <td><span data-qmd="[Insertion-Sort]{.alg}"></span></td>
+  <td><span data-qmd="[Merge-Sort]{.alg}"></span></td>
+</tr>
+<tr>
+  <td style="vertical-align: middle !important;"><span data-qmd="**Search Algorithms**"></span></td>
+  <td><span data-qmd="[Linear-Search]{.alg}"></span></td>
+  <td><span data-qmd="[Binary-Search]{.alg}"></span></td>
+</tr>
+<tr>
+  <td><span data-qmd="**General Pattern**"></span></td>
+  <td>One-by-One</td>
+  <td>Divide-and-Conquer</td>
+</tr>
+<tr>
+  <td><span data-qmd="**Steps to Look Up a Word**"></span></td>
+  <td><span data-qmd="$N = 102118$"></span></td>
+  <td><span data-qmd="$\lceil \log_2(N) \rceil = 17$"></span></td>
+</tr>
+</tbody>
+</table>
+```
+
+* **Hash Table**: A "trick" that gets us close to $O(1)$, **by pre-allocating lots of memory!**
+
+$$
+O(N) \; \underbrace{\leadsto O(\log_2(N))}_{\mathclap{\substack{\text{More Efficient Algorithm} \\ \text{(Free!)}}}} \; \underbrace{\leadsto O(1 + \epsilon\log_2(N))}_{\substack{\text{More Memory} \\ \text{(\$\$\$)}}}
+$$

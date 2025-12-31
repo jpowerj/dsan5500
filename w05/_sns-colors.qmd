@@ -1,0 +1,10 @@
+```{python}
+
+#util_df.head()
+#plt.contourf(util_df['x'], util_df['y'], util_df['greater'], levels=[0,.9])
+#x0 = UtilVector(4, 6)
+#my_palette = sns.color_palette("coolwarm", n_colors=3)
+#my_palette.reverse()
+#my_palette = sns.color_palette(['#E69F00','lightgray','#56B4E9'])
+
+```

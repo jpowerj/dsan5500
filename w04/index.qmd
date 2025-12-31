@@ -1,0 +1,878 @@
+---
+title: "Week 4: Data Structures from Scratch with OOP"
+subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
+date: 2025-01-30
+date-format: full
+author: "Jeff Jacobs"
+institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
+lecnum: 4
+jupyter: python3
+categories:
+  - "Class Sessions"
+format:
+  revealjs:
+    df-print: kable
+    output-file: "slides.html"
+    footer: "DSAN 5500 Week 4: {{< var w04.footer >}}"
+    echo: true
+    code-fold: show
+    scrollable: true
+    slide-number: true
+    html-math-method: mathjax
+    link-external-newwindow: true
+    link-external-icon: true
+    include-in-header:
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'>"
+    css: "../dsan-globals/jjstyles.css"
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    echo: true
+    code-fold: show
+    html-math-method: mathjax
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Schedule {.smaller .small-title .crunch-title .crunch-callout .code-90 data-name="Schedule"}
+
+Today's Planned Schedule:
+
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 6:30pm | 7:00pm | [Object-Oriented Programming (OOP) &rarr;](#object-oriented-programming) |
+| | 7:00pm | 7:30pm | [`LinkedList`: Lists from Scratch &rarr;](#core-data-structure-linkedlist) |
+| | 7:30pm | 8:00pm | [Other Data Structures = Fancy Linked Lists &rarr;](#onwards-and-upwards-fancier-algorithms) |
+| **Break!** | 8:00pm | 8:10pm | |
+| | 8:10pm | 9:00pm | [`HashTable`: Logarithmic to *Constant* Efficiency 🤯 &rarr;](#hash-tables) |
+
+: {tbl-colwidths="[12,12,12,64]"}
+
+# Object-Oriented Programming {data-stack-name="OOP"}
+
+## Breaking a Problem into (Interacting) Parts {.title-08 .crunch-title}
+
+* **Python so far**: "Data science mode"
+  * Start at top of file with raw data
+  * Write lines of code until problem solved
+* **Python in this class**: "Software engineering mode"
+  * Break system down into parts
+  * Write each part separately
+  * Link parts together to create the whole
+* *(One implication: `.py` files may be easier than `.ipynb` for development! Can you think of why?)*
+
+## How Does A Calculator Work?
+
+![(Calculator image from <a href="//commons.wikimedia.org/wiki/User:LoMit" title="User:LoMit">Wikimedia Commons</a>)](images/Calculator.drawio.svg){fig-align="center"}
+
+## Key OOP Feature #1: *Encapsulation*
+
+* Imagine you're on a **team** trying to make a calculator
+* One person can write the `Screen` class, another person can write the `Button` class, and so on
+* Natural division of labor! (May seem silly for a calculator, but imagine as your app **scales up**)
+
+## Key OOP Feature #2: *Abstraction*
+
+* **Abstraction** complements this **Encapsulation**: the `Screen` team **doesn't need to know** the **internal details** of `Button` (just it's API), and vice-versa
+* Relevant data and functions can be "public", irrelevant internal data and functions "private"
+* (Like with *type hints*), Python doesn't **enforce** this distinction, **but** (unlike with *type hints*) most libraries **do** separate public from private by a **variable-naming convention**...
+
+## Public, Protected, Private Attributes in Python {.smaller .crunch-title .title-11 .cols-clip}
+
+* [**Public** (default)] No underscores: `public_var`
+* [**Protected**] One underscore: `_protected_var`
+* [**Private**] Two underscores: `__private_var`
+
+::: {.columns}
+::: {.column width="60%"}
+
+```{python}
+#| error: true
+class MySecretInfo:
+  __the_info = "I love Carly Rae Jepsen"
+
+info_obj = MySecretInfo()
+info_obj.__the_info
+```
+
+Guess we can't access it then, right? 😮‍💨
+
+:::
+::: {.column width="40%"}
+
+```{python}
+info_obj._MySecretInfo__the_info
+```
+
+* NOO MY SECRET!!! 😭
+* Pls don't tell anyone
+
+:::
+:::
+
+## Key OOP Features #3-4: Inheritance, Polymorphism {.crunch-title .title-07 .crunch-ul}
+
+* Better explained in **diagrams** than **words** (next 10 slides!), but we can get a sense by thinking about their **etymology**:
+* **"Inheritance"** comes from **"heir"**, like "heir to the throne"
+  * *Parent* passes on [things they possess] to their *children*
+* **"Polymorphism"**: **Poly** = "many", **Morphe** = "forms"
+  * How does Python know what to do when we `print()`?
+  * It "just works" because `print()` (through `__str__()`) takes on **many** (!) **forms** (!): each type of object has its own **implementation** of `__str__()`
+
+## Use Case: Bookstore Inventory Management {.smaller .title-12}
+
+![<a href='https://washington.org/visit-dc/bookstores-sure-charm-you-washington-dc' target='_blank'>Image source</a>](images/spencerbeck_exterior-of-capitol-hill-books_yesmydccool.jpg){fig-align="center"}
+
+## In Pictures {.smaller}
+
+```{dot}
+//| label: bookstore-diagram
+//| echo: false
+digraph G {
+	graph [
+		label="Bookstore Relational Diagram"
+		labelloc="t"
+	]
+	node [
+		shape=record,
+        fontname="Courier",
+	]
+    rankdir=LR
+
+	Bookstore[nojustify=false,label = "Bookstore|Name\l|<loc>Location\l|<bl>Booklist\l|Get_Inventory()\l|Sort_Inventory()\l"]
+
+    Place[label="<placehead>Place|City\l|State\l|Country\l|Print_Map()\l"]
+
+    Bookstore:loc -> Place:placehead[label="Has One"];
+
+    Book[label="<bookhead>Book|<title>Title\l|<auths>Authors\l|Num Pages\l|Preview()"]
+
+    Person[label="<personhead>Person|Family Name|Given Name"]
+
+    Bookstore:bl -> Book:bookhead[label="Has Multiple",style="dashed"]
+    Book:auths -> Person:personhead[label="Has Multiple",style="dashed"]
+}
+```
+
+## Creating Classes {.smaller .crunch-title .crunch-ul .crunch-details}
+
+* Use case: Creating an inventory system for a **Bookstore**
+
+::: columns
+::: {.column width="50%"}
+
+```{python}
+#| label: basic-class
+class Bookstore:
+    def __init__(self, name, location):
+        self.name = name
+        self.location = location
+        self.books = []
+
+    def __getitem__(self, index):
+        return self.books[index]
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __str__(self):
+        return f"Bookstore[{self.get_num_books()} books]"
+
+    def add_books(self, book_list):
+        self.books.extend(book_list)
+
+    def get_books(self):
+        return self.books
+
+    def get_inventory(self):
+        book_lines = []
+        for book_index, book in enumerate(self.get_books()):
+            cur_book_line = f"{book_index}. {str(book)}"
+            book_lines.append(cur_book_line)
+        return "\n".join(book_lines)
+
+    def get_num_books(self):
+        return len(self.get_books())
+
+    def sort_books(self, sort_key):
+        self.books.sort(key=sort_key)
+
+class Book:
+    def __init__(self, title, authors, num_pages):
+        self.title = title
+        self.authors = authors
+        self.num_pages = num_pages
+
+    def __str__(self):
+        return f"Book[title={self.get_title()}, authors={self.get_authors()}, pages={self.get_num_pages()}]"
+
+    def get_authors(self):
+        return self.authors
+
+    def get_first_author(self):
+        return self.authors[0]
+
+    def get_num_pages(self):
+        return self.num_pages
+
+    def get_title(self):
+        return self.title
+
+class Person:
+    def __init__(self, family_name, given_name):
+        self.family_name = family_name
+        self.given_name = given_name
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __str__(self):
+        return f"Person[{self.get_family_name()}, {self.get_given_name()}]"
+
+    def get_family_name(self):
+        return self.family_name
+
+    def get_given_name(self):
+        return self.given_name
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+#| label: create-objs
+my_bookstore = Bookstore("Bookland", "Washington, DC")
+plath = Person("Plath", "Sylvia")
+bell_jar = Book("The Bell Jar", [plath], 244)
+marx = Person("Marx", "Karl")
+engels = Person("Engels", "Friedrich")
+manifesto = Book("The Communist Manifesto", [marx, engels], 43)
+elster = Person("Elster", "Jon")
+cement = Book("The Cement of Society", [elster], 311)
+my_bookstore.add_books([bell_jar, manifesto, cement])
+print(my_bookstore)
+print(my_bookstore[0])
+print("Inventory:")
+print(my_bookstore.get_inventory())
+```
+
+:::
+:::
+
+## Doing Things With Classes {.smaller}
+
+* Now we can **use** our OOP structure, for example to sort the inventory in different ways!
+
+::: columns
+::: {.column width="50%"}
+
+<center>
+**Alphabetical (By First Author)**
+</center>
+
+```{python}
+#| label: sort-alpha
+sort_alpha = lambda x: x.get_first_author().get_family_name()
+my_bookstore.sort_books(sort_key = sort_alpha)
+print(my_bookstore.get_inventory())
+```
+
+:::
+::: {.column width="50%"}
+
+<center>
+**By Page Count**
+</center>
+
+```{python}
+#| label: sort-pages
+sort_pages = lambda x: x.get_num_pages()
+my_bookstore.sort_books(sort_key = sort_pages)
+print(my_bookstore.get_inventory())
+```
+
+:::
+:::
+
+## *Inheritance* and *Polymorphism* {.smaller .crunch-title}
+
+* Encapsulate **general properties** in **parent** class, **specific properties** in **child classes**
+
+![(You can edit this or make your own UML diagrams in [nomnoml](https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7C%0A%20%20numDoors%3A%20int%3B%20numWheels%3A%20int%3B%20balanced%3A%20bool%3B%7C%0A%20%20turnOn()%3B%20accelerate()%3B%20brake()%3B%20turnOff()%3B%0A%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%20balanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3Bbalanced%20%3D%20true%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3Bbalanced%20%3D%20true%3B%5D%0A%0A%5BVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BCar%5D%0A%5BVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A)!)](images/Inheritance.drawio.svg){fig-align="center"}
+
+## Or... Is This Better? {.smaller .crunch-title}
+
+![Edit in [nomnoml](https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7CnumDoors%3A%20int%3BnumWheels%3A%20int%3Bbalanced%3A%20bool%3B%7CturnOn()%3Baccelerate()%3Bbrake()%3BturnOff()%3B%5D%0A%5B%3Cabstract%3E%20UnbalancedVehicle%7Cbalanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20BalancedVehicle%7Cbalanced%20%3D%20true%3B%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3B%5D%0A%0A%5BVehicle%5D--%3A%3E%5BUnbalancedVehicle%5D%0A%5BUnbalancedVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BBalancedVehicle%5D%0A%5BBalancedVehicle%5D--%3A%3E%5BCar%5D%0A%5BBalancedVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A)](images/vehicle-fancy.svg){fig-align="center"}
+
+## Design Choices {.smaller .crunch-title .crunch-details .crunch-ul .code-90}
+
+* Goal is **encapsulation**: which **objects** should have which **properties**/**methods**?
+* Example: Fiction vs. Non-Fiction. How important is this distinction **for your use case?**
+
+::: columns
+::: {.column width="50%"}
+
+<center>
+**Option 1: As Property of `Book`**
+</center>
+
+```{python}
+#| label: fiction-property
+from enum import Enum
+class BookType(Enum):
+    NONFICTION = 0
+    FICTION = 1
+
+class Book:
+    def __init__(self, title: str, authors: list[Person], num_pages: int, type: BookType):
+        self.title = title
+        self.authors = authors
+        self.num_pages = num_pages
+        self.type = type
+
+    def __str__(self):
+        return f"Book[title={self.title}, authors={self.authors}, pages={self.num_pages}, type={self.type}]"
+```
+
+```{python}
+#| label: use-fiction-property
+joyce = Person("Joyce", "James")
+ulysses = Book("Ulysses", [joyce], 732, BookType.FICTION)
+schelling = Person("Schelling", "Thomas")
+micromotives = Book("Micromotives and Macrobehavior", [schelling], 252, BookType.NONFICTION)
+print(ulysses)
+print(micromotives)
+```
+
+:::
+::: {.column width="50%"}
+
+<center>
+**Option 2: Separate Classes**
+</center>
+
+```{python}
+#| label: fiction-separate-classes-setup
+#| echo: false
+class Book:
+    def __init__(self, title, authors, num_pages):
+        self.title = title
+        self.authors = authors
+        self.num_pages = num_pages
+
+    def __str__(self):
+        return f"Book[title={self.get_title()}, authors={self.get_authors()}, pages={self.get_num_pages()}]"
+
+    def get_authors(self):
+        return self.authors
+
+    def get_first_author(self):
+        return self.authors[0]
+
+    def get_num_pages(self):
+        return self.num_pages
+
+    def get_title(self):
+        return self.title
+```
+
+```{python}
+#| label: fiction-separate-classes
+# class Book defined as earlier
+class FictionBook(Book):
+    def __init__(self, title, authors, num_pages, characters):
+        super().__init__(title, authors, num_pages)
+        self.characters = characters
+
+class NonfictionBook(Book):
+    def __init__(self, title, authors, num_pages, topic):
+        super().__init__(title, authors, num_pages)
+        self.topic = topic
+```
+
+```{python}
+#| label: use-fiction-separate-classes
+joyce = Person("Joyce", "James")
+ulysses = FictionBook("Ulysses", [joyce], 732, ["Daedalus"])
+schelling = Person("Schelling", "Thomas")
+micromotives = NonfictionBook("Micromotives and Macrobehavior", [schelling], 252, "Economics")
+print(ulysses)
+print(micromotives)
+```
+
+:::
+:::
+
+# Core Data Structure: `LinkedList` {data-stack-name="LinkedList"}
+
+## Looking Under the Hood of a Data Structure {.crunch-title .title-08 .inline-90}
+
+* Last week we saw the **math** for why we can "abstract away from" the details of how a particular language works
+* We want to understand these structures **independently** of the specifics of their implementation in Python (for now)
+* So, let's construct our own **simplified versions** of the basic structures, and use these simplified versions to get a sense for their **efficiency**
+  * (The "true" Python versions may be **hyper-optimized** but, as we'll see, there are **fundamental constraints** on runtime, assuming $P \neq NP$)
+
+## Tuples
+
+```{python}
+class MyTuple:
+  def __init__(self, thing1, thing2):
+    self.thing1 = thing1
+    self.thing2 = thing2
+
+  def __repr__(self):
+    return f"({self.thing1}, {self.thing2})"
+
+  def __str__(self):
+    return self.__repr__()
+
+t1 = MyTuple('a','b')
+t2 = MyTuple(111, 222)
+print(t1)
+print(t2)
+```
+
+## Lists {.crunch-title .smaller}
+
+::: columns
+::: {.column width="50%"}
+
+The list itself just **points** to a root item:
+
+```{python}
+class MyList:
+  def __init__(self):
+    self.root = None
+
+  def append(self, new_item):
+    if self.root is None:
+      self.root = MyListItem(new_item)
+    else:
+      self.root.append(new_item)
+
+  def __repr__(self):
+    return self.root.__repr__()
+```
+
+:::
+::: {.column width="50%"}
+
+An item has contents, pointer to next item:
+
+```{python}
+class MyListItem:
+  def __init__(self, content):
+    self.content = content
+    self.next = None
+
+  def append(self, new_item):
+    if self.next is None:
+      self.next = MyListItem(new_item)
+    else:
+      self.next.append(new_item)
+
+  def __repr__(self):
+    my_content = self.content
+    return my_content if self.next is None else f"{my_content}, {self.next.__repr__()}"
+```
+
+:::
+:::
+
+```{python}
+users = MyList()
+users.append('Jeff')
+users.append('Alma')
+users.append('Bo')
+print(users)
+```
+
+## So, How Many "Steps" Are Required...
+
+* To retrieve the **first** element in a `MyTuple`?
+* To retrieve the **last** element in a `MyTuple`?
+* To retrieve the **first** element in a `MyList`?
+* To retrieve the **last** element in a `MyList`?
+
+## How Many Steps? {.smaller}
+
+::: columns
+::: {.column width="50%"}
+
+With a `MyTuple`:
+
+```{python}
+t1.thing1
+```
+
+$\implies$ 1 step
+
+```{python}
+t1.thing2
+```
+
+$\implies$ 1 step
+
+:::
+::: {.column width="50%"}
+
+With a `MyList`:
+
+```{python}
+print(users.root.content)
+```
+
+$\implies$ 1 step
+
+```{python}
+current_node = users.root
+while current_node.next is not None:
+  current_node = current_node.next
+print(current_node.content)
+```
+
+$\implies$ (3 steps) 
+
+...But why 3? How many steps if the list contained 5 elements? $N$ elements?
+
+:::
+:::
+
+## Visualizing `LinkedList`s {.smaller .crunch-title .crunch-col-output .crunch-details}
+
+```{python}
+#| label: graphviz-setup
+#| echo: false
+import sys
+sys.path.append('../../dsan5500-local/HW2/')
+from IPython.display import display, HTML
+import graphviz as gv # for visualizing a tree using Digraph
+from graphviz import Digraph, nohtml
+from hw2 import EmptyNode
+
+def visualize_ll(ll):
+  dot = Digraph(
+      graph_attr={'rankdir': 'LR'},
+        node_attr={'shape': 'record', 'height': '.1'}
+    )
+  prev_node_name = None
+  node_pointer = ll.root
+  while type(node_pointer) != EmptyNode:
+    # New node
+    cur_content = node_pointer.content
+    cur_name = cur_content.item_name
+    dot.node(name=cur_name, label=nohtml('{<f0> '+str(cur_name)+'|<f1>}'))
+    # And edge from prev to cur, if not None
+    if prev_node_name is not None:
+      edge_from = f'{prev_node_name}:f1'
+      dot.edge(edge_from, cur_name)
+    # Now we can update prev_node_name
+    prev_node_name = cur_name
+    node_pointer = node_pointer.next
+  # Now we've reached the end, so point to an EmptyNode
+  final_name = "None"
+  dot.node(name=final_name, label=str(final_name), penwidth='0')
+  edge_from = f'{prev_node_name}:f1'
+  dot.edge(edge_from, final_name)
+  display(dot)
+
+def visualize(tree):
+    none_counter = 0
+    dot = Digraph(
+        node_attr={'shape': 'record', 'height': '.1'}
+    )
+    #dot.engine = 'sfdp'
+    node_info_list = []
+    if tree.root is not None:
+      node_info_list.append({'node':tree.root, 'parent_name': None, 'dir': None})
+    while len(node_info_list) > 0:
+      cur_node_info = node_info_list.pop()
+      cur_node = cur_node_info['node']
+      if cur_node is None:
+        cur_name = f"None_{none_counter}"
+        none_counter = none_counter + 1
+        cur_label = "None"
+        cur_parent_name = cur_node_info['parent_name']
+        cur_dir = cur_node_info['dir']
+        dot.node(name=cur_name, label="None", penwidth='0')
+        if cur_parent_name is not None:
+          # Nudge x coord based on parent
+          which_port = 'f0'
+          if cur_dir == 'R':
+            which_port = 'f2'
+          edge_from = f'{cur_parent_name}:{which_port}'
+          edge_to = f'{cur_name}:f1'
+          dot.edge(edge_from, edge_to, label=cur_dir)
+      else:
+        cur_name = cur_node.content.item_name
+        cur_parent_name = cur_node_info['parent_name']
+        cur_dir = cur_node_info['dir']
+        dot.node(name=cur_name, label=nohtml(f'<f0>|<f1> {cur_name}|<f2>'))
+        if cur_parent_name is not None:
+          # Nudge x coord based on parent
+          which_port = 'f0'
+          if cur_dir == 'R':
+            which_port = 'f2'
+          edge_from = f'{cur_parent_name}:{which_port}'
+          edge_to = f'{cur_name}:f1'
+          dot.edge(edge_from, edge_to, label=cur_dir)
+        if cur_node.right is not None:
+          node_info_list.append({'node': cur_node.right, 'parent_name': cur_name, 'dir': 'R'})
+        else:
+          # Add the None ending
+          node_info_list.append({'node': None, 'parent_name': cur_name, 'dir': 'R'})
+        if cur_node.left is not None:
+          node_info_list.append({'node': cur_node.left, 'parent_name': cur_name, 'dir': 'L'})
+        else:
+          # Add the None ending
+          node_info_list.append({'node': None, 'parent_name': cur_name, 'dir': 'L'})
+    display(dot)
+```
+
+::: {.vcenter}
+
+```{python}
+#| label: viz-linkedlist
+#| fig-align: center
+from hw2 import LinkedList, InventoryItem
+ll = LinkedList()
+item1 = InventoryItem('Mango', 50)
+ll.append(item1)
+item2 = InventoryItem('Pickle', 60)
+ll.append(item2)
+item3 = InventoryItem('Artichoke', 55)
+ll.append(item3)
+item5 = InventoryItem('Banana', 123)
+ll.append(item5)
+item6 = InventoryItem('Aardvark', 11)
+ll.append(item6)
+HTML(visualize_ll(ll))
+```
+
+:::
+
+# Onwards and Upwards: Fancier Algorithms {data-stack-name="FancyLinkedList"}
+
+## LinkedList: Foundation for Most(?) Data Structures! {.smaller .crunch-title .title-10 .crunch-quarto-layout-panel .crunch-img .crunch-figures .cols-va}
+
+::: {layout="[1,3]" layout-valign="center"}
+
+![](images/bored_pooh.jpeg){fig-align="left" width="210"}
+
+::: {#bored-pooh}
+
+::: {.columns}
+::: {.column width="50%"}
+
+``` {.python}
+class LinkedList(BaseModel):
+  root: LinkedListNode | None
+```
+
+:::
+::: {.column width="50%"}
+
+```python
+class LinkedListNode(BaseModel):
+  content: object
+  next: LinkedListNode | None
+```
+
+:::
+:::
+
+:::
+:::
+
+::: {layout="[1,3]" layout-valign="center"}
+
+![](images/fancy_pooh_single.jpeg){fig-align="left" width="210"}
+
+::: {#fancy-pooh}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```python
+class BinaryTree(BaseModel):
+  root: BinaryTreeNode | None
+```
+
+:::
+::: {.column width="50%"}
+
+```python
+class BinaryTreeNode(BaseModel):
+  content: object
+  left: BinaryTreeNode | None
+  right: BinaryTreeNode | None
+```
+
+:::
+:::
+
+:::
+:::
+
+::: {layout="[1,3]" layout-valign="center"}
+
+![](images/fanciest_pooh.jpeg){fig-align="left" width="210"}
+
+::: {#fanciest-pooh}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```python
+class QuadTree(BaseModel):
+  root: QuadTreeNode | None
+```
+
+:::
+::: {.column width="50%"}
+
+```python
+class QuadTreeNode:
+  content: object
+  nw: QuadTreeNode | None
+  ne: QuadTreeNode | None
+  sw: QuadTreeNode | None
+  se: QuadTreeNode | None
+```
+
+:::
+:::
+
+:::
+:::
+
+## Visualizing `BinarySearchTree` {.smaller .crunch-title .cols-va}
+
+```{python}
+#| output-location: column
+#| fig-align: center
+from hw2 import BinarySearchTree
+bst = BinarySearchTree()
+item1 = InventoryItem('Mango', 50)
+bst.add(item1)
+item2 = InventoryItem('Pickle', 60)
+bst.add(item2)
+item3 = InventoryItem('Artichoke', 55)
+bst.add(item3)
+item5 = InventoryItem('Banana', 123)
+bst.add(item5)
+item6 = InventoryItem('Aardvark', 11)
+bst.add(item6)
+HTML(visualize(bst))
+```
+
+## So Then... Why Is This a Whole DSAN Class? {.smaller .crunch-title .title-12}
+
+* The **core structures** are identical, but we can optimize **different goals** (efficient insertion, sorting, retrieval, deletion, ...) by changing the **invariants** maintained by the algorithms **internal to** our structure
+* Crucial [Insertion-Sort]{.alg} invariant: $\textsf{Sorted}(1,i)$ true when we move to entry $i + 1$ (`key`)
+* Crucial **HW2**(!) invariant: $\textsf{Up-To-Date-Favorite}(1,i-1)$ true when entry $i + 1$ (next result in dataset) arrives
+* $\implies$ Efficiency of obtaining favorite style **guaranteed to be constant-time**, $\overline{O}(1)$!
+* Otherwise, would be $\overline{O}(n) > \overline{O}(1)$ (linear approach) or at best $\overline{O}(\log_2(n)) > \overline{O}(1)$ (divide-and-conquer)
+
+# Hash Tables {data-stack-name="HashTable"}
+
+* *(Spoiler alert, so you know I'm not lying to you: this is a **LinkedList** with some **additional structure!**)
+* You just got hired as a **cashier** (Safeway cashiering alum myself 🫡)
+* The scanner is broken (spoiler #2: the scanner uses a hash table), so you start writing down **items** along with their **prices**, one-by-one, as items come in...
+
+## Our List of (Item, Price) Pairs {.crunch-title .crunch-details .crunch-ul .small-summary}
+
+```{python}
+price_list = []
+price_list.append(('Banana', 10))
+price_list.append(('Apple', 2))
+price_list.append(('Four Loko', 5))
+price_list
+```
+
+* As the list gets longer, it gets harder and harder to **find where you wrote down a specific item and its price**
+* As you now know, you could use **linear search**, $\overline{O}(n)$, or if you ensure alphabetical order (an **invariant!**), you could use **binary, divide-and-conquer search**, $\overline{O}(\log_2(n))$
+* We can do **even better**: $\overline{O}(1)$. First w/magic, but then math
+
+## Strange-At-First Technique for Algorithm Analysis: Oracles
+
+* What if we had a magical wizard who could just **tell us** where to find an item we were looking for?
+* Sounds like I'm joking or saying *"what if we had a billion $ and infinite aura and we could fly and walk through walls"*
+* And yet, through the magic of math and computer science, there are concrete **hashing algorithms** which ensure (in a mathematically-provable way!) "almost certain" $\overline{O}(1)$ lookup time
+
+## Mathematical Strategy of Oracles {.crunch-title .crunch-math .math-75 .crunch-ul}
+
+* We'll use a **concrete**, **simplified hash function** to illustrate
+* Mathematically we'll be able to get something like
+
+$$
+T(n) = \overline{O}(1 + \underbrace{\epsilon}_{\mathclap{\text{Collision rate}}} \cdot n)
+$$
+
+* Which tells us: **if** we had an oracle who could ensure near-0 collision rates, **then** $T(n) = \overline{O}(1)$.
+* And, by a beautiful division-of-labor, **other** computer scientists figure out the near-0 collision rates part, giving us
+
+$$
+p^{✅} = [T(n) = \overline{O}(1 + \epsilon n)], q^{✅} = [\epsilon \approx 0],\text{ so } p \wedge q \implies T(n) \overset{✅}{=} \overline{O}(1).
+$$
+
+## Back to the Price List {.crunch-title .crunch-math .crunch-ul}
+
+* Our hash function: **`hash(item)`** = **first letter of `item`**
+
+$$
+h(\texttt{x}) = \texttt{x[0]}
+$$
+
+* `h('Banana') = 'B'`, `h('Monkey') = 'M'`
+* With this function in hand, we can create a length-26 **array**, one slot for each letter in alphabet, and then **write down (item, price) pairs** in **whatever slot `item` hashes to**
+
+## The Importance of Differentiating Operations: *Insertion* vs. *Lookup*
+
+* So far, we have $\overline{O}(1)$ **insertion** via hashing
+* We also get $\overline{O}(1)$ **lookup!**
+* When customer hands us an item (say, `'Banana'`), we compute the hash (`B`), look in that slot, and obtain the price for bananas.
+* We also get $\overline{O}(1)$ **updating** (hash to find the old price, update it to have new price) and $\overline{O}(1)$ **deletion** (hash to find the slot containing the item, then erase it from that slot)
+
+## So What's the Catch???
+
+* **BLUEBERRIES** show up to ruin our day (as usual 😞)
+* We hash, so far so good: `h('Blueberries') = 'B'`
+* But then we go to the `B` slot and see that `(Bananas, 10)` is already there!!! Wtf do we do here... don't panic!
+* The answer? We open our HW2 from DSAN 5500 and remember that we have our lovely friend the `LinkedList` that we can use whenever and however we want!
+
+## Arrays vs. Linked Lists
+
+* Jeff is hiding something here... Why jump to `LinkedList`? Why not just... another length-26 array, for example?
+* For this we open up our Week 1 slides and remember the **stack** vs. **heap** distinction: we **know** how many letters in the alphabet, we **don't know** how many items starting with `B` (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)
+* Terminology for this kind of "hybrid" data structure: `HashTable` is an `Array` that **"degenerates into"** a `LinkedList` (when there are **collisions**)
+
+## Look How Far We Came! {.crunch-title .crunch-ul .inline-90 .code-90}
+
+* Beginning of class: Only structure we knew allowing insertion (`LinkedList`) was $\overline{O}(n)$ for everythihg
+* End of class: New structure where suddenly everything is $\overline{O}(1)$, except in "unlucky" cases, in which it partially **"degenerates"** into a `LinkedList`
+* $\implies$ The "inevitable" $\overline{O}(n)$ runtime has transformed into the unlucky worst-case **upper bound**
+* $\implies$ By taking **core** data structures/algorithms from your toolkit, you can "piece together" **hybrid structures** whose *whole (runtime) is better than the sum of its parts*
+
+## Taking This Idea and Running With It {.crunch-title .crunch-ul .code-90 .inline-90}
+
+* Next week we'll look at `BinarySearchTree` (`BST`)
+* Since it's just a glorified `LinkedList`, we'll be able to take our `HashMap` from today and "drop in" the `BST` to play the role the `LinkedList` is playing right now
+* If collision, we'll create a `BST` with its $\overline{O}(\log(n))$ operations, rather than a `LinkedList` with its $\overline{O}(n)$ operations
+* $\implies$ `HashMap` will go from:
+  * $\overline{O}(1)$ best-case but $\overline{O}(n)$ worst-case to
+  * $\overline{O}(1)$ best-case but $\overline{O}(\log_2(n))$ worst-case!
+

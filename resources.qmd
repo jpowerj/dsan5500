@@ -1,0 +1,24 @@
+---
+title: "Resources"
+bibliography: "_DSAN5500.bib"
+---
+
+## Textbooks
+
+For those looking to get a head start on the course material, you can look over the following two textbooks, which cover the course topics in the same general order that we will cover them (although with very different approaches: the target audience for these tends to be software engineers, who have slightly different needs from us data scientists!)
+
+* Goodrich, Michael T., Roberto Tamassia, and Michael H. Goldwasser. 2013. *Data Structures and Algorithms in Python*. [<a href='https://www.dropbox.com/scl/fi/y7w4at9q4alw7isgz1k41/Data-Structures-and-Algorithms-in-Python.pdf?rlkey=y87xdgfa6es0zlf42fpd3xffx&dl=1' target='_blank'>PDF</a>] [<a href='https://www.dropbox.com/scl/fi/r5edxs4cmy8ioqk2r59n3/Data-Structures-and-Algorithms-in-Python.epub?rlkey=ap5fm5kccw1tgcoly6eqv1gpv&dl=1' target='_blank'>EPUB</a>]
+* Lee, Kent D., and Steve Hubbard. 2015. *Data Structures and Algorithms with Python*. [<a href='https://www.dropbox.com/scl/fi/2m560ys212krcj6eb6pve/Data-Structures-and-Algorithms-with-Python.pdf?rlkey=83stlforw6h1s1ykavgoooahd&dl=1' target='_blank'>PDF</a>] [<a href='https://www.dropbox.com/s/v5msmc0cs415l54/Data%20Structures%20and%20Algorithms%20with%20Python.epub?dl=1' target='_blank'>EPUB</a>]
+
+For much of the course we'll be focusing on a "standard" collection of algorithms that all computer scientists (including data scientists!) should know; the most famous book collecting all of these algorithms into one place is known as "CLRS", which is an abbreviation for the family names of the four authors (**C**ormen, **L**eiserson, **R**ivest, and **S**tein). The authors just released a <a href='http://mitpress.mit.edu/9780262046305/introduction-to-algorithms/' target='_blank'>Fourth Edition</a> of the book in 2022, but the Third Edition is much easier to obtain, and honestly any edition should be fine for the level of depth we'll be going into:
+
+* Cormen, Thomas H., Charles E. Leiserson, Ronald R. Rivest, and Clifford Stein. 2022. *Introduction to Algorithms, Fourth Edition*. [<a href='https://www.dropbox.com/scl/fi/478fp94zxliolzwnffonx/Thomas-H.-Cormen-Charles-E.-Leiserson-Ronald-L.-Rivest-Clifford-Stein-Introduction-to-Algorithms.pdf?rlkey=fvjjgtdf2eqd0q88z98tv1ypj&dl=1' target='_blank'>PDF</a>] [<a href='https://www.dropbox.com/scl/fi/sriymo3ps9fc9c8nrzt0o/Thomas-H.-Cormen-Charles-E.-Leiserson-Ronald-L.-Rivest-Clifford-Stein-Introduction-to-Algorithms.epub?rlkey=586adstobfust3xy4m1az9qgw&dl=1' target='_blank'>EPUB</a>]
+
+## Online Resources
+
+In terms of resources specifically aimed at data scientists, **Datacamp** has the following sequence of Python-based courses:
+
+* <a href='https://www.datacamp.com/courses/intro-to-python-for-data-science' target='_blank'>Introduction to Python for Data Science</a>
+* <a href='https://www.datacamp.com/courses/python-data-science-toolbox-part-1' target='_blank'>Python Data Science Toolbox (Part 1)</a>
+* <a href='https://www.datacamp.com/courses/python-data-science-toolbox-part-2' target='_blank'>Python Data Science Toolbox (Part 2)</a>
+* <a href='https://www.datacamp.com/courses/object-oriented-programming-in-python' target='_blank'>Object-Oriented Programming in Python</a>

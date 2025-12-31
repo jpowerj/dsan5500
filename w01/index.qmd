@@ -1,0 +1,411 @@
+---
+title: "Week 1: Course Intro and Motivation"
+subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
+date: 2025-01-09
+date-format: full
+lecnum: 1
+jupyter: python3
+categories:
+  - "Class Sessions"
+author: "Jeff Jacobs"
+institute: "<a href='mailto:jj1088@georgetown.edu' target='_blank'>`jj1088@georgetown.edu`</a>"
+format:
+  revealjs:
+    df-print: kable
+    output-file: "slides.html"
+    footer: "DSAN 5500 Week 1: {{< var w01.footer >}}"
+    echo: true
+    code-fold: show
+    scrollable: true
+    slide-number: true
+    html-math-method: mathjax
+    css: "../dsan-globals/jjstyles.css"
+    include-in-header:
+      text: "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous'><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css'>"
+    simplemenu:
+      flat: true
+      barhtml:
+        header: "<div class='menubar'><span style='position: absolute; left: 8; padding-left: 8px;'><a href='./index.html'>&larr; Return to Notes</a></span><ul class='menu'></ul></div>"
+      scale: 0.5
+    revealjs-plugins:
+      - simplemenu
+  html:
+    df-print: kable
+    output-file: "index.html"
+    echo: true
+    code-fold: show
+    html-math-method: mathjax
+---
+
+::: {.content-visible unless-format="revealjs"}
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window &rarr;</a>
+</center>
+
+:::
+
+# Welcome to DSAN 5500! {data-name="Welcome"}
+
+* Principles for the Course
+* Algorithmic Thinking vs. Coding
+* Data Structures: Motivation
+* Algorithms and Complexity: Motivation
+
+# Course Principles {data-name="Principles"}
+
+* *Comparative* Understanding
+* Learning Data Structures and Complexity *Simultaneously*
+
+## Before and After {.smaller .crunch-title .crunch-quarto-layout-panel}
+
+::: {layout="[1,1]"}
+
+![Python before taking DSAN 5500](images/scariest_snake.webp){fig-align="center" width="440"}
+
+![Python after taking DSAN 5500](images/snek.jpg){fig-align="center" width="320"}
+
+:::
+
+## Developing a *Comparative* Understanding {.full-width-callout}
+
+<!-- https://css-tricks.com/left-align-and-right-align-text-on-the-same-line/ -->
+
+::: {.callout-note icon="false" appearance="minimal"}
+
+::: {.container style="width: 100%; clear: both;"}
+::: {style="float: left;"}
+*"We hardly know ourselves, if we know nobody else"*
+:::
+
+::: {style="float: right;"}
+--(Blue Scholars, <a href='https://www.youtube.com/watch?v=vbziavrLrds' target='_blank'>"Sagaba"</a>)
+:::
+
+:::
+:::
+
+* The course focuses on **Python**, but part of understanding Python is understanding how Python **does things differently from other languages!**
+* Just as C was "overtaken" by Java, then Java was "overtaken" by Python, Python will someday be overtaken
+
+## The Numbers {.smaller}
+
+```{python}
+#| label: plot-langs
+#| code-fold: true
+#| fig-align: center
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.io as pio
+pio.renderers.default = "notebook"
+lang_df = pd.read_csv("assets/gh_issues.csv")
+# The data for 2022 is essentially useless
+lang_df = lang_df[lang_df['year'] <= 2021].copy()
+lang_df['time'] = lang_df['year'].astype(str) + "_" + lang_df['quarter'].astype(str)
+lang_df['prop'] = lang_df['count'] / lang_df.groupby('time')['count'].transform('sum')
+lang_df.head()
+#sns.lineplot(data=lang_df, x='year', y='count', color='name')
+# Keep only most popular languages
+keep_langs = ['Python','JavaScript','C','C++','C#','Java','Ruby']
+pop_df = lang_df[lang_df['name'].isin(keep_langs)].copy()
+fig = px.line(pop_df,
+  x='time', y='prop', color='name',
+  template='simple_white', title='Programming Language Popularity Since 2012',
+  labels = {
+    'time': 'Year',
+    'prop': 'Proportion of GitHub Issues'
+  }
+)
+fig.update_layout(
+  xaxis = dict(
+    tickmode = 'array',
+    tickvals = [f"{year}_1" for year in range(2012,2022)],
+    ticktext = [f"{year}" for year in range(2012,2022)]
+  )
+)
+fig.show()
+```
+
+## Research Particular Subfields! {.crunch-title}
+
+* For example, if you're interested in pursuing **Economics**, you'll want to learn **Stata**
+* **Physics**? You may want to learn **MATLAB**
+* For **pure mathematics**: Julia / Mathematica
+* **Statistics**, sociology, psychology, political science: **R**
+* **Web development**: JavaScript / TypeScript
+* The holy grail: you're comfortable with Python but can also think in **general, language-agnostic terms** about algorithmic and data-structural efficiency!
+
+## Avoid Analysis Paralysis
+
+* *(Easier said than done, admittedly...)*
+
+![Image source: <a href='https://xkcd.com/1445/' target='_blank'>XKCD</a>](images/efficiency_2x.png){fig-align="center"}
+
+## Tie Yourself to the Mast
+
+* The exhausted 3am version of you will thank **present you** for writing useful **comments**, **exceptions**, and **type hints**!
+
+![<a href="https://commons.wikimedia.org/wiki/File:John_William_Waterhouse_-_Ulysses_and_the_Sirens_(1891).jpg" target='_blank'>John William Waterhouse</a>, Public domain, via Wikimedia Commons](images/ulysses.jpg){fig-align="center"}
+
+* [Demo: Lab 1](https://colab.research.google.com/drive/1XMw3vOYK8NJl9MgMjfhYfK3lXg0KjnkE?usp=drive_link)
+
+# Part 1: Coding in General {data-stack-name="Coding"}
+
+## Types of Languages
+
+* Compiled
+* Interpreted
+
+![](images/this-is-a-compact-disc.gif){fig-align="center"}
+
+## Primitive Types
+
+* Boolean (`True` or `False`)
+* Numbers (Integers, Decimals)
+* `None`
+
+## Stack and Heap {.smaller}
+
+Let's look at what happens, in the computer's memory, when we run the following code:
+
+::: columns
+::: {.column width="50%"}
+
+```{python}
+#| code-fold: show
+#| label: py-memory-example
+import datetime
+import pandas as pd
+country_df = pd.read_csv("assets/country_pop.csv")
+pop_col = country_df['pop']
+num_rows = len(country_df)
+filled = all(~pd.isna(country_df))
+alg_row = country_df.loc[country_df['name'] == "Algeria"]
+num_cols = len(country_df.columns)
+username = "Jeff"
+cur_date = datetime.datetime.now()
+i = 0
+j = None
+z = 314
+country_df
+```
+
+:::
+::: {.column width="50%"}
+
+<!-- https://kroki.io/graphviz/svg/eNqtU01v2zAMPae_wlAvG5AGkuw0bhELKLovDNsO27BLGgSKJH-0rmTIdtMu8n8fraRZ1xrbZTpYFsn3RD2Sssgsr_IgC7ZHASzL9Y0sbPLpqz8Ko4XSjeWNSr7bVh2N6na9Q4iyrRtl32NAjkYlX6syQZ_VrbEPwauLFFzBpZEqeHuvRNsURr9GEPcCTjz8QPCt4eIG-bufrrq547Ze-KAgCdB2O9f8VmEmTAvpPaxk6ryFsMpUK2FKp9vblTWb2qVFWSrpeJn1Z28Hf-3aWtke4kRrVxJe6Ap37X52bjvnUlrM8D0OeYx5Kpy3ELAQvOaxm6eEkRA2ynpV4CcCXzpLRRTGGI5TRuF7ejCq3jhjsRKhPIvjMzjFrLedsS9G9wQEs5BEXYfGdc4r1T_SKmGsROPU6KZPNEGXprWFsmgJknVDatI_1fygeDUg5gsU3lf_-Tre87zhDX9nIYXArK-VaNBg9D542KmhF2pVJXiCMR2MyPFizzCXmL24clwpvSlkkyd4J1HyKNBymI480kGzZJg5kDujjMA3ZLSvckaYr_9Fuea64LBnysI-zyJ2oTNTch817VvK0UnsomhCXRhNpocy_SWHzltGPpUweMzlCn1UaXqFhqr65IVQ4MM7ogMYNFELiml4gmcnlC7_TTLqDnmh3Qyhc9_cwQkLUI7RucQLGPIaRrzQjZ_x5TCE7CAEnWfTRd08lHCp5HWuoEOfMwTH4_t9zj8KtUEDlGn0m4_-D77Tni8PBzwz74mOQIzuF2xJdsA= -->
+
+![](images/stack_heap.svg)
+
+:::
+:::
+
+## Algorithmic Thinking
+
+* What are the **inputs**?
+* What are the **outputs**?
+* **Standard** cases vs. **edge cases**
+* **Adversarial** development: brainstorm all of the ways an evil hacker might break your code!
+
+## Example: Finding An Item Within A List {.title-09}
+
+* Seems straightforward, right? Given a list `l`, and a value `v`, return the index of `l` which contains `v`
+* Corner cases galore...
+* What if `l` contains `v` more than once? What if it doesn't contain `v` at all? What if `l` is `None`? What if `v` is `None`? What if `l` isn't a list at all? What if `v` is itself a list?
+
+## Demo
+
+[Streamlit Dictionary Lookup Demo](https://dict-lookup.streamlit.app/)
+
+# Part 2: Python Specifically {data-stack-name="Python"}
+
+## \#1 Sanity-Preserving Tip!
+
+* (For our purposes) the answer to "what is Python?" is: an **executable file** that **runs `.py` files!**
+  * e.g., we can run `python mycode.py` in Terminal/PowerShell
+
+* Everything else: `pip`, Jupyter, Pandas, etc., is an **add-on** to this basic functionality!
+
+## Code Blocks via Indentation
+
+```{python}
+#| label: indentation-example
+for i in range(5):
+    print(i)
+```
+
+```{python}
+#| label: indentation-2
+#| error: true
+for i in range(5):
+print(i)
+```
+
+## Type Hints {.smaller .crunch-title .crunch-ul}
+
+* **Not** a "standard" Python feature, **not** enforced by the Python interpreter, but can help you **maintain sanity**!
+
+::: columns
+::: {.column width="50%"}
+
+```{python}
+#| label: type-hints
+def multiply(thing1, thing2):
+  return thing1 * thing2
+print(multiply(5, 3))
+print(multiply("fiveee", 3))
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+#| label: type-hints-safe
+from numbers import Number
+def multiply(thing1: Number, thing2: Number) -> Number:
+  return thing1 * thing2
+print(multiply(5, 3))
+print(multiply("fiveee", 3))
+```
+
+:::
+:::
+
+```{python}
+from mypy import api
+result = api.run(['-c',_i])
+print(result[0])
+```
+
+## Unit Testing
+
+* For your life: test-driven development
+  * If you're coding a duck, you should test that it **looks like a duck**, **quacks like a duck**, etc.
+* For this class:
+  * Public tests: Fully visible, see result plus full code
+  * Hidden tests: See result + description of test, but no code
+  * Secret tests: We run these after you submit, as a major portion of the total grade
+
+# Data Structures: Motivation {data-stack-name="Data Structures"}
+
+## Why Does The NYC Subway Have Express Lines? {.smaller .title-11}
+
+![From <a href='https://www.centralpark.com/visitor-info/get-directions/' target='_blank'>NYC Central Park website</a>](images/subway_map_nyc.jpg){fig-align="center"}
+
+## Why Stop At Two Levels? {.smaller}
+
+![From <a href='https://blog.reachsumit.com/posts/2020/07/skip-list/' target='_blank'>Skip List Data Structure Explained</a>, Sumit's Diary blog](images/nyc-7.png){fig-align="center"}
+
+## How TF Does Google Maps Work? {.smaller .crunch-iframe .crunch-title .crunch-ul}
+
+* A (mostly) full-on answer: soon to come! Data structures for spatial data
+* A step in that direction: **Quadtrees**! (**Fractal DC**)
+
+```{=html}
+<iframe src="https://jimkang.com/quadtreevis/" width="100%" height="450"></iframe>
+```
+<a href='https://jimkang.com/quadtreevis/' target='_blank'>Jim Kang's Quadtree Visualizations <i class='bi bi-box-arrow-up-right'></i></a>
+
+# Algorithmic Complexity: Motivation {data-stack-name="Complexity"}
+
+## The Secretly Exciting World of Matrix Multiplication
+
+* Fun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations
+* Fun Fact 2: The way we've all learned how to multiply matrices requires $O(N^3)$ operations, for two $N \times N$ matrices $A$ and $B$
+* Fun Fact 3: $\underbrace{x^2 - y^2}_{\mathclap{\times\text{ twice, }\pm\text{ once}}} = \underbrace{(x+y)(x-y)}_{\times\text{once, }\pm\text{ twice}}$
+* Fun Fact 4: These are not very fun facts at all
+
+## Why Is Jeff Rambling About Matrix Math From 300 Years Ago? {.smaller}
+
+* The way we all learned it in school (for $N = 2$):
+
+$$
+AB = \begin{bmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+b_{11} & b_{12} \\
+b_{21} & b_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\
+a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}
+\end{bmatrix}
+$$
+
+* 12 operations: 8 multiplications, 4 additions $\implies O(N^3) = O(2^3) = O(8)$
+* Are we trapped? Like... what is there to do besides performing these $N^3$ operations, if we want to multiply two $N \times N$ matrices? Why are we about to move onto yet another slide about this?
+
+## Block-Partitioning Matrices {.smaller}
+
+* Now let's consider **big** matrices, whose dimensions are a power of 2 (for ease of illustration): $A$ and $B$ are now $N \times N = 2^n \times 2^n$ matrices
+* We can "decompose" the matrix product $AB$ as:
+
+$$
+AB = \begin{bmatrix}
+A_{11} & A_{12} \\
+A_{21} & A_{22}
+\end{bmatrix}
+\begin{bmatrix}
+B_{11} & B_{12} \\
+B_{21} & B_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+A_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\
+A_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}
+\end{bmatrix}
+$$
+
+* Which gives us a **recurrence relation** representing the total number of computations required for this big-matrix multiplication: $T(N) = \underbrace{8T(N/2)}_{\text{Multiplications}} + \underbrace{\Theta(1)}_{\text{Additions}}$
+* It turns out that (using a method we'll learn in Week 3), given this recurrence relation and our **base case** from the previous slide, this divide-and-conquer approach via block-partitioning doesn't help us: we still get $T(n) = O(n^3)$...
+* So why is Jeff still torturing us with this example?
+
+## Time For Some 🪄🔥MATRIX MAGIC!🔥🪄 {.smaller .crunch-title .crunch-ul .crunch-math .crunch-li .title-12}
+
+::: {#matrix-magic-defn}
+
+* If we define
+
+$$
+\begin{align*}
+m_1 &= (a_{11}+a_{22})(b_{11}+b_{22}) \\
+m_2 &= (a_{21}+a_{22})b_{11} \\
+m_3 &= a_{11}(b_{12}-b_{22}) \\
+m_4 &= a_{22}(b_{21}-b_{11}) \\
+m_5 &= (a_{11}+a_{12})b_{22} \\
+m_6 &= (a_{21}-a_{11})(b_{11}+b_{12}) \\
+m_7 &= (a_{12}-a_{22})(b_{21}+b_{22})
+\end{align*}
+$$
+
+:::
+::: {#matrix-magic-result}
+
+* Then we can combine these **seven** scalar products to obtain our matrix product:
+
+$$
+AB = \begin{bmatrix}
+m_1 + m_4 - m_5 + m_7 & m_3 + m_5 \\
+m_2 + m_4 & m_1 - m_2 + m_3 + m_6
+\end{bmatrix}
+$$
+
+:::
+
+* Total operations: 7 multiplications, 18 additions
+
+## Block-Partitioned Matrix Magic {.smaller}
+
+* Using the previous slide as our **base case** and applying this same method to the block-paritioned big matrices, we get the same result, but where the four entries in $AB$ here are now **matrices** rather than scalars:
+
+$$
+AB = \begin{bmatrix}
+M_1 + M_4 - M_5 + M_7 & M_3 + M_5 \\
+M_2 + M_4 & M_1 - M_2 + M_3 + M_6
+\end{bmatrix}
+$$
+
+* We now have a **different recurrence relation**: $T(N) = \underbrace{7T(N/2)}_{\text{Multiplications}} + \underbrace{\Theta(N^2)}_{\text{Additions}}$
+* And it turns out, somewhat miraculously, that the additional time required for the **increased number of additions** is **significantly less** than the **time savings** we obtain by doing 7 instead of 8 multiplications, since this method now runs in $T(N) = O(N^{\log_2(7)}) \approx O(N^{2.807}) < O(N^3)$ 🤯

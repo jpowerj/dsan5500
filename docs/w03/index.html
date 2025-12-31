@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jeff Jacobs">
+
+<title>Week 3: Data Structures and Computational Complexity – DSAN 5500</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-75706a7b6923ab29e39a12199bf538fb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-06797c3e7c5e8369eafd7ade716d25c9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css"><script src="../sidebar.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../dsan-globals/jjstyles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../w03/index.html">Week 3: {{&lt; var w03.date-md &gt;}}</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">DSAN 5500: Data Structures, Objects, and Algorithms in Python</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><i class="bi bi-house pe-1"></i> Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignments</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../midterm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Midterm</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Project</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../writeups/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra Writeups</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Labs / Demos</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.zoom.us/j/99019126324?pwd=wrcBediyQ3JO2y7IP1UrzlE6pz2FaF.1" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Zoom Link <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=3ada6168-ed11-47c8-8936-b25a00667770" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Recordings <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1: Jan 9</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 2: Jan 16</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w03/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Week 3: Jan 23</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 4: Jan 30</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w05/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5: Feb 6</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w06/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6: Feb 13</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w07/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 7: Feb 20</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w08/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 8: Feb 27</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w09/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 9: Mar 13</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w10/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 10: Mar 20</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w11/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 11: Mar 27</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w12/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 12: Apr 3</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w13/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 13: Apr 10</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../w14/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 14: Apr 24</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://classroom.google.com/c/NzQzMzM5MzA3OTEx?cjc=v4aodxe" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://chat.google.com/room/AAAAhimoYoA?cls=7" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Google Space <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://forms.gle/i9axXQq5wL7S4KWH9" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Anon Feedback <i class="bi bi-box-arrow-up-right ps-1"></i></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+<div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
+<p><em>Updated 2025-04-10, 04:09:40 PM</em></p>
+</div></div></nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#ta-intros" id="toc-ta-intros" class="nav-link" data-scroll-target="#ta-intros">TA Intros!</a>
+  <ul class="collapse">
+  <li><a href="#why-cant-we-learn-data-structures-and-algorithms-separately" id="toc-why-cant-we-learn-data-structures-and-algorithms-separately" class="nav-link" data-scroll-target="#why-cant-we-learn-data-structures-and-algorithms-separately">Why Can’t We Learn <em>Data Structures</em> and <em>Algorithms</em> Separately?</a></li>
+  </ul></li>
+  <li><a href="#basic-data-structures" id="toc-basic-data-structures" class="nav-link" data-scroll-target="#basic-data-structures">Basic Data Structures</a>
+  <ul class="collapse">
+  <li><a href="#recall-primitives" id="toc-recall-primitives" class="nav-link" data-scroll-target="#recall-primitives">Recall: Primitives</a></li>
+  <li><a href="#tuples" id="toc-tuples" class="nav-link" data-scroll-target="#tuples">Tuples</a></li>
+  <li><a href="#sequences" id="toc-sequences" class="nav-link" data-scroll-target="#sequences">Sequences</a></li>
+  <li><a href="#looping-over-sequences" id="toc-looping-over-sequences" class="nav-link" data-scroll-target="#looping-over-sequences">Looping Over Sequences</a></li>
+  <li><a href="#list-comprehensions-apply-operation-to-each-element" id="toc-list-comprehensions-apply-operation-to-each-element" class="nav-link" data-scroll-target="#list-comprehensions-apply-operation-to-each-element"><em>List Comprehensions</em>: Apply [Operation] to Each Element</a></li>
+  <li><a href="#sets" id="toc-sets" class="nav-link" data-scroll-target="#sets">Sets</a></li>
+  <li><a href="#maps-dictionaries" id="toc-maps-dictionaries" class="nav-link" data-scroll-target="#maps-dictionaries">Maps / Dictionaries</a></li>
+  </ul></li>
+  <li><a href="#complexity-with-respect-to-a-structure" id="toc-complexity-with-respect-to-a-structure" class="nav-link" data-scroll-target="#complexity-with-respect-to-a-structure">Complexity With Respect To A <em>Structure</em></a>
+  <ul class="collapse">
+  <li><a href="#looking-under-the-hood-of-a-data-structure" id="toc-looking-under-the-hood-of-a-data-structure" class="nav-link" data-scroll-target="#looking-under-the-hood-of-a-data-structure">Looking Under the Hood of a Data Structure</a></li>
+  <li><a href="#tuples-1" id="toc-tuples-1" class="nav-link" data-scroll-target="#tuples-1">Tuples</a></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists">Lists</a></li>
+  <li><a href="#so-how-many-steps-are-required" id="toc-so-how-many-steps-are-required" class="nav-link" data-scroll-target="#so-how-many-steps-are-required">So, How Many “Steps” Are Required…</a></li>
+  <li><a href="#how-many-steps" id="toc-how-many-steps" class="nav-link" data-scroll-target="#how-many-steps">How Many Steps?</a></li>
+  <li><a href="#pairwise-concatenating-list-elements" id="toc-pairwise-concatenating-list-elements" class="nav-link" data-scroll-target="#pairwise-concatenating-list-elements">Pairwise-Concatenating List Elements</a></li>
+  <li><a href="#last-example-pairwise-concat-end-check" id="toc-last-example-pairwise-concat-end-check" class="nav-link" data-scroll-target="#last-example-pairwise-concat-end-check">Last Example: Pairwise-Concat + End Check</a></li>
+  <li><a href="#generalizing" id="toc-generalizing" class="nav-link" data-scroll-target="#generalizing">Generalizing</a></li>
+  <li><a href="#the-complexity-of-our-examples" id="toc-the-complexity-of-our-examples" class="nav-link" data-scroll-target="#the-complexity-of-our-examples">The Complexity of Our Examples</a></li>
+  </ul></li>
+  <li><a href="#back-to-insertion-sort" id="toc-back-to-insertion-sort" class="nav-link" data-scroll-target="#back-to-insertion-sort">Back to <span class="alg">Insertion-Sort</span></a>
+  <ul class="collapse">
+  <li><a href="#complexity-analysis" id="toc-complexity-analysis" class="nav-link" data-scroll-target="#complexity-analysis">Complexity Analysis</a></li>
+  <li><a href="#simplifying" id="toc-simplifying" class="nav-link" data-scroll-target="#simplifying">Simplifying</a></li>
+  <li><a href="#remember-asymptotic-analysis" id="toc-remember-asymptotic-analysis" class="nav-link" data-scroll-target="#remember-asymptotic-analysis">Remember: Asymptotic Analysis!</a></li>
+  <li><a href="#the-figure-you-should-make-in-your-brain-every-time" id="toc-the-figure-you-should-make-in-your-brain-every-time" class="nav-link" data-scroll-target="#the-figure-you-should-make-in-your-brain-every-time">The Figure You Should Make In Your Brain Every Time</a></li>
+  <li><a href="#constants-on-highest-degree-terms-also-go-away" id="toc-constants-on-highest-degree-terms-also-go-away" class="nav-link" data-scroll-target="#constants-on-highest-degree-terms-also-go-away">Constants On Highest-Degree Terms Also Go Away</a></li>
+  <li><a href="#formalizing-big-o-notation" id="toc-formalizing-big-o-notation" class="nav-link" data-scroll-target="#formalizing-big-o-notation">Formalizing Big-O Notation</a></li>
+  <li><a href="#intuition-rightarrow-proof" id="toc-intuition-rightarrow-proof" class="nav-link" data-scroll-target="#intuition-rightarrow-proof">Intuition <span class="math inline">\(\rightarrow\)</span> Proof</a></li>
+  <li><a href="#bounding-insertion-sort-runtime" id="toc-bounding-insertion-sort-runtime" class="nav-link" data-scroll-target="#bounding-insertion-sort-runtime">Bounding Insertion Sort Runtime</a></li>
+  <li><a href="#doing-better-than-insertion-sort" id="toc-doing-better-than-insertion-sort" class="nav-link" data-scroll-target="#doing-better-than-insertion-sort">Doing Better Than Insertion Sort</a></li>
+  <li><a href="#how-can-merge-sort-work-that-much-better" id="toc-how-can-merge-sort-work-that-much-better" class="nav-link" data-scroll-target="#how-can-merge-sort-work-that-much-better">How Can Merge Sort Work <em>That</em> Much Better!?</a></li>
+  <li><a href="#merge-merging-two-sorted-lists-in-on-time" id="toc-merge-merging-two-sorted-lists-in-on-time" class="nav-link" data-scroll-target="#merge-merging-two-sorted-lists-in-on-time"><span class="alg">Merge</span>: Merging Two Sorted Lists in <span class="math inline">\(O(n)\)</span> Time</a></li>
+  <li><a href="#merge-sort-merge-as-subroutine" id="toc-merge-sort-merge-as-subroutine" class="nav-link" data-scroll-target="#merge-sort-merge-as-subroutine"><span class="alg">Merge Sort</span> (<span class="alg">Merge</span> as Subroutine)</a></li>
+  <li><a href="#complexity-analysis-1" id="toc-complexity-analysis-1" class="nav-link" data-scroll-target="#complexity-analysis-1">Complexity Analysis</a></li>
+  <li><a href="#bounding-the-runtime-of-merge-sort" id="toc-bounding-the-runtime-of-merge-sort" class="nav-link" data-scroll-target="#bounding-the-runtime-of-merge-sort">Bounding the Runtime of Merge Sort</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#appendix-1-intuition-for-lower-bound" id="toc-appendix-1-intuition-for-lower-bound" class="nav-link" data-scroll-target="#appendix-1-intuition-for-lower-bound">Appendix 1: Intuition for Lower Bound</a></li>
+  <li><a href="#appendix-2-being-precise-about-worst-case" id="toc-appendix-2-being-precise-about-worst-case" class="nav-link" data-scroll-target="#appendix-2-being-precise-about-worst-case">Appendix 2: Being Precise About “Worst-Case”</a></li>
+  <li><a href="#appendix-3-the-full-master-theorem" id="toc-appendix-3-the-full-master-theorem" class="nav-link" data-scroll-target="#appendix-3-the-full-master-theorem">Appendix 3: The Full Master Theorem</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5500/blob/main/w03/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 3: Data Structures and Computational Complexity</h1>
+<p class="subtitle lead"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Class Sessions</div>
+  </div>
+  </div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Jeff Jacobs </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a>
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Thursday, January 23, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<center>
+<a class="h2" href="./slides.html" target="_blank">Open slides in new window →</a>
+</center>
+<section id="schedule" class="level1 smaller small-title crunch-title crunch-callout" data-name="Schedule">
+<h1 class="smaller small-title crunch-title crunch-callout" data-name="Schedule">Schedule</h1>
+<p>Today’s Planned Schedule:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 62%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Start</th>
+<th style="text-align: left;">End</th>
+<th style="text-align: left;">Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lecture</strong></td>
+<td style="text-align: left;">6:30pm</td>
+<td style="text-align: left;">6:40pm</td>
+<td style="text-align: left;">TA Intros!</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">6:40pm</td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;"><a href="#basic-data-structures">Python’s Built-In Data Structures →</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">7:00pm</td>
+<td style="text-align: left;">7:30pm</td>
+<td style="text-align: left;"><a href="#formalizing-big-o-notation">Big-O Notation and Complexity Classes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">7:30pm</td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;"><a href="#back-to-insertion-sort.alg">Formal Complexity Analysis: Insertion-Sort →</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Break!</strong></td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;">8:30pm</td>
+<td style="text-align: left;"><a href="#bounding-the-runtime-of-merge-sort">Formal Complexity Analysis: Merge-Sort →</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">8:30pm</td>
+<td style="text-align: left;">9:00pm</td>
+<td style="text-align: left;"><a href="#object-oriented-programming">Object-Oriented Programming →</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ta-intros" class="level1">
+<h1>TA Intros!</h1>
+<ul>
+<li>Renee DeMaio <a href="mailto:jrd154@georgetown.edu"><code>jrd154@georgetown.edu</code></a></li>
+<li>Jiatong Liu <a href="mailto:jl3081@georgetown.edu"><code>jl3081@georgetown.edu</code></a></li>
+</ul>
+<section id="why-cant-we-learn-data-structures-and-algorithms-separately" class="level2">
+<h2 class="anchored" data-anchor-id="why-cant-we-learn-data-structures-and-algorithms-separately">Why Can’t We Learn <em>Data Structures</em> and <em>Algorithms</em> Separately?</h2>
+<ul>
+<li>Data Structure Choice <span class="math inline">\(\Leftrightarrow\)</span> Algorithmic Efficiency for Task</li>
+<li>Question: <em>“Is this algorithm efficient?”</em></li>
+<li>Answer: <em>“…Efficient <strong>for what?</strong>”</em></li>
+<li>Do we need to be able to <strong>insert</strong> quickly?</li>
+<li>Do we need to be able to <strong>sort</strong> quickly?</li>
+<li>Do we need to be able to <strong>search</strong> quickly?</li>
+<li>Are we searching for <strong>individual items</strong> or for <strong>ranges</strong>?</li>
+</ul>
+</section>
+</section>
+<section id="basic-data-structures" class="level1" data-stack-name="Structures">
+<h1 data-stack-name="Structures">Basic Data Structures</h1>
+<section id="recall-primitives" class="level2">
+<h2 class="anchored" data-anchor-id="recall-primitives">Recall: Primitives</h2>
+<ul>
+<li><code>bool</code></li>
+<li><code>int</code></li>
+<li><code>float</code></li>
+<li><code>None</code></li>
+<li>Now we want to put these together, to form… <strong>structures!</strong> 👀</li>
+<li>Structures are the things that live in the <strong>heap</strong>; the <strong>stack</strong> just <strong>points to them</strong></li>
+</ul>
+</section>
+<section id="tuples" class="level2 crunch-title crunch-ul">
+<h2 class="crunch-title crunch-ul anchored" data-anchor-id="tuples">Tuples</h2>
+<ul>
+<li><p><strong>Fixed-size</strong> collection of <span class="math inline">\(N\)</span> objects</p></li>
+<li><p>Unless otherwise specified, we’re talking about <span class="math inline">\(2\)</span>-tuples</p></li>
+<li><p>Example: We can locate something on the Earth by specifying two <code>floats</code>: latitude and longitude!</p>
+<div id="b68e9edc" class="cell" data-execution_count="1">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>gtown_loc <span class="op">=</span> (<span class="fl">38.9076</span>, <span class="op">-</span><span class="fl">77.0723</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>gtown_loc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>(38.9076, -77.0723)</code></pre>
+</div>
+</div></li>
+<li><p>But what if we don’t know in advance how many items we want to store? Ex: how can we store users for a new app?</p></li>
+</ul>
+</section>
+<section id="sequences" class="level2">
+<h2 class="anchored" data-anchor-id="sequences">Sequences</h2>
+<ul>
+<li><strong>In General</strong>: Mapping of integer <strong>indices</strong> to objects</li>
+<li><code>x = ['a','b','c']</code>
+<ul>
+<li><span class="math inline">\(\implies\)</span> <code>x[0] = 'a'</code></li>
+<li><span class="math inline">\(\implies\)</span> <code>x[1] = 'b'</code></li>
+<li><span class="math inline">\(\implies\)</span> <code>x[2] = 'c'</code></li>
+</ul></li>
+<li>In Python: <code>list</code></li>
+<li>Nice built-in language constructs for <strong>looping</strong> over lists, and especially for <strong>performing operations on each element</strong></li>
+</ul>
+</section>
+<section id="looping-over-sequences" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="looping-over-sequences">Looping Over Sequences</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>C/C++/Java:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">List</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> myList <span class="op">=</span> <span class="bu">Arrays</span><span class="op">.</span><span class="fu">asList</span><span class="op">(</span><span class="st">"a"</span><span class="op">,</span> <span class="st">"b"</span><span class="op">,</span> <span class="st">"c"</span><span class="op">);</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> x<span class="op">.</span><span class="fu">size</span><span class="op">();</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>myList<span class="op">.</span><span class="fu">get</span><span class="op">(</span>i<span class="op">));</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre>a
+b
+c
+</pre>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Python:</li>
+</ul>
+<div id="ba85c4ee" class="cell" data-execution_count="2">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> list_element <span class="kw">in</span> my_list:</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(list_element)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>a
+b
+c</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-comprehensions-apply-operation-to-each-element" class="level2 crunch-title title-08">
+<h2 class="crunch-title title-08 anchored" data-anchor-id="list-comprehensions-apply-operation-to-each-element"><em>List Comprehensions</em>: Apply [Operation] to Each Element</h2>
+<ul>
+<li><p>Construct <strong>new</strong> list by applying operation to each element:</p>
+<div id="a7a093c3" class="cell" data-execution_count="3">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>my_nums <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>my_squares <span class="op">=</span> [num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> my_nums]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>my_squares</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>[16, 25, 36, 49]</code></pre>
+</div>
+</div></li>
+<li><p>Can also <strong>filter</strong> the elements of the list with <code>if</code>:</p>
+<div id="7e941695" class="cell" data-execution_count="4">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>my_odd_squares <span class="op">=</span> [num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> my_nums <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>my_odd_squares</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>[25, 49]</code></pre>
+</div>
+</div></li>
+</ul>
+</section>
+<section id="sets" class="level2 smaller crunch-title inline-90">
+<h2 class="smaller crunch-title inline-90 anchored" data-anchor-id="sets">Sets</h2>
+<div class="columns">
+<div class="column" style="overflow-x: clip;">
+<p>Efficient for finding <strong>unique</strong> elements:</p>
+<div id="diet-list" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>prefs_morn <span class="op">=</span> [</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'None'</span>,<span class="st">'None'</span>,<span class="st">'None'</span>,<span class="st">'Vegan'</span>,<span class="st">'Vegan'</span>,<span class="st">'None'</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Gluten Free'</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of responses: </span><span class="sc">{</span><span class="bu">len</span>(prefs_morn)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of responses: 7</code></pre>
+</div>
+</div>
+<div id="diet-set" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>unique_prefs_morn <span class="op">=</span> <span class="bu">set</span>(prefs_morn)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Unique preferences: </span><span class="sc">{</span>unique_prefs_morn<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of unique preferences: </span><span class="sc">{</span><span class="bu">len</span>(unique_prefs_morn)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Unique preferences: {'Vegan', 'None', 'Gluten Free'}
+Number of unique preferences: 3</code></pre>
+</div>
+</div>
+<p><strong>Ordering</strong> / <strong>indexing</strong> of elements is gone!</p>
+<div id="set-no-indexing" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>unique_prefs_morn[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[7], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">unique_prefs_morn</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">2</span><span class="ansi-yellow-bg">]</span>
+
+<span class="ansi-red-fg">TypeError</span>: 'set' object is not subscriptable</pre>
+</div>
+</div>
+</div>
+<p>But, supports set operators from math! →</p>
+</div><div class="column" style="width:50%;">
+<p>Union (<span class="math inline">\(M \cup E\)</span>):</p>
+<div id="prefs-union" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>prefs_eve <span class="op">=</span> [</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'None'</span>,<span class="st">'None'</span>,<span class="st">'Vegan'</span>,<span class="st">'None'</span>,<span class="st">'None'</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>unique_prefs_eve <span class="op">=</span> <span class="bu">set</span>(prefs_eve)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>unique_prefs_either <span class="op">=</span> unique_prefs_morn.union(unique_prefs_eve)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Preferences in either event: </span><span class="sc">{</span>unique_prefs_either<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Preferences in either event: {'Vegan', 'None', 'Gluten Free'}</code></pre>
+</div>
+</div>
+<p>Intersection (<span class="math inline">\(M \cap E\)</span>):</p>
+<div id="prefs-intersection" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>unique_prefs_both <span class="op">=</span> unique_prefs_morn.intersection(unique_prefs_eve)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Preferences in both events: </span><span class="sc">{</span>unique_prefs_both<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Preferences in both events: {'Vegan', 'None'}</code></pre>
+</div>
+</div>
+<p>Set Difference (<span class="math inline">\(M \setminus E\)</span> or <span class="math inline">\(E \setminus M\)</span>):</p>
+<div id="prefs-setdiff" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>unique_prefs_mornonly <span class="op">=</span> unique_prefs_morn <span class="op">-</span> unique_prefs_eve</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Preferences only in the morning: </span><span class="sc">{</span>unique_prefs_mornonly<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>unique_prefs_eveonly <span class="op">=</span> unique_prefs_eve <span class="op">-</span> unique_prefs_morn</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Preferences only in the evening: </span><span class="sc">{</span>unique_prefs_eveonly<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Preferences only in the morning: {'Gluten Free'}
+Preferences only in the evening: set()</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="maps-dictionaries" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="maps-dictionaries">Maps / Dictionaries</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>While other language like Java have lots of fancy types of Map, Python has a single type, the <strong>dictionary</strong>:</p>
+<div id="eaab916f" class="cell" data-execution_count="11">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gtown_data <span class="op">=</span> {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'name'</span>: <span class="st">'Georgetown University'</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'founded'</span>: <span class="dv">1789</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'coordinates'</span>: (<span class="fl">38.9076</span>, <span class="op">-</span><span class="fl">77.0723</span>),</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">'location'</span>: {</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'city'</span>: <span class="st">'Washington'</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'state'</span>: <span class="st">'DC'</span>, <span class="co"># &lt;__&lt;</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'country'</span>: <span class="st">'USA'</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gtown_data.keys())</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gtown_data.values())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>dict_keys(['name', 'founded', 'coordinates', 'location'])
+dict_values(['Georgetown University', 1789, (38.9076, -77.0723), {'city': 'Washington', 'state': 'DC', 'country': 'USA'}])</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Be careful when looping! Default behavior is iteration over <strong>keys</strong>:</p>
+<div id="df5cd187" class="cell" data-execution_count="12">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> gtown_data:</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>name
+founded
+coordinates
+location</code></pre>
+</div>
+</div>
+<p>For <strong>key-value pairs</strong> use <code>.items()</code>:</p>
+<div id="b0857e41" class="cell" data-execution_count="13">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> gtown_data.items():</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>name: Georgetown University
+founded: 1789
+coordinates: (38.9076, -77.0723)
+location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="complexity-with-respect-to-a-structure" class="level1 smaller crunch-title title-12 crunch-li-8" data-stack-name="Complexity">
+<h1 class="smaller crunch-title title-12 crunch-li-8" data-stack-name="Complexity">Complexity With Respect To A <em>Structure</em></h1>
+<ul>
+<li><p>Last week: analyzing complexity of an <strong>algorithm</strong> (no broader context): <span class="alg">Insertion-Sort</span></p></li>
+<li><p>This week: analyzing complexity of a <strong>structure</strong> as a <strong>collection</strong> of variables + algorithms</p></li>
+<li><p>Example: <code>tuple</code></p>
+<ul>
+<li>Variables: Constant <code>N</code>, pre-allocated <code>list</code> with <code>N</code> slots</li>
+<li>Algorithms: Constant-time <span class="alg">Get-Item-At-Index</span> 🤯, but no <span class="alg">Insert-New</span> 😔</li>
+</ul></li>
+<li><p>OOP: <strong>Design pattern</strong> for “organizing” data and algorithms into structures</p>
+<div id="my-tuple-intro" class="cell" data-execution_count="14">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyNTuple():</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, N, item_list):</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(item_list) <span class="op">!=</span> N:</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">"Must have exactly N elements"</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.N <span class="op">=</span> N</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.contents <span class="op">=</span> item_list</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> item_at_index(<span class="va">self</span>, i):</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">self</span>.contents[i]</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>jeffs_location <span class="op">=</span> MyNTuple(<span class="dv">2</span>, [<span class="op">-</span><span class="dv">40</span>, <span class="dv">40</span>])</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(jeffs_location.item_at_index(<span class="dv">0</span>))</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>jeffs_location<span class="sc">}</span><span class="ss"> 🧐"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>-40
+&lt;__main__.MyNTuple object at 0x1062e6390&gt; 🧐</code></pre>
+</div>
+</div></li>
+</ul>
+<section id="looking-under-the-hood-of-a-data-structure" class="level2 crunch-title title-08 inline-90">
+<h2 class="crunch-title title-08 inline-90 anchored" data-anchor-id="looking-under-the-hood-of-a-data-structure">Looking Under the Hood of a Data Structure</h2>
+<ul>
+<li>Last week we saw the <strong>math</strong> for why we can “abstract away from” the details of how a particular language works</li>
+<li>We want to understand these structures <strong>independently</strong> of the specifics of their implementation in Python (for now)</li>
+<li>So, let’s construct our own <strong>simplified versions</strong> of the basic structures, and use these simplified versions to get a sense for their <strong>efficiency</strong>
+<ul>
+<li>(The “true” Python versions may be <strong>hyper-optimized</strong> but, as we’ll see, there are <strong>fundamental constraints</strong> on runtime, assuming <span class="math inline">\(P \neq NP\)</span>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="tuples-1" class="level2">
+<h2 class="anchored" data-anchor-id="tuples-1">Tuples</h2>
+<div id="ce14d237" class="cell" data-execution_count="15">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyTuple:</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, thing1, thing2):</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.thing1 <span class="op">=</span> thing1</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.thing2 <span class="op">=</span> thing2</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>thing1<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>thing2<span class="sc">}</span><span class="ss">)"</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">self</span>.<span class="fu">__repr__</span>()</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> MyTuple(<span class="st">'a'</span>,<span class="st">'b'</span>)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>t2 <span class="op">=</span> MyTuple(<span class="dv">111</span>, <span class="dv">222</span>)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t1)</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>(a, b)
+(111, 222)</code></pre>
+</div>
+</div>
+</section>
+<section id="lists" class="level2 crunch-title smaller">
+<h2 class="crunch-title smaller anchored" data-anchor-id="lists">Lists</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>The list itself just <strong>points</strong> to a root item:</p>
+<div id="de702357" class="cell" data-execution_count="16">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyList:</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.root <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> append(<span class="va">self</span>, new_item):</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="va">self</span>.root <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>      <span class="va">self</span>.root <span class="op">=</span> MyListItem(new_item)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>      <span class="va">self</span>.root.append(new_item)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">self</span>.root.<span class="fu">__repr__</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div><div class="column" style="width:50%;">
+<p>An item has contents, pointer to next item:</p>
+<div id="6034dc06" class="cell" data-execution_count="17">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyListItem:</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, content):</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.content <span class="op">=</span> content</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> append(<span class="va">self</span>, new_item):</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="va">self</span>.<span class="bu">next</span> <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>      <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> MyListItem(new_item)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>      <span class="va">self</span>.<span class="bu">next</span>.append(new_item)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    my_content <span class="op">=</span> <span class="va">self</span>.content</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> my_content <span class="cf">if</span> <span class="va">self</span>.<span class="bu">next</span> <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> <span class="ss">f"</span><span class="sc">{</span>my_content<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">next</span><span class="sc">.</span><span class="fu">__repr__</span>()<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+<div id="2eed685c" class="cell" data-execution_count="18">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> MyList()</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>users.append(<span class="st">'Jeff'</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>users.append(<span class="st">'Alma'</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>users.append(<span class="st">'Bo'</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(users)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Jeff, Alma, Bo</code></pre>
+</div>
+</div>
+</section>
+<section id="so-how-many-steps-are-required" class="level2">
+<h2 class="anchored" data-anchor-id="so-how-many-steps-are-required">So, How Many “Steps” Are Required…</h2>
+<ul>
+<li>To retrieve the <strong>first</strong> element in a <code>MyTuple</code>?</li>
+<li>To retrieve the <strong>last</strong> element in a <code>MyTuple</code>?</li>
+<li>To retrieve the <strong>first</strong> element in a <code>MyList</code>?</li>
+<li>To retrieve the <strong>last</strong> element in a <code>MyList</code>?</li>
+</ul>
+</section>
+<section id="how-many-steps" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="how-many-steps">How Many Steps?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>With a <code>MyTuple</code>:</p>
+<div id="cddf9f64" class="cell" data-execution_count="19">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>t1.thing1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>'a'</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(\implies\)</span> 1 step</p>
+<div id="18419976" class="cell" data-execution_count="20">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>t1.thing2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>'b'</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(\implies\)</span> 1 step</p>
+</div><div class="column" style="width:50%;">
+<p>With a <code>MyList</code>:</p>
+<div id="a67eb273" class="cell" data-execution_count="21">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(users.root.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Jeff</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(\implies\)</span> 1 step</p>
+<div id="14c5d0a9" class="cell" data-execution_count="22">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>current_node <span class="op">=</span> users.root</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> current_node.<span class="bu">next</span> <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  current_node <span class="op">=</span> current_node.<span class="bu">next</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(current_node.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bo</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(\implies\)</span> (3 steps)</p>
+<p>…But why 3? How many steps if the list contained 5 elements? <span class="math inline">\(N\)</span> elements?</p>
+</div>
+</div>
+</section>
+<section id="pairwise-concatenating-list-elements" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="pairwise-concatenating-list-elements">Pairwise-Concatenating List Elements</h2>
+<ul>
+<li><p>Now rather than just printing, let’s pairwise concatenate:</p>
+<div id="26e5d205" class="cell" data-execution_count="23">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>cur_pointer1 <span class="op">=</span> users.root</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> cur_pointer1 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  cur_pointer2 <span class="op">=</span> users.root</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> cur_pointer2 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(cur_pointer1.content <span class="op">+</span> cur_pointer2.content)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    cur_pointer2 <span class="op">=</span> cur_pointer2.<span class="bu">next</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  cur_pointer1 <span class="op">=</span> cur_pointer1.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>JeffJeff
+JeffAlma
+JeffBo
+AlmaJeff
+AlmaAlma
+AlmaBo
+BoJeff
+BoAlma
+BoBo</code></pre>
+</div>
+</div></li>
+<li><p>How many steps did this take? How about for a list with <span class="math inline">\(5\)</span> elements? <span class="math inline">\(N\)</span> elements?</p></li>
+</ul>
+</section>
+<section id="last-example-pairwise-concat-end-check" class="level2 smaller crunch-title title-12 crunch-details">
+<h2 class="smaller crunch-title title-12 crunch-details anchored" data-anchor-id="last-example-pairwise-concat-end-check">Last Example: Pairwise-Concat + End Check</h2>
+<div id="9e7504e0" class="cell" data-execution_count="24">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>printed_items <span class="op">=</span> []</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>cur_pointer1 <span class="op">=</span> users.root</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> cur_pointer1 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  cur_pointer2 <span class="op">=</span> users.root</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> cur_pointer2 <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(cur_pointer1.content <span class="op">+</span> cur_pointer2.content)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    printed_items.append(cur_pointer1.content)</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    printed_items.append(cur_pointer2.content)</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    cur_pointer2 <span class="op">=</span> cur_pointer2.<span class="bu">next</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>  cur_pointer1 <span class="op">=</span> cur_pointer1.<span class="bu">next</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>check_pointer <span class="op">=</span> users.root</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> check_pointer <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> check_pointer.content <span class="kw">in</span> printed_items:</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Phew. </span><span class="sc">{</span>check_pointer<span class="sc">.</span>content<span class="sc">}</span><span class="ss"> printed at least once."</span>)</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Oh no! </span><span class="sc">{</span>check_pointer<span class="sc">.</span>content<span class="sc">}</span><span class="ss"> was never printed!!!"</span>)</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>  check_pointer <span class="op">=</span> check_pointer.<span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>JeffJeff
+JeffAlma
+JeffBo
+AlmaJeff
+AlmaAlma
+AlmaBo
+BoJeff
+BoAlma
+BoBo
+Phew. Jeff printed at least once.
+Phew. Alma printed at least once.
+Phew. Bo printed at least once.</code></pre>
+</div>
+</div>
+</section>
+<section id="generalizing" class="level2">
+<h2 class="anchored" data-anchor-id="generalizing">Generalizing</h2>
+<ul>
+<li>Algorithms are <strong>“efficient”</strong> relative to how their runtime <strong>scales</strong> as the <strong>objects</strong> grow larger and larger!</li>
+<li>Tuple operations take 1 step no matter what</li>
+<li>For lists, retrieving the <strong>first</strong> element takes 1 step no matter what, but retrieving the <strong>last</strong> element takes <span class="math inline">\(n\)</span> steps!</li>
+<li>Pairwise concatenation requires <span class="math inline">\(n^2\)</span> steps!</li>
+</ul>
+</section>
+<section id="the-complexity-of-our-examples" class="level2">
+<h2 class="anchored" data-anchor-id="the-complexity-of-our-examples">The Complexity of Our Examples</h2>
+<ul>
+<li>Tuple operations: <span class="math inline">\(O(1)\)</span></li>
+<li>Retrieving the first element of a list: <span class="math inline">\(O(1)\)</span></li>
+<li>Retrieving the last element of a list: <span class="math inline">\(O(n)\)</span></li>
+<li>Pairwise concatenation: <span class="math inline">\(O(n^2)\)</span></li>
+<li>Pairwise concatenation+check: <span class="math inline">\(O(n^2 + n) = O(n^2) \leftarrow !!\)</span></li>
+<li>Crucial to think <strong>asymptotically</strong> to wrap our heads around this!</li>
+</ul>
+</section>
+</section>
+<section id="back-to-insertion-sort" class="level1 smaller" data-stack-name="Sorting">
+<h1 class="smaller" data-stack-name="Sorting">Back to <span class="alg">Insertion-Sort</span></h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/insertion.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<section id="complexity-analysis" class="level2 smaller crunch-title crunch-ul crunch-p crunch-math code-90">
+<h2 class="smaller crunch-title crunch-ul crunch-p crunch-math code-90 anchored" data-anchor-id="complexity-analysis">Complexity Analysis</h2>
+<ul>
+<li>Let <span class="math inline">\(t_i\)</span> be the number of times the while loop runs, <span class="math inline">\(\widetilde{n} = n - 1\)</span>:</li>
+</ul>
+<table class="caption-top table" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Code</th>
+<th data-quarto-table-cell-role="th">Cost</th>
+<th data-quarto-table-cell-role="th">Times Run</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td><span class="bold-code"><code>for</code></span><code> i = 1 </code><span class="bold-code"><code>to</code></span><code> n-1:</code></td>
+<td><span class="math inline">\(c_1\)</span></td>
+<td><span class="math inline">\(\widetilde{n}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td><code>&nbsp;&nbsp;key = A[i]</code></td>
+<td><span class="math inline">\(c_2\)</span></td>
+<td><span class="math inline">\(\widetilde{n}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td><code style="color: #699754 !important;">&nbsp;&nbsp;# Insert A[i] into sorted subarray A[0:i-1]</code></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(\widetilde{n}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td><code>&nbsp;&nbsp;j = i - 1</code></td>
+<td><span class="math inline">\(c_4\)</span></td>
+<td><span class="math inline">\(\widetilde{n}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td><code>&nbsp;&nbsp;</code><span class="bold-code"><code>while</code></span><code> j &gt;= 0 </code><span class="bold-code"><code>and</code></span><code> A[j] &gt; key:</code></td>
+<td><span class="math inline">\(c_5\)</span></td>
+<td><span class="math inline">\(\sum_{i=2}^n t_i\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td><code>&nbsp;&nbsp;&nbsp;&nbsp;A[j + 1] = A[j]</code></td>
+<td><span class="math inline">\(c_6\)</span></td>
+<td><span class="math inline">\(\sum_{i=2}^n(t_i - 1)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td><code>&nbsp;&nbsp;&nbsp;&nbsp;j = j - 1</code></td>
+<td><span class="math inline">\(c_7\)</span></td>
+<td><span class="math inline">\(\sum_{i=2}^n(t_i - 1)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td><code>&nbsp;&nbsp;A[j + 1] = key</code></td>
+<td><span class="math inline">\(c_8\)</span></td>
+<td><span class="math inline">\(\widetilde{n}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+T(n) = c_1\widetilde{n} + c_2\widetilde{n} + c_4\widetilde{n} + c_5\sum_{i=2}^nt_i + c_6\sum_{i=2}^n(t_i - 1) + c_7\sum_{i=2}^n(t_i-1) + c_8\widetilde{n}
+\]</span></p>
+</section>
+<section id="simplifying" class="level2 smaller crunch-title crunch-ul crunch-math math-95">
+<h2 class="smaller crunch-title crunch-ul crunch-math math-95 anchored" data-anchor-id="simplifying">Simplifying</h2>
+<ul>
+<li>The original, scary-looking equation:</li>
+</ul>
+<p><span class="math display">\[
+T(n) = c_1n + c_2\widetilde{n} + c_4\widetilde{n} + c_5{\color{orange}\boxed{\color{black}\sum_{i=2}^nt_i}} + c_6{\color{lightblue}\boxed{\color{black}\sum_{i=2}^n(t_i - 1)}} + c_7{\color{lightblue}\boxed{\color{black}\sum_{i=2}^n(t_i-1)}} + c_8\widetilde{n}
+\]</span></p>
+<ul>
+<li>But <span class="math inline">\(\sum_{i=1}^ni = \frac{n(n+1)}{2}\)</span>, so:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+{\color{orange}\boxed{\color{black}\sum_{i=2}^ni}} &amp;= \sum_{i=1}^ni - \sum_{i=1}^1i = \frac{n(n+1)}{2} - 1 \\
+{\color{lightblue}\boxed{\color{black}\sum_{i=2}^n(i-1)}} &amp;= \sum_{i=1}^{n-1}i = \frac{(n-1)(n-1+1)}{2} = \frac{n(n-1)}{2}
+\end{align*}
+\]</span></p>
+<ul>
+<li>And the scary-looking equation simplifies to</li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+T(n) = &amp;{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac{c_7}{2}\right)}{\color{green}n^2} + {\color{gray}\left(c_1 + c_2 + c_4 + \frac{c_5}{2} - \frac{c_6}{2} - \frac{c_7}{2} + c_8\right)}{\color{green}n^1} \\
+\phantom{T(n) = }&amp; - {\color{gray}(c_2 + c_4 + c_5 + c_8)}{\color{green}n^0}
+\end{align*}
+\]</span></p>
+</section>
+<section id="remember-asymptotic-analysis" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="remember-asymptotic-analysis">Remember: Asymptotic Analysis!</h2>
+<ul>
+<li>It still looks pretty messy, but remember: we care about efficiency <strong>as a function of <span class="math inline">\(n\)</span>!</strong></li>
+</ul>
+<p><span class="math display">\[
+\begin{align*}
+T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac{c_7}{2}\right)}}_{\text{Constant}}\underbrace{\phantom{(}{\color{green}n^2}\phantom{)}}_{\text{Quadratic}} \\
+\phantom{T(n) = }&amp;+ \underbrace{{\color{gray}\left(c_1 + c_2 + c_4 + \frac{c_5}{2} - \frac{c_6}{2} - \frac{c_7}{2} + c_8\right)}}_{\text{Constant}}\underbrace{\phantom{(}{\color{green}n^1}\phantom{)}}_{\text{Linear}} \\
+\phantom{T(n) = }&amp; - \underbrace{{\color{gray}(c_2 + c_4 + c_5 + c_8)}}_{\text{Constant}}\underbrace{{\color{green}n^0}}_{\text{Constant}}
+\end{align*}
+\]</span></p>
+<ul>
+<li>So, there’s a sense in which <span class="math inline">\(T(n) \approx n^2\)</span>, for “sufficiently large” values of <span class="math inline">\(n\)</span>…</li>
+<li>Let’s work our way towards formalizing the <span class="math inline">\(\approx\)</span>!</li>
+</ul>
+</section>
+<section id="the-figure-you-should-make-in-your-brain-every-time" class="level2 smaller crunch-title title-10 crunch-quarto-figure">
+<h2 class="smaller crunch-title title-10 crunch-quarto-figure anchored" data-anchor-id="the-figure-you-should-make-in-your-brain-every-time">The Figure You Should Make In Your Brain Every Time</h2>
+<div id="11c3d350" class="cell" data-execution_count="25">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="fl">2.75</span>, <span class="fl">0.25</span>)]</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>runtime_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>runtime_df[<span class="st">'$n^2 + 50n$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">50</span><span class="op">*</span>x)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>runtime_df[<span class="st">'$n^2 + 10000$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">10000</span>)</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>runtime_df[<span class="st">'$O(n)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].copy()</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>runtime_df[<span class="st">'$O(nlogn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">*</span> np.log(x))</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>runtime_df[<span class="st">'$O(n^2)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>))</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>runtime_df[<span class="st">'$O(n^2logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.log(x))</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>runtime_df[<span class="st">'$O(n^3)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>))</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>runtime_df[<span class="st">'$O(n^3logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>) <span class="op">*</span> np.log(x))</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>max_vals <span class="op">=</span> runtime_df.<span class="bu">max</span>().to_dict()</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> runtime_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="co">#print(plot_df)</span></span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (col <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> runtime_df.columns}</span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>sns.lineplot(plot_df, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.xscale('log')</span></span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">'log'</span>)</span>
+<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the existing handles and labels</span></span>
+<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a>h, l <span class="op">=</span> ax.get_legend_handles_labels()</span>
+<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
+<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a>ax.legend(h[<span class="dv">0</span>:<span class="dv">2</span>], l[<span class="dv">0</span>:<span class="dv">2</span>])</span>
+<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
+<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>):</span>
+<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span></span>
+<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
+<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'\log(n)'</span>)</span>
+<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a>  ax.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">2</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb47-34"><a href="#cb47-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Hide the right and top spines</span></span>
+<span id="cb47-35"><a href="#cb47-35" aria-hidden="true" tabindex="-1"></a>ax.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb47-36"><a href="#cb47-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-26-output-1.png" class="quarto-figure quarto-figure-center figure-img" width="932" height="429"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Takeaway: As <span class="math inline">\(n \rightarrow \infty\)</span>, <strong>highest-degree terms dominate!</strong></li>
+</ul>
+</section>
+<section id="constants-on-highest-degree-terms-also-go-away" class="level2 smaller crunch-title title-10">
+<h2 class="smaller crunch-title title-10 anchored" data-anchor-id="constants-on-highest-degree-terms-also-go-away">Constants On Highest-Degree Terms Also Go Away</h2>
+<ul>
+<li>(Though this is harder to see, without a log-log plot:)</li>
+</ul>
+<div id="cfcc18a4" class="cell" data-execution_count="26">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>rt_const_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>rt_const_df[<span class="st">'$20n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">20</span><span class="op">*</span>np.power(x,<span class="dv">2</span>))</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>rt_const_df[<span class="st">'$n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>))</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>rt_const_df[<span class="st">'$n^2logn$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.power(np.log(x),<span class="dv">2</span>))</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>rt_const_df[<span class="st">'$n^3$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">3</span>))</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>max_vals <span class="op">=</span> rt_const_df.<span class="bu">max</span>().to_dict()</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>plot_df_const <span class="op">=</span> rt_const_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$20n^2$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> rt_const_df.columns}</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>fig_const, ax_const <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>sns.lineplot(plot_df_const, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">'log'</span>)</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">'log'</span>)</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the existing handles and labels</span></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>h_const, l_const <span class="op">=</span> ax_const.get_legend_handles_labels()</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>ax_const.legend(h_const[<span class="dv">0</span>:<span class="dv">1</span>], l_const[<span class="dv">0</span>:<span class="dv">1</span>])</span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$20n^2$'</span>):</span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span></span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'\log(n)'</span>)</span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>  ax_const.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">10</span><span class="op">**</span><span class="dv">4</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Hide the right and top spines</span></span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>ax_const.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-27-output-1.png" width="914" height="431" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="formalizing-big-o-notation" class="level2 crunch-title">
+<h2 class="crunch-title anchored" data-anchor-id="formalizing-big-o-notation">Formalizing Big-O Notation</h2>
+<ul>
+<li><p>Let <span class="math inline">\(f, g: \mathbb{N} \rightarrow \mathbb{N}\)</span>. Then we write <span class="math inline">\(f(n) = \overline{O}(g(n))\)</span> when there exists a <strong>threshold</strong> <span class="math inline">\(n_0 &gt; 0\)</span> and <strong>constant</strong> <span class="math inline">\(K &gt; 0\)</span> s.t. <span class="math display">\[
+\forall n \geq n_0 \left[ f(n) \leq K\cdot g(n) \right]
+\]</span></p></li>
+<li><p>In words:</p>
+<ul>
+<li>“Eventually”, beyond a certain point <span class="math inline">\(n_0\)</span>,</li>
+<li><span class="math inline">\(f(n)\)</span> is <strong>bounded above</strong> by <span class="math inline">\(K\cdot g(n)\)</span>.</li>
+</ul></li>
+<li><p><em>Definition from <span class="citation" data-cites="savage_models_1998">Savage (<a href="#ref-savage_models_1998" role="doc-biblioref">1998</a>, pg. 13)</span></em></p></li>
+</ul>
+</section>
+<section id="intuition-rightarrow-proof" class="level2 crunch-title crunch-ul">
+<h2 class="crunch-title crunch-ul anchored" data-anchor-id="intuition-rightarrow-proof">Intuition <span class="math inline">\(\rightarrow\)</span> Proof</h2>
+<ul>
+<li>Using this definition, we can now <strong>prove</strong> <span class="math inline">\(f(n) = n^2 + 50n = \overline{O}(n^2)\)</span>!</li>
+<li>Here <span class="math inline">\(f(n) = n^2 + 50n\)</span>, <span class="math inline">\(g(n) = n^2\)</span></li>
+<li><strong>Theorem</strong>: <span class="math inline">\(\exists \; n_0 \; \text{ s.t. } \forall n \geq n_0 \left[ n^2 + 50n \leq Kn^2 \right]\)</span></li>
+<li><strong>Proof</strong>: Let <span class="math inline">\(K = 50\)</span>. Then <span class="math display">\[
+\begin{align*}
+&amp;n^2 + 50n \leq 50n^2 \iff n + 50 \leq 50n \\
+&amp;\iff 49n \geq 50 \iff n \geq \frac{50}{49}.
+\end{align*}
+\]</span></li>
+<li>So if we choose <span class="math inline">\(n_0 = 2\)</span>, the chain of statements holds. <span class="math inline">\(\blacksquare\)</span></li>
+</ul>
+</section>
+<section id="bounding-insertion-sort-runtime" class="level2 crunch-title crunch-ul crunch-li-8 inline-90">
+<h2 class="crunch-title crunch-ul crunch-li-8 inline-90 anchored" data-anchor-id="bounding-insertion-sort-runtime">Bounding Insertion Sort Runtime</h2>
+<ul>
+<li>Runs in <span class="math inline">\(T(n) = \overline{O}(n^2)\)</span> (use constants from prev slide)</li>
+<li>Can similarly define <strong>lower bound</strong> <span class="math inline">\(T(n) = \Omega(f(n))\)</span>
+<ul>
+<li><span class="math inline">\(\overline{O}\)</span> = “Big-Oh”, <span class="math inline">\(\Omega\)</span> = “Big-Omega”</li>
+</ul></li>
+<li>Final definition (+<strong>theorem</strong> you can prove!): <span class="math inline">\(\Theta\)</span> = “Big-Theta”
+<ul>
+<li>If <span class="math inline">\(T(n) = \overline{O}(g(n))\)</span> and <span class="math inline">\(T(n) = \Omega(g(n))\)</span></li>
+<li>Then <span class="math inline">\(T(n) = \Theta(n)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\Rightarrow\)</span> <strong>most “informative” way</strong> to characterize <span class="alg">Insertion-Sort</span> is <span class="math inline">\(\boxed{T(n) = \Theta(n^2)}\)</span>
+<ul>
+<li>Tells us: it won’t do worse, but won’t do better, than <span class="math inline">\(n^2\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="doing-better-than-insertion-sort" class="level2">
+<h2 class="anchored" data-anchor-id="doing-better-than-insertion-sort">Doing Better Than Insertion Sort</h2>
+<ul>
+<li><em>Intuition Break</em> 🥳: <strong>Finding a word in a dictionary!</strong> <a href="https://dsan.io/dict-lookup" target="_blank" class="font-monospace">dsan.io/dict-lookup<i class="bi bi-box-arrow-up-right ps-2"></i></a></li>
+<li><span class="alg">Insertion-Sort</span> <span class="math inline">\(\in\)</span> Linear Algorithms
+<ul>
+<li>(Linear Algorithms <span class="math inline">\(\subset\)</span> Linear Things)</li>
+</ul></li>
+<li><span class="alg">Merge-Sort</span> <span class="math inline">\(\in\)</span> Logarithmic Algorithms
+<ul>
+<li>(Logarithmic Algorithms <span class="math inline">\(\subset\)</span> Logarithmic Things)</li>
+</ul></li>
+</ul>
+</section>
+<section id="how-can-merge-sort-work-that-much-better" class="level2 crunch-title title-08 crunch-ul crunch-quarto-layout-panel crunch-quarto-figure">
+<h2 class="crunch-title title-08 crunch-ul crunch-quarto-layout-panel crunch-quarto-figure anchored" data-anchor-id="how-can-merge-sort-work-that-much-better">How Can Merge Sort Work <em>That</em> Much Better!?</h2>
+<ul>
+<li>With the <strong>linear</strong> approach, each time we check a word and it’s not our word we eliminate… one measly word 😞</li>
+<li>But with the <strong>divide-and-conquer</strong> approach… we eliminate 🔥<strong>HALF OF THE REMAINING WORDS</strong>🔥</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[1,1]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lakers.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tuck_em_in.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="270"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="merge-merging-two-sorted-lists-in-on-time" class="level2 smaller title-10 crunch-figcaption crunch-quarto-figure">
+<h2 class="smaller title-10 crunch-figcaption crunch-quarto-figure anchored" data-anchor-id="merge-merging-two-sorted-lists-in-on-time"><span class="alg">Merge</span>: Merging Two Sorted Lists in <span class="math inline">\(O(n)\)</span> Time</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/merge.svg" class="img-fluid figure-img"></p>
+<figcaption>From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#ref-cormen_introduction_2001" role="doc-biblioref">2001</a>)</span>, pg. 37</figcaption>
+</figure>
+</div>
+</section>
+<section id="merge-sort-merge-as-subroutine" class="level2">
+<h2 class="anchored" data-anchor-id="merge-sort-merge-as-subroutine"><span class="alg">Merge Sort</span> (<span class="alg">Merge</span> as Subroutine)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/merge_tree.svg" class="img-fluid figure-img"></p>
+<figcaption>From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#ref-cormen_introduction_2001" role="doc-biblioref">2001</a>)</span>, pg. 40</figcaption>
+</figure>
+</div>
+</section>
+<section id="complexity-analysis-1" class="level2 crunch-title inline-90 crunch-li-8">
+<h2 class="crunch-title inline-90 crunch-li-8 anchored" data-anchor-id="complexity-analysis-1">Complexity Analysis</h2>
+<ul>
+<li>Hard way: re-do the line-by-line analysis we did for <span class="alg">Insertion-Sort</span> 😣 Easy way: stand on shoulders of giants!</li>
+<li>Using a famous+fun theorem (the <strong>Master Theorem</strong>): Given a recurrence <span class="math inline">\(T(n) = aT(n/b) + f(n)\)</span>, compute its:
+<ul>
+<li><strong>Watershed function</strong> <span class="math inline">\(W(n) = n^{\log_b(a)}\)</span> and</li>
+<li><strong>Driving function</strong> <span class="math inline">\(D(n) = f(n)\)</span></li>
+</ul></li>
+<li>The Master Theorem gives <strong>closed-form</strong> asymptotic solution for <span class="math inline">\(T(n)\)</span>, split into three cases:</li>
+<li><strong>(1)</strong> <span class="math inline">\(W(n)\)</span> grows <strong>faster</strong> than <span class="math inline">\(D(n)\)</span>, <strong>(2)</strong> grows at <strong>same rate</strong> as <span class="math inline">\(D(n)\)</span>, or <strong>(3)</strong> grows <strong>slower</strong> than <span class="math inline">\(D(n)\)</span></li>
+</ul>
+</section>
+<section id="bounding-the-runtime-of-merge-sort" class="level2 crunch-title crunch-ul crunch-callout crunch-footnotes">
+<h2 class="crunch-title crunch-ul crunch-callout crunch-footnotes anchored" data-anchor-id="bounding-the-runtime-of-merge-sort">Bounding the Runtime of Merge Sort</h2>
+<ul>
+<li><p>How about <span class="alg">Merge-Sort</span>? <span class="math inline">\(T(n) = 2T(n/2) + \Theta(n)\)</span></p>
+<ul>
+<li><span class="math inline">\(a = b = 2\)</span>, <span class="math inline">\(W(n) = n^{\log_2(2)} = n\)</span>, <span class="math inline">\(D(n) = \Theta(n)\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(W(n)\)</span> and <span class="math inline">\(D(n)\)</span> grow at <strong>same rate</strong> <span class="math inline">\(\implies\)</span> <em>Case 2</em>:</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Applying the Master Theorem When $W(n) = \Theta(D(n))$ (Case 2)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Applying the Master Theorem When <span class="math inline">\(W(n) = \Theta(D(n))\)</span> (Case 2)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Is there a <span class="math inline">\(k \geq 0\)</span> satisfying <span class="math inline">\(D(n) = \Theta(n^{\log_b(a)}\log_2^k(n))\)</span>?</li>
+<li>If so, your solution is <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))\)</span></li>
+</ol>
+</div>
+</div></li>
+<li><p><span class="alg">Merge-Sort</span>: <span class="math inline">\(k = 0\)</span> works! <span class="math inline">\(\Theta(n^{\log_2(2)}\log_2^0(n)) = \Theta(n)\)</span></p></li>
+<li><p>Thus <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n)) = \boxed{\Theta(n\log_2n)}\)</span> 😎</p></li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cormen_introduction_2001" class="csl-entry" role="listitem">
+Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. <em>Introduction <span>To Algorithms</span></em>. MIT Press.
+</div>
+<div id="ref-savage_models_1998" class="csl-entry" role="listitem">
+Savage, John E. 1998. <em>Models of <span>Computation</span>: <span>Exploring</span> the <span>Power</span> of <span>Computing</span></em>. Addison-Wesley.
+</div>
+</div>
+</section>
+<section id="appendix-1-intuition-for-lower-bound" class="level2 smaller crunch-title">
+<h2 class="smaller crunch-title anchored" data-anchor-id="appendix-1-intuition-for-lower-bound">Appendix 1: Intuition for Lower Bound</h2>
+<ul>
+<li>Spoiler: Insertion sort <strong>also</strong> runs in <span class="math inline">\(T(n) = \Omega(n^2)\)</span> time. How could we prove this?</li>
+<li>Given <strong>any value <span class="math inline">\(n &gt; n_0\)</span></strong>, we need to <strong>construct an input</strong> for which Insertion-Sort requires <span class="math inline">\(cn^2\)</span> steps: consider a list where <span class="math inline">\(n/3\)</span> <strong>greatest values</strong> are in <strong>first <span class="math inline">\(n/3\)</span> slots</strong>:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/insertion_lower_bound_alt.svg" class="img-fluid figure-img" width="600"></p>
+<figcaption>All <span class="math inline">\(n/3\)</span> values in <span class="math inline">\(\textrm{L}\)</span> pass, one-by-one, through the <span class="math inline">\(n/3\)</span> slots in <span class="math inline">\(\textrm{M}\)</span> (since they must end up in <span class="math inline">\(\textrm{R}\)</span>) <span class="math inline">\(\implies (n/3)(n/3) = n^2/9 = \Omega(n^2)\)</span> steps!</figcaption>
+</figure>
+</div>
+<ul>
+<li>Final definition (a <strong>theorem</strong> you could prove if you want!): <span class="math inline">\(\Theta\)</span> = “Big-Theta”
+<ul>
+<li>If <span class="math inline">\(T(n) = \overline{O}(g(n))\)</span> and <span class="math inline">\(T(n) = \Omega(g(n))\)</span>, then <span class="math inline">\(T(n) = \Theta(n)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\implies\)</span> <strong>most “informative” way</strong> to characterize insertion sort is <span class="math inline">\(\boxed{T(n) = \Theta(n^2)}\)</span></li>
+</ul>
+</section>
+<section id="appendix-2-being-precise-about-worst-case" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-2-being-precise-about-worst-case">Appendix 2: Being Precise About “Worst-Case”</h2>
+<p>Need to be careful with <span class="math inline">\(O(f(n))\)</span> vs.&nbsp;<span class="math inline">\(\Omega(f(n))\)</span> however: difference between “for all inputs” vs.&nbsp;“for some inputs”:</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Bounding Worst-Case Runtime">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bounding Worst-Case Runtime
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By saying that the worst-case running time of an algorithm is <span class="math inline">\(\Omega(n^2)\)</span>, we mean that for every input size <span class="math inline">\(n\)</span> above a certain threshold, there is <strong>at least one input</strong> of size <span class="math inline">\(n\)</span> for which the algorithm takes at least <span class="math inline">\(cn^2\)</span> time, for some positive constant <span class="math inline">\(n\)</span>. It does <strong>not</strong> necessarily mean that the algorithm takes at least <span class="math inline">\(cn^2\)</span> time for <strong>all</strong> inputs.</p>
+</div>
+</div>
+</section>
+<section id="appendix-3-the-full-master-theorem" class="level2 smaller crunch-title crunch-ol">
+<h2 class="smaller crunch-title crunch-ol anchored" data-anchor-id="appendix-3-the-full-master-theorem">Appendix 3: The Full Master Theorem</h2>
+<p><strong>Master Theorem</strong>: Let <span class="math inline">\(a &gt; 0\)</span> and <span class="math inline">\(b &gt; 1\)</span> be constants, and let <span class="math inline">\(f(n)\)</span> be a driving function defined and nonnegative on all sufficiently large reals. Define <span class="math inline">\(T(n)\)</span> on <span class="math inline">\(n \in \mathbb{N}\)</span> by</p>
+<p><span class="math display">\[
+T(n) = aT(n/b) + f(n)
+\]</span></p>
+<p>where <span class="math inline">\(aT(n/b) = a'T(\lfloor n/b \rfloor) + a''T(\lceil n/b \rceil)\)</span> for some <span class="math inline">\(a' \geq 0\)</span> and <span class="math inline">\(a'' \geq 0\)</span> satisfying <span class="math inline">\(a = a' + a''\)</span>. Then the asymptotic behavior of <span class="math inline">\(T(n)\)</span> can be characterized as follows:</p>
+<ol type="1">
+<li>If there exists <span class="math inline">\(\epsilon &gt; 0\)</span> such that <span class="math inline">\(f(n) = O(n^{\log_b(a) - \epsilon})\)</span>, then <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)})\)</span></li>
+<li>If there exists <span class="math inline">\(k \geq 0\)</span> such that <span class="math inline">\(f(n) = \Theta(n^{\log_b(a)}\log_2^k(n))\)</span>, then <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))\)</span>.</li>
+<li>If there exists <span class="math inline">\(\epsilon &gt; 0\)</span> such that <span class="math inline">\(f(n) = \Omega(n^{\log_b(a) + \epsilon})\)</span>, and if <span class="math inline">\(f(n)\)</span> satisfies the <strong>regularity condition</strong> <span class="math inline">\(af(n/b) \leq cf(n)\)</span> for some constant <span class="math inline">\(c &lt; 1\)</span> and all sufficiently large <span class="math inline">\(n\)</span>, then <span class="math inline">\(T(n) = \Theta(f(n))\)</span>.</li>
+</ol>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>See <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#ref-cormen_introduction_2001" role="doc-biblioref">2001</a>)</span>, pg. 107-114.</p>
+</div>
+<p><em>(<a href="#bounding-the-runtime-of-merge-sort">← Back to Merge Sort slides</a>)</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jpowerj/dsan5500/blob/main/w03/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>

@@ -1,0 +1,33 @@
+```{dot}
+//| label: bookstore-diagram
+//| echo: false
+digraph G {
+	graph [
+		label="Polymorphism Example"
+		labelloc="t"
+	]
+	node [
+		shape=record,
+        fontname="Courier",
+	]
+    rankdir=LR
+
+    Vehicle[nojustify=false,label = "Vehicle|Name\l|<loc>Location\l|<bl>Booklist\l|Get_Inventory()\l|<sort>Sort_Inventory()\l"];
+
+    Motorcycle[label="<motorhead>Motorcycle|City\l|State\l|Country\l|Print_Map()\l"];
+
+    Car[label="<bookhead>Car|<title>Title\l|<auths>Authors\l|Num Pages\l|Preview()"];
+
+    Truck[label="<personhead>Truck|Family Name|Given Name"];
+
+    Motorcycle -> Car -> Truck[style="invis"];
+
+    Vehicle -> Motorcycle[label="Inherits",style="dashed",constraint=false];
+
+    Vehicle -> Car[style="dashed",constraint=false];
+
+    Vehicle -> Truck:placehead[label="Inherits",style="dashed",constraint=false];
+
+    {rank=same; Vehicle -> Car[label="Has One"];}
+}
+```

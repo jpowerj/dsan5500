@@ -1,0 +1,269 @@
+---
+title: "Final Project Details"
+subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
+author: "DSAN 5500 Course Staff"
+date: 2025-10-10
+format:
+  html:
+    df-print: kable
+    html-math-method: mathjax
+---
+
+## Overview
+
+The idea for your final project is as follows:
+
+In pretty much **any** course on algorithms and data structures, whether in a Data Science, Computer Science, or Applied Math context, there's only so much that can be covered in a given unit. This means that, for all of the topics we've covered thus far, there's a **next step** that could be taken in learning about the topic. In general this could mean one of the following **four options**, where I've provided a concrete example specific to the class under each heading:
+
+```{=html}
+<div class="card mb-3">
+  <div class="card-header">
+    Option 1: <i>A Deeper Dive</i>
+  </div>
+  <div class="card-body">
+    <h5 class='card-title'>Diving 'one level deeper' into the details of an algorithm/data structure</h5>
+    <p class="card-text">
+    <ul>
+          <li><b>Example 1.1</b>: Efficient implementations of <b>deletion</b> in linked lists, rather than just the <b>insertion</b> and <b>retrieval</b> operations on linked lists that we looked at.</li>
+          <li><b>Example 1.2</b>: Expanding the Binary Search Tree into a <a href='https://en.wikipedia.org/wiki/Quadtree' target='_blank'>Quadtree</a></li>
+          <li><b>Example 1.3</b>: Creating an interactive visualization (using <a href='https://streamlit.io/' target='_blank'>Streamlit</a>, for example) of a data structure or algorithm.</li>
+    </ul>
+    </p>
+  </div>
+</div>
+```
+
+```{=html}
+<div class="card mb-3">
+  <div class="card-header">
+    Option 2: <i>Fixing an Issue</i>
+  </div>
+  <div class="card-body">
+    <h5 class='card-title'>Figuring out how to address some existing <i>drawback</i> of the algorithm/data structure</h5>
+    <p class="card-text">
+    <ul>
+      <li><b>Example 2.1</b>: Binary Search Trees <b>lose their logarithmic efficiency</b> if items are added to them <b>in order</b> (since newly-added items are always added to the <i>right subtree</i> of all existing items, thus "degenerating" into a linear linked list structure), an issue which fancier versions of the BST like <a href='https://en.wikipedia.org/wiki/AVL_tree' target='_blank'>AVL Trees</a> and <a href='https://en.wikipedia.org/wiki/Red%E2%80%93black_tree' target='_blank'>Red-Black Trees</a> resolve.</li>
+      <li><b>Example 2.2</b>: As you saw in the Midterm, hash tables "degenerate" from (approximate) \( O(1) \) efficiency to \( O(\log_2(n)) \) efficiency if the <b>hashing function</b> we use is not <b>efficient</b> or not <a href='https://en.wikipedia.org/wiki/Collision_resistance' target='_blank'><b>collision-resistant</b></a>. So, your project could be to explore and summarize how efficient and collision-resistant hash functions work, and then implement one such hash function in Python.</li>
+    </ul>
+    </p>
+  </div>
+</div>
+```
+
+
+```{=html}
+<div class="card mb-3">
+  <div class="card-header">
+    Option 3: <i>Exploring Applications</i>
+  </div>
+  <div class="card-body">
+    <h5 class='card-title'>Examining different <i>applications</i> of the data structure that make it helpful for particular contexts</h5>
+    <p class="card-text">
+    <ul>
+      <li><b>Example 3.1</b>: In bioinformatics, the sorting algorithms we <b>did</b> learn are helpful for genetic sequence searching, but can be made even <b>more efficient</b> for genetic sequence searches by <a href='https://web.stanford.edu/class/cs262/archives/notes/lecture4.pdf' target='_blank'>applying the Burrows-Wheeler Transform</a> to a collection of genetic sequences <b>before</b> applying the sorting algorithms.</li>
+      <li><b>Example 3.2</b>: We learned Breadth-First Search (BFS) and Depth-First Search (DFS) in somewhat of a hurry, as a way to traverse over the nodes in a Binary Search Tree, but they both have many more exciting applications! For example, if you're interested in <b>web scraping</b>, you could adapt the code from HW2 to create a polymorphic web-scraper, where each <b>node</b> is a webpage, and processing a node means adding each link in the page to the stack/queue.</li>
+    </ul>
+    </p>
+  </div>
+</div>
+```
+
+```{=html}
+<div class="card mb-3">
+  <div class="card-header">
+    Option 4: <i>Proving Correctness and/or Efficiency</i>
+  </div>
+  <div class="card-body">
+    <h5 class='card-title'>Carrying out a more robust analysis of the <i>correctness</i> and/or <i>asymptotic complexity</i> of the algorithms and data structures we looked at</h5>
+    <p class="card-text">
+    <ul>
+      <li><b>Example 4.1</b>: In the lecture on <span class='alg'>Insertion-Sort</span>, I hinted at the notion of a <b>correctness proof</b> using <b>invariants</b>---how it would proceed along the same lines as a <a href='https://www.youtube.com/watch?v=wblW_M_HVQ8' target='_blank'>proof by induction</a> that you might have seen in a previous math class---but never formally walked you through how to do one.</li>
+      <li><b>Example 4.2</b>: Over the first half of the course, we were able to gradually improve <b>retrieval</b> of elements from data structures in a progression like:
+      
+      <table>
+      <thead>
+      <tr>
+        <th>Linear</th>
+        <th></th>
+        <th>Logarithmic</th>
+        <th></th>
+        <th>Constant</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><span data-qmd="`LinkedList`<br>$O(n)$"></span></td>
+        <td><span data-qmd="$\rightarrow$"></span></td>
+        <td><span data-qmd="`BST`<br>$O(\log_2(n))$"></span></td>
+        <td><span data-qmd="$\rightarrow$"></span></td>
+        <td><span data-qmd="`HashTable`<br>$O(1 + \varepsilon)$"></span></td>
+      </tr>
+      </tbody>
+      </table>
+      
+      But then, for <b>search</b>, something was missing 🧐:
+
+      <table>
+      <thead>
+      <tr>
+        <th>Linear</th>
+        <th></th>
+        <th>Logarithmic</th>
+        <th></th>
+        <th>Constant</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><span data-qmd="[Insertion-Sort]{.alg}<br>$O(n^2)$"></span></td>
+        <td><span data-qmd="$\rightarrow$"></span></td>
+        <td><span data-qmd="[Merge-Sort]{.alg}<br>$O(n\log_2(n))$"></span></td>
+        <td><span data-qmd="$\rightarrow$"></span></td>
+        <td><span data-qmd="???"></span></td>
+      </tr>
+      </tbody>
+      </table>
+
+  Prove that it's in fact <b>not possible</b> to make that additional "jump" to <b>constant</b>-time search in \(O(n)\), except in very special cases.
+      
+      <!-- When we looked at <b>retrieving</b> an element from a data structure, we were able to improve from <b>linear</b> (linked lists, $O(n)$) to <b>logarithmic</b> (BSTs, in $O(\log_2(n))$) to <b>constant</b> (hash tables, in $O(1 + \varepsilon)$) time. But when we looked at <b>searching</b>, we were only able to improve from <b>linear</b> (Insertion-Sort) to <b>logarithmic</b> (Merge-Sort) time. Prove that it's not possible to make the additional "jump" to <b>constant</b> time search in $O(n)$, except in very special cases. -->
+    </ul>
+    </p>
+  </div>
+</div>
+```
+
+
+```{=html}
+<div class="card mb-3">
+  <div class="card-header">
+    Option 5: <i>Building an ETL Pipeline</i>
+  </div>
+  <div class="card-body">
+    <h5 class='card-title'>
+      Using <i>data validation</i> and <i>pipeline orchestration</i> libraries to build a pipeline useful for your life or your job
+    </h5>
+    <p class="card-text">
+    <ul>
+      <li><b>Example 5.1</b>: If there is some task you currently handle manually---say, entering receipts from your email into a spreadsheet, or (the example I mentioned in class) making a fulltext index of ebooks in your library---your project can explore <b>automating</b> this task using Pydantic and Prefect</li>
+      <li><b>Example 5.2</b>: If there are particular <b>APIs</b> and <b>Database</b> solutions that you've been hoping to explore, now's your chance! Create an ETL pipeline which <b>E</b>xtracts data from the API, <b>T</b>ransforms it in some interesting way, then <b>L</b>oads it into (for example) an SQL or MongoDB database.</li>
+    </ul>
+
+    <i>(For this option, note that we used <b>Pydantic</b> in the course because of its OOP orientation, but if your task is more DataFrame-heavy, you can use <a href='https://pandera.readthedocs.io/en/stable/' target='_blank'><b>Pandera</b></a> for <b>DataFrame validation</b> in place of Pydantic! Feel free to schedule an office hour with Jeff for more on Pandera)</i>
+    </p>
+  </div>
+</div>
+```
+
+So, your task for the final project will be to
+
+1. Choose one of the topics we covered
+2. Determine or work with your mentor to find an interesting "next step" with respect to this topic
+3. Carry out this next step (details below, since this will look different for different choices from the above options!)
+4. Write up what you did in a report, including any of the code or math or data analysis that you did in Step 3
+
+## Concrete Requirements
+
+For each of the options described in the Overview section above, the following info boxes describe the structure of the deliverable(s) you would be responsible for (click a header to expand the box; they're collapsed by default to avoid overloading you with info if you've already chosen!)
+
+```{=html}
+<style>
+div.callout-note > .callout-header {
+  background-color: #f8f8f8 !important;
+}
+/* div.callout-note.callout {
+  border-left-color: #f8f8f8 !important;
+} */
+.callout.callout-style-default {
+  border: 1px solid #dee2e6 !important;
+}
+</style>
+```
+
+::: {.callout-note title="Option 1: A Deeper Dive" collapse="true"}
+
+**Diving 'one level deeper' into the details of the algorithm/data structure**
+
+Here, the deliverable should be structured like:
+
+1. State which algorithm or data structure you chose, from among those covered in class
+2. Identify a substantive implementation detail that we didn't cover in class
+3. Implement it in Python, <b>describing in your own words</b> (through comments or Markdown text above/below the code) how your implementation works
+4. Write a set of <b>unit tests</b> demonstrating that your implementation <b>resolves/fixes the drawback</b> that you identified in Step 2
+
+:::
+
+::: {.callout-note title="Option 2: Fixing an Issue" collapse="true"}
+
+**Figuring out how to address some existing <i>drawback</i> of the algorithm/data structure**
+
+Here, the deliverable should be structured like:
+
+1. State which algorithm or data structure you chose, from among those covered in class</li>
+2. Identify a substantive <b>drawback</b> present in the implementation of that topic that we learned in class</li>
+3. Implement it in Python, <b>describing in your own words</b> (through comments or Markdown text above/below the code) how your implementation works</li>
+4. Write a set of <b>unit tests</b> demonstrating that your implementation handles a range of possible inputs
+
+:::
+
+::: {.callout-note title="Option 3: Exploring Applications" collapse="true"}
+
+**Examining different <i>applications</i> of the data structure that make it helpful for particular fields**
+
+1. State which course topic you've chosen</li>
+2. Identify a substantive <b>application</b> of that topic in a field you are interested in: e.g., bioinformatics, marketing, finance, NLP, image processing, operations management, social science</li>
+3. Write a <b>Literature Review</b> section containing a few examples of the use of the topic in your chosen field that are particularly interesting to you</li>
+4. Choose one of the examples from your literature review and create a <b>Quarto document</b> or <b>Jupyter notebook</b> containing code that <b>you wrote yourself</b> which illustrates the application of the data structure or algorithm within your domain of interest, <b>describing in your own words</b> (through comments or Markdown text above/below the code) how the code works and what it does</li>
+
+:::
+
+::: {.callout-note title="Option 4: Proving Correctness and/or Efficiency" collapse="true"}
+
+**Carrying out a more robust analysis of the <i>correctness</i> and/or <i>asymptotic complexity</i> of the algorithms and data structures we looked at**
+
+1. State which algorithm or data structure you chose, from among those covered in class, and whether your focus is on analyzing <b>correctness</b> or <b>efficiency</b> of the algorithm/data structure (or both!)</li>
+2. Write out the chosen proof, which should be your <b>own work</b>, though it can draw on existing proofs</li>
+3. Throughout the proof in Step 2, also provide an explanation of each step---for guidance on what we're looking for, imagine not only writing the proof but also **walking someone through it** who has never seen it before (though you can assume they have some level of mathematical background)
+
+(Basically, for this option, we can't <i>prevent</i> you from looking at an existing proof---and we don't want to!---so instead we are looking at your ability to convey your <b>understanding</b> of <b>how/why the proof works</b>)
+
+:::
+
+
+::: {.callout-note title="Option 5: Building an ETL Pipeline" collapse="true"}
+
+**Using <i>data validation</i> and <i>pipeline orchestration</i> libraries to build a pipeline useful for your life or your job**
+
+1. Give an outline of the problem(s) with how you currently perform the task (for example, inefficiency or difficulty in tracking progress), and why you think they could be helped or resolved with the aid of an ETL pipeline *(NOTE: If the pipeline would be too ambitious to complete during the time remaining in the semester, then in this step you should describe a **Minimum Viable Product** that you are able to do within the remaining time)*
+2. Explicitly state and describe the **Extract**, **Transform**, and **Load** steps that you will implement, making note of the points where you will use **Pydantic/Pandera** for **data validation** (you must incorporate at least one data validation step somewhere in your pipeline---for example, a custom class you create which extends Pydantic's `BaseModel` class)
+3. Include the actual code from your pipeline, along with substantive comments and descriptions of how it works (at minimum, for each **task** within your **flow**, you should describe each of its arguments and what it returns---if you're comfortable doing so, the best way to do this would to include a <a href='https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html' target='_blank'>Sphinx Docstring</a> within each of your tasks!)
+4. Finally, include screenshots from the Prefect UI showing an example run of the pipeline, as well as any **artifacts** that your pipeline generates upon completion (your pipeline must produce at least one artifact as a **completion report**, though it doesn't need to be fancy---for example, it could just be a short Markdown-formatted document which displays the total runtime of the pipeline from start to finish)
+
+:::
+
+## Individual vs. Group Projects
+
+It is totally up to you whether you'd like to do the project individually or in a group with other students. However, if you are pursuing the project as a group, please choose **one member** of the group to serve as the **"project lead"**, and include this detail in an email to your mentor.
+
+The mentor for the **group** project will then be whoever was assigned as the **individual** mentor for the project leader (this choice doesn't have to be related to the actual work on the project, it is just for us to be able to allocate mentees fairly between the course staff!).
+
+Expectations for group projects will **scale** based on the number of members in the group: for example, a group with two members will be expected to carry out a more substantive project, such that it requires approximately two times the amount of work that would be expected for individual projects[^group].
+
+## Timeline
+
+In general, the only "true" due date is the due date for the final submission, but the project will go most smoothly if you are able to hold yourself to the following schedule:
+
+* **Basic Idea Proposal**: Approved by instructor (Jeff, Renee, or Jiatong) by end of day **Thursday, April 10th** (in-class office hour session, 7:30-9pm)
+* **Final Draft**: Sent to instructors ([`dsan5500-instructors@georgetown.edu`](mailto:dsan5500-instructors@georgetown.edu)) or brought into class for review on **Thursday, April 24th** (in-class office hour session, 7:30-9pm)
+* **Submission**: Completed project submitted via Google Classroom by **Thursday, May 1st, 11:59pm EDT**
+
+## Submission Format
+
+There is now an <a href='https://classroom.google.com/c/NjM5MzE2MTE4NTgx/a/NjUyMzY1MTY3NDAz/details' target='_blank'>assignment page</a> for the final project on Google Classroom, where you will upload your final submission for grading. The following is a rough sketch of what we're looking for in terms of the structure of your submission:
+
+* HTML format, as a rendered [Quarto manuscript](https://quarto.org/docs/manuscripts/), would be optimal, but can be PDF if preferred---for example, if you choose Option 4 (involving mathematical proofs), you might instead want to use LaTeX rendered to PDF.
+* A requirement in terms of **number of pages** is difficult, but a reasonable range for the **PDF format** would be 3-10 pages double-spaced. Therefore, for a **Quarto** document or **Jupyter** notebook, the length can be the equivalent of this (for example, you can print-preview the Quarto doc to see how many pages it would produce if printed)
+* It should have an **abstract**, a 250-500 word paragraph at the very top of the manuscript, summarizing what you did
+* Citations, if used, should be set up so that they're handled automatically. By [Quarto's citation manager](https://quarto.org/docs/authoring/footnotes-and-citations.html) for example, or by [Bibtex/Biber](https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex) if you're using LaTeX.
+
+[^group]: This detail is not something we're trying to explicitly measure or be harsh about, but is included here since otherwise (if the expectations for individual and group projects were the exact same) the work would scale the other way: that each person in a two-person project would be doing half the amount of work that a person doing an individual project is doing... Hopefully that makes sense from a fairness perspective!

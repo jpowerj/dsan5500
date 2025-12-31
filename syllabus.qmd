@@ -1,0 +1,331 @@
+---
+title: "Syllabus"
+---
+
+**Welcome to DSAN 5500: Data Structures, Objects, and Algorithms in Python!** The course meets on **Thursdays** from **6:30pm to 9:00pm** in **Car Barn 202**.
+
+## Course Staff
+
+* Prof. Jeff Jacobs, [`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)
+  * Office hours (Click to reserve a slot): [Tuesdays 3:30-6pm](https://jjacobs.me/meet), Car Barn 207-03
+* TA Hailun Ma, [`hm903@georgetown.edu`](mailto:hm903@georgetown.edu)
+  * Office hours by appointment
+
+## Course Overview
+
+My goal, in creating the course, is to take the general, *language-agnostic* data science concepts you've learned in (e.g.) DSAN 5000 and work through how to **implement** these concepts **efficiently** in Python, where we can define "efficient" in different ways based on different **goals** that we may have in different settings while working as Data Scientists.
+
+The graded components for the course consist of **five** homework assignments, an in-class **midterm**, and a **final project**. Grades will be allocated as follows:
+
+```{=html}
+<table>
+<thead>
+<tr>
+    <th>Category</th>
+    <th>Percent of Final Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>In-Class Midterm</td>
+    <td>25%</td>
+</tr>
+<tr>
+    <td>Final Project</td>
+    <td>30%</td>
+</tr>
+<tr>
+    <td>Homeworks</td>
+    <td>45%</td>
+</tr>
+<tr>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW1**: [{{< var hw1.title >}}]({{< var hw1.url >}})"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw1.pct >}}%"></span></td>
+</tr>
+<tr>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW2**: [{{< var hw2.title >}}]({{< var hw2.url >}})"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw2.pct >}}%"></span></td>
+</tr>
+<tr>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW3**: [{{< var hw3.title >}}]({{< var hw3.url >}})"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw3.pct >}}%"></span></td>
+</tr>
+<tr>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW4**: [{{< var hw4.title >}}]({{< var hw4.url >}})"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw4.pct >}}%"></span></td>
+</tr>
+<tr>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>**HW5**: {{< var hw5.title >}}"></span></td>
+    <td><span data-qmd="<i class='bi bi-arrow-return-right pe-1'></i>{{< var hw5.pct >}}%"></span></td>
+</tr>
+</tbody>
+</table>
+```
+
+The course does not have any "official" prerequisites, but a general comfort with **Python** is strongly recommended. If you have never used Python before, however (or if you haven't used it in a while and feel like your skills are rusty), you can browse the materials on the <a href='./resources.html' target='_blank'>Resources page</a>!
+
+## Course Topics / Calendar
+
+The following is a rough map of what we will work through together throughout the semester; given that **everyone learns at a different pace**, my aim is to leave us with a good amount of **flexibility** in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!
+
+```{=html}
+<table class='sticky-table'>
+<thead>
+<tr class='sticky-head'>
+    <th>Unit</th>
+    <th>Week</th>
+    <th>Date</th>
+    <th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td><span data-qmd="**Unit 1**: {{< var hw1.title >}}"></span></td>
+    <td>1</td>
+    <td><span data-qmd="{{< var w01.date-md >}}"></span></td>
+    <td><a href='./w01/' target='_blank'><span data-qmd="{{< var w01.title >}}"></span></a></td>
+</tr>
+<tr>
+    <td></td>
+    <td>2</td>
+    <td><span data-qmd="{{< var w02.date-md >}}"></span></td>
+    <td><a href='./w02/' target='_blank'><span data-qmd="{{< var w02.title >}}"></span></a></td>
+</tr>
+
+<!-- OOP -->
+
+<tr class='new-unit'>
+    <td><span data-qmd="**Unit 2**: {{< var hw2.title >}}"></span></td>
+    <td>3</td>
+    <td><span data-qmd="{{< var w03.date-md >}}"></span></td>
+    <td><a href='./w03/' target='_blank'><span data-qmd="{{< var w03.title >}}"></span></a></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="{{< var hw1.date-md >}}"></span></td>
+    <td><span data-qmd="*HW1 [(Python Fundamentals)]({{< var hw1.url >}}) Due*"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td>4</td>
+    <td><span data-qmd="{{< var w04.date-md >}}"></span></td>
+    <td><a href='./w04/' target='_blank'><span data-qmd="{{< var w04.title >}}"></span></a></td>
+</tr>
+<tr class='new-unit'>
+    <td><span data-qmd="**Unit 3**: {{< var hw3.title >}}"></span></td>
+    <td>5</td>
+    <td><span data-qmd="{{< var w05.date-md >}}"></span></td>
+    <td><a href='./w05/' target='_blank'><span data-qmd="{{< var w05.title >}}"></span></a></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="{{< var hw2.date-md >}}"></span></td>
+    <td><span data-qmd="*HW2 [({{< var hw2.title >}})]({{< var hw2.url >}}) Due*"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td>6</td>
+    <td><span data-qmd="{{< var w06.date-md >}}"></span></td>
+    <td><a href='./w06' target='_blank'><span data-qmd="{{< var w06.title >}}"></span></a></td>
+</tr>
+<tr>
+    <td></td>
+    <td>7</td>
+    <td><span data-qmd="{{< var w07.date-md >}}"></span></td>
+    <td><a href='./w07' target='_blank'><span data-qmd="{{< var w07.title >}}"></span></a></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="{{< var hw3.date-md >}}"></span></td>
+    <td><span data-qmd="*HW3 [({{< var hw3.title >}})]({{< var hw3.url >}}) Due*"></span></td>
+</tr>
+
+<!-- Midterm -->
+
+<tr class='new-unit'>
+    <td><span data-qmd="**Midterm**"></span></td>
+    <td>8</td>
+    <td><span data-qmd="{{< var w08.date-md >}}"></span></td>
+    <td><span data-qmd="{{< var w08.title >}}"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="*Mar 6*"></span></td>
+    <td><span data-qmd="*No Class (Spring Break)*"></span></td>
+</tr>
+
+<!-- Data-Processing Pipelines -->
+
+<tr class='new-unit'>
+    <td><span data-qmd="**Unit 4**: {{< var hw4.title >}}"></span></td>
+    <td>9</td>
+    <td><span data-qmd="{{< var w09.date-md >}}"></span></td>
+    <td><a href='./w09' target='_blank'><span data-qmd="{{< var w09.title >}}"></span></a></td>
+</tr>
+<tr>
+    <td></td>
+    <td>10</td>
+    <td><span data-qmd="{{< var w10.date-md >}}"></span></td>
+    <td><a href='./w10' target='_blank'><span data-qmd="{{< var w10.title >}}"></span></a></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="{{< var hw4.date-md >}}"></span></td>
+    <td><span data-qmd="*HW4 [({{< var hw4.title >}})]({{< var hw4.url >}}) Due*"></span></td>
+</tr>
+
+<!-- Parallel Computing -->
+
+<tr>
+    <td></td>
+    <td>11</td>
+    <td><span data-qmd="{{< var w11.date-md >}}"></span></td>
+    <td><a href='./w11' target='_blank'><span data-qmd="{{< var w11.title >}}"></span></a></td>
+</tr>
+<tr>
+    <td></td>
+    <td>12</td>
+    <td><span data-qmd="{{< var w12.date-md >}}"></span></td>
+    <td><a href='./w12' target='_blank'><span data-qmd="{{< var w12.title >}}"></span></a></td>
+</tr>
+
+<!-- Advanced Topics and Applications -->
+
+<tr class='new-unit'>
+    <td><span data-qmd="**Unit 5**: Final Project Application Areas"></span></td>
+    <td>13</td>
+    <td><span data-qmd="{{< var w13.date-md >}}"></span></td>
+    <td>(6:30-7:30pm) <a href='./w13' target='_blank'><span data-qmd="{{< var w13.title >}}"></span></a><br>(7:30-9pm) Final Project office hours (Jeff and Renee)</td>
+</tr>
+<tr>
+    <td></td>
+    <td>14</td>
+    <td><span data-qmd="{{< var w14.date-md >}}"></span></td>
+    <td>(6:30-7:30pm) <a href='./w14' target='_blank'><span data-qmd="{{< var w14.title >}}"></span></a><br>(7:30-9pm) Final Project office hours (Jeff, Renee, Jiatong)</td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td><span data-qmd="{{< var hw5.date-md >}}"></span></td>
+    <td><span data-qmd="*HW5 ({{< var hw5.title >}}) Due*"></span></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td>May 3 (Friday), 11:59pm EST</td>
+    <td><span data-qmd="**Final Project Due**"></span></td>
+</tr>
+</tbody>
+</table>
+```
+
+## Assignment Distribution, Submission, and Grading
+
+The programming assignments for the course will be managed through Google Classroom. This means that, to work on and submit the assignments, you will use the following workflow:
+
+1. Open the `.ipynb` file for the assignment from within Google Classroom
+2. Work on the problems within the file, saving your progress early and often! You can **try things out** or **create drafts** of your solutions however you'd like (for example, in VSCode or JupyterLab or any other IDE), but your final response to each question must be included in your Colab notebook as accessed through Google Classroom!
+3. Submit the completed version of the assignment by clicking the "Submit" button generated by the last cell in each assignment's Colab notebook, or (if the Submit button does not work) by clicking the blue "Hand in" button above the link to the notebook in Google Classroom's interface.
+
+## Homework Lateness Policy
+
+After the due date, for each **homework** assignment, you will have a grace period of 24 hours to submit the assignment without a lateness penalty. After this 24 hour grace period, late penalties will be applied up until 66 hours after the due date. Specifically, late penalties will be applied based on the following scale (unless you obtain an excused lateness from one of the instructional staff!):
+
+* **0 to 24 hours** after due date: no penalty
+* **24 to 30 hours** after due date: 2.5% penalty
+* **30 to 42 hours** after due date: 5% penalty
+* **42 to 54 hours** after due date: 10% penalty
+* **54 to 66 hours** after due date: 20% penalty
+* **More than 66 hours** after due date: Assignment submissions no longer accepted (without instructor approval)
+
+
+Excused lateness exceptions will be grounded in a policy where you can "pause" the class (due-date-wise, but also just, expectation-of-progress-wise more generally) to take the time you need to handle things happening in your life. Then, you can "resume" work once you feel more centered/once you find yourself back on stable ground. The ["Maslow's hierarchy"](https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs) model from psychology (@fig-maslow) provides a straightforward way to think about this approach.
+
+![Maslow's Hierarchy of Needs, from [Wikimedia](https://commons.wikimedia.org/wiki/File:Maslow%27s_Hierarchy_of_Needs_Pyramid_(original_five-level_model).png)](images/maslow.png){#fig-maslow fig-align="center" width="70%"}
+
+Learning data ethics is way up there in the blue triangle, so, it's important that you feel like the first four levels are solidified before you turn your focus back to classwork. And, it's a win-win, because it means that once you're back in action you can be more engaged and receptive to new topics, rather than being forced to "simulate" being in the blue triangle while in reality struggling in other spots!
+
+## Final Letter Grade Determination
+
+Once all assignments have been graded, we will compute your final **numeric grade** according to the above weighting, rounded to two decimal places. The **letter grade** that we report to Georgetown on the basis of this numeric grade will then follow the DSAN letter grade policy as follows, where the start and end points for each range are **inclusive**:
+
+```{=html}
+<table>
+<thead>
+<tr>
+    <th align="right">Range Start</th>
+    <th align="right">Range End</th>
+    <th align="left">Letter Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td align="right">92.50</td>
+    <td align="right">100.00</td>
+    <td align="left">A</td>
+</tr>
+<tr>
+    <td>89.50</td>
+    <td>92.49</td>
+    <td>A-</td>
+</tr>
+<tr>
+    <td>87.99</td>
+    <td>89.49</td>
+    <td>B+</td>
+</tr>
+<tr>
+    <td>81.50</td>
+    <td>87.98</td>
+    <td>B</td>
+</tr>
+<tr>
+    <td>79.50</td>
+    <td>81.49</td>
+    <td>B-</td>
+</tr>
+<tr>
+    <td>69.50</td>
+    <td>79.49</td>
+    <td>C</td>
+</tr>
+<tr>
+    <td>59.50</td>
+    <td>69.49</td>
+    <td>D</td>
+</tr>
+<tr>
+    <td>0.00</td>
+    <td>59.49</td>
+    <td>F</td>
+</tr>
+</tbody>
+</table>
+```
+
+## Official Course Description
+
+The Data Structures, Objects, and Algorithms in Python course will look at built-in data structures, such as dictionaries, lists, tuples, sets, strings, and frozen sets. The course will also cover objects and classes in Python, as well as building new structures and objects. The class will cover algorithms including runtime, recurrence, and development. Applications will include data science problems. *Prerequisite: A working or intermediate knowledge of Python. 3 credits.*
+
+## Title IX/Sexual Misconduct Statement
+
+Georgetown University and its faculty are committed to supporting survivors and those impacted by sexual misconduct, which includes sexual assault, sexual harassment, relationship violence, and stalking. Georgetown requires faculty members, unless otherwise designated as confidential, to report all disclosures of sexual misconduct to the University Title IX Coordinator or a Deputy Title IX Coordinator.
+
+If you disclose an incident of sexual misconduct to a professor in or outside of the classroom (with the exception of disclosures in papers), that faculty member must report the incident to the Title IX Coordinator, or Deputy Title IX Coordinator. The coordinator will, in turn, reach out to the student to provide support, resources, and the option to meet. [Please note that the student is not required to meet with the Title IX coordinator.]. More information about reporting options and resources can be found in the <a href='https://sexualassault.georgetown.edu/get-help/resourcecenter/#' target='_blank'>Sexual Misconduct Resource Center</a>.
+
+If you would prefer to speak to someone confidentially, Georgetown has a number of fully confidential professional resources that can provide support and assistance. These resources include:
+
+* *Health Education Services for Sexual Assault Response and Prevention*: Confidential email <a href='mailto:sarp@georgetown.edu' target='_blank'>`sarp@georgetown.edu`</a>
+* *Counseling and Psychiatric Services (CAPS)*: 202-687-6985
+  * After hours you can call 833-960-3006 to reach Fonemed, a telehealth service, and ask for the on-call CAPS clinician
+
+## GSAS Resources and Policies for Students
+
+You can find a collection of relevant resources and policies for students on the <a href='https://grad.georgetown.edu/academics/current-students/' target='_blank'>GSAS website</a>, and the Provost's policy on accommodating students' religious observances on the <a href='https://campusministry.georgetown.edu/faith-traditions/religious_holy_days/#' target='_blank'>Campus Ministry website</a>.
+
+You can also make use of the <a href='http://academicsupport.georgetown.edu/' target='_blank'>Student Academic Resource Center</a>. In particular, within the Resource Center there is a link to Georgetown's <a href='http://academicsupport.georgetown.edu/disability/' target='_blank'>Disability Support page</a>. If you believe you have a disability, you can contact the Academic Resource Center (<a href='mailto:arc@georgetown.edu' target='_blank'>`arc@georgetown.edu`</a>) for further information. The ARC is located in the Leavey Center, Suite 335 (202-687-8354), and it is the campus office responsible for reviewing documentation provided by students with disabilities and for determining reasonable accommodations in accordance with the Americans with Disabilities Act (ADA) and University policies.

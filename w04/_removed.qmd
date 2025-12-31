@@ -1,0 +1,203 @@
+# HW1 Postmortem {data-stack-name="HW1 Postmortem"}
+
+## THANK YOU!!!
+
+* Thank you all SO so much for your patience
+* I know it doesn't help **present-day you** to hear this, but
+* **Future you** will have less stress now that I have a big server log containing all of the issues with the grading server, which I'll use to **fix the server** for HW2 onwards!
+
+## The Devil is in the Details
+
+![From <a href='https://www.prweek.com/article/1368808/pr-ethics-asia-patchwork-values' target='_blank'>*PR Week*</a>, 19 Oct 2015](images/devil_details.png){fig-align="center"}
+
+## *Objects* vs. Their *(String) Representations* {.smaller .crunch-title .title-11 .crunch-quarto-layout-panel .crunch-images}
+
+::: {layout="[1,1]" layout-valign="center" layout-align="center"}
+
+::: {#xbox-left}
+
+![From <a href='https://www.vice.com/en/article/4w7vab/XBOX-One-From-Ebay-Turned-Out-to-be-a-Shitty-Photo-of-an-XBOX-One' target='_blank'>*Vice* News</a>](images/xbox.jpeg){fig-align="center"}
+
+:::
+::: {#xbox-right}
+
+![](images/xbox_photo.jpeg){fig-align="center" width="350"}
+
+![](images/xbox_result.jpg){fig-align="center" width="350"}
+
+:::
+:::
+
+## In Art
+
+![René Magritte, <a href='https://en.wikipedia.org/wiki/The_Treachery_of_Images' target='_blank'>*The Treachery of Images*</a> (1929)](images/magritte.jpg){fig-align="center"}
+
+## In Python {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{python}
+#| error: true
+x = 1 + 1
+y = str(x)
+print(x)
+print(y)
+```
+
+* So far so good...
+
+```{python}
+#| error: true
+print(x+1)
+print(y+1)
+```
+
+:::
+::: {.column width="50%"}
+
+<center>
+**...What Happened??**
+</center>
+
+* The value assigned to `x` is an `int`
+  * `int` $\implies$ thing you can **do arithmetic addition with**
+* The value assigned to `y` is a `str`
+  * `str` $\implies$ thing you **cannot** do arithmetic addition with
+  * (Though we can **overload** the `+` operator to represent **concatenation** when applied to **two `str` objects**)
+
+:::
+:::
+
+## In HW1 {.crunch-title}
+
+::: {.callout-note title="<i class='bi bi-exclamation-triangle-fill' style='font-size: 1.333rem;'></i> Objects vs. Their Representations" icon="false"}
+
+<center style='margin: 20px;'>
+
+$$
+\begin{align*}
+\overbrace{\boxed{\texttt{int}\text{ object}}}^{\text{addition defined}} &\neq \overbrace{\boxed{\texttt{str}\text{ representation of }\texttt{int}\text{ object}}}^{\text{addition not defined}} \\
+\underbrace{\boxed{\texttt{SwimStyle}\text{ object}}}_{\texttt{.name}\text{ defined}} &\neq \underbrace{\boxed{\texttt{str}\text{ representation of }\texttt{SwimStyle}\text{ object}}}_{\texttt{.name}\text{ not defined}}
+\end{align*}
+$$
+
+</center>
+
+:::
+
+## Other Possible Representations! {.smaller .crunch-title .crunch-ul .crunch-details}
+
+::: {.columns}
+::: {.column width="50%"}
+
+1. `str`s are just lists of **characters**...
+
+```{python}
+x = "Ceci n'est pas une string"
+print(x)
+print(type(x))
+print(list(x))
+```
+
+:::
+::: {.column width="50%"}
+
+$\leadsto$ 2. **Characters** are stored in Python memory as **`int` values** (ASCII encodings)...
+
+```{python}
+y = b"Ceci n'est pas une string"
+print(y)
+print(type(y))
+print(list(y))
+```
+
+:::
+:::
+
+$\leadsto$ 3. Each `int` value is stored in **computer memory** as a **byte** (8 **bits** $b_i \in \{0, 1\}$):
+
+```{python}
+print([format(character, 'b') for character in y])
+```
+
+## So What is the "Right" Representation? {.title-12 .smaller .crunch-title .crunch-quarto-layout-panel}
+
+::: {layout="[1,1]"}
+::: {#best-repr-left}
+
+* No single "best" choice!
+* Different choices more/less helpful for different goals (think of `datetime.datetime` example)
+* That's exactly **why** Python has **two different** "default" ways to generate representations: `__str__()` and `__repr__()`
+* Different "pictures" of an object (from different angles) may **reveal some properties** while **hiding others**
+* What is the "right" photo of this statue? &rarr;
+
+:::
+::: {#best-repr-right}
+
+![James Hopkins, <a href='https://blog.re-title.com/features/2014/06/james-hopkins-123.html' target='_blank'>*123*</a> (2014)](images/hopkins_123.jpg){fig-align="center" width="360"}
+
+:::
+:::
+
+## Different Representations, Different Information About the Object {.crunch-title}
+
+![](images/hopkins_123_angles.png){fig-align="center"}
+
+## Parallel Computing Preview {.smaller .crunch-title .crunch-figures .crunch-figcaption}
+
+![](images/shared_memory_updated.gif){fig-align="center" width="580"}
+
+![From <a href='https://cvw.cac.cornell.edu/parallel/memory-access/multithreading' target='_blank'>Cornell Virtual Workshop on Parallel Programming</a>](images/shared_memory_outcomes.gif){fig-align="center" width="580"}
+
+## Why Is This A Big Deal? {.smaller .crunch-title .crunch-ul}
+
+* You've been tasked with writing **bank software**
+* $A$ has $500, $B$ has $500, $A$ fills out form to send $300 to $B$ but **clicks "Submit" twice**...
+
+![From Baeldung on Computer Science, <a href='https://www.baeldung.com/cs/race-conditions' target='_blank'>*What is a Race Condition?*</a>](images/race_conditions.webp){fig-align="center"}
+
+## And on the Autograder Server... {.smaller}
+
+![](images/deadlock.webp){.nostretch fig-align="center" width="600"}
+
+## Swim Club with Data Science Hats {.smaller .crunch-title}
+
+```{python}
+import pandas as pd
+swim_df = pd.read_csv("assets/swimdata.csv", index_col=0)
+swim_df.head()
+```
+
+## Fastest Per Style {.smaller .crunch-title .crunch-ul .crunch-details .crunch-code .smaller-table}
+
+::: {.columns}
+::: {.column width="50%"}
+
+<center>
+**Short Events**
+</center>
+
+```{python}
+short_df = swim_df[swim_df['distance'] == "50m"].copy()
+short_df.sort_values(['style', 'time'], ascending=True).groupby('style').head(1).drop(columns="age")
+```
+
+:::
+::: {.column wiudth="50%"}
+
+<center>
+**Long Events**
+</center>
+
+```{python}
+long_df = swim_df[swim_df['distance'] == "100m"].copy()
+long_df.sort_values(['style', 'time'], ascending=True).groupby('style').head(1).drop(columns="age")
+```
+
+:::
+:::
+
+* This works well for **you**, as a data scientist, **manually analyzing** the data via code cells
+* What if **the public** is accessing your data **hundreds of times per second** (e.g., for a <a href='https://www.espn.com/olympics/summer/2024/medals' target='_blank'>**live-updating data dashboard**</a>)? Should we (1) filter, (2) sort, (3) group by style, (4) filter (choose top entry), (5) drop column **every time data is accessed?**
+* (*Every* DSAN student can do this with Pandas... **YOU** will know how to do it with exponentially-greater efficiency, and **mathematically prove it** 😎)

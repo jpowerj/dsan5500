@@ -1,0 +1,114 @@
+# Updated for 2026
+zoom_url: https://georgetown.zoom.us/j/96890677659?pwd=Fi424zzFfUnhOQIJwb66Zm2EAnzs0s.1
+panopto_url: https://georgetown.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?folderID=928f1543-6867-4fd4-92b5-b3c3017976e4
+classroom_url: https://classroom.google.com/c/ODM3MzMwODU5ODY0?cjc=f6acpnqr
+spaces_url: https://chat.google.com/room/AAQA9C0-Gtc?cls=7
+feedback_url: https://forms.gle/3yXRNm4m7q5b8kN76
+# Still 2025
+tas:
+  - name: Hailun Ma
+    email: hm903@georgetown.edu
+w01:
+  weeknum: 1
+  title: "Course Intro and Motivation"
+  footer: "Course Intro and Motivation"
+  date-md: "Jan 9"
+w02:
+  weeknum: 2
+  title: "Software Design Patterns and Object-Oriented Programming"
+  footer: "Software Design Patterns and OOP"
+  date-md: "Jan 16"
+w03:
+  weeknum: 3
+  title: "Data Structures and Computational Complexity"
+  footer: "Data Structures and Computational Complexity"
+  date-md: "Jan 23"
+w04:
+  weeknum: 4
+  title: "Data Structures from Scratch with OOP"
+  footer: "Data Structures from Scratch with OOP"
+  date-md: "Jan 30"
+w05:
+  weeknum: 5
+  title: "Binary Search Trees"
+  footer: "Binary Search Trees"
+  date-md: "Feb 6"
+w06:
+  weeknum: 6
+  title: "Depth-First and Breadth-First Search"
+  footer: "Depth-First and Breadth-First Search"
+  date-md: "Feb 13"
+w07:
+  weeknum: 7
+  title: "Code Examples and Midterm Prep"
+  footer: "Code Examples and Midterm Prep"
+  date-md: "Feb 20"
+w08:
+  weeknum: 8
+  title: "In-Class Midterm"
+  footer: "In-Class Midterm"
+  date-md: "Feb 27"
+w09:
+  weeknum: 9
+  title: "ETL Pipelines with Prefect"
+  footer: "ETL Pipelines"
+  date-md: "Mar 13"
+w10:
+  weeknum: 10
+  title: "Data Pipeline Orchestration"
+  footer: "Pipeline Orchestration"
+  date-md: "Mar 20"
+w11:
+  weeknum: 11
+  title: "From Serial to Parallel Pipelines"
+  footer: "Serial to Parallel Pipelines"
+  date-md: "Mar 27"
+w12:
+  weeknum: 12
+  title: "Final Projects, Map-Reduce"
+  footer: "Final Projects, Map-Reduce"
+  date-md: "Apr 3"
+w13:
+  weeknum: 13
+  title: "Applications: Bioinformatics"
+  footer: "Algorithms in Bioinformatics"
+  date-md: "Apr 10"
+w14:
+  weeknum: 14
+  title: "Applications: NLP"
+  footer: "NLP Applications"
+  date-md: "Apr 24"
+# w15:
+#   weeknum: 15
+#   title: "Final Projects Celebration"
+#   footer: "Final Projects Celebration"
+#   date-md: "May 1"
+hw1:
+  title: "Python Fundamentals"
+  date-md: "Jan 27 (Monday), 11:59pm EST"
+  pct: 9
+  url: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx/a/NzQ1OTIwODUxNzU0/details"
+hw2:
+  title: "Object-Oriented Programming"
+  date-md: "Feb 7 (Friday), 5:59pm EST"
+  pct: 9
+  url: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx/a/NzQ4MTk4MTg3Mjc2/details"
+hw3:
+  title: "Data Structures, Algorithms, and Complexity"
+  date-md: "Feb 21 (Friday), 5:59pm EST"
+  pct: 9
+  url: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx/a/NzUwNTIxNDM4NjQ3/details"
+hw4:
+  title: "Data-Processing Pipelines"
+  date-md: "Apr 11 (Wednesday), 11:59pm EDT"
+  pct: 9
+  url: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx/a/NzYyMDA5MjM5NjU5/details"
+hw5:
+  title: "Parallel Pipelines and Map-Reduce"
+  date-md: "Apr 25 (Friday), 5:59pm EDT"
+  pct: 9
+  url: "#"
+# Updated 2026
+final:
+  title: "Final Project"
+  date-md: "May 1 (Friday), 5:59pm EDT"

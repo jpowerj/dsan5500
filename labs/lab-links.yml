@@ -1,0 +1,16 @@
+- week: 1
+  title: "[Dictionary Lookup: Linear vs. Logarithmic](https://dict-lookup.streamlit.app/)"
+  categories:
+    - Interactive Demo
+- week: 1
+  title: "[Basic Data Validation with Pydantic](https://colab.research.google.com/drive/1XMw3vOYK8NJl9MgMjfhYfK3lXg0KjnkE?usp=sharing)"
+  categories:
+    - Colab Notebook
+- week: 8
+  title: "[Advanced Data Validation with Pydantic](https://colab.research.google.com/drive/15Qsh26T0AZyxFRoGwTwFE_rMW7TBWEbr?usp=drive_link)"
+  categories:
+    - Colab Notebook
+- week: 9
+  title: "[ETL Pipelines with Prefect](https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing)"
+  categories:
+    - Colab Notebook

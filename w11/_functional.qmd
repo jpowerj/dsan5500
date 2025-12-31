@@ -1,0 +1,20 @@
+
+::: {.columns}
+::: {.column width="50%"}
+
+Imperative
+
+:::
+::: {.column width="50%"}
+
+Functional
+
+```{python}
+def produce_one():
+  return 1
+```
+
+<!-- ![(If this approach clicks with your brain... you should read this book immediately!)](images/abstraction.jpg){fig-align="center" width="340"} -->
+
+:::
+:::

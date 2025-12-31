@@ -1,0 +1,5 @@
+https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20ThingContainer%7Cthe_things%7Cput_new_thing_in(new_thing)%3A%20pass%3Btake_existing_thing_out()%3A%20pass%3B%5D%0A%5BStack%7Cput_new_thing_in(new_thing)%3B%E2%86%B3(add%20to%20top)%3Btake_existing_thing_out()%3B%E2%86%B3(remove%20from%20top)%5D%0A%5BQueue%7Cput_new_thing_in(new_thing)%3B%E2%86%B3(add%20to%20back)%3Btake_existing_thing_out()%3B%E2%86%B3(remove%20from%20front)%5D%0A%0A%5BThingContainer%5D--%3A%3E%5BStack%5D%0A%5BThingContainer%5D--%3A%3E%5BQueue%5D%0A
+
+--- not full:
+
+https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20ThingContainer%7Cthe_things%7Cput_new_thing_in(new_thing)%3A%20pass%3Btake_existing_thing_out()%3A%20pass%3B%5D%0A
