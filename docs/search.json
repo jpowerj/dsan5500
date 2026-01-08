@@ -2564,7 +2564,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Vegan', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Vegan', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'None', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'Vegan', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2896,7 +2896,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'Gluten Free', 'None'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'Vegan', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'Gluten Free', 'None'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'None', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -4267,7 +4267,7 @@
     "href": "w11/index.html#in-action",
     "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9908 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.5741 s",
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n1.0007 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6258 s",
     "crumbs": [
       "Week 11: {{< var w11.date-md >}}"
     ]
@@ -4487,7 +4487,7 @@
     "href": "w11/slides.html#in-action",
     "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n1.0020 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.5949 s"
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9851 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6181 s"
   },
   {
     "objectID": "w11/slides.html#what-happens-when-not-embarrassingly-parallel",
@@ -4741,7 +4741,17 @@
     "href": "w01/index.html#before-and-after",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Before and After",
-    "text": "Before and After\n\n\n\n\n\n\nPython before taking DSAN 5500\n\n\n\n\n\n\n\nPython after taking DSAN 5500",
+    "text": "Before and After\n\n\n\n\n\n\n\n\n\nFigure 1: Python before taking DSAN 5500\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Python after taking DSAN 5500",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#python-is-a-tool",
+    "href": "w01/index.html#python-is-a-tool",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Python is a Tool!",
+    "text": "Python is a Tool!\n\nLike a hammer or like a car, you can care about them in and of themselves (no judgement!), but for most people they’re…\n\nFor building a house or\nFor getting from point \\(A\\) to point \\(B\\)\n\nThere is no priestly caste of “elite coders”…\n\nThere are people who win coding competitions (like one of my bffs, so I’m not hating!), like there are people who win hammering competitions\n…That doesn’t really have much to do with the way we’d like to use Python as Data Scientists or Software Engineers or etc.\n\nThis will be even more concrete when we look at efficiency: efficiency for what?\n\nIt goes deep: there are often fundamental tradeoffs between efficiency for [important task A] and [important task B]",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -4751,7 +4761,7 @@
     "href": "w01/index.html#developing-a-comparative-understanding",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Developing a Comparative Understanding",
-    "text": "Developing a Comparative Understanding\n\n\n\n\n\n\n\n\n\n“We hardly know ourselves, if we know nobody else”\n\n\n–(Blue Scholars, “Sagaba”)\n\n\n\n\n\n\nThe course focuses on Python, but part of understanding Python is understanding how Python does things differently from other languages!\nJust as C was “overtaken” by Java, then Java was “overtaken” by Python, Python will someday be overtaken",
+    "text": "Developing a Comparative Understanding\n\n\n\n\n\n\n\n\n\n“We hardly know ourselves, if we know nobody else”\n\n\n–(Blue Scholars, “Sagaba”)\n\n\n\n\n\n\nThe course focuses on Python, but part of understanding Python is understanding how Python does things differently from other languages!\n\n(Most prominent in this course: static types)\n\nJust as C was “overtaken” by Java, then Java was “overtaken” by Python, Python will someday be overtaken\nIf I do my job well, it won’t matter – you’ll be ready for the next big language 💪\nIn fact, the main textbook for the course (CLRS) is not written in Python or any language at all – it’s “pseudocode”",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -4777,31 +4787,31 @@
     ]
   },
   {
-    "objectID": "w01/index.html#avoid-analysis-paralysis",
-    "href": "w01/index.html#avoid-analysis-paralysis",
+    "objectID": "w01/index.html#tying-yourself-to-the-mast",
+    "href": "w01/index.html#tying-yourself-to-the-mast",
     "title": "Week 1: Course Intro and Motivation",
-    "section": "Avoid Analysis Paralysis",
-    "text": "Avoid Analysis Paralysis\n\n(Easier said than done, admittedly…)\n\n\n\n\nImage source: XKCD",
+    "section": "Tying Yourself to the Mast",
+    "text": "Tying Yourself to the Mast\n\nThe tired 3am version of you will thank present you for writing useful comments, exceptions, and type hints!\n\n\n\n\nJohn William Waterhouse, Public domain, via Wikimedia Commons",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
   },
   {
-    "objectID": "w01/index.html#tie-yourself-to-the-mast",
-    "href": "w01/index.html#tie-yourself-to-the-mast",
+    "objectID": "w01/index.html#whowhat-is-the-code-for",
+    "href": "w01/index.html#whowhat-is-the-code-for",
     "title": "Week 1: Course Intro and Motivation",
-    "section": "Tie Yourself to the Mast",
-    "text": "Tie Yourself to the Mast\n\nThe exhausted 3am version of you will thank present you for writing useful comments, exceptions, and type hints!\n\n\n\n\nJohn William Waterhouse, Public domain, via Wikimedia Commons\n\n\n\nDemo: Lab 1",
+    "section": "Who/What is the Code For?",
+    "text": "Who/What is the Code For?\n\n\n\nThese files all do literally the exact same thing (implement jQuery)… so why are there four versions?\n\n\n\n\n\n\n\njquery-3.7.1.js\n\n/*!\n * jQuery JavaScript Library v3.7.1\n * https://jquery.com/\n *\n * Copyright OpenJS Foundation and other contributors\n * Released under the MIT license\n * https://jquery.org/license\n *\n * Date: 2023-08-28T13:37Z\n */\n( function( global, factory ) {\n\n    \"use strict\";\n\n    if ( typeof module === \"object\" && typeof module.exports === \"object\" ) {\n\n        // For CommonJS and CommonJS-like environments where a proper `window`\n        // is present, execute the factory and get jQuery.\n        // For environments that do not have a `window` with a `document`\n        // (such as Node.js), expose a factory as module.exports.\n        // This accentuates the need for the creation of a real `window`.\n        // e.g. var jQuery = require(\"jquery\")(window);\n        // See ticket trac-14549 for more info.\n        module.exports = global.document ?\n            factory( global, true ) :\n            function( w ) {\n                if ( !w.document ) {\n                    throw new Error( \"jQuery requires a window with a document\" );\n                }\n                return factory( w );\n            };\n    } else {\n        factory( global );\n    }\n\n// Pass this if window is not defined yet\n} )( typeof window !== \"undefined\" ? window : this, function( window, noGlobal ) {\n\n// Edge &lt;= 12 - 13+, Firefox &lt;=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1\n// throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode\n// arguments.callee.caller (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common\n// enough that all such attempts are guarded in a try block.\n\"use strict\";\n\nvar arr = [];\n\nvar getProto = Object.getPrototypeOf;\n\nvar slice = arr.slice;\n\nvar flat = arr.flat ? function( array ) {\n    return arr.flat.call( array );\n} : function( array ) {\n    return arr.concat.apply( [], array );\n};\n\n\nvar push = arr.push;\n\nvar indexOf = arr.indexOf;\n\nvar class2type = {};\n\nvar toString = class2type.toString;\n\nvar hasOwn = class2type.hasOwnProperty;\n\nvar fnToString = hasOwn.toString;\n\nvar ObjectFunctionString = fnToString.call( Object );\n\nvar support = {};\n\nvar isFunction = function isFunction( obj ) {\n\n        // Support: Chrome &lt;=57, Firefox &lt;=52\n        // In some browsers, typeof returns \"function\" for HTML &lt;object&gt; elements\n        // (i.e., `typeof document.createElement( \"object\" ) === \"function\"`).\n        // We don't want to classify *any* DOM node as a function.\n        // Support: QtWeb &lt;=3.8.5, WebKit &lt;=534.34, wkhtmltopdf tool &lt;=0.12.5\n        // Plus for old WebKit, typeof returns \"function\" for HTML collections\n        // (e.g., `typeof document.getElementsByTagName(\"div\") === \"function\"`). (gh-4756)\n        return typeof obj === \"function\" && typeof obj.nodeType !== \"number\" &&\n            typeof obj.item !== \"function\";\n    };\n\n\nvar isWindow = function isWindow( obj ) {\n        return obj != null && obj === obj.window;\n    };\n\n\nvar document = window.document;\n\n\n\n\n\njquery-3.7.1.min.js\n\n/*! jQuery v3.7.1 | (c) OpenJS Foundation and other contributors | jquery.org/license */!function(e,t){\"use strict\";\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=e.document?t(e,!0):function(e){if(!e.document)throw new Error(\"jQuery requires a window with a document\");return t(e)}:t(e)}(\"undefined\"!=typeof window?window:this,function(ie,e){\"use strict\";var oe=[],r=Object.getPrototypeOf,ae=oe.slice,g=oe.flat?function(e){return oe.flat.call(e)}:function(e){return oe.concat.apply([],e)},s=oe.push,se=oe.indexOf,n={},i=n.toString,ue=n.hasOwnProperty,o=ue.toString,a=o.call(Object),le={},v=function(e){return\"function\"==typeof e&&\"number\"!=typeof e.nodeType&&\"function\"!=typeof e.item},y=function(e){return null!=e&&e===e.window},C=ie.document,u={type:!0,src:!0,nonce:!0,noModule:!0};function m(e,t,n){var r,i,o=(n=n||C).createElement(\"script\");if(o.text=e,t)for(r in u)(i=t[r]||t.getAttribute&&t.getAttribute(r))&&o.setAttribute(r,i);n.head.appendChild(o).parentNode.removeChild(o)}function x(e){return null==e?e+\"\":\"object\"==typeof e||\"function\"==typeof e?n[i.call(e)]||\"object\":typeof e}var t=\"3.7.1\",l=/HTML$/i,ce=function(e,t){return new ce.fn.init(e,t)};function c(e){var t=!!e&&\"length\"in e&&e.length,n=x(e);return!v(e)&&!y(e)&&(\"array\"===n||0===t||\"number\"==typeof t&&0&lt;t&&t-1 in e)}function fe(e,t){return e.nodeName&&e.nodeName.toLowerCase()===t.toLowerCase()}ce.fn=ce.prototype={jquery:t,constructor:ce,length:0,toArray:function(){return ae.call(this)},get:function(e){return null==e?ae.call(this):e&lt;0?this[e+this.length]:this[e]},pushStack:function(e){var t=ce.merge(this.constructor(),e);return t.prevObject=this,t},each:function(e){return ce.each(this,e)},map:function(n){return this.pushStack(ce.map(this,function(e,t){return n.call(e,t,e)}))},slice:function(){return this.pushStack(ae.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},even:function(){return this.pushStack(ce.grep(this,function(e,t){return(t+1)%2}))},odd:function(){return this.pushStack(ce.grep(this,function(e,t){return t%2}))},eq:function(e){var t=this.length,n=+e+(e&lt;0?t:0);return this.pushStack(0&lt;=n&&n&lt;t?[this[n]]:[])},end:function(){return this.prevObject||this.constructor()},push:s,sort:oe.sort,splice:oe.splice},ce.extend=ce.fn.extend=function(){var e,t,n,r,i,o,a=arguments[0]||{},s=1,u=arguments.length,l=!1;for(\"boolean\"==typeof a&&(l=a,a=arguments[s]||{},s++),\"object\"==typeof a||v(a)||(a={}),s===u&&(a=this,s--);s&lt;u;s++)if(null!=(e=arguments[s]))for(t in e)r=e[t],\"__proto__\"!==t&&a!==r&&(l&&r&&(ce.isPlainObject(r)||(i=Array.isArray(r)))?(n=a[t],o=i&&!Array.isArray(n)?[]:i||ce.isPlainObject(n)?n:{},i=!1,a[t]=ce.extend(l,o,r)):void 0!==r&&(a[t]=r));return a},ce.extend({expando:\"jQuery\"+(t+Math.random()).replace(/\\D/g,\"\"),isReady:!0,error:function(e){throw new Error(e)},noop:function(){},isPlainObject:function(e){var t,n;return!(!e||\"[object Object]\"!==i.call(e))&&(!(t=r(e))||\"function\"==typeof(n=ue.call(t,\"constructor\")&&t.constructor)&&o.call(n)===a)},isEmptyObject:function(e){var t;for(t in e)return!1;return!0},globalEval:function(e,t,n){m(e,{nonce:t&&t.nonce},n)},each:function(e,t){var n,r=0;if(c(e)){for(n=e.length;r&lt;n;r++)if(!1===t.call(e[r],r,e[r]))break}else for(r in e)if(!1===t.call(e[r],r,e[r]))break;return e},text:function(e){var t,n=\"\",r=0,i=e.nodeType;if(!i)while(t=e[r++])n+=ce.text(t);return 1===i||11===i?e.textContent:9===i?e.documentElement.textContent:3===i||4===i?e.nodeValue:n},makeArray:function(e,t){var n=t||[];return null!=e&&(c(Object(e))?ce.merge(n,\"string\"==typeof e?[e]:e):s.call(n,e)),n},inArray:function(e,t,n){return null==t?-1:se.call(t,e,n)},isXMLDoc:function(e){var t=e&&e.namespaceURI,n=e&&(e.ownerDocument||e).documentElement;return!l.test(t||n&&n.nodeName||\"HTML\")},merge:function(e,t){for(var n=+t.length,r=0,i=e.length;r&lt;n;r++)e[i++]=t[r];return e.length=i,e},grep:function(e,t,n){for(var r=[],i=0,o=e.length,a=!n;i&lt;o;i++)!t(e[i],i)!==a&&r.push(e[i]);return r},map:function(e,t,n){var r,i,o=0,a=[];if(c(e))for(r=e.length;o&lt;r;o++)null!=(i=t(e[o],o,n))&&a.push(i);else for(o in e)null!=(i=t(e[o],o,n))&&a.push(i);return g(a)},guid:1,support:le}),\"function\"==typeof Symbol&&(ce.fn[Symbol.iterator]=oe[Symbol.iterator]),ce.each(\"Boolean Number String Function Array Date RegExp Object Error Symbol\".split(\" \"),function(e,t){n[\"[object \"+t+\"]\"]=t.toLowerCase()});var pe=oe.pop,de=oe.sort,he=oe.splice,ge=\"[\\\\x20\\\\t\\\\r\\\\n\\\\f]\",ve=new RegExp(\"^\"+ge+\"+|((?:^|[^\\\\\\\\])(?:\\\\\\\\.)*)\"+ge+\"+$\",\"g\");ce.contains=function(e,t){var n=t&&t.parentNode;return e===n||!(!n||1!==n.nodeType||!(e.contains?e.contains(n):e.compareDocumentPosition&&16&e.compareDocumentPosition(n)))};var f=/([\\0-\\x1f\\x7f]|^-?\\d)|^-$|[^\\x80-\\uFFFF\\w-]/g;function p(e,t){return t?\"\\0\"===e?\"\\ufffd\":e.slice(0,-1)+\"\\\\\"+e.charCodeAt(e.length-1).toString(16)+\" \":\"\\\\\"+e}ce.escapeSelector=function(e){return(e+\"\").replace(f,p)};var ye=C,me=s;!function(){var e,b,w,o,a,T,r,C,d,i,k=me,S=ce.expando,E=0,n=0,s=W(),c=W(),u=W(),h=W(),l=function(e,t){return e===t&&(a=!0),0},f=\"checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped\",t=\"(?:\\\\\\\\[\\\\da-fA-F]{1,6}\"+ge+\"?|\\\\\\\\[^\\\\r\\\\n\\\\f]|[\\\\w-]|[^\\0-\\\\x7f])+\",p=\"\\\\[\"+ge+\"*(\"+t+\")(?:\"+ge+\"*([*^$|!~]?=)\"+ge+\"*(?:'((?:\\\\\\\\.|[^\\\\\\\\'])*)'|\\\"((?:\\\\\\\\.|[^\\\\\\\\\\\"])*)\\\"|(\"+t+\"))|)\"+ge+\"*\\\\]\",g=\":(\"+t+\")(?:\\\\((('((?:\\\\\\\\.|[^\\\\\\\\'])*)'|\\\"((?:\\\\\\\\.|[^\\\\\\\\\\\"])*)\\\")|((?:\\\\\\\\.|[^\\\\\\\\()[\\\\]]|\"+p+\")*)|.*)\\\\)|)\",v=new RegExp(ge+\"+\",\"g\"),y=new RegExp(\"^\"+ge+\"*,\"+ge+\"*\"),m=new RegExp(\"^\"+ge+\"*([&gt;+~]|\"+ge+\")\"+ge+\"*\"),x=new RegExp(ge+\"|&gt;\"),j=new RegExp(g),A=new RegExp(\"^\"+t+\"$\"),D={ID:new RegExp(\"^#(\"+t+\")\"),CLASS:new RegExp(\"^\\\\.(\"+t+\")\"),TAG:new RegExp(\"^(\"+t+\"|[*])\"),ATTR:new RegExp(\"^\"+p),PSEUDO:new RegExp(\"^\"+g),CHILD:new RegExp(\"^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\\\(\"+ge+\"*(even|odd|(([+-]|)(\\\\d*)n|)\"+ge+\"*(?:([+-]|)\"+ge+\"*(\\\\d+)|))\"+ge+\"*\\\\)|)\",\"i\"),bool:new RegExp(\"^(?:\"+f+\")$\",\"i\"),needsContext:new RegExp(\"^\"+ge+\"*[&gt;+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\\\(\"+ge+\"*((?:-\\\\d)?\\\\d*)\"+ge+\"*\\\\)|)(?=[^-]|$)\",\"i\")},N=/^(?:input|select|textarea|button)$/i,q=/^h\\d$/i,L=/^(?:#([\\w-]+)|(\\w+)|\\.([\\w-]+))$/,H=/[+~]/,O=new RegExp(\"\\\\\\\\[\\\\da-fA-F]{1,6}\"+ge+\"?|\\\\\\\\([^\\\\r\\\\n\\\\f])\",\"g\"),P=function(e,t){var n=\"0x\"+e.slice(1)-65536;return t||(n&lt;0?String.fromCharCode(n+65536):String.fromCharCode(n&gt;&gt;10|55296,1023&n|56320))},M=function(){V()},R=J(function(e){return!0===e.disabled&&fe(e,\"fieldset\")},\n\n\n\n\n\nDemo 1: Tying Yourself to the Mast",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
   },
   {
-    "objectID": "w01/index.html#types-of-languages",
-    "href": "w01/index.html#types-of-languages",
+    "objectID": "w01/index.html#types-of-languages-how-do-we-actually-execute-the-code",
+    "href": "w01/index.html#types-of-languages-how-do-we-actually-execute-the-code",
     "title": "Week 1: Course Intro and Motivation",
-    "section": "Types of Languages",
-    "text": "Types of Languages\n\nCompiled\nInterpreted",
+    "section": "Types of Languages: How Do We Actually Execute the Code?",
+    "text": "Types of Languages: How Do We Actually Execute the Code?\n(In chronological order:)\n\n\n\n[Compiled: C, C++, Java*]\n\nComputer executes a file containing compiled code (.c \\(\\leadsto\\) .exe, .java \\(\\leadsto\\) .class)\nNo “Run Line”/“Run Cell” button(!), only “Compile+Run All Code”\n\n[Interpreted: Python(!), R, JavaScript]\n\nComputer runs code line by line\nGives rise to REPL (Read-Execute-Print-Loop) framework: a literal game-changer, engine “underneath” Jupyter (mini-demo)\n\n\n\n\n\n\n(Me trying to explain compiled languages to Python/R users)",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -4811,17 +4821,27 @@
     "href": "w01/index.html#primitive-types",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Primitive Types",
-    "text": "Primitive Types\n\nBoolean (True or False)\nNumbers (Integers, Decimals)\nNone",
+    "text": "Primitive Types\n Boolean (True or False)\n Numbers (Integers, Decimals)\n None\n\n\nQ: …Why do we distinguish these from all other types?\nA: Computer knows in advance how much space they’ll take up!\nPython weirdness: can run x = True then x = \"Jeff\" next line\n\nNot possible in e.g. C, C++, Python!\n(We’ll see consequence in two slides)",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
   },
   {
-    "objectID": "w01/index.html#stack-and-heap",
-    "href": "w01/index.html#stack-and-heap",
+    "objectID": "w01/index.html#stack-and-heap-lying-a-little-bit-edition",
+    "href": "w01/index.html#stack-and-heap-lying-a-little-bit-edition",
     "title": "Week 1: Course Intro and Motivation",
-    "section": "Stack and Heap",
-    "text": "Stack and Heap\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5",
+    "section": "Stack and Heap: Lying-A-Little-Bit Edition",
+    "text": "Stack and Heap: Lying-A-Little-Bit Edition\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#stack-and-heap-real-python-is-weird-edition",
+    "href": "w01/index.html#stack-and-heap-real-python-is-weird-edition",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Stack and Heap: Real Python-is-Weird Edition",
+    "text": "Stack and Heap: Real Python-is-Weird Edition\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -4831,7 +4851,7 @@
     "href": "w01/index.html#algorithmic-thinking",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Algorithmic Thinking",
-    "text": "Algorithmic Thinking\n\nWhat are the inputs?\nWhat are the outputs?\nStandard cases vs. edge cases\nAdversarial development: brainstorm all of the ways an evil hacker might break your code!",
+    "text": "Algorithmic Thinking\n\nWhat are the inputs?\nWhat are the outputs?\nStandard cases vs. corner cases\nAdversarial development: brainstorm all of the ways an evil hacker might break your code!",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -4842,6 +4862,16 @@
     "title": "Week 1: Course Intro and Motivation",
     "section": "Example: Finding An Item Within A List",
     "text": "Example: Finding An Item Within A List\n\nSeems straightforward, right? Given a list l, and a value v, return the index of l which contains v\nCorner cases galore…\nWhat if l contains v more than once? What if it doesn’t contain v at all? What if l is None? What if v is None? What if l isn’t a list at all? What if v is itself a list?",
+    "crumbs": [
+      "Week 1: {{< var w01.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w01/index.html#corner-cases",
+    "href": "w01/index.html#corner-cases",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Corner Cases",
+    "text": "Corner Cases\n\nMost people stand in the center of a room…\nEccentric weirdos stand in the corner\nYour algorithm needs to handle all people",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -4861,7 +4891,7 @@
     "href": "w01/index.html#sanity-preserving-tip",
     "title": "Week 1: Course Intro and Motivation",
     "section": "#1 Sanity-Preserving Tip!",
-    "text": "#1 Sanity-Preserving Tip!\n\n(For our purposes) the answer to “what is Python?” is: an executable file that runs .py files!\n\ne.g., we can run python mycode.py in Terminal/PowerShell\n\nEverything else: pip, Jupyter, Pandas, etc., is an add-on to this basic functionality!",
+    "text": "#1 Sanity-Preserving Tip!\n\n(For our purposes) the answer to “what is Python?” is: an executable file that runs .py files!\n\ne.g., we can run python mycode.py in Terminal/PowerShell\n\nEverything else: pip, Jupyter, Pandas, etc., is an add-on to this basic functionality!\nExample: Python REPL mode (type just python into Terminal/PowerShell) is like running little 1-line .py files, but instead of terminating Python sits and waits for next 1-line .py file",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -4871,7 +4901,7 @@
     "href": "w01/index.html#code-blocks-via-indentation",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Code Blocks via Indentation",
-    "text": "Code Blocks via Indentation\n\n\nCode\nfor i in range(5):\n    print(i)\n\n\n0\n1\n2\n3\n4\n\n\n\n\nCode\nfor i in range(5):\nprint(i)\n\n\n\n  Cell In[4], line 2\n    print(i)\n    ^\nIndentationError: expected an indented block after 'for' statement on line 1",
+    "text": "Code Blocks via Indentation\n\n\nCode\nfor i in range(5):\n    print(i)\n\n\n0\n1\n2\n3\n4\n\n\n\n\nCode\nfor i in range(5):\nprint(i)\n\n\n\n  Cell In[5], line 2\n    print(i)\n    ^\nIndentationError: expected an indented block after 'for' statement on line 1",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -4881,7 +4911,7 @@
     "href": "w01/index.html#type-hints",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Type Hints",
-    "text": "Type Hints\n\nNot a “standard” Python feature, not enforced by the Python interpreter, but can help you maintain sanity!\n\n\n\n\n\nCode\ndef multiply(thing1, thing2):\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee\n\n\n\n\n\nCode\nfrom numbers import Number\ndef multiply(thing1: Number, thing2: Number) -&gt; Number:\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee",
+    "text": "Type Hints\n\nNot a “standard” Python feature, not enforced by the Python interpreter (can activate enforcement via Pydantic 😉), but can help you maintain sanity!\n\n\n\n\n\nCode\ndef multiply(thing1, thing2):\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee\n\n\n\n\n\nCode\nfrom numbers import Number\ndef multiply(thing1: Number, thing2: Number) -&gt; Number:\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -4897,11 +4927,11 @@
     ]
   },
   {
-    "objectID": "w01/index.html#why-does-the-nyc-subway-have-express-lines",
-    "href": "w01/index.html#why-does-the-nyc-subway-have-express-lines",
+    "objectID": "w01/index.html#why-does-nyc-subway-have-express-lines",
+    "href": "w01/index.html#why-does-nyc-subway-have-express-lines",
     "title": "Week 1: Course Intro and Motivation",
-    "section": "Why Does The NYC Subway Have Express Lines?",
-    "text": "Why Does The NYC Subway Have Express Lines?\n\n\n\nFrom NYC Central Park website",
+    "section": "Why Does NYC Subway Have Express Lines?",
+    "text": "Why Does NYC Subway Have Express Lines?\n\n\n\nFrom NYC Central Park website",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -4931,7 +4961,7 @@
     "href": "w01/index.html#the-secretly-exciting-world-of-matrix-multiplication",
     "title": "Week 1: Course Intro and Motivation",
     "section": "The Secretly Exciting World of Matrix Multiplication",
-    "text": "The Secretly Exciting World of Matrix Multiplication\n\nFun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations\nFun Fact 2: The way we’ve all learned how to multiply matrices requires \\(O(N^3)\\) operations, for two \\(N \\times N\\) matrices \\(A\\) and \\(B\\)\nFun Fact 3: \\(\\underbrace{x^2 - y^2}_{\\mathclap{\\times\\text{ twice, }\\pm\\text{ once}}} = \\underbrace{(x+y)(x-y)}_{\\times\\text{once, }\\pm\\text{ twice}}\\)\nFun Fact 4: These are not very fun facts at all",
+    "text": "The Secretly Exciting World of Matrix Multiplication\n\nFun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations\nFun Fact 2: The way we’ve all learned how to multiply matrices requires \\(O(N^3)\\) operations, for two \\(N \\times N\\) matrices \\(A\\) and \\(B\\)\nFun Fact 3: \\(\\underbrace{x^2 - y^2}_{{\\times\\text{ twice, }\\pm\\text{ once}}} = \\underbrace{(x+y)(x-y)}_{\\times\\text{once, }\\pm\\text{ twice}}\\)\nFun Fact 4: These are not very fun facts at all",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -4951,7 +4981,7 @@
     "href": "w01/index.html#block-partitioning-matrices",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Block-Partitioning Matrices",
-    "text": "Block-Partitioning Matrices\n\nNow let’s consider big matrices, whose dimensions are a power of 2 (for ease of illustration): \\(A\\) and \\(B\\) are now \\(N \\times N = 2^n \\times 2^n\\) matrices\nWe can “decompose” the matrix product \\(AB\\) as:\n\n\\[\nAB = \\begin{bmatrix}\nA_{11} & A_{12} \\\\\nA_{21} & A_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nB_{11} & B_{12} \\\\\nB_{21} & B_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\nA_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\\\\nA_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}\n\\end{bmatrix}\n\\]\n\nWhich gives us a recurrence relation representing the total number of computations required for this big-matrix multiplication: \\(T(N) = \\underbrace{8T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(1)}_{\\text{Additions}}\\)\nIt turns out that (using a method we’ll learn in Week 3), given this recurrence relation and our base case from the previous slide, this divide-and-conquer approach via block-partitioning doesn’t help us: we still get \\(T(n) = O(n^3)\\)…\nSo why is Jeff still torturing us with this example?",
+    "text": "Block-Partitioning Matrices\n\nNow let’s consider big matrices, whose dimensions are a power of 2 (for ease of illustration): \\(A\\) and \\(B\\) are now \\(N \\times N = 2^n \\times 2^n\\) matrices\nWe can “decompose” the matrix product \\(AB\\) as:\n\n\\[\nAB = \\begin{bmatrix}\nA_{11} & A_{12} \\\\\nA_{21} & A_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nB_{11} & B_{12} \\\\\nB_{21} & B_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\nA_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\\\\nA_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}\n\\end{bmatrix}\n\\]\n\nWhich gives us a recurrence relation representing the total number of computations required for this big-matrix multiplication: \\(T(N) = \\underbrace{8T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(1)}_{\\text{Additions}}\\)\nTurns out (using a method we’ll learn in Week 3): given this recurrence relation + base case from previous slide, this divide-and-conquer approach via block-partitioning doesn’t help us: we still get \\(T(n) = O(n^3)\\)…\nSo why is Jeff still torturing us with this example?",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -4981,14 +5011,21 @@
     "href": "w01/slides.html#before-and-after",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Before and After",
-    "text": "Before and After\n\n\n\n\n\n\nPython before taking DSAN 5500\n\n\n\n\n\n\n\nPython after taking DSAN 5500"
+    "text": "Before and After\n\n\n\n\n\n\n\n\n\nFigure 1: Python before taking DSAN 5500\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Python after taking DSAN 5500"
+  },
+  {
+    "objectID": "w01/slides.html#python-is-a-tool",
+    "href": "w01/slides.html#python-is-a-tool",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Python is a Tool!",
+    "text": "Python is a Tool!\n\nLike a hammer or like a car, you can care about them in and of themselves (no judgement!), but for most people they’re…\n\nFor building a house or\nFor getting from point \\(A\\) to point \\(B\\)\n\nThere is no priestly caste of “elite coders”…\n\nThere are people who win coding competitions (like one of my bffs, so I’m not hating!), like there are people who win hammering competitions\n…That doesn’t really have much to do with the way we’d like to use Python as Data Scientists or Software Engineers or etc.\n\nThis will be even more concrete when we look at efficiency: efficiency for what?\n\nIt goes deep: there are often fundamental tradeoffs between efficiency for [important task A] and [important task B]"
   },
   {
     "objectID": "w01/slides.html#developing-a-comparative-understanding",
     "href": "w01/slides.html#developing-a-comparative-understanding",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Developing a Comparative Understanding",
-    "text": "Developing a Comparative Understanding\n\n\n\n\n\n\n“We hardly know ourselves, if we know nobody else”\n\n\n–(Blue Scholars, “Sagaba”)\n\n\n\n\n\n\nThe course focuses on Python, but part of understanding Python is understanding how Python does things differently from other languages!\nJust as C was “overtaken” by Java, then Java was “overtaken” by Python, Python will someday be overtaken"
+    "text": "Developing a Comparative Understanding\n\n\n\n\n\n\n“We hardly know ourselves, if we know nobody else”\n\n\n–(Blue Scholars, “Sagaba”)\n\n\n\n\n\n\nThe course focuses on Python, but part of understanding Python is understanding how Python does things differently from other languages!\n\n(Most prominent in this course: static types)\n\nJust as C was “overtaken” by Java, then Java was “overtaken” by Python, Python will someday be overtaken\nIf I do my job well, it won’t matter – you’ll be ready for the next big language 💪\nIn fact, the main textbook for the course (CLRS) is not written in Python or any language at all – it’s “pseudocode”"
   },
   {
     "objectID": "w01/slides.html#the-numbers",
@@ -5005,46 +5042,53 @@
     "text": "Research Particular Subfields!\n\nFor example, if you’re interested in pursuing Economics, you’ll want to learn Stata\nPhysics? You may want to learn MATLAB\nFor pure mathematics: Julia / Mathematica\nStatistics, sociology, psychology, political science: R\nWeb development: JavaScript / TypeScript\nThe holy grail: you’re comfortable with Python but can also think in general, language-agnostic terms about algorithmic and data-structural efficiency!"
   },
   {
-    "objectID": "w01/slides.html#avoid-analysis-paralysis",
-    "href": "w01/slides.html#avoid-analysis-paralysis",
+    "objectID": "w01/slides.html#tying-yourself-to-the-mast",
+    "href": "w01/slides.html#tying-yourself-to-the-mast",
     "title": "Week 1: Course Intro and Motivation",
-    "section": "Avoid Analysis Paralysis",
-    "text": "Avoid Analysis Paralysis\n\n(Easier said than done, admittedly…)\n\n\nImage source: XKCD"
+    "section": "Tying Yourself to the Mast",
+    "text": "Tying Yourself to the Mast\n\nThe tired 3am version of you will thank present you for writing useful comments, exceptions, and type hints!\n\n\nJohn William Waterhouse, Public domain, via Wikimedia Commons"
   },
   {
-    "objectID": "w01/slides.html#tie-yourself-to-the-mast",
-    "href": "w01/slides.html#tie-yourself-to-the-mast",
+    "objectID": "w01/slides.html#whowhat-is-the-code-for",
+    "href": "w01/slides.html#whowhat-is-the-code-for",
     "title": "Week 1: Course Intro and Motivation",
-    "section": "Tie Yourself to the Mast",
-    "text": "Tie Yourself to the Mast\n\nThe exhausted 3am version of you will thank present you for writing useful comments, exceptions, and type hints!\n\n\nJohn William Waterhouse, Public domain, via Wikimedia Commons\nDemo: Lab 1"
+    "section": "Who/What is the Code For?",
+    "text": "Who/What is the Code For?\n\nThese files all do literally the exact same thing (implement jQuery)… so why are there four versions?\n\n\n\n\njquery-3.7.1.js\n\n/*!\n * jQuery JavaScript Library v3.7.1\n * https://jquery.com/\n *\n * Copyright OpenJS Foundation and other contributors\n * Released under the MIT license\n * https://jquery.org/license\n *\n * Date: 2023-08-28T13:37Z\n */\n( function( global, factory ) {\n\n    \"use strict\";\n\n    if ( typeof module === \"object\" && typeof module.exports === \"object\" ) {\n\n        // For CommonJS and CommonJS-like environments where a proper `window`\n        // is present, execute the factory and get jQuery.\n        // For environments that do not have a `window` with a `document`\n        // (such as Node.js), expose a factory as module.exports.\n        // This accentuates the need for the creation of a real `window`.\n        // e.g. var jQuery = require(\"jquery\")(window);\n        // See ticket trac-14549 for more info.\n        module.exports = global.document ?\n            factory( global, true ) :\n            function( w ) {\n                if ( !w.document ) {\n                    throw new Error( \"jQuery requires a window with a document\" );\n                }\n                return factory( w );\n            };\n    } else {\n        factory( global );\n    }\n\n// Pass this if window is not defined yet\n} )( typeof window !== \"undefined\" ? window : this, function( window, noGlobal ) {\n\n// Edge &lt;= 12 - 13+, Firefox &lt;=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1\n// throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode\n// arguments.callee.caller (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common\n// enough that all such attempts are guarded in a try block.\n\"use strict\";\n\nvar arr = [];\n\nvar getProto = Object.getPrototypeOf;\n\nvar slice = arr.slice;\n\nvar flat = arr.flat ? function( array ) {\n    return arr.flat.call( array );\n} : function( array ) {\n    return arr.concat.apply( [], array );\n};\n\n\nvar push = arr.push;\n\nvar indexOf = arr.indexOf;\n\nvar class2type = {};\n\nvar toString = class2type.toString;\n\nvar hasOwn = class2type.hasOwnProperty;\n\nvar fnToString = hasOwn.toString;\n\nvar ObjectFunctionString = fnToString.call( Object );\n\nvar support = {};\n\nvar isFunction = function isFunction( obj ) {\n\n        // Support: Chrome &lt;=57, Firefox &lt;=52\n        // In some browsers, typeof returns \"function\" for HTML &lt;object&gt; elements\n        // (i.e., `typeof document.createElement( \"object\" ) === \"function\"`).\n        // We don't want to classify *any* DOM node as a function.\n        // Support: QtWeb &lt;=3.8.5, WebKit &lt;=534.34, wkhtmltopdf tool &lt;=0.12.5\n        // Plus for old WebKit, typeof returns \"function\" for HTML collections\n        // (e.g., `typeof document.getElementsByTagName(\"div\") === \"function\"`). (gh-4756)\n        return typeof obj === \"function\" && typeof obj.nodeType !== \"number\" &&\n            typeof obj.item !== \"function\";\n    };\n\n\nvar isWindow = function isWindow( obj ) {\n        return obj != null && obj === obj.window;\n    };\n\n\nvar document = window.document;\n\n\n\n\n\njquery-3.7.1.min.js\n\n/*! jQuery v3.7.1 | (c) OpenJS Foundation and other contributors | jquery.org/license */!function(e,t){\"use strict\";\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=e.document?t(e,!0):function(e){if(!e.document)throw new Error(\"jQuery requires a window with a document\");return t(e)}:t(e)}(\"undefined\"!=typeof window?window:this,function(ie,e){\"use strict\";var oe=[],r=Object.getPrototypeOf,ae=oe.slice,g=oe.flat?function(e){return oe.flat.call(e)}:function(e){return oe.concat.apply([],e)},s=oe.push,se=oe.indexOf,n={},i=n.toString,ue=n.hasOwnProperty,o=ue.toString,a=o.call(Object),le={},v=function(e){return\"function\"==typeof e&&\"number\"!=typeof e.nodeType&&\"function\"!=typeof e.item},y=function(e){return null!=e&&e===e.window},C=ie.document,u={type:!0,src:!0,nonce:!0,noModule:!0};function m(e,t,n){var r,i,o=(n=n||C).createElement(\"script\");if(o.text=e,t)for(r in u)(i=t[r]||t.getAttribute&&t.getAttribute(r))&&o.setAttribute(r,i);n.head.appendChild(o).parentNode.removeChild(o)}function x(e){return null==e?e+\"\":\"object\"==typeof e||\"function\"==typeof e?n[i.call(e)]||\"object\":typeof e}var t=\"3.7.1\",l=/HTML$/i,ce=function(e,t){return new ce.fn.init(e,t)};function c(e){var t=!!e&&\"length\"in e&&e.length,n=x(e);return!v(e)&&!y(e)&&(\"array\"===n||0===t||\"number\"==typeof t&&0&lt;t&&t-1 in e)}function fe(e,t){return e.nodeName&&e.nodeName.toLowerCase()===t.toLowerCase()}ce.fn=ce.prototype={jquery:t,constructor:ce,length:0,toArray:function(){return ae.call(this)},get:function(e){return null==e?ae.call(this):e&lt;0?this[e+this.length]:this[e]},pushStack:function(e){var t=ce.merge(this.constructor(),e);return t.prevObject=this,t},each:function(e){return ce.each(this,e)},map:function(n){return this.pushStack(ce.map(this,function(e,t){return n.call(e,t,e)}))},slice:function(){return this.pushStack(ae.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},even:function(){return this.pushStack(ce.grep(this,function(e,t){return(t+1)%2}))},odd:function(){return this.pushStack(ce.grep(this,function(e,t){return t%2}))},eq:function(e){var t=this.length,n=+e+(e&lt;0?t:0);return this.pushStack(0&lt;=n&&n&lt;t?[this[n]]:[])},end:function(){return this.prevObject||this.constructor()},push:s,sort:oe.sort,splice:oe.splice},ce.extend=ce.fn.extend=function(){var e,t,n,r,i,o,a=arguments[0]||{},s=1,u=arguments.length,l=!1;for(\"boolean\"==typeof a&&(l=a,a=arguments[s]||{},s++),\"object\"==typeof a||v(a)||(a={}),s===u&&(a=this,s--);s&lt;u;s++)if(null!=(e=arguments[s]))for(t in e)r=e[t],\"__proto__\"!==t&&a!==r&&(l&&r&&(ce.isPlainObject(r)||(i=Array.isArray(r)))?(n=a[t],o=i&&!Array.isArray(n)?[]:i||ce.isPlainObject(n)?n:{},i=!1,a[t]=ce.extend(l,o,r)):void 0!==r&&(a[t]=r));return a},ce.extend({expando:\"jQuery\"+(t+Math.random()).replace(/\\D/g,\"\"),isReady:!0,error:function(e){throw new Error(e)},noop:function(){},isPlainObject:function(e){var t,n;return!(!e||\"[object Object]\"!==i.call(e))&&(!(t=r(e))||\"function\"==typeof(n=ue.call(t,\"constructor\")&&t.constructor)&&o.call(n)===a)},isEmptyObject:function(e){var t;for(t in e)return!1;return!0},globalEval:function(e,t,n){m(e,{nonce:t&&t.nonce},n)},each:function(e,t){var n,r=0;if(c(e)){for(n=e.length;r&lt;n;r++)if(!1===t.call(e[r],r,e[r]))break}else for(r in e)if(!1===t.call(e[r],r,e[r]))break;return e},text:function(e){var t,n=\"\",r=0,i=e.nodeType;if(!i)while(t=e[r++])n+=ce.text(t);return 1===i||11===i?e.textContent:9===i?e.documentElement.textContent:3===i||4===i?e.nodeValue:n},makeArray:function(e,t){var n=t||[];return null!=e&&(c(Object(e))?ce.merge(n,\"string\"==typeof e?[e]:e):s.call(n,e)),n},inArray:function(e,t,n){return null==t?-1:se.call(t,e,n)},isXMLDoc:function(e){var t=e&&e.namespaceURI,n=e&&(e.ownerDocument||e).documentElement;return!l.test(t||n&&n.nodeName||\"HTML\")},merge:function(e,t){for(var n=+t.length,r=0,i=e.length;r&lt;n;r++)e[i++]=t[r];return e.length=i,e},grep:function(e,t,n){for(var r=[],i=0,o=e.length,a=!n;i&lt;o;i++)!t(e[i],i)!==a&&r.push(e[i]);return r},map:function(e,t,n){var r,i,o=0,a=[];if(c(e))for(r=e.length;o&lt;r;o++)null!=(i=t(e[o],o,n))&&a.push(i);else for(o in e)null!=(i=t(e[o],o,n))&&a.push(i);return g(a)},guid:1,support:le}),\"function\"==typeof Symbol&&(ce.fn[Symbol.iterator]=oe[Symbol.iterator]),ce.each(\"Boolean Number String Function Array Date RegExp Object Error Symbol\".split(\" \"),function(e,t){n[\"[object \"+t+\"]\"]=t.toLowerCase()});var pe=oe.pop,de=oe.sort,he=oe.splice,ge=\"[\\\\x20\\\\t\\\\r\\\\n\\\\f]\",ve=new RegExp(\"^\"+ge+\"+|((?:^|[^\\\\\\\\])(?:\\\\\\\\.)*)\"+ge+\"+$\",\"g\");ce.contains=function(e,t){var n=t&&t.parentNode;return e===n||!(!n||1!==n.nodeType||!(e.contains?e.contains(n):e.compareDocumentPosition&&16&e.compareDocumentPosition(n)))};var f=/([\\0-\\x1f\\x7f]|^-?\\d)|^-$|[^\\x80-\\uFFFF\\w-]/g;function p(e,t){return t?\"\\0\"===e?\"\\ufffd\":e.slice(0,-1)+\"\\\\\"+e.charCodeAt(e.length-1).toString(16)+\" \":\"\\\\\"+e}ce.escapeSelector=function(e){return(e+\"\").replace(f,p)};var ye=C,me=s;!function(){var e,b,w,o,a,T,r,C,d,i,k=me,S=ce.expando,E=0,n=0,s=W(),c=W(),u=W(),h=W(),l=function(e,t){return e===t&&(a=!0),0},f=\"checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped\",t=\"(?:\\\\\\\\[\\\\da-fA-F]{1,6}\"+ge+\"?|\\\\\\\\[^\\\\r\\\\n\\\\f]|[\\\\w-]|[^\\0-\\\\x7f])+\",p=\"\\\\[\"+ge+\"*(\"+t+\")(?:\"+ge+\"*([*^$|!~]?=)\"+ge+\"*(?:'((?:\\\\\\\\.|[^\\\\\\\\'])*)'|\\\"((?:\\\\\\\\.|[^\\\\\\\\\\\"])*)\\\"|(\"+t+\"))|)\"+ge+\"*\\\\]\",g=\":(\"+t+\")(?:\\\\((('((?:\\\\\\\\.|[^\\\\\\\\'])*)'|\\\"((?:\\\\\\\\.|[^\\\\\\\\\\\"])*)\\\")|((?:\\\\\\\\.|[^\\\\\\\\()[\\\\]]|\"+p+\")*)|.*)\\\\)|)\",v=new RegExp(ge+\"+\",\"g\"),y=new RegExp(\"^\"+ge+\"*,\"+ge+\"*\"),m=new RegExp(\"^\"+ge+\"*([&gt;+~]|\"+ge+\")\"+ge+\"*\"),x=new RegExp(ge+\"|&gt;\"),j=new RegExp(g),A=new RegExp(\"^\"+t+\"$\"),D={ID:new RegExp(\"^#(\"+t+\")\"),CLASS:new RegExp(\"^\\\\.(\"+t+\")\"),TAG:new RegExp(\"^(\"+t+\"|[*])\"),ATTR:new RegExp(\"^\"+p),PSEUDO:new RegExp(\"^\"+g),CHILD:new RegExp(\"^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\\\(\"+ge+\"*(even|odd|(([+-]|)(\\\\d*)n|)\"+ge+\"*(?:([+-]|)\"+ge+\"*(\\\\d+)|))\"+ge+\"*\\\\)|)\",\"i\"),bool:new RegExp(\"^(?:\"+f+\")$\",\"i\"),needsContext:new RegExp(\"^\"+ge+\"*[&gt;+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\\\(\"+ge+\"*((?:-\\\\d)?\\\\d*)\"+ge+\"*\\\\)|)(?=[^-]|$)\",\"i\")},N=/^(?:input|select|textarea|button)$/i,q=/^h\\d$/i,L=/^(?:#([\\w-]+)|(\\w+)|\\.([\\w-]+))$/,H=/[+~]/,O=new RegExp(\"\\\\\\\\[\\\\da-fA-F]{1,6}\"+ge+\"?|\\\\\\\\([^\\\\r\\\\n\\\\f])\",\"g\"),P=function(e,t){var n=\"0x\"+e.slice(1)-65536;return t||(n&lt;0?String.fromCharCode(n+65536):String.fromCharCode(n&gt;&gt;10|55296,1023&n|56320))},M=function(){V()},R=J(function(e){return!0===e.disabled&&fe(e,\"fieldset\")},\n\n\n\n\nDemo 1: Tying Yourself to the Mast"
   },
   {
-    "objectID": "w01/slides.html#types-of-languages",
-    "href": "w01/slides.html#types-of-languages",
+    "objectID": "w01/slides.html#types-of-languages-how-do-we-actually-execute-the-code",
+    "href": "w01/slides.html#types-of-languages-how-do-we-actually-execute-the-code",
     "title": "Week 1: Course Intro and Motivation",
-    "section": "Types of Languages",
-    "text": "Types of Languages\n\nCompiled\nInterpreted"
+    "section": "Types of Languages: How Do We Actually Execute the Code?",
+    "text": "Types of Languages: How Do We Actually Execute the Code?\n(In chronological order:)\n\n\n\n[Compiled: C, C++, Java*]\n\nComputer executes a file containing compiled code (.c \\(\\leadsto\\) .exe, .java \\(\\leadsto\\) .class)\nNo “Run Line”/“Run Cell” button(!), only “Compile+Run All Code”\n\n[Interpreted: Python(!), R, JavaScript]\n\nComputer runs code line by line\nGives rise to REPL (Read-Execute-Print-Loop) framework: a literal game-changer, engine “underneath” Jupyter (mini-demo)\n\n\n\n\n\n(Me trying to explain compiled languages to Python/R users)"
   },
   {
     "objectID": "w01/slides.html#primitive-types",
     "href": "w01/slides.html#primitive-types",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Primitive Types",
-    "text": "Primitive Types\n\nBoolean (True or False)\nNumbers (Integers, Decimals)\nNone"
+    "text": "Primitive Types\n Boolean (True or False)\n Numbers (Integers, Decimals)\n None\n\n\nQ: …Why do we distinguish these from all other types?\nA: Computer knows in advance how much space they’ll take up!\nPython weirdness: can run x = True then x = \"Jeff\" next line\n\nNot possible in e.g. C, C++, Python!\n(We’ll see consequence in two slides)"
   },
   {
-    "objectID": "w01/slides.html#stack-and-heap",
-    "href": "w01/slides.html#stack-and-heap",
+    "objectID": "w01/slides.html#stack-and-heap-lying-a-little-bit-edition",
+    "href": "w01/slides.html#stack-and-heap-lying-a-little-bit-edition",
     "title": "Week 1: Course Intro and Motivation",
-    "section": "Stack and Heap",
-    "text": "Stack and Heap\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
+    "section": "Stack and Heap: Lying-A-Little-Bit Edition",
+    "text": "Stack and Heap: Lying-A-Little-Bit Edition\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
+  },
+  {
+    "objectID": "w01/slides.html#stack-and-heap-real-python-is-weird-edition",
+    "href": "w01/slides.html#stack-and-heap-real-python-is-weird-edition",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Stack and Heap: Real Python-is-Weird Edition",
+    "text": "Stack and Heap: Real Python-is-Weird Edition\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
   },
   {
     "objectID": "w01/slides.html#algorithmic-thinking",
     "href": "w01/slides.html#algorithmic-thinking",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Algorithmic Thinking",
-    "text": "Algorithmic Thinking\n\nWhat are the inputs?\nWhat are the outputs?\nStandard cases vs. edge cases\nAdversarial development: brainstorm all of the ways an evil hacker might break your code!"
+    "text": "Algorithmic Thinking\n\nWhat are the inputs?\nWhat are the outputs?\nStandard cases vs. corner cases\nAdversarial development: brainstorm all of the ways an evil hacker might break your code!"
   },
   {
     "objectID": "w01/slides.html#example-finding-an-item-within-a-list",
@@ -5052,6 +5096,13 @@
     "title": "Week 1: Course Intro and Motivation",
     "section": "Example: Finding An Item Within A List",
     "text": "Example: Finding An Item Within A List\n\nSeems straightforward, right? Given a list l, and a value v, return the index of l which contains v\nCorner cases galore…\nWhat if l contains v more than once? What if it doesn’t contain v at all? What if l is None? What if v is None? What if l isn’t a list at all? What if v is itself a list?"
+  },
+  {
+    "objectID": "w01/slides.html#corner-cases",
+    "href": "w01/slides.html#corner-cases",
+    "title": "Week 1: Course Intro and Motivation",
+    "section": "Corner Cases",
+    "text": "Corner Cases\n\nMost people stand in the center of a room…\nEccentric weirdos stand in the corner\nYour algorithm needs to handle all people"
   },
   {
     "objectID": "w01/slides.html#demo",
@@ -5065,21 +5116,21 @@
     "href": "w01/slides.html#sanity-preserving-tip",
     "title": "Week 1: Course Intro and Motivation",
     "section": "#1 Sanity-Preserving Tip!",
-    "text": "#1 Sanity-Preserving Tip!\n\n(For our purposes) the answer to “what is Python?” is: an executable file that runs .py files!\n\ne.g., we can run python mycode.py in Terminal/PowerShell\n\nEverything else: pip, Jupyter, Pandas, etc., is an add-on to this basic functionality!"
+    "text": "#1 Sanity-Preserving Tip!\n\n(For our purposes) the answer to “what is Python?” is: an executable file that runs .py files!\n\ne.g., we can run python mycode.py in Terminal/PowerShell\n\nEverything else: pip, Jupyter, Pandas, etc., is an add-on to this basic functionality!\nExample: Python REPL mode (type just python into Terminal/PowerShell) is like running little 1-line .py files, but instead of terminating Python sits and waits for next 1-line .py file"
   },
   {
     "objectID": "w01/slides.html#code-blocks-via-indentation",
     "href": "w01/slides.html#code-blocks-via-indentation",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Code Blocks via Indentation",
-    "text": "Code Blocks via Indentation\n\n\nCode\nfor i in range(5):\n    print(i)\n\n\n0\n1\n2\n3\n4\n\n\n\n\nCode\nfor i in range(5):\nprint(i)\n\n\n\n  Cell In[4], line 2\n    print(i)\n    ^\nIndentationError: expected an indented block after 'for' statement on line 1"
+    "text": "Code Blocks via Indentation\n\n\nCode\nfor i in range(5):\n    print(i)\n\n\n0\n1\n2\n3\n4\n\n\n\n\nCode\nfor i in range(5):\nprint(i)\n\n\n\n  Cell In[5], line 2\n    print(i)\n    ^\nIndentationError: expected an indented block after 'for' statement on line 1"
   },
   {
     "objectID": "w01/slides.html#type-hints",
     "href": "w01/slides.html#type-hints",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Type Hints",
-    "text": "Type Hints\n\nNot a “standard” Python feature, not enforced by the Python interpreter, but can help you maintain sanity!\n\n\n\n\n\nCode\ndef multiply(thing1, thing2):\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee\n\n\n\n\n\nCode\nfrom numbers import Number\ndef multiply(thing1: Number, thing2: Number) -&gt; Number:\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee"
+    "text": "Type Hints\n\nNot a “standard” Python feature, not enforced by the Python interpreter (can activate enforcement via Pydantic 😉), but can help you maintain sanity!\n\n\n\n\n\nCode\ndef multiply(thing1, thing2):\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee\n\n\n\n\n\nCode\nfrom numbers import Number\ndef multiply(thing1: Number, thing2: Number) -&gt; Number:\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee"
   },
   {
     "objectID": "w01/slides.html#unit-testing",
@@ -5089,11 +5140,11 @@
     "text": "Unit Testing\n\nFor your life: test-driven development\n\nIf you’re coding a duck, you should test that it looks like a duck, quacks like a duck, etc.\n\nFor this class:\n\nPublic tests: Fully visible, see result plus full code\nHidden tests: See result + description of test, but no code\nSecret tests: We run these after you submit, as a major portion of the total grade"
   },
   {
-    "objectID": "w01/slides.html#why-does-the-nyc-subway-have-express-lines",
-    "href": "w01/slides.html#why-does-the-nyc-subway-have-express-lines",
+    "objectID": "w01/slides.html#why-does-nyc-subway-have-express-lines",
+    "href": "w01/slides.html#why-does-nyc-subway-have-express-lines",
     "title": "Week 1: Course Intro and Motivation",
-    "section": "Why Does The NYC Subway Have Express Lines?",
-    "text": "Why Does The NYC Subway Have Express Lines?\n\nFrom NYC Central Park website"
+    "section": "Why Does NYC Subway Have Express Lines?",
+    "text": "Why Does NYC Subway Have Express Lines?\n\nFrom NYC Central Park website"
   },
   {
     "objectID": "w01/slides.html#why-stop-at-two-levels",
@@ -5114,7 +5165,7 @@
     "href": "w01/slides.html#the-secretly-exciting-world-of-matrix-multiplication",
     "title": "Week 1: Course Intro and Motivation",
     "section": "The Secretly Exciting World of Matrix Multiplication",
-    "text": "The Secretly Exciting World of Matrix Multiplication\n\nFun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations\nFun Fact 2: The way we’ve all learned how to multiply matrices requires \\(O(N^3)\\) operations, for two \\(N \\times N\\) matrices \\(A\\) and \\(B\\)\nFun Fact 3: \\(\\underbrace{x^2 - y^2}_{\\mathclap{\\times\\text{ twice, }\\pm\\text{ once}}} = \\underbrace{(x+y)(x-y)}_{\\times\\text{once, }\\pm\\text{ twice}}\\)\nFun Fact 4: These are not very fun facts at all"
+    "text": "The Secretly Exciting World of Matrix Multiplication\n\nFun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations\nFun Fact 2: The way we’ve all learned how to multiply matrices requires \\(O(N^3)\\) operations, for two \\(N \\times N\\) matrices \\(A\\) and \\(B\\)\nFun Fact 3: \\(\\underbrace{x^2 - y^2}_{{\\times\\text{ twice, }\\pm\\text{ once}}} = \\underbrace{(x+y)(x-y)}_{\\times\\text{once, }\\pm\\text{ twice}}\\)\nFun Fact 4: These are not very fun facts at all"
   },
   {
     "objectID": "w01/slides.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
@@ -5128,7 +5179,7 @@
     "href": "w01/slides.html#block-partitioning-matrices",
     "title": "Week 1: Course Intro and Motivation",
     "section": "Block-Partitioning Matrices",
-    "text": "Block-Partitioning Matrices\n\nNow let’s consider big matrices, whose dimensions are a power of 2 (for ease of illustration): \\(A\\) and \\(B\\) are now \\(N \\times N = 2^n \\times 2^n\\) matrices\nWe can “decompose” the matrix product \\(AB\\) as:\n\n\\[\nAB = \\begin{bmatrix}\nA_{11} & A_{12} \\\\\nA_{21} & A_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nB_{11} & B_{12} \\\\\nB_{21} & B_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\nA_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\\\\nA_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}\n\\end{bmatrix}\n\\]\n\nWhich gives us a recurrence relation representing the total number of computations required for this big-matrix multiplication: \\(T(N) = \\underbrace{8T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(1)}_{\\text{Additions}}\\)\nIt turns out that (using a method we’ll learn in Week 3), given this recurrence relation and our base case from the previous slide, this divide-and-conquer approach via block-partitioning doesn’t help us: we still get \\(T(n) = O(n^3)\\)…\nSo why is Jeff still torturing us with this example?"
+    "text": "Block-Partitioning Matrices\n\nNow let’s consider big matrices, whose dimensions are a power of 2 (for ease of illustration): \\(A\\) and \\(B\\) are now \\(N \\times N = 2^n \\times 2^n\\) matrices\nWe can “decompose” the matrix product \\(AB\\) as:\n\n\\[\nAB = \\begin{bmatrix}\nA_{11} & A_{12} \\\\\nA_{21} & A_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nB_{11} & B_{12} \\\\\nB_{21} & B_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\nA_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\\\\nA_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}\n\\end{bmatrix}\n\\]\n\nWhich gives us a recurrence relation representing the total number of computations required for this big-matrix multiplication: \\(T(N) = \\underbrace{8T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(1)}_{\\text{Additions}}\\)\nTurns out (using a method we’ll learn in Week 3): given this recurrence relation + base case from previous slide, this divide-and-conquer approach via block-partitioning doesn’t help us: we still get \\(T(n) = O(n^3)\\)…\nSo why is Jeff still torturing us with this example?"
   },
   {
     "objectID": "w01/slides.html#time-for-some-matrix-magic",

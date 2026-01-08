@@ -1,0 +1,6 @@
+## Avoid Analysis Paralysis
+
+* *(Easier said than done, admittedly...)*
+
+![Image source: <a href='https://xkcd.com/1445/' target='_blank'>XKCD</a>](images/efficiency_2x.png){fig-align="center"}
+

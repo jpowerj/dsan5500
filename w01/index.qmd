@@ -4,7 +4,6 @@ subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: 2026-01-08
 date-format: full
 lecnum: 1
-jupyter: python3
 categories:
   - "Class Sessions"
 author: "Jeff Jacobs"
@@ -18,10 +17,12 @@ format:
     code-fold: show
     scrollable: true
     slide-number: true
+    link-external-icon: true
+    link-external-newwindow: true
     html-math-method: mathjax
-    css: "../dsan-globals/jjstyles.css"
+    theme: [default, "../dsan-globals/jjquarto.scss"]
     include-in-header:
-      text: "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous'><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css'>"
+      text: "<link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous'><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css'>"
     simplemenu:
       flat: true
       barhtml:
@@ -45,33 +46,63 @@ format:
 
 :::
 
-# Welcome to DSAN 5500! {data-name="Welcome"}
+# Welcome to DSAN 5500! {.smaller .title-13 .crunch-title .crunch-callout .code-90 data-name="Schedule"}
 
-* Principles for the Course
-* Algorithmic Thinking vs. Coding
-* Data Structures: Motivation
-* Algorithms and Complexity: Motivation
+Today's Planned Schedule:
 
-# Course Principles {data-name="Principles"}
+| | Start | End | Topic |
+|:- |:- |:- |:- |
+| **Lecture** | 6:30pm | 6:50pm | [Core Principles/Concepts &rarr;](#object-oriented-programming) |
+| | 6:50pm | 7:15pm | [Algorithmic *Thinking* vs. *Coding* &rarr;](#core-data-structure-linkedlist) |
+| | 7:15pm | 7:30pm | [Coding in *General* vs. Coding in *Python* &rarr;]() |
+| | 7:30pm | 8:00pm | [Motivations: Software Design Patterns (OOP) &rarr;](#onwards-and-upwards-fancier-algorithms) |
+| **Break!** | 8:00pm | 8:10pm | |
+| | 8:10pm | 8:35pm | [Motivations: Data Structures &rarr;](#hash-tables) |
+| | 8:35pm | 9:00pm | [Motivations: Algorithms and Complexity &rarr;](#hash-tables) |
 
+: {tbl-colwidths="[12,12,12,64]"}
+
+# Course Principles {data-stack-name="Principles"}
+
+* Python is a **tool** (means to an end), not a secret society of knowers
 * *Comparative* Understanding
 * Learning Data Structures and Complexity *Simultaneously*
 
 ## Before and After {.smaller .crunch-title .crunch-quarto-layout-panel}
 
-::: {layout="[1,1]"}
+:::: {layout="[1,1]" layout-valign="center"}
 
-![Python before taking DSAN 5500](images/scariest_snake.webp){fig-align="center" width="440"}
+![Python before taking DSAN 5500](images/scariest_snake.webp){#fig-scary-python fig-align="center" width="440"}
 
-![Python after taking DSAN 5500](images/snek.jpg){fig-align="center" width="320"}
+::: {#fig-cat-snek}
 
+<center>
+
+{{< video images/cat_snek.mp4 width="480" >}}
+
+</center>
+
+Python after taking DSAN 5500
 :::
 
-## Developing a *Comparative* Understanding {.full-width-callout}
+::::
+
+## Python is a Tool! {.crunch-title .smaller}
+
+* Like a **hammer** or like a **car**, you can care about them in and of themselves (no judgement!), but for most people they're...
+  * For **building a house** or
+  * For **getting from point $A$ to point $B$**
+* There is no priestly caste of **"elite coders"**...
+  * There *are* people who win coding competitions (like one of my bffs, so I'm not hating!), like there are people who win [hammering competitions](https://www.youtube.com/shorts/BVhEvwuVZ_4)
+  * ...That doesn't really have much to do with the way we'd like to use Python as Data Scientists or Software Engineers or etc.
+* This will be even more concrete when we look at **efficiency**: efficiency **for what?**
+  * It goes deep: there are often **fundamental tradeoffs** between efficiency for [important task A] and [important task B]
+
+## Developing a *Comparative* Understanding {.full-width-callout .title-08 .crunch-li-8 .text-90}
 
 <!-- https://css-tricks.com/left-align-and-right-align-text-on-the-same-line/ -->
 
-::: {.callout-note icon="false" appearance="minimal"}
+:::: {.callout-note icon="false" appearance="minimal"}
 
 ::: {.container style="width: 100%; clear: both;"}
 ::: {style="float: left;"}
@@ -79,14 +110,17 @@ format:
 :::
 
 ::: {style="float: right;"}
---(Blue Scholars, <a href='https://www.youtube.com/watch?v=vbziavrLrds' target='_blank'>"Sagaba"</a>)
+--(Blue Scholars, ["Sagaba"](https://www.youtube.com/watch?v=vbziavrLrds))
 :::
 
 :::
-:::
+::::
 
 * The course focuses on **Python**, but part of understanding Python is understanding how Python **does things differently from other languages!**
-* Just as C was "overtaken" by Java, then Java was "overtaken" by Python, Python will someday be overtaken
+  * (Most prominent in this course: **static types**)
+* Just as C was "overtaken" by Java, then Java was "overtaken" by Python, **Python will someday be overtaken**
+* If I do my job well, it won't matter -- you'll be ready for the next big language 💪
+* In fact, the **main textbook** for the course (CLRS) is not written in Python or **any language at all** -- it's "pseudocode"
 
 ## The Numbers {.smaller}
 
@@ -136,36 +170,188 @@ fig.show()
 * **Web development**: JavaScript / TypeScript
 * The holy grail: you're comfortable with Python but can also think in **general, language-agnostic terms** about algorithmic and data-structural efficiency!
 
-## Avoid Analysis Paralysis
+## Tying Yourself to the Mast {.crunch-ul}
 
-* *(Easier said than done, admittedly...)*
-
-![Image source: <a href='https://xkcd.com/1445/' target='_blank'>XKCD</a>](images/efficiency_2x.png){fig-align="center"}
-
-## Tie Yourself to the Mast
-
-* The exhausted 3am version of you will thank **present you** for writing useful **comments**, **exceptions**, and **type hints**!
+* The tired 3am version of you will thank **present you** for writing useful **comments**, **exceptions**, and **type hints**!
 
 ![<a href="https://commons.wikimedia.org/wiki/File:John_William_Waterhouse_-_Ulysses_and_the_Sirens_(1891).jpg" target='_blank'>John William Waterhouse</a>, Public domain, via Wikimedia Commons](images/ulysses.jpg){fig-align="center"}
 
-* [Demo: Lab 1](https://colab.research.google.com/drive/1XMw3vOYK8NJl9MgMjfhYfK3lXg0KjnkE?usp=drive_link)
+## Who/What is the Code *For*? {.smaller .title-12 .crunch-title}
+
+![These files all do literally the exact same thing (implement [jQuery](https://releases.jquery.com/))... so why are there four versions?](images/jquery.jpeg){fig-align="center"}
+
+<style>
+#js-min code {
+  word-break: break-all !important;
+  white-space: pre-wrap !important;
+}
+</style>
+
+:::: {.columns}
+::: {.column width="50%"}
+
+``` {.js filename="jquery-3.7.1.js" style="height: 400px;"}
+/*!
+ * jQuery JavaScript Library v3.7.1
+ * https://jquery.com/
+ *
+ * Copyright OpenJS Foundation and other contributors
+ * Released under the MIT license
+ * https://jquery.org/license
+ *
+ * Date: 2023-08-28T13:37Z
+ */
+( function( global, factory ) {
+
+	"use strict";
+
+	if ( typeof module === "object" && typeof module.exports === "object" ) {
+
+		// For CommonJS and CommonJS-like environments where a proper `window`
+		// is present, execute the factory and get jQuery.
+		// For environments that do not have a `window` with a `document`
+		// (such as Node.js), expose a factory as module.exports.
+		// This accentuates the need for the creation of a real `window`.
+		// e.g. var jQuery = require("jquery")(window);
+		// See ticket trac-14549 for more info.
+		module.exports = global.document ?
+			factory( global, true ) :
+			function( w ) {
+				if ( !w.document ) {
+					throw new Error( "jQuery requires a window with a document" );
+				}
+				return factory( w );
+			};
+	} else {
+		factory( global );
+	}
+
+// Pass this if window is not defined yet
+} )( typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
+
+// Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1
+// throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
+// arguments.callee.caller (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common
+// enough that all such attempts are guarded in a try block.
+"use strict";
+
+var arr = [];
+
+var getProto = Object.getPrototypeOf;
+
+var slice = arr.slice;
+
+var flat = arr.flat ? function( array ) {
+	return arr.flat.call( array );
+} : function( array ) {
+	return arr.concat.apply( [], array );
+};
+
+
+var push = arr.push;
+
+var indexOf = arr.indexOf;
+
+var class2type = {};
+
+var toString = class2type.toString;
+
+var hasOwn = class2type.hasOwnProperty;
+
+var fnToString = hasOwn.toString;
+
+var ObjectFunctionString = fnToString.call( Object );
+
+var support = {};
+
+var isFunction = function isFunction( obj ) {
+
+		// Support: Chrome <=57, Firefox <=52
+		// In some browsers, typeof returns "function" for HTML <object> elements
+		// (i.e., `typeof document.createElement( "object" ) === "function"`).
+		// We don't want to classify *any* DOM node as a function.
+		// Support: QtWeb <=3.8.5, WebKit <=534.34, wkhtmltopdf tool <=0.12.5
+		// Plus for old WebKit, typeof returns "function" for HTML collections
+		// (e.g., `typeof document.getElementsByTagName("div") === "function"`). (gh-4756)
+		return typeof obj === "function" && typeof obj.nodeType !== "number" &&
+			typeof obj.item !== "function";
+	};
+
+
+var isWindow = function isWindow( obj ) {
+		return obj != null && obj === obj.window;
+	};
+
+
+var document = window.document;
+```
+
+:::
+::: {.column width="50%"}
+
+::: {#js-min}
+
+``` {.js filename="jquery-3.7.1.min.js" .code-overflow-wrap code-line-numbers="false" style="height: 400px;"}
+/*! jQuery v3.7.1 | (c) OpenJS Foundation and other contributors | jquery.org/license */!function(e,t){"use strict";"object"==typeof module&&"object"==typeof module.exports?module.exports=e.document?t(e,!0):function(e){if(!e.document)throw new Error("jQuery requires a window with a document");return t(e)}:t(e)}("undefined"!=typeof window?window:this,function(ie,e){"use strict";var oe=[],r=Object.getPrototypeOf,ae=oe.slice,g=oe.flat?function(e){return oe.flat.call(e)}:function(e){return oe.concat.apply([],e)},s=oe.push,se=oe.indexOf,n={},i=n.toString,ue=n.hasOwnProperty,o=ue.toString,a=o.call(Object),le={},v=function(e){return"function"==typeof e&&"number"!=typeof e.nodeType&&"function"!=typeof e.item},y=function(e){return null!=e&&e===e.window},C=ie.document,u={type:!0,src:!0,nonce:!0,noModule:!0};function m(e,t,n){var r,i,o=(n=n||C).createElement("script");if(o.text=e,t)for(r in u)(i=t[r]||t.getAttribute&&t.getAttribute(r))&&o.setAttribute(r,i);n.head.appendChild(o).parentNode.removeChild(o)}function x(e){return null==e?e+"":"object"==typeof e||"function"==typeof e?n[i.call(e)]||"object":typeof e}var t="3.7.1",l=/HTML$/i,ce=function(e,t){return new ce.fn.init(e,t)};function c(e){var t=!!e&&"length"in e&&e.length,n=x(e);return!v(e)&&!y(e)&&("array"===n||0===t||"number"==typeof t&&0<t&&t-1 in e)}function fe(e,t){return e.nodeName&&e.nodeName.toLowerCase()===t.toLowerCase()}ce.fn=ce.prototype={jquery:t,constructor:ce,length:0,toArray:function(){return ae.call(this)},get:function(e){return null==e?ae.call(this):e<0?this[e+this.length]:this[e]},pushStack:function(e){var t=ce.merge(this.constructor(),e);return t.prevObject=this,t},each:function(e){return ce.each(this,e)},map:function(n){return this.pushStack(ce.map(this,function(e,t){return n.call(e,t,e)}))},slice:function(){return this.pushStack(ae.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},even:function(){return this.pushStack(ce.grep(this,function(e,t){return(t+1)%2}))},odd:function(){return this.pushStack(ce.grep(this,function(e,t){return t%2}))},eq:function(e){var t=this.length,n=+e+(e<0?t:0);return this.pushStack(0<=n&&n<t?[this[n]]:[])},end:function(){return this.prevObject||this.constructor()},push:s,sort:oe.sort,splice:oe.splice},ce.extend=ce.fn.extend=function(){var e,t,n,r,i,o,a=arguments[0]||{},s=1,u=arguments.length,l=!1;for("boolean"==typeof a&&(l=a,a=arguments[s]||{},s++),"object"==typeof a||v(a)||(a={}),s===u&&(a=this,s--);s<u;s++)if(null!=(e=arguments[s]))for(t in e)r=e[t],"__proto__"!==t&&a!==r&&(l&&r&&(ce.isPlainObject(r)||(i=Array.isArray(r)))?(n=a[t],o=i&&!Array.isArray(n)?[]:i||ce.isPlainObject(n)?n:{},i=!1,a[t]=ce.extend(l,o,r)):void 0!==r&&(a[t]=r));return a},ce.extend({expando:"jQuery"+(t+Math.random()).replace(/\D/g,""),isReady:!0,error:function(e){throw new Error(e)},noop:function(){},isPlainObject:function(e){var t,n;return!(!e||"[object Object]"!==i.call(e))&&(!(t=r(e))||"function"==typeof(n=ue.call(t,"constructor")&&t.constructor)&&o.call(n)===a)},isEmptyObject:function(e){var t;for(t in e)return!1;return!0},globalEval:function(e,t,n){m(e,{nonce:t&&t.nonce},n)},each:function(e,t){var n,r=0;if(c(e)){for(n=e.length;r<n;r++)if(!1===t.call(e[r],r,e[r]))break}else for(r in e)if(!1===t.call(e[r],r,e[r]))break;return e},text:function(e){var t,n="",r=0,i=e.nodeType;if(!i)while(t=e[r++])n+=ce.text(t);return 1===i||11===i?e.textContent:9===i?e.documentElement.textContent:3===i||4===i?e.nodeValue:n},makeArray:function(e,t){var n=t||[];return null!=e&&(c(Object(e))?ce.merge(n,"string"==typeof e?[e]:e):s.call(n,e)),n},inArray:function(e,t,n){return null==t?-1:se.call(t,e,n)},isXMLDoc:function(e){var t=e&&e.namespaceURI,n=e&&(e.ownerDocument||e).documentElement;return!l.test(t||n&&n.nodeName||"HTML")},merge:function(e,t){for(var n=+t.length,r=0,i=e.length;r<n;r++)e[i++]=t[r];return e.length=i,e},grep:function(e,t,n){for(var r=[],i=0,o=e.length,a=!n;i<o;i++)!t(e[i],i)!==a&&r.push(e[i]);return r},map:function(e,t,n){var r,i,o=0,a=[];if(c(e))for(r=e.length;o<r;o++)null!=(i=t(e[o],o,n))&&a.push(i);else for(o in e)null!=(i=t(e[o],o,n))&&a.push(i);return g(a)},guid:1,support:le}),"function"==typeof Symbol&&(ce.fn[Symbol.iterator]=oe[Symbol.iterator]),ce.each("Boolean Number String Function Array Date RegExp Object Error Symbol".split(" "),function(e,t){n["[object "+t+"]"]=t.toLowerCase()});var pe=oe.pop,de=oe.sort,he=oe.splice,ge="[\\x20\\t\\r\\n\\f]",ve=new RegExp("^"+ge+"+|((?:^|[^\\\\])(?:\\\\.)*)"+ge+"+$","g");ce.contains=function(e,t){var n=t&&t.parentNode;return e===n||!(!n||1!==n.nodeType||!(e.contains?e.contains(n):e.compareDocumentPosition&&16&e.compareDocumentPosition(n)))};var f=/([\0-\x1f\x7f]|^-?\d)|^-$|[^\x80-\uFFFF\w-]/g;function p(e,t){return t?"\0"===e?"\ufffd":e.slice(0,-1)+"\\"+e.charCodeAt(e.length-1).toString(16)+" ":"\\"+e}ce.escapeSelector=function(e){return(e+"").replace(f,p)};var ye=C,me=s;!function(){var e,b,w,o,a,T,r,C,d,i,k=me,S=ce.expando,E=0,n=0,s=W(),c=W(),u=W(),h=W(),l=function(e,t){return e===t&&(a=!0),0},f="checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",t="(?:\\\\[\\da-fA-F]{1,6}"+ge+"?|\\\\[^\\r\\n\\f]|[\\w-]|[^\0-\\x7f])+",p="\\["+ge+"*("+t+")(?:"+ge+"*([*^$|!~]?=)"+ge+"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|("+t+"))|)"+ge+"*\\]",g=":("+t+")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|"+p+")*)|.*)\\)|)",v=new RegExp(ge+"+","g"),y=new RegExp("^"+ge+"*,"+ge+"*"),m=new RegExp("^"+ge+"*([>+~]|"+ge+")"+ge+"*"),x=new RegExp(ge+"|>"),j=new RegExp(g),A=new RegExp("^"+t+"$"),D={ID:new RegExp("^#("+t+")"),CLASS:new RegExp("^\\.("+t+")"),TAG:new RegExp("^("+t+"|[*])"),ATTR:new RegExp("^"+p),PSEUDO:new RegExp("^"+g),CHILD:new RegExp("^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\("+ge+"*(even|odd|(([+-]|)(\\d*)n|)"+ge+"*(?:([+-]|)"+ge+"*(\\d+)|))"+ge+"*\\)|)","i"),bool:new RegExp("^(?:"+f+")$","i"),needsContext:new RegExp("^"+ge+"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\("+ge+"*((?:-\\d)?\\d*)"+ge+"*\\)|)(?=[^-]|$)","i")},N=/^(?:input|select|textarea|button)$/i,q=/^h\d$/i,L=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,H=/[+~]/,O=new RegExp("\\\\[\\da-fA-F]{1,6}"+ge+"?|\\\\([^\\r\\n\\f])","g"),P=function(e,t){var n="0x"+e.slice(1)-65536;return t||(n<0?String.fromCharCode(n+65536):String.fromCharCode(n>>10|55296,1023&n|56320))},M=function(){V()},R=J(function(e){return!0===e.disabled&&fe(e,"fieldset")},
+```
+
+:::
+
+:::
+::::
+
+<center>
+
+[**Demo 1: Tying Yourself to the Mast**](https://colab.research.google.com/drive/1XMw3vOYK8NJl9MgMjfhYfK3lXg0KjnkE?usp=drive_link)
+
+</center>
 
 # Part 1: Coding in General {data-stack-name="Coding"}
 
-## Types of Languages
+## Types of Languages: How Do We Actually *Execute* the Code? {.smaller .crunch-title .title-11 .crunch-p .crunch-li-8}
 
-* Compiled
-* Interpreted
+*(In chronological order:)*<br>
 
-![](images/this-is-a-compact-disc.gif){fig-align="center"}
+:::: {layout="[60,40]" layout-valign="center"}
+::: {.column width="60%"}
+
+[**Compiled:** C, C++, Java*]
+
+* Computer executes a **file** containing **compiled code** (`.c` $\leadsto$ `.exe`, `.java` $\leadsto$ `.class`)
+* No "Run Line"/"Run Cell" button(!), only "Compile+Run All Code"
+
+[**Interpreted:** **Python**(!), R, JavaScript]
+
+* Computer runs code **line by line**
+* Gives rise to **REPL (Read-Execute-Print-Loop) framework**: a literal game-changer, engine "underneath" Jupyter (mini-demo)
+
+:::
+::: {.column width="40%"}
+
+![*(Me trying to explain compiled languages to Python/R users)*](images/this-is-a-compact-disc.gif){fig-align="center"}
+
+:::
+::::
 
 ## Primitive Types
 
-* Boolean (`True` or `False`)
-* Numbers (Integers, Decimals)
-* `None`
+<i class='bi bi-1-circle'></i> Boolean (`True` or `False`)
 
-## Stack and Heap {.smaller}
+<i class='bi bi-2-circle'></i> Numbers (Integers, Decimals)
+
+<i class='bi bi-3-circle'></i> `None`
+
+::: {#prim-discussion style="font-size: 85%"}
+
+* Q: ...Why do we distinguish these from all other types?
+* A: Computer **knows in advance how much space they'll take up!**
+* Python weirdness: can run `x = True` then `x = "Jeff"` next line
+  * Not possible in e.g. C, C++, Python!
+  * (We'll see consequence in two slides)
+
+:::
+
+## Stack and Heap: Lying-A-Little-Bit Edition {.smaller .crunch-title .title-11}
 
 Let's look at what happens, in the computer's memory, when we run the following code:
 
@@ -174,7 +360,7 @@ Let's look at what happens, in the computer's memory, when we run the following 
 
 ```{python}
 #| code-fold: show
-#| label: py-memory-example
+#| label: c-memory-example
 import datetime
 import pandas as pd
 country_df = pd.read_csv("assets/country_pop.csv")
@@ -201,18 +387,58 @@ country_df
 :::
 :::
 
+## Stack and Heap: Real Python-is-Weird Edition {.smaller .crunch-title .title-10}
+
+::: columns
+::: {.column width="50%"}
+
+```{python}
+#| code-fold: show
+#| label: py-memory-example
+import datetime
+import pandas as pd
+country_df = pd.read_csv("assets/country_pop.csv")
+pop_col = country_df['pop']
+num_rows = len(country_df)
+filled = all(~pd.isna(country_df))
+alg_row = country_df.loc[country_df['name'] == "Algeria"]
+num_cols = len(country_df.columns)
+username = "Jeff"
+cur_date = datetime.datetime.now()
+i = 0
+j = None
+z = 314
+country_df
+```
+
+:::
+::: {.column width="50%"}
+
+![](images/stack-heap-full.svg)
+
+:::
+:::
+
 ## Algorithmic Thinking
 
 * What are the **inputs**?
 * What are the **outputs**?
-* **Standard** cases vs. **edge cases**
+* **Standard** cases vs. **corner cases**
 * **Adversarial** development: brainstorm all of the ways an evil hacker might break your code!
 
-## Example: Finding An Item Within A List {.title-09}
+## Example: Finding An Item Within A List {.title-08}
 
 * Seems straightforward, right? Given a list `l`, and a value `v`, return the index of `l` which contains `v`
-* Corner cases galore...
+* **Corner cases** galore...
 * What if `l` contains `v` more than once? What if it doesn't contain `v` at all? What if `l` is `None`? What if `v` is `None`? What if `l` isn't a list at all? What if `v` is itself a list?
+
+## Corner Cases {.crunch-title .crunch-ul}
+
+* Most people stand in the center of a room...
+* Eccentric weirdos stand in the corner
+* Your algorithm needs to handle **all people**
+
+![](images/guy-in-corner-of-party.jpg){fig-align="center"}
 
 ## Demo
 
@@ -220,12 +446,13 @@ country_df
 
 # Part 2: Python Specifically {data-stack-name="Python"}
 
-## \#1 Sanity-Preserving Tip!
+## \#1 Sanity-Preserving Tip! {.crunch-title}
 
 * (For our purposes) the answer to "what is Python?" is: an **executable file** that **runs `.py` files!**
   * e.g., we can run `python mycode.py` in Terminal/PowerShell
 
 * Everything else: `pip`, Jupyter, Pandas, etc., is an **add-on** to this basic functionality!
+* Example: Python **REPL mode** (type just `python` into Terminal/PowerShell) is like running little 1-line `.py` files, but instead of terminating Python sits and waits for next 1-line `.py` file
 
 ## Code Blocks via Indentation
 
@@ -244,7 +471,7 @@ print(i)
 
 ## Type Hints {.smaller .crunch-title .crunch-ul}
 
-* **Not** a "standard" Python feature, **not** enforced by the Python interpreter, but can help you **maintain sanity**!
+* **Not** a "standard" Python feature, **not** enforced by the Python interpreter (can activate enforcement via **Pydantic** 😉), but can help you **maintain sanity**!
 
 ::: columns
 ::: {.column width="50%"}
@@ -283,7 +510,7 @@ print(multiply("fiveee", 3))
 
 # Data Structures: Motivation {data-stack-name="Data Structures"}
 
-## Why Does The NYC Subway Have Express Lines? {.smaller .title-11}
+## Why Does NYC Subway Have Express Lines? {.smaller .title-10}
 
 ![From <a href='https://www.centralpark.com/visitor-info/get-directions/' target='_blank'>NYC Central Park website</a>](images/subway_map_nyc.jpg){fig-align="center"}
 
@@ -299,7 +526,7 @@ print(multiply("fiveee", 3))
 ```{=html}
 <iframe src="https://jimkang.com/quadtreevis/" width="100%" height="450"></iframe>
 ```
-<a href='https://jimkang.com/quadtreevis/' target='_blank'>Jim Kang's Quadtree Visualizations <i class='bi bi-box-arrow-up-right'></i></a>
+<a href='https://jimkang.com/quadtreevis/' target='_blank'>Jim Kang's Quadtree Visualizations</a>
 
 # Algorithmic Complexity: Motivation {data-stack-name="Complexity"}
 
@@ -307,7 +534,7 @@ print(multiply("fiveee", 3))
 
 * Fun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations
 * Fun Fact 2: The way we've all learned how to multiply matrices requires $O(N^3)$ operations, for two $N \times N$ matrices $A$ and $B$
-* Fun Fact 3: $\underbrace{x^2 - y^2}_{\mathclap{\times\text{ twice, }\pm\text{ once}}} = \underbrace{(x+y)(x-y)}_{\times\text{once, }\pm\text{ twice}}$
+* Fun Fact 3: $\underbrace{x^2 - y^2}_{{\times\text{ twice, }\pm\text{ once}}} = \underbrace{(x+y)(x-y)}_{\times\text{once, }\pm\text{ twice}}$
 * Fun Fact 4: These are not very fun facts at all
 
 ## Why Is Jeff Rambling About Matrix Math From 300 Years Ago? {.smaller}
@@ -332,7 +559,7 @@ $$
 * 12 operations: 8 multiplications, 4 additions $\implies O(N^3) = O(2^3) = O(8)$
 * Are we trapped? Like... what is there to do besides performing these $N^3$ operations, if we want to multiply two $N \times N$ matrices? Why are we about to move onto yet another slide about this?
 
-## Block-Partitioning Matrices {.smaller}
+## Block-Partitioning Matrices {.smaller .crunch-title}
 
 * Now let's consider **big** matrices, whose dimensions are a power of 2 (for ease of illustration): $A$ and $B$ are now $N \times N = 2^n \times 2^n$ matrices
 * We can "decompose" the matrix product $AB$ as:
@@ -353,10 +580,10 @@ A_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}
 $$
 
 * Which gives us a **recurrence relation** representing the total number of computations required for this big-matrix multiplication: $T(N) = \underbrace{8T(N/2)}_{\text{Multiplications}} + \underbrace{\Theta(1)}_{\text{Additions}}$
-* It turns out that (using a method we'll learn in Week 3), given this recurrence relation and our **base case** from the previous slide, this divide-and-conquer approach via block-partitioning doesn't help us: we still get $T(n) = O(n^3)$...
+* Turns out (using a method we'll learn in Week 3): given this recurrence relation + **base case** from previous slide, this divide-and-conquer approach via block-partitioning doesn't help us: we still get $T(n) = O(n^3)$...
 * So why is Jeff still torturing us with this example?
 
-## Time For Some 🪄🔥MATRIX MAGIC!🔥🪄 {.smaller .crunch-title .crunch-ul .crunch-math .crunch-li .title-12}
+## Time For Some 🪄🔥MATRIX MAGIC!🔥🪄 {.smaller .crunch-title .crunch-ul .crunch-math .crunch-li .title-10}
 
 ::: {#matrix-magic-defn}
 
