@@ -12,72 +12,72 @@ w01:
   weeknum: 1
   title: "Course Intro and Motivation"
   footer: "Course Intro and Motivation"
-  date-md: "Jan 9"
+  date-md: "Jan 8"
 w02:
   weeknum: 2
   title: "Software Design Patterns and Object-Oriented Programming"
   footer: "Software Design Patterns and OOP"
-  date-md: "Jan 16"
+  date-md: "Jan 15"
 w03:
   weeknum: 3
   title: "Data Structures and Computational Complexity"
   footer: "Data Structures and Computational Complexity"
-  date-md: "Jan 23"
+  date-md: "Jan 22"
 w04:
   weeknum: 4
   title: "Data Structures from Scratch with OOP"
   footer: "Data Structures from Scratch with OOP"
-  date-md: "Jan 30"
+  date-md: "Jan 29"
 w05:
   weeknum: 5
   title: "Binary Search Trees"
   footer: "Binary Search Trees"
-  date-md: "Feb 6"
+  date-md: "Feb 5"
 w06:
   weeknum: 6
   title: "Depth-First and Breadth-First Search"
   footer: "Depth-First and Breadth-First Search"
-  date-md: "Feb 13"
+  date-md: "Feb 12"
 w07:
   weeknum: 7
   title: "Code Examples and Midterm Prep"
   footer: "Code Examples and Midterm Prep"
-  date-md: "Feb 20"
+  date-md: "Feb 19"
 w08:
   weeknum: 8
   title: "In-Class Midterm"
   footer: "In-Class Midterm"
-  date-md: "Feb 27"
+  date-md: "Feb 26"
 w09:
   weeknum: 9
   title: "ETL Pipelines with Prefect"
   footer: "ETL Pipelines"
-  date-md: "Mar 13"
+  date-md: "Mar 12"
 w10:
   weeknum: 10
   title: "Data Pipeline Orchestration"
   footer: "Pipeline Orchestration"
-  date-md: "Mar 20"
+  date-md: "Mar 19"
 w11:
   weeknum: 11
   title: "From Serial to Parallel Pipelines"
   footer: "Serial to Parallel Pipelines"
-  date-md: "Mar 27"
+  date-md: "Mar 26"
 w12:
   weeknum: 12
   title: "Final Projects, Map-Reduce"
   footer: "Final Projects, Map-Reduce"
-  date-md: "Apr 3"
+  date-md: "Apr 9"
 w13:
   weeknum: 13
   title: "Applications: Bioinformatics"
   footer: "Algorithms in Bioinformatics"
-  date-md: "Apr 10"
+  date-md: "Apr 16"
 w14:
   weeknum: 14
   title: "Applications: NLP"
   footer: "NLP Applications"
-  date-md: "Apr 24"
+  date-md: "Apr 23"
 # w15:
 #   weeknum: 15
 #   title: "Final Projects Celebration"

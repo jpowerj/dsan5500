@@ -233,7 +233,7 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Thursday, March 27, 2025</p>
+  <p class="date">Thursday, March 26, 2026</p>
 </section>
 <section id="schedule" class="title-slide slide level1 smaller small-title crunch-title crunch-callout code-90 center" data-name="Schedule">
 <h1>Schedule</h1>
@@ -408,7 +408,7 @@ Jeff Jacobs
 </section>
 <section id="in-action" class="slide level2 crunch-title crunch-details">
 <h2>In Action</h2>
-<div id="f59e10b4" class="cell" data-execution_count="1">
+<div id="28162835" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> time</span>
 <span id="cb1-2"><a></a><span class="im">from</span> sympy.ntheory <span class="im">import</span> factorint</span>
 <span id="cb1-3"><a></a><span class="im">from</span> joblib <span class="im">import</span> Parallel, delayed</span>
@@ -421,7 +421,7 @@ Jeff Jacobs
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="3e30b96a" class="cell" data-execution_count="2">
+<div id="1cd48d35" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>serial_start <span class="op">=</span> time.time()</span>
@@ -433,11 +433,11 @@ Jeff Jacobs
 <span id="cb2-7"><a></a>disp_time(serial_start, serial_end)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.9339 s</code></pre>
+<pre><code>1.0020 s</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="68b2cecf" class="cell" data-execution_count="3">
+<div id="dd6180d5" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>par_start <span class="op">=</span> time.time()</span>
@@ -449,7 +449,7 @@ Jeff Jacobs
 <span id="cb4-7"><a></a>disp_time(par_start, par_end)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.7508 s</code></pre>
+<pre><code>0.5949 s</code></pre>
 </div>
 </div>
 </div></div>
@@ -510,7 +510,7 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-7 \pm \sqrt{49 - 4(6)(-3)}}{2(6)
 <li>Computing pieces separately:</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="bu">map</span>(do_something_with_piece, list_of_pieces)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="6d529888" class="cell" data-execution_count="4">
+<div id="b1501977" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>my_map <span class="op">=</span> <span class="bu">map</span>(<span class="kw">lambda</span> <span class="bu">input</span>: <span class="bu">input</span><span class="op">**</span><span class="dv">2</span>, [(<span class="dv">1</span><span class="op">-</span><span class="dv">2</span>), (<span class="dv">3</span><span class="op">-</span><span class="dv">5</span>), (<span class="dv">2</span><span class="op">-</span><span class="dv">0</span>)])</span>
@@ -525,7 +525,7 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-7 \pm \sqrt{49 - 4(6)(-3)}}{2(6)
 <li>Combining solved pieces</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="bu">reduce</span>(how_to_combine_pair_of_pieces, pieces_to_combine)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="82bfe9aa" class="cell" data-execution_count="5">
+<div id="78559538" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
@@ -549,7 +549,7 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-7 \pm \sqrt{49 - 4(6)(-3)}}{2(6)
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="d68ad3a7" class="cell" data-execution_count="6">
+<div id="f717d7f2" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="kw">def</span> add_5(num):</span>
 <span id="cb12-2"><a></a>  <span class="cf">return</span> num <span class="op">+</span> <span class="dv">5</span></span>
 <span id="cb12-3"><a></a>add_5(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -558,7 +558,7 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-7 \pm \sqrt{49 - 4(6)(-3)}}{2(6)
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="4a49b07c" class="cell" data-execution_count="7">
+<div id="b8b2db62" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="kw">def</span> apply_twice(fn, arg):</span>
 <span id="cb14-2"><a></a>  <span class="cf">return</span> fn(fn(arg))</span>
 <span id="cb14-3"><a></a>apply_twice(add_5, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -570,7 +570,7 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{-7 \pm \sqrt{49 - 4(6)(-3)}}{2(6)
 <ul>
 <li>In Python, functions <strong>can be used as</strong> vars (Hence <code class="sourceCode python"><span class="kw">lambda</span></code>):</li>
 </ul>
-<div id="e2fb4e90" class="cell" data-execution_count="8">
+<div id="f6ad7c9b" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>add_5 <span class="op">=</span> <span class="kw">lambda</span> num: num <span class="op">+</span> <span class="dv">5</span></span>
 <span id="cb16-2"><a></a>apply_twice(add_5, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">

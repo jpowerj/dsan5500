@@ -1,7 +1,7 @@
 ---
 title: "Week 7: Code Examples and Midterm Review"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
-date: 2025-02-20
+date: 2026-02-19
 date-format: full
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"

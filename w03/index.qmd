@@ -1,7 +1,7 @@
 ---
 title: "Week 3: Data Structures and Computational Complexity"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
-date: 2025-01-23
+date: 2026-01-22
 date-format: full
 lecnum: 3
 categories:

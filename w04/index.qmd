@@ -1,7 +1,7 @@
 ---
 title: "Week 4: Data Structures from Scratch with OOP"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
-date: 2026-01-30
+date: 2026-01-29
 date-format: full
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"

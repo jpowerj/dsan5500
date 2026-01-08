@@ -231,7 +231,7 @@ Jeff Jacobs
     </div>
 </div>
 
-  <p class="date">Thursday, January 23, 2025</p>
+  <p class="date">Thursday, January 22, 2026</p>
 </section>
 <section id="schedule" class="title-slide slide level1 smaller small-title crunch-title crunch-callout center" data-name="Schedule">
 <h1>Schedule</h1>
@@ -340,7 +340,7 @@ Jeff Jacobs
 <li><p><strong>Fixed-size</strong> collection of <span class="math inline">\(N\)</span> objects</p></li>
 <li><p>Unless otherwise specified, we’re talking about <span class="math inline">\(2\)</span>-tuples</p></li>
 <li><p>Example: We can locate something on the Earth by specifying two <code>floats</code>: latitude and longitude!</p>
-<div id="3902eca5" class="cell" data-execution_count="1">
+<div id="077a8e56" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>gtown_loc <span class="op">=</span> (<span class="fl">38.9076</span>, <span class="op">-</span><span class="fl">77.0723</span>)</span>
@@ -386,7 +386,7 @@ c
 <ul>
 <li>Python:</li>
 </ul>
-<div id="f8efe78c" class="cell" data-execution_count="2">
+<div id="25b18616" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>my_list <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>]</span>
@@ -405,7 +405,7 @@ c</code></pre>
 <h2><em>List Comprehensions</em>: Apply [Operation] to Each Element</h2>
 <ul>
 <li><p>Construct <strong>new</strong> list by applying operation to each element:</p>
-<div id="8f2a2ffa" class="cell" data-execution_count="3">
+<div id="fb982605" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>my_nums <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
@@ -417,7 +417,7 @@ c</code></pre>
 </div>
 </div></li>
 <li><p>Can also <strong>filter</strong> the elements of the list with <code>if</code>:</p>
-<div id="353edd2a" class="cell" data-execution_count="4">
+<div id="813c83e8" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>my_odd_squares <span class="op">=</span> [num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> my_nums <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>]</span>
@@ -449,7 +449,7 @@ c</code></pre>
 <span id="cb12-2"><a></a><span class="bu">print</span>(<span class="ss">f"Unique preferences: </span><span class="sc">{</span>unique_prefs_morn<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb12-3"><a></a><span class="bu">print</span>(<span class="ss">f"Number of unique preferences: </span><span class="sc">{</span><span class="bu">len</span>(unique_prefs_morn)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Unique preferences: {'None', 'Vegan', 'Gluten Free'}
+<pre><code>Unique preferences: {'Vegan', 'Gluten Free', 'None'}
 Number of unique preferences: 3</code></pre>
 </div>
 </div>
@@ -478,7 +478,7 @@ Number of unique preferences: 3</code></pre>
 <span id="cb15-5"><a></a>unique_prefs_either <span class="op">=</span> unique_prefs_morn.union(unique_prefs_eve)</span>
 <span id="cb15-6"><a></a><span class="bu">print</span>(<span class="ss">f"Preferences in either event: </span><span class="sc">{</span>unique_prefs_either<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Preferences in either event: {'None', 'Vegan', 'Gluten Free'}</code></pre>
+<pre><code>Preferences in either event: {'Gluten Free', 'Vegan', 'None'}</code></pre>
 </div>
 </div>
 <p>Intersection (<span class="math inline">\(M \cap E\)</span>):</p>
@@ -486,7 +486,7 @@ Number of unique preferences: 3</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>unique_prefs_both <span class="op">=</span> unique_prefs_morn.intersection(unique_prefs_eve)</span>
 <span id="cb17-2"><a></a><span class="bu">print</span>(<span class="ss">f"Preferences in both events: </span><span class="sc">{</span>unique_prefs_both<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Preferences in both events: {'None', 'Vegan'}</code></pre>
+<pre><code>Preferences in both events: {'Vegan', 'None'}</code></pre>
 </div>
 </div>
 <p>Set Difference (<span class="math inline">\(M \setminus E\)</span> or <span class="math inline">\(E \setminus M\)</span>):</p>
@@ -507,7 +507,7 @@ Preferences only in the evening: set()</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>While other language like Java have lots of fancy types of Map, Python has a single type, the <strong>dictionary</strong>:</p>
-<div id="12f71e9d" class="cell" data-execution_count="11">
+<div id="3e7e58d5" class="cell" data-execution_count="11">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>gtown_data <span class="op">=</span> {</span>
@@ -530,7 +530,7 @@ dict_values(['Georgetown University', 1789, (38.9076, -77.0723), {'city': 'Washi
 </div>
 </div><div class="column" style="width:50%;">
 <p>Be careful when looping! Default behavior is iteration over <strong>keys</strong>:</p>
-<div id="9b6986c8" class="cell" data-execution_count="12">
+<div id="bdb99d70" class="cell" data-execution_count="12">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="cf">for</span> k <span class="kw">in</span> gtown_data:</span>
@@ -544,7 +544,7 @@ location</code></pre>
 </div>
 </div>
 <p>For <strong>key-value pairs</strong> use <code>.items()</code>:</p>
-<div id="a4248b71" class="cell" data-execution_count="13">
+<div id="02e0151b" class="cell" data-execution_count="13">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="cf">for</span> k, v <span class="kw">in</span> gtown_data.items():</span>
@@ -589,7 +589,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>-40
-&lt;__main__.MyNTuple object at 0x10544fcb0&gt; 🧐</code></pre>
+&lt;__main__.MyNTuple object at 0x109c4fcb0&gt; 🧐</code></pre>
 </div>
 </div></li>
 </ul>
@@ -607,7 +607,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </section>
 <section id="tuples-1" class="slide level2">
 <h2>Tuples</h2>
-<div id="4798b404" class="cell" data-execution_count="15">
+<div id="fa59ad69" class="cell" data-execution_count="15">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="kw">class</span> MyTuple:</span>
@@ -637,7 +637,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>The list itself just <strong>points</strong> to a root item:</p>
-<div id="543ea1ba" class="cell" data-execution_count="16">
+<div id="eae177aa" class="cell" data-execution_count="16">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="kw">class</span> MyList:</span>
@@ -656,7 +656,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>An item has contents, pointer to next item:</p>
-<div id="81af604f" class="cell" data-execution_count="17">
+<div id="cce6cc5b" class="cell" data-execution_count="17">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="kw">class</span> MyListItem:</span>
@@ -676,7 +676,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </details>
 </div>
 </div></div>
-<div id="2da25d22" class="cell" data-execution_count="18">
+<div id="fcf0fad3" class="cell" data-execution_count="18">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a>users <span class="op">=</span> MyList()</span>
@@ -704,7 +704,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>With a <code>MyTuple</code>:</p>
-<div id="8f79bacb" class="cell" data-execution_count="19">
+<div id="c8b0aac2" class="cell" data-execution_count="19">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a>t1.thing1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -714,7 +714,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
-<div id="cd5401cf" class="cell" data-execution_count="20">
+<div id="5fbb4e2c" class="cell" data-execution_count="20">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a>t1.thing2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -726,7 +726,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
 </div><div class="column" style="width:50%;">
 <p>With a <code>MyList</code>:</p>
-<div id="2af128d9" class="cell" data-execution_count="21">
+<div id="c36c3a89" class="cell" data-execution_count="21">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a><span class="bu">print</span>(users.root.content)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -736,7 +736,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
-<div id="857fb3bf" class="cell" data-execution_count="22">
+<div id="bb852861" class="cell" data-execution_count="22">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a></a>current_node <span class="op">=</span> users.root</span>
@@ -756,7 +756,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <h2>Pairwise-Concatenating List Elements</h2>
 <ul>
 <li><p>Now rather than just printing, let’s pairwise concatenate:</p>
-<div id="87b99253" class="cell" data-execution_count="23">
+<div id="fc4a0ecc" class="cell" data-execution_count="23">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a></a>cur_pointer1 <span class="op">=</span> users.root</span>
@@ -784,7 +784,7 @@ BoBo</code></pre>
 </section>
 <section id="last-example-pairwise-concat-end-check" class="slide level2 smaller crunch-title title-12 crunch-details">
 <h2>Last Example: Pairwise-Concat + End Check</h2>
-<div id="156b7aaa" class="cell" data-execution_count="24">
+<div id="c93ffa95" class="cell" data-execution_count="24">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a></a>printed_items <span class="op">=</span> []</span>
@@ -961,7 +961,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </section>
 <section id="the-figure-you-should-make-in-your-brain-every-time" class="slide level2 smaller crunch-title title-10 crunch-quarto-figure">
 <h2>The Figure You Should Make In Your Brain Every Time</h2>
-<div id="b750bbff" class="cell" data-execution_count="25">
+<div id="38c602a3" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1018,7 +1018,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <ul>
 <li>(Though this is harder to see, without a log-log plot:)</li>
 </ul>
-<div id="159c2097" class="cell" data-execution_count="26">
+<div id="aa46d6b5" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>
