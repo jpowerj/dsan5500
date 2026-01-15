@@ -49,3 +49,39 @@ digraph g {
 }
 
 <!-- https://kroki.io/graphviz/svg/eNqVk0uP0zAUhdftr7A8LEBqRd59KImEhscIAUKA2HSqkZPcNGZSO7Id2tLkv-O47bSILKZeOLo-vp-PTuyMrgSpCrRC-yHSQxD2mFERffpmypSzFJgSREH0Q9QwHMg6OXSkZS0ViA-W7hwMSpJAGeHPsOZih16-ybWEbnkG6N0W0lpRzl7N0dedKjjDev9_GNtgnkDfFUkfsfFwOaT6TYRcmE0oQni_DxlZgx2ntXjItMuG1esHwTeyyWlZQtbAulI7s5ryUja1BNF1NLT51fxpm31IskzYsbWdTpMA3GDWhLkd267-OHo1cV0_nXiBLj1dBnbgkRw61Y8dPQd6MZ_kqeeCpctp3M2zAy6xrFm307Zi1_baFo9kQSrofAtIucjwKOdMdXYifMtrQUHgpU6h7QvI-TegOyDVZT6FjRZH6a3OYeFYjju2JmPHWfYdM6qAbWimishaGsrAQNwnyD3-CHl-j5_VfLTgnbrDMIm76xK-TuL4CoB_CXhPSnk1IbgkfOHseYAu8hMCH-4YnpuLgcYxwoWN5yt_IdWu1ATJS6p_nX4aUj8MypR5GUt0M9oes_tJYYPPtm5enKG5dyY6J2JGZAFXIc88p-MVXo8SGMXtUYyHwu9RZkYJhjqP9i_dCD4S -->
+
+
+---
+
+
+digraph g {
+    rankdir=LR
+    concentrate=True
+	subgraph clusterG0 {
+		label="Memory (After Code Execution): Python"
+		subgraph clusterG1 {
+				label="Stack"
+                stvars[label = "{{<name1>cur_date|num_rows|filled|empty|num_cols|username|i|j|z}|{<addr1>0x88b6e369|<f1>13|<f2>0xb335c746|<f4>0x6164afe3|<f5>2|<f6>0xf7fc43e0|<f8>0x2a873f1c|<f9>0x88bb0093|<f10>314}}",shape = "record",fontname="Courier"]
+		}
+		subgraph clusterG2 {
+				label="Heap"
+          h1 [label="Date[2023-07-22]",fontname="Courier",penwidth=0]
+    	    h3 [label="\"Jeff\"",fontname="Courier",penwidth=0]
+          h4 [label=<<b>True</b>>,fontname="Courier",penwidth=0]
+          h5 [label=<<b>False</b>>,fontname="Courier",penwidth=0]
+          h6 [label=<<b>None</b>>,fontname="Courier",penwidth=0]
+          h7 [label=<<b>Singleton 0</b>>,fontname="Courier",penwidth=0]
+          h8 [label=<<b>Singleton 2</b>>,fontname="Courier",penwidth=0]
+		}
+        "stvars":addr1 -> "h1":g5[style="solid",constraint=True] #,xlabel="View"]
+        #$ "stvars":f4 -> "h1":g2[style="dashed",constraint=True] #,xlabel="View"]
+        "stvars":f2 -> h4
+        "stvars":f6 -> h3
+        "stvars":f4 -> h5
+        "stvars":f9 -> h6
+        "stvars":f8 -> h7
+        "stvars":f5 -> h8
+	}
+}
+
+https://kroki.io/graphviz/svg/eNqVk02P2jAQhs_wKyxvD60Ear4TUBKp2n6paquqW_XCopXjTEi6wUa2U6CE_17HwELVHBYfEr1-PY8nk5lhXi0EWZVogXZDpJcg7DGvRPL5u5GUMwpMCaIg-SEaGA5kkx0iaN1IBeKDpSMHg5pkUCf4Cyy52KKXbwptoVueA3q3AdqoirNXU_Rtq0rOsD7_H8Y2mCfQnSL0EZscLpdUv4mQM3MIJQjvdjEjS7BT2oiHXGfZsmb5IPhatkVV15C3sFyprdmlvJZtI0F0EW3V_mr_7NtdTPJc2Km1iaIsADeYtHFhp7arX47ezVzXp6EXaOlpGdiBRwroXD919DPQm0VYUM8FS8tIS4dEoVvYVMvJgZtZ1qQLsa3Utb39Ho9kSVbQfYAAykWORwVnqssrwbe8ERUIPNfl2PdVyvm3Uh-BrC4LVdpodrTe6oLMHMtxx1Y4dpx53zWjFbB1lasyseaGMjAQ9wlyjz9BUdzjZwUfU_BO0XGcpV3fxK-zNL0C4F8C3pNaXk0ILglfObsaEF4C7iq2qEFxhqxrOVE_x3kWp2uBEwkfmh9PTceicYpwaePpwp9Jta01QfK60q2kZ1bqia2YMiM7RzejzfFf_qxgjc_Z3bw4QwvvTHROxJzIEq5CnnlOxyu9HicwjtvjmBxKv8eZGCfocSLjhD2Ob5xoqGu4_wtgVnli

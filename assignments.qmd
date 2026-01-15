@@ -42,37 +42,8 @@ gen_points_table <- function(hw_url) {
 #| label: hw1-points-table
 #| warning: false
 #| echo: false
-hw1_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQfTwlDTqsHcaS8KQ-4NCUxB-JS7Aa0AIuP84dX2YQ1T2x2zXIbs7qTZUbrlxwvzf636LW_4sbpV-Y0/pub?output=csv"
+hw1_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQfTwlDTqsHcaS8KQ-4NCUxB-JS7Aa0AIuP84dX2YQ1T2x2zXIbs7qTZUbrlxwvzf636LW_4sbpV-Y0/pub?gid=0&single=true&output=csv"
 gen_points_table(hw1_url)
-```
-
-</div>
-
-## HW2
-
-<div style="height: 400px !important; max-height: 400px !important; overflow-y: scroll !important;">
-
-```{r}
-#| label: hw2-points-table
-#| warning: false
-#| echo: false
-hw2_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmSdcnLYxlB1-C6myAE57njrPpn8nLId7ETeprcYQrQf7lm-jDCkj47LDD5Qog7K69GW6qmKzTiOzA/pub?output=csv"
-gen_points_table(hw2_url)
-```
-
-</div>
-
-## HW3
-
-<div style="height: 400px !important; max-height: 400px !important; overflow-y: scroll !important;">
-
-
-```{r}
-#| label: hw3-points-table
-#| warning: false
-#| echo: false
-hw3_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vSmo1y2RuJo4NZS1GQjtUvt_6Dd0PCmduqU6G-1e1GqJ1ECTTk9dSHaBYf6rv2M93PiL3GuZHcatOTp/pub?output=csv"
-gen_points_table(hw3_url)
 ```
 
 </div>

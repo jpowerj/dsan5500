@@ -1736,25 +1736,11 @@
     ]
   },
   {
-    "objectID": "w02/slides.html#hammers-vs.-structures-built-whammers",
-    "href": "w02/slides.html#hammers-vs.-structures-built-whammers",
-    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
-    "section": "Hammers vs. Structures Built w/Hammers",
-    "text": "Hammers vs. Structures Built w/Hammers\n\n\nHow I see the course title:\n\nData Structures!\nObjects!, and\nAlgorithms! (in Python)\n\nHow my opps see the course title: (Data Structures, Objects, and Algorithms) in Python!"
-  },
-  {
-    "objectID": "w02/slides.html#primitive-types-in-general",
-    "href": "w02/slides.html#primitive-types-in-general",
-    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
-    "section": "Primitive Types in General",
-    "text": "Primitive Types in General\n\nVariable types for which [language] knows in advance exactly how much memory is going to be required\nBooleans (True or False): Exactly 1 bit (0 or 1)\nint: 32 or 64 bits (depending on OS)\nNone / null / NA: Since we want it to serve as a “blank” value (easily cast to other primitive types), usually the same number of bits as int\n\nHence, in C for example, null is actually just shorthand for an int with value 0"
-  },
-  {
     "objectID": "w02/slides.html#primitive-types-python-weirdness-edition",
     "href": "w02/slides.html#primitive-types-python-weirdness-edition",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Primitive Types: Python Weirdness Edition",
-    "text": "Primitive Types: Python Weirdness Edition\n\n\n\nBoolean (True or False): Exactly 1 bit (0 or 1)\n\nimport sys\nsys.getsizeof(True)\n\n28\n\n\nint: 32 or 64 bits (depending on OS)\n\nsys.maxsize\n\n9223372036854775807\n\n\nNone\n\nsys.getsizeof(None)\n\n16\n\n\n\n\n\n\n\n\n\n\nWhy is this happening?"
+    "text": "Primitive Types: Python Weirdness Edition\n\n\nNone: 1 bit (Always 0)\n\nimport sys\nsys.getsizeof(None)\n\n16\n\n\nBoolean (True or False): Exactly 1 bit (0 or 1)\n\nsys.getsizeof(True)\n\n28\n\n\nint: 32 or 64 bits (depending on OS)\n\nsys.maxsize\n\n9223372036854775807\n\n\n\n\n\n\n\n\n\nWhy is this happening?"
   },
   {
     "objectID": "w02/slides.html#stack-and-heap-in-c-java",
@@ -1771,11 +1757,39 @@
     "text": "Stack and Heap in Python\n\n\n\n\nmy_beautiful_app.py\n\nimport datetime\ncur_date = datetime.datetime.now()\nnum_rows = 13\nfilled = True\nempty = False\nnum_cols = 2\nusername = \"Jeff\"\ni = 0\nj = None\nz = 314"
   },
   {
-    "objectID": "w02/slides.html#why-does-the-nyc-subway-have-express-lines",
-    "href": "w02/slides.html#why-does-the-nyc-subway-have-express-lines",
+    "objectID": "w02/slides.html#side-by-side",
+    "href": "w02/slides.html#side-by-side",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
-    "section": "Why Does The NYC Subway Have Express Lines?",
-    "text": "Why Does The NYC Subway Have Express Lines?\n\nFrom NYC Central Park website"
+    "section": "Side-by-Side",
+    "text": "Side-by-Side"
+  },
+  {
+    "objectID": "w02/slides.html#example-finding-an-item-within-a-list",
+    "href": "w02/slides.html#example-finding-an-item-within-a-list",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Example: Finding An Item Within A List",
+    "text": "Example: Finding An Item Within A List\n\nSeems straightforward, right? Given a list l, and a value v, return the index of l which contains v\nCorner cases galore…\nWhat if l contains v more than once? What if it doesn’t contain v at all? What if l is None? What if v is None? What if l isn’t a list at all? What if v is itself a list?"
+  },
+  {
+    "objectID": "w02/slides.html#corner-cases",
+    "href": "w02/slides.html#corner-cases",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Corner Cases",
+    "text": "Corner Cases\n\nMost people stand in the center of a room…\nEccentric weirdos stand in the corner\nYour algorithm needs to handle all people"
+  },
+  {
+    "objectID": "w02/slides.html#demo",
+    "href": "w02/slides.html#demo",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Demo",
+    "text": "Demo\nStreamlit Dictionary Lookup Demo"
+  },
+  {
+    "objectID": "w02/slides.html#why-does-nyc-subway-have-express-lines",
+    "href": "w02/slides.html#why-does-nyc-subway-have-express-lines",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Why Does NYC Subway Have Express Lines?",
+    "text": "Why Does NYC Subway Have Express Lines?\n\nFrom NYC Central Park website"
   },
   {
     "objectID": "w02/slides.html#why-stop-at-two-levels",
@@ -1936,7 +1950,7 @@
     "href": "w02/slides.html#complexity-analysis-1",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Complexity Analysis",
-    "text": "Complexity Analysis\n\nHard way: re-do the line-by-line analysis we did for Insertion-Sort 😣 Easy way: stand on shoulders of giants!\nUsing a famous+fun theorem (the Master Theorem): Given a recurrence \\(T(n) = aT(n/b) + f(n)\\), compute its:\n\nWatershed function \\(W(n) = n^{\\log_b(a)}\\) and\nDriving function \\(D(n) = f(n)\\)\n\nThe Master Theorem gives closed-form asymptotic solution for \\(T(n)\\), split into three cases:\n(1) \\(W(n)\\) grows faster than \\(D(n)\\), (2) grows at same rate as \\(D(n)\\), or (3) grows slower than \\(D(n)\\)"
+    "text": "Complexity Analysis\n\nHard way: re-do the line-by-line analysis we did for Insertion-Sort 😣 Easy way: stand on shoulders of giants!\nUsing a famous theorem (the Master Theorem): Given a recurrence \\(T(n) = aT(n/b) + f(n)\\), compute its:\n\nWatershed function \\(W(n) = n^{\\log_b(a)}\\) and\nDriving function \\(D(n) = f(n)\\)\n\nThe Master Theorem gives closed-form asymptotic solution for \\(T(n)\\), split into three cases:\n(1) \\(W(n)\\) grows faster than \\(D(n)\\), (2) grows at same rate as \\(D(n)\\), or (3) grows slower than \\(D(n)\\)"
   },
   {
     "objectID": "w02/slides.html#bounding-the-runtime-of-merge-sort",
@@ -2040,31 +2054,11 @@
     ]
   },
   {
-    "objectID": "w02/index.html#hammers-vs.-structures-built-whammers",
-    "href": "w02/index.html#hammers-vs.-structures-built-whammers",
-    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
-    "section": "Hammers vs. Structures Built w/Hammers",
-    "text": "Hammers vs. Structures Built w/Hammers\n\n\nHow I see the course title:\n\nData Structures!\nObjects!, and\nAlgorithms! (in Python)\n\nHow my opps see the course title: (Data Structures, Objects, and Algorithms) in Python!",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w02/index.html#primitive-types-in-general",
-    "href": "w02/index.html#primitive-types-in-general",
-    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
-    "section": "Primitive Types in General",
-    "text": "Primitive Types in General\n\nVariable types for which [language] knows in advance exactly how much memory is going to be required\nBooleans (True or False): Exactly 1 bit (0 or 1)\nint: 32 or 64 bits (depending on OS)\nNone / null / NA: Since we want it to serve as a “blank” value (easily cast to other primitive types), usually the same number of bits as int\n\nHence, in C for example, null is actually just shorthand for an int with value 0",
-    "crumbs": [
-      "Week 2: {{< var w02.date-md >}}"
-    ]
-  },
-  {
     "objectID": "w02/index.html#primitive-types-python-weirdness-edition",
     "href": "w02/index.html#primitive-types-python-weirdness-edition",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Primitive Types: Python Weirdness Edition",
-    "text": "Primitive Types: Python Weirdness Edition\n\n\n\nBoolean (True or False): Exactly 1 bit (0 or 1)\n\nimport sys\nsys.getsizeof(True)\n\n28\n\n\nint: 32 or 64 bits (depending on OS)\n\nsys.maxsize\n\n9223372036854775807\n\n\nNone\n\nsys.getsizeof(None)\n\n16\n\n\n\n\n\n\n\n\n\n\nWhy is this happening?",
+    "text": "Primitive Types: Python Weirdness Edition\n\n\nNone: 1 bit (Always 0)\n\nimport sys\nsys.getsizeof(None)\n\n16\n\n\nBoolean (True or False): Exactly 1 bit (0 or 1)\n\nsys.getsizeof(True)\n\n28\n\n\nint: 32 or 64 bits (depending on OS)\n\nsys.maxsize\n\n9223372036854775807\n\n\n\n\n\n\n\n\n\nWhy is this happening?",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -2090,11 +2084,51 @@
     ]
   },
   {
-    "objectID": "w02/index.html#why-does-the-nyc-subway-have-express-lines",
-    "href": "w02/index.html#why-does-the-nyc-subway-have-express-lines",
+    "objectID": "w02/index.html#side-by-side",
+    "href": "w02/index.html#side-by-side",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
-    "section": "Why Does The NYC Subway Have Express Lines?",
-    "text": "Why Does The NYC Subway Have Express Lines?\n\n\n\nFrom NYC Central Park website",
+    "section": "Side-by-Side",
+    "text": "Side-by-Side",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#example-finding-an-item-within-a-list",
+    "href": "w02/index.html#example-finding-an-item-within-a-list",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Example: Finding An Item Within A List",
+    "text": "Example: Finding An Item Within A List\n\nSeems straightforward, right? Given a list l, and a value v, return the index of l which contains v\nCorner cases galore…\nWhat if l contains v more than once? What if it doesn’t contain v at all? What if l is None? What if v is None? What if l isn’t a list at all? What if v is itself a list?",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#corner-cases",
+    "href": "w02/index.html#corner-cases",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Corner Cases",
+    "text": "Corner Cases\n\nMost people stand in the center of a room…\nEccentric weirdos stand in the corner\nYour algorithm needs to handle all people",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#demo",
+    "href": "w02/index.html#demo",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Demo",
+    "text": "Demo\nStreamlit Dictionary Lookup Demo",
+    "crumbs": [
+      "Week 2: {{< var w02.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w02/index.html#why-does-nyc-subway-have-express-lines",
+    "href": "w02/index.html#why-does-nyc-subway-have-express-lines",
+    "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
+    "section": "Why Does NYC Subway Have Express Lines?",
+    "text": "Why Does NYC Subway Have Express Lines?\n\n\n\nFrom NYC Central Park website",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -2324,7 +2358,7 @@
     "href": "w02/index.html#complexity-analysis-1",
     "title": "Week 2: Software Design Patterns and Object-Oriented Programming",
     "section": "Complexity Analysis",
-    "text": "Complexity Analysis\n\nHard way: re-do the line-by-line analysis we did for Insertion-Sort 😣 Easy way: stand on shoulders of giants!\nUsing a famous+fun theorem (the Master Theorem): Given a recurrence \\(T(n) = aT(n/b) + f(n)\\), compute its:\n\nWatershed function \\(W(n) = n^{\\log_b(a)}\\) and\nDriving function \\(D(n) = f(n)\\)\n\nThe Master Theorem gives closed-form asymptotic solution for \\(T(n)\\), split into three cases:\n(1) \\(W(n)\\) grows faster than \\(D(n)\\), (2) grows at same rate as \\(D(n)\\), or (3) grows slower than \\(D(n)\\)",
+    "text": "Complexity Analysis\n\nHard way: re-do the line-by-line analysis we did for Insertion-Sort 😣 Easy way: stand on shoulders of giants!\nUsing a famous theorem (the Master Theorem): Given a recurrence \\(T(n) = aT(n/b) + f(n)\\), compute its:\n\nWatershed function \\(W(n) = n^{\\log_b(a)}\\) and\nDriving function \\(D(n) = f(n)\\)\n\nThe Master Theorem gives closed-form asymptotic solution for \\(T(n)\\), split into three cases:\n(1) \\(W(n)\\) grows faster than \\(D(n)\\), (2) grows at same rate as \\(D(n)\\), or (3) grows slower than \\(D(n)\\)",
     "crumbs": [
       "Week 2: {{< var w02.date-md >}}"
     ]
@@ -2474,7 +2508,7 @@
     "href": "assignments.html",
     "title": "Assignment Point Distributions",
     "section": "",
-    "text": "Use the tabs below to view the point distributions for different assignments.\nThe distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!\n\nHW1HW2HW3\n\n\n\n\n\n\n\n\n\npart\nqid\ntest_type\npoints\npart_total\n\n\n\n\n1\nQ1.1\npublic\n0\n\n\n\n\nQ1.1\nhidden\n2\n\n\n\n\nQ1.2\npublic\n0\n\n\n\n\nQ1.2\nhidden\n2\n\n\n\n\nQ1.3\npublic\n0\n\n\n\n\nQ1.3\nhidden\n2\n\n\n\n\nQ1.4\npublic\n0\n\n\n\n\nQ1.4\nhidden\n2\n8\n\n\n2\nQ2.1\npublic\n1\n\n\n\n\nQ2.1\nhidden\n4\n\n\n\n\nQ2.2\npublic\n1\n\n\n\n\nQ2.2\nhidden\n4\n10\n\n\n3\nQ3.1\npublic\n1\n\n\n\n\nQ3.1\nhidden\n18\n\n\n\n\nQ3.2\npublic\n1\n\n\n\n\nQ3.2\nhidden\n5\n25\n\n\n4\nQ4.1\npublic\n1\n\n\n\n\nQ4.1\nhidden\n18\n\n\n\n\nQ4.2\npublic\n1\n\n\n\n\nQ4.2\nhidden\n5\n25\n\n\n5\nQ5.1\npublic\n1\n\n\n\n\nQ5.1\nhidden\n3\n\n\n\n\nQ5.2\npublic\n1\n\n\n\n\nQ5.2\nhidden\n3\n\n\n\n\nQ5.3\npublic\n0\n\n\n\n\nQ5.3\nhidden\n2\n\n\n\n\nQ5.4\npublic\n0\n\n\n\n\nQ5.4\nhidden\n2\n12\n\n\n6\nQ6.1\npublic\n1\n\n\n\n\nQ6.1\nhidden\n3\n\n\n\n\nQ6.2\npublic\n1\n\n\n\n\nQ6.2\nhidden\n3\n\n\n\n\nQ6.3\npublic\n1\n\n\n\n\nQ6.3\nhidden\n3\n\n\n\n\nQ6.4\npublic\n1\n\n\n\n\nQ6.4\nhidden\n3\n\n\n\n\nQ6.5\npublic\n1\n\n\n\n\nQ6.5\nhidden\n3\n20\n\n\nTotal\n\n\n100\n100\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npart\nqid\ntest_type\npoints\npart_total\n\n\n\n\n1\nQ1.1\npublic\n1\n\n\n\n\nQ1.1\nhidden\n15\n\n\n\n\nQ1.2\npublic\n1\n\n\n\n\nQ1.2\nhidden\n8\n25\n\n\n2\nQ2.1\npublic\n1\n\n\n\n\nQ2.1\nhidden\n15\n\n\n\n\nQ2.2\npublic\n1\n\n\n\n\nQ2.2\nhidden\n8\n25\n\n\n3\nQ3.1\npublic\n1\n\n\n\n\nQ3.1\nhidden\n15\n\n\n\n\nQ3.2\npublic\n1\n\n\n\n\nQ3.2\nhidden\n8\n25\n\n\n4\nQ4.1\npublic\n1\n\n\n\n\nQ4.1\nhidden\n15\n\n\n\n\nQ4.2\npublic\n1\n\n\n\n\nQ4.2\nhidden\n8\n25\n\n\n5\nQ5.1\npublic\n0\n\n\n\n\nQ5.1\nhidden\n8\n\n\n\n\nQ5.2\npublic\n0\n\n\n\n\nQ5.2\nhidden\n2\n10\n\n\nTotal\n\n\n110\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npart\nqid\ntest_type\npoints\npart_total\n\n\n\n\nQ1.1\nQ1.1\npublic\n1\n\n\n\n\nQ1.1\nhidden\n6\n\n\n\nQ1.2\nQ1.2.1\npublic\n1\n\n\n\n\nQ1.2.1\nhidden\n2\n\n\n\n\nQ1.2.2\npublic\n1\n\n\n\n\nQ1.2.2\nhidden\n2\n\n\n\n\nQ1.2.3\npublic\n1\n\n\n\n\nQ1.2.3\nhidden\n2\n\n\n\nQ1.3\nQ1.3.1\npublic\n1\n\n\n\n\nQ1.3.1\nhidden\n2\n\n\n\n\nQ1.3.2\npublic\n1\n\n\n\n\nQ1.3.2\nhidden\n2\n\n\n\n\nQ1.3.3\npublic\n1\n\n\n\n\nQ1.3.3\nhidden\n1\n\n\n\n\nQ1.3.4\npublic\n1\n\n\n\n\nQ1.3.4\nhidden\n1\n\n\n\n\nQ1.3.5\npublic\n1\n\n\n\n\nQ1.3.5\nhidden\n2\n29\n\n\nQ2.1\nQ2.1\npublic\n1\n\n\n\n\nQ2.1\nhidden\n10\n\n\n\nQ2.2\nQ2.2.1\npublic\n1\n\n\n\n\nQ2.2.1\nhidden\n2\n\n\n\n\nQ2.2.2\npublic\n1\n\n\n\n\nQ2.2.2\nhidden\n2\n17\n\n\nQ3.1\nQ3.1\npublic\n1\n\n\n\n\nQ3.1\nhidden\n10\n\n\n\nQ3.2\nQ3.2.1\npublic\n1\n\n\n\n\nQ3.2.1\nhidden\n9\n\n\n\n\nQ3.2.2\npublic\n1\n\n\n\n\nQ3.2.2\nhidden\n2\n24\n\n\nQ4.1\nQ4.1\npublic\n1\n\n\n\n\nQ4.1\nhidden\n8\n\n\n\nQ4.2\nQ4.2.1\npublic\n1\n\n\n\n\nQ4.2.1\nhidden\n2\n\n\n\n\nQ4.2.2\npublic\n1\n\n\n\n\nQ4.2.2\nhidden\n2\n15\n\n\nQ5.1\nQ5.1\npublic\n1\n\n\n\n\nQ5.1\nhidden\n8\n\n\n\nQ5.2\nQ5.2.1\npublic\n1\n\n\n\n\nQ5.2.1\nhidden\n2\n\n\n\n\nQ5.2.2\npublic\n1\n\n\n\n\nQ5.2.2\nhidden\n2\n15\n\n\nTotal\n\n\n100",
+    "text": "Use the tabs below to view the point distributions for different assignments.\nThe distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!\n\nHW1\n\n\n\n\n\n\n\n\n\npart\nqid\ntest_type\npoints\npart_total\n\n\n\n\n\nQ1.1\nhidden\n3\n\n\n\n\nQ1.2\nhidden\n3\n\n\n\n\nQ1.3\nhidden\n3\n\n\n\n\nQ1.4\nhidden\n3\n12\n\n\n\nQ2.1\nhidden\n5\n\n\n\n\nQ2.2\nhidden\n5\n10\n\n\n\nQ3.1\nhidden\n20\n\n\n\n\nQ3.2\nhidden\n5\n25\n\n\n\nQ4.1\nhidden\n20\n\n\n\n\nQ4.2\nhidden\n5\n25\n\n\n\nQ5.1\nhidden\n3\n\n\n\n\nQ5.2\nhidden\n3\n\n\n\n\nQ5.3\nhidden\n2\n\n\n\n\nQ5.4\nhidden\n2\n10\n\n\n\nQ6.1\nhidden\n4\n\n\n\n\nQ6.2\nhidden\n4\n\n\n\n\nQ6.3\nhidden\n3\n\n\n\n\nQ6.4\nhidden\n3\n\n\n\n\nQ6.5\nhidden\n4\n18\n\n\nTotal\n\n\n100\n100",
     "crumbs": [
       "Assignments"
     ]
@@ -2564,7 +2598,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'None', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'Vegan', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Gluten Free', 'Vegan', 'None'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'None', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2896,7 +2930,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'Gluten Free', 'None'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'None', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Gluten Free', 'None', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[7], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'None', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -4267,7 +4301,7 @@
     "href": "w11/index.html#in-action",
     "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n1.0007 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6258 s",
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9812 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6070 s",
     "crumbs": [
       "Week 11: {{< var w11.date-md >}}"
     ]
@@ -4487,7 +4521,7 @@
     "href": "w11/slides.html#in-action",
     "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9851 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6181 s"
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9701 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.5977 s"
   },
   {
     "objectID": "w11/slides.html#what-happens-when-not-embarrassingly-parallel",
@@ -4817,191 +4851,11 @@
     ]
   },
   {
-    "objectID": "w01/index.html#primitive-types",
-    "href": "w01/index.html#primitive-types",
+    "objectID": "w01/index.html#references",
+    "href": "w01/index.html#references",
     "title": "Week 1: Course Intro and Motivation",
-    "section": "Primitive Types",
-    "text": "Primitive Types\n Boolean (True or False)\n Numbers (Integers, Decimals)\n None\n\n\nQ: …Why do we distinguish these from all other types?\nA: Computer knows in advance how much space they’ll take up!\nPython weirdness: can run x = True then x = \"Jeff\" next line\n\nNot possible in e.g. C, C++, Python!\n(We’ll see consequence in two slides)",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#stack-and-heap-lying-a-little-bit-edition",
-    "href": "w01/index.html#stack-and-heap-lying-a-little-bit-edition",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Stack and Heap: Lying-A-Little-Bit Edition",
-    "text": "Stack and Heap: Lying-A-Little-Bit Edition\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#stack-and-heap-real-python-is-weird-edition",
-    "href": "w01/index.html#stack-and-heap-real-python-is-weird-edition",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Stack and Heap: Real Python-is-Weird Edition",
-    "text": "Stack and Heap: Real Python-is-Weird Edition\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#algorithmic-thinking",
-    "href": "w01/index.html#algorithmic-thinking",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Algorithmic Thinking",
-    "text": "Algorithmic Thinking\n\nWhat are the inputs?\nWhat are the outputs?\nStandard cases vs. corner cases\nAdversarial development: brainstorm all of the ways an evil hacker might break your code!",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#example-finding-an-item-within-a-list",
-    "href": "w01/index.html#example-finding-an-item-within-a-list",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Example: Finding An Item Within A List",
-    "text": "Example: Finding An Item Within A List\n\nSeems straightforward, right? Given a list l, and a value v, return the index of l which contains v\nCorner cases galore…\nWhat if l contains v more than once? What if it doesn’t contain v at all? What if l is None? What if v is None? What if l isn’t a list at all? What if v is itself a list?",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#corner-cases",
-    "href": "w01/index.html#corner-cases",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Corner Cases",
-    "text": "Corner Cases\n\nMost people stand in the center of a room…\nEccentric weirdos stand in the corner\nYour algorithm needs to handle all people",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#demo",
-    "href": "w01/index.html#demo",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Demo",
-    "text": "Demo\nStreamlit Dictionary Lookup Demo",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#sanity-preserving-tip",
-    "href": "w01/index.html#sanity-preserving-tip",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "#1 Sanity-Preserving Tip!",
-    "text": "#1 Sanity-Preserving Tip!\n\n(For our purposes) the answer to “what is Python?” is: an executable file that runs .py files!\n\ne.g., we can run python mycode.py in Terminal/PowerShell\n\nEverything else: pip, Jupyter, Pandas, etc., is an add-on to this basic functionality!\nExample: Python REPL mode (type just python into Terminal/PowerShell) is like running little 1-line .py files, but instead of terminating Python sits and waits for next 1-line .py file",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#code-blocks-via-indentation",
-    "href": "w01/index.html#code-blocks-via-indentation",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Code Blocks via Indentation",
-    "text": "Code Blocks via Indentation\n\n\nCode\nfor i in range(5):\n    print(i)\n\n\n0\n1\n2\n3\n4\n\n\n\n\nCode\nfor i in range(5):\nprint(i)\n\n\n\n  Cell In[5], line 2\n    print(i)\n    ^\nIndentationError: expected an indented block after 'for' statement on line 1",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#type-hints",
-    "href": "w01/index.html#type-hints",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Type Hints",
-    "text": "Type Hints\n\nNot a “standard” Python feature, not enforced by the Python interpreter (can activate enforcement via Pydantic 😉), but can help you maintain sanity!\n\n\n\n\n\nCode\ndef multiply(thing1, thing2):\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee\n\n\n\n\n\nCode\nfrom numbers import Number\ndef multiply(thing1: Number, thing2: Number) -&gt; Number:\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#unit-testing",
-    "href": "w01/index.html#unit-testing",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Unit Testing",
-    "text": "Unit Testing\n\nFor your life: test-driven development\n\nIf you’re coding a duck, you should test that it looks like a duck, quacks like a duck, etc.\n\nFor this class:\n\nPublic tests: Fully visible, see result plus full code\nHidden tests: See result + description of test, but no code\nSecret tests: We run these after you submit, as a major portion of the total grade",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#why-does-nyc-subway-have-express-lines",
-    "href": "w01/index.html#why-does-nyc-subway-have-express-lines",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Why Does NYC Subway Have Express Lines?",
-    "text": "Why Does NYC Subway Have Express Lines?\n\n\n\nFrom NYC Central Park website",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#why-stop-at-two-levels",
-    "href": "w01/index.html#why-stop-at-two-levels",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Why Stop At Two Levels?",
-    "text": "Why Stop At Two Levels?\n\n\n\nFrom Skip List Data Structure Explained, Sumit’s Diary blog",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#how-tf-does-google-maps-work",
-    "href": "w01/index.html#how-tf-does-google-maps-work",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "How TF Does Google Maps Work?",
-    "text": "How TF Does Google Maps Work?\n\nA (mostly) full-on answer: soon to come! Data structures for spatial data\nA step in that direction: Quadtrees! (Fractal DC)\n\n\nJim Kang’s Quadtree Visualizations",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#the-secretly-exciting-world-of-matrix-multiplication",
-    "href": "w01/index.html#the-secretly-exciting-world-of-matrix-multiplication",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "The Secretly Exciting World of Matrix Multiplication",
-    "text": "The Secretly Exciting World of Matrix Multiplication\n\nFun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations\nFun Fact 2: The way we’ve all learned how to multiply matrices requires \\(O(N^3)\\) operations, for two \\(N \\times N\\) matrices \\(A\\) and \\(B\\)\nFun Fact 3: \\(\\underbrace{x^2 - y^2}_{{\\times\\text{ twice, }\\pm\\text{ once}}} = \\underbrace{(x+y)(x-y)}_{\\times\\text{once, }\\pm\\text{ twice}}\\)\nFun Fact 4: These are not very fun facts at all",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
-    "href": "w01/index.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Why Is Jeff Rambling About Matrix Math From 300 Years Ago?",
-    "text": "Why Is Jeff Rambling About Matrix Math From 300 Years Ago?\n\nThe way we all learned it in school (for \\(N = 2\\)):\n\n\\[\nAB = \\begin{bmatrix}\na_{11} & a_{12} \\\\\na_{21} & a_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nb_{11} & b_{12} \\\\\nb_{21} & b_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\na_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\\\\na_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}\n\\end{bmatrix}\n\\]\n\n12 operations: 8 multiplications, 4 additions \\(\\implies O(N^3) = O(2^3) = O(8)\\)\nAre we trapped? Like… what is there to do besides performing these \\(N^3\\) operations, if we want to multiply two \\(N \\times N\\) matrices? Why are we about to move onto yet another slide about this?",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#block-partitioning-matrices",
-    "href": "w01/index.html#block-partitioning-matrices",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Block-Partitioning Matrices",
-    "text": "Block-Partitioning Matrices\n\nNow let’s consider big matrices, whose dimensions are a power of 2 (for ease of illustration): \\(A\\) and \\(B\\) are now \\(N \\times N = 2^n \\times 2^n\\) matrices\nWe can “decompose” the matrix product \\(AB\\) as:\n\n\\[\nAB = \\begin{bmatrix}\nA_{11} & A_{12} \\\\\nA_{21} & A_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nB_{11} & B_{12} \\\\\nB_{21} & B_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\nA_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\\\\nA_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}\n\\end{bmatrix}\n\\]\n\nWhich gives us a recurrence relation representing the total number of computations required for this big-matrix multiplication: \\(T(N) = \\underbrace{8T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(1)}_{\\text{Additions}}\\)\nTurns out (using a method we’ll learn in Week 3): given this recurrence relation + base case from previous slide, this divide-and-conquer approach via block-partitioning doesn’t help us: we still get \\(T(n) = O(n^3)\\)…\nSo why is Jeff still torturing us with this example?",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#time-for-some-matrix-magic",
-    "href": "w01/index.html#time-for-some-matrix-magic",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Time For Some 🪄🔥MATRIX MAGIC!🔥🪄",
-    "text": "Time For Some 🪄🔥MATRIX MAGIC!🔥🪄\n\n\nIf we define\n\n\\[\n\\begin{align*}\nm_1 &= (a_{11}+a_{22})(b_{11}+b_{22}) \\\\\nm_2 &= (a_{21}+a_{22})b_{11} \\\\\nm_3 &= a_{11}(b_{12}-b_{22}) \\\\\nm_4 &= a_{22}(b_{21}-b_{11}) \\\\\nm_5 &= (a_{11}+a_{12})b_{22} \\\\\nm_6 &= (a_{21}-a_{11})(b_{11}+b_{12}) \\\\\nm_7 &= (a_{12}-a_{22})(b_{21}+b_{22})\n\\end{align*}\n\\]\n\n\n\nThen we can combine these seven scalar products to obtain our matrix product:\n\n\\[\nAB = \\begin{bmatrix}\nm_1 + m_4 - m_5 + m_7 & m_3 + m_5 \\\\\nm_2 + m_4 & m_1 - m_2 + m_3 + m_6\n\\end{bmatrix}\n\\]\n\n\nTotal operations: 7 multiplications, 18 additions",
-    "crumbs": [
-      "Week 1: {{< var w01.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w01/index.html#block-partitioned-matrix-magic",
-    "href": "w01/index.html#block-partitioned-matrix-magic",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Block-Partitioned Matrix Magic",
-    "text": "Block-Partitioned Matrix Magic\n\nUsing the previous slide as our base case and applying this same method to the block-paritioned big matrices, we get the same result, but where the four entries in \\(AB\\) here are now matrices rather than scalars:\n\n\\[\nAB = \\begin{bmatrix}\nM_1 + M_4 - M_5 + M_7 & M_3 + M_5 \\\\\nM_2 + M_4 & M_1 - M_2 + M_3 + M_6\n\\end{bmatrix}\n\\]\n\nWe now have a different recurrence relation: \\(T(N) = \\underbrace{7T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(N^2)}_{\\text{Additions}}\\)\nAnd it turns out, somewhat miraculously, that the additional time required for the increased number of additions is significantly less than the time savings we obtain by doing 7 instead of 8 multiplications, since this method now runs in \\(T(N) = O(N^{\\log_2(7)}) \\approx O(N^{2.807}) &lt; O(N^3)\\) 🤯",
+    "section": "References",
+    "text": "References",
     "crumbs": [
       "Week 1: {{< var w01.date-md >}}"
     ]
@@ -5063,137 +4917,11 @@
     "text": "Types of Languages: How Do We Actually Execute the Code?\n(In chronological order:)\n\n\n\n[Compiled: C, C++, Java*]\n\nComputer executes a file containing compiled code (.c \\(\\leadsto\\) .exe, .java \\(\\leadsto\\) .class)\nNo “Run Line”/“Run Cell” button(!), only “Compile+Run All Code”\n\n[Interpreted: Python(!), R, JavaScript]\n\nComputer runs code line by line\nGives rise to REPL (Read-Execute-Print-Loop) framework: a literal game-changer, engine “underneath” Jupyter (mini-demo)\n\n\n\n\n\n(Me trying to explain compiled languages to Python/R users)"
   },
   {
-    "objectID": "w01/slides.html#primitive-types",
-    "href": "w01/slides.html#primitive-types",
+    "objectID": "w01/slides.html#references",
+    "href": "w01/slides.html#references",
     "title": "Week 1: Course Intro and Motivation",
-    "section": "Primitive Types",
-    "text": "Primitive Types\n Boolean (True or False)\n Numbers (Integers, Decimals)\n None\n\n\nQ: …Why do we distinguish these from all other types?\nA: Computer knows in advance how much space they’ll take up!\nPython weirdness: can run x = True then x = \"Jeff\" next line\n\nNot possible in e.g. C, C++, Python!\n(We’ll see consequence in two slides)"
-  },
-  {
-    "objectID": "w01/slides.html#stack-and-heap-lying-a-little-bit-edition",
-    "href": "w01/slides.html#stack-and-heap-lying-a-little-bit-edition",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Stack and Heap: Lying-A-Little-Bit Edition",
-    "text": "Stack and Heap: Lying-A-Little-Bit Edition\nLet’s look at what happens, in the computer’s memory, when we run the following code:\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
-  },
-  {
-    "objectID": "w01/slides.html#stack-and-heap-real-python-is-weird-edition",
-    "href": "w01/slides.html#stack-and-heap-real-python-is-weird-edition",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Stack and Heap: Real Python-is-Weird Edition",
-    "text": "Stack and Heap: Real Python-is-Weird Edition\n\n\n\n\nCode\nimport datetime\nimport pandas as pd\ncountry_df = pd.read_csv(\"assets/country_pop.csv\")\npop_col = country_df['pop']\nnum_rows = len(country_df)\nfilled = all(~pd.isna(country_df))\nalg_row = country_df.loc[country_df['name'] == \"Algeria\"]\nnum_cols = len(country_df.columns)\nusername = \"Jeff\"\ncur_date = datetime.datetime.now()\ni = 0\nj = None\nz = 314\ncountry_df\n\n\n\n\n\n\n\n\n\nname\npop\n\n\n\n\n0\nAlbania\n2.8\n\n\n1\nAlgeria\n44.2\n\n\n2\nAngola\n34.5"
-  },
-  {
-    "objectID": "w01/slides.html#algorithmic-thinking",
-    "href": "w01/slides.html#algorithmic-thinking",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Algorithmic Thinking",
-    "text": "Algorithmic Thinking\n\nWhat are the inputs?\nWhat are the outputs?\nStandard cases vs. corner cases\nAdversarial development: brainstorm all of the ways an evil hacker might break your code!"
-  },
-  {
-    "objectID": "w01/slides.html#example-finding-an-item-within-a-list",
-    "href": "w01/slides.html#example-finding-an-item-within-a-list",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Example: Finding An Item Within A List",
-    "text": "Example: Finding An Item Within A List\n\nSeems straightforward, right? Given a list l, and a value v, return the index of l which contains v\nCorner cases galore…\nWhat if l contains v more than once? What if it doesn’t contain v at all? What if l is None? What if v is None? What if l isn’t a list at all? What if v is itself a list?"
-  },
-  {
-    "objectID": "w01/slides.html#corner-cases",
-    "href": "w01/slides.html#corner-cases",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Corner Cases",
-    "text": "Corner Cases\n\nMost people stand in the center of a room…\nEccentric weirdos stand in the corner\nYour algorithm needs to handle all people"
-  },
-  {
-    "objectID": "w01/slides.html#demo",
-    "href": "w01/slides.html#demo",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Demo",
-    "text": "Demo\nStreamlit Dictionary Lookup Demo"
-  },
-  {
-    "objectID": "w01/slides.html#sanity-preserving-tip",
-    "href": "w01/slides.html#sanity-preserving-tip",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "#1 Sanity-Preserving Tip!",
-    "text": "#1 Sanity-Preserving Tip!\n\n(For our purposes) the answer to “what is Python?” is: an executable file that runs .py files!\n\ne.g., we can run python mycode.py in Terminal/PowerShell\n\nEverything else: pip, Jupyter, Pandas, etc., is an add-on to this basic functionality!\nExample: Python REPL mode (type just python into Terminal/PowerShell) is like running little 1-line .py files, but instead of terminating Python sits and waits for next 1-line .py file"
-  },
-  {
-    "objectID": "w01/slides.html#code-blocks-via-indentation",
-    "href": "w01/slides.html#code-blocks-via-indentation",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Code Blocks via Indentation",
-    "text": "Code Blocks via Indentation\n\n\nCode\nfor i in range(5):\n    print(i)\n\n\n0\n1\n2\n3\n4\n\n\n\n\nCode\nfor i in range(5):\nprint(i)\n\n\n\n  Cell In[5], line 2\n    print(i)\n    ^\nIndentationError: expected an indented block after 'for' statement on line 1"
-  },
-  {
-    "objectID": "w01/slides.html#type-hints",
-    "href": "w01/slides.html#type-hints",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Type Hints",
-    "text": "Type Hints\n\nNot a “standard” Python feature, not enforced by the Python interpreter (can activate enforcement via Pydantic 😉), but can help you maintain sanity!\n\n\n\n\n\nCode\ndef multiply(thing1, thing2):\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee\n\n\n\n\n\nCode\nfrom numbers import Number\ndef multiply(thing1: Number, thing2: Number) -&gt; Number:\n  return thing1 * thing2\nprint(multiply(5, 3))\nprint(multiply(\"fiveee\", 3))\n\n\n15\nfiveeefiveeefiveee"
-  },
-  {
-    "objectID": "w01/slides.html#unit-testing",
-    "href": "w01/slides.html#unit-testing",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Unit Testing",
-    "text": "Unit Testing\n\nFor your life: test-driven development\n\nIf you’re coding a duck, you should test that it looks like a duck, quacks like a duck, etc.\n\nFor this class:\n\nPublic tests: Fully visible, see result plus full code\nHidden tests: See result + description of test, but no code\nSecret tests: We run these after you submit, as a major portion of the total grade"
-  },
-  {
-    "objectID": "w01/slides.html#why-does-nyc-subway-have-express-lines",
-    "href": "w01/slides.html#why-does-nyc-subway-have-express-lines",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Why Does NYC Subway Have Express Lines?",
-    "text": "Why Does NYC Subway Have Express Lines?\n\nFrom NYC Central Park website"
-  },
-  {
-    "objectID": "w01/slides.html#why-stop-at-two-levels",
-    "href": "w01/slides.html#why-stop-at-two-levels",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Why Stop At Two Levels?",
-    "text": "Why Stop At Two Levels?\n\nFrom Skip List Data Structure Explained, Sumit’s Diary blog"
-  },
-  {
-    "objectID": "w01/slides.html#how-tf-does-google-maps-work",
-    "href": "w01/slides.html#how-tf-does-google-maps-work",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "How TF Does Google Maps Work?",
-    "text": "How TF Does Google Maps Work?\n\nA (mostly) full-on answer: soon to come! Data structures for spatial data\nA step in that direction: Quadtrees! (Fractal DC)\n\n\nJim Kang’s Quadtree Visualizations"
-  },
-  {
-    "objectID": "w01/slides.html#the-secretly-exciting-world-of-matrix-multiplication",
-    "href": "w01/slides.html#the-secretly-exciting-world-of-matrix-multiplication",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "The Secretly Exciting World of Matrix Multiplication",
-    "text": "The Secretly Exciting World of Matrix Multiplication\n\nFun Fact 1: Most of modern Machine Learning is, at the processor level, just a bunch of matrix operations\nFun Fact 2: The way we’ve all learned how to multiply matrices requires \\(O(N^3)\\) operations, for two \\(N \\times N\\) matrices \\(A\\) and \\(B\\)\nFun Fact 3: \\(\\underbrace{x^2 - y^2}_{{\\times\\text{ twice, }\\pm\\text{ once}}} = \\underbrace{(x+y)(x-y)}_{\\times\\text{once, }\\pm\\text{ twice}}\\)\nFun Fact 4: These are not very fun facts at all"
-  },
-  {
-    "objectID": "w01/slides.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
-    "href": "w01/slides.html#why-is-jeff-rambling-about-matrix-math-from-300-years-ago",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Why Is Jeff Rambling About Matrix Math From 300 Years Ago?",
-    "text": "Why Is Jeff Rambling About Matrix Math From 300 Years Ago?\n\nThe way we all learned it in school (for \\(N = 2\\)):\n\n\\[\nAB = \\begin{bmatrix}\na_{11} & a_{12} \\\\\na_{21} & a_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nb_{11} & b_{12} \\\\\nb_{21} & b_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\na_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\\\\na_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22}\n\\end{bmatrix}\n\\]\n\n12 operations: 8 multiplications, 4 additions \\(\\implies O(N^3) = O(2^3) = O(8)\\)\nAre we trapped? Like… what is there to do besides performing these \\(N^3\\) operations, if we want to multiply two \\(N \\times N\\) matrices? Why are we about to move onto yet another slide about this?"
-  },
-  {
-    "objectID": "w01/slides.html#block-partitioning-matrices",
-    "href": "w01/slides.html#block-partitioning-matrices",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Block-Partitioning Matrices",
-    "text": "Block-Partitioning Matrices\n\nNow let’s consider big matrices, whose dimensions are a power of 2 (for ease of illustration): \\(A\\) and \\(B\\) are now \\(N \\times N = 2^n \\times 2^n\\) matrices\nWe can “decompose” the matrix product \\(AB\\) as:\n\n\\[\nAB = \\begin{bmatrix}\nA_{11} & A_{12} \\\\\nA_{21} & A_{22}\n\\end{bmatrix}\n\\begin{bmatrix}\nB_{11} & B_{12} \\\\\nB_{21} & B_{22}\n\\end{bmatrix} =\n\\begin{bmatrix}\nA_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\\\\nA_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}\n\\end{bmatrix}\n\\]\n\nWhich gives us a recurrence relation representing the total number of computations required for this big-matrix multiplication: \\(T(N) = \\underbrace{8T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(1)}_{\\text{Additions}}\\)\nTurns out (using a method we’ll learn in Week 3): given this recurrence relation + base case from previous slide, this divide-and-conquer approach via block-partitioning doesn’t help us: we still get \\(T(n) = O(n^3)\\)…\nSo why is Jeff still torturing us with this example?"
-  },
-  {
-    "objectID": "w01/slides.html#time-for-some-matrix-magic",
-    "href": "w01/slides.html#time-for-some-matrix-magic",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Time For Some 🪄🔥MATRIX MAGIC!🔥🪄",
-    "text": "Time For Some 🪄🔥MATRIX MAGIC!🔥🪄\n\n\nIf we define\n\n\\[\n\\begin{align*}\nm_1 &= (a_{11}+a_{22})(b_{11}+b_{22}) \\\\\nm_2 &= (a_{21}+a_{22})b_{11} \\\\\nm_3 &= a_{11}(b_{12}-b_{22}) \\\\\nm_4 &= a_{22}(b_{21}-b_{11}) \\\\\nm_5 &= (a_{11}+a_{12})b_{22} \\\\\nm_6 &= (a_{21}-a_{11})(b_{11}+b_{12}) \\\\\nm_7 &= (a_{12}-a_{22})(b_{21}+b_{22})\n\\end{align*}\n\\]\n\n\n\nThen we can combine these seven scalar products to obtain our matrix product:\n\n\\[\nAB = \\begin{bmatrix}\nm_1 + m_4 - m_5 + m_7 & m_3 + m_5 \\\\\nm_2 + m_4 & m_1 - m_2 + m_3 + m_6\n\\end{bmatrix}\n\\]\n\n\nTotal operations: 7 multiplications, 18 additions"
-  },
-  {
-    "objectID": "w01/slides.html#block-partitioned-matrix-magic",
-    "href": "w01/slides.html#block-partitioned-matrix-magic",
-    "title": "Week 1: Course Intro and Motivation",
-    "section": "Block-Partitioned Matrix Magic",
-    "text": "Block-Partitioned Matrix Magic\n\nUsing the previous slide as our base case and applying this same method to the block-paritioned big matrices, we get the same result, but where the four entries in \\(AB\\) here are now matrices rather than scalars:\n\n\\[\nAB = \\begin{bmatrix}\nM_1 + M_4 - M_5 + M_7 & M_3 + M_5 \\\\\nM_2 + M_4 & M_1 - M_2 + M_3 + M_6\n\\end{bmatrix}\n\\]\n\nWe now have a different recurrence relation: \\(T(N) = \\underbrace{7T(N/2)}_{\\text{Multiplications}} + \\underbrace{\\Theta(N^2)}_{\\text{Additions}}\\)\nAnd it turns out, somewhat miraculously, that the additional time required for the increased number of additions is significantly less than the time savings we obtain by doing 7 instead of 8 multiplications, since this method now runs in \\(T(N) = O(N^{\\log_2(7)}) \\approx O(N^{2.807}) &lt; O(N^3)\\) 🤯"
+    "section": "References",
+    "text": "References"
   },
   {
     "objectID": "midterm.html",

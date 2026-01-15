@@ -20,9 +20,11 @@ format:
     scrollable: true
     slide-number: true
     html-math-method: mathjax
-    css: "../dsan-globals/jjstyles.css"
+    link-external-icon: true
+    link-external-newwindow: true
+    theme: [default, "../dsan-globals/jjquarto.scss"]
     include-in-header:
-      text: "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous'><script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL' crossorigin='anonymous'></script><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link href='https://fonts.googleapis.com/css2?family=Honk&display=swap' rel='stylesheet'>"
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='preconnect' href='https://fonts.googleapis.com'><link rel='preconnect' href='https://fonts.gstatic.com' crossorigin><link href='https://fonts.googleapis.com/css2?family=Honk&display=swap' rel='stylesheet'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
     simplemenu:
       flat: true
       barhtml:
@@ -46,92 +48,122 @@ format:
 
 :::
 
-# Quick Recap {.smaller data-stack-name="Recap"}
+# Where We Left Off: Primitive Types {.smaller .title-12 .math-80 data-stack-name="Stack-Heap"}
 
 :::: {.columns}
-::: {.column width="20%"}
+::: {.column width="33%"}
 
-[Parallel Programming &rarr;]{.absolute top=200 left=164 width="350" height="300"}
-[Functional Programming &rarr;]{.absolute top=340 left=127 width="350" height="300"}
-[**This Week** &rarr;]{.absolute top=480 left=300 width="350" height="300"}
-[Last Week &rarr;]{.absolute top=604 left=300 width="350" height="300"}
+<center>
+
+<i class='bi bi-1-circle'></i> `None`
+
+$$
+\underset{\text{\small{Always 0}}}{\underline{\hspace{16mm}}}
+$$
+
+</center>
+
+```{python}
+#| label: prim-none
+x = None
+type(x)
+```
 
 :::
-::: {.column width="80%"}
+::: {.column width="33%"}
 
-![](images/plato.jpg){fig-align="center" width="360"}
+<center>
+
+<i class='bi bi-2-circle'></i> Boolean (`True` or `False`)
+
+$$
+\underset{\{0,1\}}{\underline{\hspace{12mm}}}
+$$
+
+</center>
+
+```{python}
+#| label: prim-boolean
+x = True
+type(x)
+```
+
+:::
+::: {.column width="34%"}
+
+<center>
+
+<i class='bi bi-3-circle'></i> Numbers (`int`, `float`)<br>
+
+$$
+\small{\underset{\small{\{0,1\}}}{\underline{\hspace{8mm}}}~
+\underset{\small{\{0,1\}}}{\underline{\hspace{8mm}}}~
+\underset{\small{\{0,1\}}}{\underline{\hspace{8mm}}}~
+\underset{\small{\{0,1\}}}{\underline{\hspace{8mm}}}~
+\underset{\small{\{0,1\}}}{\underline{\hspace{8mm}}}~
+\underset{\small{\{0,1\}}}{\underline{\hspace{8mm}}}~
+\underset{\small{\{0,1\}}}{\underline{\hspace{8mm}}}~
+\underset{\small{\{0,1\}}}{\underline{\hspace{8mm}}}}
+$$
+
+</center>
+
+```{python}
+#| label: prim-numeric
+x = 3
+print(type(x))
+y = 3.14
+type(y)
+```
 
 :::
 ::::
 
-## Hammers vs. Structures Built w/Hammers {.crunch-title .title-09 .crunch-ul}
+* Why do we distinguish these from all other types? Computer **knows in advance how much space they'll take up!** (`None`: 1 bit, `bool`: 1 bit, `int`: 32/64 bits)
 
-```{=html}
-<style>
-.honk-honk {
-  font-size: 180% !important;
-  /* font-family: "Bungee Spice", sans-serif; */
-  font-family: "Honk", sans-serif;
-  /* font-optical-sizing: auto; */
-  font-weight: 400;
-  font-style: normal;
-}
-</style>
-```
-
-* How I see the course title:
-  * [Data Structures!]{.honk-honk}
-  * [Objects!]{.honk-honk}, and
-  * [Algorithms!]{.honk-honk} (in Python)
-* How my opps see the course title: (Data Structures, Objects, and Algorithms) in [Python!]{.honk-honk}
-
-## Primitive Types *in General*
-
-*   Variable types for which [language] **knows in advance *exactly* how much memory** is going to be required
-*   Booleans (`True` or `False`): Exactly **1** bit (`0` or `1`)
-* `int`: [32 or 64 bits](https://docs.python.org/3/library/sys.html#sys.maxsize) (depending on OS)
-* `None` / `null` / `NA`: Since we want it to serve as a "blank" value (easily **cast** to other primitive types), usually the same number of bits as `int`
-    * Hence, in `C` for example, `null` is actually just shorthand for an `int` with value `0`
-
-## Primitive Types: Python Weirdness Edition {.title-09 .crunch-title .crunch-ul .crunch-quarto-figure}
+## Primitive Types: Python Weirdness Edition {.title-08 .crunch-title .crunch-ul .crunch-quarto-figure}
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-*   Boolean (`True` or `False`): Exactly **1** bit (`0` or `1`)
+`None`: **1** bit (Always `0`)
 
-    ```{python}
-    #| label: bool-size
-    #| echo: true
-    #| code-fold: false
-    import sys
-    sys.getsizeof(True)
-    ```
+```{python}
+#| label: none-size
+#| echo: true
+#| code-fold: false
+import sys
+sys.getsizeof(None)
+```
 
-*   `int`: [32 or 64 bits](https://docs.python.org/3/library/sys.html#sys.maxsize) (depending on OS)
+Boolean (`True` or `False`): Exactly **1** bit (`0` or `1`)
 
-    ```{python}
-    #| label: int-size
-    #| echo: true
-    #| code-fold: false
-    sys.maxsize
-    ```
+```{python}
+#| label: bool-size
+#| echo: true
+#| code-fold: false
+sys.getsizeof(True)
+```
 
-*   `None`
+`int`: [32 or 64 bits](https://docs.python.org/3/library/sys.html#sys.maxsize) (depending on OS)
 
-    ```{python}
-    #| label: none-size
-    #| echo: true
-    #| code-fold: false
-    sys.getsizeof(None)
-    ```
+```{python}
+#| label: int-size
+#| echo: true
+#| code-fold: false
+sys.maxsize
+```
 
 :::
 ::: {.column width="50%"}
 
 ![](images/atrick_nocap.jpg){fig-align="center"}
 
-* Why is this happening?
+<center>
+
+Why is this happening?
+
+</center>
 
 :::
 ::::
@@ -168,7 +200,7 @@ void z = NULL;
 ## Stack and Heap *in Python* {.smaller}
 
 :::: {.columns}
-::: {.column width="40%"}
+::: {.column width="45%"}
 
 ``` {.python filename="my_beautiful_app.py"}
 import datetime
@@ -184,18 +216,60 @@ z = 314
 ```
 
 :::
-::: {.column width="60%"}
+::: {.column width="55%"}
 
 <!-- https://kroki.io/graphviz/svg/eNqVk0uP0zAUhdftr7A8LEBqRd59KImEhscIAUKA2HSqkZPcNGZSO7Id2tLkv-O47bSILKZeOLo-vp-PTuyMrgSpCrRC-yHSQxD2mFERffpmypSzFJgSREH0Q9QwHMg6OXSkZS0ViA-W7hwMSpJAGeHPsOZih16-ybWEbnkG6N0W0lpRzl7N0dedKjjDev9_GNtgnkDfFUkfsfFwOaT6TYRcmE0oQni_DxlZgx2ntXjItMuG1esHwTeyyWlZQtbAulI7s5ryUja1BNF1NLT51fxpm31IskzYsbWdTpMA3GDWhLkd267-OHo1cV0_nXiBLj1dBnbgkRw61Y8dPQd6MZ_kqeeCpctp3M2zAy6xrFm307Zi1_baFo9kQSrofAtIucjwKOdMdXYifMtrQUHgpU6h7QvI-TegOyDVZT6FjRZH6a3OYeFYjju2JmPHWfYdM6qAbWimishaGsrAQNwnyD3-CHl-j5_VfLTgnbrDMIm76xK-TuL4CoB_CXhPSnk1IbgkfOHseYAu8hMCH-4YnpuLgcYxwoWN5yt_IdWu1ATJS6p_nX4aUj8MypR5GUt0M9oes_tJYYPPtm5enKG5dyY6J2JGZAFXIc88p-MVXo8SGMXtUYyHwu9RZkYJhjqP9i_dCD4S -->
 
-![](images/stack-heap-py.svg){fig-align="center"}
+![](images/stack-heap-singleton.svg){fig-align="center"}
 
 :::
 ::::
 
+## Side-by-Side
+
+:::: {.columns}
+::: {.column width="50%"}
+
+![](images/stack-heap-c.svg){fig-align="center"}
+
+:::
+::: {.column width="50%"}
+
+<!-- https://kroki.io/graphviz/svg/eNqVk0uP0zAUhdftr7A8LEBqRd59KImEhscIAUKA2HSqkZPcNGZSO7Id2tLkv-O47bSILKZeOLo-vp-PTuyMrgSpCrRC-yHSQxD2mFERffpmypSzFJgSREH0Q9QwHMg6OXSkZS0ViA-W7hwMSpJAGeHPsOZih16-ybWEbnkG6N0W0lpRzl7N0dedKjjDev9_GNtgnkDfFUkfsfFwOaT6TYRcmE0oQni_DxlZgx2ntXjItMuG1esHwTeyyWlZQtbAulI7s5ryUja1BNF1NLT51fxpm31IskzYsbWdTpMA3GDWhLkd267-OHo1cV0_nXiBLj1dBnbgkRw61Y8dPQd6MZ_kqeeCpctp3M2zAy6xrFm307Zi1_baFo9kQSrofAtIucjwKOdMdXYifMtrQUHgpU6h7QvI-TegOyDVZT6FjRZH6a3OYeFYjju2JmPHWfYdM6qAbWimishaGsrAQNwnyD3-CHl-j5_VfLTgnbrDMIm76xK-TuL4CoB_CXhPSnk1IbgkfOHseYAu8hMCH-4YnpuLgcYxwoWN5yt_IdWu1ATJS6p_nX4aUj8MypR5GUt0M9oes_tJYYPPtm5enKG5dyY6J2JGZAFXIc88p-MVXo8SGMXtUYyHwu9RZkYJhjqP9i_dCD4S -->
+
+![](images/stack-heap-singleton.svg){fig-align="center"}
+
+:::
+::::
+
+# Algorithmic Thinking {data-stack-name="Algorithms"}
+
+* What are the **inputs**?
+* What are the **outputs**?
+* **Standard** cases vs. **corner cases**
+* **Adversarial** development: brainstorm all of the ways an evil hacker might break your code!
+
+## Example: Finding An Item Within A List {.title-08}
+
+* Seems straightforward, right? Given a list `l`, and a value `v`, return the index of `l` which contains `v`
+* **Corner cases** galore...
+* What if `l` contains `v` more than once? What if it doesn't contain `v` at all? What if `l` is `None`? What if `v` is `None`? What if `l` isn't a list at all? What if `v` is itself a list?
+
+## Corner Cases {.crunch-title .crunch-ul}
+
+* Most people stand in the center of a room...
+* Eccentric weirdos stand in the corner
+* Your algorithm needs to handle **all people**
+
+![](images/guy-in-corner-of-party.jpg){fig-align="center"}
+
+## Demo
+
+[Streamlit Dictionary Lookup Demo](https://dict-lookup.streamlit.app/)
+
 # Data Structures: Motivation {data-stack-name="Data Structures"}
 
-## Why Does The NYC Subway Have Express Lines? {.smaller .title-11}
+## Why Does NYC Subway Have Express Lines? {.smaller .title-10}
 
 ![From <a href='https://www.centralpark.com/visitor-info/get-directions/' target='_blank'>NYC Central Park website</a>](images/subway_map_nyc.jpg){fig-align="center"}
 
@@ -211,7 +285,7 @@ z = 314
 ```{=html}
 <iframe src="https://jimkang.com/quadtreevis/" width="100%" height="450"></iframe>
 ```
-<a href='https://jimkang.com/quadtreevis/' target='_blank'>Jim Kang's Quadtree Visualizations <i class='bi bi-box-arrow-up-right'></i></a>
+<a href='https://jimkang.com/quadtreevis/' target='_blank'>Jim Kang's Quadtree Visualizations</a>
 
 # Algorithmic Complexity: Motivation {data-stack-name="Complexity"}
 
@@ -581,7 +655,7 @@ By saying that the worst-case running time of an algorithm is $\Omega(n^2)$, we 
 
 * *Intuition Break* 🥳: **Finding a word in a dictionary!** <a href='https://dsan.io/dict-lookup' target='_blank' class='font-monospace'>dsan.io/dict-lookup<i class='bi bi-box-arrow-up-right ps-2'></i></a>
 
-## How Can Merge Sort Work *That* Much Better!? {.crunch-title .title-08 .crunch-ul .crunch-quarto-layout-panel .crunch-quarto-figure}
+## How Can Merge Sort Work *That* Much Better!? {.crunch-title .title-07 .crunch-ul .crunch-quarto-layout-panel .crunch-quarto-figure}
 
 * With the **linear** approach, each time we check a word and it's not our word we eliminate... one measly word 😞
 * But with the **divide-and-conquer** approach... we eliminate 🔥**HALF OF THE REMAINING WORDS**🔥
@@ -605,13 +679,13 @@ By saying that the worst-case running time of an algorithm is $\Omega(n^2)$, we 
 ## Complexity Analysis {.crunch-title}
 
 * Hard way: re-do the line-by-line analysis we did for <span class='alg'>Insertion-Sort</span> 😣 Easy way: stand on shoulders of giants!
-* Using a famous+fun theorem (the **Master Theorem**): Given a recurrence $T(n) = aT(n/b) + f(n)$, compute its:
+* Using a famous theorem (the **Master Theorem**): Given a recurrence $T(n) = aT(n/b) + f(n)$, compute its:
   * **Watershed function** $W(n) = n^{\log_b(a)}$ and
   * **Driving function** $D(n) = f(n)$
 * The Master Theorem gives **closed-form** asymptotic solution for $T(n)$, split into three cases:
 * **(1)** $W(n)$ grows **faster** than $D(n)$, **(2)** grows at **same rate** as $D(n)$, or **(3)** grows **slower** than $D(n)$
 
-## Bounding the Runtime of Merge Sort {.crunch-title .crunch-ul .crunch-callout .crunch-footnotes}
+## Bounding the Runtime of Merge Sort {.crunch-title .title-09 .crunch-ul .crunch-callout .crunch-footnotes}
 
 * How about <span class='alg'>Merge-Sort</span>? $T(n) = 2T(n/2) + \Theta(n)$
   * $a = b = 2$, $W(n) = n^{\log_2(2)} = n$, $D(n) = \Theta(n)$
