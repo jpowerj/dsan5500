@@ -84,25 +84,25 @@ w14:
 #   footer: "Final Projects Celebration"
 #   date-md: "May 1"
 hw1:
-  title: "Python Fundamentals"
-  date-md: "Jan 27 (Monday), 11:59pm EST"
+  title: "Python Fundamentals and Algorithmic Complexity"
+  date-md: "Feb 5, 11:59pm EST"
   pct: 9
-  url: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx/a/NzQ1OTIwODUxNzU0/details"
+  url: "https://classroom.google.com/c/ODM3MzMwODU5ODY0/a/ODQwODY3MzM5MzY2/details"
 hw2:
   title: "Object-Oriented Programming"
   date-md: "Feb 7 (Friday), 5:59pm EST"
   pct: 9
-  url: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx/a/NzQ4MTk4MTg3Mjc2/details"
+  url: "#"
 hw3:
   title: "Data Structures, Algorithms, and Complexity"
   date-md: "Feb 21 (Friday), 5:59pm EST"
   pct: 9
-  url: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx/a/NzUwNTIxNDM4NjQ3/details"
+  url: "#"
 hw4:
   title: "Data-Processing Pipelines"
   date-md: "Apr 11 (Wednesday), 11:59pm EDT"
   pct: 9
-  url: "https://classroom.google.com/c/NzQzMzM5MzA3OTEx/a/NzYyMDA5MjM5NjU5/details"
+  url: "#"
 hw5:
   title: "Parallel Pipelines and Map-Reduce"
   date-md: "Apr 25 (Friday), 5:59pm EDT"

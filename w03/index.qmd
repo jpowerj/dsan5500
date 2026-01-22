@@ -19,7 +19,9 @@ format:
     code-fold: show
     scrollable: true
     slide-number: true
-    css: "../dsan-globals/jjstyles.css"
+    theme: [default, "../dsan-globals/jjquarto.scss"]
+    include-in-header:
+      text: "<link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
     html-math-method: mathjax
     simplemenu:
       flat: true
@@ -50,27 +52,46 @@ Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:40pm | TA Intros! |
-| | 6:40pm | 7:00pm | [Python's Built-In Data Structures &rarr;](#basic-data-structures) |
-| | 7:00pm | 7:30pm | [Big-O Notation and Complexity Classes](#formalizing-big-o-notation)
-| | 7:30pm | 8:00pm | [Formal Complexity Analysis: Insertion-Sort &rarr;](#back-to-insertion-sort.alg) |
+| **Lecture** | 6:30pm | 6:40pm | [TA Intro! &rarr;](#ta-intro) |
+| | 6:40pm | 7:10pm | [[Insertion-Sort]{.alg} &rarr;](#sorting) |
+| | 7:10pm | 8:00pm | [[Merge-Sort]{.alg} &rarr;](#merge-sort.alg-(merge.alg-as-subroutine)) |
 | **Break!** | 8:00pm | 8:10pm | |
-| | 8:10pm | 8:30pm | [Formal Complexity Analysis: Merge-Sort &rarr;](#bounding-the-runtime-of-merge-sort)
-| | 8:30pm | 9:00pm | [Object-Oriented Programming &rarr;](#object-oriented-programming) |
+| | 8:10pm | 8:40pm | [Data Structures from OOP Standpoint &rarr;](#basic-data-structures) |
+| | 8:40pm | 9:00pm | [Object-Oriented Programming Overview &rarr;](#object-oriented-programming) |
 
 : {tbl-colwidths="[14,12,12,62]"}
 
-# TA Intros!
+## TA Intro! {.crunch-title .title-09 .crunch-quarto-layout-panel}
 
-* Renee DeMaio [`jrd154@georgetown.edu`](mailto:jrd154@georgetown.edu)
-* Jiatong Liu [`jl3081@georgetown.edu`](mailto:jl3081@georgetown.edu)
+<center>
 
+[Hailun Ma [`hm903@georgetown.edu`](mailto:hm903@georgetown.edu)]{.boxed-cb1}
 
-# Sorting {data-stack-name="Sorting"}
+</center>
+
+:::: {layout="[70,30]" layout-valign="center"}
+::: {#rutgers-text}
+
+BS in Computer Science (😎), Rutgers University New Brunswick
+
+:::
+::: {#rutgers-logo}
+
+![](images/rutgers_nb.svg){width="280"}
+
+:::
+::::
+
+* Undergrad: Algorithms, statistics, and data structures!
+* DSAN focus: machine learning, statistical modeling, data analysis $\leadsto$ use data to solve complex real-world problems
+* Hobbies: traveling, exploring new places [trying out different restaurants and dessert spots!], cupcake experiments
+* Swimming and surfing, badminton and bowling!
+
+# Sorting {data-stack-name="Insertion Sort"}
 
 * Your first "use case" for both **using a data structure** and **analyzing the complexity** of an operation on it!
-* We'll start with simple approach (**insertion sort**), then more complicated approach (**merge sort**)
-* Using complexity analysis, we'll see how (much like the matrix-multiplication example) simplest isn't always best D:
+* We'll start with simple approach (**[Insertion-Sort]{.alg}**), then more complicated approach (**[Merge-Sort]{.alg}**)
+* Using complexity analysis, we'll see how (much like the matrix-multiplication example) simplest isn't always best 😱
 
 ## Insertion Sort
 
@@ -316,17 +337,6 @@ By saying that the worst-case running time of an algorithm is $\Omega(n^2)$, we 
 
 :::
 
-## Intuition for Lower Bound {.smaller .crunch-title}
-
-* Spoiler: Insertion sort **also** runs in $T(n) = \Omega(n^2)$ time. How could we prove this?
-* Given **any value $n > n_0$**, we need to **construct an input** for which Insertion-Sort requires $cn^2$ steps: consider a list where $n/3$ **greatest values** are in **first $n/3$ slots**:
-
-![All $n/3$ values in $\textrm{L}$ pass, one-by-one, through the $n/3$ slots in $\textrm{M}$ (since they must end up in $\textrm{R}$) $\implies (n/3)(n/3) = n^2/9 = \Omega(n^2)$ steps!](images/insertion_lower_bound_alt.svg){fig-align="center" width="600"}
-
-* Final definition (a **theorem** you could prove if you want!): $\Theta$ = "Big-Theta"
-  * If $T(n) = \overline{O}(g(n))$ and $T(n) = \Omega(g(n))$, then $T(n) = \Theta(n)$
-* $\implies$ **most "informative" way** to characterize insertion sort is $\boxed{T(n) = \Theta(n^2)}$
-
 ## Doing Better Than Insertion Sort
 
 * *Intuition Break* 🥳: **Finding a word in a dictionary!** <a href='https://dsan.io/dict-lookup' target='_blank' class='font-monospace'>dsan.io/dict-lookup<i class='bi bi-box-arrow-up-right ps-2'></i></a>
@@ -347,10 +357,6 @@ By saying that the worst-case running time of an algorithm is $\Omega(n^2)$, we 
 ## Merging Two Sorted Lists in $O(n)$ Time {.smaller .title-11 .crunch-figcaption .crunch-quarto-figure}
 
 ![From @cormen_introduction_2001, pg. 37](images/merge.svg){fig-align="center"}
-
-## Merge Sort (Merging as Subroutine)
-
-![From @cormen_introduction_2001, pg. 40](images/merge_tree.svg){fig-align="center"}
 
 ## Complexity Analysis {.crunch-title}
 
@@ -690,30 +696,7 @@ print(micromotives)
 
 * <a href='https://classroom.google.com/c/NjM5MzE2MTE4NTgx' target='_blank'>Google Classroom <i class='bi bi-box-arrow-up-right ps-1'></i></a>
 
-## References
-
-::: {#refs}
-:::
-
-## Appendix: The Full Master Theorem {.smaller .crunch-title .crunch-ol}
-
-**Master Theorem**: Let $a > 0$ and $b > 1$ be constants, and let $f(n)$ be a driving function defined and nonnegative on all sufficiently large reals. Define $T(n)$ on $n \in \mathbb{N}$ by
-
-$$
-T(n) = aT(n/b) + f(n)
-$$
-
-where $aT(n/b) = a'T(\lfloor n/b \rfloor) + a''T(\lceil n/b \rceil)$ for some $a' \geq 0$ and $a'' \geq 0$ satisfying $a = a' + a''$. Then the asymptotic behavior of $T(n)$ can be characterized as follows:
-
-1. If there exists $\epsilon > 0$ such that $f(n) = O(n^{\log_b(a) - \epsilon})$, then $T(n) = \Theta(n^{\log_b(a)})$
-2. If there exists $k \geq 0$ such that $f(n) = \Theta(n^{\log_b(a)}\log_2^k(n))$, then $T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))$.
-3. If there exists $\epsilon > 0$ such that $f(n) = \Omega(n^{\log_b(a) + \epsilon})$, and if $f(n)$ satisfies the **regularity condition** $af(n/b) \leq cf(n)$ for some constant $c < 1$ and all sufficiently large $n$, then $T(n) = \Theta(f(n))$.
-
-::: {.proof}
-See @cormen_introduction_2001, pg. 107-114.
-:::
-
-*([&larr; Back to Merge Sort slides](#bounding-the-runtime-of-merge-sort))*
+<!-- 2025 slide break -->
 
 ## Why Can't We Learn *Data Structures* and *Algorithms* Separately?
 
@@ -1449,9 +1432,9 @@ $$
   * If $T(n) = \overline{O}(g(n))$ and $T(n) = \Omega(g(n))$, then $T(n) = \Theta(n)$
 * $\implies$ **most "informative" way** to characterize insertion sort is $\boxed{T(n) = \Theta(n^2)}$
 
-## Appendix 2: Being Precise About "Worst-Case"
+## Appendix 2: Being Precise About "Worst-Case" {.title-07}
 
-Need to be careful with $O(f(n))$ vs. $\Omega(f(n))$ however: difference between "for all inputs" vs. "for some inputs":
+Need to be careful with $O(f(n))$ vs. $\Omega(f(n))$: difference between "for **all** inputs" vs. "for **some** inputs":
 
 ::: {.callout-note icon="false" title="Bounding Worst-Case Runtime"}
 
@@ -1459,7 +1442,7 @@ By saying that the worst-case running time of an algorithm is $\Omega(n^2)$, we 
 
 :::
 
-## Appendix 3: The Full Master Theorem {.smaller .crunch-title .crunch-ol}
+## Appendix 3: The Full Master Theorem {.smaller .crunch-title .title-11 .crunch-ol .crunch-ul .crunch-math-15}
 
 **Master Theorem**: Let $a > 0$ and $b > 1$ be constants, and let $f(n)$ be a driving function defined and nonnegative on all sufficiently large reals. Define $T(n)$ on $n \in \mathbb{N}$ by
 
@@ -1474,7 +1457,5 @@ where $aT(n/b) = a'T(\lfloor n/b \rfloor) + a''T(\lceil n/b \rceil)$ for some $a
 3. If there exists $\epsilon > 0$ such that $f(n) = \Omega(n^{\log_b(a) + \epsilon})$, and if $f(n)$ satisfies the **regularity condition** $af(n/b) \leq cf(n)$ for some constant $c < 1$ and all sufficiently large $n$, then $T(n) = \Theta(f(n))$.
 
 ::: {.proof}
-See @cormen_introduction_2001, pg. 107-114.
+See @cormen_introduction_2001, pg. 107-114.<br>*([&larr; Back to Merge Sort slides](#bounding-the-runtime-of-merge-sort))*
 :::
-
-*([&larr; Back to Merge Sort slides](#bounding-the-runtime-of-merge-sort))*

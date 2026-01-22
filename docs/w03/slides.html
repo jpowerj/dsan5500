@@ -116,8 +116,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
-  <link rel="stylesheet" href="../dsan-globals/jjstyles.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-100b4568d5e7cfeded4385ec9b4c1350.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -211,6 +210,7 @@
       margin-right: 0; 
     }
   </style>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -233,6 +233,7 @@ Jeff Jacobs
 
   <p class="date">Thursday, January 22, 2026</p>
 </section>
+<section>
 <section id="schedule" class="title-slide slide level1 smaller small-title crunch-title crunch-callout center" data-name="Schedule">
 <h1>Schedule</h1>
 <p>Today’s Planned Schedule:</p>
@@ -256,63 +257,70 @@ Jeff Jacobs
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
 <td style="text-align: left;">6:40pm</td>
-<td style="text-align: left;">TA Intros!</td>
+<td style="text-align: left;"><a href="#/ta-intro">TA Intro! →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">6:40pm</td>
-<td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;"><a href="#/basic-data-structures">Python’s Built-In Data Structures →</a></td>
+<td style="text-align: left;">7:10pm</td>
+<td style="text-align: left;"><a href="#/sorting"><span class="alg">Insertion-Sort</span> →</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;">7:30pm</td>
-<td style="text-align: left;"><a href="#/formalizing-big-o-notation">Big-O Notation and Complexity Classes</a></td>
+<td style="text-align: left;">7:10pm</td>
+<td style="text-align: left;">8:00pm</td>
+<td style="text-align: left;"><a href="#/merge-sort.alg-(merge.alg-as-subroutine)"><span class="alg">Merge-Sort</span> →</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">7:30pm</td>
-<td style="text-align: left;">8:00pm</td>
-<td style="text-align: left;"><a href="#/back-to-insertion-sort.alg">Formal Complexity Analysis: Insertion-Sort →</a></td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"><strong>Break!</strong></td>
 <td style="text-align: left;">8:00pm</td>
 <td style="text-align: left;">8:10pm</td>
 <td style="text-align: left;"></td>
 </tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">8:10pm</td>
-<td style="text-align: left;">8:30pm</td>
-<td style="text-align: left;"><a href="#/bounding-the-runtime-of-merge-sort">Formal Complexity Analysis: Merge-Sort →</a></td>
-</tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">8:30pm</td>
+<td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;">8:40pm</td>
+<td style="text-align: left;"><a href="#/basic-data-structures">Data Structures from OOP Standpoint →</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">8:40pm</td>
 <td style="text-align: left;">9:00pm</td>
-<td style="text-align: left;"><a href="#/object-oriented-programming">Object-Oriented Programming →</a></td>
+<td style="text-align: left;"><a href="#/object-oriented-programming">Object-Oriented Programming Overview →</a></td>
 </tr>
 </tbody>
 </table>
 </section>
-
-<section id="ta-intros" class="title-slide slide level1 center">
-<h1>TA Intros!</h1>
+<section id="ta-intro" class="slide level2 crunch-title title-09 crunch-quarto-layout-panel">
+<h2>TA Intro!</h2>
+<center>
+<p><span class="boxed-cb1">Hailun Ma <a href="mailto:hm903@georgetown.edu"><code>hm903@georgetown.edu</code></a></span></p>
+</center>
+<div class="quarto-layout-panel" data-layout="[70,30]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div id="rutgers-text" class="quarto-layout-cell" style="flex-basis: 70.0%;justify-content: flex-start;">
+<p>BS in Computer Science (😎), Rutgers University New Brunswick</p>
+</div>
+<div id="rutgers-logo" class="quarto-layout-cell" style="flex-basis: 30.0%;justify-content: center;">
+<p><img data-src="images/rutgers_nb.svg" width="280"></p>
+</div>
+</div>
+</div>
 <ul>
-<li>Renee DeMaio <a href="mailto:jrd154@georgetown.edu"><code>jrd154@georgetown.edu</code></a></li>
-<li>Jiatong Liu <a href="mailto:jl3081@georgetown.edu"><code>jl3081@georgetown.edu</code></a></li>
+<li>Undergrad: Algorithms, statistics, and data structures!</li>
+<li>DSAN focus: machine learning, statistical modeling, data analysis <span class="math inline">\(\leadsto\)</span> use data to solve complex real-world problems</li>
+<li>Hobbies: traveling, exploring new places [trying out different restaurants and dessert spots!], cupcake experiments</li>
+<li>Swimming and surfing, badminton and bowling!</li>
 </ul>
-</section>
-
+</section></section>
 <section>
-<section id="sorting" class="title-slide slide level1 center" data-stack-name="Sorting">
+<section id="sorting" class="title-slide slide level1 center" data-stack-name="Insertion Sort">
 <h1>Sorting</h1>
 <ul>
 <li>Your first “use case” for both <strong>using a data structure</strong> and <strong>analyzing the complexity</strong> of an operation on it!</li>
-<li>We’ll start with simple approach (<strong>insertion sort</strong>), then more complicated approach (<strong>merge sort</strong>)</li>
-<li>Using complexity analysis, we’ll see how (much like the matrix-multiplication example) simplest isn’t always best D:</li>
+<li>We’ll start with simple approach (<strong><span class="alg">Insertion-Sort</span></strong>), then more complicated approach (<strong><span class="alg">Merge-Sort</span></strong>)</li>
+<li>Using complexity analysis, we’ll see how (much like the matrix-multiplication example) simplest isn’t always best 😱</li>
 </ul>
 </section>
 <section id="insertion-sort" class="slide level2">
@@ -451,7 +459,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </section>
 <section id="the-figure-you-should-make-in-your-brain-every-time" class="slide level2 smaller crunch-title title-10 crunch-quarto-figure">
 <h2>The Figure You Should Make In Your Brain Every Time</h2>
-<div id="03d6ed99" class="cell" data-execution_count="1">
+<div id="e03ec0bf" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -508,7 +516,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <ul>
 <li>(Though this is harder to see, without a log-log plot:)</li>
 </ul>
-<div id="727450e7" class="cell" data-execution_count="2">
+<div id="d7d4e509" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>
@@ -596,21 +604,6 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </div>
 </div>
 </section>
-<section id="intuition-for-lower-bound" class="slide level2 smaller crunch-title">
-<h2>Intuition for Lower Bound</h2>
-<ul>
-<li>Spoiler: Insertion sort <strong>also</strong> runs in <span class="math inline">\(T(n) = \Omega(n^2)\)</span> time. How could we prove this?</li>
-<li>Given <strong>any value <span class="math inline">\(n &gt; n_0\)</span></strong>, we need to <strong>construct an input</strong> for which Insertion-Sort requires <span class="math inline">\(cn^2\)</span> steps: consider a list where <span class="math inline">\(n/3\)</span> <strong>greatest values</strong> are in <strong>first <span class="math inline">\(n/3\)</span> slots</strong>:</li>
-</ul>
-
-<img data-src="images/insertion_lower_bound_alt.svg" width="600" class="r-stretch quarto-figure-center"><p class="caption">All <span class="math inline">\(n/3\)</span> values in <span class="math inline">\(\textrm{L}\)</span> pass, one-by-one, through the <span class="math inline">\(n/3\)</span> slots in <span class="math inline">\(\textrm{M}\)</span> (since they must end up in <span class="math inline">\(\textrm{R}\)</span>) <span class="math inline">\(\implies (n/3)(n/3) = n^2/9 = \Omega(n^2)\)</span> steps!</p><ul>
-<li>Final definition (a <strong>theorem</strong> you could prove if you want!): <span class="math inline">\(\Theta\)</span> = “Big-Theta”
-<ul>
-<li>If <span class="math inline">\(T(n) = \overline{O}(g(n))\)</span> and <span class="math inline">\(T(n) = \Omega(g(n))\)</span>, then <span class="math inline">\(T(n) = \Theta(n)\)</span></li>
-</ul></li>
-<li><span class="math inline">\(\implies\)</span> <strong>most “informative” way</strong> to characterize insertion sort is <span class="math inline">\(\boxed{T(n) = \Theta(n^2)}\)</span></li>
-</ul>
-</section>
 <section id="doing-better-than-insertion-sort" class="slide level2">
 <h2>Doing Better Than Insertion Sort</h2>
 <ul>
@@ -646,10 +639,6 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <h2>Merging Two Sorted Lists in <span class="math inline">\(O(n)\)</span> Time</h2>
 
 <img data-src="images/merge.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 37</p></section>
-<section id="merge-sort-merging-as-subroutine" class="slide level2">
-<h2>Merge Sort (Merging as Subroutine)</h2>
-
-<img data-src="images/merge_tree.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 40</p></section>
 <section id="complexity-analysis-1" class="slide level2 crunch-title">
 <h2>Complexity Analysis</h2>
 <ul>
@@ -1075,34 +1064,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 <ul>
 <li><a href="https://classroom.google.com/c/NjM5MzE2MTE4NTgx" target="_blank">Google Classroom <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
 </ul>
-</section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-cormen_introduction_2001" class="csl-entry" role="listitem">
-Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. <em>Introduction <span>To Algorithms</span></em>. MIT Press.
-</div>
-<div id="ref-savage_models_1998" class="csl-entry" role="listitem">
-Savage, John E. 1998. <em>Models of <span>Computation</span>: <span>Exploring</span> the <span>Power</span> of <span>Computing</span></em>. Addison-Wesley.
-</div>
-</div>
-</section>
-<section id="appendix-the-full-master-theorem" class="slide level2 smaller crunch-title crunch-ol scrollable">
-<h2>Appendix: The Full Master Theorem</h2>
-<p><strong>Master Theorem</strong>: Let <span class="math inline">\(a &gt; 0\)</span> and <span class="math inline">\(b &gt; 1\)</span> be constants, and let <span class="math inline">\(f(n)\)</span> be a driving function defined and nonnegative on all sufficiently large reals. Define <span class="math inline">\(T(n)\)</span> on <span class="math inline">\(n \in \mathbb{N}\)</span> by</p>
-<p><span class="math display">\[
-T(n) = aT(n/b) + f(n)
-\]</span></p>
-<p>where <span class="math inline">\(aT(n/b) = a'T(\lfloor n/b \rfloor) + a''T(\lceil n/b \rceil)\)</span> for some <span class="math inline">\(a' \geq 0\)</span> and <span class="math inline">\(a'' \geq 0\)</span> satisfying <span class="math inline">\(a = a' + a''\)</span>. Then the asymptotic behavior of <span class="math inline">\(T(n)\)</span> can be characterized as follows:</p>
-<ol type="1">
-<li>If there exists <span class="math inline">\(\epsilon &gt; 0\)</span> such that <span class="math inline">\(f(n) = O(n^{\log_b(a) - \epsilon})\)</span>, then <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)})\)</span></li>
-<li>If there exists <span class="math inline">\(k \geq 0\)</span> such that <span class="math inline">\(f(n) = \Theta(n^{\log_b(a)}\log_2^k(n))\)</span>, then <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))\)</span>.</li>
-<li>If there exists <span class="math inline">\(\epsilon &gt; 0\)</span> such that <span class="math inline">\(f(n) = \Omega(n^{\log_b(a) + \epsilon})\)</span>, and if <span class="math inline">\(f(n)\)</span> satisfies the <strong>regularity condition</strong> <span class="math inline">\(af(n/b) \leq cf(n)\)</span> for some constant <span class="math inline">\(c &lt; 1\)</span> and all sufficiently large <span class="math inline">\(n\)</span>, then <span class="math inline">\(T(n) = \Theta(f(n))\)</span>.</li>
-</ol>
-<div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>See <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 107-114.</p>
-</div>
-<p><em>(<a href="#/bounding-the-runtime-of-merge-sort">← Back to Merge Sort slides</a>)</em></p>
+<!-- 2025 slide break -->
 </section>
 <section id="why-cant-we-learn-data-structures-and-algorithms-separately" class="slide level2">
 <h2>Why Can’t We Learn <em>Data Structures</em> and <em>Algorithms</em> Separately?</h2>
@@ -1138,7 +1100,7 @@ T(n) = aT(n/b) + f(n)
 <li><p><strong>Fixed-size</strong> collection of <span class="math inline">\(N\)</span> objects</p></li>
 <li><p>Unless otherwise specified, we’re talking about <span class="math inline">\(2\)</span>-tuples</p></li>
 <li><p>Example: We can locate something on the Earth by specifying two <code>floats</code>: latitude and longitude!</p>
-<div id="ed90f0b1" class="cell" data-execution_count="12">
+<div id="2373d18a" class="cell" data-execution_count="12">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>gtown_loc <span class="op">=</span> (<span class="fl">38.9076</span>, <span class="op">-</span><span class="fl">77.0723</span>)</span>
@@ -1184,7 +1146,7 @@ c
 <ul>
 <li>Python:</li>
 </ul>
-<div id="3cb2081e" class="cell" data-execution_count="13">
+<div id="b4ba000c" class="cell" data-execution_count="13">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>my_list <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>]</span>
@@ -1203,7 +1165,7 @@ c</code></pre>
 <h2><em>List Comprehensions</em>: Apply [Operation] to Each Element</h2>
 <ul>
 <li><p>Construct <strong>new</strong> list by applying operation to each element:</p>
-<div id="445ac13d" class="cell" data-execution_count="14">
+<div id="ba8e4142" class="cell" data-execution_count="14">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>my_nums <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
@@ -1215,7 +1177,7 @@ c</code></pre>
 </div>
 </div></li>
 <li><p>Can also <strong>filter</strong> the elements of the list with <code>if</code>:</p>
-<div id="1438c618" class="cell" data-execution_count="15">
+<div id="0046b11e" class="cell" data-execution_count="15">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>my_odd_squares <span class="op">=</span> [num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> my_nums <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>]</span>
@@ -1247,7 +1209,7 @@ c</code></pre>
 <span id="cb27-2"><a></a><span class="bu">print</span>(<span class="ss">f"Unique preferences: </span><span class="sc">{</span>unique_prefs_morn<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb27-3"><a></a><span class="bu">print</span>(<span class="ss">f"Number of unique preferences: </span><span class="sc">{</span><span class="bu">len</span>(unique_prefs_morn)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Unique preferences: {'None', 'Gluten Free', 'Vegan'}
+<pre><code>Unique preferences: {'Gluten Free', 'Vegan', 'None'}
 Number of unique preferences: 3</code></pre>
 </div>
 </div>
@@ -1276,7 +1238,7 @@ Number of unique preferences: 3</code></pre>
 <span id="cb30-5"><a></a>unique_prefs_either <span class="op">=</span> unique_prefs_morn.union(unique_prefs_eve)</span>
 <span id="cb30-6"><a></a><span class="bu">print</span>(<span class="ss">f"Preferences in either event: </span><span class="sc">{</span>unique_prefs_either<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Preferences in either event: {'None', 'Gluten Free', 'Vegan'}</code></pre>
+<pre><code>Preferences in either event: {'Gluten Free', 'None', 'Vegan'}</code></pre>
 </div>
 </div>
 <p>Intersection (<span class="math inline">\(M \cap E\)</span>):</p>
@@ -1284,7 +1246,7 @@ Number of unique preferences: 3</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>unique_prefs_both <span class="op">=</span> unique_prefs_morn.intersection(unique_prefs_eve)</span>
 <span id="cb32-2"><a></a><span class="bu">print</span>(<span class="ss">f"Preferences in both events: </span><span class="sc">{</span>unique_prefs_both<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Preferences in both events: {'None', 'Vegan'}</code></pre>
+<pre><code>Preferences in both events: {'Vegan', 'None'}</code></pre>
 </div>
 </div>
 <p>Set Difference (<span class="math inline">\(M \setminus E\)</span> or <span class="math inline">\(E \setminus M\)</span>):</p>
@@ -1305,7 +1267,7 @@ Preferences only in the evening: set()</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>While other language like Java have lots of fancy types of Map, Python has a single type, the <strong>dictionary</strong>:</p>
-<div id="d68e658c" class="cell" data-execution_count="22">
+<div id="d03c66fe" class="cell" data-execution_count="22">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a>gtown_data <span class="op">=</span> {</span>
@@ -1328,7 +1290,7 @@ dict_values(['Georgetown University', 1789, (38.9076, -77.0723), {'city': 'Washi
 </div>
 </div><div class="column" style="width:50%;">
 <p>Be careful when looping! Default behavior is iteration over <strong>keys</strong>:</p>
-<div id="4e52cb37" class="cell" data-execution_count="23">
+<div id="61317dc8" class="cell" data-execution_count="23">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a><span class="cf">for</span> k <span class="kw">in</span> gtown_data:</span>
@@ -1342,7 +1304,7 @@ location</code></pre>
 </div>
 </div>
 <p>For <strong>key-value pairs</strong> use <code>.items()</code>:</p>
-<div id="bd8ac8f5" class="cell" data-execution_count="24">
+<div id="662fdb92" class="cell" data-execution_count="24">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="cf">for</span> k, v <span class="kw">in</span> gtown_data.items():</span>
@@ -1387,7 +1349,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>-40
-&lt;__main__.MyNTuple object at 0x124e9be00&gt; 🧐</code></pre>
+&lt;__main__.MyNTuple object at 0x151697e00&gt; 🧐</code></pre>
 </div>
 </div></li>
 </ul>
@@ -1405,7 +1367,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </section>
 <section id="tuples-1" class="slide level2">
 <h2>Tuples</h2>
-<div id="291ec29e" class="cell" data-execution_count="26">
+<div id="e627188e" class="cell" data-execution_count="26">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="kw">class</span> MyTuple:</span>
@@ -1435,7 +1397,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>The list itself just <strong>points</strong> to a root item:</p>
-<div id="80c30514" class="cell" data-execution_count="27">
+<div id="6068f99a" class="cell" data-execution_count="27">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a><span class="kw">class</span> MyList:</span>
@@ -1454,7 +1416,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>An item has contents, pointer to next item:</p>
-<div id="b5632304" class="cell" data-execution_count="28">
+<div id="1d132ce6" class="cell" data-execution_count="28">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a><span class="kw">class</span> MyListItem:</span>
@@ -1474,7 +1436,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </details>
 </div>
 </div></div>
-<div id="abb4d810" class="cell" data-execution_count="29">
+<div id="4cbd3a3c" class="cell" data-execution_count="29">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a>users <span class="op">=</span> MyList()</span>
@@ -1502,7 +1464,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>With a <code>MyTuple</code>:</p>
-<div id="72e56820" class="cell" data-execution_count="30">
+<div id="962a11c7" class="cell" data-execution_count="30">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a></a>t1.thing1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1512,7 +1474,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
-<div id="f9dc90ed" class="cell" data-execution_count="31">
+<div id="47977663" class="cell" data-execution_count="31">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a></a>t1.thing2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1524,7 +1486,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
 </div><div class="column" style="width:50%;">
 <p>With a <code>MyList</code>:</p>
-<div id="45529cd9" class="cell" data-execution_count="32">
+<div id="553d5dd4" class="cell" data-execution_count="32">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a></a><span class="bu">print</span>(users.root.content)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1534,7 +1496,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
-<div id="99f8c232" class="cell" data-execution_count="33">
+<div id="8c644eaa" class="cell" data-execution_count="33">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a></a>current_node <span class="op">=</span> users.root</span>
@@ -1554,7 +1516,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <h2>Pairwise-Concatenating List Elements</h2>
 <ul>
 <li><p>Now rather than just printing, let’s pairwise concatenate:</p>
-<div id="7c3d5181" class="cell" data-execution_count="34">
+<div id="2f3f88df" class="cell" data-execution_count="34">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a></a>cur_pointer1 <span class="op">=</span> users.root</span>
@@ -1582,7 +1544,7 @@ BoBo</code></pre>
 </section>
 <section id="last-example-pairwise-concat-end-check" class="slide level2 smaller crunch-title title-12 crunch-details">
 <h2>Last Example: Pairwise-Concat + End Check</h2>
-<div id="e9605a1c" class="cell" data-execution_count="35">
+<div id="d214b043" class="cell" data-execution_count="35">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a></a>printed_items <span class="op">=</span> []</span>
@@ -1759,7 +1721,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </section>
 <section id="the-figure-you-should-make-in-your-brain-every-time-1" class="slide level2 smaller crunch-title title-10 crunch-quarto-figure">
 <h2>The Figure You Should Make In Your Brain Every Time</h2>
-<div id="106cc213" class="cell" data-execution_count="36">
+<div id="284f4e8e" class="cell" data-execution_count="36">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1816,7 +1778,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <ul>
 <li>(Though this is harder to see, without a log-log plot:)</li>
 </ul>
-<div id="63c66854" class="cell" data-execution_count="37">
+<div id="a9598ecd" class="cell" data-execution_count="37">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>
@@ -1991,7 +1953,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <li><p>Thus <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n)) = \boxed{\Theta(n\log_2n)}\)</span> 😎</p></li>
 </ul>
 </section>
-<section id="references-1" class="slide level2">
+<section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-cormen_introduction_2001" class="csl-entry" role="listitem">
@@ -2017,9 +1979,9 @@ Savage, John E. 1998. <em>Models of <span>Computation</span>: <span>Exploring</s
 <li><span class="math inline">\(\implies\)</span> <strong>most “informative” way</strong> to characterize insertion sort is <span class="math inline">\(\boxed{T(n) = \Theta(n^2)}\)</span></li>
 </ul>
 </section>
-<section id="appendix-2-being-precise-about-worst-case" class="slide level2">
+<section id="appendix-2-being-precise-about-worst-case" class="slide level2 title-07">
 <h2>Appendix 2: Being Precise About “Worst-Case”</h2>
-<p>Need to be careful with <span class="math inline">\(O(f(n))\)</span> vs.&nbsp;<span class="math inline">\(\Omega(f(n))\)</span> however: difference between “for all inputs” vs.&nbsp;“for some inputs”:</p>
+<p>Need to be careful with <span class="math inline">\(O(f(n))\)</span> vs.&nbsp;<span class="math inline">\(\Omega(f(n))\)</span>: difference between “for <strong>all</strong> inputs” vs.&nbsp;“for <strong>some</strong> inputs”:</p>
 <div title="Bounding Worst-Case Runtime">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -2033,7 +1995,7 @@ Savage, John E. 1998. <em>Models of <span>Computation</span>: <span>Exploring</s
 </div>
 </div>
 </section>
-<section id="appendix-3-the-full-master-theorem" class="slide level2 smaller crunch-title crunch-ol scrollable">
+<section id="appendix-3-the-full-master-theorem" class="slide level2 smaller crunch-title title-11 crunch-ol crunch-ul crunch-math-15 scrollable">
 <h2>Appendix 3: The Full Master Theorem</h2>
 <p><strong>Master Theorem</strong>: Let <span class="math inline">\(a &gt; 0\)</span> and <span class="math inline">\(b &gt; 1\)</span> be constants, and let <span class="math inline">\(f(n)\)</span> be a driving function defined and nonnegative on all sufficiently large reals. Define <span class="math inline">\(T(n)\)</span> on <span class="math inline">\(n \in \mathbb{N}\)</span> by</p>
 <p><span class="math display">\[
@@ -2046,9 +2008,8 @@ T(n) = aT(n/b) + f(n)
 <li>If there exists <span class="math inline">\(\epsilon &gt; 0\)</span> such that <span class="math inline">\(f(n) = \Omega(n^{\log_b(a) + \epsilon})\)</span>, and if <span class="math inline">\(f(n)\)</span> satisfies the <strong>regularity condition</strong> <span class="math inline">\(af(n/b) \leq cf(n)\)</span> for some constant <span class="math inline">\(c &lt; 1\)</span> and all sufficiently large <span class="math inline">\(n\)</span>, then <span class="math inline">\(T(n) = \Theta(f(n))\)</span>.</li>
 </ol>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>See <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 107-114.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>See <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 107-114.<br><em>(<a href="#/bounding-the-runtime-of-merge-sort">← Back to Merge Sort slides</a>)</em></p>
 </div>
-<p><em>(<a href="#/bounding-the-runtime-of-merge-sort">← Back to Merge Sort slides</a>)</em></p>
 
 
 </section></section>

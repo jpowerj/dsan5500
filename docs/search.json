@@ -503,7 +503,7 @@
     "href": "syllabus.html#course-overview",
     "title": "Syllabus",
     "section": "Course Overview",
-    "text": "Course Overview\nMy goal, in creating the course, is to take the general, language-agnostic data science concepts you’ve learned in (e.g.) DSAN 5000 and work through how to implement these concepts efficiently in Python, where we can define “efficient” in different ways based on different goals that we may have in different settings while working as Data Scientists.\nThe graded components for the course consist of five homework assignments, an in-class midterm, and a final project. Grades will be allocated as follows:\n\n\n\nCategory\nPercent of Final Grade\n\n\n\n\nIn-Class Midterm\n25%\n\n\nFinal Project\n30%\n\n\nHomeworks\n45%\n\n\nHW1: Python Fundamentals\n9%\n\n\nHW2: Object-Oriented Programming\n9%\n\n\nHW3: Data Structures, Algorithms, and Complexity\n9%\n\n\nHW4: Data-Processing Pipelines\n9%\n\n\nHW5: Parallel Pipelines and Map-Reduce\n9%\n\n\n\nThe course does not have any “official” prerequisites, but a general comfort with Python is strongly recommended. If you have never used Python before, however (or if you haven’t used it in a while and feel like your skills are rusty), you can browse the materials on the Resources page!",
+    "text": "Course Overview\nMy goal, in creating the course, is to take the general, language-agnostic data science concepts you’ve learned in (e.g.) DSAN 5000 and work through how to implement these concepts efficiently in Python, where we can define “efficient” in different ways based on different goals that we may have in different settings while working as Data Scientists.\nThe graded components for the course consist of five homework assignments, an in-class midterm, and a final project. Grades will be allocated as follows:\n\n\n\nCategory\nPercent of Final Grade\n\n\n\n\nIn-Class Midterm\n25%\n\n\nFinal Project\n30%\n\n\nHomeworks\n45%\n\n\nHW1: Python Fundamentals and Algorithmic Complexity\n9%\n\n\nHW2: Object-Oriented Programming\n9%\n\n\nHW3: Data Structures, Algorithms, and Complexity\n9%\n\n\nHW4: Data-Processing Pipelines\n9%\n\n\nHW5: Parallel Pipelines and Map-Reduce\n9%\n\n\n\nThe course does not have any “official” prerequisites, but a general comfort with Python is strongly recommended. If you have never used Python before, however (or if you haven’t used it in a while and feel like your skills are rusty), you can browse the materials on the Resources page!",
     "crumbs": [
       "Syllabus"
     ]
@@ -513,7 +513,7 @@
     "href": "syllabus.html#course-topics-calendar",
     "title": "Syllabus",
     "section": "Course Topics / Calendar",
-    "text": "Course Topics / Calendar\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\n\n\n\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: Python Fundamentals\n1\nJan 8\nCourse Intro and Motivation\n\n\n\n2\nJan 15\nSoftware Design Patterns and Object-Oriented Programming\n\n\nUnit 2: Object-Oriented Programming\n3\nJan 22\nData Structures and Computational Complexity\n\n\n\n\nJan 27 (Monday), 11:59pm EST\nHW1 (Python Fundamentals) Due\n\n\n\n4\nJan 29\nData Structures from Scratch with OOP\n\n\nUnit 3: Data Structures, Algorithms, and Complexity\n5\nFeb 5\nBinary Search Trees\n\n\n\n\nFeb 7 (Friday), 5:59pm EST\nHW2 (Object-Oriented Programming) Due\n\n\n\n6\nFeb 12\nDepth-First and Breadth-First Search\n\n\n\n7\nFeb 19\nCode Examples and Midterm Prep\n\n\n\n\nFeb 21 (Friday), 5:59pm EST\nHW3 (Data Structures, Algorithms, and Complexity) Due\n\n\nMidterm\n8\nFeb 26\nIn-Class Midterm\n\n\n\n\nMar 6\nNo Class (Spring Break)\n\n\nUnit 4: Data-Processing Pipelines\n9\nMar 12\nETL Pipelines with Prefect\n\n\n\n10\nMar 19\nData Pipeline Orchestration\n\n\n\n\nApr 11 (Wednesday), 11:59pm EDT\nHW4 (Data-Processing Pipelines) Due\n\n\n\n11\nMar 26\nFrom Serial to Parallel Pipelines\n\n\n\n12\nApr 9\nFinal Projects, Map-Reduce\n\n\nUnit 5: Final Project Application Areas\n13\nApr 16\n(6:30-7:30pm) Applications: Bioinformatics\n(7:30-9pm) Final Project office hours (Jeff and Renee)\n\n\n\n14\nApr 23\n(6:30-7:30pm) Applications: NLP\n(7:30-9pm) Final Project office hours (Jeff, Renee, Jiatong)\n\n\n\n\nApr 25 (Friday), 5:59pm EDT\nHW5 (Parallel Pipelines and Map-Reduce) Due\n\n\n\n\nMay 3 (Friday), 11:59pm EST\nFinal Project Due",
+    "text": "Course Topics / Calendar\nThe following is a rough map of what we will work through together throughout the semester; given that everyone learns at a different pace, my aim is to leave us with a good amount of flexibility in terms of how much time we spend on each topic: if I find that it takes me longer than a week to convey a certain topic in sufficient depth, for example, then I view it as a strength rather than a weakness of the course that we can then rearrange the calendar below by adding an extra week on that particular topic! Similarly, if it seems like I am spending too much time on a topic, to the point that students seem bored or impatient to move onto the next topic, we can move a topic intended for the next week to the current week!\n\n\n\n\n\n\n\n\n\nUnit\nWeek\nDate\nTopic\n\n\n\n\nUnit 1: Python Fundamentals and Algorithmic Complexity\n1\nJan 8\nCourse Intro and Motivation\n\n\n\n2\nJan 15\nSoftware Design Patterns and Object-Oriented Programming\n\n\nUnit 2: Object-Oriented Programming\n3\nJan 22\nData Structures and Computational Complexity\n\n\n\n\nFeb 5, 11:59pm EST\nHW1 (Python Fundamentals) Due\n\n\n\n4\nJan 29\nData Structures from Scratch with OOP\n\n\nUnit 3: Data Structures, Algorithms, and Complexity\n5\nFeb 5\nBinary Search Trees\n\n\n\n\nFeb 7 (Friday), 5:59pm EST\nHW2 (Object-Oriented Programming) Due\n\n\n\n6\nFeb 12\nDepth-First and Breadth-First Search\n\n\n\n7\nFeb 19\nCode Examples and Midterm Prep\n\n\n\n\nFeb 21 (Friday), 5:59pm EST\nHW3 (Data Structures, Algorithms, and Complexity) Due\n\n\nMidterm\n8\nFeb 26\nIn-Class Midterm\n\n\n\n\nMar 6\nNo Class (Spring Break)\n\n\nUnit 4: Data-Processing Pipelines\n9\nMar 12\nETL Pipelines with Prefect\n\n\n\n10\nMar 19\nData Pipeline Orchestration\n\n\n\n\nApr 11 (Wednesday), 11:59pm EDT\nHW4 (Data-Processing Pipelines) Due\n\n\n\n11\nMar 26\nFrom Serial to Parallel Pipelines\n\n\n\n12\nApr 9\nFinal Projects, Map-Reduce\n\n\nUnit 5: Final Project Application Areas\n13\nApr 16\n(6:30-7:30pm) Applications: Bioinformatics\n(7:30-9pm) Final Project office hours (Jeff and Renee)\n\n\n\n14\nApr 23\n(6:30-7:30pm) Applications: NLP\n(7:30-9pm) Final Project office hours (Jeff, Renee, Jiatong)\n\n\n\n\nApr 25 (Friday), 5:59pm EDT\nHW5 (Parallel Pipelines and Map-Reduce) Due\n\n\n\n\nMay 3 (Friday), 11:59pm EST\nFinal Project Due",
     "crumbs": [
       "Syllabus"
     ]
@@ -2031,6 +2031,16 @@
     ]
   },
   {
+    "objectID": "w03/index.html#ta-intro",
+    "href": "w03/index.html#ta-intro",
+    "title": "Week 3: Data Structures and Computational Complexity",
+    "section": "TA Intro!",
+    "text": "TA Intro!\n\nHailun Ma hm903@georgetown.edu\n\n\n\n\nBS in Computer Science (😎), Rutgers University New Brunswick\n\n\n\n\n\n\n\nUndergrad: Algorithms, statistics, and data structures!\nDSAN focus: machine learning, statistical modeling, data analysis \\(\\leadsto\\) use data to solve complex real-world problems\nHobbies: traveling, exploring new places [trying out different restaurants and dessert spots!], cupcake experiments\nSwimming and surfing, badminton and bowling!",
+    "crumbs": [
+      "Week 3: {{< var w03.date-md >}}"
+    ]
+  },
+  {
     "objectID": "w03/index.html#insertion-sort",
     "href": "w03/index.html#insertion-sort",
     "title": "Week 3: Data Structures and Computational Complexity",
@@ -2131,16 +2141,6 @@
     ]
   },
   {
-    "objectID": "w03/index.html#intuition-for-lower-bound",
-    "href": "w03/index.html#intuition-for-lower-bound",
-    "title": "Week 3: Data Structures and Computational Complexity",
-    "section": "Intuition for Lower Bound",
-    "text": "Intuition for Lower Bound\n\nSpoiler: Insertion sort also runs in \\(T(n) = \\Omega(n^2)\\) time. How could we prove this?\nGiven any value \\(n &gt; n_0\\), we need to construct an input for which Insertion-Sort requires \\(cn^2\\) steps: consider a list where \\(n/3\\) greatest values are in first \\(n/3\\) slots:\n\n\n\n\nAll \\(n/3\\) values in \\(\\textrm{L}\\) pass, one-by-one, through the \\(n/3\\) slots in \\(\\textrm{M}\\) (since they must end up in \\(\\textrm{R}\\)) \\(\\implies (n/3)(n/3) = n^2/9 = \\Omega(n^2)\\) steps!\n\n\n\nFinal definition (a theorem you could prove if you want!): \\(\\Theta\\) = “Big-Theta”\n\nIf \\(T(n) = \\overline{O}(g(n))\\) and \\(T(n) = \\Omega(g(n))\\), then \\(T(n) = \\Theta(n)\\)\n\n\\(\\implies\\) most “informative” way to characterize insertion sort is \\(\\boxed{T(n) = \\Theta(n^2)}\\)",
-    "crumbs": [
-      "Week 3: {{< var w03.date-md >}}"
-    ]
-  },
-  {
     "objectID": "w03/index.html#doing-better-than-insertion-sort",
     "href": "w03/index.html#doing-better-than-insertion-sort",
     "title": "Week 3: Data Structures and Computational Complexity",
@@ -2166,16 +2166,6 @@
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Merging Two Sorted Lists in \\(O(n)\\) Time",
     "text": "Merging Two Sorted Lists in \\(O(n)\\) Time\n\n\n\nFrom Cormen et al. (2001), pg. 37",
-    "crumbs": [
-      "Week 3: {{< var w03.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w03/index.html#merge-sort-merging-as-subroutine",
-    "href": "w03/index.html#merge-sort-merging-as-subroutine",
-    "title": "Week 3: Data Structures and Computational Complexity",
-    "section": "Merge Sort (Merging as Subroutine)",
-    "text": "Merge Sort (Merging as Subroutine)\n\n\n\nFrom Cormen et al. (2001), pg. 40",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2301,26 +2291,6 @@
     ]
   },
   {
-    "objectID": "w03/index.html#references",
-    "href": "w03/index.html#references",
-    "title": "Week 3: Data Structures and Computational Complexity",
-    "section": "References",
-    "text": "References\n\n\nCormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. Introduction To Algorithms. MIT Press.\n\n\nSavage, John E. 1998. Models of Computation: Exploring the Power of Computing. Addison-Wesley.",
-    "crumbs": [
-      "Week 3: {{< var w03.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w03/index.html#appendix-the-full-master-theorem",
-    "href": "w03/index.html#appendix-the-full-master-theorem",
-    "title": "Week 3: Data Structures and Computational Complexity",
-    "section": "Appendix: The Full Master Theorem",
-    "text": "Appendix: The Full Master Theorem\nMaster Theorem: Let \\(a &gt; 0\\) and \\(b &gt; 1\\) be constants, and let \\(f(n)\\) be a driving function defined and nonnegative on all sufficiently large reals. Define \\(T(n)\\) on \\(n \\in \\mathbb{N}\\) by\n\\[\nT(n) = aT(n/b) + f(n)\n\\]\nwhere \\(aT(n/b) = a'T(\\lfloor n/b \\rfloor) + a''T(\\lceil n/b \\rceil)\\) for some \\(a' \\geq 0\\) and \\(a'' \\geq 0\\) satisfying \\(a = a' + a''\\). Then the asymptotic behavior of \\(T(n)\\) can be characterized as follows:\n\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = O(n^{\\log_b(a) - \\epsilon})\\), then \\(T(n) = \\Theta(n^{\\log_b(a)})\\)\nIf there exists \\(k \\geq 0\\) such that \\(f(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\), then \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\).\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = \\Omega(n^{\\log_b(a) + \\epsilon})\\), and if \\(f(n)\\) satisfies the regularity condition \\(af(n/b) \\leq cf(n)\\) for some constant \\(c &lt; 1\\) and all sufficiently large \\(n\\), then \\(T(n) = \\Theta(f(n))\\).\n\n\nProof. See Cormen et al. (2001), pg. 107-114.\n\n(← Back to Merge Sort slides)",
-    "crumbs": [
-      "Week 3: {{< var w03.date-md >}}"
-    ]
-  },
-  {
     "objectID": "w03/index.html#why-cant-we-learn-data-structures-and-algorithms-separately",
     "href": "w03/index.html#why-cant-we-learn-data-structures-and-algorithms-separately",
     "title": "Week 3: Data Structures and Computational Complexity",
@@ -2385,7 +2355,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'None', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Vegan', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'None', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Vegan', 'None', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2631,8 +2601,8 @@
     ]
   },
   {
-    "objectID": "w03/index.html#references-1",
-    "href": "w03/index.html#references-1",
+    "objectID": "w03/index.html#references",
+    "href": "w03/index.html#references",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "References",
     "text": "References\n\n\nCormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. Introduction To Algorithms. MIT Press.\n\n\nSavage, John E. 1998. Models of Computation: Exploring the Power of Computing. Addison-Wesley.",
@@ -2655,7 +2625,7 @@
     "href": "w03/index.html#appendix-2-being-precise-about-worst-case",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Appendix 2: Being Precise About “Worst-Case”",
-    "text": "Appendix 2: Being Precise About “Worst-Case”\nNeed to be careful with \\(O(f(n))\\) vs. \\(\\Omega(f(n))\\) however: difference between “for all inputs” vs. “for some inputs”:\n\n\n\n\n\n\nNoteBounding Worst-Case Runtime\n\n\n\nBy saying that the worst-case running time of an algorithm is \\(\\Omega(n^2)\\), we mean that for every input size \\(n\\) above a certain threshold, there is at least one input of size \\(n\\) for which the algorithm takes at least \\(cn^2\\) time, for some positive constant \\(n\\). It does not necessarily mean that the algorithm takes at least \\(cn^2\\) time for all inputs.",
+    "text": "Appendix 2: Being Precise About “Worst-Case”\nNeed to be careful with \\(O(f(n))\\) vs. \\(\\Omega(f(n))\\): difference between “for all inputs” vs. “for some inputs”:\n\n\n\n\n\n\nNoteBounding Worst-Case Runtime\n\n\n\nBy saying that the worst-case running time of an algorithm is \\(\\Omega(n^2)\\), we mean that for every input size \\(n\\) above a certain threshold, there is at least one input of size \\(n\\) for which the algorithm takes at least \\(cn^2\\) time, for some positive constant \\(n\\). It does not necessarily mean that the algorithm takes at least \\(cn^2\\) time for all inputs.",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2665,7 +2635,7 @@
     "href": "w03/index.html#appendix-3-the-full-master-theorem",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Appendix 3: The Full Master Theorem",
-    "text": "Appendix 3: The Full Master Theorem\nMaster Theorem: Let \\(a &gt; 0\\) and \\(b &gt; 1\\) be constants, and let \\(f(n)\\) be a driving function defined and nonnegative on all sufficiently large reals. Define \\(T(n)\\) on \\(n \\in \\mathbb{N}\\) by\n\\[\nT(n) = aT(n/b) + f(n)\n\\]\nwhere \\(aT(n/b) = a'T(\\lfloor n/b \\rfloor) + a''T(\\lceil n/b \\rceil)\\) for some \\(a' \\geq 0\\) and \\(a'' \\geq 0\\) satisfying \\(a = a' + a''\\). Then the asymptotic behavior of \\(T(n)\\) can be characterized as follows:\n\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = O(n^{\\log_b(a) - \\epsilon})\\), then \\(T(n) = \\Theta(n^{\\log_b(a)})\\)\nIf there exists \\(k \\geq 0\\) such that \\(f(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\), then \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\).\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = \\Omega(n^{\\log_b(a) + \\epsilon})\\), and if \\(f(n)\\) satisfies the regularity condition \\(af(n/b) \\leq cf(n)\\) for some constant \\(c &lt; 1\\) and all sufficiently large \\(n\\), then \\(T(n) = \\Theta(f(n))\\).\n\n\nProof. See Cormen et al. (2001), pg. 107-114.\n\n(← Back to Merge Sort slides)",
+    "text": "Appendix 3: The Full Master Theorem\nMaster Theorem: Let \\(a &gt; 0\\) and \\(b &gt; 1\\) be constants, and let \\(f(n)\\) be a driving function defined and nonnegative on all sufficiently large reals. Define \\(T(n)\\) on \\(n \\in \\mathbb{N}\\) by\n\\[\nT(n) = aT(n/b) + f(n)\n\\]\nwhere \\(aT(n/b) = a'T(\\lfloor n/b \\rfloor) + a''T(\\lceil n/b \\rceil)\\) for some \\(a' \\geq 0\\) and \\(a'' \\geq 0\\) satisfying \\(a = a' + a''\\). Then the asymptotic behavior of \\(T(n)\\) can be characterized as follows:\n\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = O(n^{\\log_b(a) - \\epsilon})\\), then \\(T(n) = \\Theta(n^{\\log_b(a)})\\)\nIf there exists \\(k \\geq 0\\) such that \\(f(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\), then \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\).\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = \\Omega(n^{\\log_b(a) + \\epsilon})\\), and if \\(f(n)\\) satisfies the regularity condition \\(af(n/b) \\leq cf(n)\\) for some constant \\(c &lt; 1\\) and all sufficiently large \\(n\\), then \\(T(n) = \\Theta(f(n))\\).\n\n\nProof. See Cormen et al. (2001), pg. 107-114.(← Back to Merge Sort slides)",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2679,6 +2649,13 @@
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
+  },
+  {
+    "objectID": "w03/slides.html#ta-intro",
+    "href": "w03/slides.html#ta-intro",
+    "title": "Week 3: Data Structures and Computational Complexity",
+    "section": "TA Intro!",
+    "text": "TA Intro!\n\nHailun Ma hm903@georgetown.edu\n\n\n\n\nBS in Computer Science (😎), Rutgers University New Brunswick\n\n\n\n\n\n\n\nUndergrad: Algorithms, statistics, and data structures!\nDSAN focus: machine learning, statistical modeling, data analysis \\(\\leadsto\\) use data to solve complex real-world problems\nHobbies: traveling, exploring new places [trying out different restaurants and dessert spots!], cupcake experiments\nSwimming and surfing, badminton and bowling!"
   },
   {
     "objectID": "w03/slides.html#insertion-sort",
@@ -2751,13 +2728,6 @@
     "text": "Bounding Insertion Sort Runtime\n\nRuns in \\(T(n) = O(n^2)\\) (use constants from prev slide)\nCan similarly define lower bound \\(T(n) = \\Omega(f(n))\\)\n\n\\(O\\) = “Big-Oh”, \\(\\Omega\\) = “Big-Omega”\n\nNeed to be careful with \\(O(f(n))\\) vs. \\(\\Omega(f(n))\\) however: difference between “for all inputs” vs. “for some inputs”:\n\n\n\n\n\nBounding Worst-Case Runtime\n\n\nBy saying that the worst-case running time of an algorithm is \\(\\Omega(n^2)\\), we mean that for every input size \\(n\\) above a certain threshold, there is at least one input of size \\(n\\) for which the algorithm takes at least \\(cn^2\\) time, for some positive constant \\(n\\). It does not necessarily mean that the algorithm takes at least \\(cn^2\\) time for all inputs."
   },
   {
-    "objectID": "w03/slides.html#intuition-for-lower-bound",
-    "href": "w03/slides.html#intuition-for-lower-bound",
-    "title": "Week 3: Data Structures and Computational Complexity",
-    "section": "Intuition for Lower Bound",
-    "text": "Intuition for Lower Bound\n\nSpoiler: Insertion sort also runs in \\(T(n) = \\Omega(n^2)\\) time. How could we prove this?\nGiven any value \\(n &gt; n_0\\), we need to construct an input for which Insertion-Sort requires \\(cn^2\\) steps: consider a list where \\(n/3\\) greatest values are in first \\(n/3\\) slots:\n\n\nAll \\(n/3\\) values in \\(\\textrm{L}\\) pass, one-by-one, through the \\(n/3\\) slots in \\(\\textrm{M}\\) (since they must end up in \\(\\textrm{R}\\)) \\(\\implies (n/3)(n/3) = n^2/9 = \\Omega(n^2)\\) steps!\nFinal definition (a theorem you could prove if you want!): \\(\\Theta\\) = “Big-Theta”\n\nIf \\(T(n) = \\overline{O}(g(n))\\) and \\(T(n) = \\Omega(g(n))\\), then \\(T(n) = \\Theta(n)\\)\n\n\\(\\implies\\) most “informative” way to characterize insertion sort is \\(\\boxed{T(n) = \\Theta(n^2)}\\)"
-  },
-  {
     "objectID": "w03/slides.html#doing-better-than-insertion-sort",
     "href": "w03/slides.html#doing-better-than-insertion-sort",
     "title": "Week 3: Data Structures and Computational Complexity",
@@ -2777,13 +2747,6 @@
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Merging Two Sorted Lists in \\(O(n)\\) Time",
     "text": "Merging Two Sorted Lists in \\(O(n)\\) Time\n\nFrom Cormen et al. (2001), pg. 37"
-  },
-  {
-    "objectID": "w03/slides.html#merge-sort-merging-as-subroutine",
-    "href": "w03/slides.html#merge-sort-merging-as-subroutine",
-    "title": "Week 3: Data Structures and Computational Complexity",
-    "section": "Merge Sort (Merging as Subroutine)",
-    "text": "Merge Sort (Merging as Subroutine)\n\nFrom Cormen et al. (2001), pg. 40"
   },
   {
     "objectID": "w03/slides.html#complexity-analysis-1",
@@ -2870,20 +2833,6 @@
     "text": "Design Choices\n\nThe goal is to encapsulate as best as possible: which objects should have which properties, and which methods?\nExample: Fiction vs. Non-Fiction. How important is this distinction for your use case?\n\n\n\n\nOption 1: As Property of Book\n\n\n\nCode\nfrom enum import Enum\nclass BookType(Enum):\n    NONFICTION = 0\n    FICTION = 1\n\nclass Book:\n    def __init__(self, title: str, authors: list[Person], num_pages: int, type: BookType):\n        self.title = title\n        self.authors = authors\n        self.num_pages = num_pages\n        self.type = type\n\n    def __str__(self):\n        return f\"Book[title={self.title}, authors={self.authors}, pages={self.num_pages}, type={self.type}]\"\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = Book(\"Ulysses\", [joyce], 732, BookType.FICTION)\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = Book(\"Micromotives and Macrobehavior\", [schelling], 252, BookType.NONFICTION)\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732, type=BookType.FICTION]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252, type=BookType.NONFICTION]\n\n\n\n\nOption 2: Separate Classes\n\n\n\nCode\n# class Book defined as earlier\nclass FictionBook(Book):\n    def __init__(self, title, authors, num_pages, characters):\n        super().__init__(title, authors, num_pages)\n        self.characters = characters\n\nclass NonfictionBook(Book):\n    def __init__(self, title, authors, num_pages, topic):\n        super().__init__(title, authors, num_pages)\n        self.topic = topic\n\n\n\n\nCode\njoyce = Person(\"Joyce\", \"James\")\nulysses = FictionBook(\"Ulysses\", [joyce], 732, [\"Daedalus\"])\nschelling = Person(\"Schelling\", \"Thomas\")\nmicromotives = NonfictionBook(\"Micromotives and Macrobehavior\", [schelling], 252, \"Economics\")\nprint(ulysses)\nprint(micromotives)\n\n\nBook[title=Ulysses, authors=[Person[Joyce, James]], pages=732]\nBook[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], pages=252]"
   },
   {
-    "objectID": "w03/slides.html#references",
-    "href": "w03/slides.html#references",
-    "title": "Week 3: Data Structures and Computational Complexity",
-    "section": "References",
-    "text": "References\n\n\nCormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. Introduction To Algorithms. MIT Press.\n\n\nSavage, John E. 1998. Models of Computation: Exploring the Power of Computing. Addison-Wesley."
-  },
-  {
-    "objectID": "w03/slides.html#appendix-the-full-master-theorem",
-    "href": "w03/slides.html#appendix-the-full-master-theorem",
-    "title": "Week 3: Data Structures and Computational Complexity",
-    "section": "Appendix: The Full Master Theorem",
-    "text": "Appendix: The Full Master Theorem\nMaster Theorem: Let \\(a &gt; 0\\) and \\(b &gt; 1\\) be constants, and let \\(f(n)\\) be a driving function defined and nonnegative on all sufficiently large reals. Define \\(T(n)\\) on \\(n \\in \\mathbb{N}\\) by\n\\[\nT(n) = aT(n/b) + f(n)\n\\]\nwhere \\(aT(n/b) = a'T(\\lfloor n/b \\rfloor) + a''T(\\lceil n/b \\rceil)\\) for some \\(a' \\geq 0\\) and \\(a'' \\geq 0\\) satisfying \\(a = a' + a''\\). Then the asymptotic behavior of \\(T(n)\\) can be characterized as follows:\n\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = O(n^{\\log_b(a) - \\epsilon})\\), then \\(T(n) = \\Theta(n^{\\log_b(a)})\\)\nIf there exists \\(k \\geq 0\\) such that \\(f(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\), then \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\).\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = \\Omega(n^{\\log_b(a) + \\epsilon})\\), and if \\(f(n)\\) satisfies the regularity condition \\(af(n/b) \\leq cf(n)\\) for some constant \\(c &lt; 1\\) and all sufficiently large \\(n\\), then \\(T(n) = \\Theta(f(n))\\).\n\n\nProof. See Cormen et al. (2001), pg. 107-114.\n\n(← Back to Merge Sort slides)"
-  },
-  {
     "objectID": "w03/slides.html#why-cant-we-learn-data-structures-and-algorithms-separately",
     "href": "w03/slides.html#why-cant-we-learn-data-structures-and-algorithms-separately",
     "title": "Week 3: Data Structures and Computational Complexity",
@@ -2930,7 +2879,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Gluten Free', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Gluten Free', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Gluten Free', 'Vegan', 'None'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'None', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -3101,8 +3050,8 @@
     "text": "Bounding the Runtime of Merge Sort\n\nHow about Merge-Sort? \\(T(n) = 2T(n/2) + \\Theta(n)\\)\n\n\\(a = b = 2\\), \\(W(n) = n^{\\log_2(2)} = n\\), \\(D(n) = \\Theta(n)\\)\n\n\\(W(n)\\) and \\(D(n)\\) grow at same rate \\(\\implies\\) Case 2:\n\n\n\n\nApplying the Master Theorem When \\(W(n) = \\Theta(D(n))\\) (Case 2)\n\n\n\nIs there a \\(k \\geq 0\\) satisfying \\(D(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\)?\nIf so, your solution is \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\)\n\n\n\n\n\nMerge-Sort: \\(k = 0\\) works! \\(\\Theta(n^{\\log_2(2)}\\log_2^0(n)) = \\Theta(n)\\)\nThus \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n)) = \\boxed{\\Theta(n\\log_2n)}\\) 😎"
   },
   {
-    "objectID": "w03/slides.html#references-1",
-    "href": "w03/slides.html#references-1",
+    "objectID": "w03/slides.html#references",
+    "href": "w03/slides.html#references",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "References",
     "text": "References\n\n\nCormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. Introduction To Algorithms. MIT Press.\n\n\nSavage, John E. 1998. Models of Computation: Exploring the Power of Computing. Addison-Wesley."
@@ -3119,14 +3068,14 @@
     "href": "w03/slides.html#appendix-2-being-precise-about-worst-case",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Appendix 2: Being Precise About “Worst-Case”",
-    "text": "Appendix 2: Being Precise About “Worst-Case”\nNeed to be careful with \\(O(f(n))\\) vs. \\(\\Omega(f(n))\\) however: difference between “for all inputs” vs. “for some inputs”:\n\n\n\n\nBounding Worst-Case Runtime\n\n\nBy saying that the worst-case running time of an algorithm is \\(\\Omega(n^2)\\), we mean that for every input size \\(n\\) above a certain threshold, there is at least one input of size \\(n\\) for which the algorithm takes at least \\(cn^2\\) time, for some positive constant \\(n\\). It does not necessarily mean that the algorithm takes at least \\(cn^2\\) time for all inputs."
+    "text": "Appendix 2: Being Precise About “Worst-Case”\nNeed to be careful with \\(O(f(n))\\) vs. \\(\\Omega(f(n))\\): difference between “for all inputs” vs. “for some inputs”:\n\n\n\n\nBounding Worst-Case Runtime\n\n\nBy saying that the worst-case running time of an algorithm is \\(\\Omega(n^2)\\), we mean that for every input size \\(n\\) above a certain threshold, there is at least one input of size \\(n\\) for which the algorithm takes at least \\(cn^2\\) time, for some positive constant \\(n\\). It does not necessarily mean that the algorithm takes at least \\(cn^2\\) time for all inputs."
   },
   {
     "objectID": "w03/slides.html#appendix-3-the-full-master-theorem",
     "href": "w03/slides.html#appendix-3-the-full-master-theorem",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Appendix 3: The Full Master Theorem",
-    "text": "Appendix 3: The Full Master Theorem\nMaster Theorem: Let \\(a &gt; 0\\) and \\(b &gt; 1\\) be constants, and let \\(f(n)\\) be a driving function defined and nonnegative on all sufficiently large reals. Define \\(T(n)\\) on \\(n \\in \\mathbb{N}\\) by\n\\[\nT(n) = aT(n/b) + f(n)\n\\]\nwhere \\(aT(n/b) = a'T(\\lfloor n/b \\rfloor) + a''T(\\lceil n/b \\rceil)\\) for some \\(a' \\geq 0\\) and \\(a'' \\geq 0\\) satisfying \\(a = a' + a''\\). Then the asymptotic behavior of \\(T(n)\\) can be characterized as follows:\n\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = O(n^{\\log_b(a) - \\epsilon})\\), then \\(T(n) = \\Theta(n^{\\log_b(a)})\\)\nIf there exists \\(k \\geq 0\\) such that \\(f(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\), then \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\).\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = \\Omega(n^{\\log_b(a) + \\epsilon})\\), and if \\(f(n)\\) satisfies the regularity condition \\(af(n/b) \\leq cf(n)\\) for some constant \\(c &lt; 1\\) and all sufficiently large \\(n\\), then \\(T(n) = \\Theta(f(n))\\).\n\n\nProof. See Cormen et al. (2001), pg. 107-114.\n\n(← Back to Merge Sort slides)"
+    "text": "Appendix 3: The Full Master Theorem\nMaster Theorem: Let \\(a &gt; 0\\) and \\(b &gt; 1\\) be constants, and let \\(f(n)\\) be a driving function defined and nonnegative on all sufficiently large reals. Define \\(T(n)\\) on \\(n \\in \\mathbb{N}\\) by\n\\[\nT(n) = aT(n/b) + f(n)\n\\]\nwhere \\(aT(n/b) = a'T(\\lfloor n/b \\rfloor) + a''T(\\lceil n/b \\rceil)\\) for some \\(a' \\geq 0\\) and \\(a'' \\geq 0\\) satisfying \\(a = a' + a''\\). Then the asymptotic behavior of \\(T(n)\\) can be characterized as follows:\n\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = O(n^{\\log_b(a) - \\epsilon})\\), then \\(T(n) = \\Theta(n^{\\log_b(a)})\\)\nIf there exists \\(k \\geq 0\\) such that \\(f(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\), then \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\).\nIf there exists \\(\\epsilon &gt; 0\\) such that \\(f(n) = \\Omega(n^{\\log_b(a) + \\epsilon})\\), and if \\(f(n)\\) satisfies the regularity condition \\(af(n/b) \\leq cf(n)\\) for some constant \\(c &lt; 1\\) and all sufficiently large \\(n\\), then \\(T(n) = \\Theta(f(n))\\).\n\n\nProof. See Cormen et al. (2001), pg. 107-114.(← Back to Merge Sort slides)"
   },
   {
     "objectID": "w04/index.html",
@@ -4301,7 +4250,7 @@
     "href": "w11/index.html#in-action",
     "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9854 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.5811 s",
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9825 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.5780 s",
     "crumbs": [
       "Week 11: {{< var w11.date-md >}}"
     ]
@@ -4521,7 +4470,7 @@
     "href": "w11/slides.html#in-action",
     "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n1.0075 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6236 s"
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9809 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6050 s"
   },
   {
     "objectID": "w11/slides.html#what-happens-when-not-embarrassingly-parallel",
