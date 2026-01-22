@@ -15,6 +15,8 @@ format:
     df-print: kable
     output-file: "slides.html"
     footer: "DSAN 5500 Week 3: {{< var w03.footer >}}"
+    link-external-icon: true
+    link-external-newwindow: true
     echo: true
     code-fold: show
     scrollable: true
@@ -93,12 +95,6 @@ BS in Computer Science (😎), Rutgers University New Brunswick
 * We'll start with simple approach (**[Insertion-Sort]{.alg}**), then more complicated approach (**[Merge-Sort]{.alg}**)
 * Using complexity analysis, we'll see how (much like the matrix-multiplication example) simplest isn't always best 😱
 
-## Insertion Sort
-
-* Think of how you might sort a deck of cards in your hand
-
-![](images/cards.svg){fig-align="center"}
-
 ## Cards $\rightarrow$ List Elements {.smaller}
 
 * Input list: `[5, 2, 4, 6, 1, 3]`
@@ -108,6 +104,8 @@ BS in Computer Science (😎), Rutgers University New Brunswick
 * Notice how, at each point:
   1. There is a card we're currently "looking at", called the [**key**]{.cb2}, and
   2. There is an **invariant**: everything in the list [**before the key**]{.cb1} is **already sorted**
+* [**Key**]{.cb2} moves from left-to-right, once per "outer loop" iteration (a)-(e)
+* **Within** an "outer loop" iteration (focus on **(d)** above), we "slide" the value right-to-left until we've arrived at the correct slot!
 
 ## Complexity Analysis {.smaller .crunch-title .crunch-ul .crunch-p .crunch-math}
 
@@ -221,7 +219,7 @@ $$
 * So, there's a sense in which $T(n) \approx n^2$, for "sufficiently large" values of $n$...
 * Let's work our way towards formalizing the $\approx$!
 
-## The Figure You Should Make In Your Brain Every Time {.smaller .crunch-title .title-10 .crunch-quarto-figure}
+## The Figure You Can Make In Your Head All Semester {.smaller .crunch-title .title-09 .crunch-quarto-figure}
 
 ```{python}
 #| code-fold: true
@@ -234,12 +232,13 @@ n_vals = [np.power(10, k) for k in np.arange(1, 2.75, 0.25)]
 runtime_df = pd.DataFrame({'$n$': n_vals})
 runtime_df['$n^2 + 50n$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 50*x)
 runtime_df['$n^2 + 10000$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 10000)
-runtime_df['$O(n)$'] = runtime_df['$n$'].copy()
-runtime_df['$O(nlogn)$'] = runtime_df['$n$'].apply(lambda x: x * np.log(x))
-runtime_df['$O(n^2)$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2))
-runtime_df['$O(n^2logn)$'] = runtime_df['$n$'].apply(lambda x: np.power(x,2) * np.log(x))
-runtime_df['$O(n^3)$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3))
-runtime_df['$O(n^3logn)$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3) * np.log(x))
+runtime_df['$\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.log(x))
+runtime_df['n'] = runtime_df['$n$'].copy()
+runtime_df['$n\log(n)$'] = runtime_df['$n$'].apply(lambda x: x * np.log(x))
+runtime_df['$n^2$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2))
+runtime_df['$n^2\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.power(x,2) * np.log(x))
+runtime_df['$n^3$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3))
+runtime_df['$n^3logn$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3) * np.log(x))
 # Get the max values, for labeling the ends of lines
 max_vals = runtime_df.max().to_dict()
 plot_df = runtime_df.melt(id_vars=['$n$'])
@@ -264,15 +263,18 @@ ax.spines[['right', 'top']].set_visible(False)
 plt.show()
 ```
 
+* For low values of $n$, $n^2 + 10000$ looks "far away from" $n^2$
+* ...But we care about how the algorithm **scales with input size!**
 * Takeaway: As $n \rightarrow \infty$, **highest-degree terms dominate!**
 
-## Constants On Highest-Degree Terms Also Go Away {.smaller .crunch-title .title-10}
+## Constants On Highest-Degree Terms Also Go Away {.smaller .crunch-title .title-09}
 
 * (Though this is harder to see, without a log-log plot:)
 
 ```{python}
 #| code-fold: true
-n_vals = [np.power(10, k) for k in np.arange(1, 6, 0.5)]
+#| fig-align: center
+n_vals = [np.power(10, k) for k in np.arange(1, 5, 0.5)]
 rt_const_df = pd.DataFrame({'$n$': n_vals})
 rt_const_df['$20n^2$'] = rt_const_df['$n$'].apply(lambda x: 20*np.power(x,2))
 rt_const_df['$n^2$'] = rt_const_df['$n$'].apply(lambda x: np.power(x,2))
@@ -314,7 +316,7 @@ $$
 
 * Using this definition, we can now **prove** $f(n) = n^2 + 50n = O(n^2)$!
 * Here $f(n) = n^2 + 50n$, $g(n) = n^2$
-* **Theorem**: $\exists \; n_0 \; \text{ s.t. } \forall n \geq n_0 \left[ n^2 + 50n \leq Kn^2 \right]$
+* **Theorem**: $\exists \; n_0 \in \mathbb{Z} \; \text{ s.t. } \forall n \geq n_0 \left[ n^2 + 50n \leq Kn^2 \right]$
 * **Proof**: Let $K = 50$. Then
 $$
 \begin{align*}
@@ -337,12 +339,21 @@ By saying that the worst-case running time of an algorithm is $\Omega(n^2)$, we 
 
 :::
 
-## Doing Better Than Insertion Sort
+## Intuition for Lower Bound {.smaller .crunch-title}
 
-* *Intuition Break* 🥳: **Finding a word in a dictionary!** <a href='https://dsan.io/dict-lookup' target='_blank' class='font-monospace'>dsan.io/dict-lookup<i class='bi bi-box-arrow-up-right ps-2'></i></a>
+* Spoiler: Insertion sort **also** runs in $T(n) = \Omega(n^2)$ time. How could we prove this?
+* Given **any value $n > n_0$**, we need to **construct an input** for which Insertion-Sort requires $cn^2$ steps: consider a list where [$n/3$ **greatest values** are in **first $n/3$ slots**]{.boxed}:
 
-## How Can Merge Sort Work *That* Much Better!? {.crunch-title .title-07 .crunch-ul .crunch-quarto-layout-panel .crunch-quarto-figure}
+![All $n/3$ values in $\textrm{L}$ pass, one-by-one, through the $n/3$ slots in $\textrm{M}$ (since they must end up in $\textrm{R}$) $\implies (n/3)(n/3) = n^2/9 = \Omega(n^2)$ steps!](images/insertion_lower_bound_alt.svg){fig-align="center" width="600"}
 
+* Final definition (a **theorem** you could prove if you want!): $\Theta$ = "Big-Theta"
+  * If $T(n) = \overline{O}(g(n))$ and $T(n) = \Omega(g(n))$, then $T(n) = \Theta(n)$
+* $\implies$ **most "informative" way** to characterize insertion sort is $\boxed{T(n) = \Theta(n^2)}$
+
+## Doing Better Than Insertion Sort {data-stack-name="Merge Sort" .crunch-title .title-07 .crunch-ul .crunch-li .crunch-quarto-layout-panel .crunch-quarto-figure .text-80}
+
+* *Intuition* 🥳: Recall [**finding a word in a dictionary**](https://dsan.io/dict-lookup) app!
+* How can [Merge-Sort]{.alg} work **that** much better?!?
 * With the **linear** approach, each time we check a word and it's not our word we eliminate... one measly word 😞
 * But with the **divide-and-conquer** approach... we eliminate 🔥**HALF OF THE REMAINING WORDS**🔥
 
@@ -385,7 +396,7 @@ By saying that the worst-case running time of an algorithm is $\Omega(n^2)$, we 
 
 [^full]: See [appendix slide](#appendix-the-full-master-theorem) for all 3 cases, if you're some kind of masochist
 
-# Object-Oriented Programming {data-stack-name="OOP"}
+# Object-Oriented Programming Overview {data-stack-name="OOP"}
 
 ## Breaking a Problem into (Interacting) Parts {.title-08 .crunch-title}
 
@@ -916,7 +927,7 @@ for k, v in gtown_data.items():
 :::
 ::::
 
-# Complexity With Respect To A *Structure* {data-stack-name="Complexity" .smaller .crunch-title .title-12 .crunch-li-8}
+## Complexity With Respect To A *Structure* {.smaller .crunch-title .title-12 .crunch-li-8}
 
 * Last week: analyzing complexity of an **algorithm** (no broader context): [Insertion-Sort]{.alg}
 * This week: analyzing complexity of a **structure** as a **collection** of variables + algorithms
@@ -1129,320 +1140,12 @@ while check_pointer is not None:
 * Pairwise concatenation+check: $O(n^2 + n) = O(n^2) \leftarrow !!$
 * Crucial to think **asymptotically** to wrap our heads around this!
 
-# Back to [Insertion-Sort]{.alg} {.smaller data-stack-name="Sorting"}
-
-![](images/insertion.svg){fig-align="center"}
-
-## Complexity Analysis {.smaller .crunch-title .crunch-ul .crunch-p .crunch-math .code-90}
-
-* Let $t_i$ be the number of times the while loop runs, $\widetilde{n} = n - 1$:
-
-```{=html}
-<table>
-<thead>
-<tr>
-    <th align="right"></th>
-    <th>Code</th>
-    <th>Cost</th>
-    <th>Times Run</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-    <td align="right">1</td>
-    <td><code><span class='bold-code'>for</span> i = 1 <span class='bold-code'>to</span> n-1:</code></td>
-    <td><span data-qmd="$c_1$"></span></td>
-    <td><span data-qmd="$\widetilde{n}$"></span></td>
-</tr>
-<tr>
-    <td>2</td>
-    <td><code>&nbsp;&nbsp;key = A[i]</code></td>
-    <td><span data-qmd="$c_2$"></span></td>
-    <td><span data-qmd="$\widetilde{n}$"></span></td>
-</tr>
-<tr>
-    <td>3</td>
-    <td><code style="color: #699754 !important;">&nbsp;&nbsp;# Insert A[i] into sorted subarray A[0:i-1]</code></td>
-    <td><span data-qmd="$0$"></span></td>
-    <td><span data-qmd="$\widetilde{n}$"></span></td>
-</tr>
-<tr>
-    <td>4</td>
-    <td><code>&nbsp;&nbsp;j = i - 1</code></td>
-    <td><span data-qmd="$c_4$"></span></td>
-    <td><span data-qmd="$\widetilde{n}$"></span></td>
-</tr>
-<tr>
-    <td>5</td>
-    <td><code>&nbsp;&nbsp;<span class='bold-code'>while</span> j >= 0 <span class='bold-code'>and</span> A[j] > key:</code></td>
-    <td><span data-qmd="$c_5$"></span></td>
-    <td><span data-qmd="$\sum_{i=2}^n t_i$"></span></td>
-</tr>
-<tr>
-    <td>6</td>
-    <td><code>&nbsp;&nbsp;&nbsp;&nbsp;A[j + 1] = A[j]</code></td>
-    <td><span data-qmd="$c_6$"></span></td>
-    <td><span data-qmd="$\sum_{i=2}^n(t_i - 1)$"></span></td>
-</tr>
-<tr>
-    <td>7</td>
-    <td><code>&nbsp;&nbsp;&nbsp;&nbsp;j = j - 1</code></td>
-    <td><span data-qmd="$c_7$"></span></td>
-    <td><span data-qmd="$\sum_{i=2}^n(t_i - 1)$"></span></td>
-</tr>
-<tr>
-    <td>8</td>
-    <td><code>&nbsp;&nbsp;A[j + 1] = key</code></td>
-    <td><span data-qmd="$c_8$"></span></td>
-    <td><span data-qmd="$\widetilde{n}$"></span></td>
-</tr>
-</tbody>
-</table>
-```
-
-$$
-T(n) = c_1\widetilde{n} + c_2\widetilde{n} + c_4\widetilde{n} + c_5\sum_{i=2}^nt_i + c_6\sum_{i=2}^n(t_i - 1) + c_7\sum_{i=2}^n(t_i-1) + c_8\widetilde{n}
-$$
-
-## Simplifying {.smaller .crunch-title .crunch-ul .crunch-math .math-95}
-
-* The original, scary-looking equation:
-
-$$
-T(n) = c_1n + c_2\widetilde{n} + c_4\widetilde{n} + c_5{\color{orange}\boxed{\color{black}\sum_{i=2}^nt_i}} + c_6{\color{lightblue}\boxed{\color{black}\sum_{i=2}^n(t_i - 1)}} + c_7{\color{lightblue}\boxed{\color{black}\sum_{i=2}^n(t_i-1)}} + c_8\widetilde{n}
-$$
-
-* But $\sum_{i=1}^ni = \frac{n(n+1)}{2}$, so:
-
-$$
-\begin{align*}
-{\color{orange}\boxed{\color{black}\sum_{i=2}^ni}} &= \sum_{i=1}^ni - \sum_{i=1}^1i = \frac{n(n+1)}{2} - 1 \\
-{\color{lightblue}\boxed{\color{black}\sum_{i=2}^n(i-1)}} &= \sum_{i=1}^{n-1}i = \frac{(n-1)(n-1+1)}{2} = \frac{n(n-1)}{2}
-\end{align*}
-$$
-
-* And the scary-looking equation simplifies to
-
-$$
-\begin{align*}
-T(n) = &{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac{c_7}{2}\right)}{\color{green}n^2} + {\color{gray}\left(c_1 + c_2 + c_4 + \frac{c_5}{2} - \frac{c_6}{2} - \frac{c_7}{2} + c_8\right)}{\color{green}n^1} \\
-\phantom{T(n) = }& - {\color{gray}(c_2 + c_4 + c_5 + c_8)}{\color{green}n^0}
-\end{align*}
-$$
-
-## Remember: Asymptotic Analysis! {.smaller}
-
-* It still looks pretty messy, but remember: we care about efficiency **as a function of $n$!**
-
-$$
-\begin{align*}
-T(n) = &\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac{c_7}{2}\right)}}_{\text{Constant}}\underbrace{\phantom{(}{\color{green}n^2}\phantom{)}}_{\text{Quadratic}} \\
-\phantom{T(n) = }&+ \underbrace{{\color{gray}\left(c_1 + c_2 + c_4 + \frac{c_5}{2} - \frac{c_6}{2} - \frac{c_7}{2} + c_8\right)}}_{\text{Constant}}\underbrace{\phantom{(}{\color{green}n^1}\phantom{)}}_{\text{Linear}} \\
-\phantom{T(n) = }& - \underbrace{{\color{gray}(c_2 + c_4 + c_5 + c_8)}}_{\text{Constant}}\underbrace{{\color{green}n^0}}_{\text{Constant}}
-\end{align*}
-$$
-
-* So, there's a sense in which $T(n) \approx n^2$, for "sufficiently large" values of $n$...
-* Let's work our way towards formalizing the $\approx$!
-
-## The Figure You Should Make In Your Brain Every Time {.smaller .crunch-title .title-10 .crunch-quarto-figure}
-
-```{python}
-#| code-fold: true
-#| fig-align: center
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-n_vals = [np.power(10, k) for k in np.arange(1, 2.75, 0.25)]
-runtime_df = pd.DataFrame({'$n$': n_vals})
-runtime_df['$n^2 + 50n$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 50*x)
-runtime_df['$n^2 + 10000$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 10000)
-runtime_df['$O(n)$'] = runtime_df['$n$'].copy()
-runtime_df['$O(nlogn)$'] = runtime_df['$n$'].apply(lambda x: x * np.log(x))
-runtime_df['$O(n^2)$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2))
-runtime_df['$O(n^2logn)$'] = runtime_df['$n$'].apply(lambda x: np.power(x,2) * np.log(x))
-runtime_df['$O(n^3)$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3))
-runtime_df['$O(n^3logn)$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3) * np.log(x))
-# Get the max values, for labeling the ends of lines
-max_vals = runtime_df.max().to_dict()
-plot_df = runtime_df.melt(id_vars=['$n$'])
-#print(plot_df)
-style_map = {col: '' if (col == '$n^2 + 50n$') or (col == '$n^2 + 10000$') else (2,1) for col in runtime_df.columns}
-fig, ax = plt.subplots(figsize=(11,5))
-sns.lineplot(plot_df, x='$n$', y='value', hue='variable', style='variable', dashes=style_map)
-#plt.xscale('log')
-plt.yscale('log')
-# extract the existing handles and labels
-h, l = ax.get_legend_handles_labels()
-# slice the appropriate section of l and h to include in the legend
-ax.legend(h[0:2], l[0:2])
-for label, val in max_vals.items():
-  if (label == '$n$') or (label == '$n^2 + 50n$') or (label == '$n^2 + 10000$'):
-    continue
-  if 'logn' in label:
-    label = label.replace('logn', r'\log(n)')
-  ax.text(x = max_vals['$n$'] + 2, y = val, s=label, va='center')
-# Hide the right and top spines
-ax.spines[['right', 'top']].set_visible(False)
-plt.show()
-```
-
-* Takeaway: As $n \rightarrow \infty$, **highest-degree terms dominate!**
-
-## Constants On Highest-Degree Terms Also Go Away {.smaller .crunch-title .title-10}
-
-* (Though this is harder to see, without a log-log plot:)
-
-```{python}
-#| code-fold: true
-n_vals = [np.power(10, k) for k in np.arange(1, 6, 0.5)]
-rt_const_df = pd.DataFrame({'$n$': n_vals})
-rt_const_df['$20n^2$'] = rt_const_df['$n$'].apply(lambda x: 20*np.power(x,2))
-rt_const_df['$n^2$'] = rt_const_df['$n$'].apply(lambda x: np.power(x,2))
-rt_const_df['$n^2logn$'] = rt_const_df['$n$'].apply(lambda x: np.power(x,2) * np.power(np.log(x),2))
-rt_const_df['$n^3$'] = rt_const_df['$n$'].apply(lambda x: np.power(x,3))
-# Get the max values, for labeling the ends of lines
-max_vals = rt_const_df.max().to_dict()
-plot_df_const = rt_const_df.melt(id_vars=['$n$'])
-style_map = {col: '' if (col == '$20n^2$') else (2,1) for col in rt_const_df.columns}
-fig_const, ax_const = plt.subplots(figsize=(11,5))
-sns.lineplot(plot_df_const, x='$n$', y='value', hue='variable', style='variable', dashes=style_map)
-plt.xscale('log')
-plt.yscale('log')
-# extract the existing handles and labels
-h_const, l_const = ax_const.get_legend_handles_labels()
-# slice the appropriate section of l and h to include in the legend
-ax_const.legend(h_const[0:1], l_const[0:1])
-for label, val in max_vals.items():
-  if (label == '$n$') or (label == '$20n^2$'):
-    continue
-  if 'logn' in label:
-    label = label.replace('logn', r'\log(n)')
-  ax_const.text(x = max_vals['$n$'] + 10**4, y = val, s=label, va='center')
-# Hide the right and top spines
-ax_const.spines[['right', 'top']].set_visible(False)
-plt.show()
-```
-
-## Formalizing Big-O Notation {.crunch-title}
-
-* Let $f, g: \mathbb{N} \rightarrow \mathbb{N}$. Then we write $f(n) = \overline{O}(g(n))$ when there exists a **threshold** $n_0 > 0$ and **constant** $K > 0$ s.t.
-$$
-\forall n \geq n_0 \left[ f(n) \leq K\cdot g(n) \right]
-$$
-
-* In words:
-  * "Eventually", beyond a certain point $n_0$,
-  * $f(n)$ is **bounded above** by $K\cdot g(n)$.
-* *Definition from @savage_models_1998[pg. 13]*
-
-## Intuition $\rightarrow$ Proof {.crunch-title .crunch-ul}
-
-* Using this definition, we can now **prove** $f(n) = n^2 + 50n = \overline{O}(n^2)$!
-* Here $f(n) = n^2 + 50n$, $g(n) = n^2$
-* **Theorem**: $\exists \; n_0 \; \text{ s.t. } \forall n \geq n_0 \left[ n^2 + 50n \leq Kn^2 \right]$
-* **Proof**: Let $K = 50$. Then
-$$
-\begin{align*}
-&n^2 + 50n \leq 50n^2 \iff n + 50 \leq 50n \\
-&\iff 49n \geq 50 \iff n \geq \frac{50}{49}.
-\end{align*}
-$$
-* So if we choose $n_0 = 2$, the chain of statements holds. $\blacksquare$
-
-## Bounding Insertion Sort Runtime {.crunch-title .crunch-ul .crunch-li-8 .inline-90}
-
-* Runs in $T(n) = \overline{O}(n^2)$ (use constants from prev slide)
-* Can similarly define **lower bound** $T(n) = \Omega(f(n))$
-  * $\overline{O}$ = "Big-Oh", $\Omega$ = "Big-Omega"
-* Final definition (+**theorem** you can prove!): $\Theta$ = "Big-Theta"
-  * If $T(n) = \overline{O}(g(n))$ and $T(n) = \Omega(g(n))$
-  * Then $T(n) = \Theta(n)$
-* $\Rightarrow$ **most "informative" way** to characterize [Insertion-Sort]{.alg} is $\boxed{T(n) = \Theta(n^2)}$
-  * Tells us: it won't do worse, but won't do better, than $n^2$
-
-## Doing Better Than Insertion Sort
-
-* *Intuition Break* 🥳: **Finding a word in a dictionary!** <a href='https://dsan.io/dict-lookup' target='_blank' class='font-monospace'>dsan.io/dict-lookup<i class='bi bi-box-arrow-up-right ps-2'></i></a>
-* [Insertion-Sort]{.alg} $\in$ Linear Algorithms
-  * (Linear Algorithms $\subset$ Linear Things)
-* [Merge-Sort]{.alg} $\in$ Logarithmic Algorithms
-  * (Logarithmic Algorithms $\subset$ Logarithmic Things)
-
-## How Can Merge Sort Work *That* Much Better!? {.crunch-title .title-08 .crunch-ul .crunch-quarto-layout-panel .crunch-quarto-figure}
-
-* With the **linear** approach, each time we check a word and it's not our word we eliminate... one measly word 😞
-* But with the **divide-and-conquer** approach... we eliminate 🔥**HALF OF THE REMAINING WORDS**🔥
-
-::: {layout="[1,1]" layout-valign="center"}
-
-![](images/lakers.gif){fig-align="center"}
-
-![](images/tuck_em_in.jpeg){fig-align="center" width="270"}
-
-:::
-
-## [Merge]{.alg}: Merging Two Sorted Lists in $O(n)$ Time {.smaller .title-10 .crunch-figcaption .crunch-quarto-figure}
-
-![From @cormen_introduction_2001, pg. 37](images/merge.svg){fig-align="center"}
-
-## [Merge Sort]{.alg} ([Merge]{.alg} as Subroutine)
-
-![From @cormen_introduction_2001, pg. 40](images/merge_tree.svg){fig-align="center"}
-
-## Complexity Analysis {.crunch-title .inline-90 .crunch-li-8}
-
-* Hard way: re-do the line-by-line analysis we did for <span class='alg'>Insertion-Sort</span> 😣 Easy way: stand on shoulders of giants!
-* Using a famous+fun theorem (the **Master Theorem**): Given a recurrence $T(n) = aT(n/b) + f(n)$, compute its:
-  * **Watershed function** $W(n) = n^{\log_b(a)}$ and
-  * **Driving function** $D(n) = f(n)$
-* The Master Theorem gives **closed-form** asymptotic solution for $T(n)$, split into three cases:
-* **(1)** $W(n)$ grows **faster** than $D(n)$, **(2)** grows at **same rate** as $D(n)$, or **(3)** grows **slower** than $D(n)$
-
-## Bounding the Runtime of Merge Sort {.crunch-title .crunch-ul .crunch-callout .crunch-footnotes}
-
-* How about <span class='alg'>Merge-Sort</span>? $T(n) = 2T(n/2) + \Theta(n)$
-  * $a = b = 2$, $W(n) = n^{\log_2(2)} = n$, $D(n) = \Theta(n)$
-* $W(n)$ and $D(n)$ grow at **same rate** $\implies$ *Case 2*:
-
-  ::: {.callout-note icon="false" title="Applying the Master Theorem When $W(n) = \Theta(D(n))$ (Case 2)"}
-
-  1. Is there a $k \geq 0$ satisfying $D(n) = \Theta(n^{\log_b(a)}\log_2^k(n))$?
-  2. If so, your solution is $T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))$
-
-  :::
-
-* <span class='alg'>Merge-Sort</span>: $k = 0$ works! $\Theta(n^{\log_2(2)}\log_2^0(n)) = \Theta(n)$
-* Thus $T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n)) = \boxed{\Theta(n\log_2n)}$ 😎
-
 ## References
 
 ::: {#refs}
 :::
 
-## Appendix 1: Intuition for Lower Bound {.smaller .crunch-title}
-
-* Spoiler: Insertion sort **also** runs in $T(n) = \Omega(n^2)$ time. How could we prove this?
-* Given **any value $n > n_0$**, we need to **construct an input** for which Insertion-Sort requires $cn^2$ steps: consider a list where $n/3$ **greatest values** are in **first $n/3$ slots**:
-
-![All $n/3$ values in $\textrm{L}$ pass, one-by-one, through the $n/3$ slots in $\textrm{M}$ (since they must end up in $\textrm{R}$) $\implies (n/3)(n/3) = n^2/9 = \Omega(n^2)$ steps!](images/insertion_lower_bound_alt.svg){fig-align="center" width="600"}
-
-* Final definition (a **theorem** you could prove if you want!): $\Theta$ = "Big-Theta"
-  * If $T(n) = \overline{O}(g(n))$ and $T(n) = \Omega(g(n))$, then $T(n) = \Theta(n)$
-* $\implies$ **most "informative" way** to characterize insertion sort is $\boxed{T(n) = \Theta(n^2)}$
-
-## Appendix 2: Being Precise About "Worst-Case" {.title-07}
-
-Need to be careful with $O(f(n))$ vs. $\Omega(f(n))$: difference between "for **all** inputs" vs. "for **some** inputs":
-
-::: {.callout-note icon="false" title="Bounding Worst-Case Runtime"}
-
-By saying that the worst-case running time of an algorithm is $\Omega(n^2)$, we mean that for every input size $n$ above a certain threshold, there is **at least one input** of size $n$ for which the algorithm takes at least $cn^2$ time, for some positive constant $n$. It does **not** necessarily mean that the algorithm takes at least $cn^2$ time for **all** inputs.
-
-:::
-
-## Appendix 3: The Full Master Theorem {.smaller .crunch-title .title-11 .crunch-ol .crunch-ul .crunch-math-15}
+## Appendix: The Full Master Theorem {.smaller .crunch-title .title-11 .crunch-ol .crunch-ul .crunch-math-15}
 
 **Master Theorem**: Let $a > 0$ and $b > 1$ be constants, and let $f(n)$ be a driving function defined and nonnegative on all sufficiently large reals. Define $T(n)$ on $n \in \mathbb{N}$ by
 

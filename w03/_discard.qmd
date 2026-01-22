@@ -1,0 +1,5 @@
+## Insertion Sort
+
+* Think of how you might sort a deck of cards in your hand
+
+![](images/cards.svg){fig-align="center"}

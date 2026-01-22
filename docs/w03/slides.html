@@ -116,7 +116,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-100b4568d5e7cfeded4385ec9b4c1350.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d1fbd09c7ec24570b93201ad6c0b0462.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -323,13 +323,6 @@ Jeff Jacobs
 <li>Using complexity analysis, we’ll see how (much like the matrix-multiplication example) simplest isn’t always best 😱</li>
 </ul>
 </section>
-<section id="insertion-sort" class="slide level2">
-<h2>Insertion Sort</h2>
-<ul>
-<li>Think of how you might sort a deck of cards in your hand</li>
-</ul>
-
-<img data-src="images/cards.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="cards-rightarrow-list-elements" class="slide level2 smaller scrollable">
 <h2>Cards <span class="math inline">\(\rightarrow\)</span> List Elements</h2>
 <ul>
@@ -342,6 +335,8 @@ Jeff Jacobs
 <li>There is a card we’re currently “looking at”, called the <span class="cb2"><strong>key</strong></span>, and</li>
 <li>There is an <strong>invariant</strong>: everything in the list <span class="cb1"><strong>before the key</strong></span> is <strong>already sorted</strong></li>
 </ol></li>
+<li><span class="cb2"><strong>Key</strong></span> moves from left-to-right, once per “outer loop” iteration (a)-(e)</li>
+<li><strong>Within</strong> an “outer loop” iteration (focus on <strong>(d)</strong> above), we “slide” the value right-to-left until we’ve arrived at the correct slot!</li>
 </ul>
 </section>
 <section id="complexity-analysis" class="slide level2 smaller crunch-title crunch-ul crunch-p crunch-math">
@@ -457,9 +452,9 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <li>Let’s work our way towards formalizing the <span class="math inline">\(\approx\)</span>!</li>
 </ul>
 </section>
-<section id="the-figure-you-should-make-in-your-brain-every-time" class="slide level2 smaller crunch-title title-10 crunch-quarto-figure">
-<h2>The Figure You Should Make In Your Brain Every Time</h2>
-<div id="e03ec0bf" class="cell" data-execution_count="1">
+<section id="the-figure-you-can-make-in-your-head-all-semester" class="slide level2 smaller crunch-title title-09 crunch-quarto-figure">
+<h2>The Figure You Can Make In Your Head All Semester</h2>
+<div id="aacc0c95" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -470,56 +465,59 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <span id="cb1-6"><a></a>runtime_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
 <span id="cb1-7"><a></a>runtime_df[<span class="st">'$n^2 + 50n$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">50</span><span class="op">*</span>x)</span>
 <span id="cb1-8"><a></a>runtime_df[<span class="st">'$n^2 + 10000$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">10000</span>)</span>
-<span id="cb1-9"><a></a>runtime_df[<span class="st">'$O(n)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].copy()</span>
-<span id="cb1-10"><a></a>runtime_df[<span class="st">'$O(nlogn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">*</span> np.log(x))</span>
-<span id="cb1-11"><a></a>runtime_df[<span class="st">'$O(n^2)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>))</span>
-<span id="cb1-12"><a></a>runtime_df[<span class="st">'$O(n^2logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.log(x))</span>
-<span id="cb1-13"><a></a>runtime_df[<span class="st">'$O(n^3)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>))</span>
-<span id="cb1-14"><a></a>runtime_df[<span class="st">'$O(n^3logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>) <span class="op">*</span> np.log(x))</span>
-<span id="cb1-15"><a></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
-<span id="cb1-16"><a></a>max_vals <span class="op">=</span> runtime_df.<span class="bu">max</span>().to_dict()</span>
-<span id="cb1-17"><a></a>plot_df <span class="op">=</span> runtime_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
-<span id="cb1-18"><a></a><span class="co">#print(plot_df)</span></span>
-<span id="cb1-19"><a></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (col <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> runtime_df.columns}</span>
-<span id="cb1-20"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
-<span id="cb1-21"><a></a>sns.lineplot(plot_df, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
-<span id="cb1-22"><a></a><span class="co">#plt.xscale('log')</span></span>
-<span id="cb1-23"><a></a>plt.yscale(<span class="st">'log'</span>)</span>
-<span id="cb1-24"><a></a><span class="co"># extract the existing handles and labels</span></span>
-<span id="cb1-25"><a></a>h, l <span class="op">=</span> ax.get_legend_handles_labels()</span>
-<span id="cb1-26"><a></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
-<span id="cb1-27"><a></a>ax.legend(h[<span class="dv">0</span>:<span class="dv">2</span>], l[<span class="dv">0</span>:<span class="dv">2</span>])</span>
-<span id="cb1-28"><a></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
-<span id="cb1-29"><a></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>):</span>
-<span id="cb1-30"><a></a>    <span class="cf">continue</span></span>
-<span id="cb1-31"><a></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
-<span id="cb1-32"><a></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'</span><span class="er">\</span><span class="vs">log</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="vs">'</span>)</span>
-<span id="cb1-33"><a></a>  ax.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">2</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
-<span id="cb1-34"><a></a><span class="co"># Hide the right and top spines</span></span>
-<span id="cb1-35"><a></a>ax.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb1-36"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-9"><a></a>runtime_df[<span class="st">'$</span><span class="er">\</span><span class="st">log(n)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.log(x))</span>
+<span id="cb1-10"><a></a>runtime_df[<span class="st">'n'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].copy()</span>
+<span id="cb1-11"><a></a>runtime_df[<span class="st">'$n</span><span class="er">\</span><span class="st">log(n)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">*</span> np.log(x))</span>
+<span id="cb1-12"><a></a>runtime_df[<span class="st">'$n^2$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>))</span>
+<span id="cb1-13"><a></a>runtime_df[<span class="st">'$n^2</span><span class="er">\</span><span class="st">log(n)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.log(x))</span>
+<span id="cb1-14"><a></a>runtime_df[<span class="st">'$n^3$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>))</span>
+<span id="cb1-15"><a></a>runtime_df[<span class="st">'$n^3logn$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>) <span class="op">*</span> np.log(x))</span>
+<span id="cb1-16"><a></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
+<span id="cb1-17"><a></a>max_vals <span class="op">=</span> runtime_df.<span class="bu">max</span>().to_dict()</span>
+<span id="cb1-18"><a></a>plot_df <span class="op">=</span> runtime_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
+<span id="cb1-19"><a></a><span class="co">#print(plot_df)</span></span>
+<span id="cb1-20"><a></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (col <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> runtime_df.columns}</span>
+<span id="cb1-21"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
+<span id="cb1-22"><a></a>sns.lineplot(plot_df, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
+<span id="cb1-23"><a></a><span class="co">#plt.xscale('log')</span></span>
+<span id="cb1-24"><a></a>plt.yscale(<span class="st">'log'</span>)</span>
+<span id="cb1-25"><a></a><span class="co"># extract the existing handles and labels</span></span>
+<span id="cb1-26"><a></a>h, l <span class="op">=</span> ax.get_legend_handles_labels()</span>
+<span id="cb1-27"><a></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
+<span id="cb1-28"><a></a>ax.legend(h[<span class="dv">0</span>:<span class="dv">2</span>], l[<span class="dv">0</span>:<span class="dv">2</span>])</span>
+<span id="cb1-29"><a></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
+<span id="cb1-30"><a></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>):</span>
+<span id="cb1-31"><a></a>    <span class="cf">continue</span></span>
+<span id="cb1-32"><a></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
+<span id="cb1-33"><a></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'</span><span class="er">\</span><span class="vs">log</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="vs">'</span>)</span>
+<span id="cb1-34"><a></a>  ax.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">2</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb1-35"><a></a><span class="co"># Hide the right and top spines</span></span>
+<span id="cb1-36"><a></a>ax.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb1-37"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="932" height="429"></p>
+<p><img data-src="index_files/figure-revealjs/cell-2-output-1.png" class="quarto-figure quarto-figure-center" width="911" height="429"></p>
 </figure>
 </div>
 </div>
 </div>
 <ul>
+<li>For low values of <span class="math inline">\(n\)</span>, <span class="math inline">\(n^2 + 10000\)</span> looks “far away from” <span class="math inline">\(n^2\)</span></li>
+<li>…But we care about how the algorithm <strong>scales with input size!</strong></li>
 <li>Takeaway: As <span class="math inline">\(n \rightarrow \infty\)</span>, <strong>highest-degree terms dominate!</strong></li>
 </ul>
 </section>
-<section id="constants-on-highest-degree-terms-also-go-away" class="slide level2 smaller crunch-title title-10">
+<section id="constants-on-highest-degree-terms-also-go-away" class="slide level2 smaller crunch-title title-09">
 <h2>Constants On Highest-Degree Terms Also Go Away</h2>
 <ul>
 <li>(Though this is harder to see, without a log-log plot:)</li>
 </ul>
-<div id="d7d4e509" class="cell" data-execution_count="2">
+<div id="eed4310c" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">5</span>, <span class="fl">0.5</span>)]</span>
 <span id="cb2-2"><a></a>rt_const_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
 <span id="cb2-3"><a></a>rt_const_df[<span class="st">'$20n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">20</span><span class="op">*</span>np.power(x,<span class="dv">2</span>))</span>
 <span id="cb2-4"><a></a>rt_const_df[<span class="st">'$n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>))</span>
@@ -548,9 +546,9 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <span id="cb2-27"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="index_files/figure-revealjs/cell-3-output-1.png" width="914" height="431"></p>
+<p><img data-src="index_files/figure-revealjs/cell-3-output-1.png" class="quarto-figure quarto-figure-center" width="937" height="431"></p>
 </figure>
 </div>
 </div>
@@ -571,7 +569,7 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 <ul>
 <li>Using this definition, we can now <strong>prove</strong> <span class="math inline">\(f(n) = n^2 + 50n = O(n^2)\)</span>!</li>
 <li>Here <span class="math inline">\(f(n) = n^2 + 50n\)</span>, <span class="math inline">\(g(n) = n^2\)</span></li>
-<li><strong>Theorem</strong>: <span class="math inline">\(\exists \; n_0 \; \text{ s.t. } \forall n \geq n_0 \left[ n^2 + 50n \leq Kn^2 \right]\)</span></li>
+<li><strong>Theorem</strong>: <span class="math inline">\(\exists \; n_0 \in \mathbb{Z} \; \text{ s.t. } \forall n \geq n_0 \left[ n^2 + 50n \leq Kn^2 \right]\)</span></li>
 <li><strong>Proof</strong>: Let <span class="math inline">\(K = 50\)</span>. Then <span class="math display">\[
 \begin{align*}
 &amp;n^2 + 50n \leq 50n^2 \iff n + 50 \leq 50n \\
@@ -604,15 +602,26 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </div>
 </div>
 </section>
-<section id="doing-better-than-insertion-sort" class="slide level2">
-<h2>Doing Better Than Insertion Sort</h2>
+<section id="intuition-for-lower-bound" class="slide level2 smaller crunch-title">
+<h2>Intuition for Lower Bound</h2>
 <ul>
-<li><em>Intuition Break</em> 🥳: <strong>Finding a word in a dictionary!</strong> <a href="https://dsan.io/dict-lookup" target="_blank" class="font-monospace">dsan.io/dict-lookup<i class="bi bi-box-arrow-up-right ps-2"></i></a></li>
+<li>Spoiler: Insertion sort <strong>also</strong> runs in <span class="math inline">\(T(n) = \Omega(n^2)\)</span> time. How could we prove this?</li>
+<li>Given <strong>any value <span class="math inline">\(n &gt; n_0\)</span></strong>, we need to <strong>construct an input</strong> for which Insertion-Sort requires <span class="math inline">\(cn^2\)</span> steps: consider a list where <span class="boxed"><span class="math inline">\(n/3\)</span> <strong>greatest values</strong> are in <strong>first <span class="math inline">\(n/3\)</span> slots</strong></span>:</li>
+</ul>
+
+<img data-src="images/insertion_lower_bound_alt.svg" width="600" class="r-stretch quarto-figure-center"><p class="caption">All <span class="math inline">\(n/3\)</span> values in <span class="math inline">\(\textrm{L}\)</span> pass, one-by-one, through the <span class="math inline">\(n/3\)</span> slots in <span class="math inline">\(\textrm{M}\)</span> (since they must end up in <span class="math inline">\(\textrm{R}\)</span>) <span class="math inline">\(\implies (n/3)(n/3) = n^2/9 = \Omega(n^2)\)</span> steps!</p><ul>
+<li>Final definition (a <strong>theorem</strong> you could prove if you want!): <span class="math inline">\(\Theta\)</span> = “Big-Theta”
+<ul>
+<li>If <span class="math inline">\(T(n) = \overline{O}(g(n))\)</span> and <span class="math inline">\(T(n) = \Omega(g(n))\)</span>, then <span class="math inline">\(T(n) = \Theta(n)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\implies\)</span> <strong>most “informative” way</strong> to characterize insertion sort is <span class="math inline">\(\boxed{T(n) = \Theta(n^2)}\)</span></li>
 </ul>
 </section>
-<section id="how-can-merge-sort-work-that-much-better" class="slide level2 crunch-title title-07 crunch-ul crunch-quarto-layout-panel crunch-quarto-figure">
-<h2>How Can Merge Sort Work <em>That</em> Much Better!?</h2>
+<section id="doing-better-than-insertion-sort" class="slide level2 crunch-title title-07 crunch-ul crunch-li crunch-quarto-layout-panel crunch-quarto-figure text-80" data-stack-name="Merge Sort">
+<h2>Doing Better Than Insertion Sort</h2>
 <ul>
+<li><em>Intuition</em> 🥳: Recall <a href="https://dsan.io/dict-lookup"><strong>finding a word in a dictionary</strong></a> app!</li>
+<li>How can <span class="alg">Merge-Sort</span> work <strong>that</strong> much better?!?</li>
 <li>With the <strong>linear</strong> approach, each time we check a word and it’s not our word we eliminate… one measly word 😞</li>
 <li>But with the <strong>divide-and-conquer</strong> approach… we eliminate 🔥<strong>HALF OF THE REMAINING WORDS</strong>🔥</li>
 </ul>
@@ -682,8 +691,8 @@ T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>See <a href="#/appendix-the-full-master-theorem">appendix slide</a> for all 3 cases, if you’re some kind of masochist</p></li></ol></aside></section></section>
 <section>
-<section id="object-oriented-programming" class="title-slide slide level1 center" data-stack-name="OOP">
-<h1>Object-Oriented Programming</h1>
+<section id="object-oriented-programming-overview" class="title-slide slide level1 center" data-stack-name="OOP">
+<h1>Object-Oriented Programming Overview</h1>
 
 </section>
 <section id="breaking-a-problem-into-interacting-parts" class="slide level2 title-08 crunch-title">
@@ -1100,7 +1109,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 <li><p><strong>Fixed-size</strong> collection of <span class="math inline">\(N\)</span> objects</p></li>
 <li><p>Unless otherwise specified, we’re talking about <span class="math inline">\(2\)</span>-tuples</p></li>
 <li><p>Example: We can locate something on the Earth by specifying two <code>floats</code>: latitude and longitude!</p>
-<div id="2373d18a" class="cell" data-execution_count="12">
+<div id="820abdbb" class="cell" data-execution_count="12">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>gtown_loc <span class="op">=</span> (<span class="fl">38.9076</span>, <span class="op">-</span><span class="fl">77.0723</span>)</span>
@@ -1146,7 +1155,7 @@ c
 <ul>
 <li>Python:</li>
 </ul>
-<div id="b4ba000c" class="cell" data-execution_count="13">
+<div id="1393eeba" class="cell" data-execution_count="13">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>my_list <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>]</span>
@@ -1165,7 +1174,7 @@ c</code></pre>
 <h2><em>List Comprehensions</em>: Apply [Operation] to Each Element</h2>
 <ul>
 <li><p>Construct <strong>new</strong> list by applying operation to each element:</p>
-<div id="ba8e4142" class="cell" data-execution_count="14">
+<div id="3d725beb" class="cell" data-execution_count="14">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>my_nums <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>]</span>
@@ -1177,7 +1186,7 @@ c</code></pre>
 </div>
 </div></li>
 <li><p>Can also <strong>filter</strong> the elements of the list with <code>if</code>:</p>
-<div id="0046b11e" class="cell" data-execution_count="15">
+<div id="5dfe9087" class="cell" data-execution_count="15">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>my_odd_squares <span class="op">=</span> [num <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> num <span class="kw">in</span> my_nums <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>]</span>
@@ -1209,7 +1218,7 @@ c</code></pre>
 <span id="cb27-2"><a></a><span class="bu">print</span>(<span class="ss">f"Unique preferences: </span><span class="sc">{</span>unique_prefs_morn<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb27-3"><a></a><span class="bu">print</span>(<span class="ss">f"Number of unique preferences: </span><span class="sc">{</span><span class="bu">len</span>(unique_prefs_morn)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Unique preferences: {'Gluten Free', 'Vegan', 'None'}
+<pre><code>Unique preferences: {'Vegan', 'Gluten Free', 'None'}
 Number of unique preferences: 3</code></pre>
 </div>
 </div>
@@ -1238,7 +1247,7 @@ Number of unique preferences: 3</code></pre>
 <span id="cb30-5"><a></a>unique_prefs_either <span class="op">=</span> unique_prefs_morn.union(unique_prefs_eve)</span>
 <span id="cb30-6"><a></a><span class="bu">print</span>(<span class="ss">f"Preferences in either event: </span><span class="sc">{</span>unique_prefs_either<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Preferences in either event: {'Gluten Free', 'None', 'Vegan'}</code></pre>
+<pre><code>Preferences in either event: {'Vegan', 'Gluten Free', 'None'}</code></pre>
 </div>
 </div>
 <p>Intersection (<span class="math inline">\(M \cap E\)</span>):</p>
@@ -1267,7 +1276,7 @@ Preferences only in the evening: set()</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>While other language like Java have lots of fancy types of Map, Python has a single type, the <strong>dictionary</strong>:</p>
-<div id="d03c66fe" class="cell" data-execution_count="22">
+<div id="4b50631a" class="cell" data-execution_count="22">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a>gtown_data <span class="op">=</span> {</span>
@@ -1290,7 +1299,7 @@ dict_values(['Georgetown University', 1789, (38.9076, -77.0723), {'city': 'Washi
 </div>
 </div><div class="column" style="width:50%;">
 <p>Be careful when looping! Default behavior is iteration over <strong>keys</strong>:</p>
-<div id="61317dc8" class="cell" data-execution_count="23">
+<div id="fdbdc05c" class="cell" data-execution_count="23">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a><span class="cf">for</span> k <span class="kw">in</span> gtown_data:</span>
@@ -1304,7 +1313,7 @@ location</code></pre>
 </div>
 </div>
 <p>For <strong>key-value pairs</strong> use <code>.items()</code>:</p>
-<div id="662fdb92" class="cell" data-execution_count="24">
+<div id="02edeb13" class="cell" data-execution_count="24">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="cf">for</span> k, v <span class="kw">in</span> gtown_data.items():</span>
@@ -1318,10 +1327,9 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div>
 </div></div>
-</section></section>
-<section>
-<section id="complexity-with-respect-to-a-structure" class="title-slide slide level1 smaller crunch-title title-12 crunch-li-8 center" data-stack-name="Complexity">
-<h1>Complexity With Respect To A <em>Structure</em></h1>
+</section>
+<section id="complexity-with-respect-to-a-structure" class="slide level2 smaller crunch-title title-12 crunch-li-8">
+<h2>Complexity With Respect To A <em>Structure</em></h2>
 <ul>
 <li><p>Last week: analyzing complexity of an <strong>algorithm</strong> (no broader context): <span class="alg">Insertion-Sort</span></p></li>
 <li><p>This week: analyzing complexity of a <strong>structure</strong> as a <strong>collection</strong> of variables + algorithms</p></li>
@@ -1349,7 +1357,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>-40
-&lt;__main__.MyNTuple object at 0x151697e00&gt; 🧐</code></pre>
+&lt;__main__.MyNTuple object at 0x12db1cad0&gt; 🧐</code></pre>
 </div>
 </div></li>
 </ul>
@@ -1367,7 +1375,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </section>
 <section id="tuples-1" class="slide level2">
 <h2>Tuples</h2>
-<div id="e627188e" class="cell" data-execution_count="26">
+<div id="bff418a4" class="cell" data-execution_count="26">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="kw">class</span> MyTuple:</span>
@@ -1397,7 +1405,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>The list itself just <strong>points</strong> to a root item:</p>
-<div id="6068f99a" class="cell" data-execution_count="27">
+<div id="1e007d92" class="cell" data-execution_count="27">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a><span class="kw">class</span> MyList:</span>
@@ -1416,7 +1424,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p>An item has contents, pointer to next item:</p>
-<div id="1d132ce6" class="cell" data-execution_count="28">
+<div id="dcfb8769" class="cell" data-execution_count="28">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a></a><span class="kw">class</span> MyListItem:</span>
@@ -1436,7 +1444,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </details>
 </div>
 </div></div>
-<div id="4cbd3a3c" class="cell" data-execution_count="29">
+<div id="5c332a0d" class="cell" data-execution_count="29">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a>users <span class="op">=</span> MyList()</span>
@@ -1464,7 +1472,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>With a <code>MyTuple</code>:</p>
-<div id="962a11c7" class="cell" data-execution_count="30">
+<div id="6b77a7fb" class="cell" data-execution_count="30">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a></a>t1.thing1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1474,7 +1482,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
-<div id="47977663" class="cell" data-execution_count="31">
+<div id="95de2d70" class="cell" data-execution_count="31">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a></a>t1.thing2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1486,7 +1494,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
 </div><div class="column" style="width:50%;">
 <p>With a <code>MyList</code>:</p>
-<div id="553d5dd4" class="cell" data-execution_count="32">
+<div id="11495cfc" class="cell" data-execution_count="32">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a></a><span class="bu">print</span>(users.root.content)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1496,7 +1504,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 </div>
 </div>
 <p><span class="math inline">\(\implies\)</span> 1 step</p>
-<div id="8c644eaa" class="cell" data-execution_count="33">
+<div id="c3ecd388" class="cell" data-execution_count="33">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a></a>current_node <span class="op">=</span> users.root</span>
@@ -1516,7 +1524,7 @@ location: {'city': 'Washington', 'state': 'DC', 'country': 'USA'}</code></pre>
 <h2>Pairwise-Concatenating List Elements</h2>
 <ul>
 <li><p>Now rather than just printing, let’s pairwise concatenate:</p>
-<div id="2f3f88df" class="cell" data-execution_count="34">
+<div id="991796d0" class="cell" data-execution_count="34">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a></a>cur_pointer1 <span class="op">=</span> users.root</span>
@@ -1544,7 +1552,7 @@ BoBo</code></pre>
 </section>
 <section id="last-example-pairwise-concat-end-check" class="slide level2 smaller crunch-title title-12 crunch-details">
 <h2>Last Example: Pairwise-Concat + End Check</h2>
-<div id="d214b043" class="cell" data-execution_count="35">
+<div id="5cb323fd" class="cell" data-execution_count="35">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a></a>printed_items <span class="op">=</span> []</span>
@@ -1600,358 +1608,6 @@ Phew. Bo printed at least once.</code></pre>
 <li>Pairwise concatenation+check: <span class="math inline">\(O(n^2 + n) = O(n^2) \leftarrow !!\)</span></li>
 <li>Crucial to think <strong>asymptotically</strong> to wrap our heads around this!</li>
 </ul>
-</section></section>
-<section>
-<section id="back-to-insertion-sort" class="title-slide slide level1 smaller center" data-stack-name="Sorting">
-<h1>Back to <span class="alg">Insertion-Sort</span></h1>
-
-<img data-src="images/insertion.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="complexity-analysis-2" class="slide level2 smaller crunch-title crunch-ul crunch-p crunch-math code-90">
-<h2>Complexity Analysis</h2>
-<ul>
-<li>Let <span class="math inline">\(t_i\)</span> be the number of times the while loop runs, <span class="math inline">\(\widetilde{n} = n - 1\)</span>:</li>
-</ul>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Code</th>
-<th data-quarto-table-cell-role="th">Cost</th>
-<th data-quarto-table-cell-role="th">Times Run</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td><span class="bold-code"><code>for</code></span><code> i = 1 </code><span class="bold-code"><code>to</code></span><code> n-1:</code></td>
-<td><span class="math inline">\(c_1\)</span></td>
-<td><span class="math inline">\(\widetilde{n}\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td><code>&nbsp;&nbsp;key = A[i]</code></td>
-<td><span class="math inline">\(c_2\)</span></td>
-<td><span class="math inline">\(\widetilde{n}\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td><code style="color: #699754 !important;">&nbsp;&nbsp;# Insert A[i] into sorted subarray A[0:i-1]</code></td>
-<td><span class="math inline">\(0\)</span></td>
-<td><span class="math inline">\(\widetilde{n}\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td><code>&nbsp;&nbsp;j = i - 1</code></td>
-<td><span class="math inline">\(c_4\)</span></td>
-<td><span class="math inline">\(\widetilde{n}\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td><code>&nbsp;&nbsp;</code><span class="bold-code"><code>while</code></span><code> j &gt;= 0 </code><span class="bold-code"><code>and</code></span><code> A[j] &gt; key:</code></td>
-<td><span class="math inline">\(c_5\)</span></td>
-<td><span class="math inline">\(\sum_{i=2}^n t_i\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td><code>&nbsp;&nbsp;&nbsp;&nbsp;A[j + 1] = A[j]</code></td>
-<td><span class="math inline">\(c_6\)</span></td>
-<td><span class="math inline">\(\sum_{i=2}^n(t_i - 1)\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td><code>&nbsp;&nbsp;&nbsp;&nbsp;j = j - 1</code></td>
-<td><span class="math inline">\(c_7\)</span></td>
-<td><span class="math inline">\(\sum_{i=2}^n(t_i - 1)\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td><code>&nbsp;&nbsp;A[j + 1] = key</code></td>
-<td><span class="math inline">\(c_8\)</span></td>
-<td><span class="math inline">\(\widetilde{n}\)</span></td>
-</tr>
-</tbody>
-</table>
-<p><span class="math display">\[
-T(n) = c_1\widetilde{n} + c_2\widetilde{n} + c_4\widetilde{n} + c_5\sum_{i=2}^nt_i + c_6\sum_{i=2}^n(t_i - 1) + c_7\sum_{i=2}^n(t_i-1) + c_8\widetilde{n}
-\]</span></p>
-</section>
-<section id="simplifying-1" class="slide level2 smaller crunch-title crunch-ul crunch-math math-95">
-<h2>Simplifying</h2>
-<ul>
-<li>The original, scary-looking equation:</li>
-</ul>
-<p><span class="math display">\[
-T(n) = c_1n + c_2\widetilde{n} + c_4\widetilde{n} + c_5{\color{orange}\boxed{\color{black}\sum_{i=2}^nt_i}} + c_6{\color{lightblue}\boxed{\color{black}\sum_{i=2}^n(t_i - 1)}} + c_7{\color{lightblue}\boxed{\color{black}\sum_{i=2}^n(t_i-1)}} + c_8\widetilde{n}
-\]</span></p>
-<ul>
-<li>But <span class="math inline">\(\sum_{i=1}^ni = \frac{n(n+1)}{2}\)</span>, so:</li>
-</ul>
-<p><span class="math display">\[
-\begin{align*}
-{\color{orange}\boxed{\color{black}\sum_{i=2}^ni}} &amp;= \sum_{i=1}^ni - \sum_{i=1}^1i = \frac{n(n+1)}{2} - 1 \\
-{\color{lightblue}\boxed{\color{black}\sum_{i=2}^n(i-1)}} &amp;= \sum_{i=1}^{n-1}i = \frac{(n-1)(n-1+1)}{2} = \frac{n(n-1)}{2}
-\end{align*}
-\]</span></p>
-<ul>
-<li>And the scary-looking equation simplifies to</li>
-</ul>
-<p><span class="math display">\[
-\begin{align*}
-T(n) = &amp;{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac{c_7}{2}\right)}{\color{green}n^2} + {\color{gray}\left(c_1 + c_2 + c_4 + \frac{c_5}{2} - \frac{c_6}{2} - \frac{c_7}{2} + c_8\right)}{\color{green}n^1} \\
-\phantom{T(n) = }&amp; - {\color{gray}(c_2 + c_4 + c_5 + c_8)}{\color{green}n^0}
-\end{align*}
-\]</span></p>
-</section>
-<section id="remember-asymptotic-analysis-1" class="slide level2 smaller">
-<h2>Remember: Asymptotic Analysis!</h2>
-<ul>
-<li>It still looks pretty messy, but remember: we care about efficiency <strong>as a function of <span class="math inline">\(n\)</span>!</strong></li>
-</ul>
-<p><span class="math display">\[
-\begin{align*}
-T(n) = &amp;\underbrace{{\color{gray}\left(\frac{c_5}{2} + \frac{c_6}{2} + \frac{c_7}{2}\right)}}_{\text{Constant}}\underbrace{\phantom{(}{\color{green}n^2}\phantom{)}}_{\text{Quadratic}} \\
-\phantom{T(n) = }&amp;+ \underbrace{{\color{gray}\left(c_1 + c_2 + c_4 + \frac{c_5}{2} - \frac{c_6}{2} - \frac{c_7}{2} + c_8\right)}}_{\text{Constant}}\underbrace{\phantom{(}{\color{green}n^1}\phantom{)}}_{\text{Linear}} \\
-\phantom{T(n) = }&amp; - \underbrace{{\color{gray}(c_2 + c_4 + c_5 + c_8)}}_{\text{Constant}}\underbrace{{\color{green}n^0}}_{\text{Constant}}
-\end{align*}
-\]</span></p>
-<ul>
-<li>So, there’s a sense in which <span class="math inline">\(T(n) \approx n^2\)</span>, for “sufficiently large” values of <span class="math inline">\(n\)</span>…</li>
-<li>Let’s work our way towards formalizing the <span class="math inline">\(\approx\)</span>!</li>
-</ul>
-</section>
-<section id="the-figure-you-should-make-in-your-brain-every-time-1" class="slide level2 smaller crunch-title title-10 crunch-quarto-figure">
-<h2>The Figure You Should Make In Your Brain Every Time</h2>
-<div id="284f4e8e" class="cell" data-execution_count="36">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb62-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb62-3"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb62-4"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb62-5"><a></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="fl">2.75</span>, <span class="fl">0.25</span>)]</span>
-<span id="cb62-6"><a></a>runtime_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
-<span id="cb62-7"><a></a>runtime_df[<span class="st">'$n^2 + 50n$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">50</span><span class="op">*</span>x)</span>
-<span id="cb62-8"><a></a>runtime_df[<span class="st">'$n^2 + 10000$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>) <span class="op">+</span> <span class="dv">10000</span>)</span>
-<span id="cb62-9"><a></a>runtime_df[<span class="st">'$O(n)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].copy()</span>
-<span id="cb62-10"><a></a>runtime_df[<span class="st">'$O(nlogn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">*</span> np.log(x))</span>
-<span id="cb62-11"><a></a>runtime_df[<span class="st">'$O(n^2)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">2</span>))</span>
-<span id="cb62-12"><a></a>runtime_df[<span class="st">'$O(n^2logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.log(x))</span>
-<span id="cb62-13"><a></a>runtime_df[<span class="st">'$O(n^3)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>))</span>
-<span id="cb62-14"><a></a>runtime_df[<span class="st">'$O(n^3logn)$'</span>] <span class="op">=</span> runtime_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x, <span class="dv">3</span>) <span class="op">*</span> np.log(x))</span>
-<span id="cb62-15"><a></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
-<span id="cb62-16"><a></a>max_vals <span class="op">=</span> runtime_df.<span class="bu">max</span>().to_dict()</span>
-<span id="cb62-17"><a></a>plot_df <span class="op">=</span> runtime_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
-<span id="cb62-18"><a></a><span class="co">#print(plot_df)</span></span>
-<span id="cb62-19"><a></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (col <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> runtime_df.columns}</span>
-<span id="cb62-20"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
-<span id="cb62-21"><a></a>sns.lineplot(plot_df, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
-<span id="cb62-22"><a></a><span class="co">#plt.xscale('log')</span></span>
-<span id="cb62-23"><a></a>plt.yscale(<span class="st">'log'</span>)</span>
-<span id="cb62-24"><a></a><span class="co"># extract the existing handles and labels</span></span>
-<span id="cb62-25"><a></a>h, l <span class="op">=</span> ax.get_legend_handles_labels()</span>
-<span id="cb62-26"><a></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
-<span id="cb62-27"><a></a>ax.legend(h[<span class="dv">0</span>:<span class="dv">2</span>], l[<span class="dv">0</span>:<span class="dv">2</span>])</span>
-<span id="cb62-28"><a></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
-<span id="cb62-29"><a></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 50n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$n^2 + 10000$'</span>):</span>
-<span id="cb62-30"><a></a>    <span class="cf">continue</span></span>
-<span id="cb62-31"><a></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
-<span id="cb62-32"><a></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'</span><span class="er">\</span><span class="vs">log</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="vs">'</span>)</span>
-<span id="cb62-33"><a></a>  ax.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">2</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
-<span id="cb62-34"><a></a><span class="co"># Hide the right and top spines</span></span>
-<span id="cb62-35"><a></a>ax.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb62-36"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="index_files/figure-revealjs/cell-37-output-1.png" class="quarto-figure quarto-figure-center" width="932" height="429"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>Takeaway: As <span class="math inline">\(n \rightarrow \infty\)</span>, <strong>highest-degree terms dominate!</strong></li>
-</ul>
-</section>
-<section id="constants-on-highest-degree-terms-also-go-away-1" class="slide level2 smaller crunch-title title-10">
-<h2>Constants On Highest-Degree Terms Also Go Away</h2>
-<ul>
-<li>(Though this is harder to see, without a log-log plot:)</li>
-</ul>
-<div id="a9598ecd" class="cell" data-execution_count="37">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a></a>n_vals <span class="op">=</span> [np.power(<span class="dv">10</span>, k) <span class="cf">for</span> k <span class="kw">in</span> np.arange(<span class="dv">1</span>, <span class="dv">6</span>, <span class="fl">0.5</span>)]</span>
-<span id="cb63-2"><a></a>rt_const_df <span class="op">=</span> pd.DataFrame({<span class="st">'$n$'</span>: n_vals})</span>
-<span id="cb63-3"><a></a>rt_const_df[<span class="st">'$20n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">20</span><span class="op">*</span>np.power(x,<span class="dv">2</span>))</span>
-<span id="cb63-4"><a></a>rt_const_df[<span class="st">'$n^2$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>))</span>
-<span id="cb63-5"><a></a>rt_const_df[<span class="st">'$n^2logn$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">2</span>) <span class="op">*</span> np.power(np.log(x),<span class="dv">2</span>))</span>
-<span id="cb63-6"><a></a>rt_const_df[<span class="st">'$n^3$'</span>] <span class="op">=</span> rt_const_df[<span class="st">'$n$'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.power(x,<span class="dv">3</span>))</span>
-<span id="cb63-7"><a></a><span class="co"># Get the max values, for labeling the ends of lines</span></span>
-<span id="cb63-8"><a></a>max_vals <span class="op">=</span> rt_const_df.<span class="bu">max</span>().to_dict()</span>
-<span id="cb63-9"><a></a>plot_df_const <span class="op">=</span> rt_const_df.melt(id_vars<span class="op">=</span>[<span class="st">'$n$'</span>])</span>
-<span id="cb63-10"><a></a>style_map <span class="op">=</span> {col: <span class="st">''</span> <span class="cf">if</span> (col <span class="op">==</span> <span class="st">'$20n^2$'</span>) <span class="cf">else</span> (<span class="dv">2</span>,<span class="dv">1</span>) <span class="cf">for</span> col <span class="kw">in</span> rt_const_df.columns}</span>
-<span id="cb63-11"><a></a>fig_const, ax_const <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>,<span class="dv">5</span>))</span>
-<span id="cb63-12"><a></a>sns.lineplot(plot_df_const, x<span class="op">=</span><span class="st">'$n$'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'variable'</span>, style<span class="op">=</span><span class="st">'variable'</span>, dashes<span class="op">=</span>style_map)</span>
-<span id="cb63-13"><a></a>plt.xscale(<span class="st">'log'</span>)</span>
-<span id="cb63-14"><a></a>plt.yscale(<span class="st">'log'</span>)</span>
-<span id="cb63-15"><a></a><span class="co"># extract the existing handles and labels</span></span>
-<span id="cb63-16"><a></a>h_const, l_const <span class="op">=</span> ax_const.get_legend_handles_labels()</span>
-<span id="cb63-17"><a></a><span class="co"># slice the appropriate section of l and h to include in the legend</span></span>
-<span id="cb63-18"><a></a>ax_const.legend(h_const[<span class="dv">0</span>:<span class="dv">1</span>], l_const[<span class="dv">0</span>:<span class="dv">1</span>])</span>
-<span id="cb63-19"><a></a><span class="cf">for</span> label, val <span class="kw">in</span> max_vals.items():</span>
-<span id="cb63-20"><a></a>  <span class="cf">if</span> (label <span class="op">==</span> <span class="st">'$n$'</span>) <span class="kw">or</span> (label <span class="op">==</span> <span class="st">'$20n^2$'</span>):</span>
-<span id="cb63-21"><a></a>    <span class="cf">continue</span></span>
-<span id="cb63-22"><a></a>  <span class="cf">if</span> <span class="st">'logn'</span> <span class="kw">in</span> label:</span>
-<span id="cb63-23"><a></a>    label <span class="op">=</span> label.replace(<span class="st">'logn'</span>, <span class="vs">r'</span><span class="er">\</span><span class="vs">log</span><span class="kw">(</span><span class="vs">n</span><span class="kw">)</span><span class="vs">'</span>)</span>
-<span id="cb63-24"><a></a>  ax_const.text(x <span class="op">=</span> max_vals[<span class="st">'$n$'</span>] <span class="op">+</span> <span class="dv">10</span><span class="op">**</span><span class="dv">4</span>, y <span class="op">=</span> val, s<span class="op">=</span>label, va<span class="op">=</span><span class="st">'center'</span>)</span>
-<span id="cb63-25"><a></a><span class="co"># Hide the right and top spines</span></span>
-<span id="cb63-26"><a></a>ax_const.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb63-27"><a></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="index_files/figure-revealjs/cell-38-output-1.png" width="914" height="431"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="formalizing-big-o-notation-1" class="slide level2 crunch-title">
-<h2>Formalizing Big-O Notation</h2>
-<ul>
-<li><p>Let <span class="math inline">\(f, g: \mathbb{N} \rightarrow \mathbb{N}\)</span>. Then we write <span class="math inline">\(f(n) = \overline{O}(g(n))\)</span> when there exists a <strong>threshold</strong> <span class="math inline">\(n_0 &gt; 0\)</span> and <strong>constant</strong> <span class="math inline">\(K &gt; 0\)</span> s.t. <span class="math display">\[
-\forall n \geq n_0 \left[ f(n) \leq K\cdot g(n) \right]
-\]</span></p></li>
-<li><p>In words:</p>
-<ul>
-<li>“Eventually”, beyond a certain point <span class="math inline">\(n_0\)</span>,</li>
-<li><span class="math inline">\(f(n)\)</span> is <strong>bounded above</strong> by <span class="math inline">\(K\cdot g(n)\)</span>.</li>
-</ul></li>
-<li><p><em>Definition from <span class="citation" data-cites="savage_models_1998">Savage (<a href="#/references" role="doc-biblioref" onclick="">1998</a>, pg. 13)</span></em></p></li>
-</ul>
-</section>
-<section id="intuition-rightarrow-proof-1" class="slide level2 crunch-title crunch-ul">
-<h2>Intuition <span class="math inline">\(\rightarrow\)</span> Proof</h2>
-<ul>
-<li>Using this definition, we can now <strong>prove</strong> <span class="math inline">\(f(n) = n^2 + 50n = \overline{O}(n^2)\)</span>!</li>
-<li>Here <span class="math inline">\(f(n) = n^2 + 50n\)</span>, <span class="math inline">\(g(n) = n^2\)</span></li>
-<li><strong>Theorem</strong>: <span class="math inline">\(\exists \; n_0 \; \text{ s.t. } \forall n \geq n_0 \left[ n^2 + 50n \leq Kn^2 \right]\)</span></li>
-<li><strong>Proof</strong>: Let <span class="math inline">\(K = 50\)</span>. Then <span class="math display">\[
-\begin{align*}
-&amp;n^2 + 50n \leq 50n^2 \iff n + 50 \leq 50n \\
-&amp;\iff 49n \geq 50 \iff n \geq \frac{50}{49}.
-\end{align*}
-\]</span></li>
-<li>So if we choose <span class="math inline">\(n_0 = 2\)</span>, the chain of statements holds. <span class="math inline">\(\blacksquare\)</span></li>
-</ul>
-</section>
-<section id="bounding-insertion-sort-runtime-1" class="slide level2 crunch-title crunch-ul crunch-li-8 inline-90">
-<h2>Bounding Insertion Sort Runtime</h2>
-<ul>
-<li>Runs in <span class="math inline">\(T(n) = \overline{O}(n^2)\)</span> (use constants from prev slide)</li>
-<li>Can similarly define <strong>lower bound</strong> <span class="math inline">\(T(n) = \Omega(f(n))\)</span>
-<ul>
-<li><span class="math inline">\(\overline{O}\)</span> = “Big-Oh”, <span class="math inline">\(\Omega\)</span> = “Big-Omega”</li>
-</ul></li>
-<li>Final definition (+<strong>theorem</strong> you can prove!): <span class="math inline">\(\Theta\)</span> = “Big-Theta”
-<ul>
-<li>If <span class="math inline">\(T(n) = \overline{O}(g(n))\)</span> and <span class="math inline">\(T(n) = \Omega(g(n))\)</span></li>
-<li>Then <span class="math inline">\(T(n) = \Theta(n)\)</span></li>
-</ul></li>
-<li><span class="math inline">\(\Rightarrow\)</span> <strong>most “informative” way</strong> to characterize <span class="alg">Insertion-Sort</span> is <span class="math inline">\(\boxed{T(n) = \Theta(n^2)}\)</span>
-<ul>
-<li>Tells us: it won’t do worse, but won’t do better, than <span class="math inline">\(n^2\)</span></li>
-</ul></li>
-</ul>
-</section>
-<section id="doing-better-than-insertion-sort-1" class="slide level2">
-<h2>Doing Better Than Insertion Sort</h2>
-<ul>
-<li><em>Intuition Break</em> 🥳: <strong>Finding a word in a dictionary!</strong> <a href="https://dsan.io/dict-lookup" target="_blank" class="font-monospace">dsan.io/dict-lookup<i class="bi bi-box-arrow-up-right ps-2"></i></a></li>
-<li><span class="alg">Insertion-Sort</span> <span class="math inline">\(\in\)</span> Linear Algorithms
-<ul>
-<li>(Linear Algorithms <span class="math inline">\(\subset\)</span> Linear Things)</li>
-</ul></li>
-<li><span class="alg">Merge-Sort</span> <span class="math inline">\(\in\)</span> Logarithmic Algorithms
-<ul>
-<li>(Logarithmic Algorithms <span class="math inline">\(\subset\)</span> Logarithmic Things)</li>
-</ul></li>
-</ul>
-</section>
-<section id="how-can-merge-sort-work-that-much-better-1" class="slide level2 crunch-title title-08 crunch-ul crunch-quarto-layout-panel crunch-quarto-figure">
-<h2>How Can Merge Sort Work <em>That</em> Much Better!?</h2>
-<ul>
-<li>With the <strong>linear</strong> approach, each time we check a word and it’s not our word we eliminate… one measly word 😞</li>
-<li>But with the <strong>divide-and-conquer</strong> approach… we eliminate 🔥<strong>HALF OF THE REMAINING WORDS</strong>🔥</li>
-</ul>
-<div class="quarto-layout-panel" data-layout="[1,1]">
-<div class="quarto-layout-row quarto-layout-valign-center">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/lakers.gif" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/tuck_em_in.jpeg" class="quarto-figure quarto-figure-center" width="270"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="merge-merging-two-sorted-lists-in-on-time" class="slide level2 smaller title-10 crunch-figcaption crunch-quarto-figure">
-<h2><span class="alg">Merge</span>: Merging Two Sorted Lists in <span class="math inline">\(O(n)\)</span> Time</h2>
-
-<img data-src="images/merge.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 37</p></section>
-<section id="merge-sort-merge-as-subroutine" class="slide level2">
-<h2><span class="alg">Merge Sort</span> (<span class="alg">Merge</span> as Subroutine)</h2>
-
-<img data-src="images/merge_tree.svg" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 40</p></section>
-<section id="complexity-analysis-3" class="slide level2 crunch-title inline-90 crunch-li-8">
-<h2>Complexity Analysis</h2>
-<ul>
-<li>Hard way: re-do the line-by-line analysis we did for <span class="alg">Insertion-Sort</span> 😣 Easy way: stand on shoulders of giants!</li>
-<li>Using a famous+fun theorem (the <strong>Master Theorem</strong>): Given a recurrence <span class="math inline">\(T(n) = aT(n/b) + f(n)\)</span>, compute its:
-<ul>
-<li><strong>Watershed function</strong> <span class="math inline">\(W(n) = n^{\log_b(a)}\)</span> and</li>
-<li><strong>Driving function</strong> <span class="math inline">\(D(n) = f(n)\)</span></li>
-</ul></li>
-<li>The Master Theorem gives <strong>closed-form</strong> asymptotic solution for <span class="math inline">\(T(n)\)</span>, split into three cases:</li>
-<li><strong>(1)</strong> <span class="math inline">\(W(n)\)</span> grows <strong>faster</strong> than <span class="math inline">\(D(n)\)</span>, <strong>(2)</strong> grows at <strong>same rate</strong> as <span class="math inline">\(D(n)\)</span>, or <strong>(3)</strong> grows <strong>slower</strong> than <span class="math inline">\(D(n)\)</span></li>
-</ul>
-</section>
-<section id="bounding-the-runtime-of-merge-sort-1" class="slide level2 crunch-title crunch-ul crunch-callout crunch-footnotes scrollable">
-<h2>Bounding the Runtime of Merge Sort</h2>
-<ul>
-<li><p>How about <span class="alg">Merge-Sort</span>? <span class="math inline">\(T(n) = 2T(n/2) + \Theta(n)\)</span></p>
-<ul>
-<li><span class="math inline">\(a = b = 2\)</span>, <span class="math inline">\(W(n) = n^{\log_2(2)} = n\)</span>, <span class="math inline">\(D(n) = \Theta(n)\)</span></li>
-</ul></li>
-<li><p><span class="math inline">\(W(n)\)</span> and <span class="math inline">\(D(n)\)</span> grow at <strong>same rate</strong> <span class="math inline">\(\implies\)</span> <em>Case 2</em>:</p>
-<div title="Applying the Master Theorem When $W(n) = \Theta(D(n))$ (Case 2)">
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Applying the Master Theorem When <span class="math inline">\(W(n) = \Theta(D(n))\)</span> (Case 2)</strong></p>
-</div>
-<div class="callout-content">
-<ol type="1">
-<li>Is there a <span class="math inline">\(k \geq 0\)</span> satisfying <span class="math inline">\(D(n) = \Theta(n^{\log_b(a)}\log_2^k(n))\)</span>?</li>
-<li>If so, your solution is <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))\)</span></li>
-</ol>
-</div>
-</div>
-</div>
-</div></li>
-<li><p><span class="alg">Merge-Sort</span>: <span class="math inline">\(k = 0\)</span> works! <span class="math inline">\(\Theta(n^{\log_2(2)}\log_2^0(n)) = \Theta(n)\)</span></p></li>
-<li><p>Thus <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n)) = \boxed{\Theta(n\log_2n)}\)</span> 😎</p></li>
-</ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
@@ -1964,39 +1620,8 @@ Savage, John E. 1998. <em>Models of <span>Computation</span>: <span>Exploring</s
 </div>
 </div>
 </section>
-<section id="appendix-1-intuition-for-lower-bound" class="slide level2 smaller crunch-title">
-<h2>Appendix 1: Intuition for Lower Bound</h2>
-<ul>
-<li>Spoiler: Insertion sort <strong>also</strong> runs in <span class="math inline">\(T(n) = \Omega(n^2)\)</span> time. How could we prove this?</li>
-<li>Given <strong>any value <span class="math inline">\(n &gt; n_0\)</span></strong>, we need to <strong>construct an input</strong> for which Insertion-Sort requires <span class="math inline">\(cn^2\)</span> steps: consider a list where <span class="math inline">\(n/3\)</span> <strong>greatest values</strong> are in <strong>first <span class="math inline">\(n/3\)</span> slots</strong>:</li>
-</ul>
-
-<img data-src="images/insertion_lower_bound_alt.svg" width="600" class="r-stretch quarto-figure-center"><p class="caption">All <span class="math inline">\(n/3\)</span> values in <span class="math inline">\(\textrm{L}\)</span> pass, one-by-one, through the <span class="math inline">\(n/3\)</span> slots in <span class="math inline">\(\textrm{M}\)</span> (since they must end up in <span class="math inline">\(\textrm{R}\)</span>) <span class="math inline">\(\implies (n/3)(n/3) = n^2/9 = \Omega(n^2)\)</span> steps!</p><ul>
-<li>Final definition (a <strong>theorem</strong> you could prove if you want!): <span class="math inline">\(\Theta\)</span> = “Big-Theta”
-<ul>
-<li>If <span class="math inline">\(T(n) = \overline{O}(g(n))\)</span> and <span class="math inline">\(T(n) = \Omega(g(n))\)</span>, then <span class="math inline">\(T(n) = \Theta(n)\)</span></li>
-</ul></li>
-<li><span class="math inline">\(\implies\)</span> <strong>most “informative” way</strong> to characterize insertion sort is <span class="math inline">\(\boxed{T(n) = \Theta(n^2)}\)</span></li>
-</ul>
-</section>
-<section id="appendix-2-being-precise-about-worst-case" class="slide level2 title-07">
-<h2>Appendix 2: Being Precise About “Worst-Case”</h2>
-<p>Need to be careful with <span class="math inline">\(O(f(n))\)</span> vs.&nbsp;<span class="math inline">\(\Omega(f(n))\)</span>: difference between “for <strong>all</strong> inputs” vs.&nbsp;“for <strong>some</strong> inputs”:</p>
-<div title="Bounding Worst-Case Runtime">
-<div class="callout callout-note no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Bounding Worst-Case Runtime</strong></p>
-</div>
-<div class="callout-content">
-<p>By saying that the worst-case running time of an algorithm is <span class="math inline">\(\Omega(n^2)\)</span>, we mean that for every input size <span class="math inline">\(n\)</span> above a certain threshold, there is <strong>at least one input</strong> of size <span class="math inline">\(n\)</span> for which the algorithm takes at least <span class="math inline">\(cn^2\)</span> time, for some positive constant <span class="math inline">\(n\)</span>. It does <strong>not</strong> necessarily mean that the algorithm takes at least <span class="math inline">\(cn^2\)</span> time for <strong>all</strong> inputs.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="appendix-3-the-full-master-theorem" class="slide level2 smaller crunch-title title-11 crunch-ol crunch-ul crunch-math-15 scrollable">
-<h2>Appendix 3: The Full Master Theorem</h2>
+<section id="appendix-the-full-master-theorem" class="slide level2 smaller crunch-title title-11 crunch-ol crunch-ul crunch-math-15 scrollable">
+<h2>Appendix: The Full Master Theorem</h2>
 <p><strong>Master Theorem</strong>: Let <span class="math inline">\(a &gt; 0\)</span> and <span class="math inline">\(b &gt; 1\)</span> be constants, and let <span class="math inline">\(f(n)\)</span> be a driving function defined and nonnegative on all sufficiently large reals. Define <span class="math inline">\(T(n)\)</span> on <span class="math inline">\(n \in \mathbb{N}\)</span> by</p>
 <p><span class="math display">\[
 T(n) = aT(n/b) + f(n)
@@ -2315,6 +1940,13 @@ T(n) = aT(n/b) + f(n)
               if (link.dataset.originalHref !== undefined) {
                 link.href = link.dataset.originalHref;
               }
+                // target, if specified
+                link.setAttribute("target", "_blank");
+                if (link.getAttribute("rel") === null) {
+                  link.setAttribute("rel", "noopener");
+                }
+                // default icon
+                link.classList.add("external");
             }
           }
         function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
