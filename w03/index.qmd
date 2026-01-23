@@ -274,7 +274,7 @@ plt.show()
 ```{python}
 #| code-fold: true
 #| fig-align: center
-n_vals = [np.power(10, k) for k in np.arange(1, 5, 0.5)]
+n_vals = [np.power(10, k) for k in np.arange(1, 20, 0.5)]
 rt_const_df = pd.DataFrame({'$n$': n_vals})
 rt_const_df['$20n^2$'] = rt_const_df['$n$'].apply(lambda x: 20*np.power(x,2))
 rt_const_df['$n^2$'] = rt_const_df['$n$'].apply(lambda x: np.power(x,2))
@@ -312,9 +312,9 @@ $$
 * In words: beyond a certain point $n_0$, $f(n)$ is **bounded above** by $K\cdot g(n)$.
 * *Definition from @savage_models_1998[pg. 13]*
 
-## Intuition $\rightarrow$ Proof {.crunch-title .crunch-ul}
+## Intuition $\rightarrow$ Proof {.crunch-title .crunch-ul .text-90}
 
-* Using this definition, we can now **prove** $f(n) = n^2 + 50n = O(n^2)$!
+* Using this definition we can now **prove** $f(n) = n^2 + 50n = O(n^2)$
 * Here $f(n) = n^2 + 50n$, $g(n) = n^2$
 * **Theorem**: $\exists \; n_0 \in \mathbb{Z} \; \text{ s.t. } \forall n \geq n_0 \left[ n^2 + 50n \leq Kn^2 \right]$
 * **Proof**: Let $K = 50$. Then
@@ -367,9 +367,9 @@ By saying that the worst-case running time of an algorithm is $\Omega(n^2)$, we 
 
 ## Merging Two Sorted Lists in $O(n)$ Time {.smaller .title-11 .crunch-figcaption .crunch-quarto-figure}
 
-![From @cormen_introduction_2001, pg. 37](images/merge.svg){fig-align="center"}
+![From @cormen_introduction_2001, pg. 37](images/merge.svg){.lightbox fig-align="center"}
 
-## Complexity Analysis {.crunch-title}
+## Complexity Analysis {.crunch-title .title-12 .text-90}
 
 * Hard way: re-do the line-by-line analysis we did for <span class='alg'>Insertion-Sort</span> 😣 Easy way: stand on shoulders of giants!
 * Using a famous theorem (the **Master Theorem**): Given a recurrence $T(n) = aT(n/b) + f(n)$, compute its:
