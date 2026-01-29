@@ -7,7 +7,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.26">
 
   <meta name="author" content="Jeff Jacobs">
@@ -95,9 +98,28 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d1fbd09c7ec24570b93201ad6c0b0462.css">
-  <link rel="stylesheet" href="../dsan-globals/jjstyles.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -191,7 +213,7 @@
       margin-right: 0; 
     }
   </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -214,6 +236,7 @@ Jeff Jacobs
 
   <p class="date">Thursday, January 29, 2026</p>
 </section>
+<section>
 <section id="schedule" class="title-slide slide level1 smaller small-title crunch-title crunch-callout code-90 center" data-name="Schedule">
 <h1>Schedule</h1>
 <p>Today’s Planned Schedule:</p>
@@ -237,19 +260,19 @@ Jeff Jacobs
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
 <td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;"><a href="#/object-oriented-programming">Object-Oriented Programming (OOP) →</a></td>
+<td style="text-align: left;"><a href="#/merging-two-sorted-lists-in-o(n-time)"><span class="alg">Merge-Sort</span> →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">7:00pm</td>
 <td style="text-align: left;">7:30pm</td>
-<td style="text-align: left;"><a href="#/core-data-structure-linkedlist"><code>LinkedList</code>: Lists from Scratch →</a></td>
+<td style="text-align: left;"><a href="#/object-oriented-programming">Object-Oriented Programming (OOP) →</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">7:30pm</td>
 <td style="text-align: left;">8:00pm</td>
-<td style="text-align: left;"><a href="#/onwards-and-upwards-fancier-algorithms">Other Data Structures = Fancy Linked Lists →</a></td>
+<td style="text-align: left;"><a href="#/core-data-structure-linkedlist"><code>LinkedList</code>: Lists from Scratch →</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Break!</strong></td>
@@ -260,13 +283,46 @@ Jeff Jacobs
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">8:10pm</td>
+<td style="text-align: left;">8:30pm</td>
+<td style="text-align: left;"><a href="#/onwards-and-upwards-fancier-algorithms">Other Data Structures = Fancy Linked Lists →</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">8:30pm</td>
 <td style="text-align: left;">9:00pm</td>
 <td style="text-align: left;"><a href="#/hash-tables"><code>HashTable</code>: Logarithmic to <em>Constant</em> Efficiency 🤯 →</a></td>
 </tr>
 </tbody>
 </table>
 </section>
-
+<section id="merging-two-sorted-lists-in-overlineon-time" class="slide level2 smaller title-11 crunch-figcaption crunch-quarto-figure" data-name="Merge Sort">
+<h2>Merging Two Sorted Lists in <span class="math inline">\(\overline{O}(n)\)</span> Time</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="images/merge.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="From @cormen_introduction_2001, pg. 37"><img data-src="images/merge.svg" class="quarto-figure quarto-figure-center" alt="From Cormen et al. (2001), pg. 37"></a></p>
+</figure>
+</div>
+<figcaption>From <span class="citation" data-cites="cormen_introduction_2001">Cormen et al. (<a href="#/references" role="doc-biblioref" onclick="">2001</a>)</span>, pg. 37</figcaption>
+</figure>
+</div>
+</section>
+<section id="merge-sort-walkthrough-the-merge-procedure" class="slide level2 smaller crunch-title title-10 crunch-p">
+<h2>Merge Sort Walkthrough: The <span class="alg">Merge</span> Procedure</h2>
+<center>
+<iframe id="mergesortPRO_iframe" aria-label="mergesortPRO" src="https://opendsa-server.cs.vt.edu/ODSA/AV/Sorting/mergesortPRO.html?localMode=true&amp;module=Mergesort&amp;selfLoggingEnabled=false&amp;JXOP-debug=true&amp;JOP-lang=en&amp;JXOP-code=java&amp;JXOP-feedback=continuous&amp;JXOP-fixmode=fix&amp;scoringServerEnabled=false&amp;loggingServerEnabled=false&amp;threshold=0.9&amp;points=2.0&amp;required=False" class="crunch-p" height="600" data-showhide="show" style="width: 800px; height: 600px;">
+Your browser does not support iframes.
+</iframe>
+</center>
+</section>
+<section id="complexity-analysis" class="slide level2 crunch-title title-12 text-90">
+<h2>Complexity Analysis</h2>
+<ul>
+<li><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/Mergesort.html">Interactive visualization!</a></li>
+<li>More in-depth: see <a href="#/appendix-merge-sort-runtime-analysis">Appendix Slides →</a></li>
+</ul>
+</section></section>
 <section>
 <section id="object-oriented-programming" class="title-slide slide level1 center" data-stack-name="OOP">
 <h1>Object-Oriented Programming</h1>
@@ -309,7 +365,7 @@ Jeff Jacobs
 <li>(Like with <em>type hints</em>), Python doesn’t <strong>enforce</strong> this distinction, <strong>but</strong> (unlike with <em>type hints</em>) most libraries <strong>do</strong> separate public from private by a <strong>variable-naming convention</strong>…</li>
 </ul>
 </section>
-<section id="public-protected-private-attributes-in-python" class="slide level2 smaller crunch-title title-11 cols-clip">
+<section id="public-protected-private-attributes-in-python" class="slide level2 smaller crunch-title title-10 cols-clip">
 <h2>Public, Protected, Private Attributes in Python</h2>
 <ul>
 <li>[<strong>Public</strong> (default)] No underscores: <code>public_var</code></li>
@@ -353,11 +409,10 @@ Jeff Jacobs
 </div>
 <ul>
 <li>NOO MY SECRET!!! 😭</li>
-<li>Pls don’t tell anyone</li>
 </ul>
 </div></div>
 </section>
-<section id="key-oop-features-3-4-inheritance-polymorphism" class="slide level2 crunch-title title-07 crunch-ul">
+<section id="key-oop-features-3-4-inheritance-polymorphism" class="slide level2 crunch-title title-07 crunch-ul text-95">
 <h2>Key OOP Features #3-4: Inheritance, Polymorphism</h2>
 <ul>
 <li>Better explained in <strong>diagrams</strong> than <strong>words</strong> (next 10 slides!), but we can get a sense by thinking about their <strong>etymology</strong>:</li>
@@ -634,7 +689,7 @@ Inventory:
 <h2>Or… Is This Better?</h2>
 
 <img data-src="images/vehicle-fancy.svg" class="r-stretch quarto-figure-center"><p class="caption">Edit in <a href="https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7CnumDoors%3A%20int%3BnumWheels%3A%20int%3Bbalanced%3A%20bool%3B%7CturnOn()%3Baccelerate()%3Bbrake()%3BturnOff()%3B%5D%0A%5B%3Cabstract%3E%20UnbalancedVehicle%7Cbalanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20BalancedVehicle%7Cbalanced%20%3D%20true%3B%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3B%5D%0A%0A%5BVehicle%5D--%3A%3E%5BUnbalancedVehicle%5D%0A%5BUnbalancedVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BBalancedVehicle%5D%0A%5BBalancedVehicle%5D--%3A%3E%5BCar%5D%0A%5BBalancedVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A">nomnoml</a></p></section>
-<section id="design-choices" class="slide level2 smaller crunch-title crunch-details crunch-ul code-90">
+<section id="design-choices" class="slide level2 smaller crunch-title crunch-details crunch-ul code-90 text-60">
 <h2>Design Choices</h2>
 <ul>
 <li>Goal is <strong>encapsulation</strong>: which <strong>objects</strong> should have which <strong>properties</strong>/<strong>methods</strong>?</li>
@@ -720,7 +775,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 <h1>Core Data Structure: <code>LinkedList</code></h1>
 
 </section>
-<section id="looking-under-the-hood-of-a-data-structure" class="slide level2 crunch-title title-08 inline-90">
+<section id="looking-under-the-hood-of-a-data-structure" class="slide level2 crunch-title title-08 inline-90 text-95">
 <h2>Looking Under the Hood of a Data Structure</h2>
 <ul>
 <li>Last week we saw the <strong>math</strong> for why we can “abstract away from” the details of how a particular language works</li>
@@ -913,7 +968,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 <h1>Onwards and Upwards: Fancier Algorithms</h1>
 
 </section>
-<section id="linkedlist-foundation-for-most-data-structures" class="slide level2 smaller crunch-title title-10 crunch-quarto-layout-panel crunch-img crunch-figures cols-va">
+<section id="linkedlist-foundation-for-most-data-structures" class="slide level2 smaller crunch-title title-09 crunch-quarto-layout-panel crunch-img crunch-figures cols-va">
 <h2>LinkedList: Foundation for Most(?) Data Structures!</h2>
 <div class="quarto-layout-panel" data-layout="[1,3]">
 <div class="quarto-layout-row quarto-layout-valign-center">
@@ -988,7 +1043,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 </section>
 <section id="visualizing-binarysearchtree" class="slide level2 smaller crunch-title cols-va">
 <h2>Visualizing <code>BinarySearchTree</code></h2>
-<div id="2ec1183d" class="cell columns column-output-location" data-execution_count="22">
+<div id="247ad306" class="cell columns column-output-location" data-execution_count="22">
 <div class="column">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -1016,8 +1071,8 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 </div>
 </div></div>
 </section>
-<section id="so-then-why-is-this-a-whole-dsan-class" class="slide level2 smaller crunch-title title-12">
-<h2>So Then… Why Is This a Whole DSAN Class?</h2>
+<section id="so-then-why-is-this-a-whole-class" class="slide level2 smaller crunch-title title-12">
+<h2>So Then… Why Is This a Whole Class?</h2>
 <ul>
 <li>The <strong>core structures</strong> are identical, but we can optimize <strong>different goals</strong> (efficient insertion, sorting, retrieval, deletion, …) by changing the <strong>invariants</strong> maintained by the algorithms <strong>internal to</strong> our structure</li>
 <li>Crucial <span class="alg">Insertion-Sort</span> invariant: <span class="math inline">\(\textsf{Sorted}(1,i)\)</span> true when we move to entry <span class="math inline">\(i + 1\)</span> (<code>key</code>)</li>
@@ -1030,14 +1085,14 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 <section id="hash-tables" class="title-slide slide level1 center" data-stack-name="HashTable">
 <h1>Hash Tables</h1>
 <ul>
-<li>*(Spoiler alert, so you know I’m not lying to you: this is a <strong>LinkedList</strong> with some <strong>additional structure!</strong>)</li>
+<li><em>(Spoiler alert, so you know I’m not lying to you: this is a <strong>LinkedList</strong> with some <strong>additional structure!</strong>)</em></li>
 <li>You just got hired as a <strong>cashier</strong> (Safeway cashiering alum myself 🫡)</li>
 <li>The scanner is broken (spoiler #2: the scanner uses a hash table), so you start writing down <strong>items</strong> along with their <strong>prices</strong>, one-by-one, as items come in…</li>
 </ul>
 </section>
-<section id="our-list-of-item-price-pairs" class="slide level2 crunch-title crunch-details crunch-ul small-summary">
+<section id="our-list-of-item-price-pairs" class="slide level2 crunch-title crunch-details crunch-ul small-summary text-90">
 <h2>Our List of (Item, Price) Pairs</h2>
-<div id="20260a62" class="cell" data-execution_count="23">
+<div id="aaa35e30" class="cell" data-execution_count="23">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a>price_list <span class="op">=</span> []</span>
@@ -1064,7 +1119,7 @@ Book[title=Micromotives and Macrobehavior, authors=[Person[Schelling, Thomas]], 
 <li>And yet, through the magic of math and computer science, there are concrete <strong>hashing algorithms</strong> which ensure (in a mathematically-provable way!) “almost certain” <span class="math inline">\(\overline{O}(1)\)</span> lookup time</li>
 </ul>
 </section>
-<section id="mathematical-strategy-of-oracles" class="slide level2 crunch-title crunch-math math-75 crunch-ul">
+<section id="mathematical-strategy-of-oracles" class="slide level2 crunch-title crunch-math math-75 crunch-ul text-90">
 <h2>Mathematical Strategy of Oracles</h2>
 <ul>
 <li>We’ll use a <strong>concrete</strong>, <strong>simplified hash function</strong> to illustrate</li>
@@ -1091,10 +1146,10 @@ h(\texttt{x}) = \texttt{x[0]}
 \]</span></p>
 <ul>
 <li><code>h('Banana') = 'B'</code>, <code>h('Monkey') = 'M'</code></li>
-<li>With this function in hand, we can create a length-26 <strong>array</strong>, one slot for each letter in alphabet, and then <strong>write down (item, price) pairs</strong> in <strong>whatever slot <code>item</code> hashes to</strong></li>
+<li>With this function in hand, we can create a length-26 <strong>array</strong>, one slot for each letter in alphabet, then <strong>write down (item, price) pairs</strong> in <strong>whatever slot <code>item</code> hashes to</strong></li>
 </ul>
 </section>
-<section id="the-importance-of-differentiating-operations-insertion-vs.-lookup" class="slide level2">
+<section id="the-importance-of-differentiating-operations-insertion-vs.-lookup" class="slide level2 text-95">
 <h2>The Importance of Differentiating Operations: <em>Insertion</em> vs.&nbsp;<em>Lookup</em></h2>
 <ul>
 <li>So far, we have <span class="math inline">\(\overline{O}(1)\)</span> <strong>insertion</strong> via hashing</li>
@@ -1112,7 +1167,7 @@ h(\texttt{x}) = \texttt{x[0]}
 <li>The answer? We open our HW2 from DSAN 5500 and remember that we have our lovely friend the <code>LinkedList</code> that we can use whenever and however we want!</li>
 </ul>
 </section>
-<section id="arrays-vs.-linked-lists" class="slide level2">
+<section id="arrays-vs.-linked-lists" class="slide level2 crunch-title">
 <h2>Arrays vs.&nbsp;Linked Lists</h2>
 <ul>
 <li>Jeff is hiding something here… Why jump to <code>LinkedList</code>? Why not just… another length-26 array, for example?</li>
@@ -1120,7 +1175,7 @@ h(\texttt{x}) = \texttt{x[0]}
 <li>Terminology for this kind of “hybrid” data structure: <code>HashTable</code> is an <code>Array</code> that <strong>“degenerates into”</strong> a <code>LinkedList</code> (when there are <strong>collisions</strong>)</li>
 </ul>
 </section>
-<section id="look-how-far-we-came" class="slide level2 crunch-title crunch-ul inline-90 code-90">
+<section id="look-how-far-we-came" class="slide level2 crunch-title crunch-ul inline-90 code-90 text-95">
 <h2>Look How Far We Came!</h2>
 <ul>
 <li>Beginning of class: Only structure we knew allowing insertion (<code>LinkedList</code>) was <span class="math inline">\(\overline{O}(n)\)</span> for everythihg</li>
@@ -1129,7 +1184,7 @@ h(\texttt{x}) = \texttt{x[0]}
 <li><span class="math inline">\(\implies\)</span> By taking <strong>core</strong> data structures/algorithms from your toolkit, you can “piece together” <strong>hybrid structures</strong> whose <em>whole (runtime) is better than the sum of its parts</em></li>
 </ul>
 </section>
-<section id="taking-this-idea-and-running-with-it" class="slide level2 crunch-title crunch-ul code-90 inline-90">
+<section id="taking-this-idea-and-running-with-it" class="slide level2 crunch-title title-10 crunch-ul code-90 inline-90 text-90">
 <h2>Taking This Idea and Running With It</h2>
 <ul>
 <li>Next week we’ll look at <code>BinarySearchTree</code> (<code>BST</code>)</li>
@@ -1141,9 +1196,60 @@ h(\texttt{x}) = \texttt{x[0]}
 <li><span class="math inline">\(\overline{O}(1)\)</span> best-case but <span class="math inline">\(\overline{O}(\log_2(n))\)</span> worst-case!</li>
 </ul></li>
 </ul>
+</section>
+<section id="appendix-merge-sort-runtime-analysis" class="slide level2">
+<h2>Appendix: Merge Sort Runtime Analysis</h2>
+<ul>
+<li>Hard way: re-do the line-by-line analysis we did for <span class="alg">Insertion-Sort</span> 😣 Easy way: stand on shoulders of giants!</li>
+<li>Using a famous theorem (the <strong>Master Theorem</strong>): Given a recurrence <span class="math inline">\(T(n) = aT(n/b) + f(n)\)</span>, compute its:
+<ul>
+<li><strong>Watershed function</strong> <span class="math inline">\(W(n) = n^{\log_b(a)}\)</span> and</li>
+<li><strong>Driving function</strong> <span class="math inline">\(D(n) = f(n)\)</span></li>
+</ul></li>
+<li>The Master Theorem gives <strong>closed-form</strong> asymptotic solution for <span class="math inline">\(T(n)\)</span>, split into three cases:</li>
+<li><strong>(1)</strong> <span class="math inline">\(W(n)\)</span> grows <strong>faster</strong> than <span class="math inline">\(D(n)\)</span>, <strong>(2)</strong> grows at <strong>same rate</strong> as <span class="math inline">\(D(n)\)</span>, or <strong>(3)</strong> grows <strong>slower</strong> than <span class="math inline">\(D(n)\)</span></li>
+</ul>
+</section>
+<section id="bounding-the-runtime-of-merge-sort" class="slide level2 crunch-title title-09 crunch-ul crunch-callout crunch-footnotes scrollable">
+<h2>Bounding the Runtime of Merge Sort</h2>
+<ul>
+<li>How about <span class="alg">Merge-Sort</span>? <span class="math inline">\(T(n) = 2T(n/2) + \Theta(n)\)</span>
+<ul>
+<li><span class="math inline">\(a = b = 2\)</span>, <span class="math inline">\(W(n) = n^{\log_2(2)} = n\)</span>, <span class="math inline">\(D(n) = \Theta(n)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(W(n)\)</span> and <span class="math inline">\(D(n)\)</span> grow at <strong>same rate</strong> <span class="math inline">\(\implies\)</span> <em>Case 2</em><sup>1</sup>:</li>
+</ul>
+<div title="Applying the Master Theorem When $W(n) = \Theta(D(n))$ (Case 2)">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Applying the Master Theorem When <span class="math inline">\(W(n) = \Theta(D(n))\)</span> (Case 2)</strong></p>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>Is there a <span class="math inline">\(k \geq 0\)</span> satisfying <span class="math inline">\(D(n) = \Theta(n^{\log_b(a)}\log_2^k(n))\)</span>?</li>
+<li>If so, your solution is <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))\)</span></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li><span class="alg">Merge-Sort</span>: <span class="math inline">\(k = 0\)</span> works! <span class="math inline">\(\Theta(n^{\log_2(2)}\log_2^0(n)) = \Theta(n)\)</span></li>
+<li>Thus <span class="math inline">\(T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n)) = \boxed{\Theta(n\log_2n)}\)</span> 😎</li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>See <a href="#/appendix-the-full-master-theorem">appendix slide</a> for all 3 cases, if you’re some kind of masochist</p></li></ol></aside></section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cormen_introduction_2001" class="csl-entry" role="listitem">
+Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. <em>Introduction <span>To Algorithms</span></em>. MIT Press.
+</div>
+</div>
 
 
 </section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -1536,6 +1642,38 @@ h(\texttt{x}) = \texttt{x[0]}
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

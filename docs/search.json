@@ -2085,7 +2085,7 @@
     "href": "w03/index.html#the-figure-you-can-make-in-your-head-all-semester",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "The Figure You Can Make In Your Head All Semester",
-    "text": "The Figure You Can Make In Your Head All Semester\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nn_vals = [np.power(10, k) for k in np.arange(1, 2.75, 0.25)]\nruntime_df = pd.DataFrame({'$n$': n_vals})\nruntime_df['$n^2 + 50n$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 50*x)\nruntime_df['$n^2 + 10000$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 10000)\nruntime_df['$\\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.log(x))\nruntime_df['n'] = runtime_df['$n$'].copy()\nruntime_df['$n\\log(n)$'] = runtime_df['$n$'].apply(lambda x: x * np.log(x))\nruntime_df['$n^2$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2))\nruntime_df['$n^2\\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.power(x,2) * np.log(x))\nruntime_df['$n^3$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3))\nruntime_df['$n^3logn$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3) * np.log(x))\n# Get the max values, for labeling the ends of lines\nmax_vals = runtime_df.max().to_dict()\nplot_df = runtime_df.melt(id_vars=['$n$'])\n#print(plot_df)\nstyle_map = {col: '' if (col == '$n^2 + 50n$') or (col == '$n^2 + 10000$') else (2,1) for col in runtime_df.columns}\nfig, ax = plt.subplots(figsize=(11,5))\nsns.lineplot(plot_df, x='$n$', y='value', hue='variable', style='variable', dashes=style_map)\n#plt.xscale('log')\nplt.yscale('log')\n# extract the existing handles and labels\nh, l = ax.get_legend_handles_labels()\n# slice the appropriate section of l and h to include in the legend\nax.legend(h[0:2], l[0:2])\nfor label, val in max_vals.items():\n  if (label == '$n$') or (label == '$n^2 + 50n$') or (label == '$n^2 + 10000$'):\n    continue\n  if 'logn' in label:\n    label = label.replace('logn', r'\\log(n)')\n  ax.text(x = max_vals['$n$'] + 2, y = val, s=label, va='center')\n# Hide the right and top spines\nax.spines[['right', 'top']].set_visible(False)\nplt.show()\n\n\n&lt;&gt;:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_86277/1423556624.py:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_86277/1423556624.py:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_86277/1423556624.py:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nFor low values of \\(n\\), \\(n^2 + 10000\\) looks “far away from” \\(n^2\\)\n…But we care about how the algorithm scales with input size!\nTakeaway: As \\(n \\rightarrow \\infty\\), highest-degree terms dominate!",
+    "text": "The Figure You Can Make In Your Head All Semester\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nn_vals = [np.power(10, k) for k in np.arange(1, 2.75, 0.25)]\nruntime_df = pd.DataFrame({'$n$': n_vals})\nruntime_df['$n^2 + 50n$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 50*x)\nruntime_df['$n^2 + 10000$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 10000)\nruntime_df['$\\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.log(x))\nruntime_df['n'] = runtime_df['$n$'].copy()\nruntime_df['$n\\log(n)$'] = runtime_df['$n$'].apply(lambda x: x * np.log(x))\nruntime_df['$n^2$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2))\nruntime_df['$n^2\\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.power(x,2) * np.log(x))\nruntime_df['$n^3$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3))\nruntime_df['$n^3logn$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3) * np.log(x))\n# Get the max values, for labeling the ends of lines\nmax_vals = runtime_df.max().to_dict()\nplot_df = runtime_df.melt(id_vars=['$n$'])\n#print(plot_df)\nstyle_map = {col: '' if (col == '$n^2 + 50n$') or (col == '$n^2 + 10000$') else (2,1) for col in runtime_df.columns}\nfig, ax = plt.subplots(figsize=(11,5))\nsns.lineplot(plot_df, x='$n$', y='value', hue='variable', style='variable', dashes=style_map)\n#plt.xscale('log')\nplt.yscale('log')\n# extract the existing handles and labels\nh, l = ax.get_legend_handles_labels()\n# slice the appropriate section of l and h to include in the legend\nax.legend(h[0:2], l[0:2])\nfor label, val in max_vals.items():\n  if (label == '$n$') or (label == '$n^2 + 50n$') or (label == '$n^2 + 10000$'):\n    continue\n  if 'logn' in label:\n    label = label.replace('logn', r'\\log(n)')\n  ax.text(x = max_vals['$n$'] + 2, y = val, s=label, va='center')\n# Hide the right and top spines\nax.spines[['right', 'top']].set_visible(False)\nplt.show()\n\n\n&lt;&gt;:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_6402/1423556624.py:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_6402/1423556624.py:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_6402/1423556624.py:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nFor low values of \\(n\\), \\(n^2 + 10000\\) looks “far away from” \\(n^2\\)\n…But we care about how the algorithm scales with input size!\nTakeaway: As \\(n \\rightarrow \\infty\\), highest-degree terms dominate!",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2345,7 +2345,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'None', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Vegan', 'Gluten Free', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Gluten Free', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Gluten Free', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2365,7 +2365,7 @@
     "href": "w03/index.html#complexity-with-respect-to-a-structure",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Complexity With Respect To A Structure",
-    "text": "Complexity With Respect To A Structure\n\nLast week: analyzing complexity of an algorithm (no broader context): Insertion-Sort\nThis week: analyzing complexity of a structure as a collection of variables + algorithms\nExample: tuple\n\nVariables: Constant N, pre-allocated list with N slots\nAlgorithms: Constant-time Get-Item-At-Index 🤯, but no Insert-New 😔\n\nOOP: Design pattern for “organizing” data and algorithms into structures\n\n\nCode\nclass MyNTuple():\n  def __init__(self, N, item_list):\n    if len(item_list) != N:\n      raise Exception(\"Must have exactly N elements\")\n    self.N = N\n    self.contents = item_list\n  def item_at_index(self, i):\n    return self.contents[i]\n\njeffs_location = MyNTuple(2, [-40, 40])\nprint(jeffs_location.item_at_index(0))\nprint(f\"{jeffs_location} 🧐\")\n\n\n-40\n&lt;__main__.MyNTuple object at 0x1296a6510&gt; 🧐",
+    "text": "Complexity With Respect To A Structure\n\nLast week: analyzing complexity of an algorithm (no broader context): Insertion-Sort\nThis week: analyzing complexity of a structure as a collection of variables + algorithms\nExample: tuple\n\nVariables: Constant N, pre-allocated list with N slots\nAlgorithms: Constant-time Get-Item-At-Index 🤯, but no Insert-New 😔\n\nOOP: Design pattern for “organizing” data and algorithms into structures\n\n\nCode\nclass MyNTuple():\n  def __init__(self, N, item_list):\n    if len(item_list) != N:\n      raise Exception(\"Must have exactly N elements\")\n    self.N = N\n    self.contents = item_list\n  def item_at_index(self, i):\n    return self.contents[i]\n\njeffs_location = MyNTuple(2, [-40, 40])\nprint(jeffs_location.item_at_index(0))\nprint(f\"{jeffs_location} 🧐\")\n\n\n-40\n&lt;__main__.MyNTuple object at 0x127bda510&gt; 🧐",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2712,7 +2712,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Vegan', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Vegan', 'None', 'Gluten Free'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Gluten Free', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Gluten Free', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -2726,7 +2726,7 @@
     "href": "w03/slides.html#complexity-with-respect-to-a-structure",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Complexity With Respect To A Structure",
-    "text": "Complexity With Respect To A Structure\n\nLast week: analyzing complexity of an algorithm (no broader context): Insertion-Sort\nThis week: analyzing complexity of a structure as a collection of variables + algorithms\nExample: tuple\n\nVariables: Constant N, pre-allocated list with N slots\nAlgorithms: Constant-time Get-Item-At-Index 🤯, but no Insert-New 😔\n\nOOP: Design pattern for “organizing” data and algorithms into structures\n\n\nCode\nclass MyNTuple():\n  def __init__(self, N, item_list):\n    if len(item_list) != N:\n      raise Exception(\"Must have exactly N elements\")\n    self.N = N\n    self.contents = item_list\n  def item_at_index(self, i):\n    return self.contents[i]\n\njeffs_location = MyNTuple(2, [-40, 40])\nprint(jeffs_location.item_at_index(0))\nprint(f\"{jeffs_location} 🧐\")\n\n\n-40\n&lt;__main__.MyNTuple object at 0x152da6510&gt; 🧐"
+    "text": "Complexity With Respect To A Structure\n\nLast week: analyzing complexity of an algorithm (no broader context): Insertion-Sort\nThis week: analyzing complexity of a structure as a collection of variables + algorithms\nExample: tuple\n\nVariables: Constant N, pre-allocated list with N slots\nAlgorithms: Constant-time Get-Item-At-Index 🤯, but no Insert-New 😔\n\nOOP: Design pattern for “organizing” data and algorithms into structures\n\n\nCode\nclass MyNTuple():\n  def __init__(self, N, item_list):\n    if len(item_list) != N:\n      raise Exception(\"Must have exactly N elements\")\n    self.N = N\n    self.contents = item_list\n  def item_at_index(self, i):\n    return self.contents[i]\n\njeffs_location = MyNTuple(2, [-40, 40])\nprint(jeffs_location.item_at_index(0))\nprint(f\"{jeffs_location} 🧐\")\n\n\n-40\n&lt;__main__.MyNTuple object at 0x1501a6510&gt; 🧐"
   },
   {
     "objectID": "w03/slides.html#looking-under-the-hood-of-a-data-structure",
@@ -2816,6 +2816,36 @@
     ]
   },
   {
+    "objectID": "w04/index.html#merging-two-sorted-lists-in-overlineon-time",
+    "href": "w04/index.html#merging-two-sorted-lists-in-overlineon-time",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "Merging Two Sorted Lists in \\(\\overline{O}(n)\\) Time",
+    "text": "Merging Two Sorted Lists in \\(\\overline{O}(n)\\) Time\n\n\n\n\n\n\n\nFrom Cormen et al. (2001), pg. 37",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#merge-sort-walkthrough-the-merge-procedure",
+    "href": "w04/index.html#merge-sort-walkthrough-the-merge-procedure",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "Merge Sort Walkthrough: The Merge Procedure",
+    "text": "Merge Sort Walkthrough: The Merge Procedure\n\n\nYour browser does not support iframes.",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#complexity-analysis",
+    "href": "w04/index.html#complexity-analysis",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "Complexity Analysis",
+    "text": "Complexity Analysis\n\nInteractive visualization!\nMore in-depth: see Appendix Slides →",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
     "objectID": "w04/index.html#breaking-a-problem-into-interacting-parts",
     "href": "w04/index.html#breaking-a-problem-into-interacting-parts",
     "title": "Week 4: Data Structures from Scratch with OOP",
@@ -2860,7 +2890,7 @@
     "href": "w04/index.html#public-protected-private-attributes-in-python",
     "title": "Week 4: Data Structures from Scratch with OOP",
     "section": "Public, Protected, Private Attributes in Python",
-    "text": "Public, Protected, Private Attributes in Python\n\n[Public (default)] No underscores: public_var\n[Protected] One underscore: _protected_var\n[Private] Two underscores: __private_var\n\n\n\n\n\nCode\nclass MySecretInfo:\n  __the_info = \"I love Carly Rae Jepsen\"\n\ninfo_obj = MySecretInfo()\ninfo_obj.__the_info\n\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\nCell In[1], line 5\n      2   __the_info = \"I love Carly Rae Jepsen\"\n      4 info_obj = MySecretInfo()\n----&gt; 5 info_obj.__the_info\n\nAttributeError: 'MySecretInfo' object has no attribute '__the_info'\n\n\n\nGuess we can’t access it then, right? 😮‍💨\n\n\n\nCode\ninfo_obj._MySecretInfo__the_info\n\n\n'I love Carly Rae Jepsen'\n\n\n\nNOO MY SECRET!!! 😭\nPls don’t tell anyone",
+    "text": "Public, Protected, Private Attributes in Python\n\n[Public (default)] No underscores: public_var\n[Protected] One underscore: _protected_var\n[Private] Two underscores: __private_var\n\n\n\n\n\nCode\nclass MySecretInfo:\n  __the_info = \"I love Carly Rae Jepsen\"\n\ninfo_obj = MySecretInfo()\ninfo_obj.__the_info\n\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\nCell In[1], line 5\n      2   __the_info = \"I love Carly Rae Jepsen\"\n      4 info_obj = MySecretInfo()\n----&gt; 5 info_obj.__the_info\n\nAttributeError: 'MySecretInfo' object has no attribute '__the_info'\n\n\n\nGuess we can’t access it then, right? 😮‍💨\n\n\n\nCode\ninfo_obj._MySecretInfo__the_info\n\n\n'I love Carly Rae Jepsen'\n\n\n\nNOO MY SECRET!!! 😭",
     "crumbs": [
       "Week 4: {{< var w04.date-md >}}"
     ]
@@ -3026,11 +3056,11 @@
     ]
   },
   {
-    "objectID": "w04/index.html#so-then-why-is-this-a-whole-dsan-class",
-    "href": "w04/index.html#so-then-why-is-this-a-whole-dsan-class",
+    "objectID": "w04/index.html#so-then-why-is-this-a-whole-class",
+    "href": "w04/index.html#so-then-why-is-this-a-whole-class",
     "title": "Week 4: Data Structures from Scratch with OOP",
-    "section": "So Then… Why Is This a Whole DSAN Class?",
-    "text": "So Then… Why Is This a Whole DSAN Class?\n\nThe core structures are identical, but we can optimize different goals (efficient insertion, sorting, retrieval, deletion, …) by changing the invariants maintained by the algorithms internal to our structure\nCrucial Insertion-Sort invariant: \\(\\textsf{Sorted}(1,i)\\) true when we move to entry \\(i + 1\\) (key)\nCrucial HW2(!) invariant: \\(\\textsf{Up-To-Date-Favorite}(1,i-1)\\) true when entry \\(i + 1\\) (next result in dataset) arrives\n\\(\\implies\\) Efficiency of obtaining favorite style guaranteed to be constant-time, \\(\\overline{O}(1)\\)!\nOtherwise, would be \\(\\overline{O}(n) &gt; \\overline{O}(1)\\) (linear approach) or at best \\(\\overline{O}(\\log_2(n)) &gt; \\overline{O}(1)\\) (divide-and-conquer)",
+    "section": "So Then… Why Is This a Whole Class?",
+    "text": "So Then… Why Is This a Whole Class?\n\nThe core structures are identical, but we can optimize different goals (efficient insertion, sorting, retrieval, deletion, …) by changing the invariants maintained by the algorithms internal to our structure\nCrucial Insertion-Sort invariant: \\(\\textsf{Sorted}(1,i)\\) true when we move to entry \\(i + 1\\) (key)\nCrucial HW2(!) invariant: \\(\\textsf{Up-To-Date-Favorite}(1,i-1)\\) true when entry \\(i + 1\\) (next result in dataset) arrives\n\\(\\implies\\) Efficiency of obtaining favorite style guaranteed to be constant-time, \\(\\overline{O}(1)\\)!\nOtherwise, would be \\(\\overline{O}(n) &gt; \\overline{O}(1)\\) (linear approach) or at best \\(\\overline{O}(\\log_2(n)) &gt; \\overline{O}(1)\\) (divide-and-conquer)",
     "crumbs": [
       "Week 4: {{< var w04.date-md >}}"
     ]
@@ -3070,7 +3100,7 @@
     "href": "w04/index.html#back-to-the-price-list",
     "title": "Week 4: Data Structures from Scratch with OOP",
     "section": "Back to the Price List",
-    "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, and then write down (item, price) pairs in whatever slot item hashes to",
+    "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, then write down (item, price) pairs in whatever slot item hashes to",
     "crumbs": [
       "Week 4: {{< var w04.date-md >}}"
     ]
@@ -3126,6 +3156,67 @@
     ]
   },
   {
+    "objectID": "w04/index.html#appendix-merge-sort-runtime-analysis",
+    "href": "w04/index.html#appendix-merge-sort-runtime-analysis",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "Appendix: Merge Sort Runtime Analysis",
+    "text": "Appendix: Merge Sort Runtime Analysis\n\nHard way: re-do the line-by-line analysis we did for Insertion-Sort 😣 Easy way: stand on shoulders of giants!\nUsing a famous theorem (the Master Theorem): Given a recurrence \\(T(n) = aT(n/b) + f(n)\\), compute its:\n\nWatershed function \\(W(n) = n^{\\log_b(a)}\\) and\nDriving function \\(D(n) = f(n)\\)\n\nThe Master Theorem gives closed-form asymptotic solution for \\(T(n)\\), split into three cases:\n(1) \\(W(n)\\) grows faster than \\(D(n)\\), (2) grows at same rate as \\(D(n)\\), or (3) grows slower than \\(D(n)\\)",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#bounding-the-runtime-of-merge-sort",
+    "href": "w04/index.html#bounding-the-runtime-of-merge-sort",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "Bounding the Runtime of Merge Sort",
+    "text": "Bounding the Runtime of Merge Sort\n\nHow about Merge-Sort? \\(T(n) = 2T(n/2) + \\Theta(n)\\)\n\n\\(a = b = 2\\), \\(W(n) = n^{\\log_2(2)} = n\\), \\(D(n) = \\Theta(n)\\)\n\n\\(W(n)\\) and \\(D(n)\\) grow at same rate \\(\\implies\\) Case 21:\n\n\n\n\n\n\n\nNoteApplying the Master Theorem When \\(W(n) = \\Theta(D(n))\\) (Case 2)\n\n\n\n\nIs there a \\(k \\geq 0\\) satisfying \\(D(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\)?\nIf so, your solution is \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\)\n\n\n\n\nMerge-Sort: \\(k = 0\\) works! \\(\\Theta(n^{\\log_2(2)}\\log_2^0(n)) = \\Theta(n)\\)\nThus \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n)) = \\boxed{\\Theta(n\\log_2n)}\\) 😎",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#references",
+    "href": "w04/index.html#references",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "References",
+    "text": "References\n\n\nCormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. Introduction To Algorithms. MIT Press.",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/index.html#footnotes",
+    "href": "w04/index.html#footnotes",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSee appendix slide for all 3 cases, if you’re some kind of masochist↩︎",
+    "crumbs": [
+      "Week 4: {{< var w04.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w04/slides.html#merging-two-sorted-lists-in-overlineon-time",
+    "href": "w04/slides.html#merging-two-sorted-lists-in-overlineon-time",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "Merging Two Sorted Lists in \\(\\overline{O}(n)\\) Time",
+    "text": "Merging Two Sorted Lists in \\(\\overline{O}(n)\\) Time\n\n\n\n\n\n\n\nFrom Cormen et al. (2001), pg. 37"
+  },
+  {
+    "objectID": "w04/slides.html#merge-sort-walkthrough-the-merge-procedure",
+    "href": "w04/slides.html#merge-sort-walkthrough-the-merge-procedure",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "Merge Sort Walkthrough: The Merge Procedure",
+    "text": "Merge Sort Walkthrough: The Merge Procedure\n\n\nYour browser does not support iframes."
+  },
+  {
+    "objectID": "w04/slides.html#complexity-analysis",
+    "href": "w04/slides.html#complexity-analysis",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "Complexity Analysis",
+    "text": "Complexity Analysis\n\nInteractive visualization!\nMore in-depth: see Appendix Slides →"
+  },
+  {
     "objectID": "w04/slides.html#breaking-a-problem-into-interacting-parts",
     "href": "w04/slides.html#breaking-a-problem-into-interacting-parts",
     "title": "Week 4: Data Structures from Scratch with OOP",
@@ -3158,7 +3249,7 @@
     "href": "w04/slides.html#public-protected-private-attributes-in-python",
     "title": "Week 4: Data Structures from Scratch with OOP",
     "section": "Public, Protected, Private Attributes in Python",
-    "text": "Public, Protected, Private Attributes in Python\n\n[Public (default)] No underscores: public_var\n[Protected] One underscore: _protected_var\n[Private] Two underscores: __private_var\n\n\n\n\n\nCode\nclass MySecretInfo:\n  __the_info = \"I love Carly Rae Jepsen\"\n\ninfo_obj = MySecretInfo()\ninfo_obj.__the_info\n\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\nCell In[1], line 5\n      2   __the_info = \"I love Carly Rae Jepsen\"\n      4 info_obj = MySecretInfo()\n----&gt; 5 info_obj.__the_info\n\nAttributeError: 'MySecretInfo' object has no attribute '__the_info'\n\n\n\nGuess we can’t access it then, right? 😮‍💨\n\n\n\nCode\ninfo_obj._MySecretInfo__the_info\n\n\n'I love Carly Rae Jepsen'\n\n\n\nNOO MY SECRET!!! 😭\nPls don’t tell anyone"
+    "text": "Public, Protected, Private Attributes in Python\n\n[Public (default)] No underscores: public_var\n[Protected] One underscore: _protected_var\n[Private] Two underscores: __private_var\n\n\n\n\n\nCode\nclass MySecretInfo:\n  __the_info = \"I love Carly Rae Jepsen\"\n\ninfo_obj = MySecretInfo()\ninfo_obj.__the_info\n\n\n\n---------------------------------------------------------------------------\nAttributeError                            Traceback (most recent call last)\nCell In[1], line 5\n      2   __the_info = \"I love Carly Rae Jepsen\"\n      4 info_obj = MySecretInfo()\n----&gt; 5 info_obj.__the_info\n\nAttributeError: 'MySecretInfo' object has no attribute '__the_info'\n\n\n\nGuess we can’t access it then, right? 😮‍💨\n\n\n\nCode\ninfo_obj._MySecretInfo__the_info\n\n\n'I love Carly Rae Jepsen'\n\n\n\nNOO MY SECRET!!! 😭"
   },
   {
     "objectID": "w04/slides.html#key-oop-features-3-4-inheritance-polymorphism",
@@ -3273,11 +3364,11 @@
     "text": "Visualizing BinarySearchTree\n\n\n\nCode\nfrom hw2 import BinarySearchTree\nbst = BinarySearchTree()\nitem1 = InventoryItem('Mango', 50)\nbst.add(item1)\nitem2 = InventoryItem('Pickle', 60)\nbst.add(item2)\nitem3 = InventoryItem('Artichoke', 55)\nbst.add(item3)\nitem5 = InventoryItem('Banana', 123)\nbst.add(item5)\nitem6 = InventoryItem('Aardvark', 11)\nbst.add(item6)\nHTML(visualize(bst))"
   },
   {
-    "objectID": "w04/slides.html#so-then-why-is-this-a-whole-dsan-class",
-    "href": "w04/slides.html#so-then-why-is-this-a-whole-dsan-class",
+    "objectID": "w04/slides.html#so-then-why-is-this-a-whole-class",
+    "href": "w04/slides.html#so-then-why-is-this-a-whole-class",
     "title": "Week 4: Data Structures from Scratch with OOP",
-    "section": "So Then… Why Is This a Whole DSAN Class?",
-    "text": "So Then… Why Is This a Whole DSAN Class?\n\nThe core structures are identical, but we can optimize different goals (efficient insertion, sorting, retrieval, deletion, …) by changing the invariants maintained by the algorithms internal to our structure\nCrucial Insertion-Sort invariant: \\(\\textsf{Sorted}(1,i)\\) true when we move to entry \\(i + 1\\) (key)\nCrucial HW2(!) invariant: \\(\\textsf{Up-To-Date-Favorite}(1,i-1)\\) true when entry \\(i + 1\\) (next result in dataset) arrives\n\\(\\implies\\) Efficiency of obtaining favorite style guaranteed to be constant-time, \\(\\overline{O}(1)\\)!\nOtherwise, would be \\(\\overline{O}(n) &gt; \\overline{O}(1)\\) (linear approach) or at best \\(\\overline{O}(\\log_2(n)) &gt; \\overline{O}(1)\\) (divide-and-conquer)"
+    "section": "So Then… Why Is This a Whole Class?",
+    "text": "So Then… Why Is This a Whole Class?\n\nThe core structures are identical, but we can optimize different goals (efficient insertion, sorting, retrieval, deletion, …) by changing the invariants maintained by the algorithms internal to our structure\nCrucial Insertion-Sort invariant: \\(\\textsf{Sorted}(1,i)\\) true when we move to entry \\(i + 1\\) (key)\nCrucial HW2(!) invariant: \\(\\textsf{Up-To-Date-Favorite}(1,i-1)\\) true when entry \\(i + 1\\) (next result in dataset) arrives\n\\(\\implies\\) Efficiency of obtaining favorite style guaranteed to be constant-time, \\(\\overline{O}(1)\\)!\nOtherwise, would be \\(\\overline{O}(n) &gt; \\overline{O}(1)\\) (linear approach) or at best \\(\\overline{O}(\\log_2(n)) &gt; \\overline{O}(1)\\) (divide-and-conquer)"
   },
   {
     "objectID": "w04/slides.html#our-list-of-item-price-pairs",
@@ -3305,7 +3396,7 @@
     "href": "w04/slides.html#back-to-the-price-list",
     "title": "Week 4: Data Structures from Scratch with OOP",
     "section": "Back to the Price List",
-    "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, and then write down (item, price) pairs in whatever slot item hashes to"
+    "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, then write down (item, price) pairs in whatever slot item hashes to"
   },
   {
     "objectID": "w04/slides.html#the-importance-of-differentiating-operations-insertion-vs.-lookup",
@@ -3341,6 +3432,27 @@
     "title": "Week 4: Data Structures from Scratch with OOP",
     "section": "Taking This Idea and Running With It",
     "text": "Taking This Idea and Running With It\n\nNext week we’ll look at BinarySearchTree (BST)\nSince it’s just a glorified LinkedList, we’ll be able to take our HashMap from today and “drop in” the BST to play the role the LinkedList is playing right now\nIf collision, we’ll create a BST with its \\(\\overline{O}(\\log(n))\\) operations, rather than a LinkedList with its \\(\\overline{O}(n)\\) operations\n\\(\\implies\\) HashMap will go from:\n\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(n)\\) worst-case to\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(\\log_2(n))\\) worst-case!"
+  },
+  {
+    "objectID": "w04/slides.html#appendix-merge-sort-runtime-analysis",
+    "href": "w04/slides.html#appendix-merge-sort-runtime-analysis",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "Appendix: Merge Sort Runtime Analysis",
+    "text": "Appendix: Merge Sort Runtime Analysis\n\nHard way: re-do the line-by-line analysis we did for Insertion-Sort 😣 Easy way: stand on shoulders of giants!\nUsing a famous theorem (the Master Theorem): Given a recurrence \\(T(n) = aT(n/b) + f(n)\\), compute its:\n\nWatershed function \\(W(n) = n^{\\log_b(a)}\\) and\nDriving function \\(D(n) = f(n)\\)\n\nThe Master Theorem gives closed-form asymptotic solution for \\(T(n)\\), split into three cases:\n(1) \\(W(n)\\) grows faster than \\(D(n)\\), (2) grows at same rate as \\(D(n)\\), or (3) grows slower than \\(D(n)\\)"
+  },
+  {
+    "objectID": "w04/slides.html#bounding-the-runtime-of-merge-sort",
+    "href": "w04/slides.html#bounding-the-runtime-of-merge-sort",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "Bounding the Runtime of Merge Sort",
+    "text": "Bounding the Runtime of Merge Sort\n\nHow about Merge-Sort? \\(T(n) = 2T(n/2) + \\Theta(n)\\)\n\n\\(a = b = 2\\), \\(W(n) = n^{\\log_2(2)} = n\\), \\(D(n) = \\Theta(n)\\)\n\n\\(W(n)\\) and \\(D(n)\\) grow at same rate \\(\\implies\\) Case 21:\n\n\n\n\n\nApplying the Master Theorem When \\(W(n) = \\Theta(D(n))\\) (Case 2)\n\n\n\nIs there a \\(k \\geq 0\\) satisfying \\(D(n) = \\Theta(n^{\\log_b(a)}\\log_2^k(n))\\)?\nIf so, your solution is \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n))\\)\n\n\n\n\n\n\nMerge-Sort: \\(k = 0\\) works! \\(\\Theta(n^{\\log_2(2)}\\log_2^0(n)) = \\Theta(n)\\)\nThus \\(T(n) = \\Theta(n^{\\log_b(a)}\\log_2^{k+1}(n)) = \\boxed{\\Theta(n\\log_2n)}\\) 😎\n\nSee appendix slide for all 3 cases, if you’re some kind of masochist"
+  },
+  {
+    "objectID": "w04/slides.html#references",
+    "href": "w04/slides.html#references",
+    "title": "Week 4: Data Structures from Scratch with OOP",
+    "section": "References",
+    "text": "References\n\n\nCormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. Introduction To Algorithms. MIT Press."
   },
   {
     "objectID": "w05/index.html",
@@ -3978,7 +4090,7 @@
     "href": "w11/index.html#in-action",
     "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9903 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6610 s",
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9953 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.5771 s",
     "crumbs": [
       "Week 11: {{< var w11.date-md >}}"
     ]
@@ -4198,7 +4310,7 @@
     "href": "w11/slides.html#in-action",
     "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9846 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6558 s"
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9797 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.5924 s"
   },
   {
     "objectID": "w11/slides.html#what-happens-when-not-embarrassingly-parallel",

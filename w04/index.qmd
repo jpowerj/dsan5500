@@ -5,6 +5,7 @@ date: 2026-01-29
 date-format: full
 author: "Jeff Jacobs"
 institute: "[`jj1088@georgetown.edu`](mailto:jj1088@georgetown.edu)"
+bibliography: "../_DSAN5500.bib"
 lecnum: 4
 jupyter: python3
 categories:
@@ -23,8 +24,7 @@ format:
     link-external-newwindow: true
     link-external-icon: true
     include-in-header:
-      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'>"
-    css: "../dsan-globals/jjstyles.css"
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
     simplemenu:
       flat: true
       barhtml:
@@ -54,13 +54,31 @@ Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 7:00pm | [Object-Oriented Programming (OOP) &rarr;](#object-oriented-programming) |
-| | 7:00pm | 7:30pm | [`LinkedList`: Lists from Scratch &rarr;](#core-data-structure-linkedlist) |
-| | 7:30pm | 8:00pm | [Other Data Structures = Fancy Linked Lists &rarr;](#onwards-and-upwards-fancier-algorithms) |
+| **Lecture** | 6:30pm | 7:00pm | [[Merge-Sort]{.alg} &rarr;](#merging-two-sorted-lists-in-o(n-time)) |
+| | 7:00pm | 7:30pm | [Object-Oriented Programming (OOP) &rarr;](#object-oriented-programming) |
+| | 7:30pm | 8:00pm | [`LinkedList`: Lists from Scratch &rarr;](#core-data-structure-linkedlist) |
 | **Break!** | 8:00pm | 8:10pm | |
-| | 8:10pm | 9:00pm | [`HashTable`: Logarithmic to *Constant* Efficiency 🤯 &rarr;](#hash-tables) |
+| | 8:10pm | 8:30pm | [Other Data Structures = Fancy Linked Lists &rarr;](#onwards-and-upwards-fancier-algorithms) |
+| | 8:30pm | 9:00pm | [`HashTable`: Logarithmic to *Constant* Efficiency 🤯 &rarr;](#hash-tables) |
 
 : {tbl-colwidths="[12,12,12,64]"}
+
+## Merging Two Sorted Lists in $\overline{O}(n)$ Time {.smaller .title-11 .crunch-figcaption .crunch-quarto-figure data-name="Merge Sort"}
+
+![From @cormen_introduction_2001, pg. 37](images/merge.svg){.lightbox fig-align="center"}
+
+## Merge Sort Walkthrough: The [Merge]{.alg} Procedure {.smaller .crunch-title .title-10 .crunch-p}
+
+<center>
+
+<iframe id="mergesortPRO_iframe" aria-label="mergesortPRO" src="https://opendsa-server.cs.vt.edu/ODSA/AV/Sorting/mergesortPRO.html?localMode=true&amp;module=Mergesort&amp;selfLoggingEnabled=false&amp;JXOP-debug=true&amp;JOP-lang=en&amp;JXOP-code=java&amp;JXOP-feedback=continuous&amp;JXOP-fixmode=fix&amp;scoringServerEnabled=false&amp;loggingServerEnabled=false&amp;threshold=0.9&amp;points=2.0&amp;required=False" class="crunch-p" height="600" data-showhide="show" style="width: 800px; height: 600px;">Your browser does not support iframes.</iframe>
+
+</center>
+
+## Complexity Analysis {.crunch-title .title-12 .text-90}
+
+* [Interactive visualization!](https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/Mergesort.html)
+* More in-depth: see [Appendix Slides &rarr;](#appendix-merge-sort-runtime-analysis)
 
 # Object-Oriented Programming {data-stack-name="OOP"}
 
@@ -91,7 +109,7 @@ Today's Planned Schedule:
 * Relevant data and functions can be "public", irrelevant internal data and functions "private"
 * (Like with *type hints*), Python doesn't **enforce** this distinction, **but** (unlike with *type hints*) most libraries **do** separate public from private by a **variable-naming convention**...
 
-## Public, Protected, Private Attributes in Python {.smaller .crunch-title .title-11 .cols-clip}
+## Public, Protected, Private Attributes in Python {.smaller .crunch-title .title-10 .cols-clip}
 
 * [**Public** (default)] No underscores: `public_var`
 * [**Protected**] One underscore: `_protected_var`
@@ -121,12 +139,11 @@ info_obj._MySecretInfo__the_info
 ```
 
 * NOO MY SECRET!!! 😭
-* Pls don't tell anyone
 
 :::
 :::
 
-## Key OOP Features #3-4: Inheritance, Polymorphism {.crunch-title .title-07 .crunch-ul}
+## Key OOP Features #3-4: Inheritance, Polymorphism {.crunch-title .title-07 .crunch-ul .text-95}
 
 * Better explained in **diagrams** than **words** (next 10 slides!), but we can get a sense by thinking about their **etymology**:
 * **"Inheritance"** comes from **"heir"**, like "heir to the throne"
@@ -320,7 +337,7 @@ print(my_bookstore.get_inventory())
 
 ![Edit in [nomnoml](https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7CnumDoors%3A%20int%3BnumWheels%3A%20int%3Bbalanced%3A%20bool%3B%7CturnOn()%3Baccelerate()%3Bbrake()%3BturnOff()%3B%5D%0A%5B%3Cabstract%3E%20UnbalancedVehicle%7Cbalanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20BalancedVehicle%7Cbalanced%20%3D%20true%3B%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3B%5D%0A%0A%5BVehicle%5D--%3A%3E%5BUnbalancedVehicle%5D%0A%5BUnbalancedVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BBalancedVehicle%5D%0A%5BBalancedVehicle%5D--%3A%3E%5BCar%5D%0A%5BBalancedVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A)](images/vehicle-fancy.svg){fig-align="center"}
 
-## Design Choices {.smaller .crunch-title .crunch-details .crunch-ul .code-90}
+## Design Choices {.smaller .crunch-title .crunch-details .crunch-ul .code-90 .text-60}
 
 * Goal is **encapsulation**: which **objects** should have which **properties**/**methods**?
 * Example: Fiction vs. Non-Fiction. How important is this distinction **for your use case?**
@@ -421,7 +438,7 @@ print(micromotives)
 
 # Core Data Structure: `LinkedList` {data-stack-name="LinkedList"}
 
-## Looking Under the Hood of a Data Structure {.crunch-title .title-08 .inline-90}
+## Looking Under the Hood of a Data Structure {.crunch-title .title-08 .inline-90 .text-95}
 
 * Last week we saw the **math** for why we can "abstract away from" the details of how a particular language works
 * We want to understand these structures **independently** of the specifics of their implementation in Python (for now)
@@ -678,7 +695,7 @@ HTML(visualize_ll(ll))
 
 # Onwards and Upwards: Fancier Algorithms {data-stack-name="FancyLinkedList"}
 
-## LinkedList: Foundation for Most(?) Data Structures! {.smaller .crunch-title .title-10 .crunch-quarto-layout-panel .crunch-img .crunch-figures .cols-va}
+## LinkedList: Foundation for Most(?) Data Structures! {.smaller .crunch-title .title-09 .crunch-quarto-layout-panel .crunch-img .crunch-figures .cols-va}
 
 ::: {layout="[1,3]" layout-valign="center"}
 
@@ -791,7 +808,7 @@ bst.add(item6)
 HTML(visualize(bst))
 ```
 
-## So Then... Why Is This a Whole DSAN Class? {.smaller .crunch-title .title-12}
+## So Then... Why Is This a Whole Class? {.smaller .crunch-title .title-12}
 
 * The **core structures** are identical, but we can optimize **different goals** (efficient insertion, sorting, retrieval, deletion, ...) by changing the **invariants** maintained by the algorithms **internal to** our structure
 * Crucial [Insertion-Sort]{.alg} invariant: $\textsf{Sorted}(1,i)$ true when we move to entry $i + 1$ (`key`)
@@ -801,11 +818,11 @@ HTML(visualize(bst))
 
 # Hash Tables {data-stack-name="HashTable"}
 
-* *(Spoiler alert, so you know I'm not lying to you: this is a **LinkedList** with some **additional structure!**)
+* *(Spoiler alert, so you know I'm not lying to you: this is a **LinkedList** with some **additional structure!**)*
 * You just got hired as a **cashier** (Safeway cashiering alum myself 🫡)
 * The scanner is broken (spoiler #2: the scanner uses a hash table), so you start writing down **items** along with their **prices**, one-by-one, as items come in...
 
-## Our List of (Item, Price) Pairs {.crunch-title .crunch-details .crunch-ul .small-summary}
+## Our List of (Item, Price) Pairs {.crunch-title .crunch-details .crunch-ul .small-summary .text-90}
 
 ```{python}
 price_list = []
@@ -825,7 +842,7 @@ price_list
 * Sounds like I'm joking or saying *"what if we had a billion $ and infinite aura and we could fly and walk through walls"*
 * And yet, through the magic of math and computer science, there are concrete **hashing algorithms** which ensure (in a mathematically-provable way!) "almost certain" $\overline{O}(1)$ lookup time
 
-## Mathematical Strategy of Oracles {.crunch-title .crunch-math .math-75 .crunch-ul}
+## Mathematical Strategy of Oracles {.crunch-title .crunch-math .math-75 .crunch-ul .text-90}
 
 * We'll use a **concrete**, **simplified hash function** to illustrate
 * Mathematically we'll be able to get something like
@@ -850,9 +867,9 @@ h(\texttt{x}) = \texttt{x[0]}
 $$
 
 * `h('Banana') = 'B'`, `h('Monkey') = 'M'`
-* With this function in hand, we can create a length-26 **array**, one slot for each letter in alphabet, and then **write down (item, price) pairs** in **whatever slot `item` hashes to**
+* With this function in hand, we can create a length-26 **array**, one slot for each letter in alphabet, then **write down (item, price) pairs** in **whatever slot `item` hashes to**
 
-## The Importance of Differentiating Operations: *Insertion* vs. *Lookup*
+## The Importance of Differentiating Operations: *Insertion* vs. *Lookup* {.text-95}
 
 * So far, we have $\overline{O}(1)$ **insertion** via hashing
 * We also get $\overline{O}(1)$ **lookup!**
@@ -866,20 +883,20 @@ $$
 * But then we go to the `B` slot and see that `(Bananas, 10)` is already there!!! Wtf do we do here... don't panic!
 * The answer? We open our HW2 from DSAN 5500 and remember that we have our lovely friend the `LinkedList` that we can use whenever and however we want!
 
-## Arrays vs. Linked Lists
+## Arrays vs. Linked Lists {.crunch-title}
 
 * Jeff is hiding something here... Why jump to `LinkedList`? Why not just... another length-26 array, for example?
 * For this we open up our Week 1 slides and remember the **stack** vs. **heap** distinction: we **know** how many letters in the alphabet, we **don't know** how many items starting with `B` (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)
 * Terminology for this kind of "hybrid" data structure: `HashTable` is an `Array` that **"degenerates into"** a `LinkedList` (when there are **collisions**)
 
-## Look How Far We Came! {.crunch-title .crunch-ul .inline-90 .code-90}
+## Look How Far We Came! {.crunch-title .crunch-ul .inline-90 .code-90 .text-95}
 
 * Beginning of class: Only structure we knew allowing insertion (`LinkedList`) was $\overline{O}(n)$ for everythihg
 * End of class: New structure where suddenly everything is $\overline{O}(1)$, except in "unlucky" cases, in which it partially **"degenerates"** into a `LinkedList`
 * $\implies$ The "inevitable" $\overline{O}(n)$ runtime has transformed into the unlucky worst-case **upper bound**
 * $\implies$ By taking **core** data structures/algorithms from your toolkit, you can "piece together" **hybrid structures** whose *whole (runtime) is better than the sum of its parts*
 
-## Taking This Idea and Running With It {.crunch-title .crunch-ul .code-90 .inline-90}
+## Taking This Idea and Running With It {.crunch-title .title-10 .crunch-ul .code-90 .inline-90 .text-90}
 
 * Next week we'll look at `BinarySearchTree` (`BST`)
 * Since it's just a glorified `LinkedList`, we'll be able to take our `HashMap` from today and "drop in" the `BST` to play the role the `LinkedList` is playing right now
@@ -888,3 +905,34 @@ $$
   * $\overline{O}(1)$ best-case but $\overline{O}(n)$ worst-case to
   * $\overline{O}(1)$ best-case but $\overline{O}(\log_2(n))$ worst-case!
 
+## Appendix: Merge Sort Runtime Analysis
+
+* Hard way: re-do the line-by-line analysis we did for <span class='alg'>Insertion-Sort</span> 😣 Easy way: stand on shoulders of giants!
+* Using a famous theorem (the **Master Theorem**): Given a recurrence $T(n) = aT(n/b) + f(n)$, compute its:
+  * **Watershed function** $W(n) = n^{\log_b(a)}$ and
+  * **Driving function** $D(n) = f(n)$
+* The Master Theorem gives **closed-form** asymptotic solution for $T(n)$, split into three cases:
+* **(1)** $W(n)$ grows **faster** than $D(n)$, **(2)** grows at **same rate** as $D(n)$, or **(3)** grows **slower** than $D(n)$
+
+## Bounding the Runtime of Merge Sort {.crunch-title .title-09 .crunch-ul .crunch-callout .crunch-footnotes}
+
+* How about <span class='alg'>Merge-Sort</span>? $T(n) = 2T(n/2) + \Theta(n)$
+  * $a = b = 2$, $W(n) = n^{\log_2(2)} = n$, $D(n) = \Theta(n)$
+* $W(n)$ and $D(n)$ grow at **same rate** $\implies$ *Case 2*[^full]:
+
+::: {.callout-note icon="false" title="Applying the Master Theorem When $W(n) = \Theta(D(n))$ (Case 2)"}
+
+1. Is there a $k \geq 0$ satisfying $D(n) = \Theta(n^{\log_b(a)}\log_2^k(n))$?
+2. If so, your solution is $T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n))$
+
+:::
+
+* <span class='alg'>Merge-Sort</span>: $k = 0$ works! $\Theta(n^{\log_2(2)}\log_2^0(n)) = \Theta(n)$
+* Thus $T(n) = \Theta(n^{\log_b(a)}\log_2^{k+1}(n)) = \boxed{\Theta(n\log_2n)}$ 😎
+
+[^full]: See [appendix slide](#appendix-the-full-master-theorem) for all 3 cases, if you're some kind of masochist
+
+## References
+
+::: {#refs}
+:::
