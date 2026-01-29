@@ -905,7 +905,7 @@ $$
   * $\overline{O}(1)$ best-case but $\overline{O}(n)$ worst-case to
   * $\overline{O}(1)$ best-case but $\overline{O}(\log_2(n))$ worst-case!
 
-## Appendix: Merge Sort Runtime Analysis
+## Appendix: Merge Sort Runtime Analysis {.title-09}
 
 * Hard way: re-do the line-by-line analysis we did for <span class='alg'>Insertion-Sort</span> 😣 Easy way: stand on shoulders of giants!
 * Using a famous theorem (the **Master Theorem**): Given a recurrence $T(n) = aT(n/b) + f(n)$, compute its:
