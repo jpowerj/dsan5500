@@ -2085,7 +2085,7 @@
     "href": "w03/index.html#the-figure-you-can-make-in-your-head-all-semester",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "The Figure You Can Make In Your Head All Semester",
-    "text": "The Figure You Can Make In Your Head All Semester\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nn_vals = [np.power(10, k) for k in np.arange(1, 2.75, 0.25)]\nruntime_df = pd.DataFrame({'$n$': n_vals})\nruntime_df['$n^2 + 50n$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 50*x)\nruntime_df['$n^2 + 10000$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 10000)\nruntime_df['$\\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.log(x))\nruntime_df['n'] = runtime_df['$n$'].copy()\nruntime_df['$n\\log(n)$'] = runtime_df['$n$'].apply(lambda x: x * np.log(x))\nruntime_df['$n^2$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2))\nruntime_df['$n^2\\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.power(x,2) * np.log(x))\nruntime_df['$n^3$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3))\nruntime_df['$n^3logn$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3) * np.log(x))\n# Get the max values, for labeling the ends of lines\nmax_vals = runtime_df.max().to_dict()\nplot_df = runtime_df.melt(id_vars=['$n$'])\n#print(plot_df)\nstyle_map = {col: '' if (col == '$n^2 + 50n$') or (col == '$n^2 + 10000$') else (2,1) for col in runtime_df.columns}\nfig, ax = plt.subplots(figsize=(11,5))\nsns.lineplot(plot_df, x='$n$', y='value', hue='variable', style='variable', dashes=style_map)\n#plt.xscale('log')\nplt.yscale('log')\n# extract the existing handles and labels\nh, l = ax.get_legend_handles_labels()\n# slice the appropriate section of l and h to include in the legend\nax.legend(h[0:2], l[0:2])\nfor label, val in max_vals.items():\n  if (label == '$n$') or (label == '$n^2 + 50n$') or (label == '$n^2 + 10000$'):\n    continue\n  if 'logn' in label:\n    label = label.replace('logn', r'\\log(n)')\n  ax.text(x = max_vals['$n$'] + 2, y = val, s=label, va='center')\n# Hide the right and top spines\nax.spines[['right', 'top']].set_visible(False)\nplt.show()\n\n\n&lt;&gt;:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_7089/1423556624.py:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_7089/1423556624.py:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_7089/1423556624.py:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nFor low values of \\(n\\), \\(n^2 + 10000\\) looks “far away from” \\(n^2\\)\n…But we care about how the algorithm scales with input size!\nTakeaway: As \\(n \\rightarrow \\infty\\), highest-degree terms dominate!",
+    "text": "The Figure You Can Make In Your Head All Semester\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nn_vals = [np.power(10, k) for k in np.arange(1, 2.75, 0.25)]\nruntime_df = pd.DataFrame({'$n$': n_vals})\nruntime_df['$n^2 + 50n$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 50*x)\nruntime_df['$n^2 + 10000$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 10000)\nruntime_df['$\\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.log(x))\nruntime_df['n'] = runtime_df['$n$'].copy()\nruntime_df['$n\\log(n)$'] = runtime_df['$n$'].apply(lambda x: x * np.log(x))\nruntime_df['$n^2$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2))\nruntime_df['$n^2\\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.power(x,2) * np.log(x))\nruntime_df['$n^3$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3))\nruntime_df['$n^3logn$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3) * np.log(x))\n# Get the max values, for labeling the ends of lines\nmax_vals = runtime_df.max().to_dict()\nplot_df = runtime_df.melt(id_vars=['$n$'])\n#print(plot_df)\nstyle_map = {col: '' if (col == '$n^2 + 50n$') or (col == '$n^2 + 10000$') else (2,1) for col in runtime_df.columns}\nfig, ax = plt.subplots(figsize=(11,5))\nsns.lineplot(plot_df, x='$n$', y='value', hue='variable', style='variable', dashes=style_map)\n#plt.xscale('log')\nplt.yscale('log')\n# extract the existing handles and labels\nh, l = ax.get_legend_handles_labels()\n# slice the appropriate section of l and h to include in the legend\nax.legend(h[0:2], l[0:2])\nfor label, val in max_vals.items():\n  if (label == '$n$') or (label == '$n^2 + 50n$') or (label == '$n^2 + 10000$'):\n    continue\n  if 'logn' in label:\n    label = label.replace('logn', r'\\log(n)')\n  ax.text(x = max_vals['$n$'] + 2, y = val, s=label, va='center')\n# Hide the right and top spines\nax.spines[['right', 'top']].set_visible(False)\nplt.show()\n\n\n&lt;&gt;:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_1720/1423556624.py:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_1720/1423556624.py:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_1720/1423556624.py:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nFor low values of \\(n\\), \\(n^2 + 10000\\) looks “far away from” \\(n^2\\)\n…But we care about how the algorithm scales with input size!\nTakeaway: As \\(n \\rightarrow \\infty\\), highest-degree terms dominate!",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2345,7 +2345,7 @@
     "href": "w03/index.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Gluten Free', 'Vegan'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'None', 'Gluten Free', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Vegan', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Vegan', 'Gluten Free', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2365,7 +2365,7 @@
     "href": "w03/index.html#complexity-with-respect-to-a-structure",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Complexity With Respect To A Structure",
-    "text": "Complexity With Respect To A Structure\n\nLast week: analyzing complexity of an algorithm (no broader context): Insertion-Sort\nThis week: analyzing complexity of a structure as a collection of variables + algorithms\nExample: tuple\n\nVariables: Constant N, pre-allocated list with N slots\nAlgorithms: Constant-time Get-Item-At-Index 🤯, but no Insert-New 😔\n\nOOP: Design pattern for “organizing” data and algorithms into structures\n\n\nCode\nclass MyNTuple():\n  def __init__(self, N, item_list):\n    if len(item_list) != N:\n      raise Exception(\"Must have exactly N elements\")\n    self.N = N\n    self.contents = item_list\n  def item_at_index(self, i):\n    return self.contents[i]\n\njeffs_location = MyNTuple(2, [-40, 40])\nprint(jeffs_location.item_at_index(0))\nprint(f\"{jeffs_location} 🧐\")\n\n\n-40\n&lt;__main__.MyNTuple object at 0x158fa6510&gt; 🧐",
+    "text": "Complexity With Respect To A Structure\n\nLast week: analyzing complexity of an algorithm (no broader context): Insertion-Sort\nThis week: analyzing complexity of a structure as a collection of variables + algorithms\nExample: tuple\n\nVariables: Constant N, pre-allocated list with N slots\nAlgorithms: Constant-time Get-Item-At-Index 🤯, but no Insert-New 😔\n\nOOP: Design pattern for “organizing” data and algorithms into structures\n\n\nCode\nclass MyNTuple():\n  def __init__(self, N, item_list):\n    if len(item_list) != N:\n      raise Exception(\"Must have exactly N elements\")\n    self.N = N\n    self.contents = item_list\n  def item_at_index(self, i):\n    return self.contents[i]\n\njeffs_location = MyNTuple(2, [-40, 40])\nprint(jeffs_location.item_at_index(0))\nprint(f\"{jeffs_location} 🧐\")\n\n\n-40\n&lt;__main__.MyNTuple object at 0x14f532510&gt; 🧐",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2712,7 +2712,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'None', 'Vegan', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'None', 'Vegan'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'Gluten Free', 'None'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'Vegan', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -2726,7 +2726,7 @@
     "href": "w03/slides.html#complexity-with-respect-to-a-structure",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Complexity With Respect To A Structure",
-    "text": "Complexity With Respect To A Structure\n\nLast week: analyzing complexity of an algorithm (no broader context): Insertion-Sort\nThis week: analyzing complexity of a structure as a collection of variables + algorithms\nExample: tuple\n\nVariables: Constant N, pre-allocated list with N slots\nAlgorithms: Constant-time Get-Item-At-Index 🤯, but no Insert-New 😔\n\nOOP: Design pattern for “organizing” data and algorithms into structures\n\n\nCode\nclass MyNTuple():\n  def __init__(self, N, item_list):\n    if len(item_list) != N:\n      raise Exception(\"Must have exactly N elements\")\n    self.N = N\n    self.contents = item_list\n  def item_at_index(self, i):\n    return self.contents[i]\n\njeffs_location = MyNTuple(2, [-40, 40])\nprint(jeffs_location.item_at_index(0))\nprint(f\"{jeffs_location} 🧐\")\n\n\n-40\n&lt;__main__.MyNTuple object at 0x131fa6510&gt; 🧐"
+    "text": "Complexity With Respect To A Structure\n\nLast week: analyzing complexity of an algorithm (no broader context): Insertion-Sort\nThis week: analyzing complexity of a structure as a collection of variables + algorithms\nExample: tuple\n\nVariables: Constant N, pre-allocated list with N slots\nAlgorithms: Constant-time Get-Item-At-Index 🤯, but no Insert-New 😔\n\nOOP: Design pattern for “organizing” data and algorithms into structures\n\n\nCode\nclass MyNTuple():\n  def __init__(self, N, item_list):\n    if len(item_list) != N:\n      raise Exception(\"Must have exactly N elements\")\n    self.N = N\n    self.contents = item_list\n  def item_at_index(self, i):\n    return self.contents[i]\n\njeffs_location = MyNTuple(2, [-40, 40])\nprint(jeffs_location.item_at_index(0))\nprint(f\"{jeffs_location} 🧐\")\n\n\n-40\n&lt;__main__.MyNTuple object at 0x158faa510&gt; 🧐"
   },
   {
     "objectID": "w03/slides.html#looking-under-the-hood-of-a-data-structure",
@@ -3465,6 +3465,146 @@
     ]
   },
   {
+    "objectID": "w05/index.html#the-intuition",
+    "href": "w05/index.html#the-intuition",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "The Intuition",
+    "text": "The Intuition\n(What I should have done on the board)\n\n\n\n\n\n\n\\(\\Rightarrow \\displaystyle\\sum_{i=1}^{6} = \\frac{6(6+1)}{2}\\) …but can we infer \\(\\displaystyle \\sum_{i=1}^{n} = \\frac{n(n+1)}{2}\\)? Not in general!\n(When you do it’s called “Engineer’s induction”… see next slide)\n(Double no in this case since we assumed \\(n\\) even!)\nBut, with only slight increase in complicated-ness, can prove it by induction, which is used in… 95% of algorithm/data structures proofs! (We’ll see why)",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#whats-wrong-with-engineers-induction",
+    "href": "w05/index.html#whats-wrong-with-engineers-induction",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "What’s Wrong With Engineers’ Induction?",
+    "text": "What’s Wrong With Engineers’ Induction?\n\nWhat if I told you, I have a simple polynomial that we can use to infinitely generate prime numbers! \\(\\boxed{f(n) = n^2 + n + 41}\\)… Let’s try it!\n\n\n\n\n\n\n\n\\(n\\)\n\\(f(n)\\)\nPrime?\n\n\n\n\n0\n41\n✅\n\n\n1\n43\n✅\n\n\n2\n47\n✅\n\n\n3\n53\n✅\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n✅\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(n\\)\n\n\n\\(f(n)\\)\n\n\nPrime?\n\n\n\n\n\n\n38\n\n\n1523\n\n\n✅\n\n\n\n\nI can stop checking now right?\n\n\n\n\n39\n\n\n1601\n\n\n✅\n\n\n\n\nSurely I’ve checked enough terms?\n\n\n\n\n40\n\n\n1681\n\n\n❌ \\(1681 = 41 \\times 41\\) 💀\n\n\n\n\nMaybe that’s the only exception?\n\n\n\n\n41\n\n\n1763\n\n\n❌ \\(1763 = 41 \\times 43\\) 💀\n\n\n\n\nMaybe we can get composites \\(n &gt; 41\\)?\n\n\n\n\n42\n\n\n1847\n\n\n✅ 💀💀💀 USELESS!",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#non-engineers-induction",
+    "href": "w05/index.html#non-engineers-induction",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "(Non-Engineers’) Induction!",
+    "text": "(Non-Engineers’) Induction!\n\nGoal: Prove \\(p(n)\\) (“predicate”, evaluates to T/F for given \\(n \\in \\mathbb{Z}^{\\geq 0}\\))\nThe core is literally just: If I know\n\n Base Case: [\\(p\\) is true for \\(n = n_0\\)]\n Inductive Step: [\\(p\\) is true for \\(n\\)] \\(\\implies\\) [\\(p\\) is true for \\(n + 1\\)]\n\nThen I can conclude \\(p(n)\\) true for all \\(n \\geq 1\\)!\n\n\n\nGauss’ Summation Formula: \\(p(n) = \\left[ \\sum_{i=0}^{n}i = \\frac{n(n+1)}{2} \\right]\\)\nBase Case: \\(n_0 = 1\\):\n\n\\[\n\\sum_{i=0}^{1} = 0 + 1 \\overset{?}{=} \\frac{(1)(1+1)}{2} \\iff 1 \\overset{?}{=} \\frac{2}{2} \\iff 1 \\overset{✅}{=} 1\n\\]",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#inductive-step-can-i-infer-n-1-from-n",
+    "href": "w05/index.html#inductive-step-can-i-infer-n-1-from-n",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Inductive Step: Can I Infer \\(n + 1\\) From \\(n\\)?",
+    "text": "Inductive Step: Can I Infer \\(n + 1\\) From \\(n\\)?\n\nAssume \\(p(n)\\), that is, \\(\\displaystyle\\sum_{i=0}^{n}i = \\frac{n(n+1)}{2}\\).\nGoal: Derive \\(p(n + 1)\\), that is, \\(\\displaystyle\\sum_{i=0}^{n+1}i = \\frac{(n+1)(n+2)}{2}\\)…\nStart with LHS term, \\(\\sum_{i=0}^{n+1}i\\):\n\n\\[\n\\begin{align*}\n\\boxed{\\sum_{i=0}^{n+1}i} &= \\underbrace{0 + 1 + 2 + \\cdots + n}_{\\sum_{i=0}^{n}i} + (n+1) = \\underbrace{\\sum_{i=0}^{n}i}_{\\mathclap{\\text{LHS of }p(n)}} + (n+1) \\\\\n&= \\frac{n(n+1)}{2} + (n + 1) = \\frac{n^2 + n}{2} + \\frac{2(n+1)}{2} \\\\\n&= \\frac{n^2 + 3n + 2}{2} = \\boxed{\\frac{(n+1)(n+2)}{2}} \\; ~ ✅\n\\end{align*}\n\\]",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#algorithmicdata-structural-proofs-almost-always-inductive",
+    "href": "w05/index.html#algorithmicdata-structural-proofs-almost-always-inductive",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "(Algorithmic/Data-Structural Proofs Almost Always Inductive!)",
+    "text": "(Algorithmic/Data-Structural Proofs Almost Always Inductive!)\n\n“Direct” proof, in this case, is doable but requires stuff like…\n Break into [Case 1: \\(n\\) even] and [Case 2: \\(n\\) odd]\n In case 2\n\\[\n\\sum_{i=0}^{n}i = 1 + 2 + \\cdots + \\left( \\left\\lceil \\frac{n}{2} \\right\\rceil - 1\\right) + \\left\\lceil \\frac{n}{2} \\right\\rceil + \\left( \\left\\lceil \\frac{n}{2} \\right\\rceil + 1\\right) + \\cdots + (n-1) + n\n\\]\n Need to show (…with induction?) \\(\\left\\lceil \\frac{n}{2} \\right\\rceil = \\begin{cases}\\frac{n}{2} &\\text{if }n\\text{ even} \\\\ \\frac{n+1}{2} &\\text{if }n\\text{ odd}\\end{cases}\\)\nAnd so on…",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#looking-under-the-hood-of-a-data-structure",
+    "href": "w05/index.html#looking-under-the-hood-of-a-data-structure",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Looking Under the Hood of a Data Structure",
+    "text": "Looking Under the Hood of a Data Structure\n\nLast week we saw the math for why we can “abstract away from” the details of how a particular language works\nWe want to understand these structures independently of the specifics of their implementation in Python (for now)\nSo, let’s construct our own simplified versions of the basic structures, and use these simplified versions to get a sense for their efficiency\n\n(The “true” Python versions may be hyper-optimized but, as we’ll see, there are fundamental constraints on runtime, assuming \\(P \\neq NP\\))",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#tuples",
+    "href": "w05/index.html#tuples",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Tuples",
+    "text": "Tuples\n\n\nCode\nclass MyTuple:\n  def __init__(self, thing1, thing2):\n    self.thing1 = thing1\n    self.thing2 = thing2\n\n  def __repr__(self):\n    return f\"({self.thing1}, {self.thing2})\"\n\n  def __str__(self):\n    return self.__repr__()\n\nt1 = MyTuple('a','b')\nt2 = MyTuple(111, 222)\nprint(t1)\nprint(t2)\n\n\n(a, b)\n(111, 222)",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#lists",
+    "href": "w05/index.html#lists",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Lists",
+    "text": "Lists\n\n\nThe list itself just points to a root item:\n\n\nCode\nclass MyList:\n  def __init__(self):\n    self.root = None\n\n  def append(self, new_item):\n    if self.root is None:\n      self.root = MyListItem(new_item)\n    else:\n      self.root.append(new_item)\n\n  def __repr__(self):\n    return self.root.__repr__()\n\n\n\nAn item has contents, pointer to next item:\n\n\nCode\nclass MyListItem:\n  def __init__(self, content):\n    self.content = content\n    self.next = None\n\n  def append(self, new_item):\n    if self.next is None:\n      self.next = MyListItem(new_item)\n    else:\n      self.next.append(new_item)\n\n  def __repr__(self):\n    my_content = self.content\n    return my_content if self.next is None else f\"{my_content}, {self.next.__repr__()}\"\n\n\n\n\n\n\nCode\nusers = MyList()\nusers.append('Jeff')\nusers.append('Alma')\nusers.append('Bo')\nprint(users)\n\n\nJeff, Alma, Bo",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#so-how-many-steps-are-required",
+    "href": "w05/index.html#so-how-many-steps-are-required",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "So, How Many “Steps” Are Required…",
+    "text": "So, How Many “Steps” Are Required…\n\nTo retrieve the first element in a MyTuple?\nTo retrieve the last element in a MyTuple?\nTo retrieve the first element in a MyList?\nTo retrieve the last element in a MyList?",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#how-many-steps",
+    "href": "w05/index.html#how-many-steps",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "How Many Steps?",
+    "text": "How Many Steps?\n\n\nWith a MyTuple:\n\n\nCode\nt1.thing1\n\n\n'a'\n\n\n\\(\\implies\\) 1 step\n\n\nCode\nt1.thing2\n\n\n'b'\n\n\n\\(\\implies\\) 1 step\n\nWith a MyList:\n\n\nCode\nprint(users.root.content)\n\n\nJeff\n\n\n\\(\\implies\\) 1 step\n\n\nCode\ncurrent_node = users.root\nwhile current_node.next is not None:\n  current_node = current_node.next\nprint(current_node.content)\n\n\nBo\n\n\n\\(\\implies\\) (3 steps)\n…But why 3? How many steps if the list contained 5 elements? \\(N\\) elements?",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#visualizing-linkedlists",
+    "href": "w05/index.html#visualizing-linkedlists",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Visualizing LinkedLists",
+    "text": "Visualizing LinkedLists\n\n\n\nCode\nfrom hw2 import LinkedList, InventoryItem\nll = LinkedList()\nitem1 = InventoryItem('Mango', 50)\nll.append(item1)\nitem2 = InventoryItem('Pickle', 60)\nll.append(item2)\nitem3 = InventoryItem('Artichoke', 55)\nll.append(item3)\nitem5 = InventoryItem('Banana', 123)\nll.append(item5)\nitem6 = InventoryItem('Aardvark', 11)\nll.append(item6)\nHTML(visualize_ll(ll))",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#linkedlist-foundation-for-most-data-structures",
+    "href": "w05/index.html#linkedlist-foundation-for-most-data-structures",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "LinkedList: Foundation for Most(?) Data Structures!",
+    "text": "LinkedList: Foundation for Most(?) Data Structures!\n\n\n\n\n\n\n\n\n\n\n\n\nclass LinkedList(BaseModel):\n  root: LinkedListNode | None\n\nclass LinkedListNode(BaseModel):\n  content: object\n  next: LinkedListNode | None\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass BinaryTree(BaseModel):\n  root: BinaryTreeNode | None\n\nclass BinaryTreeNode(BaseModel):\n  content: object\n  left: BinaryTreeNode | None\n  right: BinaryTreeNode | None\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass QuadTree(BaseModel):\n  root: QuadTreeNode | None\n\nclass QuadTreeNode:\n  content: object\n  nw: QuadTreeNode | None\n  ne: QuadTreeNode | None\n  sw: QuadTreeNode | None\n  se: QuadTreeNode | None",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#visualizing-binarysearchtree",
+    "href": "w05/index.html#visualizing-binarysearchtree",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Visualizing BinarySearchTree",
+    "text": "Visualizing BinarySearchTree\n\n\nCode\nfrom hw2 import BinarySearchTree\nbst = BinarySearchTree()\nitem1 = InventoryItem('Mango', 50)\nbst.add(item1)\nitem2 = InventoryItem('Pickle', 60)\nbst.add(item2)\nitem3 = InventoryItem('Artichoke', 55)\nbst.add(item3)\nitem5 = InventoryItem('Banana', 123)\nbst.add(item5)\nitem6 = InventoryItem('Aardvark', 11)\nbst.add(item6)\nHTML(visualize(bst))\n\n\nWarning: node None_0, port f1 unrecognized\nWarning: node None_1, port f1 unrecognized\nWarning: node None_2, port f1 unrecognized\nWarning: node None_3, port f1 unrecognized\nWarning: node None_4, port f1 unrecognized\nWarning: node None_5, port f1 unrecognized",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#so-then-why-is-this-a-whole-class",
+    "href": "w05/index.html#so-then-why-is-this-a-whole-class",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "So Then… Why Is This a Whole Class?",
+    "text": "So Then… Why Is This a Whole Class?\n\nThe core structures are identical, but we can optimize different goals (efficient insertion, sorting, retrieval, deletion, …) by changing the invariants maintained by the algorithms internal to our structure\nCrucial Insertion-Sort invariant: \\(\\textsf{Sorted}(1,i)\\) true when we move to entry \\(i + 1\\) (key)\nCrucial HW2(!) invariant: \\(\\textsf{Up-To-Date-Favorite}(1,i-1)\\) true when entry \\(i + 1\\) (next result in dataset) arrives\n\\(\\implies\\) Efficiency of obtaining favorite style guaranteed to be constant-time, \\(\\overline{O}(1)\\)!\nOtherwise, would be \\(\\overline{O}(n) &gt; \\overline{O}(1)\\) (linear approach) or at best \\(\\overline{O}(\\log_2(n)) &gt; \\overline{O}(1)\\) (divide-and-conquer)",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
     "objectID": "w05/index.html#our-list-of-item-price-pairs",
     "href": "w05/index.html#our-list-of-item-price-pairs",
     "title": "Week 5: Hash Tables and Binary Search Trees",
@@ -3499,7 +3639,7 @@
     "href": "w05/index.html#back-to-the-price-list",
     "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Back to the Price List",
-    "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, and then write down (item, price) pairs in whatever slot item hashes to",
+    "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, then write down (item, price) pairs in whatever slot item hashes to",
     "crumbs": [
       "Week 5: {{< var w05.date-md >}}"
     ]
@@ -3537,6 +3677,96 @@
   {
     "objectID": "w05/index.html#look-how-far-we-came",
     "href": "w05/index.html#look-how-far-we-came",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Look How Far We Came!",
+    "text": "Look How Far We Came!\n\nBeginning of class: Only structure we knew allowing insertion (LinkedList) was \\(\\overline{O}(n)\\) for everythihg\nEnd of class: New structure where suddenly everything is \\(\\overline{O}(1)\\), except in “unlucky” cases, in which it partially “degenerates” into a LinkedList\n\\(\\implies\\) The “inevitable” \\(\\overline{O}(n)\\) runtime has transformed into the unlucky worst-case upper bound\n\\(\\implies\\) By taking core data structures/algorithms from your toolkit, you can “piece together” hybrid structures whose whole (runtime) is better than the sum of its parts",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#taking-this-idea-and-running-with-it",
+    "href": "w05/index.html#taking-this-idea-and-running-with-it",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Taking This Idea and Running With It",
+    "text": "Taking This Idea and Running With It\n\nNext week we’ll look at BinarySearchTree (BST)\nSince it’s just a glorified LinkedList, we’ll be able to take our HashMap from today and “drop in” the BST to play the role the LinkedList is playing right now\nIf collision, we’ll create a BST with its \\(\\overline{O}(\\log(n))\\) operations, rather than a LinkedList with its \\(\\overline{O}(n)\\) operations\n\\(\\implies\\) HashMap will go from:\n\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(n)\\) worst-case to\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(\\log_2(n))\\) worst-case!",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#our-list-of-item-price-pairs-1",
+    "href": "w05/index.html#our-list-of-item-price-pairs-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Our List of (Item, Price) Pairs",
+    "text": "Our List of (Item, Price) Pairs\n\n\nCode\nprice_list = []\nprice_list.append(('Banana', 10))\nprice_list.append(('Apple', 2))\nprice_list.append(('Four Loko', 5))\nprice_list\n\n\n[('Banana', 10), ('Apple', 2), ('Four Loko', 5)]\n\n\n\nAs the list gets longer, it gets harder and harder to find where you wrote down a specific item and its price\nAs you now know, you could use linear search, \\(\\overline{O}(n)\\), or if you ensure alphabetical order (an invariant!), you could use binary, divide-and-conquer search, \\(\\overline{O}(\\log_2(n))\\)\nWe can do even better: \\(\\overline{O}(1)\\). First w/magic, but then math",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#strange-at-first-technique-for-algorithm-analysis-oracles-1",
+    "href": "w05/index.html#strange-at-first-technique-for-algorithm-analysis-oracles-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Strange-At-First Technique for Algorithm Analysis: Oracles",
+    "text": "Strange-At-First Technique for Algorithm Analysis: Oracles\n\nWhat if we had a magical wizard who could just tell us where to find an item we were looking for?\nSounds like I’m joking or saying “what if we had a billion $ and infinite aura and we could fly and walk through walls”\nAnd yet, through the magic of math and computer science, there are concrete hashing algorithms which ensure (in a mathematically-provable way!) “almost certain” \\(\\overline{O}(1)\\) lookup time",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#mathematical-strategy-of-oracles-1",
+    "href": "w05/index.html#mathematical-strategy-of-oracles-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Mathematical Strategy of Oracles",
+    "text": "Mathematical Strategy of Oracles\n\nWe’ll use a concrete, simplified hash function to illustrate\nMathematically we’ll be able to get something like\n\n\\[\nT(n) = \\overline{O}(1 + \\underbrace{\\epsilon}_{\\mathclap{\\text{Collision rate}}} \\cdot n)\n\\]\n\nWhich tells us: if we had an oracle who could ensure near-0 collision rates, then \\(T(n) = \\overline{O}(1)\\).\nAnd, by a beautiful division-of-labor, other computer scientists figure out the near-0 collision rates part, giving us\n\n\\[\np^{✅} = [T(n) = \\overline{O}(1 + \\epsilon n)], q^{✅} = [\\epsilon \\approx 0],\\text{ so } p \\wedge q \\implies T(n) \\overset{✅}{=} \\overline{O}(1).\n\\]",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#back-to-the-price-list-1",
+    "href": "w05/index.html#back-to-the-price-list-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Back to the Price List",
+    "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, and then write down (item, price) pairs in whatever slot item hashes to",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#the-importance-of-differentiating-operations-insertion-vs.-lookup-1",
+    "href": "w05/index.html#the-importance-of-differentiating-operations-insertion-vs.-lookup-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "The Importance of Differentiating Operations: Insertion vs. Lookup",
+    "text": "The Importance of Differentiating Operations: Insertion vs. Lookup\n\nSo far, we have \\(\\overline{O}(1)\\) insertion via hashing\nWe also get \\(\\overline{O}(1)\\) lookup!\nWhen customer hands us an item (say, 'Banana'), we compute the hash (B), look in that slot, and obtain the price for bananas.\nWe also get \\(\\overline{O}(1)\\) updating (hash to find the old price, update it to have new price) and \\(\\overline{O}(1)\\) deletion (hash to find the slot containing the item, then erase it from that slot)",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#so-whats-the-catch-1",
+    "href": "w05/index.html#so-whats-the-catch-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "So What’s the Catch???",
+    "text": "So What’s the Catch???\n\nBLUEBERRIES show up to ruin our day (as usual 😞)\nWe hash, so far so good: h('Blueberries') = 'B'\nBut then we go to the B slot and see that (Bananas, 10) is already there!!! Wtf do we do here… don’t panic!\nThe answer? We open our HW2 from DSAN 5500 and remember that we have our lovely friend the LinkedList that we can use whenever and however we want!",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#arrays-vs.-linked-lists-1",
+    "href": "w05/index.html#arrays-vs.-linked-lists-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Arrays vs. Linked Lists",
+    "text": "Arrays vs. Linked Lists\n\nJeff is hiding something here… Why jump to LinkedList? Why not just… another length-26 array, for example?\nFor this we open up our Week 1 slides and remember the stack vs. heap distinction: we know how many letters in the alphabet, we don’t know how many items starting with B (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)\nTerminology for this kind of “hybrid” data structure: HashTable is an Array that “degenerates into” a LinkedList (when there are collisions)",
+    "crumbs": [
+      "Week 5: {{< var w05.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w05/index.html#look-how-far-we-came-1",
+    "href": "w05/index.html#look-how-far-we-came-1",
     "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Look How Far We Came!",
     "text": "Look How Far We Came!\n\nLast week: Only structure we knew allowing insertion (LinkedList) was \\(\\overline{O}(n)\\) for everythihg\nThis week: New structure where suddenly everything is \\(\\overline{O}(1)\\), except in “unlucky” cases, in which it partially “degenerates” into a LinkedList\n\\(\\implies\\) The “inevitable” \\(\\overline{O}(n)\\) runtime has transformed into the unlucky worst-case upper bound (feels like yesterday, all this was a dream)\n\\(\\implies\\) By taking core data structures/algorithms from your toolkit, you can “piece together” hybrid structures whose whole (runtime) is better than the sum of its parts",
@@ -3745,6 +3975,104 @@
     ]
   },
   {
+    "objectID": "w05/slides.html#the-intuition",
+    "href": "w05/slides.html#the-intuition",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "The Intuition",
+    "text": "The Intuition\n(What I should have done on the board)\n\n\n\\(\\Rightarrow \\displaystyle\\sum_{i=1}^{6} = \\frac{6(6+1)}{2}\\) …but can we infer \\(\\displaystyle \\sum_{i=1}^{n} = \\frac{n(n+1)}{2}\\)? Not in general!\n(When you do it’s called “Engineer’s induction”… see next slide)\n(Double no in this case since we assumed \\(n\\) even!)\nBut, with only slight increase in complicated-ness, can prove it by induction, which is used in… 95% of algorithm/data structures proofs! (We’ll see why)"
+  },
+  {
+    "objectID": "w05/slides.html#whats-wrong-with-engineers-induction",
+    "href": "w05/slides.html#whats-wrong-with-engineers-induction",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "What’s Wrong With Engineers’ Induction?",
+    "text": "What’s Wrong With Engineers’ Induction?\n\nWhat if I told you, I have a simple polynomial that we can use to infinitely generate prime numbers! \\(\\boxed{f(n) = n^2 + n + 41}\\)… Let’s try it!\n\n\n\n\n\n\n\n\\(n\\)\n\\(f(n)\\)\nPrime?\n\n\n\n\n0\n41\n✅\n\n\n1\n43\n✅\n\n\n2\n47\n✅\n\n\n3\n53\n✅\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n✅\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(n\\)\n\n\n\\(f(n)\\)\n\n\nPrime?\n\n\n\n\n\n\n38\n\n\n1523\n\n\n✅\n\n\n\n\nI can stop checking now right?\n\n\n\n\n39\n\n\n1601\n\n\n✅\n\n\n\n\nSurely I’ve checked enough terms?\n\n\n\n\n40\n\n\n1681\n\n\n❌ \\(1681 = 41 \\times 41\\) 💀\n\n\n\n\nMaybe that’s the only exception?\n\n\n\n\n41\n\n\n1763\n\n\n❌ \\(1763 = 41 \\times 43\\) 💀\n\n\n\n\nMaybe we can get composites \\(n &gt; 41\\)?\n\n\n\n\n42\n\n\n1847\n\n\n✅ 💀💀💀 USELESS!"
+  },
+  {
+    "objectID": "w05/slides.html#non-engineers-induction",
+    "href": "w05/slides.html#non-engineers-induction",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "(Non-Engineers’) Induction!",
+    "text": "(Non-Engineers’) Induction!\n\nGoal: Prove \\(p(n)\\) (“predicate”, evaluates to T/F for given \\(n \\in \\mathbb{Z}^{\\geq 0}\\))\nThe core is literally just: If I know\n\n Base Case: [\\(p\\) is true for \\(n = n_0\\)]\n Inductive Step: [\\(p\\) is true for \\(n\\)] \\(\\implies\\) [\\(p\\) is true for \\(n + 1\\)]\n\nThen I can conclude \\(p(n)\\) true for all \\(n \\geq 1\\)!\n\n\n\nGauss’ Summation Formula: \\(p(n) = \\left[ \\sum_{i=0}^{n}i = \\frac{n(n+1)}{2} \\right]\\)\nBase Case: \\(n_0 = 1\\):\n\n\\[\n\\sum_{i=0}^{1} = 0 + 1 \\overset{?}{=} \\frac{(1)(1+1)}{2} \\iff 1 \\overset{?}{=} \\frac{2}{2} \\iff 1 \\overset{✅}{=} 1\n\\]"
+  },
+  {
+    "objectID": "w05/slides.html#inductive-step-can-i-infer-n-1-from-n",
+    "href": "w05/slides.html#inductive-step-can-i-infer-n-1-from-n",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Inductive Step: Can I Infer \\(n + 1\\) From \\(n\\)?",
+    "text": "Inductive Step: Can I Infer \\(n + 1\\) From \\(n\\)?\n\nAssume \\(p(n)\\), that is, \\(\\displaystyle\\sum_{i=0}^{n}i = \\frac{n(n+1)}{2}\\).\nGoal: Derive \\(p(n + 1)\\), that is, \\(\\displaystyle\\sum_{i=0}^{n+1}i = \\frac{(n+1)(n+2)}{2}\\)…\nStart with LHS term, \\(\\sum_{i=0}^{n+1}i\\):\n\n\\[\n\\begin{align*}\n\\boxed{\\sum_{i=0}^{n+1}i} &= \\underbrace{0 + 1 + 2 + \\cdots + n}_{\\sum_{i=0}^{n}i} + (n+1) = \\underbrace{\\sum_{i=0}^{n}i}_{\\mathclap{\\text{LHS of }p(n)}} + (n+1) \\\\\n&= \\frac{n(n+1)}{2} + (n + 1) = \\frac{n^2 + n}{2} + \\frac{2(n+1)}{2} \\\\\n&= \\frac{n^2 + 3n + 2}{2} = \\boxed{\\frac{(n+1)(n+2)}{2}} \\; ~ ✅\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "w05/slides.html#algorithmicdata-structural-proofs-almost-always-inductive",
+    "href": "w05/slides.html#algorithmicdata-structural-proofs-almost-always-inductive",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "(Algorithmic/Data-Structural Proofs Almost Always Inductive!)",
+    "text": "(Algorithmic/Data-Structural Proofs Almost Always Inductive!)\n\n“Direct” proof, in this case, is doable but requires stuff like…\n Break into [Case 1: \\(n\\) even] and [Case 2: \\(n\\) odd]\n In case 2\n\\[\n\\sum_{i=0}^{n}i = 1 + 2 + \\cdots + \\left( \\left\\lceil \\frac{n}{2} \\right\\rceil - 1\\right) + \\left\\lceil \\frac{n}{2} \\right\\rceil + \\left( \\left\\lceil \\frac{n}{2} \\right\\rceil + 1\\right) + \\cdots + (n-1) + n\n\\]\n Need to show (…with induction?) \\(\\left\\lceil \\frac{n}{2} \\right\\rceil = \\begin{cases}\\frac{n}{2} &\\text{if }n\\text{ even} \\\\ \\frac{n+1}{2} &\\text{if }n\\text{ odd}\\end{cases}\\)\nAnd so on…"
+  },
+  {
+    "objectID": "w05/slides.html#looking-under-the-hood-of-a-data-structure",
+    "href": "w05/slides.html#looking-under-the-hood-of-a-data-structure",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Looking Under the Hood of a Data Structure",
+    "text": "Looking Under the Hood of a Data Structure\n\nLast week we saw the math for why we can “abstract away from” the details of how a particular language works\nWe want to understand these structures independently of the specifics of their implementation in Python (for now)\nSo, let’s construct our own simplified versions of the basic structures, and use these simplified versions to get a sense for their efficiency\n\n(The “true” Python versions may be hyper-optimized but, as we’ll see, there are fundamental constraints on runtime, assuming \\(P \\neq NP\\))"
+  },
+  {
+    "objectID": "w05/slides.html#tuples",
+    "href": "w05/slides.html#tuples",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Tuples",
+    "text": "Tuples\n\n\nCode\nclass MyTuple:\n  def __init__(self, thing1, thing2):\n    self.thing1 = thing1\n    self.thing2 = thing2\n\n  def __repr__(self):\n    return f\"({self.thing1}, {self.thing2})\"\n\n  def __str__(self):\n    return self.__repr__()\n\nt1 = MyTuple('a','b')\nt2 = MyTuple(111, 222)\nprint(t1)\nprint(t2)\n\n\n(a, b)\n(111, 222)"
+  },
+  {
+    "objectID": "w05/slides.html#lists",
+    "href": "w05/slides.html#lists",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Lists",
+    "text": "Lists\n\n\nThe list itself just points to a root item:\n\n\nCode\nclass MyList:\n  def __init__(self):\n    self.root = None\n\n  def append(self, new_item):\n    if self.root is None:\n      self.root = MyListItem(new_item)\n    else:\n      self.root.append(new_item)\n\n  def __repr__(self):\n    return self.root.__repr__()\n\n\n\nAn item has contents, pointer to next item:\n\n\nCode\nclass MyListItem:\n  def __init__(self, content):\n    self.content = content\n    self.next = None\n\n  def append(self, new_item):\n    if self.next is None:\n      self.next = MyListItem(new_item)\n    else:\n      self.next.append(new_item)\n\n  def __repr__(self):\n    my_content = self.content\n    return my_content if self.next is None else f\"{my_content}, {self.next.__repr__()}\"\n\n\n\n\n\nCode\nusers = MyList()\nusers.append('Jeff')\nusers.append('Alma')\nusers.append('Bo')\nprint(users)\n\n\nJeff, Alma, Bo"
+  },
+  {
+    "objectID": "w05/slides.html#so-how-many-steps-are-required",
+    "href": "w05/slides.html#so-how-many-steps-are-required",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "So, How Many “Steps” Are Required…",
+    "text": "So, How Many “Steps” Are Required…\n\nTo retrieve the first element in a MyTuple?\nTo retrieve the last element in a MyTuple?\nTo retrieve the first element in a MyList?\nTo retrieve the last element in a MyList?"
+  },
+  {
+    "objectID": "w05/slides.html#how-many-steps",
+    "href": "w05/slides.html#how-many-steps",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "How Many Steps?",
+    "text": "How Many Steps?\n\n\nWith a MyTuple:\n\n\nCode\nt1.thing1\n\n\n'a'\n\n\n\\(\\implies\\) 1 step\n\n\nCode\nt1.thing2\n\n\n'b'\n\n\n\\(\\implies\\) 1 step\n\nWith a MyList:\n\n\nCode\nprint(users.root.content)\n\n\nJeff\n\n\n\\(\\implies\\) 1 step\n\n\nCode\ncurrent_node = users.root\nwhile current_node.next is not None:\n  current_node = current_node.next\nprint(current_node.content)\n\n\nBo\n\n\n\\(\\implies\\) (3 steps)\n…But why 3? How many steps if the list contained 5 elements? \\(N\\) elements?"
+  },
+  {
+    "objectID": "w05/slides.html#visualizing-linkedlists",
+    "href": "w05/slides.html#visualizing-linkedlists",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Visualizing LinkedLists",
+    "text": "Visualizing LinkedLists\n\n\n\nCode\nfrom hw2 import LinkedList, InventoryItem\nll = LinkedList()\nitem1 = InventoryItem('Mango', 50)\nll.append(item1)\nitem2 = InventoryItem('Pickle', 60)\nll.append(item2)\nitem3 = InventoryItem('Artichoke', 55)\nll.append(item3)\nitem5 = InventoryItem('Banana', 123)\nll.append(item5)\nitem6 = InventoryItem('Aardvark', 11)\nll.append(item6)\nHTML(visualize_ll(ll))"
+  },
+  {
+    "objectID": "w05/slides.html#linkedlist-foundation-for-most-data-structures",
+    "href": "w05/slides.html#linkedlist-foundation-for-most-data-structures",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "LinkedList: Foundation for Most(?) Data Structures!",
+    "text": "LinkedList: Foundation for Most(?) Data Structures!\n\n\n\n\n\n\n\n\n\n\n\n\nclass LinkedList(BaseModel):\n  root: LinkedListNode | None\n\nclass LinkedListNode(BaseModel):\n  content: object\n  next: LinkedListNode | None\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass BinaryTree(BaseModel):\n  root: BinaryTreeNode | None\n\nclass BinaryTreeNode(BaseModel):\n  content: object\n  left: BinaryTreeNode | None\n  right: BinaryTreeNode | None\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass QuadTree(BaseModel):\n  root: QuadTreeNode | None\n\nclass QuadTreeNode:\n  content: object\n  nw: QuadTreeNode | None\n  ne: QuadTreeNode | None\n  sw: QuadTreeNode | None\n  se: QuadTreeNode | None"
+  },
+  {
+    "objectID": "w05/slides.html#visualizing-binarysearchtree",
+    "href": "w05/slides.html#visualizing-binarysearchtree",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Visualizing BinarySearchTree",
+    "text": "Visualizing BinarySearchTree\n\n\n\nCode\nfrom hw2 import BinarySearchTree\nbst = BinarySearchTree()\nitem1 = InventoryItem('Mango', 50)\nbst.add(item1)\nitem2 = InventoryItem('Pickle', 60)\nbst.add(item2)\nitem3 = InventoryItem('Artichoke', 55)\nbst.add(item3)\nitem5 = InventoryItem('Banana', 123)\nbst.add(item5)\nitem6 = InventoryItem('Aardvark', 11)\nbst.add(item6)\nHTML(visualize(bst))"
+  },
+  {
+    "objectID": "w05/slides.html#so-then-why-is-this-a-whole-class",
+    "href": "w05/slides.html#so-then-why-is-this-a-whole-class",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "So Then… Why Is This a Whole Class?",
+    "text": "So Then… Why Is This a Whole Class?\n\nThe core structures are identical, but we can optimize different goals (efficient insertion, sorting, retrieval, deletion, …) by changing the invariants maintained by the algorithms internal to our structure\nCrucial Insertion-Sort invariant: \\(\\textsf{Sorted}(1,i)\\) true when we move to entry \\(i + 1\\) (key)\nCrucial HW2(!) invariant: \\(\\textsf{Up-To-Date-Favorite}(1,i-1)\\) true when entry \\(i + 1\\) (next result in dataset) arrives\n\\(\\implies\\) Efficiency of obtaining favorite style guaranteed to be constant-time, \\(\\overline{O}(1)\\)!\nOtherwise, would be \\(\\overline{O}(n) &gt; \\overline{O}(1)\\) (linear approach) or at best \\(\\overline{O}(\\log_2(n)) &gt; \\overline{O}(1)\\) (divide-and-conquer)"
+  },
+  {
     "objectID": "w05/slides.html#our-list-of-item-price-pairs",
     "href": "w05/slides.html#our-list-of-item-price-pairs",
     "title": "Week 5: Hash Tables and Binary Search Trees",
@@ -3770,7 +4098,7 @@
     "href": "w05/slides.html#back-to-the-price-list",
     "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Back to the Price List",
-    "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, and then write down (item, price) pairs in whatever slot item hashes to"
+    "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, then write down (item, price) pairs in whatever slot item hashes to"
   },
   {
     "objectID": "w05/slides.html#the-importance-of-differentiating-operations-insertion-vs.-lookup",
@@ -3796,6 +4124,69 @@
   {
     "objectID": "w05/slides.html#look-how-far-we-came",
     "href": "w05/slides.html#look-how-far-we-came",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Look How Far We Came!",
+    "text": "Look How Far We Came!\n\nBeginning of class: Only structure we knew allowing insertion (LinkedList) was \\(\\overline{O}(n)\\) for everythihg\nEnd of class: New structure where suddenly everything is \\(\\overline{O}(1)\\), except in “unlucky” cases, in which it partially “degenerates” into a LinkedList\n\\(\\implies\\) The “inevitable” \\(\\overline{O}(n)\\) runtime has transformed into the unlucky worst-case upper bound\n\\(\\implies\\) By taking core data structures/algorithms from your toolkit, you can “piece together” hybrid structures whose whole (runtime) is better than the sum of its parts"
+  },
+  {
+    "objectID": "w05/slides.html#taking-this-idea-and-running-with-it",
+    "href": "w05/slides.html#taking-this-idea-and-running-with-it",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Taking This Idea and Running With It",
+    "text": "Taking This Idea and Running With It\n\nNext week we’ll look at BinarySearchTree (BST)\nSince it’s just a glorified LinkedList, we’ll be able to take our HashMap from today and “drop in” the BST to play the role the LinkedList is playing right now\nIf collision, we’ll create a BST with its \\(\\overline{O}(\\log(n))\\) operations, rather than a LinkedList with its \\(\\overline{O}(n)\\) operations\n\\(\\implies\\) HashMap will go from:\n\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(n)\\) worst-case to\n\\(\\overline{O}(1)\\) best-case but \\(\\overline{O}(\\log_2(n))\\) worst-case!"
+  },
+  {
+    "objectID": "w05/slides.html#our-list-of-item-price-pairs-1",
+    "href": "w05/slides.html#our-list-of-item-price-pairs-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Our List of (Item, Price) Pairs",
+    "text": "Our List of (Item, Price) Pairs\n\n\nCode\nprice_list = []\nprice_list.append(('Banana', 10))\nprice_list.append(('Apple', 2))\nprice_list.append(('Four Loko', 5))\nprice_list\n\n\n[('Banana', 10), ('Apple', 2), ('Four Loko', 5)]\n\n\n\nAs the list gets longer, it gets harder and harder to find where you wrote down a specific item and its price\nAs you now know, you could use linear search, \\(\\overline{O}(n)\\), or if you ensure alphabetical order (an invariant!), you could use binary, divide-and-conquer search, \\(\\overline{O}(\\log_2(n))\\)\nWe can do even better: \\(\\overline{O}(1)\\). First w/magic, but then math"
+  },
+  {
+    "objectID": "w05/slides.html#strange-at-first-technique-for-algorithm-analysis-oracles-1",
+    "href": "w05/slides.html#strange-at-first-technique-for-algorithm-analysis-oracles-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Strange-At-First Technique for Algorithm Analysis: Oracles",
+    "text": "Strange-At-First Technique for Algorithm Analysis: Oracles\n\nWhat if we had a magical wizard who could just tell us where to find an item we were looking for?\nSounds like I’m joking or saying “what if we had a billion $ and infinite aura and we could fly and walk through walls”\nAnd yet, through the magic of math and computer science, there are concrete hashing algorithms which ensure (in a mathematically-provable way!) “almost certain” \\(\\overline{O}(1)\\) lookup time"
+  },
+  {
+    "objectID": "w05/slides.html#mathematical-strategy-of-oracles-1",
+    "href": "w05/slides.html#mathematical-strategy-of-oracles-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Mathematical Strategy of Oracles",
+    "text": "Mathematical Strategy of Oracles\n\nWe’ll use a concrete, simplified hash function to illustrate\nMathematically we’ll be able to get something like\n\n\\[\nT(n) = \\overline{O}(1 + \\underbrace{\\epsilon}_{\\mathclap{\\text{Collision rate}}} \\cdot n)\n\\]\n\nWhich tells us: if we had an oracle who could ensure near-0 collision rates, then \\(T(n) = \\overline{O}(1)\\).\nAnd, by a beautiful division-of-labor, other computer scientists figure out the near-0 collision rates part, giving us\n\n\\[\np^{✅} = [T(n) = \\overline{O}(1 + \\epsilon n)], q^{✅} = [\\epsilon \\approx 0],\\text{ so } p \\wedge q \\implies T(n) \\overset{✅}{=} \\overline{O}(1).\n\\]"
+  },
+  {
+    "objectID": "w05/slides.html#back-to-the-price-list-1",
+    "href": "w05/slides.html#back-to-the-price-list-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Back to the Price List",
+    "text": "Back to the Price List\n\nOur hash function: hash(item) = first letter of item\n\n\\[\nh(\\texttt{x}) = \\texttt{x[0]}\n\\]\n\nh('Banana') = 'B', h('Monkey') = 'M'\nWith this function in hand, we can create a length-26 array, one slot for each letter in alphabet, and then write down (item, price) pairs in whatever slot item hashes to"
+  },
+  {
+    "objectID": "w05/slides.html#the-importance-of-differentiating-operations-insertion-vs.-lookup-1",
+    "href": "w05/slides.html#the-importance-of-differentiating-operations-insertion-vs.-lookup-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "The Importance of Differentiating Operations: Insertion vs. Lookup",
+    "text": "The Importance of Differentiating Operations: Insertion vs. Lookup\n\nSo far, we have \\(\\overline{O}(1)\\) insertion via hashing\nWe also get \\(\\overline{O}(1)\\) lookup!\nWhen customer hands us an item (say, 'Banana'), we compute the hash (B), look in that slot, and obtain the price for bananas.\nWe also get \\(\\overline{O}(1)\\) updating (hash to find the old price, update it to have new price) and \\(\\overline{O}(1)\\) deletion (hash to find the slot containing the item, then erase it from that slot)"
+  },
+  {
+    "objectID": "w05/slides.html#so-whats-the-catch-1",
+    "href": "w05/slides.html#so-whats-the-catch-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "So What’s the Catch???",
+    "text": "So What’s the Catch???\n\nBLUEBERRIES show up to ruin our day (as usual 😞)\nWe hash, so far so good: h('Blueberries') = 'B'\nBut then we go to the B slot and see that (Bananas, 10) is already there!!! Wtf do we do here… don’t panic!\nThe answer? We open our HW2 from DSAN 5500 and remember that we have our lovely friend the LinkedList that we can use whenever and however we want!"
+  },
+  {
+    "objectID": "w05/slides.html#arrays-vs.-linked-lists-1",
+    "href": "w05/slides.html#arrays-vs.-linked-lists-1",
+    "title": "Week 5: Hash Tables and Binary Search Trees",
+    "section": "Arrays vs. Linked Lists",
+    "text": "Arrays vs. Linked Lists\n\nJeff is hiding something here… Why jump to LinkedList? Why not just… another length-26 array, for example?\nFor this we open up our Week 1 slides and remember the stack vs. heap distinction: we know how many letters in the alphabet, we don’t know how many items starting with B (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)\nTerminology for this kind of “hybrid” data structure: HashTable is an Array that “degenerates into” a LinkedList (when there are collisions)"
+  },
+  {
+    "objectID": "w05/slides.html#look-how-far-we-came-1",
+    "href": "w05/slides.html#look-how-far-we-came-1",
     "title": "Week 5: Hash Tables and Binary Search Trees",
     "section": "Look How Far We Came!",
     "text": "Look How Far We Came!\n\nLast week: Only structure we knew allowing insertion (LinkedList) was \\(\\overline{O}(n)\\) for everythihg\nThis week: New structure where suddenly everything is \\(\\overline{O}(1)\\), except in “unlucky” cases, in which it partially “degenerates” into a LinkedList\n\\(\\implies\\) The “inevitable” \\(\\overline{O}(n)\\) runtime has transformed into the unlucky worst-case upper bound (feels like yesterday, all this was a dream)\n\\(\\implies\\) By taking core data structures/algorithms from your toolkit, you can “piece together” hybrid structures whose whole (runtime) is better than the sum of its parts"
@@ -4090,7 +4481,7 @@
     "href": "w11/index.html#in-action",
     "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9806 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6715 s",
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9774 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6186 s",
     "crumbs": [
       "Week 11: {{< var w11.date-md >}}"
     ]
@@ -4310,7 +4701,7 @@
     "href": "w11/slides.html#in-action",
     "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9732 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6480 s"
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9787 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.5956 s"
   },
   {
     "objectID": "w11/slides.html#what-happens-when-not-embarrassingly-parallel",

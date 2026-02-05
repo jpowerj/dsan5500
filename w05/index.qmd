@@ -19,9 +19,9 @@ format:
     scrollable: true
     slide-number: true
     html-math-method: mathjax
+    theme: [default, "../dsan-globals/jjquarto.scss"]
     include-in-header:
-      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'>"
-    css: "../dsan-globals/jjstyles.css"
+      text: "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'><link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css'>"
     simplemenu:
       flat: true
       barhtml:
@@ -51,12 +51,619 @@ Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 7:30pm | [`HashTable`: Linear to *Constant* Efficiency 🤯 &rarr;](#hash-tables) |
-| | 7:30pm | 8:00pm | [`BinarySearchTree`: The Final Missing Piece! &rarr;](#onwards-and-upwards-fancier-algorithms) |
+| **Lecture** | 6:30pm | 7:00pm | [Inductive Thinking &rarr;](#induction-the-core-way-of-thinking-for-algorithm-design...) |
+| | 7:00pm | 7:30pm | [`LinkedList`: Our Core *Linear* Data Structure &rarr;](#core-data-structure-linkedlist) |
+| | 7:30pm | 8:00pm | [`BinarySearchTree` aka `FancyLinkedList` &rarr;](#onwards-and-upwards-fancier-algorithms) |
 | **Break!** | 8:00pm | 8:10pm | |
-| | 8:10pm | 9:00pm | [`BinarySearchTree`: The Final Missing Piece! &rarr;](#onwards-and-upwards-fancier-algorithms) |
+| | 8:10pm | 9:00pm | [`HashTable`: The Final Missing Piece! &rarr;](#hash-tables) |
 
 : {tbl-colwidths="[12,12,12,64]"}
+
+
+# Induction: The Core "Way of Thinking" for Algorithm Design... {data-stack-name="Induction" .title-09}
+
+* Jeff has messed up the "intuitive" explanation for Gauss' Sum on the board every semester since [2010](https://web.archive.org/web/20130421033633/http://www.cs.umd.edu/class/fall2010/cmsc420/)
+* Most years this is a **problem**...
+* But this year it's an **opportunity** to teach **induction!**
+
+## The Intuition {.smaller .crunch-title .crunch-p}
+
+*(What I **should have** done on the board)*
+
+![](images/gauss_sum.svg){fig-align="center" width="85%"}
+
+* $\Rightarrow \displaystyle\sum_{i=1}^{6} = \frac{6(6+1)}{2}$ ...but can we infer $\displaystyle \sum_{i=1}^{n} = \frac{n(n+1)}{2}$? **Not in general!**
+* (When you do it's called *"Engineer's induction"*... see next slide)
+* (**Double no** in this case since we assumed $n$ even!)
+* But, with only slight increase in complicated-ness, can **prove it** by **induction**, which is used in... 95% of algorithm/data structures proofs! (We'll see why)
+
+## What's Wrong With Engineers' Induction? {.smaller .crunch-title .title-12 .crunch-ul}
+
+* What if I told you, I have a simple polynomial that we can use to **infinitely generate prime numbers!** $\boxed{f(n) = n^2 + n + 41}$... Let's try it!
+
+:::: {layout="[25,20,55]" layout-valign="top" layout-align="center"}
+::: {.column width="25%"}
+
+| $n$ | $f(n)$ | Prime? |
+| -:| -:|:-:|
+| 0 | 41 | ✅ |
+| 1 | 43 | ✅ |
+| 2 | 47 | ✅ |
+| 3 | 53 | ✅ |
+| $\vdots$ | $\vdots$ | ✅ |
+
+:::
+::: {.column width="20%"}
+
+![](images/two_hours.jpg){fig-align="center"}
+
+:::
+::: {.column width="50%"}
+
+<table>
+<thead>
+<tr>
+  <th>$n$</th>
+  <th>$f(n)$</th>
+  <th align="center">Prime?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>38</td>
+  <td>1523</td>
+  <td align="center">✅</td>
+</tr>
+<tr>
+  <td colspan="3">*I can stop checking now right?*</td>
+</tr>
+<tr>
+  <td>39</td>
+  <td>1601</td>
+  <td align="center">✅</td>
+</tr>
+<tr>
+  <td colspan="3">*Surely I've checked enough terms?*</td>
+</tr>
+<tr>
+  <td>40</td>
+  <td>1681</td>
+  <td align="center">❌ $1681 = 41 \times 41$ 💀</td>
+</tr>
+<tr>
+  <td colspan="3">*Maybe that's the only exception?*</td>
+</tr>
+<tr>
+  <td>41</td>
+  <td>1763</td>
+  <td align="center">❌ $1763 = 41 \times 43$ 💀</td>
+</tr>
+<tr>
+  <td colspan="3">*Maybe we can get **composites** $n > 41$?*</td>
+</tr>
+<tr>
+  <td>42</td>
+  <td>1847</td>
+  <td align="center">✅ 💀💀💀 *USELESS!*</td>
+</tr>
+</tbody>
+</table>
+
+:::
+::::
+
+## (Non-Engineers') Induction! {.crunch-title .text-85 .crunch-ul .crunch-math .crunch-hr}
+
+* Goal: Prove $p(n)$ ("predicate", evaluates to T/F for given $n \in \mathbb{Z}^{\geq 0}$)
+* The core is literally just: If I know
+  * <i class='bi bi-1-circle'></i> **Base Case:** [$p$ is true for $n = n_0$]
+  * <i class='bi bi-2-circle'></i> **Inductive Step:** [$p$ is true for $n$] $\implies$ [$p$ is true for $n + 1$]
+* Then I can conclude $p(n)$ **true for all $n \geq 1$**!
+
+<hr>
+
+* Gauss' Summation Formula: $p(n) = \left[ \sum_{i=0}^{n}i = \frac{n(n+1)}{2} \right]$
+* Base Case: $n_0 = 1$:
+
+$$
+\sum_{i=0}^{1} = 0 + 1 \overset{?}{=} \frac{(1)(1+1)}{2} \iff 1 \overset{?}{=} \frac{2}{2} \iff 1 \overset{✅}{=} 1
+$$
+
+## Inductive Step: Can I Infer $n + 1$ From $n$? {.smaller .crunch-title .title-11 .crunch-ul}
+
+* **Assume** $p(n)$, that is, $\displaystyle\sum_{i=0}^{n}i = \frac{n(n+1)}{2}$.
+* **Goal:** Derive $p(n + 1)$, that is, $\displaystyle\sum_{i=0}^{n+1}i = \frac{(n+1)(n+2)}{2}$...
+* Start with LHS term, $\sum_{i=0}^{n+1}i$:
+
+$$
+\begin{align*}
+\boxed{\sum_{i=0}^{n+1}i} &= \underbrace{0 + 1 + 2 + \cdots + n}_{\sum_{i=0}^{n}i} + (n+1) = \underbrace{\sum_{i=0}^{n}i}_{\mathclap{\text{LHS of }p(n)}} + (n+1) \\
+&= \frac{n(n+1)}{2} + (n + 1) = \frac{n^2 + n}{2} + \frac{2(n+1)}{2} \\
+&= \frac{n^2 + 3n + 2}{2} = \boxed{\frac{(n+1)(n+2)}{2}} \; ~ ✅
+\end{align*}
+$$
+
+## (Algorithmic/Data-Structural Proofs Almost Always Inductive!) {.crunch-title .text-85 .math-80}
+
+* **"Direct" proof**, in this case, is doable but requires stuff like...
+* <i class='bi bi-1-circle'></i> Break into [Case 1: $n$ even] and [Case 2: $n$ odd]
+* <i class='bi bi-2-circle'></i> In case 2
+
+  $$
+  \sum_{i=0}^{n}i = 1 + 2 + \cdots + \left( \left\lceil \frac{n}{2} \right\rceil - 1\right) + \left\lceil \frac{n}{2} \right\rceil + \left( \left\lceil \frac{n}{2} \right\rceil + 1\right) + \cdots + (n-1) + n
+  $$
+
+* <i class='bi bi-3-circle'></i> Need to show (...with induction?) $\left\lceil \frac{n}{2} \right\rceil = \begin{cases}\frac{n}{2} &\text{if }n\text{ even} \\ \frac{n+1}{2} &\text{if }n\text{ odd}\end{cases}$
+* And so on...
+
+# Core Data Structure: `LinkedList` {data-stack-name="LinkedList"}
+
+## Looking Under the Hood of a Data Structure {.crunch-title .title-08 .inline-90 .text-95}
+
+* Last week we saw the **math** for why we can "abstract away from" the details of how a particular language works
+* We want to understand these structures **independently** of the specifics of their implementation in Python (for now)
+* So, let's construct our own **simplified versions** of the basic structures, and use these simplified versions to get a sense for their **efficiency**
+  * (The "true" Python versions may be **hyper-optimized** but, as we'll see, there are **fundamental constraints** on runtime, assuming $P \neq NP$)
+
+## Tuples
+
+```{python}
+#| label: mytuple-definition
+class MyTuple:
+  def __init__(self, thing1, thing2):
+    self.thing1 = thing1
+    self.thing2 = thing2
+
+  def __repr__(self):
+    return f"({self.thing1}, {self.thing2})"
+
+  def __str__(self):
+    return self.__repr__()
+
+t1 = MyTuple('a','b')
+t2 = MyTuple(111, 222)
+print(t1)
+print(t2)
+```
+
+## Lists {.crunch-title .smaller}
+
+::: columns
+::: {.column width="50%"}
+
+The list itself just **points** to a root item:
+
+```{python}
+#| label: mylist-definition
+class MyList:
+  def __init__(self):
+    self.root = None
+
+  def append(self, new_item):
+    if self.root is None:
+      self.root = MyListItem(new_item)
+    else:
+      self.root.append(new_item)
+
+  def __repr__(self):
+    return self.root.__repr__()
+```
+
+:::
+::: {.column width="50%"}
+
+An item has contents, pointer to next item:
+
+```{python}
+#| label: mylistitem-definition
+class MyListItem:
+  def __init__(self, content):
+    self.content = content
+    self.next = None
+
+  def append(self, new_item):
+    if self.next is None:
+      self.next = MyListItem(new_item)
+    else:
+      self.next.append(new_item)
+
+  def __repr__(self):
+    my_content = self.content
+    return my_content if self.next is None else f"{my_content}, {self.next.__repr__()}"
+```
+
+:::
+:::
+
+```{python}
+#| label: mylist-append
+users = MyList()
+users.append('Jeff')
+users.append('Alma')
+users.append('Bo')
+print(users)
+```
+
+## So, How Many "Steps" Are Required...
+
+* To retrieve the **first** element in a `MyTuple`?
+* To retrieve the **last** element in a `MyTuple`?
+* To retrieve the **first** element in a `MyList`?
+* To retrieve the **last** element in a `MyList`?
+
+## How Many Steps? {.smaller}
+
+::: columns
+::: {.column width="50%"}
+
+With a `MyTuple`:
+
+```{python}
+#| label: steps-thing1
+t1.thing1
+```
+
+$\implies$ 1 step
+
+```{python}
+#| label: steps-thing2
+t1.thing2
+```
+
+$\implies$ 1 step
+
+:::
+::: {.column width="50%"}
+
+With a `MyList`:
+
+```{python}
+#| label: mylist-root-content
+print(users.root.content)
+```
+
+$\implies$ 1 step
+
+```{python}
+#| label: mylist-last
+current_node = users.root
+while current_node.next is not None:
+  current_node = current_node.next
+print(current_node.content)
+```
+
+$\implies$ (3 steps) 
+
+...But why 3? How many steps if the list contained 5 elements? $N$ elements?
+
+:::
+:::
+
+## Visualizing `LinkedList`s {.smaller .crunch-title .crunch-col-output .crunch-details}
+
+```{python}
+#| label: graphviz-setup-linkedlist
+#| echo: false
+import sys
+# Important! Allows us to use HW2 classes within these slides...
+sys.path.append('../../dsan5500-local/hw2/')
+from IPython.display import display, HTML
+import graphviz as gv # for visualizing a tree using Digraph
+from graphviz import Digraph, nohtml
+from hw2 import EmptyNode
+
+def visualize_ll(ll):
+  dot = Digraph(
+      graph_attr={'rankdir': 'LR'},
+        node_attr={'shape': 'record', 'height': '.1'}
+    )
+  prev_node_name = None
+  node_pointer = ll.root
+  while type(node_pointer) != EmptyNode:
+    # New node
+    cur_content = node_pointer.content
+    cur_name = cur_content.item_name
+    dot.node(name=cur_name, label=nohtml('{<f0> '+str(cur_name)+'|<f1>}'))
+    # And edge from prev to cur, if not None
+    if prev_node_name is not None:
+      edge_from = f'{prev_node_name}:f1'
+      dot.edge(edge_from, cur_name)
+    # Now we can update prev_node_name
+    prev_node_name = cur_name
+    node_pointer = node_pointer.next
+  # Now we've reached the end, so point to an EmptyNode
+  final_name = "None"
+  dot.node(name=final_name, label=str(final_name), penwidth='0')
+  edge_from = f'{prev_node_name}:f1'
+  dot.edge(edge_from, final_name)
+  display(dot)
+
+def visualize(tree):
+    none_counter = 0
+    dot = Digraph(
+        node_attr={'shape': 'record', 'height': '.1'}
+    )
+    #dot.engine = 'sfdp'
+    node_info_list = []
+    if tree.root is not None:
+      node_info_list.append({'node':tree.root, 'parent_name': None, 'dir': None})
+    while len(node_info_list) > 0:
+      cur_node_info = node_info_list.pop()
+      cur_node = cur_node_info['node']
+      if cur_node is None:
+        cur_name = f"None_{none_counter}"
+        none_counter = none_counter + 1
+        cur_label = "None"
+        cur_parent_name = cur_node_info['parent_name']
+        cur_dir = cur_node_info['dir']
+        dot.node(name=cur_name, label="None", penwidth='0')
+        if cur_parent_name is not None:
+          # Nudge x coord based on parent
+          which_port = 'f0'
+          if cur_dir == 'R':
+            which_port = 'f2'
+          edge_from = f'{cur_parent_name}:{which_port}'
+          edge_to = f'{cur_name}:f1'
+          dot.edge(edge_from, edge_to, label=cur_dir)
+      else:
+        cur_name = cur_node.content.item_name
+        cur_parent_name = cur_node_info['parent_name']
+        cur_dir = cur_node_info['dir']
+        dot.node(name=cur_name, label=nohtml(f'<f0>|<f1> {cur_name}|<f2>'))
+        if cur_parent_name is not None:
+          # Nudge x coord based on parent
+          which_port = 'f0'
+          if cur_dir == 'R':
+            which_port = 'f2'
+          edge_from = f'{cur_parent_name}:{which_port}'
+          edge_to = f'{cur_name}:f1'
+          dot.edge(edge_from, edge_to, label=cur_dir)
+        if cur_node.right is not None:
+          node_info_list.append({'node': cur_node.right, 'parent_name': cur_name, 'dir': 'R'})
+        else:
+          # Add the None ending
+          node_info_list.append({'node': None, 'parent_name': cur_name, 'dir': 'R'})
+        if cur_node.left is not None:
+          node_info_list.append({'node': cur_node.left, 'parent_name': cur_name, 'dir': 'L'})
+        else:
+          # Add the None ending
+          node_info_list.append({'node': None, 'parent_name': cur_name, 'dir': 'L'})
+    display(dot)
+```
+
+::: {.vcenter}
+
+```{python}
+#| label: viz-linkedlist
+#| fig-align: center
+from hw2 import LinkedList, InventoryItem
+ll = LinkedList()
+item1 = InventoryItem('Mango', 50)
+ll.append(item1)
+item2 = InventoryItem('Pickle', 60)
+ll.append(item2)
+item3 = InventoryItem('Artichoke', 55)
+ll.append(item3)
+item5 = InventoryItem('Banana', 123)
+ll.append(item5)
+item6 = InventoryItem('Aardvark', 11)
+ll.append(item6)
+HTML(visualize_ll(ll))
+```
+
+:::
+
+# Onwards and Upwards: Fancier Algorithms {data-stack-name="FancyLinkedList"}
+
+## LinkedList: Foundation for Most(?) Data Structures! {.smaller .crunch-title .title-09 .crunch-quarto-layout-panel .crunch-img .crunch-figures .cols-va}
+
+::: {layout="[1,3]" layout-valign="center"}
+
+![](images/bored_pooh.jpeg){fig-align="left" width="210"}
+
+::: {#bored-pooh}
+
+::: {.columns}
+::: {.column width="50%"}
+
+``` {.python}
+class LinkedList(BaseModel):
+  root: LinkedListNode | None
+```
+
+:::
+::: {.column width="50%"}
+
+```python
+class LinkedListNode(BaseModel):
+  content: object
+  next: LinkedListNode | None
+```
+
+:::
+:::
+
+:::
+:::
+
+::: {layout="[1,3]" layout-valign="center"}
+
+![](images/fancy_pooh_single.jpeg){fig-align="left" width="210"}
+
+::: {#fancy-pooh}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```python
+class BinaryTree(BaseModel):
+  root: BinaryTreeNode | None
+```
+
+:::
+::: {.column width="50%"}
+
+```python
+class BinaryTreeNode(BaseModel):
+  content: object
+  left: BinaryTreeNode | None
+  right: BinaryTreeNode | None
+```
+
+:::
+:::
+
+:::
+:::
+
+::: {layout="[1,3]" layout-valign="center"}
+
+![](images/fanciest_pooh.jpeg){fig-align="left" width="210"}
+
+::: {#fanciest-pooh}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```python
+class QuadTree(BaseModel):
+  root: QuadTreeNode | None
+```
+
+:::
+::: {.column width="50%"}
+
+```python
+class QuadTreeNode:
+  content: object
+  nw: QuadTreeNode | None
+  ne: QuadTreeNode | None
+  sw: QuadTreeNode | None
+  se: QuadTreeNode | None
+```
+
+:::
+:::
+
+:::
+:::
+
+## Visualizing `BinarySearchTree` {.smaller .crunch-title .cols-va}
+
+```{python}
+#| output-location: column
+#| fig-align: center
+from hw2 import BinarySearchTree
+bst = BinarySearchTree()
+item1 = InventoryItem('Mango', 50)
+bst.add(item1)
+item2 = InventoryItem('Pickle', 60)
+bst.add(item2)
+item3 = InventoryItem('Artichoke', 55)
+bst.add(item3)
+item5 = InventoryItem('Banana', 123)
+bst.add(item5)
+item6 = InventoryItem('Aardvark', 11)
+bst.add(item6)
+HTML(visualize(bst))
+```
+
+## So Then... Why Is This a Whole Class? {.smaller .crunch-title .title-12}
+
+* The **core structures** are identical, but we can optimize **different goals** (efficient insertion, sorting, retrieval, deletion, ...) by changing the **invariants** maintained by the algorithms **internal to** our structure
+* Crucial [Insertion-Sort]{.alg} invariant: $\textsf{Sorted}(1,i)$ true when we move to entry $i + 1$ (`key`)
+* Crucial **HW2**(!) invariant: $\textsf{Up-To-Date-Favorite}(1,i-1)$ true when entry $i + 1$ (next result in dataset) arrives
+* $\implies$ Efficiency of obtaining favorite style **guaranteed to be constant-time**, $\overline{O}(1)$!
+* Otherwise, would be $\overline{O}(n) > \overline{O}(1)$ (linear approach) or at best $\overline{O}(\log_2(n)) > \overline{O}(1)$ (divide-and-conquer)
+
+# Hash Tables {data-stack-name="HashTable"}
+
+* *(Spoiler alert, so you know I'm not lying to you: this is a **LinkedList** with some **additional structure!**)*
+* You just got hired as a **cashier** (Safeway cashiering alum myself 🫡)
+* The scanner is broken (spoiler #2: the scanner uses a hash table), so you start writing down **items** along with their **prices**, one-by-one, as items come in...
+
+## Our List of (Item, Price) Pairs {.crunch-title .crunch-details .crunch-ul .small-summary .text-90}
+
+```{python}
+price_list = []
+price_list.append(('Banana', 10))
+price_list.append(('Apple', 2))
+price_list.append(('Four Loko', 5))
+price_list
+```
+
+* As the list gets longer, it gets harder and harder to **find where you wrote down a specific item and its price**
+* As you now know, you could use **linear search**, $\overline{O}(n)$, or if you ensure alphabetical order (an **invariant!**), you could use **binary, divide-and-conquer search**, $\overline{O}(\log_2(n))$
+* We can do **even better**: $\overline{O}(1)$. First w/magic, but then math
+
+## Strange-At-First Technique for Algorithm Analysis: Oracles
+
+* What if we had a magical wizard who could just **tell us** where to find an item we were looking for?
+* Sounds like I'm joking or saying *"what if we had a billion $ and infinite aura and we could fly and walk through walls"*
+* And yet, through the magic of math and computer science, there are concrete **hashing algorithms** which ensure (in a mathematically-provable way!) "almost certain" $\overline{O}(1)$ lookup time
+
+## Mathematical Strategy of Oracles {.crunch-title .crunch-math .math-75 .crunch-ul .text-90}
+
+* We'll use a **concrete**, **simplified hash function** to illustrate
+* Mathematically we'll be able to get something like
+
+$$
+T(n) = \overline{O}(1 + \underbrace{\epsilon}_{\mathclap{\text{Collision rate}}} \cdot n)
+$$
+
+* Which tells us: **if** we had an oracle who could ensure near-0 collision rates, **then** $T(n) = \overline{O}(1)$.
+* And, by a beautiful division-of-labor, **other** computer scientists figure out the near-0 collision rates part, giving us
+
+$$
+p^{✅} = [T(n) = \overline{O}(1 + \epsilon n)], q^{✅} = [\epsilon \approx 0],\text{ so } p \wedge q \implies T(n) \overset{✅}{=} \overline{O}(1).
+$$
+
+## Back to the Price List {.crunch-title .crunch-math .crunch-ul}
+
+* Our hash function: **`hash(item)`** = **first letter of `item`**
+
+$$
+h(\texttt{x}) = \texttt{x[0]}
+$$
+
+* `h('Banana') = 'B'`, `h('Monkey') = 'M'`
+* With this function in hand, we can create a length-26 **array**, one slot for each letter in alphabet, then **write down (item, price) pairs** in **whatever slot `item` hashes to**
+
+## The Importance of Differentiating Operations: *Insertion* vs. *Lookup* {.text-95}
+
+* So far, we have $\overline{O}(1)$ **insertion** via hashing
+* We also get $\overline{O}(1)$ **lookup!**
+* When customer hands us an item (say, `'Banana'`), we compute the hash (`B`), look in that slot, and obtain the price for bananas.
+* We also get $\overline{O}(1)$ **updating** (hash to find the old price, update it to have new price) and $\overline{O}(1)$ **deletion** (hash to find the slot containing the item, then erase it from that slot)
+
+## So What's the Catch???
+
+* **BLUEBERRIES** show up to ruin our day (as usual 😞)
+* We hash, so far so good: `h('Blueberries') = 'B'`
+* But then we go to the `B` slot and see that `(Bananas, 10)` is already there!!! Wtf do we do here... don't panic!
+* The answer? We open our HW2 from DSAN 5500 and remember that we have our lovely friend the `LinkedList` that we can use whenever and however we want!
+
+## Arrays vs. Linked Lists {.crunch-title}
+
+* Jeff is hiding something here... Why jump to `LinkedList`? Why not just... another length-26 array, for example?
+* For this we open up our Week 1 slides and remember the **stack** vs. **heap** distinction: we **know** how many letters in the alphabet, we **don't know** how many items starting with `B` (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)
+* Terminology for this kind of "hybrid" data structure: `HashTable` is an `Array` that **"degenerates into"** a `LinkedList` (when there are **collisions**)
+
+## Look How Far We Came! {.crunch-title .crunch-ul .inline-90 .code-90 .text-95}
+
+* Beginning of class: Only structure we knew allowing insertion (`LinkedList`) was $\overline{O}(n)$ for everythihg
+* End of class: New structure where suddenly everything is $\overline{O}(1)$, except in "unlucky" cases, in which it partially **"degenerates"** into a `LinkedList`
+* $\implies$ The "inevitable" $\overline{O}(n)$ runtime has transformed into the unlucky worst-case **upper bound**
+* $\implies$ By taking **core** data structures/algorithms from your toolkit, you can "piece together" **hybrid structures** whose *whole (runtime) is better than the sum of its parts*
+
+## Taking This Idea and Running With It {.crunch-title .title-10 .crunch-ul .code-90 .inline-90 .text-90}
+
+* Next week we'll look at `BinarySearchTree` (`BST`)
+* Since it's just a glorified `LinkedList`, we'll be able to take our `HashMap` from today and "drop in" the `BST` to play the role the `LinkedList` is playing right now
+* If collision, we'll create a `BST` with its $\overline{O}(\log(n))$ operations, rather than a `LinkedList` with its $\overline{O}(n)$ operations
+* $\implies$ `HashMap` will go from:
+  * $\overline{O}(1)$ best-case but $\overline{O}(n)$ worst-case to
+  * $\overline{O}(1)$ best-case but $\overline{O}(\log_2(n))$ worst-case!
 
 # Hash Tables {data-stack-name="HashTable"}
 
@@ -205,7 +812,7 @@ class BinarySearchTreeNode:
 ## Visualizing BSTs {.smaller .crunch-title .crunch-col-output .crunch-details .cols-va}
 
 ```{python}
-#| label: graphviz-setup
+#| label: graphviz-setup-bst
 #| echo: false
 import sys
 sys.path.append('../../dsan5500-local/HW2/')

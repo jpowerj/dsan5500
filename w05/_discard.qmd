@@ -1,0 +1,293 @@
+| $\sum_{i=1}^{6}i$          | = | 1 | + | 2 | + | 3 | + | 4 | + | 5 | + | 6 |
+| --------------------------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| [(\#7s = 1)]{.cbgd}        |   | ┃ |   | ┃ |   | ┗ | 7 ($n+1$) | ┛ |   | ┃ |   | ┃ |
+| [(\#7s = 2)]{.cbgd}        |   | ┃ |   | ┗ | ━ | ━ | 7 | ━ | ━ | ┛ |   | ┃ |
+| (\#7s = $\frac{n}{2} =$ 3) |   | ┗ | ━ | ━ | ━ | ━ | 7 | ━ | ━ | ━ | ━ | ┛ |
+
+: {tbl-colwidths="[10,2,2,2,2,2,2,2,2,2,2,2,2]"}
+
+---
+
+## Use Case: Bookstore Inventory Management {.smaller .title-12}
+
+![<a href='https://washington.org/visit-dc/bookstores-sure-charm-you-washington-dc' target='_blank'>Image source</a>](images/spencerbeck_exterior-of-capitol-hill-books_yesmydccool.jpg){fig-align="center"}
+
+## In Pictures {.smaller}
+
+```{dot}
+//| label: bookstore-diagram
+//| echo: false
+digraph G {
+	graph [
+		label="Bookstore Relational Diagram"
+		labelloc="t"
+	]
+	node [
+		shape=record,
+        fontname="Courier",
+	]
+    rankdir=LR
+
+	Bookstore[nojustify=false,label = "Bookstore|Name\l|<loc>Location\l|<bl>Booklist\l|Get_Inventory()\l|Sort_Inventory()\l"]
+
+    Place[label="<placehead>Place|City\l|State\l|Country\l|Print_Map()\l"]
+
+    Bookstore:loc -> Place:placehead[label="Has One"];
+
+    Book[label="<bookhead>Book|<title>Title\l|<auths>Authors\l|Num Pages\l|Preview()"]
+
+    Person[label="<personhead>Person|Family Name|Given Name"]
+
+    Bookstore:bl -> Book:bookhead[label="Has Multiple",style="dashed"]
+    Book:auths -> Person:personhead[label="Has Multiple",style="dashed"]
+}
+```
+
+## Creating Classes {.smaller .crunch-title .crunch-ul .crunch-details}
+
+* Use case: Creating an inventory system for a **Bookstore**
+
+::: columns
+::: {.column width="50%"}
+
+```{python}
+#| label: basic-class
+class Bookstore:
+    def __init__(self, name, location):
+        self.name = name
+        self.location = location
+        self.books = []
+
+    def __getitem__(self, index):
+        return self.books[index]
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __str__(self):
+        return f"Bookstore[{self.get_num_books()} books]"
+
+    def add_books(self, book_list):
+        self.books.extend(book_list)
+
+    def get_books(self):
+        return self.books
+
+    def get_inventory(self):
+        book_lines = []
+        for book_index, book in enumerate(self.get_books()):
+            cur_book_line = f"{book_index}. {str(book)}"
+            book_lines.append(cur_book_line)
+        return "\n".join(book_lines)
+
+    def get_num_books(self):
+        return len(self.get_books())
+
+    def sort_books(self, sort_key):
+        self.books.sort(key=sort_key)
+
+class Book:
+    def __init__(self, title, authors, num_pages):
+        self.title = title
+        self.authors = authors
+        self.num_pages = num_pages
+
+    def __str__(self):
+        return f"Book[title={self.get_title()}, authors={self.get_authors()}, pages={self.get_num_pages()}]"
+
+    def get_authors(self):
+        return self.authors
+
+    def get_first_author(self):
+        return self.authors[0]
+
+    def get_num_pages(self):
+        return self.num_pages
+
+    def get_title(self):
+        return self.title
+
+class Person:
+    def __init__(self, family_name, given_name):
+        self.family_name = family_name
+        self.given_name = given_name
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __str__(self):
+        return f"Person[{self.get_family_name()}, {self.get_given_name()}]"
+
+    def get_family_name(self):
+        return self.family_name
+
+    def get_given_name(self):
+        return self.given_name
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+#| label: create-objs
+my_bookstore = Bookstore("Bookland", "Washington, DC")
+plath = Person("Plath", "Sylvia")
+bell_jar = Book("The Bell Jar", [plath], 244)
+marx = Person("Marx", "Karl")
+engels = Person("Engels", "Friedrich")
+manifesto = Book("The Communist Manifesto", [marx, engels], 43)
+elster = Person("Elster", "Jon")
+cement = Book("The Cement of Society", [elster], 311)
+my_bookstore.add_books([bell_jar, manifesto, cement])
+print(my_bookstore)
+print(my_bookstore[0])
+print("Inventory:")
+print(my_bookstore.get_inventory())
+```
+
+:::
+:::
+
+## Doing Things With Classes {.smaller}
+
+* Now we can **use** our OOP structure, for example to sort the inventory in different ways!
+
+::: columns
+::: {.column width="50%"}
+
+<center>
+**Alphabetical (By First Author)**
+</center>
+
+```{python}
+#| label: sort-alpha
+sort_alpha = lambda x: x.get_first_author().get_family_name()
+my_bookstore.sort_books(sort_key = sort_alpha)
+print(my_bookstore.get_inventory())
+```
+
+:::
+::: {.column width="50%"}
+
+<center>
+**By Page Count**
+</center>
+
+```{python}
+#| label: sort-pages
+sort_pages = lambda x: x.get_num_pages()
+my_bookstore.sort_books(sort_key = sort_pages)
+print(my_bookstore.get_inventory())
+```
+
+:::
+:::
+
+## *Inheritance* and *Polymorphism* {.smaller .crunch-title}
+
+* Encapsulate **general properties** in **parent** class, **specific properties** in **child classes**
+
+![(You can edit this or make your own UML diagrams in [nomnoml](https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7C%0A%20%20numDoors%3A%20int%3B%20numWheels%3A%20int%3B%20balanced%3A%20bool%3B%7C%0A%20%20turnOn()%3B%20accelerate()%3B%20brake()%3B%20turnOff()%3B%0A%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%20balanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3Bbalanced%20%3D%20true%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3Bbalanced%20%3D%20true%3B%5D%0A%0A%5BVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BCar%5D%0A%5BVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A)!)](images/Inheritance.drawio.svg){fig-align="center"}
+
+## Or... Is This Better? {.smaller .crunch-title}
+
+![Edit in [nomnoml](https://www.nomnoml.com/#view/%5B%3Cabstract%3E%20Vehicle%7CnumDoors%3A%20int%3BnumWheels%3A%20int%3Bbalanced%3A%20bool%3B%7CturnOn()%3Baccelerate()%3Bbrake()%3BturnOff()%3B%5D%0A%5B%3Cabstract%3E%20UnbalancedVehicle%7Cbalanced%20%3D%20false%3B%5D%0A%5B%3Cabstract%3E%20BalancedVehicle%7Cbalanced%20%3D%20true%3B%5D%0A%5BMotorcycle%7CnumDoors%20%3D%200%3BnumWheels%20%3D%202%3B%5D%0A%5B%3Cabstract%3E%20Car%7CnumWheels%20%3D%204%3B%5D%0A%5BCoupe%7CnumDoors%20%3D%202%3B%5D%0A%5BSedan%7CnumDoors%20%3D%204%3B%5D%0A%5BTruck%7CnumDoors%20%3D%202%3BnumWheels%20%3D%2018%3B%5D%0A%0A%5BVehicle%5D--%3A%3E%5BUnbalancedVehicle%5D%0A%5BUnbalancedVehicle%5D-%3A%3E%5BMotorcycle%5D%0A%5BVehicle%5D--%3A%3E%5BBalancedVehicle%5D%0A%5BBalancedVehicle%5D--%3A%3E%5BCar%5D%0A%5BBalancedVehicle%5D-%3A%3E%5BTruck%5D%0A%5BCar%5D-%3A%3E%5BCoupe%5D%0A%5BCar%5D-%3A%3E%5BSedan%5D%0A)](images/vehicle-fancy.svg){fig-align="center"}
+
+## Design Choices {.smaller .crunch-title .crunch-details .crunch-ul .code-90 .text-60}
+
+* Goal is **encapsulation**: which **objects** should have which **properties**/**methods**?
+* Example: Fiction vs. Non-Fiction. How important is this distinction **for your use case?**
+
+::: columns
+::: {.column width="50%"}
+
+<center>
+**Option 1: As Property of `Book`**
+</center>
+
+```{python}
+#| label: fiction-property
+from enum import Enum
+class BookType(Enum):
+    NONFICTION = 0
+    FICTION = 1
+
+class Book:
+    def __init__(self, title: str, authors: list[Person], num_pages: int, type: BookType):
+        self.title = title
+        self.authors = authors
+        self.num_pages = num_pages
+        self.type = type
+
+    def __str__(self):
+        return f"Book[title={self.title}, authors={self.authors}, pages={self.num_pages}, type={self.type}]"
+```
+
+```{python}
+#| label: use-fiction-property
+joyce = Person("Joyce", "James")
+ulysses = Book("Ulysses", [joyce], 732, BookType.FICTION)
+schelling = Person("Schelling", "Thomas")
+micromotives = Book("Micromotives and Macrobehavior", [schelling], 252, BookType.NONFICTION)
+print(ulysses)
+print(micromotives)
+```
+
+:::
+::: {.column width="50%"}
+
+<center>
+**Option 2: Separate Classes**
+</center>
+
+```{python}
+#| label: fiction-separate-classes-setup
+#| echo: false
+class Book:
+    def __init__(self, title, authors, num_pages):
+        self.title = title
+        self.authors = authors
+        self.num_pages = num_pages
+
+    def __str__(self):
+        return f"Book[title={self.get_title()}, authors={self.get_authors()}, pages={self.get_num_pages()}]"
+
+    def get_authors(self):
+        return self.authors
+
+    def get_first_author(self):
+        return self.authors[0]
+
+    def get_num_pages(self):
+        return self.num_pages
+
+    def get_title(self):
+        return self.title
+```
+
+```{python}
+#| label: fiction-separate-classes
+# class Book defined as earlier
+class FictionBook(Book):
+    def __init__(self, title, authors, num_pages, characters):
+        super().__init__(title, authors, num_pages)
+        self.characters = characters
+
+class NonfictionBook(Book):
+    def __init__(self, title, authors, num_pages, topic):
+        super().__init__(title, authors, num_pages)
+        self.topic = topic
+```
+
+```{python}
+#| label: use-fiction-separate-classes
+joyce = Person("Joyce", "James")
+ulysses = FictionBook("Ulysses", [joyce], 732, ["Daedalus"])
+schelling = Person("Schelling", "Thomas")
+micromotives = NonfictionBook("Micromotives and Macrobehavior", [schelling], 252, "Economics")
+print(ulysses)
+print(micromotives)
+```
+
+:::
+:::
