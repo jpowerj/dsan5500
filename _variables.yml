@@ -30,13 +30,13 @@ w04:
   date-md: "Jan 29"
 w05:
   weeknum: 5
-  title: "Binary Search Trees"
-  footer: "Binary Search Trees"
+  title: "Linked Lists and Binary Search Trees"
+  footer: "Linked Lists and Binary Search Trees"
   date-md: "Feb 5"
 w06:
   weeknum: 6
-  title: "Depth-First and Breadth-First Search"
-  footer: "Depth-First and Breadth-First Search"
+  title: "Hash Tables and BST Iteration"
+  footer: "Hash Tables and BST Iteration"
   date-md: "Feb 12"
 w07:
   weeknum: 7

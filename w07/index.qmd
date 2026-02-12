@@ -62,6 +62,164 @@ Today's Planned Schedule:
 
 : {tbl-colwidths="[12,12,16,60]"}
 
+# Back to BSTs {data-stack-name="Tree Traversal"}
+
+## BST Building Blocks on HW3
+
+* For HW3, we provide you with an `InventoryItem` class
+* Two instance variables: `item_name` and `price`
+* Equivalence relations:
+  * `__eq__(other)`, `__ne__(other)`
+* **Ordering relations**:
+  * `__lt__(other)`, `__le__(other)`, `__gt__(other)`, `__ge__(other)`
+* Bonus: `__repr__()` and `__str__()`
+
+## LLs $\rightarrow$ BSTs: The Hard Part {.crunch-title .crunch-ul}
+
+* When we were working with LinkedLists, we could access all items by just "looping through", from one element to the next, printing as we go along.
+* But... for a BST, our structure can now **branch** as we traverse it... How do we "loop through" a BST?
+* **Two fundamentally different ways** to traverse every node
+* "Opposites" of each other, so that one is often extremely efficient and the other extremely inefficient for a given task
+* Your job as a data scientist is to **think carefully** about which one is **more efficient** for a given goal!
+
+## Two Ways to Traverse: IRL Version {.smaller .crunch-title .title-12 .crunch-ul .crunch-callout .crunch-li-5}
+
+* Imagine we're trying to learn about a topic $\tau$ using **Wikipedia**, so we find its article $\tau_0$
+* There are two "extremes" in terms of strategies we could follow for learning, given the **contents** of the article as well as the **links** it contains to **other articles** 
+
+::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Depth-First Search (DFS)" style="margin-bottom: 8px !important;"}
+
+* Open $\tau_0$ and start reading; When we encounter a **link** we **always click it**, **immediately start reading** the new article.
+* If we hit an article with no links (or a dead end/broken link), we finish reading it and click the **back button**, picking up where we left off in the previous article. When we reach the end of $\tau_0$, we're done!
+
+:::
+
+::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Breadth-First Search (BFS)"}
+
+* Bookmark $\tau_0$ in a folder called **"Level 0 Articles"**; open and start reading it
+* When we encounter a **link**, we **put it in a "Level 1 Articles" folder**, but **continue reading $\tau_0$** until we reach the end.
+* We then **open all "Level 1 Articles"** in new tabs, placing links we encounter in **these** articles into a **"Level 2 Articles"** folder, that we only start reading once all "Level 1 Articles" are read
+* We continue like this, reading "Level 3 Articles" once we're done with "Level 2 Articles", "Level 4 Articles" once we're done with "Level 3 Articles", and so on. (Can you see a sense in which this is the **"opposite"** of DFS?)
+
+:::
+
+* ...Let's try them out! I clicked "Random Article" and got <a href='https://en.wikipedia.org/wiki/Eustache_de_Saint_Pierre' target='_blank'>Eustache de Saint Pierre <i class='bi bi-box-arrow-up-right ps-1'></i></a>
+
+## Two Ways to Traverse: Picture Version {.smaller .crunch-title .crunch-details .title-12}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{python}
+#| label: viz-bst
+#| fig-align: center
+#| code-fold: true
+from hw2 import LinkedList, InventoryItem, BinarySearchTree
+bst = BinarySearchTree()
+item1 = InventoryItem('Mango', 50)
+bst.add(item1)
+item2 = InventoryItem('Pickle', 60)
+bst.add(item2)
+item3 = InventoryItem('Artichoke', 55)
+bst.add(item3)
+item5 = InventoryItem('Banana', 123)
+bst.add(item5)
+item6 = InventoryItem('Aardvark', 11)
+bst.add(item6)
+HTML(visualize(bst))
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+from hw2 import IterAlgorithm, NodeProcessor
+print("DFS:")
+dfs_processor = NodeProcessor(IterAlgorithm.DEPTH_FIRST)
+#print(type(dfs_processor.node_container))
+dfs_processor.iterate_over(bst)
+
+print("\nBFS:")
+bfs_processor = NodeProcessor(IterAlgorithm.BREADTH_FIRST)
+#print(type(bfs_processor.node_container))
+bfs_processor.iterate_over(bst)
+```
+
+:::
+:::
+
+## Two Ways to Traverse: In-Words Version {.smaller .crunch-title .title-12}
+
+1. **Depth-First Search (DFS)**: With this approach, we iterate through the BST by **always taking the left child as the "next" child** until we hit a **leaf node** (which means, we cannot follow this left-child pointer any longer, since a leaf node does not have a left child or a right child!), and only at that point do we **back up** and take the **right children** we skipped.
+2. **Breadth-First Search (BFS)**: This is the **"opposite"** of DFS in the sense that we traverse the tree level-by-level, **never moving to the next level of the tree** until we're **sure that we have visited every node on the current level**.
+
+## Two Ways to Traverse: Animated Version {.smaller .crunch-title .title-12}
+
+::: {layout="[1,1]"}
+
+![**Depth-First Search** (from <a href='https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif' target='_blank'>Wikimedia Commons</a>)](images/Depth-First-Search.gif){fig-align="center"}
+
+![**Breadth-First Search** (from <a href='https://commons.wikimedia.org/wiki/File:Breadth-First-Search-Algorithm.gif' target='_blank'>Wikimedia Commons</a>)](images/Breadth-First-Search.gif){fig-align="center"}
+
+:::
+
+## Two Ways to Traverse: Underlying Data Structures {.smaller .crunch-title .title-09}
+
+* Now that you have some intuition, you may be thinking that they might require very different code to implement 🤔
+* This is where **mathematically-formal link** between the two becomes ultra helpful!
+* It turns out (and a full-on algorithmic theory course makes you prove) that
+
+  1. **Depth-First Search** can be accomplished by **processing nodes in an order determined by adding each to a *stack***, while
+  2. **Breadth-First Search** can be accomplished by **processing nodes in an order determined by adding each to a *queue***!
+
+* $\implies$ Literally **identical code**, "pulling out" the word **stack** and replacing it with the word **queue** within your code (or vice-versa).
+* Put your Software Engineer Hat on: this calls for an **abstraction layer!**
+  * *(OOP hint: Notice how we're **not** teaching you how `Queue` and `Stack` work, and **not** asking you to implement it *🤨*)*
+
+## Two Ways to Traverse: HW3 Version {.title-09 .crunch-title .crunch-ul .crunch-li-8}
+
+* You'll make a class called `NodeProcessor`, with a **single** `iterate_over(tree)` function
+* This function---**without any changes in the code or even any if statements!**---will be capable of **both** DFS and BFS
+  * That's a hint: lose points if there's an if statement! 👀 *(bc, the whole point of OOP! Encapsulation, abstraction)*
+* Constructor takes in a `ThingContainer` (could be a **stack** or a **queue**, you won't know which), with two functions:
+  * `put_new_thing_in(new_thing)`
+  * `take_existing_thing_out()`
+
+## `ThingContainer`: The OOP Structure You See
+
+![](images/thing_container_notfull.svg){fig-align="center"}
+
+## Secret Full OOP Structure You *Don't* See {.title-08}
+
+![](images/thing_container_full.svg){fig-align="center"}
+
+## One Animal in the BFS Species
+
+* For this and next slide, constant-time preliminary step: "Add `root` to `container`" (a `ThingContainer` object)
+
+| Procedure | Algorithm |
+| - | - |
+| Breadth-First Search | `while` [`container` not empty]:<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Take thing out<br>&nbsp;&nbsp;&nbsp;&nbsp;2. **Print thing content**<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Add left child to container<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Add right child to container |
+
+: {tbl-colwidths="[38,62]"}
+
+## Three Animals in the DFS Species
+
+| DFS Procedure | Algorithm |
+| - | - |
+| Pre-Order Traversal | 1. **Print node**<br>2. DFS left subtree<br>3. DFS right subtree |
+| **In-Order** Traversal 🧐‼️ | 1. DFS left subtree<br>2. **Print node**<br>3. DFS right subtree |
+| Post-Order Traversal | 1. DFS left subtree<br>2. DFS right subtree<br>3. **Print node** |
+
+## The Three Animals Traverse our Inventory Tree {.smaller .crunch-title .title-10}
+
+```{python}
+#| label: viz-bst-for-dfs
+#| fig-align: center
+visualize(bst)
+```
+
+
 ## The Great Wheel of Data-Structural and Algorithmic Fate {.smaller}
 
 :::: {.columns}
@@ -302,3 +460,327 @@ Today's Planned Schedule:
 $$
 O(N) \; \underbrace{\leadsto O(\log_2(N))}_{\mathclap{\substack{\text{More Efficient Algorithm} \\ \text{(Free!)}}}} \; \underbrace{\leadsto O(1 + \epsilon\log_2(N))}_{\substack{\text{More Memory} \\ \text{(\$\$\$)}}}
 $$
+
+
+# Final Notes for Homework 3 {data-stack-name="HW3"}
+
+## More Memory, More Performance
+
+* The last part challenges you to ask: **why stop at a hash based on just the *first* letter of the key?**
+* We could just as easily use the first **two** letters:
+* `h('AA') = 0`, `h('AB') = 1`, ..., `h('AZ') = 25`,
+* `h('BA') = 26`, `h('BB') = 27`, ..., `h('BZ') = 51`,
+* `h('CA') = 52`, ..., `h('ZZ') = 675`.
+* You will see how this gets us **even closer to the elusive $O(1)$!** And we could get even closer with three letters, four letters, ... 🤔🤔🤔
+
+## `AlphaHasher` vs. `CustomHasher`
+
+```python
+# @title define-alpha-hasher
+from abc import ABC, abstractmethod
+import string
+
+class CustomHasher(ABC):
+  @abstractmethod
+  def __init__(self):
+    pass
+
+  @abstractmethod
+  def get_alphabet_size(self):
+    pass
+
+  @abstractmethod
+  def hash(self, str_to_hash: str) -> int:
+    pass
+
+  @abstractmethod
+  def compute_position_in_alphabet(self, uppercase_key: str) -> int:
+    pass
+
+  @abstractmethod
+  def compute_key_for_index(self, index: int) -> str:
+    pass
+
+class AlphaHasher(CustomHasher):
+  def __init__(self):
+    self.alphabet_size = 26
+
+  def get_alphabet_size(self):
+    return self.alphabet_size
+
+  def hash(self, str_to_hash: str) -> int:
+    if len(str_to_hash) == 0:
+      first_letter = 'A'
+    else:
+      first_letter = str_to_hash.upper()[0]
+    # And return its index in the alphabet:
+    # 'A' has index 0, 'B' has index 1, etc.
+    return self.compute_position_in_alphabet(first_letter)
+
+  def compute_position_in_alphabet(self, uppercase_key: str) -> int:
+    return string.ascii_uppercase.index(uppercase_key)
+
+  def compute_key_for_index(self, index: int) -> str:
+    return string.ascii_uppercase[index]
+```
+
+## `LinkedList` via `PolymorphicNode` {.title-09}
+
+* `EmptyNode` $\rightarrow$ `ContentNode`
+
+```python
+# @title define-linked-list
+from abc import ABC, abstractmethod
+
+class LinkedList:
+  def __init__(self):
+    self.root = EmptyNode()
+
+  def append(self, item):
+    self.root = self.root.append(item)
+
+  def find_item_steps(self, item):
+    return self.root.find_item_steps(item)
+
+  def to_string(self, recurse: bool):
+    return f'LinkedList[{self.root.to_string(recurse)}]'
+
+  def __repr__(self):
+    return self.to_string(recurse=True)
+
+  def __str__(self):
+    return self.to_string(recurse=False)
+
+class PolymorphicNode(ABC):
+  @abstractmethod
+  def __init__(self):
+    pass
+
+  @abstractmethod
+  def append(self, item):
+    pass
+
+  @abstractmethod
+  def find_item_steps(self, item):
+    pass
+
+  @abstractmethod
+  def to_string(self, recurse: bool):
+    pass
+
+  def __repr__(self):
+    return self.to_string(recurse=True)
+
+  def __str__(self):
+    return self.to_string(recurse=False)
+
+class EmptyNode(PolymorphicNode):
+  def __init__(self):
+    super().__init__()
+
+  def append(self, item):
+    """
+    This is the only weird part of EmptyNode: because we want to utilize
+    *polymorphism*, when append() is called on an EmptyNode it
+    is "transformed into" a FilledNode! That is why, in the
+    LinkedList's append() function, we have self.root = self.root.append(),
+    and why the FilledNode's append() function works the same way
+    """
+    #print("EmptyLinkedListNode.append()")
+    new_form = ContentNode(item)
+    return new_form
+
+  def find_item_steps(self, item):
+    return np.inf
+
+  def __len__(self):
+    return 0
+
+  def to_string(self, recurse: bool):
+    return ''
+
+class ContentNode(PolymorphicNode):
+  def __init__(self, content_arg):
+    super().__init__()
+    self.content = content_arg
+    self.next = EmptyNode()
+
+  def append(self, item):
+    self.next = self.next.append(item)
+    # Return just *self*, since we *haven't* transformed the type of
+    # FilledLinkedListNode by appending another element to it
+    return self
+
+  def find_item_steps(self, item):
+    if self.content == item or self.content[0] == item:
+      return 1
+    return 1 + self.next.find_item_steps(item)
+
+  def get_content(self):
+    return self.content
+
+  def __len__(self):
+    return 1 + len(self.next)
+
+  def to_string(self, recurse: bool):
+    content_str = f'ContentNode[{str(self.get_content())}] '
+    if not recurse:
+      return content_str
+    next_str = str(self.next)
+    return f'{content_str}{self.next.to_string(recurse)}'
+```
+
+## Tuple vs. `InventoryItem` (Part 3.1)
+
+```python
+# @title define-inventory-item
+class InventoryItem:
+  def __init__(self, item_name_arg, price_arg):
+    self.item_name = item_name_arg
+    self.price = price_arg
+
+  def __lt__(self, other): # -> [NotImplemented | bool]:
+    if isinstance(other, InventoryItem):
+      return self.item_name < other.item_name
+    if isinstance(other, str):
+      return self.item_name < other
+    return NotImplemented
+
+  def __le__(self, other): # -> [NotImplemented | bool]
+    if isinstance(other, InventoryItem):
+      return self.item_name <= other.item_name
+    if isinstance(other, str):
+      return self.item_name <= other
+    return NotImplemented
+
+  def __gt__(self, other): # -> [NotImplemented | bool]
+    if isinstance(other, InventoryItem):
+      return self.item_name > other.item_name
+    if isinstance(other, str):
+      return self.item_name > other
+    return NotImplemented
+
+  def __ge__(self, other): # -> [NotImplemented | bool]
+    if isinstance(other, InventoryItem):
+      return self.item_name >= other.item_name
+    if isinstance(other, str):
+      return self.item_name >= other
+    return NotImplemented
+
+  def __eq__(self, other): # -> [NotImplemented | bool]
+    if isinstance(other, InventoryItem):
+      return self.item_name == other.item_name
+    if isinstance(other, str):
+      return self.item_name == other
+    return NotImplemented
+
+  def __ne__(self, other): # -> [NotImplemented | bool]
+    if isinstance(other, InventoryItem):
+      return self.item_name != other.item_name
+    if isinstance(other, str):
+      return self.item_name != other
+    return NotImplemented
+
+  def __repr__(self) -> str:
+    return self.__str__()
+
+  def __str__(self) -> str:
+    return f'InventoryItem[item_name={self.item_name},price={self.price}]'
+```
+
+## `ThingContainer` (Part 3.2)
+
+```python
+# @title define-thing-container
+class ThingContainer:
+  def __init__(self):
+    self.internal_list = []
+
+  @abstractmethod
+  def put_new_thing_in(self, item):
+    pass
+
+  def is_empty(self) -> bool:
+    return self.__len__() == 0
+
+  def __len__(self):
+    return len(self.internal_list)
+
+  @abstractmethod
+  def take_existing_thing_out(self):
+    pass
+
+class Stack(ThingContainer):
+  def __init__(self):
+    super().__init__()
+
+  def __push(self, item):
+    self.internal_list.append(item)
+
+  def __pop(self):
+    return self.internal_list.pop()
+
+  def put_new_thing_in(self, item):
+    return self.__push(item)
+
+  def take_existing_thing_out(self):
+    return self.__pop()
+
+class Queue(ThingContainer):
+  def __init__(self):
+    super().__init__()
+
+  def put_new_thing_in(self, item):
+    return self.__enqueue(item)
+
+  def __enqueue(self, item):
+    self.internal_list.insert(0, item)
+
+  def __dequeue(self):
+    return self.internal_list.pop()
+
+  def take_existing_thing_out(self):
+    return self.__dequeue()
+```
+
+## `AlphaHasher2` (Part 5)
+
+```python
+# @title define-alpha-hasher-2
+class AlphaHasher2(CustomHasher):
+  def __init__(self):
+    self.alphabet_size = 26 * 26
+
+  def get_alphabet_size(self):
+    return self.alphabet_size
+
+  def hash(self, str_to_hash: str) -> int:
+    if len(str_to_hash) == 0:
+      first_two_letters = 'AA'
+    elif len(str_to_hash) == 1:
+      first_letter = str_to_hash.upper()[0]
+      second_letter = 'A'
+    else:
+      first_letter = str_to_hash.upper()[0]
+      second_letter = str_to_hash.upper()[1]
+    #print(f'First two letters for {str_to_hash}: {first_letter}{second_letter}')
+    # And return its index:
+    # 'AA' has index 0, 'AB' has index 1, etc.
+    first_letter_pos = AlphaHasher2.compute_position_in_alphabet(first_letter)
+    second_letter_pos = AlphaHasher2.compute_position_in_alphabet(second_letter)
+    # The position in the two-letter alphabet is just 26*first + second
+    final_pos = 26 * first_letter_pos + second_letter_pos
+    return final_pos
+
+  def compute_position_in_alphabet(self, uppercase_key: str) -> int:
+    if uppercase_key in string.ascii_uppercase:
+      return string.ascii_uppercase.index(uppercase_key)
+    return 0
+
+  def compute_key_for_index(self, index: int) -> str:
+    first_letter_part = int(index / 26)
+    second_letter_part = index % 26
+    # In case you need to debug!
+    #print(f'alpha2_index: {index}, first_letter_part: {first_letter_part}, second_letter_part: {second_letter_part}')
+    return string.ascii_uppercase[first_letter_part] + string.ascii_uppercase[second_letter_part]
+```

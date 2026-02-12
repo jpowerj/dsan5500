@@ -1,5 +1,5 @@
 ---
-title: "Week 6: Depth-First and Breadth-First Search"
+title: "Week 6: Hash Tables and BST Iteration"
 subtitle: "*DSAN 5500: Data Structures, Objects, and Algorithms in Python*"
 date: 2026-02-12
 date-format: full
@@ -50,154 +50,130 @@ Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 6:40pm | [W01 Reminders, HW2 $\leadsto$ HW3 &rarr;](#hash-tables) |
-| **Lecture** | 6:40pm | 7:05pm | [DFS in Isolation &rarr;](#hash-tables) |
-| | 7:05pm | 7:30pm | [BFS in Isolation &rarr;](#onwards-and-upwards-fancier-algorithms) |
+| **Lecture** | 6:30pm | 6:40pm | [HW2 Intro &rarr;](#hash-tables) |
+| | 6:40pm | 7:30pm | 
 | | 7:30pm | 8:00pm | [(Those Who Know...) It's the Same Algorithm 🤯 &rarr;](#onwards-and-upwards-fancier-algorithms) |
 | **Break!** | 8:00pm | 8:10pm | |
-| | 8:10pm | 9:00pm | [The Scourge of *Cycles* (Graph Traversal) &rarr;](#onwards-and-upwards-fancier-algorithms) |
+| | 8:10pm | 9:00pm | [BST Iteration: BFS and DFS &rarr;](#onwards-and-upwards-fancier-algorithms) |
 
 : {tbl-colwidths="[12,12,12,64]"}
 
 {{< include ../dsan-globals/_graphviz-setup.qmd >}}
 
-# W01 Learning Objectives Reminders! {data-stack-name="Table-Setting"}
+# Hash Tables {data-stack-name="HashTable"}
 
-## Hammers vs. Structures Built w/Hammers {.crunch-title .title-09 .crunch-ul}
+* *(Spoiler alert, so you know I'm not lying to you: this is a **LinkedList** with some **additional structure!**)*
+* You just got hired as a **cashier** (Safeway cashiering alum myself 🫡)
+* The scanner is broken (spoiler #2: the scanner uses a hash table), so you start writing down **items** along with their **prices**, one-by-one, as items come in...
 
-```{=html}
-<style>
-.honk-honk {
-  font-size: 180% !important;
-  /* font-family: "Bungee Spice", sans-serif; */
-  font-family: "Honk", sans-serif;
-  /* font-optical-sizing: auto; */
-  font-weight: 400;
-  font-style: normal;
-}
-</style>
-```
-
-* How I see the course title:
-  * [Data Structures!]{.honk-honk}
-  * [Objects!]{.honk-honk}, and
-  * [Algorithms!]{.honk-honk} (in Python)
-* How people I'm trying to meet halfway see the title(?): (Data Structures, Objects, and Algorithms) in [Python!]{.honk-honk}
-
-## Many, Many Education Systems (including DCPS)
-
-* "This is the correct way to do _________"
-  * Regurgitate it: ✅💯✅ (Didn't get hit with stick 😎)
-  * Fail to regurgitate it: ❌👎❌ (Got hit with stick 😔)
-
-## Studies of Learning + Motivation {.smaller .crunch-title .crunch-ul .crunch-quarto-layout-panel .crunch-li}
-
-:::: {layout="[1,1]"}
-
-![](images/dehaene.jpg){fig-align="center" width="360"}
-
-::: {#dehaene-right}
-
-<center>
-Approach 1
-</center>
-
-* Focus attention on (sufficiently interesting) structure
-* $\implies$ students' comfort with tools "arises out of" wanting to build it
-* $\implies$ students discover ways to use tools that "click" w/them specifically (serotonin spike: tool $\leftrightarrow$ thing they built)
-
-<center>
-Approach 2
-</center>
-
-* Tell students correct and incorrect ways to use tools
-* $\implies$ students learn "correct" and "incorrect" as **rules**
-* $\implies$ (a) lower retention, (b) less adaptability to **new tools**
-
-:::
-::::
-
-## Applies Equally Well Whether... {.smaller .crunch-title .crunch-quarto-layout-panel .cols-va}
-
-:::: {.columns}
-::: {.column width="50%"}
-
-You're in Cuba...
-
-![](images/ri6.jpg){fig-align="center" width="550"}
-
-:::
-::: {.column width="50%"}
-
-...OR u just want that data sci BAG! 💰
-
-![](images/pink.jpg){fig-align="center" width="320"}
-
-:::
-::::
-
-## Midterm Metadata {.crunch-title}
-
-* **Coding Portion**: Modifications of `LinkedList` (Circular / jump-to-end / doubly-linked); non-scary OOP skeleton 🙈
-* **Multiple Choice Portion**: Lots more to cover...
-* Hash Tables: $O(1 + \epsilon \log_2(n))$, but think about it as:
-* $1 + (\text{Collision rate}) \cdot (\text{Collision handler efficiency})$
-* Linked List $\rightarrow$ Binary Search Tree
-* Depth-First vs. Breadth-First: Picture of a tree $\rightarrow$ (a) what is BFS result, (b) what is (in/pre/post)-order DFS result?
-* Lastly: Cormen, Leiserson, Rivest, Stein (CLRS), pgs. 17-106
-
-# Back to BSTs {data-stack-name="Tree Traversal"}
-
-## BST Building Blocks on HW3
-
-* For HW3, we provide you with an `InventoryItem` class
-* Two instance variables: `item_name` and `price`
-* Equivalence relations:
-  * `__eq__(other)`, `__ne__(other)`
-* **Ordering relations**:
-  * `__lt__(other)`, `__le__(other)`, `__gt__(other)`, `__ge__(other)`
-* Bonus: `__repr__()` and `__str__()`
-
-## LLs $\rightarrow$ BSTs: The Hard Part {.crunch-title .crunch-ul}
-
-* When we were working with LinkedLists, we could access all items by just "looping through", from one element to the next, printing as we go along.
-* But... for a BST, our structure can now **branch** as we traverse it... How do we "loop through" a BST?
-* **Two fundamentally different ways** to traverse every node
-* "Opposites" of each other, so that one is often extremely efficient and the other extremely inefficient for a given task
-* Your job as a data scientist is to **think carefully** about which one is **more efficient** for a given goal!
-
-## Two Ways to Traverse: IRL Version {.smaller .crunch-title .title-12 .crunch-ul .crunch-callout .crunch-li-5}
-
-* Imagine we're trying to learn about a topic $\tau$ using **Wikipedia**, so we find its article $\tau_0$
-* There are two "extremes" in terms of strategies we could follow for learning, given the **contents** of the article as well as the **links** it contains to **other articles** 
-
-::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Depth-First Search (DFS)" style="margin-bottom: 8px !important;"}
-
-* Open $\tau_0$ and start reading; When we encounter a **link** we **always click it**, **immediately start reading** the new article.
-* If we hit an article with no links (or a dead end/broken link), we finish reading it and click the **back button**, picking up where we left off in the previous article. When we reach the end of $\tau_0$, we're done!
-
-:::
-
-::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Breadth-First Search (BFS)"}
-
-* Bookmark $\tau_0$ in a folder called **"Level 0 Articles"**; open and start reading it
-* When we encounter a **link**, we **put it in a "Level 1 Articles" folder**, but **continue reading $\tau_0$** until we reach the end.
-* We then **open all "Level 1 Articles"** in new tabs, placing links we encounter in **these** articles into a **"Level 2 Articles"** folder, that we only start reading once all "Level 1 Articles" are read
-* We continue like this, reading "Level 3 Articles" once we're done with "Level 2 Articles", "Level 4 Articles" once we're done with "Level 3 Articles", and so on. (Can you see a sense in which this is the **"opposite"** of DFS?)
-
-:::
-
-* ...Let's try them out! I clicked "Random Article" and got <a href='https://en.wikipedia.org/wiki/Eustache_de_Saint_Pierre' target='_blank'>Eustache de Saint Pierre <i class='bi bi-box-arrow-up-right ps-1'></i></a>
-
-## Two Ways to Traverse: Picture Version {.smaller .crunch-title .crunch-details .title-12}
-
-::: {.columns}
-::: {.column width="50%"}
+## Our List of (Item, Price) Pairs {.crunch-title .crunch-details .crunch-ul .small-summary .text-90}
 
 ```{python}
-#| label: viz-bst
+price_list = []
+price_list.append(('Banana', 10))
+price_list.append(('Apple', 2))
+price_list.append(('Four Loko', 5))
+price_list
+```
+
+* As the list gets longer, it gets harder and harder to **find where you wrote down a specific item and its price**
+* As you now know, you could use **linear search**, $\overline{O}(n)$, or if you ensure alphabetical order (an **invariant!**), you could use **binary, divide-and-conquer search**, $\overline{O}(\log_2(n))$
+* We can do **even better**: $\overline{O}(1)$. First w/magic, but then math
+
+## Strange-At-First Technique for Algorithm Analysis: Oracles
+
+* What if we had a magical wizard who could just **tell us** where to find an item we were looking for?
+* Sounds like I'm joking/saying *"what if we had a billion $ and infinite charisma and could fly and walk through walls"*
+* Yet, through the magic of math/CS, there are concrete **hashing algorithms** which ensure (in a mathematically-provable way!) "almost certain" $\overline{O}(1)$ lookup time
+
+## Mathematical Strategy of Oracles {.crunch-title .title-12 .crunch-math .math-75 .crunch-ul}
+
+* We'll use a **concrete**, **simplified hash function** to illustrate
+* Mathematically we'll be able to get something like
+
+$$
+T(n) = \overline{O}(1 + \underbrace{\epsilon}_{\mathclap{\text{Collision rate}}} \cdot n)
+$$
+
+* Which tells us: **if** we had an oracle who could ensure near-0 collision rates, **then** $T(n) = \overline{O}(1)$.
+* And, by a beautiful division-of-labor, **other** computer scientists [figure out](https://www.youtube.com/watch?v=OXuDhejxz_c) the near-0 collision rates part, giving us
+
+$$
+p^{✅} = [T(n) = \overline{O}(1 + \epsilon n)], q^{✅} = [\epsilon \approx 0],\text{ so } p \wedge q \implies T(n) \overset{✅}{=} \overline{O}(1).
+$$
+
+## Back to the Price List {.crunch-title .crunch-math .crunch-ul}
+
+* Our hash function: **`hash(item)`** = **first letter of `item`**
+
+$$
+h(\texttt{x}) = \texttt{x[0]}
+$$
+
+* `h('Banana') = 'B'`, `h('Monkey') = 'M'`
+* With this function in hand, we can create a length-26 **array**, one slot for each letter in alphabet, and then **write down (item, price) pairs** in **whatever slot `item` hashes to**
+
+## The Importance of Differentiating Operations: *Insertion* vs. *Lookup* {.crunch-title .title-09}
+
+* So far, we have $\overline{O}(1)$ **insertion** via hashing
+* We also get $\overline{O}(1)$ **lookup!**
+* When customer hands us an item (say, `'Banana'`), we compute the hash (`B`), look in that slot, and obtain the price for bananas.
+* We also get $\overline{O}(1)$ **updating** (hash to find the old price, update it to have new price) and $\overline{O}(1)$ **deletion** (hash to find the slot containing the item, then erase it from that slot)
+
+## So What's the Catch???
+
+* **BLUEBERRIES** show up to ruin our day (as usual 😞)
+* We hash, so far so good: `h('Blueberries') = 'B'`
+* But then we go to the `B` slot and see that `(Bananas, 10)` is already there!!! Wtf do we do here... don't panic!
+* The answer? We open our HW2 from DSAN 5500 and remember that we have our lovely friend the `LinkedList` that we can use whenever and however we want!
+
+## Arrays vs. Linked Lists
+
+* Jeff is hiding something here... Why jump to `LinkedList`? Why not just... another length-26 array, for example?
+* For this we open up our Week 1 slides and remember the **stack** vs. **heap** distinction: we **know** how many letters in the alphabet, we **don't know** how many items starting with `B` (or, if we do, we want to be able to expand/contract our price list to handle new/discontinued items)
+* Terminology for this kind of "hybrid" data structure: `HashTable` is an `Array` that **"degenerates into"** a `LinkedList` (when there are **collisions**)
+
+## Look How Far We Came! {.crunch-title .crunch-ul .inline-90 .code-90}
+
+* Last week: Only structure we knew allowing insertion (`LinkedList`) was $\overline{O}(n)$ for everythihg
+* This week: New structure where suddenly everything is $\overline{O}(1)$, except in "unlucky" cases, in which it partially **"degenerates"** into a `LinkedList`
+* $\implies$ The "inevitable" $\overline{O}(n)$ runtime has transformed into the unlucky worst-case **upper bound** [([feels like yesterday, all this was a dream](https://www.youtube.com/watch?v=CmghyKonz8E))]{style="font-size: 45% !important;"}
+* $\implies$ By taking **core** data structures/algorithms from your toolkit, you can "piece together" **hybrid structures** whose *whole (runtime) is better than the sum of its parts*
+
+## Hash Tables: tl;dr Edition {.crunch-title .crunch-ul .inline-90}
+
+* **Keys** $k \in \mathcal{K}$ are plugged into a (deterministic) **hash function** $h: \mathcal{K} \rightarrow \{1, \ldots, N\}$, producing an **index** where $k$ is stored
+* If **nothing at that index yet**, store $(k,v)$ in empty slot
+* If **already an item at that index**, we have a ⚠️**collision**⚠️
+* We could just **throw away** the old value (HW2 Part 1)
+* Otherwise, need a way to store multiple items in one slot... (a way to **dynamically grow** storage at given index)
+* Solution you know so far: **Linked Lists**
+* New solution: **Binary Search Trees!**
+
+# Binary Search Trees {data-stack-name="BSTs"}
+
+* If you've been annoyed by how long we've talked about Linked Lists for... this is where it finally pays off!
+
+## BST: The Final Missing Data Structure {.crunch-title .crunch-ul .code-90 .inline-90}
+
+* Just a glorified `LinkedList`! We'll be able to take our `HashMap` and "drop in" the `BST` to play the role `LinkedList` is playing right now
+* If collision, we'll create a `BST` with its $\overline{O}(\log(n))$ operations, rather than a `LinkedList` with its $\overline{O}(n)$ operations
+* $\implies$ `HashMap` will go from:
+  * $\overline{O}(1)$ best-case but $\overline{O}(n)$ worst-case to
+  * $\overline{O}(1)$ best-case but $\overline{O}(\log_2(n))$ worst-case!
+
+## Linked Lists + Divide-and-Conquer = BSTs {.crunch-title .title-11}
+
+* By now, the word "Linked List" should make you groan, cross your arms and start tapping your feet with impatience
+* "Here we go again... the Linked List is gonna make us **traverse through every single element** before we reach the one we're looking for" 😖
+* Linked List = Canon in D
+* Binary Search Tree = Canon in D played by Hiromi Uehara...
+
+## Visualizing BSTs {.smaller .crunch-title .crunch-col-output .crunch-details .cols-va}
+
+```{python}
+#| output-location: column
 #| fig-align: center
-#| code-fold: true
 from hw2 import LinkedList, InventoryItem, BinarySearchTree
 bst = BinarySearchTree()
 item1 = InventoryItem('Mango', 50)
@@ -213,11 +189,147 @@ bst.add(item6)
 HTML(visualize(bst))
 ```
 
+## Practical Considerations {.text-90}
+
+* **Hash Maps**: Only useful if keys are **hashable**
+  * Python has a built-in `collections.abc.Hashable` class, such that `hash(my_obj)` works iff `isinstance(my_obj, Hashable)`
+* **Binary Search Trees**: Only useful if keys have an **ordering**
+  * "Standard" classes (`int`, `str`, `datetime`) come with implementations of ordering, but if you make **your own class** you need to **implement the ordering** for it!
+* (**Linked Lists** still work for non-hashable/orderable objects!)
+
+## Why `==`, `<`, `>=` "Just Work" {.crunch-title .smaller .crunch-ul}
+
+* Not magic! Someone has **explicitly written a set of functions** telling Python **what to do** when it sees e.g. `obj1 < obj2`
+* Example: let's implement an ordering of vectors $\mathbf{x} \in \mathbb{R}^2$ based on **Pareto dominance**
+
+![](images/pareto.svg){fig-align="center"}
+
+## Ordering Vectors via Pareto Dominance {.smaller .crunch-title .title-12}
+
+```{python}
+#| output-location: column
+class UtilVector:
+    def __init__(self, u1, u2):
+        self.u1 = u1
+        self.u2 = u2
+    
+    def __eq__(self, other):
+        if not isinstance(other, UtilVector):
+            return NotImplemented
+        return self.u1 == other.u1 and self.u2 == other.u2
+
+    def __ne__(self, other):
+        if not isinstance(other, UtilVector):
+            return NotImplemented
+        return self.u1 != other.u1 or self.u2 != other.u2
+    
+    def __gt__(self, other):
+        if not isinstance(other, UtilVector):
+            return NotImplemented
+        return self.u1 > other.u1 and self.u2 >= other.u2 or self.u1 >= other.u1 and self.u2 > other.u2
+
+    def __ge__(self, other):
+        return self.__gt__(other) or self.__eq__(other)
+        
+    def __lt__(self, other):
+        if not isinstance(other, UtilVector):
+            return NotImplemented
+        return other.__gt__(self)
+
+    def __le__(self, other):
+        return self.__lt__(other) or self.__eq__(other)
+xA = UtilVector(2, 2)
+xB = UtilVector(3, 2)
+print(xB > xA)
+xC = UtilVector(2, 3)
+print(xC > xB)
+import itertools
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+x0 = UtilVector(4, 6)
+util_vals = np.arange(0, 11, 0.5)
+util_pairs = list(itertools.product(util_vals, util_vals))
+util_df = pd.DataFrame(util_pairs, columns=['x','y'])
+def compare_to_x0(row):
+    row_vec = UtilVector(row['x'], row['y'])
+    gt_result = int(row_vec > x0)
+    lt_result = int(row_vec < x0)
+    return gt_result - lt_result
+util_df['greater'] = util_df.apply(compare_to_x0, axis=1)
+#my_palette = sns.color_palette(['#E69F00','lightgray','#CCFFCC'])
+my_palette = sns.color_palette(['#FF3535','lightgray','#35FF35'])
+sns.relplot(
+    data=util_df,
+    x='x', y='y',
+    hue='greater',
+    palette=my_palette,
+    marker='X', s=150
+);
+x0_df = pd.DataFrame({'x': [4], 'y': [6]})
+plt.scatter(data=x0_df, x='x', y='y', color='black')
+plt.gca().set_aspect('equal')
+```
+
+## Back to BSTs
+
+* For HW2, we provide you with an `InventoryItem` class
+* Two instance variables: `item_name` and `price`
+* Equivalence relations:
+  * `__eq__(other)`, `__ne__(other)`
+* **Ordering relations**:
+  * `__lt__(other)`, `__le__(other)`, `__gt__(other)`, `__ge__(other)`
+* Bonus: `__repr__()` and `__str__()`
+
+# Node Traversal: Computational Tree-Climbing {data-stack-name="Tree Traversal"}
+
+## LLs $\rightarrow$ BSTs: The Hard Part
+
+* When we were working with LinkedLists, we could access all items by just "looping through", from one element to the next, printing as we go along.
+* But... for a BinarySearchTree, since our structure can now **branch** as we traverse it... How do we "loop through" a BST?
+* **Two fundamentally different ways** to traverse every node in our BST
+* "Opposites" of each other, so that one is often extremely efficient and the other extremely inefficient for a given task
+* Your job as a data scientist is to **think carefully** about which one is **more efficient** for a given goal!
+
+## Two Ways to Traverse: IRL Version {.smaller .crunch-title .title-12 .crunch-ul .crunch-callout}
+
+* Imagine we're trying to learn about a topic $\tau$ using **Wikipedia**, so we find its article $\tau_0$
+* There are two "extremes" in terms of strategies we could follow for learning, given the **contents** of the article as well as the **links** it contains to **other articles** 
+
+::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Depth-First Search (DFS)" style="margin-bottom: 8px !important;"}
+
+* Open $\tau_0$ and start reading it; When we encounter a **link** we **always click it** and **immediately start reading** the new article.
+* If we hit an article with no links (or a dead end/broken link), we finish reading it and click the **back button**, picking up where we left off in the previous article. When we reach the end of $\tau_0$, we're done!
+
+:::
+
+::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Breadth-First Search (BFS)"}
+
+* Bookmark $\tau_0$ in a folder called **"Level 0 Articles"**; open and start reading it
+* When we encounter a **link**, we **put it in a "Level 1 Articles" folder**, but **continue reading $\tau_0$** until we reach the end.
+* We then **open all "Level 1 Articles"** in new tabs, placing links we encounter in **these** articles into a **"Level 2 Articles"** folder, that we only start reading once all "Level 1 Articles" are read
+* We continue like this, reading "Level 3 Articles" once we're done with "Level 2 Articles", "Level 4 Articles" once we're done with "Level 3 Articles", and so on. (Can you see a sense in which this is the **"opposite"** of DFS?)
+
+:::
+
+* ...Let's try them out! I clicked "Random Article" and got <a href='https://en.wikipedia.org/wiki/Eustache_de_Saint_Pierre' target='_blank'>Eustache de Saint Pierre <i class='bi bi-box-arrow-up-right ps-1'></i></a>
+
+## Two Ways to Traverse: Picture Version {.smaller .crunch-title .crunch-details}
+
+::: {.columns}
+::: {.column width="50%"}
+
+```{python}
+#| fig-align: center
+from hw2 import IterAlgorithm, NodeProcessor
+visualize(bst)
+```
+
 :::
 ::: {.column width="50%"}
 
 ```{python}
-from hw2 import IterAlgorithm, NodeProcessor
 print("DFS:")
 dfs_processor = NodeProcessor(IterAlgorithm.DEPTH_FIRST)
 #print(type(dfs_processor.node_container))
@@ -247,65 +359,42 @@ bfs_processor.iterate_over(bst)
 
 :::
 
-## Two Ways to Traverse: Underlying Data Structures {.smaller .crunch-title .title-09}
+## Two Ways to Traverse: Underlying Data Structures Version {.smaller .crunch-title}
 
 * Now that you have some intuition, you may be thinking that they might require very different code to implement 🤔
-* This is where **mathematically-formal link** between the two becomes ultra helpful!
+* This is where the **mathematical-formal linkage** between the two becomes ultra helpful!
 * It turns out (and a full-on algorithmic theory course makes you prove) that
 
-  1. **Depth-First Search** can be accomplished by **processing nodes in an order determined by adding each to a *stack***, while
-  2. **Breadth-First Search** can be accomplished by **processing nodes in an order determined by adding each to a *queue***!
+1. **Depth-First Search** can be accomplished by **processing nodes in an order determined by adding each to a *stack***, while
+2. **Breadth-First Search** can be accomplished by **processing nodes in an order determined by adding each to a *queue***!
 
 * $\implies$ Literally **identical code**, "pulling out" the word **stack** and replacing it with the word **queue** within your code (or vice-versa).
-* Put your Software Engineer Hat on: this calls for an **abstraction layer!**
-  * *(OOP hint: Notice how we're **not** teaching you how `Queue` and `Stack` work, and **not** asking you to implement it *🤨*)*
+* If you have your Software Engineer Hats on, you'll recognize this as a job for an **abstraction layer!**
 
-## Two Ways to Traverse: HW3 Version {.title-09 .crunch-title .crunch-ul .crunch-li-8}
+## Two Ways to Traverse: HW2 Version
 
 * You'll make a class called `NodeProcessor`, with a **single** `iterate_over(tree)` function
-* This function---**without any changes in the code or even any if statements!**---will be capable of **both** DFS and BFS
-  * That's a hint: lose points if there's an if statement! 👀 *(bc, the whole point of OOP! Encapsulation, abstraction)*
-* Constructor takes in a `ThingContainer` (could be a **stack** or a **queue**, you won't know which), with two functions:
+* This function---**without any changes in the code or even any if statements!**---will be capable of both DFS and BFS
+* It will take in a `ThingContainer` (could be a **stack** or a **queue**, you won't know which), which has two functions:
   * `put_new_thing_in(new_thing)`
   * `take_existing_thing_out()`
-
-## `ThingContainer`: The OOP Structure You See
-
-![](images/thing_container_notfull.svg){fig-align="center"}
-
-## Secret Full OOP Structure You *Don't* See {.title-08}
-
-![](images/thing_container_full.svg){fig-align="center"}
-
-## One Animal in the BFS Species
-
-* For this and next slide, constant-time preliminary step: "Add `root` to `container`" (a `ThingContainer` object)
-
-| Procedure | Algorithm |
-| - | - |
-| Breadth-First Search | `while` [`container` not empty]:<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Take thing out<br>&nbsp;&nbsp;&nbsp;&nbsp;2. **Print thing content**<br>&nbsp;&nbsp;&nbsp;&nbsp;3. Add left child to container<br>&nbsp;&nbsp;&nbsp;&nbsp;4. Add right child to container |
-
-: {tbl-colwidths="[38,62]"}
 
 ## Three Animals in the DFS Species
 
 | DFS Procedure | Algorithm |
 | - | - |
-| Pre-Order Traversal | 1. **Print node**<br>2. DFS left subtree<br>3. DFS right subtree |
-| **In-Order** Traversal 🧐‼️ | 1. DFS left subtree<br>2. **Print node**<br>3. DFS right subtree |
-| Post-Order Traversal | 1. DFS left subtree<br>2. DFS right subtree<br>3. **Print node** |
+| Pre-Order Traversal | 1. **Print node**<br>2. Traverse left subtree<br>3. Traverse right subtree |
+| **In-Order** Traversal 🧐‼️ | 1. Traverse left subtree<br>2. **Print node**<br>3. Traverse right subtree |
+| Post-Order Traversal | 1. Traverse left subtree<br>2. Traverse right subtree<br>3. **Print node** |
 
 ## The Three Animals Traverse our Inventory Tree {.smaller .crunch-title .title-10}
 
 ```{python}
-#| label: viz-bst-for-dfs
 #| fig-align: center
 visualize(bst)
 ```
 
-# Final Notes for Homework 3 {data-stack-name="HW3"}
-
-## More Memory, More Performance
+## Final Notes for HW2
 
 * The last part challenges you to ask: **why stop at a hash based on just the *first* letter of the key?**
 * We could just as easily use the first **two** letters:
@@ -314,314 +403,3 @@ visualize(bst)
 * `h('CA') = 52`, ..., `h('ZZ') = 675`.
 * You will see how this gets us **even closer to the elusive $O(1)$!** And we could get even closer with three letters, four letters, ... 🤔🤔🤔
 
-## `AlphaHasher` vs. `CustomHasher`
-
-```python
-# @title define-alpha-hasher
-from abc import ABC, abstractmethod
-import string
-
-class CustomHasher(ABC):
-  @abstractmethod
-  def __init__(self):
-    pass
-
-  @abstractmethod
-  def get_alphabet_size(self):
-    pass
-
-  @abstractmethod
-  def hash(self, str_to_hash: str) -> int:
-    pass
-
-  @abstractmethod
-  def compute_position_in_alphabet(self, uppercase_key: str) -> int:
-    pass
-
-  @abstractmethod
-  def compute_key_for_index(self, index: int) -> str:
-    pass
-
-class AlphaHasher(CustomHasher):
-  def __init__(self):
-    self.alphabet_size = 26
-
-  def get_alphabet_size(self):
-    return self.alphabet_size
-
-  def hash(self, str_to_hash: str) -> int:
-    if len(str_to_hash) == 0:
-      first_letter = 'A'
-    else:
-      first_letter = str_to_hash.upper()[0]
-    # And return its index in the alphabet:
-    # 'A' has index 0, 'B' has index 1, etc.
-    return self.compute_position_in_alphabet(first_letter)
-
-  def compute_position_in_alphabet(self, uppercase_key: str) -> int:
-    return string.ascii_uppercase.index(uppercase_key)
-
-  def compute_key_for_index(self, index: int) -> str:
-    return string.ascii_uppercase[index]
-```
-
-## `LinkedList` via `PolymorphicNode` {.title-09}
-
-* `EmptyNode` $\rightarrow$ `ContentNode`
-
-```python
-# @title define-linked-list
-from abc import ABC, abstractmethod
-
-class LinkedList:
-  def __init__(self):
-    self.root = EmptyNode()
-
-  def append(self, item):
-    self.root = self.root.append(item)
-
-  def find_item_steps(self, item):
-    return self.root.find_item_steps(item)
-
-  def to_string(self, recurse: bool):
-    return f'LinkedList[{self.root.to_string(recurse)}]'
-
-  def __repr__(self):
-    return self.to_string(recurse=True)
-
-  def __str__(self):
-    return self.to_string(recurse=False)
-
-class PolymorphicNode(ABC):
-  @abstractmethod
-  def __init__(self):
-    pass
-
-  @abstractmethod
-  def append(self, item):
-    pass
-
-  @abstractmethod
-  def find_item_steps(self, item):
-    pass
-
-  @abstractmethod
-  def to_string(self, recurse: bool):
-    pass
-
-  def __repr__(self):
-    return self.to_string(recurse=True)
-
-  def __str__(self):
-    return self.to_string(recurse=False)
-
-class EmptyNode(PolymorphicNode):
-  def __init__(self):
-    super().__init__()
-
-  def append(self, item):
-    """
-    This is the only weird part of EmptyNode: because we want to utilize
-    *polymorphism*, when append() is called on an EmptyNode it
-    is "transformed into" a FilledNode! That is why, in the
-    LinkedList's append() function, we have self.root = self.root.append(),
-    and why the FilledNode's append() function works the same way
-    """
-    #print("EmptyLinkedListNode.append()")
-    new_form = ContentNode(item)
-    return new_form
-
-  def find_item_steps(self, item):
-    return np.inf
-
-  def __len__(self):
-    return 0
-
-  def to_string(self, recurse: bool):
-    return ''
-
-class ContentNode(PolymorphicNode):
-  def __init__(self, content_arg):
-    super().__init__()
-    self.content = content_arg
-    self.next = EmptyNode()
-
-  def append(self, item):
-    self.next = self.next.append(item)
-    # Return just *self*, since we *haven't* transformed the type of
-    # FilledLinkedListNode by appending another element to it
-    return self
-
-  def find_item_steps(self, item):
-    if self.content == item or self.content[0] == item:
-      return 1
-    return 1 + self.next.find_item_steps(item)
-
-  def get_content(self):
-    return self.content
-
-  def __len__(self):
-    return 1 + len(self.next)
-
-  def to_string(self, recurse: bool):
-    content_str = f'ContentNode[{str(self.get_content())}] '
-    if not recurse:
-      return content_str
-    next_str = str(self.next)
-    return f'{content_str}{self.next.to_string(recurse)}'
-```
-
-## Tuple vs. `InventoryItem` (Part 3.1)
-
-```python
-# @title define-inventory-item
-class InventoryItem:
-  def __init__(self, item_name_arg, price_arg):
-    self.item_name = item_name_arg
-    self.price = price_arg
-
-  def __lt__(self, other): # -> [NotImplemented | bool]:
-    if isinstance(other, InventoryItem):
-      return self.item_name < other.item_name
-    if isinstance(other, str):
-      return self.item_name < other
-    return NotImplemented
-
-  def __le__(self, other): # -> [NotImplemented | bool]
-    if isinstance(other, InventoryItem):
-      return self.item_name <= other.item_name
-    if isinstance(other, str):
-      return self.item_name <= other
-    return NotImplemented
-
-  def __gt__(self, other): # -> [NotImplemented | bool]
-    if isinstance(other, InventoryItem):
-      return self.item_name > other.item_name
-    if isinstance(other, str):
-      return self.item_name > other
-    return NotImplemented
-
-  def __ge__(self, other): # -> [NotImplemented | bool]
-    if isinstance(other, InventoryItem):
-      return self.item_name >= other.item_name
-    if isinstance(other, str):
-      return self.item_name >= other
-    return NotImplemented
-
-  def __eq__(self, other): # -> [NotImplemented | bool]
-    if isinstance(other, InventoryItem):
-      return self.item_name == other.item_name
-    if isinstance(other, str):
-      return self.item_name == other
-    return NotImplemented
-
-  def __ne__(self, other): # -> [NotImplemented | bool]
-    if isinstance(other, InventoryItem):
-      return self.item_name != other.item_name
-    if isinstance(other, str):
-      return self.item_name != other
-    return NotImplemented
-
-  def __repr__(self) -> str:
-    return self.__str__()
-
-  def __str__(self) -> str:
-    return f'InventoryItem[item_name={self.item_name},price={self.price}]'
-```
-
-## `ThingContainer` (Part 3.2)
-
-```python
-# @title define-thing-container
-class ThingContainer:
-  def __init__(self):
-    self.internal_list = []
-
-  @abstractmethod
-  def put_new_thing_in(self, item):
-    pass
-
-  def is_empty(self) -> bool:
-    return self.__len__() == 0
-
-  def __len__(self):
-    return len(self.internal_list)
-
-  @abstractmethod
-  def take_existing_thing_out(self):
-    pass
-
-class Stack(ThingContainer):
-  def __init__(self):
-    super().__init__()
-
-  def __push(self, item):
-    self.internal_list.append(item)
-
-  def __pop(self):
-    return self.internal_list.pop()
-
-  def put_new_thing_in(self, item):
-    return self.__push(item)
-
-  def take_existing_thing_out(self):
-    return self.__pop()
-
-class Queue(ThingContainer):
-  def __init__(self):
-    super().__init__()
-
-  def put_new_thing_in(self, item):
-    return self.__enqueue(item)
-
-  def __enqueue(self, item):
-    self.internal_list.insert(0, item)
-
-  def __dequeue(self):
-    return self.internal_list.pop()
-
-  def take_existing_thing_out(self):
-    return self.__dequeue()
-```
-
-## `AlphaHasher2` (Part 5)
-
-```python
-# @title define-alpha-hasher-2
-class AlphaHasher2(CustomHasher):
-  def __init__(self):
-    self.alphabet_size = 26 * 26
-
-  def get_alphabet_size(self):
-    return self.alphabet_size
-
-  def hash(self, str_to_hash: str) -> int:
-    if len(str_to_hash) == 0:
-      first_two_letters = 'AA'
-    elif len(str_to_hash) == 1:
-      first_letter = str_to_hash.upper()[0]
-      second_letter = 'A'
-    else:
-      first_letter = str_to_hash.upper()[0]
-      second_letter = str_to_hash.upper()[1]
-    #print(f'First two letters for {str_to_hash}: {first_letter}{second_letter}')
-    # And return its index:
-    # 'AA' has index 0, 'AB' has index 1, etc.
-    first_letter_pos = AlphaHasher2.compute_position_in_alphabet(first_letter)
-    second_letter_pos = AlphaHasher2.compute_position_in_alphabet(second_letter)
-    # The position in the two-letter alphabet is just 26*first + second
-    final_pos = 26 * first_letter_pos + second_letter_pos
-    return final_pos
-
-  def compute_position_in_alphabet(self, uppercase_key: str) -> int:
-    if uppercase_key in string.ascii_uppercase:
-      return string.ascii_uppercase.index(uppercase_key)
-    return 0
-
-  def compute_key_for_index(self, index: int) -> str:
-    first_letter_part = int(index / 26)
-    second_letter_part = index % 26
-    # In case you need to debug!
-    #print(f'alpha2_index: {index}, first_letter_part: {first_letter_part}, second_letter_part: {second_letter_part}')
-    return string.ascii_uppercase[first_letter_part] + string.ascii_uppercase[second_letter_part]
-```
