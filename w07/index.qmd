@@ -46,6 +46,8 @@ format:
 
 :::
 
+{{< include ../dsan-globals/_graphviz-setup.qmd >}}
+
 # Midterm Dress Rehearsal {.smaller .small-title .crunch-title .crunch-callout .code-90 data-stack-name="Schedule"}
 
 Today's Planned Schedule:
