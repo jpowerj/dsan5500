@@ -1041,25 +1041,18 @@
     ]
   },
   {
-    "objectID": "w07/slides.html#bst-building-blocks-on-hw3",
-    "href": "w07/slides.html#bst-building-blocks-on-hw3",
-    "title": "Week 7: Code Examples and Midterm Review",
-    "section": "BST Building Blocks on HW3",
-    "text": "BST Building Blocks on HW3\n\nFor HW3, we provide you with an InventoryItem class\nTwo instance variables: item_name and price\nEquivalence relations:\n\n__eq__(other), __ne__(other)\n\nOrdering relations:\n\n__lt__(other), __le__(other), __gt__(other), __ge__(other)\n\nBonus: __repr__() and __str__()"
-  },
-  {
     "objectID": "w07/slides.html#lls-rightarrow-bsts-the-hard-part",
     "href": "w07/slides.html#lls-rightarrow-bsts-the-hard-part",
     "title": "Week 7: Code Examples and Midterm Review",
     "section": "LLs \\(\\rightarrow\\) BSTs: The Hard Part",
-    "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.\nBut… for a BST, our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!"
+    "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through” (follow next, print() at each step1)\nBut… for a BST, our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!\n\nThis print() step is going to become important! We’ll say we’ve “processed” a node once we’ve print()ed its content"
   },
   {
     "objectID": "w07/slides.html#two-ways-to-traverse-irl-version",
     "href": "w07/slides.html#two-ways-to-traverse-irl-version",
     "title": "Week 7: Code Examples and Midterm Review",
     "section": "Two Ways to Traverse: IRL Version",
-    "text": "Two Ways to Traverse: IRL Version\n\nImagine we’re trying to learn about a topic \\(\\tau\\) using Wikipedia, so we find its article \\(\\tau_0\\)\nThere are two “extremes” in terms of strategies we could follow for learning, given the contents of the article as well as the links it contains to other articles\n\n\n\n\n\n Depth-First Search (DFS)\n\n\n\nOpen \\(\\tau_0\\) and start reading; When we encounter a link we always click it, immediately start reading the new article.\nIf we hit an article with no links (or a dead end/broken link), we finish reading it and click the back button, picking up where we left off in the previous article. When we reach the end of \\(\\tau_0\\), we’re done!\n\n\n\n\n\n\n\n\n\n Breadth-First Search (BFS)\n\n\n\nBookmark \\(\\tau_0\\) in a folder called “Level 0 Articles”; open and start reading it\nWhen we encounter a link, we put it in a “Level 1 Articles” folder, but continue reading \\(\\tau_0\\) until we reach the end.\nWe then open all “Level 1 Articles” in new tabs, placing links we encounter in these articles into a “Level 2 Articles” folder, that we only start reading once all “Level 1 Articles” are read\nWe continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the “opposite” of DFS?)\n\n\n\n\n\n\n…Let’s try them out! I clicked “Random Article” and got Eustache de Saint Pierre"
+    "text": "Two Ways to Traverse: IRL Version\n\nYou’re trying to learn about a topic \\(\\tau\\) using Wikipedia, so you find its article \\(\\tau_0\\)\nTwo strategic “extremes” given [content of article \\(i\\)], [links to other articles \\(i \\rightarrow j\\)]\n\n\n\n\n\n Depth-First Search (DFS)\n\n\n\nOpen \\(\\tau_0\\) and start reading; When we encounter a link we always click, immediately start reading new article.\nIf we hit an article with no links (or a dead end/broken link), we finish reading it and click the back button, picking up where we left off in the previous article. When we reach the end of \\(\\tau_0\\), we’re done!\n\n\n\n\n\n\n\n\n\n Breadth-First Search (BFS)\n\n\n\nBookmark \\(\\tau_0\\) in a folder called “Level 0 Articles”; open and start reading it\nWhen we encounter a link, put it in “Level 1 Articles” folder but continue reading \\(\\tau_0\\) to the end\nWe then open all “Level 1 Articles” in new tabs, placing links we encounter in these articles into a “Level 2 Articles” folder, that we only start reading once all “Level 1 Articles” are read\nWe continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the “opposite” of DFS?)\n\n\n\n\n\n\n…Let’s try them out! I clicked “Random Article” and got Eustache de Saint Pierre"
   },
   {
     "objectID": "w07/slides.html#two-ways-to-traverse-picture-version",
@@ -1095,20 +1088,6 @@
     "title": "Week 7: Code Examples and Midterm Review",
     "section": "Two Ways to Traverse: HW3 Version",
     "text": "Two Ways to Traverse: HW3 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\n\nThat’s a hint: lose points if there’s an if statement! 👀 (bc, the whole point of OOP! Encapsulation, abstraction)\n\nConstructor takes in a ThingContainer (could be a stack or a queue, you won’t know which), with two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()"
-  },
-  {
-    "objectID": "w07/slides.html#thingcontainer-the-oop-structure-you-see",
-    "href": "w07/slides.html#thingcontainer-the-oop-structure-you-see",
-    "title": "Week 7: Code Examples and Midterm Review",
-    "section": "ThingContainer: The OOP Structure You See",
-    "text": "ThingContainer: The OOP Structure You See"
-  },
-  {
-    "objectID": "w07/slides.html#secret-full-oop-structure-you-dont-see",
-    "href": "w07/slides.html#secret-full-oop-structure-you-dont-see",
-    "title": "Week 7: Code Examples and Midterm Review",
-    "section": "Secret Full OOP Structure You Don’t See",
-    "text": "Secret Full OOP Structure You Don’t See"
   },
   {
     "objectID": "w07/slides.html#one-animal-in-the-bfs-species",
@@ -1251,11 +1230,32 @@
     "text": "The Boxes\n\n\n\n\n\n\n\n\n\nLinear Things: \\(O(N)\\)\nLogarithmic Things: \\(O(\\lg{N})\\)\n\n\n\n\nData Structures\nLinkedList\n\nBinarySearchTree\n\n\n\n\n\n\n\nSorting Algorithms\nInsertion-Sort\nMerge-Sort\n\n\nSearch Algorithms\nLinear-Search\nBinary-Search\n\n\nGeneral Pattern\nOne-by-One\nDivide-and-Conquer\n\n\nSteps to Look Up a Word\n\\(N = 102118\\)\n\\(\\lceil \\log_2(N) \\rceil = 17\\)\n\n\n\n\nHash Table: A “trick” that gets us close to \\(O(1)\\), by pre-allocating lots of memory!\n\n\\[\nO(N) \\; \\underbrace{\\leadsto O(\\log_2(N))}_{\\mathclap{\\substack{\\text{More Efficient Algorithm} \\\\ \\text{(Free!)}}}} \\; \\underbrace{\\leadsto O(1 + \\epsilon\\log_2(N))}_{\\substack{\\text{More Memory} \\\\ \\text{(\\$\\$\\$)}}}\n\\]"
   },
   {
-    "objectID": "w07/slides.html#more-memory-more-performance",
-    "href": "w07/slides.html#more-memory-more-performance",
+    "objectID": "w07/slides.html#bst-building-blocks",
+    "href": "w07/slides.html#bst-building-blocks",
     "title": "Week 7: Code Examples and Midterm Review",
-    "section": "More Memory, More Performance",
-    "text": "More Memory, More Performance\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔"
+    "section": "BST Building Blocks",
+    "text": "BST Building Blocks\n\nFor HW3, we provide you with an InventoryItem class\nTwo instance variables: item_name and price\nEquivalence relations:\n\n__eq__(other), __ne__(other)\n\nOrdering relations:\n\n__lt__(other), __le__(other), __gt__(other), __ge__(other)\n\nBonus: __repr__() and __str__()"
+  },
+  {
+    "objectID": "w07/slides.html#thingcontainer-the-oop-structure-you-see",
+    "href": "w07/slides.html#thingcontainer-the-oop-structure-you-see",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "ThingContainer: The OOP Structure You See",
+    "text": "ThingContainer: The OOP Structure You See"
+  },
+  {
+    "objectID": "w07/slides.html#secret-full-oop-structure-you-dont-see",
+    "href": "w07/slides.html#secret-full-oop-structure-you-dont-see",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Secret Full OOP Structure You Don’t See",
+    "text": "Secret Full OOP Structure You Don’t See"
+  },
+  {
+    "objectID": "w07/slides.html#hashtables-more-memory-more-performance",
+    "href": "w07/slides.html#hashtables-more-memory-more-performance",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "HashTables: More Memory, More Performance",
+    "text": "HashTables: More Memory, More Performance\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔"
   },
   {
     "objectID": "w07/slides.html#alphahasher-vs.-customhasher",
@@ -1303,21 +1303,11 @@
     ]
   },
   {
-    "objectID": "w07/index.html#bst-building-blocks-on-hw3",
-    "href": "w07/index.html#bst-building-blocks-on-hw3",
-    "title": "Week 7: Code Examples and Midterm Review",
-    "section": "BST Building Blocks on HW3",
-    "text": "BST Building Blocks on HW3\n\nFor HW3, we provide you with an InventoryItem class\nTwo instance variables: item_name and price\nEquivalence relations:\n\n__eq__(other), __ne__(other)\n\nOrdering relations:\n\n__lt__(other), __le__(other), __gt__(other), __ge__(other)\n\nBonus: __repr__() and __str__()",
-    "crumbs": [
-      "Week 7: {{< var w07.date-md >}}"
-    ]
-  },
-  {
     "objectID": "w07/index.html#lls-rightarrow-bsts-the-hard-part",
     "href": "w07/index.html#lls-rightarrow-bsts-the-hard-part",
     "title": "Week 7: Code Examples and Midterm Review",
     "section": "LLs \\(\\rightarrow\\) BSTs: The Hard Part",
-    "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.\nBut… for a BST, our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!",
+    "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through” (follow next, print() at each step1)\nBut… for a BST, our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
@@ -1327,7 +1317,7 @@
     "href": "w07/index.html#two-ways-to-traverse-irl-version",
     "title": "Week 7: Code Examples and Midterm Review",
     "section": "Two Ways to Traverse: IRL Version",
-    "text": "Two Ways to Traverse: IRL Version\n\nImagine we’re trying to learn about a topic \\(\\tau\\) using Wikipedia, so we find its article \\(\\tau_0\\)\nThere are two “extremes” in terms of strategies we could follow for learning, given the contents of the article as well as the links it contains to other articles\n\n\n\n\n\n\n\nNote Depth-First Search (DFS)\n\n\n\n\nOpen \\(\\tau_0\\) and start reading; When we encounter a link we always click it, immediately start reading the new article.\nIf we hit an article with no links (or a dead end/broken link), we finish reading it and click the back button, picking up where we left off in the previous article. When we reach the end of \\(\\tau_0\\), we’re done!\n\n\n\n\n\n\n\n\n\nNote Breadth-First Search (BFS)\n\n\n\n\nBookmark \\(\\tau_0\\) in a folder called “Level 0 Articles”; open and start reading it\nWhen we encounter a link, we put it in a “Level 1 Articles” folder, but continue reading \\(\\tau_0\\) until we reach the end.\nWe then open all “Level 1 Articles” in new tabs, placing links we encounter in these articles into a “Level 2 Articles” folder, that we only start reading once all “Level 1 Articles” are read\nWe continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the “opposite” of DFS?)\n\n\n\n\n…Let’s try them out! I clicked “Random Article” and got Eustache de Saint Pierre",
+    "text": "Two Ways to Traverse: IRL Version\n\nYou’re trying to learn about a topic \\(\\tau\\) using Wikipedia, so you find its article \\(\\tau_0\\)\nTwo strategic “extremes” given [content of article \\(i\\)], [links to other articles \\(i \\rightarrow j\\)]\n\n\n\n\n\n\n\nNote Depth-First Search (DFS)\n\n\n\n\nOpen \\(\\tau_0\\) and start reading; When we encounter a link we always click, immediately start reading new article.\nIf we hit an article with no links (or a dead end/broken link), we finish reading it and click the back button, picking up where we left off in the previous article. When we reach the end of \\(\\tau_0\\), we’re done!\n\n\n\n\n\n\n\n\n\nNote Breadth-First Search (BFS)\n\n\n\n\nBookmark \\(\\tau_0\\) in a folder called “Level 0 Articles”; open and start reading it\nWhen we encounter a link, put it in “Level 1 Articles” folder but continue reading \\(\\tau_0\\) to the end\nWe then open all “Level 1 Articles” in new tabs, placing links we encounter in these articles into a “Level 2 Articles” folder, that we only start reading once all “Level 1 Articles” are read\nWe continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the “opposite” of DFS?)\n\n\n\n\n…Let’s try them out! I clicked “Random Article” and got Eustache de Saint Pierre",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
@@ -1378,26 +1368,6 @@
     "title": "Week 7: Code Examples and Midterm Review",
     "section": "Two Ways to Traverse: HW3 Version",
     "text": "Two Ways to Traverse: HW3 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\n\nThat’s a hint: lose points if there’s an if statement! 👀 (bc, the whole point of OOP! Encapsulation, abstraction)\n\nConstructor takes in a ThingContainer (could be a stack or a queue, you won’t know which), with two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()",
-    "crumbs": [
-      "Week 7: {{< var w07.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w07/index.html#thingcontainer-the-oop-structure-you-see",
-    "href": "w07/index.html#thingcontainer-the-oop-structure-you-see",
-    "title": "Week 7: Code Examples and Midterm Review",
-    "section": "ThingContainer: The OOP Structure You See",
-    "text": "ThingContainer: The OOP Structure You See",
-    "crumbs": [
-      "Week 7: {{< var w07.date-md >}}"
-    ]
-  },
-  {
-    "objectID": "w07/index.html#secret-full-oop-structure-you-dont-see",
-    "href": "w07/index.html#secret-full-oop-structure-you-dont-see",
-    "title": "Week 7: Code Examples and Midterm Review",
-    "section": "Secret Full OOP Structure You Don’t See",
-    "text": "Secret Full OOP Structure You Don’t See",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
@@ -1603,11 +1573,41 @@
     ]
   },
   {
-    "objectID": "w07/index.html#more-memory-more-performance",
-    "href": "w07/index.html#more-memory-more-performance",
+    "objectID": "w07/index.html#bst-building-blocks",
+    "href": "w07/index.html#bst-building-blocks",
     "title": "Week 7: Code Examples and Midterm Review",
-    "section": "More Memory, More Performance",
-    "text": "More Memory, More Performance\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔",
+    "section": "BST Building Blocks",
+    "text": "BST Building Blocks\n\nFor HW3, we provide you with an InventoryItem class\nTwo instance variables: item_name and price\nEquivalence relations:\n\n__eq__(other), __ne__(other)\n\nOrdering relations:\n\n__lt__(other), __le__(other), __gt__(other), __ge__(other)\n\nBonus: __repr__() and __str__()",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#thingcontainer-the-oop-structure-you-see",
+    "href": "w07/index.html#thingcontainer-the-oop-structure-you-see",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "ThingContainer: The OOP Structure You See",
+    "text": "ThingContainer: The OOP Structure You See",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#secret-full-oop-structure-you-dont-see",
+    "href": "w07/index.html#secret-full-oop-structure-you-dont-see",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Secret Full OOP Structure You Don’t See",
+    "text": "Secret Full OOP Structure You Don’t See",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#hashtables-more-memory-more-performance",
+    "href": "w07/index.html#hashtables-more-memory-more-performance",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "HashTables: More Memory, More Performance",
+    "text": "HashTables: More Memory, More Performance\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
@@ -1658,6 +1658,16 @@
     "title": "Week 7: Code Examples and Midterm Review",
     "section": "AlphaHasher2 (Part 5)",
     "text": "AlphaHasher2 (Part 5)\n# @title define-alpha-hasher-2\nclass AlphaHasher2(CustomHasher):\n  def __init__(self):\n    self.alphabet_size = 26 * 26\n\n  def get_alphabet_size(self):\n    return self.alphabet_size\n\n  def hash(self, str_to_hash: str) -&gt; int:\n    if len(str_to_hash) == 0:\n      first_two_letters = 'AA'\n    elif len(str_to_hash) == 1:\n      first_letter = str_to_hash.upper()[0]\n      second_letter = 'A'\n    else:\n      first_letter = str_to_hash.upper()[0]\n      second_letter = str_to_hash.upper()[1]\n    #print(f'First two letters for {str_to_hash}: {first_letter}{second_letter}')\n    # And return its index:\n    # 'AA' has index 0, 'AB' has index 1, etc.\n    first_letter_pos = AlphaHasher2.compute_position_in_alphabet(first_letter)\n    second_letter_pos = AlphaHasher2.compute_position_in_alphabet(second_letter)\n    # The position in the two-letter alphabet is just 26*first + second\n    final_pos = 26 * first_letter_pos + second_letter_pos\n    return final_pos\n\n  def compute_position_in_alphabet(self, uppercase_key: str) -&gt; int:\n    if uppercase_key in string.ascii_uppercase:\n      return string.ascii_uppercase.index(uppercase_key)\n    return 0\n\n  def compute_key_for_index(self, index: int) -&gt; str:\n    first_letter_part = int(index / 26)\n    second_letter_part = index % 26\n    # In case you need to debug!\n    #print(f'alpha2_index: {index}, first_letter_part: {first_letter_part}, second_letter_part: {second_letter_part}')\n    return string.ascii_uppercase[first_letter_part] + string.ascii_uppercase[second_letter_part]",
+    "crumbs": [
+      "Week 7: {{< var w07.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w07/index.html#footnotes",
+    "href": "w07/index.html#footnotes",
+    "title": "Week 7: Code Examples and Midterm Review",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis print() step is going to become important! We’ll say we’ve “processed” a node once we’ve print()ed its content↩︎",
     "crumbs": [
       "Week 7: {{< var w07.date-md >}}"
     ]
@@ -2442,7 +2452,7 @@
     "href": "w03/index.html#the-figure-you-can-make-in-your-head-all-semester",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "The Figure You Can Make In Your Head All Semester",
-    "text": "The Figure You Can Make In Your Head All Semester\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nn_vals = [np.power(10, k) for k in np.arange(1, 2.75, 0.25)]\nruntime_df = pd.DataFrame({'$n$': n_vals})\nruntime_df['$n^2 + 50n$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 50*x)\nruntime_df['$n^2 + 10000$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 10000)\nruntime_df['$\\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.log(x))\nruntime_df['n'] = runtime_df['$n$'].copy()\nruntime_df['$n\\log(n)$'] = runtime_df['$n$'].apply(lambda x: x * np.log(x))\nruntime_df['$n^2$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2))\nruntime_df['$n^2\\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.power(x,2) * np.log(x))\nruntime_df['$n^3$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3))\nruntime_df['$n^3logn$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3) * np.log(x))\n# Get the max values, for labeling the ends of lines\nmax_vals = runtime_df.max().to_dict()\nplot_df = runtime_df.melt(id_vars=['$n$'])\n#print(plot_df)\nstyle_map = {col: '' if (col == '$n^2 + 50n$') or (col == '$n^2 + 10000$') else (2,1) for col in runtime_df.columns}\nfig, ax = plt.subplots(figsize=(11,5))\nsns.lineplot(plot_df, x='$n$', y='value', hue='variable', style='variable', dashes=style_map)\n#plt.xscale('log')\nplt.yscale('log')\n# extract the existing handles and labels\nh, l = ax.get_legend_handles_labels()\n# slice the appropriate section of l and h to include in the legend\nax.legend(h[0:2], l[0:2])\nfor label, val in max_vals.items():\n  if (label == '$n$') or (label == '$n^2 + 50n$') or (label == '$n^2 + 10000$'):\n    continue\n  if 'logn' in label:\n    label = label.replace('logn', r'\\log(n)')\n  ax.text(x = max_vals['$n$'] + 2, y = val, s=label, va='center')\n# Hide the right and top spines\nax.spines[['right', 'top']].set_visible(False)\nplt.show()\n\n\n&lt;&gt;:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_55932/1423556624.py:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_55932/1423556624.py:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_55932/1423556624.py:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nFor low values of \\(n\\), \\(n^2 + 10000\\) looks “far away from” \\(n^2\\)\n…But we care about how the algorithm scales with input size!\nTakeaway: As \\(n \\rightarrow \\infty\\), highest-degree terms dominate!",
+    "text": "The Figure You Can Make In Your Head All Semester\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nn_vals = [np.power(10, k) for k in np.arange(1, 2.75, 0.25)]\nruntime_df = pd.DataFrame({'$n$': n_vals})\nruntime_df['$n^2 + 50n$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 50*x)\nruntime_df['$n^2 + 10000$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2) + 10000)\nruntime_df['$\\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.log(x))\nruntime_df['n'] = runtime_df['$n$'].copy()\nruntime_df['$n\\log(n)$'] = runtime_df['$n$'].apply(lambda x: x * np.log(x))\nruntime_df['$n^2$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 2))\nruntime_df['$n^2\\log(n)$'] = runtime_df['$n$'].apply(lambda x: np.power(x,2) * np.log(x))\nruntime_df['$n^3$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3))\nruntime_df['$n^3logn$'] = runtime_df['$n$'].apply(lambda x: np.power(x, 3) * np.log(x))\n# Get the max values, for labeling the ends of lines\nmax_vals = runtime_df.max().to_dict()\nplot_df = runtime_df.melt(id_vars=['$n$'])\n#print(plot_df)\nstyle_map = {col: '' if (col == '$n^2 + 50n$') or (col == '$n^2 + 10000$') else (2,1) for col in runtime_df.columns}\nfig, ax = plt.subplots(figsize=(11,5))\nsns.lineplot(plot_df, x='$n$', y='value', hue='variable', style='variable', dashes=style_map)\n#plt.xscale('log')\nplt.yscale('log')\n# extract the existing handles and labels\nh, l = ax.get_legend_handles_labels()\n# slice the appropriate section of l and h to include in the legend\nax.legend(h[0:2], l[0:2])\nfor label, val in max_vals.items():\n  if (label == '$n$') or (label == '$n^2 + 50n$') or (label == '$n^2 + 10000$'):\n    continue\n  if 'logn' in label:\n    label = label.replace('logn', r'\\log(n)')\n  ax.text(x = max_vals['$n$'] + 2, y = val, s=label, va='center')\n# Hide the right and top spines\nax.spines[['right', 'top']].set_visible(False)\nplt.show()\n\n\n&lt;&gt;:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n&lt;&gt;:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_7204/1423556624.py:9: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_7204/1423556624.py:11: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n/var/folders/n2/m7_fj5vx6c50_yj7g23mwmq00000gn/T/ipykernel_7204/1423556624.py:13: SyntaxWarning:\n\n\"\\l\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\l\"? A raw string is also an option.\n\n\n\n\n\n\n\n\n\n\n\nFor low values of \\(n\\), \\(n^2 + 10000\\) looks “far away from” \\(n^2\\)\n…But we care about how the algorithm scales with input size!\nTakeaway: As \\(n \\rightarrow \\infty\\), highest-degree terms dominate!",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -2722,7 +2732,7 @@
     "href": "w03/index.html#complexity-with-respect-to-a-structure",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Complexity With Respect To A Structure",
-    "text": "Complexity With Respect To A Structure\n\nLast week: analyzing complexity of an algorithm (no broader context): Insertion-Sort\nThis week: analyzing complexity of a structure as a collection of variables + algorithms\nExample: tuple\n\nVariables: Constant N, pre-allocated list with N slots\nAlgorithms: Constant-time Get-Item-At-Index 🤯, but no Insert-New 😔\n\nOOP: Design pattern for “organizing” data and algorithms into structures\n\n\nCode\nclass MyNTuple():\n  def __init__(self, N, item_list):\n    if len(item_list) != N:\n      raise Exception(\"Must have exactly N elements\")\n    self.N = N\n    self.contents = item_list\n  def item_at_index(self, i):\n    return self.contents[i]\n\njeffs_location = MyNTuple(2, [-40, 40])\nprint(jeffs_location.item_at_index(0))\nprint(f\"{jeffs_location} 🧐\")\n\n\n-40\n&lt;__main__.MyNTuple object at 0x1233aa510&gt; 🧐",
+    "text": "Complexity With Respect To A Structure\n\nLast week: analyzing complexity of an algorithm (no broader context): Insertion-Sort\nThis week: analyzing complexity of a structure as a collection of variables + algorithms\nExample: tuple\n\nVariables: Constant N, pre-allocated list with N slots\nAlgorithms: Constant-time Get-Item-At-Index 🤯, but no Insert-New 😔\n\nOOP: Design pattern for “organizing” data and algorithms into structures\n\n\nCode\nclass MyNTuple():\n  def __init__(self, N, item_list):\n    if len(item_list) != N:\n      raise Exception(\"Must have exactly N elements\")\n    self.N = N\n    self.contents = item_list\n  def item_at_index(self, i):\n    return self.contents[i]\n\njeffs_location = MyNTuple(2, [-40, 40])\nprint(jeffs_location.item_at_index(0))\nprint(f\"{jeffs_location} 🧐\")\n\n\n-40\n&lt;__main__.MyNTuple object at 0x14d9aa510&gt; 🧐",
     "crumbs": [
       "Week 3: {{< var w03.date-md >}}"
     ]
@@ -3069,7 +3079,7 @@
     "href": "w03/slides.html#sets",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Sets",
-    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Vegan', 'None', 'Gluten Free'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'Vegan', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'Vegan', 'None'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
+    "text": "Sets\n\n\nEfficient for finding unique elements:\n\nprefs_morn = [\n  'None','None','None','Vegan','Vegan','None',\n  'Gluten Free'\n]\nprint(f\"Number of responses: {len(prefs_morn)}\")\n\nNumber of responses: 7\n\n\n\nunique_prefs_morn = set(prefs_morn)\nprint(f\"Unique preferences: {unique_prefs_morn}\")\nprint(f\"Number of unique preferences: {len(unique_prefs_morn)}\")\n\nUnique preferences: {'Gluten Free', 'Vegan', 'None'}\nNumber of unique preferences: 3\n\n\nOrdering / indexing of elements is gone!\n\nunique_prefs_morn[2]\n\n\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\nCell In[18], line 1\n----&gt; 1 unique_prefs_morn[2]\n\nTypeError: 'set' object is not subscriptable\n\n\n\nBut, supports set operators from math! →\n\nUnion (\\(M \\cup E\\)):\n\nprefs_eve = [\n  'None','None','Vegan','None','None'\n]\nunique_prefs_eve = set(prefs_eve)\nunique_prefs_either = unique_prefs_morn.union(unique_prefs_eve)\nprint(f\"Preferences in either event: {unique_prefs_either}\")\n\nPreferences in either event: {'Gluten Free', 'Vegan', 'None'}\n\n\nIntersection (\\(M \\cap E\\)):\n\nunique_prefs_both = unique_prefs_morn.intersection(unique_prefs_eve)\nprint(f\"Preferences in both events: {unique_prefs_both}\")\n\nPreferences in both events: {'None', 'Vegan'}\n\n\nSet Difference (\\(M \\setminus E\\) or \\(E \\setminus M\\)):\n\nunique_prefs_mornonly = unique_prefs_morn - unique_prefs_eve\nprint(f\"Preferences only in the morning: {unique_prefs_mornonly}\")\nunique_prefs_eveonly = unique_prefs_eve - unique_prefs_morn\nprint(f\"Preferences only in the evening: {unique_prefs_eveonly}\")\n\nPreferences only in the morning: {'Gluten Free'}\nPreferences only in the evening: set()"
   },
   {
     "objectID": "w03/slides.html#maps-dictionaries",
@@ -3083,7 +3093,7 @@
     "href": "w03/slides.html#complexity-with-respect-to-a-structure",
     "title": "Week 3: Data Structures and Computational Complexity",
     "section": "Complexity With Respect To A Structure",
-    "text": "Complexity With Respect To A Structure\n\nLast week: analyzing complexity of an algorithm (no broader context): Insertion-Sort\nThis week: analyzing complexity of a structure as a collection of variables + algorithms\nExample: tuple\n\nVariables: Constant N, pre-allocated list with N slots\nAlgorithms: Constant-time Get-Item-At-Index 🤯, but no Insert-New 😔\n\nOOP: Design pattern for “organizing” data and algorithms into structures\n\n\nCode\nclass MyNTuple():\n  def __init__(self, N, item_list):\n    if len(item_list) != N:\n      raise Exception(\"Must have exactly N elements\")\n    self.N = N\n    self.contents = item_list\n  def item_at_index(self, i):\n    return self.contents[i]\n\njeffs_location = MyNTuple(2, [-40, 40])\nprint(jeffs_location.item_at_index(0))\nprint(f\"{jeffs_location} 🧐\")\n\n\n-40\n&lt;__main__.MyNTuple object at 0x124da6510&gt; 🧐"
+    "text": "Complexity With Respect To A Structure\n\nLast week: analyzing complexity of an algorithm (no broader context): Insertion-Sort\nThis week: analyzing complexity of a structure as a collection of variables + algorithms\nExample: tuple\n\nVariables: Constant N, pre-allocated list with N slots\nAlgorithms: Constant-time Get-Item-At-Index 🤯, but no Insert-New 😔\n\nOOP: Design pattern for “organizing” data and algorithms into structures\n\n\nCode\nclass MyNTuple():\n  def __init__(self, N, item_list):\n    if len(item_list) != N:\n      raise Exception(\"Must have exactly N elements\")\n    self.N = N\n    self.contents = item_list\n  def item_at_index(self, i):\n    return self.contents[i]\n\njeffs_location = MyNTuple(2, [-40, 40])\nprint(jeffs_location.item_at_index(0))\nprint(f\"{jeffs_location} 🧐\")\n\n\n-40\n&lt;__main__.MyNTuple object at 0x13cea6510&gt; 🧐"
   },
   {
     "objectID": "w03/slides.html#looking-under-the-hood-of-a-data-structure",
@@ -4209,7 +4219,7 @@
     "href": "w11/index.html#in-action",
     "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9581 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6274 s",
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9819 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6135 s",
     "crumbs": [
       "Week 11: {{< var w11.date-md >}}"
     ]
@@ -4429,7 +4439,7 @@
     "href": "w11/slides.html#in-action",
     "title": "Week 11: From Serial to Parallel Pipelines",
     "section": "In Action",
-    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9664 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6375 s"
+    "text": "In Action\n\nimport time\nfrom sympy.ntheory import factorint\nfrom joblib import Parallel, delayed\nparallel_runner = Parallel(n_jobs=4)\nstart, end = 500, 580\ndef find_prime_factors(num):\n  time.sleep(.01)\n  return factorint(num, multiple=True)\ndisp_time = lambda start, end: print('{:.4f} s'.format(end - start))\n\n\n\n\n\nCode\nserial_start = time.time()\nresult = [\n  (i,find_prime_factors(i))\n  for i in range(start, end+1)\n]\nserial_end = time.time()\ndisp_time(serial_start, serial_end)\n\n\n0.9787 s\n\n\n\n\n\nCode\npar_start = time.time()\nresult = parallel_runner(\n  delayed(find_prime_factors)(i)\n  for i in range(start, end+1)\n)\npar_end = time.time()\ndisp_time(par_start, par_end)\n\n\n0.6475 s"
   },
   {
     "objectID": "w11/slides.html#what-happens-when-not-embarrassingly-parallel",

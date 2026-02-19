@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Jeff Jacobs">
   <title>DSAN 5500 – Week 7: Code Examples and Midterm Review</title>
@@ -213,14 +213,8 @@ Jeff Jacobs
 
   <p class="date">Thursday, February 19, 2026</p>
 </section>
-<section class="slide level2">
-
-<div class="hidden">
-
-</div>
-</section>
-<section id="midterm-dress-rehearsal" class="title-slide slide level1 smaller small-title crunch-title crunch-callout code-90 center" data-stack-name="Schedule">
-<h1>Midterm Dress Rehearsal</h1>
+<section id="schedule" class="title-slide slide level1 smaller crunch-title crunch-callout code-90 center" data-stack-name="Schedule">
+<h1>Schedule</h1>
 <p>Today’s Planned Schedule:</p>
 <table class="caption-top">
 <colgroup>
@@ -241,40 +235,34 @@ Jeff Jacobs
 <tr class="odd">
 <td style="text-align: left;"><strong>Lecture</strong></td>
 <td style="text-align: left;">6:30pm</td>
-<td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;"><a href="#/mini-topics">Parts ա-գ: Three Mini-Topics →</a></td>
+<td style="text-align: left;">7:20pm</td>
+<td style="text-align: left;"><a href="#/back-to-bsts">BST Iteration</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">7:00pm</td>
-<td style="text-align: left;">7:20pm</td>
-<td style="text-align: left;"><a href="#/full-topics">Part Ա: Full Topic →</a></td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">7:20pm</td>
 <td style="text-align: left;">7:30pm</td>
 <td style="text-align: left;"><a href="#/mini-topics">Part դ: Mini-Topic →</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">7:30pm</td>
 <td style="text-align: left;">7:50pm</td>
 <td style="text-align: left;"><a href="#/full-topics">Part Բ: Full Topic →</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><strong>Break!</strong></td>
 <td style="text-align: left;">7:50pm</td>
 <td style="text-align: left;">8:00pm</td>
 <td style="text-align: left;"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">8:00pm</td>
 <td style="text-align: left;">8:40pm</td>
 <td style="text-align: left;"><a href="#/full-topics">Parts Գ-Դ: Two Full Topics →</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">8:40pm</td>
 <td style="text-align: left;">9:00pm</td>
@@ -282,6 +270,9 @@ Jeff Jacobs
 </tr>
 </tbody>
 </table>
+<div class="hidden">
+
+</div>
 </section>
 
 <section>
@@ -289,39 +280,23 @@ Jeff Jacobs
 <h1>Back to BSTs</h1>
 
 </section>
-<section id="bst-building-blocks-on-hw3" class="slide level2">
-<h2>BST Building Blocks on HW3</h2>
-<ul>
-<li>For HW3, we provide you with an <code>InventoryItem</code> class</li>
-<li>Two instance variables: <code>item_name</code> and <code>price</code></li>
-<li>Equivalence relations:
-<ul>
-<li><code>__eq__(other)</code>, <code>__ne__(other)</code></li>
-</ul></li>
-<li><strong>Ordering relations</strong>:
-<ul>
-<li><code>__lt__(other)</code>, <code>__le__(other)</code>, <code>__gt__(other)</code>, <code>__ge__(other)</code></li>
-</ul></li>
-<li>Bonus: <code>__repr__()</code> and <code>__str__()</code></li>
-</ul>
-</section>
-<section id="lls-rightarrow-bsts-the-hard-part" class="slide level2 crunch-title crunch-ul">
+<section id="lls-rightarrow-bsts-the-hard-part" class="slide level2 crunch-title title-09 crunch-ul text-90 scrollable">
 <h2>LLs <span class="math inline">\(\rightarrow\)</span> BSTs: The Hard Part</h2>
 <ul>
-<li>When we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.</li>
+<li>When we were working with LinkedLists, we could access <strong>all items</strong> by just “looping through” (follow <code>next</code>, <code>print()</code> at each step<sup>1</sup>)</li>
 <li>But… for a BST, our structure can now <strong>branch</strong> as we traverse it… How do we “loop through” a BST?</li>
 <li><strong>Two fundamentally different ways</strong> to traverse every node</li>
 <li>“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task</li>
 <li>Your job as a data scientist is to <strong>think carefully</strong> about which one is <strong>more efficient</strong> for a given goal!</li>
 </ul>
-</section>
-<section id="two-ways-to-traverse-irl-version" class="slide level2 smaller crunch-title title-12 crunch-ul crunch-callout crunch-li-5">
+<aside><ol class="aside-footnotes"><li id="fn1"><p>This <code>print()</code> step is going to become important! We’ll say we’ve <strong>“processed” a node</strong> once we’ve <code>print()</code>ed its <code>content</code></p></li></ol></aside></section>
+<section id="two-ways-to-traverse-irl-version" class="slide level2 smaller crunch-title title-12 crunch-ul crunch-callout crunch-li-5 callout-fix">
 <h2>Two Ways to Traverse: IRL Version</h2>
 <ul>
-<li>Imagine we’re trying to learn about a topic <span class="math inline">\(\tau\)</span> using <strong>Wikipedia</strong>, so we find its article <span class="math inline">\(\tau_0\)</span></li>
-<li>There are two “extremes” in terms of strategies we could follow for learning, given the <strong>contents</strong> of the article as well as the <strong>links</strong> it contains to <strong>other articles</strong></li>
+<li>You’re trying to learn about a topic <span class="math inline">\(\tau\)</span> using <strong>Wikipedia</strong>, so you find its article <span class="math inline">\(\tau_0\)</span></li>
+<li>Two strategic “extremes” given [<strong>content</strong> of article <span class="math inline">\(i\)</span>], [<strong>links</strong> to <strong>other articles</strong> <span class="math inline">\(i \rightarrow j\)</span>]</li>
 </ul>
-<div title="<i class='bi bi-info-circle pe-1'></i> Depth-First Search (DFS)" style="margin-bottom: 8px !important;">
+<div title="<i class='bi bi-info-circle pe-1'></i> Depth-First Search (DFS)" style="margin-bottom: 8px !important; font-size: 76% !important;">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -329,14 +304,14 @@ Jeff Jacobs
 </div>
 <div class="callout-content">
 <ul>
-<li>Open <span class="math inline">\(\tau_0\)</span> and start reading; When we encounter a <strong>link</strong> we <strong>always click it</strong>, <strong>immediately start reading</strong> the new article.</li>
+<li>Open <span class="math inline">\(\tau_0\)</span> and start reading; When we encounter a <strong>link</strong> we <strong>always click</strong>, <strong>immediately start reading</strong> new article.</li>
 <li>If we hit an article with no links (or a dead end/broken link), we finish reading it and click the <strong>back button</strong>, picking up where we left off in the previous article. When we reach the end of <span class="math inline">\(\tau_0\)</span>, we’re done!</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div title="<i class='bi bi-info-circle pe-1'></i> Breadth-First Search (BFS)">
+<div title="<i class='bi bi-info-circle pe-1'></i> Breadth-First Search (BFS)" style="font-size: 76% !important;">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -345,7 +320,7 @@ Jeff Jacobs
 <div class="callout-content">
 <ul>
 <li>Bookmark <span class="math inline">\(\tau_0\)</span> in a folder called <strong>“Level 0 Articles”</strong>; open and start reading it</li>
-<li>When we encounter a <strong>link</strong>, we <strong>put it in a “Level 1 Articles” folder</strong>, but <strong>continue reading <span class="math inline">\(\tau_0\)</span></strong> until we reach the end.</li>
+<li>When we encounter a <strong>link</strong>, <strong>put it in “Level 1 Articles” folder</strong> but <strong>continue reading <span class="math inline">\(\tau_0\)</span></strong> to the end</li>
 <li>We then <strong>open all “Level 1 Articles”</strong> in new tabs, placing links we encounter in <strong>these</strong> articles into a <strong>“Level 2 Articles”</strong> folder, that we only start reading once all “Level 1 Articles” are read</li>
 <li>We continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the <strong>“opposite”</strong> of DFS?)</li>
 </ul>
@@ -354,7 +329,7 @@ Jeff Jacobs
 </div>
 </div>
 <ul>
-<li>…Let’s try them out! I clicked “Random Article” and got <a href="https://en.wikipedia.org/wiki/Eustache_de_Saint_Pierre" target="_blank">Eustache de Saint Pierre <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
+<li>…Let’s try them out! I clicked “Random Article” and got <a href="https://en.wikipedia.org/wiki/Eustache_de_Saint_Pierre">Eustache de Saint Pierre</a></li>
 </ul>
 </section>
 <section id="two-ways-to-traverse-picture-version" class="slide level2 smaller crunch-title crunch-details title-12">
@@ -387,7 +362,7 @@ Jeff Jacobs
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="8fe764e8" class="cell" data-execution_count="3">
+<div id="2cc87a25" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">from</span> hw2 <span class="im">import</span> IterAlgorithm, NodeProcessor</span>
@@ -481,14 +456,6 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="thingcontainer-the-oop-structure-you-see" class="slide level2">
-<h2><code>ThingContainer</code>: The OOP Structure You See</h2>
-
-<img data-src="images/thing_container_notfull.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="secret-full-oop-structure-you-dont-see" class="slide level2 title-08">
-<h2>Secret Full OOP Structure You <em>Don’t</em> See</h2>
-
-<img data-src="images/thing_container_full.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="one-animal-in-the-bfs-species" class="slide level2">
 <h2>One Animal in the BFS Species</h2>
 <ul>
@@ -798,24 +765,24 @@ InventoryItem[item_name=Banana,price=123]</code></pre>
 </ul></li>
 </ul>
 </section>
-<section id="the-boxes" class="slide level2 smaller title-10 crunch-title crunch-images crunch-quarto-figure crunch-table">
+<section id="the-boxes" class="slide level2 text-65 title-10 crunch-title crunch-images crunch-quarto-figure crunch-table">
 <h2>The Boxes</h2>
 <table class="caption-top" style="table-layout: fixed; width: 100% !important;">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 32%">
+<col style="width: 30%">
+<col style="width: 38%">
 </colgroup>
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th" style="width: 25% !important"></th>
-<th data-quarto-table-cell-role="th" style="width: 30% !important">Linear Things: <span class="math inline">\(O(N)\)</span></th>
-<th data-quarto-table-cell-role="th" style="width: 45% !important">Logarithmic Things: <span class="math inline">\(O(\lg{N})\)</span></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Linear Things: <span class="math inline">\(O(N)\)</span></th>
+<th data-quarto-table-cell-role="th">Logarithmic Things: <span class="math inline">\(O(\lg{N})\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="width: 25% !important"><strong>Data Structures</strong></td>
+<td class="tdvc"><strong>Data Structures</strong></td>
 <td><p><code>LinkedList</code></p>
 <p><img data-src="images/linked_list.svg" width="270"></p></td>
 <td><p><code>BinarySearchTree</code></p>
@@ -855,12 +822,40 @@ O(N) \; \underbrace{\leadsto O(\log_2(N))}_{\mathclap{\substack{\text{More Effic
 \]</span></p>
 </section></section>
 <section>
-<section id="final-notes-for-homework-3" class="title-slide slide level1 center" data-stack-name="HW3">
-<h1>Final Notes for Homework 3</h1>
-
+<section id="homework-3" class="title-slide slide level1 center" data-stack-name="HW3">
+<h1>Homework 3</h1>
+<ul>
+<li>Aka the Midterm Prep assignment</li>
+<li>Not <em>due</em> until <strong>Thursday, March 12, 11:59pm</strong></li>
+<li>But, finishing it <strong>before the Midterm</strong> will be <strong>super good prep!</strong></li>
+</ul>
 </section>
-<section id="more-memory-more-performance" class="slide level2">
-<h2>More Memory, More Performance</h2>
+<section id="bst-building-blocks" class="slide level2">
+<h2>BST Building Blocks</h2>
+<ul>
+<li>For HW3, we provide you with an <code>InventoryItem</code> class</li>
+<li>Two instance variables: <code>item_name</code> and <code>price</code></li>
+<li>Equivalence relations:
+<ul>
+<li><code>__eq__(other)</code>, <code>__ne__(other)</code></li>
+</ul></li>
+<li><strong>Ordering relations</strong>:
+<ul>
+<li><code>__lt__(other)</code>, <code>__le__(other)</code>, <code>__gt__(other)</code>, <code>__ge__(other)</code></li>
+</ul></li>
+<li>Bonus: <code>__repr__()</code> and <code>__str__()</code></li>
+</ul>
+</section>
+<section id="thingcontainer-the-oop-structure-you-see" class="slide level2">
+<h2><code>ThingContainer</code>: The OOP Structure You See</h2>
+
+<img data-src="images/thing_container_notfull.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="secret-full-oop-structure-you-dont-see" class="slide level2 title-08">
+<h2>Secret Full OOP Structure You <em>Don’t</em> See</h2>
+
+<img data-src="images/thing_container_full.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="hashtables-more-memory-more-performance" class="slide level2">
+<h2><code>HashTable</code>s: More Memory, More Performance</h2>
 <ul>
 <li>The last part challenges you to ask: <strong>why stop at a hash based on just the <em>first</em> letter of the key?</strong></li>
 <li>We could just as easily use the first <strong>two</strong> letters:</li>
@@ -1175,6 +1170,7 @@ O(N) \; \underbrace{\leadsto O(\log_2(N))}_{\mathclap{\substack{\text{More Effic
 
 
 </section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

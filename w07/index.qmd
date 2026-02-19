@@ -46,16 +46,13 @@ format:
 
 :::
 
-{{< include ../dsan-globals/_graphviz-setup.qmd >}}
-
-# Midterm Dress Rehearsal {.smaller .small-title .crunch-title .crunch-callout .code-90 data-stack-name="Schedule"}
+# Schedule {.smaller .crunch-title .crunch-callout .code-90 data-stack-name="Schedule"}
 
 Today's Planned Schedule:
 
 | | Start | End | Topic |
 |:- |:- |:- |:- |
-| **Lecture** | 6:30pm | 7:00pm | [Parts ա-գ: Three Mini-Topics &rarr;](#mini-topics) |
-| | 7:00pm | 7:20pm | [Part Ա: Full Topic &rarr;](#full-topics) |
+| **Lecture** | 6:30pm | 7:20pm | [BST Iteration](#back-to-bsts) |
 | | 7:20pm | 7:30pm | [Part դ: Mini-Topic &rarr;](#mini-topics) |
 | | 7:30pm | 7:50pm | [Part Բ: Full Topic &rarr;](#full-topics)
 | **Break!** | 7:50pm | 8:00pm | |
@@ -64,48 +61,40 @@ Today's Planned Schedule:
 
 : {tbl-colwidths="[12,12,16,60]"}
 
+{{< include ../dsan-globals/_graphviz-setup.qmd >}}
+
 # Back to BSTs {data-stack-name="Tree Traversal"}
 
-## BST Building Blocks on HW3
+## LLs $\rightarrow$ BSTs: The Hard Part {.crunch-title .title-09 .crunch-ul .text-90}
 
-* For HW3, we provide you with an `InventoryItem` class
-* Two instance variables: `item_name` and `price`
-* Equivalence relations:
-  * `__eq__(other)`, `__ne__(other)`
-* **Ordering relations**:
-  * `__lt__(other)`, `__le__(other)`, `__gt__(other)`, `__ge__(other)`
-* Bonus: `__repr__()` and `__str__()`
-
-## LLs $\rightarrow$ BSTs: The Hard Part {.crunch-title .crunch-ul}
-
-* When we were working with LinkedLists, we could access all items by just "looping through", from one element to the next, printing as we go along.
+* When we were working with LinkedLists, we could access **all items** by just "looping through" (follow `next`, `print()` at each step^[This `print()` step is going to become important! We'll say we've **"processed" a node** once we've `print()`ed its `content`])
 * But... for a BST, our structure can now **branch** as we traverse it... How do we "loop through" a BST?
 * **Two fundamentally different ways** to traverse every node
 * "Opposites" of each other, so that one is often extremely efficient and the other extremely inefficient for a given task
 * Your job as a data scientist is to **think carefully** about which one is **more efficient** for a given goal!
 
-## Two Ways to Traverse: IRL Version {.smaller .crunch-title .title-12 .crunch-ul .crunch-callout .crunch-li-5}
+## Two Ways to Traverse: IRL Version {.smaller .crunch-title .title-12 .crunch-ul .crunch-callout .crunch-li-5 .callout-fix}
 
-* Imagine we're trying to learn about a topic $\tau$ using **Wikipedia**, so we find its article $\tau_0$
-* There are two "extremes" in terms of strategies we could follow for learning, given the **contents** of the article as well as the **links** it contains to **other articles** 
+* You're trying to learn about a topic $\tau$ using **Wikipedia**, so you find its article $\tau_0$
+* Two strategic "extremes" given [**content** of article $i$], [**links** to **other articles** $i \rightarrow j$]
 
-::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Depth-First Search (DFS)" style="margin-bottom: 8px !important;"}
+::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Depth-First Search (DFS)" style="margin-bottom: 8px !important; font-size: 76% !important;"}
 
-* Open $\tau_0$ and start reading; When we encounter a **link** we **always click it**, **immediately start reading** the new article.
+* Open $\tau_0$ and start reading; When we encounter a **link** we **always click**, **immediately start reading** new article.
 * If we hit an article with no links (or a dead end/broken link), we finish reading it and click the **back button**, picking up where we left off in the previous article. When we reach the end of $\tau_0$, we're done!
 
 :::
 
-::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Breadth-First Search (BFS)"}
+::: {.callout-note icon="false" title="<i class='bi bi-info-circle pe-1'></i> Breadth-First Search (BFS)" style="font-size: 76% !important;"}
 
 * Bookmark $\tau_0$ in a folder called **"Level 0 Articles"**; open and start reading it
-* When we encounter a **link**, we **put it in a "Level 1 Articles" folder**, but **continue reading $\tau_0$** until we reach the end.
+* When we encounter a **link**, **put it in "Level 1 Articles" folder** but **continue reading $\tau_0$** to the end
 * We then **open all "Level 1 Articles"** in new tabs, placing links we encounter in **these** articles into a **"Level 2 Articles"** folder, that we only start reading once all "Level 1 Articles" are read
 * We continue like this, reading "Level 3 Articles" once we're done with "Level 2 Articles", "Level 4 Articles" once we're done with "Level 3 Articles", and so on. (Can you see a sense in which this is the **"opposite"** of DFS?)
 
 :::
 
-* ...Let's try them out! I clicked "Random Article" and got <a href='https://en.wikipedia.org/wiki/Eustache_de_Saint_Pierre' target='_blank'>Eustache de Saint Pierre <i class='bi bi-box-arrow-up-right ps-1'></i></a>
+* ...Let's try them out! I clicked "Random Article" and got [Eustache de Saint Pierre](https://en.wikipedia.org/wiki/Eustache_de_Saint_Pierre)
 
 ## Two Ways to Traverse: Picture Version {.smaller .crunch-title .crunch-details .title-12}
 
@@ -186,14 +175,6 @@ bfs_processor.iterate_over(bst)
 * Constructor takes in a `ThingContainer` (could be a **stack** or a **queue**, you won't know which), with two functions:
   * `put_new_thing_in(new_thing)`
   * `take_existing_thing_out()`
-
-## `ThingContainer`: The OOP Structure You See
-
-![](images/thing_container_notfull.svg){fig-align="center"}
-
-## Secret Full OOP Structure You *Don't* See {.title-08}
-
-![](images/thing_container_full.svg){fig-align="center"}
 
 ## One Animal in the BFS Species
 
@@ -412,20 +393,25 @@ visualize(bst)
   * Data Structures
   * Software Development Patterns
 
-## The Boxes {.smaller .title-10 .crunch-title .crunch-images .crunch-quarto-figure .crunch-table}
+## The Boxes {.text-65 .title-10 .crunch-title .crunch-images .crunch-quarto-figure .crunch-table}
 
 ```{=html}
 <table style="table-layout: fixed; width: 100% !important;">
+<colgroup>
+<col style="width: 32%;"></col>
+<col style="width: 30%;"></col>
+<col style="width: 38%;"></col>
+</colgroup>
 <thead>
 <tr>
-  <th style="width: 25% !important;"></th>
-  <th style="width: 30% !important;"><span data-qmd="Linear Things: $O(N)$"></span></th>
-  <th style="width: 45% !important;"><span data-qmd="Logarithmic Things: $O(\lg{N})$"></span></th>
+  <th></th>
+  <th><span data-qmd="Linear Things: $O(N)$"></span></th>
+  <th><span data-qmd="Logarithmic Things: $O(\lg{N})$"></span></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td style="width: 25% !important;"><span data-qmd="**Data Structures**"></span></td>
+  <td class='tdvc'><span data-qmd="**Data Structures**"></span></td>
   <td><div data-qmd="`LinkedList`
   
 ![](images/linked_list.svg){width=270}"></div></td>
@@ -463,10 +449,31 @@ $$
 O(N) \; \underbrace{\leadsto O(\log_2(N))}_{\mathclap{\substack{\text{More Efficient Algorithm} \\ \text{(Free!)}}}} \; \underbrace{\leadsto O(1 + \epsilon\log_2(N))}_{\substack{\text{More Memory} \\ \text{(\$\$\$)}}}
 $$
 
+# Homework 3 {data-stack-name="HW3"}
 
-# Final Notes for Homework 3 {data-stack-name="HW3"}
+* Aka the Midterm Prep assignment
+* Not *due* until **Thursday, March 12, 11:59pm**
+* But, finishing it **before the Midterm** will be **super good prep!**
 
-## More Memory, More Performance
+## BST Building Blocks
+
+* For HW3, we provide you with an `InventoryItem` class
+* Two instance variables: `item_name` and `price`
+* Equivalence relations:
+  * `__eq__(other)`, `__ne__(other)`
+* **Ordering relations**:
+  * `__lt__(other)`, `__le__(other)`, `__gt__(other)`, `__ge__(other)`
+* Bonus: `__repr__()` and `__str__()`
+
+## `ThingContainer`: The OOP Structure You See
+
+![](images/thing_container_notfull.svg){fig-align="center"}
+
+## Secret Full OOP Structure You *Don't* See {.title-08}
+
+![](images/thing_container_full.svg){fig-align="center"}
+
+## `HashTable`s: More Memory, More Performance
 
 * The last part challenges you to ask: **why stop at a hash based on just the *first* letter of the key?**
 * We could just as easily use the first **two** letters:
