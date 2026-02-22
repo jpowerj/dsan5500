@@ -5,11 +5,12 @@ sidebar: mainnav
 format:
   html:
     df-print: kable
+    toc: true
 ---
 
 Assignments will be **manually graded**, and these grades will be entered on both Canvas and Google Classroom. To **submit** each assignment, all you need to do is **save** your Colab notebook: when the late-submission period for each assignment ends, we will take your most-recently-updated notebook files and grade these as your submission. See the next section for Frequently Asked Questions (FAQs) about the **hint reports** you can automatically request for each assignment (besides the Midterm), or see the [Points Per Question](#points-per-question) section below for a summary of the number of total points each question on each assignment is worth.
 
-## Autohinter: Frequently Asked Questions (FAQs)
+## Autohinter Frequently Asked Questions (FAQs)
 
 ```{=html}
 <div class="accordion" id="accordionExample">
