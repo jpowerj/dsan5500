@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assignment Point Distributions – DSAN 5500</title>
+<title>Assignment Details – DSAN 5500</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -452,12 +452,19 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2026-02-19, 06:19:38 PM</em></p>
+<p><em>Updated 2026-02-21, 07:53:42 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#autohinter-frequently-asked-questions-faqs" id="toc-autohinter-frequently-asked-questions-faqs" class="nav-link active" data-scroll-target="#autohinter-frequently-asked-questions-faqs">Autohinter: Frequently Asked Questions (FAQs)</a></li>
+  <li><a href="#points-per-question" id="toc-points-per-question" class="nav-link" data-scroll-target="#points-per-question">Points Per Question</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5500/blob/main/assignments.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -465,7 +472,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment Point Distributions</h1>
+<h1 class="title">Assignment Details</h1>
 <p class="subtitle lead">DSAN 5500: Data Structures, Objects, and Algorithms in Python</p>
 </div>
 
@@ -483,10 +490,63 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Assignments will be <strong>manually graded</strong>, and these grades will be entered on both Canvas and Google Classroom. To <strong>submit</strong> each assignment, all you need to do is <strong>save</strong> your Colab notebook: when the late-submission period for each assignment ends, we will take your most-recently-updated notebook files and grade these as your submission. See the next section for Frequently Asked Questions (FAQs) about the <strong>hint reports</strong> you can automatically request for each assignment (besides the Midterm), or see the <a href="#points-per-question">Points Per Question</a> section below for a summary of the number of total points each question on each assignment is worth.</p>
+<section id="autohinter-frequently-asked-questions-faqs" class="level2">
+<h2 class="anchored" data-anchor-id="autohinter-frequently-asked-questions-faqs">Autohinter: Frequently Asked Questions (FAQs)</h2>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <div class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Are the results in the autohinter report the same my grade on an assignment?
+      </button>
+    </div>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p><strong>No!</strong></p>
+        <p>The <b>autohinter report</b> is there for the sake of <i>learning</i>: the goal is to enable you to <i>try</i> different approaches to solving a problem, then receive <i>instant feedback</i> on whether your approach has brought you closer-to or further-from the solution.</p>
+        <p>Your ultimate <b>recorded grade</b> for an assignment is based on <b>human, manual grading</b> of the assignment, so that we can take into account things like:
+        </p><ul>
+          <li>Alternative ways to arrive at the solution that we (as instructors) did not foresee when making the autohinting code for that question</li>
+          <li>Contextual details that you can <b>write into</b> your responses (using Colab's "Add Comment" feature on the response cell), to clarify why you chose one response over another and/or why you are confused about something in the autohinter report</li>
+        </ul>
+        <p></p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Why am I seeing a "500: Internal Server Error" message when I request an autohinter report?
+      </button>
+    </div>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p>This error could have many causes, since it just means that "something has occurred within the server code that led to a crash".</p>
+        <p>However, one of the most common reasons for this, and the simplest to fix, is that <strong>the autohinter code "detects" your response cells</strong> for a given question like (say) Q3.2 by <strong>finding a code cell with <code># @title Q3.2-response</code> as its first line</strong>. Although these are the default first lines in each code cell when the Colab notebooks are distributed, you may have inadvertently changed the first line in a given response cell while working on the assignment.</p>
+        <p>An easy way to detect and fix where this might be happening in your code is to open the <strong>Table of Contents</strong> view on the left side of the Colab interface: any code cells that start with <code># @title</code> will be "registered" in Colab's Table of Contents, so that in this Table of Contents listing you should see e.g. Question 1.1 followed by an indented "Q1.1-response", Question 1.2 followed by an indented "Q1.2-response" listing, and so on. If one of these "QX.X-response" entries is missing (for example, if the Table of Contents skips directly from "Question 1.1" to "Question 1.2"), find the relevant code cell and then re-add <code># @title Q1.1-response</code> as its first line.</p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Why am I seeing a "404: Resource Not Found" message when I request an autohinter report?
+      </button>
+    </div>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <p>Unlike the 500 error discussed in the previous question, a 404 error means that the server is fully <strong>down</strong>, meaning that this error is happening <i>before</i> your notebook is even able to reach the server. In this case, the problem is most likely something like a server crash rather than any issue within your notebook, so please contact Jeff at <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a> if you encounter this 404 error.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<section id="points-per-question" class="level2">
+<h2 class="anchored" data-anchor-id="points-per-question">Points Per Question</h2>
 <p>Use the <strong>tabs below</strong> to view the point distributions for different assignments.</p>
 <p>The distributions are imported from Google Sheets mainly for transparency: so that you can see exactly how totals are computed as a sum of the individual points allocated for each test!</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">HW1</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">HW1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">HW2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">HW3</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div style="height: 400px !important; max-height: 400px !important; overflow-y: scroll !important;">
@@ -498,7 +558,148 @@ ul.task-list li input[type="checkbox"] {
 <tr class="header">
 <th style="text-align: left;">part</th>
 <th style="text-align: left;">qid</th>
-<th style="text-align: left;">test_type</th>
+<th style="text-align: left;">points</th>
+<th style="text-align: left;">part_total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Q1.1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q1.2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q1.3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q1.4</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Q2.1</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q2.2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">Q3.1</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q3.2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">Q4.1</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q4.2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">Q5.1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q5.2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q5.3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q5.4</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">Q6.1</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q6.2</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q6.3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q6.4</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q6.5</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">100</td>
+<td style="text-align: left;">100</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div style="height: 400px !important; max-height: 400px !important; overflow-y: scroll !important;">
+<div class="cell">
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">part</th>
+<th style="text-align: left;">qid</th>
 <th style="text-align: left;">points</th>
 <th style="text-align: left;">part_total</th>
 </tr>
@@ -507,142 +708,222 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Q1.1</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">15</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Q1.2</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Q1.3</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Q1.4</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">12</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">23</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Q2.1</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">5</td>
+<td style="text-align: left;">15</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Q2.2</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">10</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">23</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Q3.1</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">20</td>
+<td style="text-align: left;">15</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Q3.2</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">25</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">23</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Q4.1</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">20</td>
+<td style="text-align: left;">15</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Q4.2</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">25</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">23</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Q5.1</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">6</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Q5.2</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">100</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div style="height: 400px !important; max-height: 400px !important; overflow-y: scroll !important;">
+<div class="cell">
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">part</th>
+<th style="text-align: left;">qid</th>
+<th style="text-align: left;">points</th>
+<th style="text-align: left;">part_total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q1.1</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q1.2.1</td>
+<td style="text-align: left;">2</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">Q5.3</td>
-<td style="text-align: left;">hidden</td>
+<td style="text-align: left;">Q1.2.2</td>
 <td style="text-align: left;">2</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">Q5.4</td>
-<td style="text-align: left;">hidden</td>
+<td style="text-align: left;">Q1.2.3</td>
 <td style="text-align: left;">2</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q1.3.1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q1.3.2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q1.3.3</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q1.3.4</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q1.3.5</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q2.1</td>
 <td style="text-align: left;">10</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">Q6.1</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">4</td>
+<td style="text-align: left;">Q2.2.1</td>
+<td style="text-align: left;">2</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">Q6.2</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">4</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Q2.2.2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">14</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">Q6.3</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">Q3.1</td>
+<td style="text-align: left;">10</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">Q6.4</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">3</td>
+<td style="text-align: left;">Q3.2.1</td>
+<td style="text-align: left;">9</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">Q6.5</td>
-<td style="text-align: left;">hidden</td>
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">18</td>
+<td style="text-align: left;">Q3.2.2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q4.1</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q4.2.1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q4.2.2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q5.1</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q5.2.1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Q5.2.2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">12</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Total</td>
 <td style="text-align: left;"></td>
+<td style="text-align: left;">79</td>
 <td style="text-align: left;"></td>
-<td style="text-align: left;">100</td>
-<td style="text-align: left;">100</td>
 </tr>
 </tbody>
 </table>
@@ -655,6 +936,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1082,4 +1364,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5500/blob/main/assignments.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jpowerj/dsan5500/blob/main/assignments.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div></div></div></footer></body></html>
