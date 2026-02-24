@@ -452,7 +452,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 <div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p><em>Updated 2026-02-21, 09:57:19 PM</em></p>
+<p><em>Updated 2026-02-24, 04:36:39 PM</em></p>
 </div></div></nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -535,7 +535,14 @@ ul.task-list li input[type="checkbox"] {
     </div>
     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <p>Unlike the 500 error discussed in the previous question, a 404 error means that the server is fully <strong>down</strong>, meaning that this error is happening <i>before</i> your notebook is even able to reach the server. In this case, the problem is most likely something like a server crash rather than any issue within your notebook, so please contact Jeff at <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a> if you encounter this 404 error.</p>
+        <p>Here, the first thing to check is the **URL** of the server that the submission cell is using: Previous versions of the class used a National Science Foundation "Jetstream" server, but this semester we are using a (...personally funded) Google Cloud Run setup.</p>
+        <p>So, this just means:
+          </p><ul>
+          <li>If you see the older URL, <code>http://jag.soc240036.projects.jetstream-cloud.org:5000/submit</code>,</li>
+          <li>Replace it with the new Google Cloud Run URL, <code>https://jah-submit-83645199100.us-east4.run.app/</code></li>
+          </ul>
+        <p></p>
+        <p>If you replace the URL and now get a 500 error, see the above entry. If you replace the URL and <i>still</i> get a 404 error, this means that the server is fully <strong>down</strong>, meaning that this error is happening <i>before</i> your notebook is even able to reach the server. In this case, the problem is most likely something like a server crash rather than any issue within your notebook, so please contact Jeff at <a href="mailto:jj1088@georgetown.edu" target="_blank"><code>jj1088@georgetown.edu</code></a> if you encounter this 404 error.</p>
       </div>
     </div>
   </div>
