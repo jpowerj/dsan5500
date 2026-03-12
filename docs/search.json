@@ -4572,7 +4572,7 @@
   {
     "objectID": "w09/index.html",
     "href": "w09/index.html",
-    "title": "Week 9: ETL Pipelines with Prefect",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
     "section": "",
     "text": "Open slides in new window →",
     "crumbs": [
@@ -4652,49 +4652,49 @@
   {
     "objectID": "w09/slides.html#the-three-main-buzzwords",
     "href": "w09/slides.html#the-three-main-buzzwords",
-    "title": "Week 9: ETL Pipelines with Prefect",
+    "title": "Week 9: BST Iteration, Functional Programming",
     "section": "The Three Main Buzzwords",
     "text": "The Three Main Buzzwords\n(Underlined terms link to relevant section of docs)\n\nFlow: The “main thing” your pipeline is doing!\n\nExcept in simple cases, will consist of multiple Tasks\n\nFlows and Tasks alone already provide much more functionality than “basic” functions…\nDeployments: Flows + Tasks + Metadata about how and when you want them to run.\n\n“Deployments elevate workflows from [functions that you call manually] to [API-managed entities].”"
   },
   {
     "objectID": "w09/slides.html#deployments-rightarrow-run-flows-programmatically",
     "href": "w09/slides.html#deployments-rightarrow-run-flows-programmatically",
-    "title": "Week 9: ETL Pipelines with Prefect",
+    "title": "Week 9: BST Iteration, Functional Programming",
     "section": "Deployments \\(\\Rightarrow\\) Run Flows Programmatically",
     "text": "Deployments \\(\\Rightarrow\\) Run Flows Programmatically"
   },
   {
     "objectID": "w09/slides.html#schedules",
     "href": "w09/slides.html#schedules",
-    "title": "Week 9: ETL Pipelines with Prefect",
+    "title": "Week 9: BST Iteration, Functional Programming",
     "section": "Schedules",
     "text": "Schedules\n\nCron: Full-on scheduling language (used by computers since 1975!)\n\n\n\ncrontab.sh\n\n# ┌───────────── minute (0–59)\n# │ ┌───────────── hour (0–23)\n# │ │ ┌───────────── day of the month (1–31)\n# │ │ │ ┌───────────── month (1–12)\n# │ │ │ │ ┌───────────── day of the week (0–6) (Sunday to Saturday)\n# │ │ │ │ │\n# │ │ │ │ │\n# │ │ │ │ │\n# * * * * * &lt;command to execute&gt;\n\n\n\n\nInterval\n\n\n\nmy_interval.yml\n\nschedule:\n  interval: 600\n  timezone: America/Chicago\n\n\n\nRRule\n\n\n\nmy_rrule.yml\n\nschedule:\n  rrule: 'FREQ=WEEKLY;BYDAY=MO,WE,FR;UNTIL=20240730T040000Z'"
   },
   {
     "objectID": "w09/slides.html#events",
     "href": "w09/slides.html#events",
-    "title": "Week 9: ETL Pipelines with Prefect",
+    "title": "Week 9: BST Iteration, Functional Programming",
     "section": "Events",
     "text": "Events\n\nThese integrations are nice, but in reality usually overkill: you can just use Webhooks"
   },
   {
     "objectID": "w09/slides.html#logging",
     "href": "w09/slides.html#logging",
-    "title": "Week 9: ETL Pipelines with Prefect",
+    "title": "Week 9: BST Iteration, Functional Programming",
     "section": "Logging",
     "text": "Logging\n\nFor most non-advanced use cases: literally just put log_prints=True as a parameters of your Flow:\n\n\n\nflow_with_logging.py\n\nfrom prefect import task, flow\n\n@task\ndef my_task():\n    print(\"we're logging print statements from a task\")\n\n@flow(log_prints=True)\ndef my_flow():\n    print(\"we're logging print statements from a flow\")\n    my_task()"
   },
   {
     "objectID": "w09/slides.html#notifications",
     "href": "w09/slides.html#notifications",
-    "title": "Week 9: ETL Pipelines with Prefect",
+    "title": "Week 9: BST Iteration, Functional Programming",
     "section": "Notifications",
     "text": "Notifications\n\nActually immensely powerful, because it uses a templating engine called Jinja which is VERY worth learning!\nWith your brain in pipeline mode, think of Jinja as the [?] in:"
   },
   {
     "objectID": "w09/slides.html#jinja-example",
     "href": "w09/slides.html#jinja-example",
-    "title": "Week 9: ETL Pipelines with Prefect",
+    "title": "Week 9: BST Iteration, Functional Programming",
     "section": "Jinja Example",
     "text": "Jinja Example\n\n\n\n\nhomepage.jinja\n\n&lt;h3&gt;{{ me['name'] }}'s Favorite Hobbies&lt;/h3&gt;\n&lt;ul&gt;\n{%- for hobby in hobbies %}\n  &lt;li&gt;{{ hobby }}&lt;/li&gt;\n{%- endfor %}\n&lt;/ul&gt;\n\n\n\n+\n\n\n\n\nrender_jinja.py\n\nfrom jinja2 import Template\ntmpl = Template('homepage.jinja')\ntmpl.render(\n    me = {'name': 'Jeff'},\n    hobbies = [\n        \"sleeping\",\n        \"jetski\",\n        \"getting sturdy\"\n    ]\n)\n\n\n\n\n↓\n\n\n\n\n\n\nrendered.html\n\n&lt;h3&gt;Jeff's Favorite Hobbies&lt;/h3&gt;\n&lt;ul&gt;\n  &lt;li&gt;sleeping&lt;/li&gt;\n  &lt;li&gt;jetski&lt;/li&gt;\n  &lt;li&gt;getting sturdy&lt;/li&gt;\n&lt;/ul&gt;\n\n\n\\(\\leadsto\\)\n\nJeff's Favorite Hobbies\n\n  sleeping\n  jetski\n  getting sturdy"
   },
@@ -4991,5 +4991,394 @@
     "title": "Week 13: Applications in NLP",
     "section": "References",
     "text": "References"
+  },
+  {
+    "objectID": "w09/slides.html#back-to-bsts",
+    "href": "w09/slides.html#back-to-bsts",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Back to BSTs",
+    "text": "Back to BSTs\n\nFor HW2, we provide you with an InventoryItem class\nTwo instance variables: item_name and price\nEquivalence relations:\n\n__eq__(other), __ne__(other)\n\nOrdering relations:\n\n__lt__(other), __le__(other), __gt__(other), __ge__(other)\n\nBonus: __repr__() and __str__()"
+  },
+  {
+    "objectID": "w09/slides.html#lls-rightarrow-bsts-the-hard-part",
+    "href": "w09/slides.html#lls-rightarrow-bsts-the-hard-part",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "LLs \\(\\rightarrow\\) BSTs: The Hard Part",
+    "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.\nBut… for a BinarySearchTree, since our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node in our BST\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!"
+  },
+  {
+    "objectID": "w09/slides.html#two-ways-to-traverse-irl-version",
+    "href": "w09/slides.html#two-ways-to-traverse-irl-version",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Two Ways to Traverse: IRL Version",
+    "text": "Two Ways to Traverse: IRL Version\n\nImagine we’re trying to learn about a topic \\(\\tau\\) using Wikipedia, so we find its article \\(\\tau_0\\)\nThere are two “extremes” in terms of strategies we could follow for learning, given the contents of the article as well as the links it contains to other articles\n\n\n\n\n\n Depth-First Search (DFS)\n\n\n\nOpen \\(\\tau_0\\) and start reading it; When we encounter a link we always click it and immediately start reading the new article.\nIf we hit an article with no links (or a dead end/broken link), we finish reading it and click the back button, picking up where we left off in the previous article. When we reach the end of \\(\\tau_0\\), we’re done!\n\n\n\n\n\n\n\n\n\n Breadth-First Search (BFS)\n\n\n\nBookmark \\(\\tau_0\\) in a folder called “Level 0 Articles”; open and start reading it\nWhen we encounter a link, we put it in a “Level 1 Articles” folder, but continue reading \\(\\tau_0\\) until we reach the end.\nWe then open all “Level 1 Articles” in new tabs, placing links we encounter in these articles into a “Level 2 Articles” folder, that we only start reading once all “Level 1 Articles” are read\nWe continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the “opposite” of DFS?)\n\n\n\n\n\n\n…Let’s try them out! I clicked “Random Article” and got Eustache de Saint Pierre"
+  },
+  {
+    "objectID": "w09/slides.html#two-ways-to-traverse-picture-version",
+    "href": "w09/slides.html#two-ways-to-traverse-picture-version",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Two Ways to Traverse: Picture Version",
+    "text": "Two Ways to Traverse: Picture Version\n\n\n\n\nCode\nfrom hw2 import LinkedList, InventoryItem, BinarySearchTree, NodeProcessor, IterAlgorithm\nbst = BinarySearchTree()\nitem1 = InventoryItem('Mango', 50)\nbst.add(item1)\nitem2 = InventoryItem('Pickle', 60)\nbst.add(item2)\nitem3 = InventoryItem('Artichoke', 55)\nbst.add(item3)\nitem5 = InventoryItem('Banana', 123)\nbst.add(item5)\nitem6 = InventoryItem('Aardvark', 11)\nbst.add(item6)\nHTML(visualize(bst))\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nprint(\"DFS:\")\ndfs_processor = NodeProcessor(IterAlgorithm.DEPTH_FIRST)\n#print(type(dfs_processor.node_container))\ndfs_processor.iterate_over(bst)\n\nprint(\"\\nBFS:\")\nbfs_processor = NodeProcessor(IterAlgorithm.BREADTH_FIRST)\n#print(type(bfs_processor.node_container))\nbfs_processor.iterate_over(bst)\n\n\nDFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Banana,price=123]\nInventoryItem[item_name=Aardvark,price=11]\n\nBFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Aardvark,price=11]\nInventoryItem[item_name=Banana,price=123]"
+  },
+  {
+    "objectID": "w09/slides.html#two-ways-to-traverse-in-words-version",
+    "href": "w09/slides.html#two-ways-to-traverse-in-words-version",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Two Ways to Traverse: In-Words Version",
+    "text": "Two Ways to Traverse: In-Words Version\n\nDepth-First Search (DFS): With this approach, we iterate through the BST by always taking the left child as the “next” child until we hit a leaf node (which means, we cannot follow this left-child pointer any longer, since a leaf node does not have a left child or a right child!), and only at that point do we back up and take the right children we skipped.\nBreadth-First Search (BFS): This is the “opposite” of DFS in the sense that we traverse the tree level-by-level, never moving to the next level of the tree until we’re sure that we have visited every node on the current level."
+  },
+  {
+    "objectID": "w09/slides.html#two-ways-to-traverse-animated-version",
+    "href": "w09/slides.html#two-ways-to-traverse-animated-version",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Two Ways to Traverse: Animated Version",
+    "text": "Two Ways to Traverse: Animated Version\n\n\n\n\n\n\nDepth-First Search (from Wikimedia Commons)\n\n\n\n\n\n\n\nBreadth-First Search (from Wikimedia Commons)"
+  },
+  {
+    "objectID": "w09/slides.html#two-ways-to-traverse-underlying-data-structures-version",
+    "href": "w09/slides.html#two-ways-to-traverse-underlying-data-structures-version",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Two Ways to Traverse: Underlying Data Structures Version",
+    "text": "Two Ways to Traverse: Underlying Data Structures Version\n\nNow that you have some intuition, you may be thinking that they might require very different code to implement 🤔\nThis is where mathematical-formal linkage between the two becomes helpful!\nIt turns out (and a full-on algorithmic theory course makes you prove) that\n Depth-First Search can be accomplished by processing nodes in an order determined by adding each to a stack, while\n Breadth-First Search can be accomplished by processing nodes in an order determined by adding each to a queue!\n\\(\\implies\\) Literally identical code, “pulling out” the word stack and replacing it with the word queue within your code (or vice-versa).\nWith Software Engineer Hat on, you’ll see this as a job for an abstraction layer!"
+  },
+  {
+    "objectID": "w09/slides.html#two-ways-to-traverse-hw2-version",
+    "href": "w09/slides.html#two-ways-to-traverse-hw2-version",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Two Ways to Traverse: HW2 Version",
+    "text": "Two Ways to Traverse: HW2 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\nIt will take in a ThingContainer (could be a stack or a queue, you won’t know which), which has two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()"
+  },
+  {
+    "objectID": "w09/slides.html#three-animals-in-the-dfs-species",
+    "href": "w09/slides.html#three-animals-in-the-dfs-species",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Three Animals in the DFS Species",
+    "text": "Three Animals in the DFS Species\n\n\n\n\n\n\n\nDFS Procedure\nAlgorithm\n\n\n\n\nPre-Order Traversal\n1. Print node2. Traverse left subtree3. Traverse right subtree\n\n\nIn-Order Traversal 🧐‼️\n1. Traverse left subtree2. Print node3. Traverse right subtree\n\n\nPost-Order Traversal\n1. Traverse left subtree2. Traverse right subtree3. Print node"
+  },
+  {
+    "objectID": "w09/slides.html#the-three-animals-traverse-our-inventory-tree",
+    "href": "w09/slides.html#the-three-animals-traverse-our-inventory-tree",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "The Three Animals Traverse our Inventory Tree",
+    "text": "The Three Animals Traverse our Inventory Tree\n\n\nCode\nvisualize(bst)"
+  },
+  {
+    "objectID": "w09/slides.html#final-notes-for-hw2",
+    "href": "w09/slides.html#final-notes-for-hw2",
+    "title": "Week 9: BST Iteration, Functional Programming",
+    "section": "Final Notes for HW2",
+    "text": "Final Notes for HW2\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔"
+  },
+  {
+    "objectID": "w09/slides.html#final-notes-for-hw3",
+    "href": "w09/slides.html#final-notes-for-hw3",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Final Notes for HW3",
+    "text": "Final Notes for HW3\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔"
+  },
+  {
+    "objectID": "w09/slides.html#functions-vs.-functionals",
+    "href": "w09/slides.html#functions-vs.-functionals",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Functions vs. Functionals",
+    "text": "Functions vs. Functionals\n\nYou may have noticed: map() and reduce() are “meta-functions”: functions that take other functions as inputs\n\n\n\n\ndef add_5(num):\n  return num + 5\nadd_5(10)\n\n15\n\n\n\n\ndef apply_twice(fn, arg):\n  return fn(fn(arg))\napply_twice(add_5, 10)\n\n20\n\n\n\n\nIn Python, functions can be used as vars (Hence lambda):\n\n\nadd_5 = lambda num: num + 5\napply_twice(add_5, 10)\n\n20\n\n\n\nThis relates to a whole paradigm, “functional programming”! We will use it to approach encryption"
+  },
+  {
+    "objectID": "w09/slides.html#train-your-brain-for-functional-approach-implies-master-debugging",
+    "href": "w09/slides.html#train-your-brain-for-functional-approach-implies-master-debugging",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!",
+    "text": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!\n\nIn CS Theory: enables formal proofs of correctness\nIn CS practice:\n\n\nWhen a program doesn’t work, each function is an interface point where you can check that the data are correct. You can look at the intermediate inputs and outputs to quickly isolate the function that’s responsible for a bug.(from Python’s “Functional Programming HowTo”)"
+  },
+  {
+    "objectID": "w09/slides.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
+    "href": "w09/slides.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines",
+    "text": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines\n\n\nScenario: Run code, check the output, and… it’s wrong 😵 what do you do?\nUsual approach: Read lines one-by-one, figuring out what they do, seeing if something pops out that seems wrong; adding comments like # Convert to lowercase\n\n\n\n\nEasy case: found typo in punctuation removal code. Fix the error, add comment like # Remove punctuation\n Rule 1 of FP: transform these comments into function names\n\n\n\nHard case: Something in load_text() modifies a variable that later on breaks remove_punct() (Called a side-effect)\n Rule 2 of FP: NO SIDE-EFFECTS!\n\n\n\n\n\n\n\n\n\nG\n\n\n\ninput\nin.txt\n\n\n\nload_text\nload_text\n(Verb)\n\n\n\n\ninput-&gt;load_text\n\n\n\n\n\nlowercase\nlowercase\n(Verb)\n\n\n\n\nload_text-&gt;lowercase\n\n\n🧐 ✅\n\n\n\nremove_punct\nremove_punct\n(Verb)\n\n\n\n\nlowercase-&gt;remove_punct\n\n\n🧐 ✅\n\n\n\nremove_stopwords\nremove_stopwords\n(Verb)\n\n\n\n\nremove_punct-&gt;remove_stopwords\n\n\n🧐 ❌❗️\n\n\n\noutput\nout.txt\n\n\n\nremove_stopwords-&gt;output\n\n\n\n\n\n\n (Does this way of diagramming a program look familiar?) \n\n\n\n\nWith side effects: ❌ \\(\\implies\\) issue is somewhere earlier in the chain 😩🏃‍♂️\nNo side effects: ❌ \\(\\implies\\) issue must be in remove_punct()!!! 😎 ⏱️ = 💰"
+  },
+  {
+    "objectID": "w09/slides.html#if-its-so-useful-why-doesnt-everyone-do-it",
+    "href": "w09/slides.html#if-its-so-useful-why-doesnt-everyone-do-it",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "If It’s So Useful, Why Doesn’t Everyone Do It?",
+    "text": "If It’s So Useful, Why Doesn’t Everyone Do It?\n\nTrapped in imperative (sequential) coding mindset: Path dependency / QWERTY\nReason we need to start thinking like this is: it’s 1000x harder to debug parallel code! So we need to be less ad hoc in how we write+debug, from here on out! 🙇‍♂️🙏\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014)\nThe title relates to a classic Economics joke (the best kind of joke): “An economist and a CEO are walking down the street, when the CEO points at the ground and tells the economist, ‘look! A $20 bill on the ground!’ The economist keeps on walking, scoffing at the CEO: ‘don’t be silly, if there was a $20 bill on the ground, somebody would have picked it up already’.”"
+  },
+  {
+    "objectID": "w09/slides.html#the-rsa-algorithm",
+    "href": "w09/slides.html#the-rsa-algorithm",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "The RSA Algorithm",
+    "text": "The RSA Algorithm\n\nThe RSA public-key cryptosystem relies on the dramatic difference between the ease of finding large prime numbers and the difficulty of factoring the product of two large prime numbers (Cormen et al. 2001, sec. 31.7)\n\n\nBob encrypts \\(M\\) using Alice’s public key \\(P_A\\) and transmits the result \\(C = P_A(M)\\) over a communication channel to Alice. An eavesdropper who captures \\(C\\) gains no info about \\(M\\). Alice decrypts \\(C\\) using her secret key to obtain the original message: \\(M = S_A(C)\\)"
+  },
+  {
+    "objectID": "w09/slides.html#references",
+    "href": "w09/slides.html#references",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "References",
+    "text": "References\n\n\n\n\nCormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. Introduction To Algorithms. MIT Press. https://books.google.com?id=NLngYyWFl_YC.\n\n\nLeskovec, Jure, Anand Rajaraman, and Jeffrey David Ullman. 2014. Mining of Massive Datasets. Cambridge University Press. http://infolab.stanford.edu/~ullman/mmds/book.pdf."
+  },
+  {
+    "objectID": "w09/slides.html#so-how",
+    "href": "w09/slides.html#so-how",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "So… How?",
+    "text": "So… How?\n\nFor any participant \\(i\\), their Public Keys \\(P_i\\) and their Secret Key \\(S_i\\) are inverses:\n\n\\[\n\\begin{aligned}\nM &= S_A(P_A(M)) \\\\\nM &= P_A(S_A(M))\n\\end{aligned}\n\\]\n\nAlice, and only Alice, is able to compute the function \\(S_ A(\\cdot)\\) in any practical amount of time!\n\nThe scenario for sending the message goes as follows.  Bob obtains Alice’s public key P A , perhaps from a public directory or perhaps directly from Alice.  Bob computes the ciphertext C D P A .M/ corresponding to the message M and sends C to Alice.  When Alice receives the ciphertext C , she applies her secret key S A to retrieve the original message: S A .C/ D S A .P A .M// D M ."
+  },
+  {
+    "objectID": "w09/slides.html#in-more-detail",
+    "href": "w09/slides.html#in-more-detail",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "In More Detail",
+    "text": "In More Detail\nIn the RSA public-key cryptosystem, a participant creates a public key and a secret key with the following procedure: 1. Select at random two large prime numbers p and q such that p ¤ q. The primes p and q might be, say, 1024 bits each. 2. Compute n D pq. 3. Select a small odd integer e that is relatively prime to  .n/, which, by equation (31.21), equals .p  1/.q  1/. 4. Compute d as the multiplicative inverse of e, modulo  .n/. (Corollary 31.26 guarantees that d exists and is uniquely deûned. You can use the technique of Section 31.4 to compute d , given e and  .n/.) 5. Publish the pair P D .e; n/ as the participant’s RSA public key. 6. Keep secret the pair S D .d; n/ as the participant’s RSA secret key."
+  },
+  {
+    "objectID": "w09/slides.html#task-1-encrypting-the-message",
+    "href": "w09/slides.html#task-1-encrypting-the-message",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Task 1: Encrypting the Message",
+    "text": "Task 1: Encrypting the Message\n\nPublic Keys \\(P_A\\) and Secret Keys \\(S_A\\) are inverses:\n\n\\[\n\\begin{aligned}\nM &= S_A(P_A(M)) \\\\\nM &= P_A(S_A(M))\n\\end{aligned}\n\\]\n\nAlice, and only Alice, is able to compute the function \\(S_ A(\\cdot)\\) in any practical amount of time!\nBob \\(\\overset{M}{\\rightarrow}\\) Alice: Bob computes \\(C = P_A(M)\\) and sends \\(C\\) to Alice; Alice obtains \\(M\\) via \\(S_A(C) = S_A(P_A(M)) = M\\)"
+  },
+  {
+    "objectID": "w09/slides.html#signing-the-message",
+    "href": "w09/slides.html#signing-the-message",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Signing the Message",
+    "text": "Signing the Message\nAlice computes her digital signature for the message M 0 using her secret key S A and the equation D S A .M 0 /.  Alice sends the message/signature pair .M 0 ; / to Bob.  When Bob receives .M 0 ; /, he can verify that it originated from Alice by using Alice’s public key to verify the equation M 0 D P A . /. (Presumably, M 0 contains Alice’s name, so that Bob knows whose public key to use.) If the equation holds, then Bob concludes that the message M 0 was actually signed by Alice. If 31.7 The RSA public-key cryptosystem 939 the equation fails to hold, Bob concludes either that the information he received was corrupted by transmission errors or that the pair .M 0 ; / is an attempted forgery."
+  },
+  {
+    "objectID": "w09/slides.html#why-algorithmic-complexity-matters-here",
+    "href": "w09/slides.html#why-algorithmic-complexity-matters-here",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Why Algorithmic Complexity Matters Here!",
+    "text": "Why Algorithmic Complexity Matters Here!\n\nThe security of the RSA cryptosystem rests in large part on the difficulty of factoring large integers.\n\n\nIf an adversary can factor the modulus \\(n\\) in a public key, they can derive the secret key from the public key, using the knowledge of the factors \\(p\\) and \\(q\\) in the same way that the creator of the public key used them.\n\n\nTherefore, if factoring large integers is easy, then breaking the RSA cryptosystem is easy.\n\n\nThe converse statement, that if factoring large integers is hard, then breaking RSA is hard, is unproven (\\(P \\overset{\\smash{\\small{?}}}{\\small{=}} NP\\))"
+  },
+  {
+    "objectID": "w09/slides.html#alice-responds-with-a-signed-message",
+    "href": "w09/slides.html#alice-responds-with-a-signed-message",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Alice Responds with a Signed Message!",
+    "text": "Alice Responds with a Signed Message!\n\nAlice computes her digital signature \\(\\sigma\\) for the message M 0 using her secret key S A and the equation D S A .M 0 /.  Alice sends the message/signature pair .M 0 ; / to Bob.  When Bob receives .M 0 ; /, he can verify that it originated from Alice by using Alice’s public key to verify the equation M 0 D P A ."
+  },
+  {
+    "objectID": "w09/slides.html#task-2-signing-a-message",
+    "href": "w09/slides.html#task-2-signing-a-message",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Task 2: Signing a Message!",
+    "text": "Task 2: Signing a Message!\n\nAlice computes her digital signature \\(\\sigma = S_A(M')\\), then sends the pair \\((M', \\sigma)\\) \\(\\rightarrow\\) Bob\nWhen Bob receives \\((M', \\sigma)\\), he verifies that it originated from Alice by using Alice’s public key to check \\(M' = P_A(\\sigma)\\)"
+  },
+  {
+    "objectID": "w09/slides.html#task-1-encrypting-a-message",
+    "href": "w09/slides.html#task-1-encrypting-a-message",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Task 1: Encrypting a Message",
+    "text": "Task 1: Encrypting a Message\n\nPublic Keys \\(P_A\\) and Secret Keys \\(S_A\\) are inverses:\n\n\\[\n\\begin{aligned}\nM &= S_A(P_A(M)) \\\\\nM &= P_A(S_A(M))\n\\end{aligned}\n\\]\n\nAlice, and only Alice, is able to compute the function \\(S_ A(\\cdot)\\) in any practical amount of time!\nBob \\(\\overset{M}{\\rightarrow}\\) Alice: Bob computes \\(C = P_A(M)\\) and sends \\(C\\) to Alice; Alice obtains \\(M\\) via \\(S_A(C) = S_A(P_A(M)) = M\\)"
+  },
+  {
+    "objectID": "w09/slides.html#so-how-do-p_a-and-s_a-work",
+    "href": "w09/slides.html#so-how-do-p_a-and-s_a-work",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "So How Do \\(P_A\\) and \\(S_A\\) Work?",
+    "text": "So How Do \\(P_A\\) and \\(S_A\\) Work?\n\n Pick two big prime numbers \\(p\\) and \\(q\\), compute \\(n = pq\\)\n Pick a small odd int \\(e\\) relatively prime to \\((p-1)(q-1)\\)\n Find \\(d\\) such that \\(de \\equiv 1\\text{ mod }{n}\\)\n Your public key is \\(P = (e,n)\\)\n Your secret key is \\(S = (d,n)\\)\nEncrypt: \\(P(M) = M^e \\text{ mod }{n}\\); Decrypt: \\(S(C) = C^d \\text{ mod }{n}\\)\nWorks because \\(P(S(M)) = S(P(M)) = M^{ed} \\overset{\\small{*}}{=} M\\)"
+  },
+  {
+    "objectID": "w09/index.html#back-to-bsts",
+    "href": "w09/index.html#back-to-bsts",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Back to BSTs",
+    "text": "Back to BSTs\n\nFor HW2, we provide you with an InventoryItem class\nTwo instance variables: item_name and price\nEquivalence relations:\n\n__eq__(other), __ne__(other)\n\nOrdering relations:\n\n__lt__(other), __le__(other), __gt__(other), __ge__(other)\n\nBonus: __repr__() and __str__()",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#lls-rightarrow-bsts-the-hard-part",
+    "href": "w09/index.html#lls-rightarrow-bsts-the-hard-part",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "LLs \\(\\rightarrow\\) BSTs: The Hard Part",
+    "text": "LLs \\(\\rightarrow\\) BSTs: The Hard Part\n\nWhen we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.\nBut… for a BinarySearchTree, since our structure can now branch as we traverse it… How do we “loop through” a BST?\nTwo fundamentally different ways to traverse every node in our BST\n“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task\nYour job as a data scientist is to think carefully about which one is more efficient for a given goal!",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#two-ways-to-traverse-irl-version",
+    "href": "w09/index.html#two-ways-to-traverse-irl-version",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Two Ways to Traverse: IRL Version",
+    "text": "Two Ways to Traverse: IRL Version\n\nImagine we’re trying to learn about a topic \\(\\tau\\) using Wikipedia, so we find its article \\(\\tau_0\\)\nThere are two “extremes” in terms of strategies we could follow for learning, given the contents of the article as well as the links it contains to other articles\n\n\n\n\n\n\n\nNote Depth-First Search (DFS)\n\n\n\n\nOpen \\(\\tau_0\\) and start reading it; When we encounter a link we always click it and immediately start reading the new article.\nIf we hit an article with no links (or a dead end/broken link), we finish reading it and click the back button, picking up where we left off in the previous article. When we reach the end of \\(\\tau_0\\), we’re done!\n\n\n\n\n\n\n\n\n\nNote Breadth-First Search (BFS)\n\n\n\n\nBookmark \\(\\tau_0\\) in a folder called “Level 0 Articles”; open and start reading it\nWhen we encounter a link, we put it in a “Level 1 Articles” folder, but continue reading \\(\\tau_0\\) until we reach the end.\nWe then open all “Level 1 Articles” in new tabs, placing links we encounter in these articles into a “Level 2 Articles” folder, that we only start reading once all “Level 1 Articles” are read\nWe continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the “opposite” of DFS?)\n\n\n\n\n…Let’s try them out! I clicked “Random Article” and got Eustache de Saint Pierre",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#two-ways-to-traverse-picture-version",
+    "href": "w09/index.html#two-ways-to-traverse-picture-version",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Two Ways to Traverse: Picture Version",
+    "text": "Two Ways to Traverse: Picture Version\n\n\n\n\nCode\nfrom hw2 import LinkedList, InventoryItem, BinarySearchTree, NodeProcessor, IterAlgorithm\nbst = BinarySearchTree()\nitem1 = InventoryItem('Mango', 50)\nbst.add(item1)\nitem2 = InventoryItem('Pickle', 60)\nbst.add(item2)\nitem3 = InventoryItem('Artichoke', 55)\nbst.add(item3)\nitem5 = InventoryItem('Banana', 123)\nbst.add(item5)\nitem6 = InventoryItem('Aardvark', 11)\nbst.add(item6)\nHTML(visualize(bst))\n\n\nWarning: node None_0, port f1 unrecognized\nWarning: node None_1, port f1 unrecognized\nWarning: node None_2, port f1 unrecognized\nWarning: node None_3, port f1 unrecognized\nWarning: node None_4, port f1 unrecognized\nWarning: node None_5, port f1 unrecognized\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nprint(\"DFS:\")\ndfs_processor = NodeProcessor(IterAlgorithm.DEPTH_FIRST)\n#print(type(dfs_processor.node_container))\ndfs_processor.iterate_over(bst)\n\nprint(\"\\nBFS:\")\nbfs_processor = NodeProcessor(IterAlgorithm.BREADTH_FIRST)\n#print(type(bfs_processor.node_container))\nbfs_processor.iterate_over(bst)\n\n\nDFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Banana,price=123]\nInventoryItem[item_name=Aardvark,price=11]\n\nBFS:\nInventoryItem[item_name=Mango,price=50]\nInventoryItem[item_name=Artichoke,price=55]\nInventoryItem[item_name=Pickle,price=60]\nInventoryItem[item_name=Aardvark,price=11]\nInventoryItem[item_name=Banana,price=123]",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#two-ways-to-traverse-in-words-version",
+    "href": "w09/index.html#two-ways-to-traverse-in-words-version",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Two Ways to Traverse: In-Words Version",
+    "text": "Two Ways to Traverse: In-Words Version\n\nDepth-First Search (DFS): With this approach, we iterate through the BST by always taking the left child as the “next” child until we hit a leaf node (which means, we cannot follow this left-child pointer any longer, since a leaf node does not have a left child or a right child!), and only at that point do we back up and take the right children we skipped.\nBreadth-First Search (BFS): This is the “opposite” of DFS in the sense that we traverse the tree level-by-level, never moving to the next level of the tree until we’re sure that we have visited every node on the current level.",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#two-ways-to-traverse-animated-version",
+    "href": "w09/index.html#two-ways-to-traverse-animated-version",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Two Ways to Traverse: Animated Version",
+    "text": "Two Ways to Traverse: Animated Version\n\n\n\n\n\n\nDepth-First Search (from Wikimedia Commons)\n\n\n\n\n\n\n\nBreadth-First Search (from Wikimedia Commons)",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#two-ways-to-traverse-underlying-data-structures-version",
+    "href": "w09/index.html#two-ways-to-traverse-underlying-data-structures-version",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Two Ways to Traverse: Underlying Data Structures Version",
+    "text": "Two Ways to Traverse: Underlying Data Structures Version\n\nNow that you have some intuition, you may be thinking that they might require very different code to implement 🤔\nThis is where mathematical-formal linkage between the two becomes helpful!\nIt turns out (and a full-on algorithmic theory course makes you prove) that\n Depth-First Search can be accomplished by processing nodes in an order determined by adding each to a stack, while\n Breadth-First Search can be accomplished by processing nodes in an order determined by adding each to a queue!\n\\(\\implies\\) Literally identical code, “pulling out” the word stack and replacing it with the word queue within your code (or vice-versa).\nWith Software Engineer Hat on, you’ll see this as a job for an abstraction layer!",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#two-ways-to-traverse-hw2-version",
+    "href": "w09/index.html#two-ways-to-traverse-hw2-version",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Two Ways to Traverse: HW2 Version",
+    "text": "Two Ways to Traverse: HW2 Version\n\nYou’ll make a class called NodeProcessor, with a single iterate_over(tree) function\nThis function—without any changes in the code or even any if statements!—will be capable of both DFS and BFS\nIt will take in a ThingContainer (could be a stack or a queue, you won’t know which), which has two functions:\n\nput_new_thing_in(new_thing)\ntake_existing_thing_out()",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#three-animals-in-the-dfs-species",
+    "href": "w09/index.html#three-animals-in-the-dfs-species",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Three Animals in the DFS Species",
+    "text": "Three Animals in the DFS Species\n\n\n\n\n\n\n\nDFS Procedure\nAlgorithm\n\n\n\n\nPre-Order Traversal\n1. Print node2. Traverse left subtree3. Traverse right subtree\n\n\nIn-Order Traversal 🧐‼️\n1. Traverse left subtree2. Print node3. Traverse right subtree\n\n\nPost-Order Traversal\n1. Traverse left subtree2. Traverse right subtree3. Print node",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#the-three-animals-traverse-our-inventory-tree",
+    "href": "w09/index.html#the-three-animals-traverse-our-inventory-tree",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "The Three Animals Traverse our Inventory Tree",
+    "text": "The Three Animals Traverse our Inventory Tree\n\n\nCode\nvisualize(bst)\n\n\nWarning: node None_0, port f1 unrecognized\nWarning: node None_1, port f1 unrecognized\nWarning: node None_2, port f1 unrecognized\nWarning: node None_3, port f1 unrecognized\nWarning: node None_4, port f1 unrecognized\nWarning: node None_5, port f1 unrecognized",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#final-notes-for-hw3",
+    "href": "w09/index.html#final-notes-for-hw3",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Final Notes for HW3",
+    "text": "Final Notes for HW3\n\nThe last part challenges you to ask: why stop at a hash based on just the first letter of the key?\nWe could just as easily use the first two letters:\nh('AA') = 0, h('AB') = 1, …, h('AZ') = 25,\nh('BA') = 26, h('BB') = 27, …, h('BZ') = 51,\nh('CA') = 52, …, h('ZZ') = 675.\nYou will see how this gets us even closer to the elusive \\(O(1)\\)! And we could get even closer with three letters, four letters, … 🤔🤔🤔",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#functions-vs.-functionals",
+    "href": "w09/index.html#functions-vs.-functionals",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Functions vs. Functionals",
+    "text": "Functions vs. Functionals\n\nYou may have noticed: map() and reduce() are “meta-functions”: functions that take other functions as inputs\n\n\n\n\ndef add_5(num):\n  return num + 5\nadd_5(10)\n\n15\n\n\n\n\ndef apply_twice(fn, arg):\n  return fn(fn(arg))\napply_twice(add_5, 10)\n\n20\n\n\n\n\n\nIn Python, functions can be used as vars (Hence lambda):\n\n\nadd_5 = lambda num: num + 5\napply_twice(add_5, 10)\n\n20\n\n\n\nThis relates to a whole paradigm, “functional programming”! We will use it to approach encryption",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#train-your-brain-for-functional-approach-implies-master-debugging",
+    "href": "w09/index.html#train-your-brain-for-functional-approach-implies-master-debugging",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!",
+    "text": "Train Your Brain for Functional Approach \\(\\implies\\) Master Debugging!\n\nIn CS Theory: enables formal proofs of correctness\nIn CS practice:\n\n\nWhen a program doesn’t work, each function is an interface point where you can check that the data are correct. You can look at the intermediate inputs and outputs to quickly isolate the function that’s responsible for a bug.(from Python’s “Functional Programming HowTo”)",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
+    "href": "w09/index.html#code-rightarrow-pipelines-rightarrow-debuggable-pipelines",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines",
+    "text": "Code \\(\\rightarrow\\) Pipelines \\(\\rightarrow\\) Debuggable Pipelines\n\n\nScenario: Run code, check the output, and… it’s wrong 😵 what do you do?\nUsual approach: Read lines one-by-one, figuring out what they do, seeing if something pops out that seems wrong; adding comments like # Convert to lowercase\n\n\n\n\nEasy case: found typo in punctuation removal code. Fix the error, add comment like # Remove punctuation\n Rule 1 of FP: transform these comments into function names\n\n\n\nHard case: Something in load_text() modifies a variable that later on breaks remove_punct() (Called a side-effect)\n Rule 2 of FP: NO SIDE-EFFECTS!\n\n\n\n\n\n\n\n\n\n\nG\n\n\n\ninput\nin.txt\n\n\n\nload_text\nload_text\n(Verb)\n\n\n\n\ninput-&gt;load_text\n\n\n\n\n\nlowercase\nlowercase\n(Verb)\n\n\n\n\nload_text-&gt;lowercase\n\n\n🧐 ✅\n\n\n\nremove_punct\nremove_punct\n(Verb)\n\n\n\n\nlowercase-&gt;remove_punct\n\n\n🧐 ✅\n\n\n\nremove_stopwords\nremove_stopwords\n(Verb)\n\n\n\n\nremove_punct-&gt;remove_stopwords\n\n\n🧐 ❌❗️\n\n\n\noutput\nout.txt\n\n\n\nremove_stopwords-&gt;output\n\n\n\n\n\n\n (Does this way of diagramming a program look familiar?) \n\n\n\n\nWith side effects: ❌ \\(\\implies\\) issue is somewhere earlier in the chain 😩🏃‍♂️\nNo side effects: ❌ \\(\\implies\\) issue must be in remove_punct()!!! 😎 ⏱️ = 💰",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#if-its-so-useful-why-doesnt-everyone-do-it",
+    "href": "w09/index.html#if-its-so-useful-why-doesnt-everyone-do-it",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "If It’s So Useful, Why Doesn’t Everyone Do It?",
+    "text": "If It’s So Useful, Why Doesn’t Everyone Do It?\n\nTrapped in imperative (sequential) coding mindset: Path dependency / QWERTY\nReason we need to start thinking like this is: it’s 1000x harder to debug parallel code! So we need to be less ad hoc in how we write+debug, from here on out! 🙇‍♂️🙏\n\n\n\n\nFrom Leskovec, Rajaraman, and Ullman (2014)\n\n\n\nThe title relates to a classic Economics joke (the best kind of joke): “An economist and a CEO are walking down the street, when the CEO points at the ground and tells the economist, ‘look! A $20 bill on the ground!’ The economist keeps on walking, scoffing at the CEO: ‘don’t be silly, if there was a $20 bill on the ground, somebody would have picked it up already’.”",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#the-rsa-algorithm",
+    "href": "w09/index.html#the-rsa-algorithm",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "The RSA Algorithm",
+    "text": "The RSA Algorithm\n\nThe RSA public-key cryptosystem relies on the dramatic difference between the ease of finding large prime numbers and the difficulty of factoring the product of two large prime numbers (Cormen et al. 2001, sec. 31.7)\n\n\n\n\nBob encrypts \\(M\\) using Alice’s public key \\(P_A\\) and transmits the result \\(C = P_A(M)\\) over a communication channel to Alice. An eavesdropper who captures \\(C\\) gains no info about \\(M\\). Alice decrypts \\(C\\) using her secret key to obtain the original message: \\(M = S_A(C)\\)",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#task-1-encrypting-a-message",
+    "href": "w09/index.html#task-1-encrypting-a-message",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Task 1: Encrypting a Message",
+    "text": "Task 1: Encrypting a Message\n\nPublic Keys \\(P_A\\) and Secret Keys \\(S_A\\) are inverses:\n\n\\[\n\\begin{aligned}\nM &= S_A(P_A(M)) \\\\\nM &= P_A(S_A(M))\n\\end{aligned}\n\\]\n\nAlice, and only Alice, is able to compute the function \\(S_ A(\\cdot)\\) in any practical amount of time!\nBob \\(\\overset{M}{\\rightarrow}\\) Alice: Bob computes \\(C = P_A(M)\\) and sends \\(C\\) to Alice; Alice obtains \\(M\\) via \\(S_A(C) = S_A(P_A(M)) = M\\)",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#task-2-signing-a-message",
+    "href": "w09/index.html#task-2-signing-a-message",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Task 2: Signing a Message!",
+    "text": "Task 2: Signing a Message!\n\nAlice computes her digital signature \\(\\sigma = S_A(M')\\), then sends the pair \\((M', \\sigma)\\) \\(\\rightarrow\\) Bob\nWhen Bob receives \\((M', \\sigma)\\), he verifies that it originated from Alice by using Alice’s public key to check \\(M' = P_A(\\sigma)\\)",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#so-how-do-p_a-and-s_a-work",
+    "href": "w09/index.html#so-how-do-p_a-and-s_a-work",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "So How Do \\(P_A\\) and \\(S_A\\) Work?",
+    "text": "So How Do \\(P_A\\) and \\(S_A\\) Work?\n\n Pick two big prime numbers \\(p\\) and \\(q\\), compute \\(n = pq\\)\n Pick a small odd int \\(e\\) relatively prime to \\((p-1)(q-1)\\)\n Find \\(d\\) such that \\(de \\equiv 1\\text{ mod }{n}\\)\n Your public key is \\(P = (e,n)\\)\n Your secret key is \\(S = (d,n)\\)\nEncrypt: \\(P(M) = M^e \\text{ mod }{n}\\); Decrypt: \\(S(C) = C^d \\text{ mod }{n}\\)\nWorks because \\(P(S(M)) = S(P(M)) = M^{ed} \\overset{\\small{*}}{=} M\\)",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
+  },
+  {
+    "objectID": "w09/index.html#why-algorithmic-complexity-matters-here",
+    "href": "w09/index.html#why-algorithmic-complexity-matters-here",
+    "title": "Week 9: BST Iteration, Functional Programming, and the RSA Algorithm",
+    "section": "Why Algorithmic Complexity Matters Here!",
+    "text": "Why Algorithmic Complexity Matters Here!\n\nThe security of the RSA cryptosystem rests in large part on the difficulty of factoring large integers.\n\n\nIf an adversary can factor the modulus \\(n\\) in a public key, they can derive the secret key from the public key, using the knowledge of the factors \\(p\\) and \\(q\\) in the same way that the creator of the public key used them.\n\n\nTherefore, if factoring large integers is easy, then breaking the RSA cryptosystem is easy.\n\n\nThe converse statement, that if factoring large integers is hard, then breaking RSA is hard, is unproven (\\(P \\overset{\\smash{\\small{?}}}{\\small{=}} NP\\))",
+    "crumbs": [
+      "Week 9: {{< var w09.date-md >}}"
+    ]
   }
 ]

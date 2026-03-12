@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jeff Jacobs">
 
-<title>Week 9: ETL Pipelines with Prefect – DSAN 5500</title>
+<title>Week 9: BST Iteration, Functional Programming, and the RSA Algorithm – DSAN 5500</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -56,7 +56,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -526,21 +546,39 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
-  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts">Key Concepts</a>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a>
   <ul class="collapse">
-  <li><a href="#the-three-main-buzzwords" id="toc-the-three-main-buzzwords" class="nav-link" data-scroll-target="#the-three-main-buzzwords">The Three Main Buzzwords</a></li>
-  <li><a href="#deployments-rightarrow-run-flows-programmatically" id="toc-deployments-rightarrow-run-flows-programmatically" class="nav-link" data-scroll-target="#deployments-rightarrow-run-flows-programmatically">Deployments <span class="math inline">\(\Rightarrow\)</span> Run Flows Programmatically</a></li>
+  <li><a href="#back-to-bsts" id="toc-back-to-bsts" class="nav-link" data-scroll-target="#back-to-bsts">Back to BSTs</a></li>
   </ul></li>
-  <li><a href="#the-power-of-deployments-more-next-week" id="toc-the-power-of-deployments-more-next-week" class="nav-link" data-scroll-target="#the-power-of-deployments-more-next-week">The Power of <code>Deployment</code>s (More Next Week)</a>
+  <li><a href="#node-traversal-computational-tree-climbing" id="toc-node-traversal-computational-tree-climbing" class="nav-link" data-scroll-target="#node-traversal-computational-tree-climbing">Node Traversal: Computational Tree-Climbing</a>
   <ul class="collapse">
-  <li><a href="#schedules" id="toc-schedules" class="nav-link" data-scroll-target="#schedules"><code>Schedules</code></a></li>
-  <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events"><code>Events</code></a></li>
-  <li><a href="#logging" id="toc-logging" class="nav-link" data-scroll-target="#logging"><code>Logging</code></a></li>
-  <li><a href="#notifications" id="toc-notifications" class="nav-link" data-scroll-target="#notifications"><code>Notifications</code></a></li>
-  <li><a href="#jinja-example" id="toc-jinja-example" class="nav-link" data-scroll-target="#jinja-example"><code>Jinja</code> Example</a></li>
+  <li><a href="#lls-rightarrow-bsts-the-hard-part" id="toc-lls-rightarrow-bsts-the-hard-part" class="nav-link" data-scroll-target="#lls-rightarrow-bsts-the-hard-part">LLs <span class="math inline">\(\rightarrow\)</span> BSTs: The Hard Part</a></li>
+  <li><a href="#two-ways-to-traverse-irl-version" id="toc-two-ways-to-traverse-irl-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-irl-version">Two Ways to Traverse: IRL Version</a></li>
+  <li><a href="#two-ways-to-traverse-picture-version" id="toc-two-ways-to-traverse-picture-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-picture-version">Two Ways to Traverse: Picture Version</a></li>
+  <li><a href="#two-ways-to-traverse-in-words-version" id="toc-two-ways-to-traverse-in-words-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-in-words-version">Two Ways to Traverse: In-Words Version</a></li>
+  <li><a href="#two-ways-to-traverse-animated-version" id="toc-two-ways-to-traverse-animated-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-animated-version">Two Ways to Traverse: Animated Version</a></li>
+  <li><a href="#two-ways-to-traverse-underlying-data-structures-version" id="toc-two-ways-to-traverse-underlying-data-structures-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-underlying-data-structures-version">Two Ways to Traverse: Underlying Data Structures Version</a></li>
+  <li><a href="#two-ways-to-traverse-hw2-version" id="toc-two-ways-to-traverse-hw2-version" class="nav-link" data-scroll-target="#two-ways-to-traverse-hw2-version">Two Ways to Traverse: HW2 Version</a></li>
+  <li><a href="#three-animals-in-the-dfs-species" id="toc-three-animals-in-the-dfs-species" class="nav-link" data-scroll-target="#three-animals-in-the-dfs-species">Three Animals in the DFS Species</a></li>
+  <li><a href="#the-three-animals-traverse-our-inventory-tree" id="toc-the-three-animals-traverse-our-inventory-tree" class="nav-link" data-scroll-target="#the-three-animals-traverse-our-inventory-tree">The Three Animals Traverse our Inventory Tree</a></li>
+  <li><a href="#final-notes-for-hw3" id="toc-final-notes-for-hw3" class="nav-link" data-scroll-target="#final-notes-for-hw3">Final Notes for HW3</a></li>
   </ul></li>
-  <li><a href="#lab-time" id="toc-lab-time" class="nav-link" data-scroll-target="#lab-time">Lab Time!</a></li>
+  <li><a href="#functional-programming-fp" id="toc-functional-programming-fp" class="nav-link" data-scroll-target="#functional-programming-fp">Functional Programming (FP)</a>
+  <ul class="collapse">
+  <li><a href="#functions-vs.-functionals" id="toc-functions-vs.-functionals" class="nav-link" data-scroll-target="#functions-vs.-functionals">Functions vs.&nbsp;Functionals</a></li>
+  <li><a href="#train-your-brain-for-functional-approach-implies-master-debugging" id="toc-train-your-brain-for-functional-approach-implies-master-debugging" class="nav-link" data-scroll-target="#train-your-brain-for-functional-approach-implies-master-debugging">Train Your Brain for Functional Approach <span class="math inline">\(\implies\)</span> Master Debugging!</a></li>
+  <li><a href="#code-rightarrow-pipelines-rightarrow-debuggable-pipelines" id="toc-code-rightarrow-pipelines-rightarrow-debuggable-pipelines" class="nav-link" data-scroll-target="#code-rightarrow-pipelines-rightarrow-debuggable-pipelines">Code <span class="math inline">\(\rightarrow\)</span> Pipelines <span class="math inline">\(\rightarrow\)</span> <em>Debuggable</em> Pipelines</a></li>
+  <li><a href="#if-its-so-useful-why-doesnt-everyone-do-it" id="toc-if-its-so-useful-why-doesnt-everyone-do-it" class="nav-link" data-scroll-target="#if-its-so-useful-why-doesnt-everyone-do-it">If It’s So Useful, Why Doesn’t Everyone Do It?</a></li>
+  </ul></li>
+  <li><a href="#cryptographic-algorithms" id="toc-cryptographic-algorithms" class="nav-link" data-scroll-target="#cryptographic-algorithms">Cryptographic Algorithms</a>
+  <ul class="collapse">
+  <li><a href="#the-rsa-algorithm" id="toc-the-rsa-algorithm" class="nav-link" data-scroll-target="#the-rsa-algorithm">The RSA Algorithm</a></li>
+  <li><a href="#task-1-encrypting-a-message" id="toc-task-1-encrypting-a-message" class="nav-link" data-scroll-target="#task-1-encrypting-a-message">Task 1: <em>Encrypting</em> a Message</a></li>
+  <li><a href="#task-2-signing-a-message" id="toc-task-2-signing-a-message" class="nav-link" data-scroll-target="#task-2-signing-a-message">Task 2: <em>Signing</em> a Message!</a></li>
+  <li><a href="#so-how-do-p_a-and-s_a-work" id="toc-so-how-do-p_a-and-s_a-work" class="nav-link" data-scroll-target="#so-how-do-p_a-and-s_a-work">So How Do <span class="math inline">\(P_A\)</span> and <span class="math inline">\(S_A\)</span> Work?</a></li>
+  <li><a href="#why-algorithmic-complexity-matters-here" id="toc-why-algorithmic-complexity-matters-here" class="nav-link" data-scroll-target="#why-algorithmic-complexity-matters-here">Why Algorithmic Complexity Matters Here!</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jpowerj/dsan5500/blob/main/w09/index.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>View source</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
@@ -550,7 +588,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 9: ETL Pipelines with Prefect</h1>
+<h1 class="title">Week 9: BST Iteration, Functional Programming, and the RSA Algorithm</h1>
 <p class="subtitle lead"><em>DSAN 5500: Data Structures, Objects, and Algorithms in Python</em></p>
   <div class="quarto-categories">
     <div class="quarto-category">Class Sessions</div>
@@ -650,213 +688,541 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-</section>
-<section id="key-concepts" class="level1" data-stack-name="Key Concepts">
-<h1 data-stack-name="Key Concepts">Key Concepts</h1>
-<section id="the-three-main-buzzwords" class="level2 crunch-title">
-<h2 class="crunch-title anchored" data-anchor-id="the-three-main-buzzwords">The Three Main Buzzwords</h2>
-<p><em>(Underlined terms link to relevant section of <a href="https://docs.prefect.io/v3/get-started/index">docs</a>)</em></p>
+<div class="hidden">
+
+</div>
+<section id="back-to-bsts" class="level2">
+<h2 class="anchored" data-anchor-id="back-to-bsts">Back to BSTs</h2>
 <ul>
-<li><a class="under" href="https://docs.prefect.io/latest/concepts/flows/" target="_blank"><strong><code>Flow</code></strong></a>: The “main thing” your pipeline is doing!
+<li>For HW2, we provide you with an <code>InventoryItem</code> class</li>
+<li>Two instance variables: <code>item_name</code> and <code>price</code></li>
+<li>Equivalence relations:
 <ul>
-<li>Except in simple cases, will consist of <strong>multiple <a class="under" href="https://docs.prefect.io/latest/concepts/tasks/" target="_blank"><code>Tasks</code></a></strong></li>
+<li><code>__eq__(other)</code>, <code>__ne__(other)</code></li>
 </ul></li>
-<li><code>Flow</code>s and <code>Task</code>s alone already provide much more functionality than “basic” functions…</li>
-<li><a class="under" href="https://docs.prefect.io/latest/concepts/deployments/" target="_blank"><strong><code>Deployment</code>s</strong></a>: <code>Flow</code>s + <code>Task</code>s + <strong>Metadata</strong> about <strong>how</strong> and <strong>when</strong> you want them to run.
+<li><strong>Ordering relations</strong>:
 <ul>
-<li>“<strong>Deployments</strong> elevate workflows from [functions that you call manually] to [API-managed entities].”</li>
+<li><code>__lt__(other)</code>, <code>__le__(other)</code>, <code>__gt__(other)</code>, <code>__ge__(other)</code></li>
+</ul></li>
+<li>Bonus: <code>__repr__()</code> and <code>__str__()</code></li>
+</ul>
+</section>
+</section>
+<section id="node-traversal-computational-tree-climbing" class="level1" data-stack-name="Tree Traversal">
+<h1 data-stack-name="Tree Traversal">Node Traversal: Computational Tree-Climbing</h1>
+<section id="lls-rightarrow-bsts-the-hard-part" class="level2">
+<h2 class="anchored" data-anchor-id="lls-rightarrow-bsts-the-hard-part">LLs <span class="math inline">\(\rightarrow\)</span> BSTs: The Hard Part</h2>
+<ul>
+<li>When we were working with LinkedLists, we could access all items by just “looping through”, from one element to the next, printing as we go along.</li>
+<li>But… for a BinarySearchTree, since our structure can now <strong>branch</strong> as we traverse it… How do we “loop through” a BST?</li>
+<li><strong>Two fundamentally different ways</strong> to traverse every node in our BST</li>
+<li>“Opposites” of each other, so that one is often extremely efficient and the other extremely inefficient for a given task</li>
+<li>Your job as a data scientist is to <strong>think carefully</strong> about which one is <strong>more efficient</strong> for a given goal!</li>
+</ul>
+</section>
+<section id="two-ways-to-traverse-irl-version" class="level2 smaller crunch-title title-12 crunch-ul crunch-callout">
+<h2 class="smaller crunch-title title-12 crunch-ul crunch-callout anchored" data-anchor-id="two-ways-to-traverse-irl-version">Two Ways to Traverse: IRL Version</h2>
+<ul>
+<li>Imagine we’re trying to learn about a topic <span class="math inline">\(\tau\)</span> using <strong>Wikipedia</strong>, so we find its article <span class="math inline">\(\tau_0\)</span></li>
+<li>There are two “extremes” in terms of strategies we could follow for learning, given the <strong>contents</strong> of the article as well as the <strong>links</strong> it contains to <strong>other articles</strong></li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="<i class='bi bi-info-circle pe-1'></i> Depth-First Search (DFS)" style="margin-bottom: 8px !important;">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span><i class="bi bi-info-circle pe-1"></i> Depth-First Search (DFS)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Open <span class="math inline">\(\tau_0\)</span> and start reading it; When we encounter a <strong>link</strong> we <strong>always click it</strong> and <strong>immediately start reading</strong> the new article.</li>
+<li>If we hit an article with no links (or a dead end/broken link), we finish reading it and click the <strong>back button</strong>, picking up where we left off in the previous article. When we reach the end of <span class="math inline">\(\tau_0\)</span>, we’re done!</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="<i class='bi bi-info-circle pe-1'></i> Breadth-First Search (BFS)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span><i class="bi bi-info-circle pe-1"></i> Breadth-First Search (BFS)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Bookmark <span class="math inline">\(\tau_0\)</span> in a folder called <strong>“Level 0 Articles”</strong>; open and start reading it</li>
+<li>When we encounter a <strong>link</strong>, we <strong>put it in a “Level 1 Articles” folder</strong>, but <strong>continue reading <span class="math inline">\(\tau_0\)</span></strong> until we reach the end.</li>
+<li>We then <strong>open all “Level 1 Articles”</strong> in new tabs, placing links we encounter in <strong>these</strong> articles into a <strong>“Level 2 Articles”</strong> folder, that we only start reading once all “Level 1 Articles” are read</li>
+<li>We continue like this, reading “Level 3 Articles” once we’re done with “Level 2 Articles”, “Level 4 Articles” once we’re done with “Level 3 Articles”, and so on. (Can you see a sense in which this is the <strong>“opposite”</strong> of DFS?)</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>…Let’s try them out! I clicked “Random Article” and got <a href="https://en.wikipedia.org/wiki/Eustache_de_Saint_Pierre" target="_blank">Eustache de Saint Pierre <i class="bi bi-box-arrow-up-right ps-1"></i></a></li>
+</ul>
+</section>
+<section id="two-ways-to-traverse-picture-version" class="level2 smaller crunch-title crunch-details">
+<h2 class="smaller crunch-title crunch-details anchored" data-anchor-id="two-ways-to-traverse-picture-version">Two Ways to Traverse: Picture Version</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="cell-viz-bst" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> hw2 <span class="im">import</span> LinkedList, InventoryItem, BinarySearchTree, NodeProcessor, IterAlgorithm</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>bst <span class="op">=</span> BinarySearchTree()</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>item1 <span class="op">=</span> InventoryItem(<span class="st">'Mango'</span>, <span class="dv">50</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>bst.add(item1)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>item2 <span class="op">=</span> InventoryItem(<span class="st">'Pickle'</span>, <span class="dv">60</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>bst.add(item2)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>item3 <span class="op">=</span> InventoryItem(<span class="st">'Artichoke'</span>, <span class="dv">55</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>bst.add(item3)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>item5 <span class="op">=</span> InventoryItem(<span class="st">'Banana'</span>, <span class="dv">123</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>bst.add(item5)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>item6 <span class="op">=</span> InventoryItem(<span class="st">'Aardvark'</span>, <span class="dv">11</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>bst.add(item6)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>HTML(visualize(bst))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: node None_0, port f1 unrecognized
+Warning: node None_1, port f1 unrecognized
+Warning: node None_2, port f1 unrecognized
+Warning: node None_3, port f1 unrecognized
+Warning: node None_4, port f1 unrecognized
+Warning: node None_5, port f1 unrecognized</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/viz-bst-output-2.svg" id="viz-bst" class="img-fluid quarto-figure quarto-figure-center anchored figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="83faca44" class="cell" data-execution_count="3">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"DFS:"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dfs_processor <span class="op">=</span> NodeProcessor(IterAlgorithm.DEPTH_FIRST)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#print(type(dfs_processor.node_container))</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>dfs_processor.iterate_over(bst)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">BFS:"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>bfs_processor <span class="op">=</span> NodeProcessor(IterAlgorithm.BREADTH_FIRST)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#print(type(bfs_processor.node_container))</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>bfs_processor.iterate_over(bst)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>DFS:
+InventoryItem[item_name=Mango,price=50]
+InventoryItem[item_name=Pickle,price=60]
+InventoryItem[item_name=Artichoke,price=55]
+InventoryItem[item_name=Banana,price=123]
+InventoryItem[item_name=Aardvark,price=11]
+
+BFS:
+InventoryItem[item_name=Mango,price=50]
+InventoryItem[item_name=Artichoke,price=55]
+InventoryItem[item_name=Pickle,price=60]
+InventoryItem[item_name=Aardvark,price=11]
+InventoryItem[item_name=Banana,price=123]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="two-ways-to-traverse-in-words-version" class="level2 smaller crunch-title title-12">
+<h2 class="smaller crunch-title title-12 anchored" data-anchor-id="two-ways-to-traverse-in-words-version">Two Ways to Traverse: In-Words Version</h2>
+<ol type="1">
+<li><strong>Depth-First Search (DFS)</strong>: With this approach, we iterate through the BST by <strong>always taking the left child as the “next” child</strong> until we hit a <strong>leaf node</strong> (which means, we cannot follow this left-child pointer any longer, since a leaf node does not have a left child or a right child!), and only at that point do we <strong>back up</strong> and take the <strong>right children</strong> we skipped.</li>
+<li><strong>Breadth-First Search (BFS)</strong>: This is the <strong>“opposite”</strong> of DFS in the sense that we traverse the tree level-by-level, <strong>never moving to the next level of the tree</strong> until we’re <strong>sure that we have visited every node on the current level</strong>.</li>
+</ol>
+</section>
+<section id="two-ways-to-traverse-animated-version" class="level2 smaller crunch-title title-12">
+<h2 class="smaller crunch-title title-12 anchored" data-anchor-id="two-ways-to-traverse-animated-version">Two Ways to Traverse: Animated Version</h2>
+<div class="quarto-layout-panel" data-layout="[1,1]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Depth-First-Search.gif" class="img-fluid figure-img"></p>
+<figcaption><strong>Depth-First Search</strong> (from <a href="https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif" target="_blank">Wikimedia Commons</a>)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Breadth-First-Search.gif" class="img-fluid figure-img"></p>
+<figcaption><strong>Breadth-First Search</strong> (from <a href="https://commons.wikimedia.org/wiki/File:Breadth-First-Search-Algorithm.gif" target="_blank">Wikimedia Commons</a>)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="two-ways-to-traverse-underlying-data-structures-version" class="level2 smaller crunch-title title-11">
+<h2 class="smaller crunch-title title-11 anchored" data-anchor-id="two-ways-to-traverse-underlying-data-structures-version">Two Ways to Traverse: Underlying Data Structures Version</h2>
+<ul>
+<li><p>Now that you have some intuition, you may be thinking that they might require very different code to implement 🤔</p></li>
+<li><p>This is where <strong>mathematical-formal linkage</strong> between the two becomes helpful!</p></li>
+<li><p>It turns out (and a full-on algorithmic theory course makes you prove) that</p></li>
+<li><p><i class="bi bi-1-circle"></i> <strong>Depth-First Search</strong> can be accomplished by <strong>processing nodes in an order determined by adding each to a <em>stack</em></strong>, while</p></li>
+<li><p><i class="bi bi-2-circle"></i> <strong>Breadth-First Search</strong> can be accomplished by <strong>processing nodes in an order determined by adding each to a <em>queue</em></strong>!</p></li>
+<li><p><span class="math inline">\(\implies\)</span> Literally <strong>identical code</strong>, “pulling out” the word <strong>stack</strong> and replacing it with the word <strong>queue</strong> within your code (or vice-versa).</p></li>
+<li><p>With Software Engineer Hat on, you’ll see this as a job for an <strong>abstraction layer!</strong></p></li>
+</ul>
+</section>
+<section id="two-ways-to-traverse-hw2-version" class="level2">
+<h2 class="anchored" data-anchor-id="two-ways-to-traverse-hw2-version">Two Ways to Traverse: HW2 Version</h2>
+<ul>
+<li>You’ll make a class called <code>NodeProcessor</code>, with a <strong>single</strong> <code>iterate_over(tree)</code> function</li>
+<li>This function—<strong>without any changes in the code or even any if statements!</strong>—will be capable of both DFS and BFS</li>
+<li>It will take in a <code>ThingContainer</code> (could be a <strong>stack</strong> or a <strong>queue</strong>, you won’t know which), which has two functions:
+<ul>
+<li><code>put_new_thing_in(new_thing)</code></li>
+<li><code>take_existing_thing_out()</code></li>
 </ul></li>
 </ul>
 </section>
-<section id="deployments-rightarrow-run-flows-programmatically" class="level2 crunch-title title-11 smaller">
-<h2 class="crunch-title title-11 smaller anchored" data-anchor-id="deployments-rightarrow-run-flows-programmatically">Deployments <span class="math inline">\(\Rightarrow\)</span> Run Flows Programmatically</h2>
+<section id="three-animals-in-the-dfs-species" class="level2">
+<h2 class="anchored" data-anchor-id="three-animals-in-the-dfs-species">Three Animals in the DFS Species</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>DFS Procedure</th>
+<th>Algorithm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pre-Order Traversal</td>
+<td>1. <strong>Print node</strong><br>2. Traverse left subtree<br>3. Traverse right subtree</td>
+</tr>
+<tr class="even">
+<td><strong>In-Order</strong> Traversal 🧐‼️</td>
+<td>1. Traverse left subtree<br>2. <strong>Print node</strong><br>3. Traverse right subtree</td>
+</tr>
+<tr class="odd">
+<td>Post-Order Traversal</td>
+<td>1. Traverse left subtree<br>2. Traverse right subtree<br>3. <strong>Print node</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-three-animals-traverse-our-inventory-tree" class="level2 smaller crunch-title title-10">
+<h2 class="smaller crunch-title title-10 anchored" data-anchor-id="the-three-animals-traverse-our-inventory-tree">The Three Animals Traverse our Inventory Tree</h2>
+<div id="7cdf3576" class="cell" data-execution_count="4">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>visualize(bst)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: node None_0, port f1 unrecognized
+Warning: node None_1, port f1 unrecognized
+Warning: node None_2, port f1 unrecognized
+Warning: node None_3, port f1 unrecognized
+Warning: node None_4, port f1 unrecognized
+Warning: node None_5, port f1 unrecognized</code></pre>
+</div>
+<div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/flow-run-details-crop.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="index_files/figure-html/cell-5-output-2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="final-notes-for-hw3" class="level2">
+<h2 class="anchored" data-anchor-id="final-notes-for-hw3">Final Notes for HW3</h2>
+<ul>
+<li>The last part challenges you to ask: <strong>why stop at a hash based on just the <em>first</em> letter of the key?</strong></li>
+<li>We could just as easily use the first <strong>two</strong> letters:</li>
+<li><code>h('AA') = 0</code>, <code>h('AB') = 1</code>, …, <code>h('AZ') = 25</code>,</li>
+<li><code>h('BA') = 26</code>, <code>h('BB') = 27</code>, …, <code>h('BZ') = 51</code>,</li>
+<li><code>h('CA') = 52</code>, …, <code>h('ZZ') = 675</code>.</li>
+<li>You will see how this gets us <strong>even closer to the elusive <span class="math inline">\(O(1)\)</span>!</strong> And we could get even closer with three letters, four letters, … 🤔🤔🤔</li>
+</ul>
+</section>
+</section>
+<section id="functional-programming-fp" class="level1" data-stack-name="Functional Programming">
+<h1 data-stack-name="Functional Programming">Functional Programming (FP)</h1>
+<section id="functions-vs.-functionals" class="level2 crunch-title crunch-ul crunch-details title-09 crunch-li-8">
+<h2 class="crunch-title crunch-ul crunch-details title-09 crunch-li-8 anchored" data-anchor-id="functions-vs.-functionals">Functions vs.&nbsp;Functionals</h2>
+<ul>
+<li>You may have noticed: <code>map()</code> and <code>reduce()</code> are “meta-functions”: functions that <strong>take other functions as inputs</strong></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="b8265db5" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_5(num):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> num <span class="op">+</span> <span class="dv">5</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>add_5(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="586">
+<pre><code>15</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div id="752d6df8" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_twice(fn, arg):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> fn(fn(arg))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>apply_twice(add_5, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="587">
+<pre><code>20</code></pre>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>In Python, functions <strong>can be used as</strong> vars (Hence <code class="sourceCode python"><span class="kw">lambda</span></code>):</li>
+</ul>
+<div id="b6ef0b13" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>add_5 <span class="op">=</span> <span class="kw">lambda</span> num: num <span class="op">+</span> <span class="dv">5</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>apply_twice(add_5, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="588">
+<pre><code>20</code></pre>
+</div>
+</div>
+<ul>
+<li>This relates to a whole paradigm, “functional programming”! We will use it to approach <strong>encryption</strong></li>
+</ul>
+</section>
+<section id="train-your-brain-for-functional-approach-implies-master-debugging" class="level2 crunch-title title-09 crunch-ul crunch-blockquote">
+<h2 class="crunch-title title-09 crunch-ul crunch-blockquote anchored" data-anchor-id="train-your-brain-for-functional-approach-implies-master-debugging">Train Your Brain for Functional Approach <span class="math inline">\(\implies\)</span> Master Debugging!</h2>
+<ul>
+<li>In CS Theory: enables <a href="https://softwarefoundations.cis.upenn.edu/vfa-current/toc.html" target="_blank">formal proofs of correctness</a></li>
+<li>In CS practice:</li>
+</ul>
+<blockquote class="blockquote">
+<p>When a program doesn’t work, each function is an interface point where you can check that the data are correct. You can look at the intermediate inputs and outputs to <strong>quickly isolate the function</strong> that’s <strong>responsible for a bug</strong>.<br>(from Python’s <a href="https://docs.python.org/3/howto/functional.html#ease-of-debugging-and-testing" target="_blank">“Functional Programming HowTo”</a>)</p>
+</blockquote>
+</section>
+<section id="code-rightarrow-pipelines-rightarrow-debuggable-pipelines" class="level2 smaller crunch-title title-11 crunch-ul crunch-p">
+<h2 class="smaller crunch-title title-11 crunch-ul crunch-p anchored" data-anchor-id="code-rightarrow-pipelines-rightarrow-debuggable-pipelines">Code <span class="math inline">\(\rightarrow\)</span> Pipelines <span class="math inline">\(\rightarrow\)</span> <em>Debuggable</em> Pipelines</h2>
+<!-- * Imperative ("standard") programming: Code runs line-by-line, from top to bottom -->
+<ul>
+<li>Scenario: Run code, check the output, and… it’s wrong 😵 what do you do?</li>
+<li>Usual approach: Read lines one-by-one, figuring out what they do, seeing if something <strong>pops out</strong> that seems wrong; adding comments like <code class="sourceCode python"><span class="co"># Convert to lowercase</span></code></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p><strong>Easy case</strong>: found typo in punctuation removal code. Fix the error, add comment like <code class="sourceCode python"><span class="co"># Remove punctuation</span></code></p>
+<p><i class="bi bi-arrow-return-right"></i> <strong>Rule 1</strong> of FP: transform these comments into <strong>function names</strong></p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p><strong>Hard case</strong>: Something in <code>load_text()</code> modifies a variable that <strong>later on</strong> breaks <code>remove_punct()</code> (Called a <strong>side-effect</strong>)</p>
+<p><i class="bi bi-arrow-return-right"></i> <strong>Rule 2</strong> of FP: <strong>NO SIDE-EFFECTS!</strong></p></li>
+</ul>
+</div>
+</div>
+<div class="cell" data-fig-height="1" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<svg width="672" height="96" viewbox="0.00 0.00 922.61 65.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 61)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-61 918.61,-61 918.61,4 -4,4"></polygon>
+<!-- input -->
+<g id="node1" class="node">
+<title>input</title>
+<text text-anchor="middle" x="33.2" y="-24.3" font-family="Courier,monospace" font-size="14.00">in.txt</text>
+</g>
+<!-- load_text -->
+<g id="node2" class="node">
+<title>load_text</title>
+<text text-anchor="start" x="115" y="-33.1" font-family="Courier,monospace" font-size="16.00">load_text</text>
+<text text-anchor="start" x="141.53" y="-11.7" font-family="Arial" font-size="12.00">(Verb)</text>
+<polygon fill="none" stroke="black" points="110.2,-4 110.2,-53 206.2,-53 206.2,-4 110.2,-4"></polygon>
+</g>
+<!-- input&#45;&gt;load_text -->
+<g id="edge1" class="edge">
+<title>input-&gt;load_text</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M66.9,-28.5C75.63,-28.5 84.37,-28.5 93.11,-28.5"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="93.35,-31.48 101.85,-28.5 93.35,-25.53 93.35,-31.48"></polygon>
+</g>
+<!-- lowercase -->
+<g id="node3" class="node">
+<title>lowercase</title>
+<text text-anchor="start" x="273" y="-33.1" font-family="Courier,monospace" font-size="16.00">lowercase</text>
+<text text-anchor="start" x="299.53" y="-11.7" font-family="Arial" font-size="12.00">(Verb)</text>
+<polygon fill="none" stroke="black" points="268.2,-4 268.2,-53 364.2,-53 364.2,-4 268.2,-4"></polygon>
+</g>
+<!-- load_text&#45;&gt;lowercase -->
+<g id="edge2" class="edge">
+<title>load_text-&gt;lowercase</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M214.35,-28.5C226.27,-28.5 238.95,-28.5 251.17,-28.5"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="251.47,-31.48 259.97,-28.5 251.47,-25.53 251.47,-31.48"></polygon>
+<text text-anchor="middle" x="237.2" y="-35.7" font-family="Times,serif" font-size="14.00">🧐 ✅</text>
+</g>
+<!-- remove_punct -->
+<g id="node4" class="node">
+<title>remove_punct</title>
+<text text-anchor="start" x="431.09" y="-33.1" font-family="Courier,monospace" font-size="16.00">remove_punct</text>
+<text text-anchor="start" x="472.03" y="-11.7" font-family="Arial" font-size="12.00">(Verb)</text>
+<polygon fill="none" stroke="black" points="425.7,-4 425.7,-53 550.7,-53 550.7,-4 425.7,-4"></polygon>
+</g>
+<!-- lowercase&#45;&gt;remove_punct -->
+<g id="edge3" class="edge">
+<title>lowercase-&gt;remove_punct</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M372.52,-28.5C384.23,-28.5 396.76,-28.5 409.11,-28.5"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="409.11,-31.48 417.61,-28.5 409.11,-25.53 409.11,-31.48"></polygon>
+<text text-anchor="middle" x="394.95" y="-35.7" font-family="Times,serif" font-size="14.00">🧐 ✅</text>
+</g>
+<!-- remove_stopwords -->
+<g id="node5" class="node">
+<title>remove_stopwords</title>
+<text text-anchor="start" x="638.89" y="-33.1" font-family="Courier,monospace" font-size="16.00">remove_stopwords</text>
+<text text-anchor="start" x="699.03" y="-11.7" font-family="Arial" font-size="12.00">(Verb)</text>
+<polygon fill="none" stroke="black" points="633.7,-4 633.7,-53 796.7,-53 796.7,-4 633.7,-4"></polygon>
+</g>
+<!-- remove_punct&#45;&gt;remove_stopwords -->
+<g id="edge4" class="edge">
+<title>remove_punct-&gt;remove_stopwords</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M558.78,-28.5C577.15,-28.5 597.27,-28.5 616.79,-28.5"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="616.91,-31.48 625.41,-28.5 616.91,-25.53 616.91,-31.48"></polygon>
+<text text-anchor="middle" x="592.2" y="-35.7" font-family="Times,serif" font-size="14.00">🧐 ❌❗️</text>
+</g>
+<!-- output -->
+<g id="node6" class="node">
+<title>output</title>
+<text text-anchor="middle" x="877.2" y="-24.3" font-family="Courier,monospace" font-size="14.00">out.txt</text>
+</g>
+<!-- remove_stopwords&#45;&gt;output -->
+<g id="edge5" class="edge">
+<title>remove_stopwords-&gt;output</title>
+<path fill="none" stroke="black" stroke-width="1.2" d="M804.75,-28.5C813.52,-28.5 822.3,-28.5 831.07,-28.5"></path>
+<polygon fill="black" stroke="black" stroke-width="1.2" points="831.34,-31.48 839.84,-28.5 831.34,-25.53 831.34,-31.48"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p><figcaption> <em>(Does this way of diagramming a program look familiar?)</em></figcaption> </figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>With</strong> side effects: ❌ <span class="math inline">\(\implies\)</span> issue is <strong>somewhere earlier in the chain</strong> 😩🏃‍♂️</li>
+<li><strong>No</strong> side effects: ❌ <span class="math inline">\(\implies\)</span> issue <strong>must be in <code>remove_punct()</code>!!!</strong> 😎 <i class="bi bi-arrow-down"></i>⏱️ = <i class="bi bi-arrow-up"></i>💰</li>
+</ul>
+</section>
+<section id="if-its-so-useful-why-doesnt-everyone-do-it" class="level2 smaller crunch-title crunch-ul crunch-p crunch-quarto-figure title-10">
+<h2 class="smaller crunch-title crunch-ul crunch-p crunch-quarto-figure title-10 anchored" data-anchor-id="if-its-so-useful-why-doesnt-everyone-do-it">If It’s So Useful, Why Doesn’t Everyone Do It?</h2>
+<ul>
+<li>Trapped in <strong>imperative</strong> (sequential) coding mindset: <strong>Path dependency</strong> / QWERTY</li>
+<li>Reason <strong>we</strong> need to start thinking like this is: it’s <strong>1000x</strong> harder to debug <strong>parallel code!</strong> So we need to be less ad hoc in how we write+debug, from here on out! 🙇‍♂️🙏</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/map_reduce_full.svg" class="img-fluid figure-img" width="500"></p>
+<figcaption>From <span class="citation" data-cites="leskovec_mining_2014">Leskovec, Rajaraman, and Ullman (<a href="#ref-leskovec_mining_2014" role="doc-biblioref">2014</a>)</span></figcaption>
+</figure>
+</div>
+<div class="notes">
+<p>The title relates to a classic Economics joke (the best kind of joke): “An economist and a CEO are walking down the street, when the CEO points at the ground and tells the economist, ‘look! A $20 bill on the ground!’ The economist keeps on walking, scoffing at the CEO: ‘don’t be silly, if there was a $20 bill on the ground, somebody would have picked it up already’.”</p>
+</div>
+</section>
+</section>
+<section id="cryptographic-algorithms" class="level1" data-stack-name="Cryptography">
+<h1 data-stack-name="Cryptography">Cryptographic Algorithms</h1>
+<ul>
+<li>RSA</li>
+<li>Elliptic-Curve Cryptography</li>
+</ul>
+<section id="the-rsa-algorithm" class="level2 crunch-title title-12">
+<h2 class="crunch-title title-12 anchored" data-anchor-id="the-rsa-algorithm">The RSA Algorithm</h2>
+<blockquote class="blockquote">
+<p>The RSA public-key cryptosystem relies on the dramatic difference between the ease of finding large prime numbers and the difficulty of factoring the product of two large prime numbers <span class="citation" data-cites="cormen_introduction_2001">(<a href="#ref-cormen_introduction_2001" role="doc-biblioref">Cormen et al. 2001, sec. 31.7</a>)</span></p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/rsa.svg" class="img-fluid figure-img"></p>
+<figcaption>Bob encrypts <span class="math inline">\(M\)</span> using Alice’s public key <span class="math inline">\(P_A\)</span> and transmits the result <span class="math inline">\(C = P_A(M)\)</span> over a communication channel to Alice. An eavesdropper who captures <span class="math inline">\(C\)</span> gains no info about <span class="math inline">\(M\)</span>. Alice decrypts <span class="math inline">\(C\)</span> using her secret key to obtain the original message: <span class="math inline">\(M = S_A(C)\)</span></figcaption>
 </figure>
 </div>
 </section>
+<section id="task-1-encrypting-a-message" class="level2 crunch-title title-09">
+<h2 class="crunch-title title-09 anchored" data-anchor-id="task-1-encrypting-a-message">Task 1: <em>Encrypting</em> a Message</h2>
+<ul>
+<li>Public Keys <span class="math inline">\(P_A\)</span> and Secret Keys <span class="math inline">\(S_A\)</span> are <strong>inverses</strong>:</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+M &amp;= S_A(P_A(M)) \\
+M &amp;= P_A(S_A(M))
+\end{aligned}
+\]</span></p>
+<ul>
+<li>Alice, and only Alice, is able to compute the function <span class="math inline">\(S_ A(\cdot)\)</span> in any practical amount of time!</li>
+<li><strong>Bob <span class="math inline">\(\overset{M}{\rightarrow}\)</span> Alice</strong>: Bob computes <span class="math inline">\(C = P_A(M)\)</span> and sends <span class="math inline">\(C\)</span> to Alice; Alice obtains <span class="math inline">\(M\)</span> via <span class="math inline">\(S_A(C) = S_A(P_A(M)) = M\)</span></li>
+</ul>
 </section>
-<section id="the-power-of-deployments-more-next-week" class="level1 smaller crunch-title crunch-ul title-10" data-stack-name="Deployments">
-<h1 class="smaller crunch-title crunch-ul title-10" data-stack-name="Deployments">The Power of <code>Deployment</code>s (More Next Week)</h1>
+<section id="task-2-signing-a-message" class="level2 crunch-title title-09">
+<h2 class="crunch-title title-09 anchored" data-anchor-id="task-2-signing-a-message">Task 2: <em>Signing</em> a Message!</h2>
 <ul>
-<li>“Packaging” code as <strong><code>Deployments</code></strong> enables <a class="under" href="https://docs.prefect.io/latest/concepts/automations/" target="_blank"><strong><code>Triggers</code></strong></a>:
-<ul>
-<li>On a particular <a href="https://docs.prefect.io/latest/concepts/schedules/" target="_blank" class="under"><strong><code>Schedules</code></strong></a>: every 4 hours, every day at noon, once per week, etc.</li>
-<li>When important <a class="under" href="https://docs.prefect.io/latest/concepts/automations/" target="_blank"><strong><code>Events</code></strong></a> happen: <strong>pushes</strong> to GitHub, <strong>addition, removal, modification</strong> of files in Dropbox, etc.</li>
-</ul></li>
-<li><a class="under" href="https://docs.prefect.io/latest/guides/logs/" target="_blank"><strong><code>Logging</code></strong></a>, <a class="under" href="https://docs.prefect.io/latest/guides/host/#notifications" target="_blank"><strong><code>Notifications</code></strong></a> (Slack, email, text messages)</li>
-<li><a class="under" href="https://docs.prefect.io/latest/concepts/results/" target="_blank"><strong><code>Results</code></strong></a> as natural-language explanations (produced by Prefect) or <strong>custom summaries</strong>, called <a class="under" href="https://docs.prefect.io/latest/concepts/artifacts/" target="_blank"><strong><code>Artifacts</code></strong></a>, that you define as part of your flows</li>
-</ul>
-<section id="schedules" class="level2 smaller crunch-title crunch-ul">
-<h2 class="smaller crunch-title crunch-ul anchored" data-anchor-id="schedules"><code>Schedules</code></h2>
-<ul>
-<li><a class="under" href="https://docs.prefect.io/latest/concepts/schedules/#cron" target="_blank"><strong><code>Cron</code></strong></a>: Full-on scheduling language (used by computers since <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">1975</a>!)</li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>crontab.sh</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="crontab.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ┌───────────── minute (0–59)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># │ ┌───────────── hour (0–23)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># │ │ ┌───────────── day of the month (1–31)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># │ │ │ ┌───────────── month (1–12)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># │ │ │ │ ┌───────────── day of the week (0–6) (Sunday to Saturday)</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># │ │ │ │ │</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># │ │ │ │ │</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># │ │ │ │ │</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># * * * * * &lt;command to execute&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="columns">
-<div class="column" style="width:35%;">
-<ul>
-<li><a class="under" href="https://docs.prefect.io/latest/concepts/schedules/#interval" target="_blank"><strong><code>Interval</code></strong></a></li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>my_interval.yml</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="my_interval.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">schedule</span><span class="kw">:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">interval</span><span class="kw">:</span><span class="at"> </span><span class="dv">600</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">timezone</span><span class="kw">:</span><span class="at"> America/Chicago</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div><div class="column" style="width:65%;">
-<ul>
-<li><a class="under" href="https://docs.prefect.io/latest/concepts/schedules/#rrule" target="_blank"><strong><code>RRule</code></strong></a></li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>my_rrule.yml</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="my_rrule.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">schedule</span><span class="kw">:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">rrule</span><span class="kw">:</span><span class="at"> </span><span class="st">'FREQ=WEEKLY;BYDAY=MO,WE,FR;UNTIL=20240730T040000Z'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</section>
-<section id="events" class="level2 smaller crunch-title crunch-ul">
-<h2 class="smaller crunch-title crunch-ul anchored" data-anchor-id="events"><code>Events</code></h2>
-<ul>
-<li>These <strong>integrations</strong> are nice, but in reality usually <strong>overkill</strong>: you can just use <a class="under" href="https://docs.prefect.io/latest/guides/webhooks/" target="_blank"><strong><code>Webhooks</code></strong></a></li>
+<li>Alice computes her digital signature <span class="math inline">\(\sigma = S_A(M')\)</span>, then sends the <strong>pair</strong> <span class="math inline">\((M', \sigma)\)</span> <span class="math inline">\(\rightarrow\)</span> Bob</li>
+<li>When Bob receives <span class="math inline">\((M', \sigma)\)</span>, he verifies that it originated from Alice by using Alice’s public key to check <span class="math inline">\(M' = P_A(\sigma)\)</span></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/integrations.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/rsa_signature.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </section>
-<section id="logging" class="level2 crunch-title">
-<h2 class="crunch-title anchored" data-anchor-id="logging"><code>Logging</code></h2>
+<section id="so-how-do-p_a-and-s_a-work" class="level2">
+<h2 class="anchored" data-anchor-id="so-how-do-p_a-and-s_a-work">So How Do <span class="math inline">\(P_A\)</span> and <span class="math inline">\(S_A\)</span> Work?</h2>
 <ul>
-<li>For most non-advanced use cases: literally just put <code>log_prints=True</code> as a <strong>parameters</strong> of your <code>Flow</code>:</li>
+<li><i class="bi bi-1-circle"></i> Pick two big prime numbers <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, compute <span class="math inline">\(n = pq\)</span></li>
+<li><i class="bi bi-2-circle"></i> Pick a small odd int <span class="math inline">\(e\)</span> relatively prime to <span class="math inline">\((p-1)(q-1)\)</span></li>
+<li><i class="bi bi-3-circle"></i> Find <span class="math inline">\(d\)</span> such that <span class="math inline">\(de \equiv 1\text{ mod }{n}\)</span></li>
+<li><i class="bi bi-4-circle"></i> Your <strong>public key</strong> is <span class="math inline">\(P = (e,n)\)</span></li>
+<li><i class="bi bi-5-circle"></i> Your <strong>secret key</strong> is <span class="math inline">\(S = (d,n)\)</span></li>
+<li>Encrypt: <span class="math inline">\(P(M) = M^e \text{ mod }{n}\)</span>; Decrypt: <span class="math inline">\(S(C) = C^d \text{ mod }{n}\)</span></li>
+<li>Works because <span class="math inline">\(P(S(M)) = S(P(M)) = M^{ed} \overset{\small{*}}{=} M\)</span></li>
 </ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>flow_with_logging.py</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="flow_with_logging.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> prefect <span class="im">import</span> task, flow</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">@task</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_task():</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"we're logging print statements from a task"</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">@flow</span>(log_prints<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_flow():</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"we're logging print statements from a flow"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    my_task()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 </section>
-<section id="notifications" class="level2 crunch-title">
-<h2 class="crunch-title anchored" data-anchor-id="notifications"><code>Notifications</code></h2>
-<ul>
-<li>Actually immensely powerful, because it uses a <strong>templating engine</strong> called <a class="under" href="https://jinja.palletsprojects.com/en/3.1.x/" target="_blank"><strong><code>Jinja</code></strong></a> which is <strong>VERY</strong> worth learning!</li>
-<li>With your brain in <strong>pipeline mode</strong>, think of Jinja as the [?] in:</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/jinja.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-<!-- https://edotor.net/?engine=dot?engine=dot#digraph%20G%20%7B%0A%20%20%20%20rankdir%3D%22LR%22%3B%0A%09edge%20%5Bpenwidth%3D0.75%2Carrowsize%3D0.6%5D%0A%20%20%20%20%23%20results%0A%09csv%20%5Blabel%3D%22CSV%22%5D%3B%0A%09json%20%5Blabel%3D%22JSON%22%5D%3B%0A%09pl%20%5Blabel%3D%22Python%20lists%22%5D%3B%0A%20%20%20%20logs%20%5Blabel%3D%22Logged%20outputs%22%5D%3B%0A%20%20%20%20%23%20%3F%0A%20%20%20%20qm%20%5Blabel%3D%22%3F%3F%3F%22%5D%3B%0A%20%20%20%20%23%20summaries%0A%20%20%20%20email%20%5Blabel%3D%22Email%20%2F%20Text%20message%22%5D%0A%20%20%20%20slack%20%5Blabel%3D%22Slack%20message%22%5D%0A%09%23text%20%5Blabel%3D%22Text%20message%22%5D%0A%20%20%20%20reports%20%5Blabel%3D%22Markdown%20report%22%5D%0A%09subgraph%20cluster_G1%20%7B%0A%20%20%20%20%20%20%20%20style%3D%22dashed%22%3B%0A%09%09%09%09label%3D%22Messy%20Pipeline%20Results%22%0A%09%09%09%09csv%3B%0A%09%09%09%09json%3B%0A%09%09%09%09pl%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20logs%3B%0A%09%7D%0A%09subgraph%20cluster_G2%20%7B%0A%20%20%20%20%20%20%20%20style%3D%22dashed%22%3B%0A%09%09%09%09label%3D%22Clean%20Summaries%22%0A%09%09%09%09email%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20slack%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23text%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20reports%3B%0A%09%7D%0A%20%20%20%20csv%20-%3E%20qm%3B%0A%20%20%20%20json%20-%3E%20qm%3B%0A%20%20%20%20pl%20-%3E%20qm%3B%0A%20%20%20%20logs%20-%3E%20qm%3B%0A%20%20%20%20qm%20-%3E%20email%3B%0A%20%20%20%20qm%20-%3E%20slack%3B%0A%20%20%20%20%23qm%20-%3E%20text%3B%0A%20%20%20%20qm%20-%3E%20reports%3B%0A%7D%0A -->
+<section id="why-algorithmic-complexity-matters-here" class="level2 title-08 crunch-title crunch-blockquote">
+<h2 class="title-08 crunch-title crunch-blockquote anchored" data-anchor-id="why-algorithmic-complexity-matters-here">Why Algorithmic Complexity Matters Here!</h2>
+<blockquote class="blockquote">
+<p>The security of the RSA cryptosystem rests in large part on the <strong>difficulty of factoring large integers</strong>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>If an adversary can factor the modulus <span class="math inline">\(n\)</span> in a public key, they can derive the secret key from the public key, using the knowledge of the factors <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> in the same way that the creator of the public key used them.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Therefore, <strong>if factoring large integers is easy, then breaking the RSA cryptosystem is easy.</strong></p>
+</blockquote>
+<blockquote class="blockquote">
+<p>The converse statement, that if factoring large integers is hard, then breaking RSA is hard, is <strong>unproven</strong> (<span class="math inline">\(P \overset{\smash{\small{?}}}{\small{=}} NP\)</span>)</p>
+</blockquote>
 </section>
-<section id="jinja-example" class="level2 crunch-title smaller crunch-hr">
-<h2 class="crunch-title smaller crunch-hr anchored" data-anchor-id="jinja-example"><code>Jinja</code> Example</h2>
-<div class="columns">
-<div class="column" style="width:48%;">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>homepage.jinja</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="homepage.jinja"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>{{ me['name'] }}'s Favorite Hobbies<span class="dt">&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>{%- for hobby in hobbies %}</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>{{ hobby }}<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>{%- endfor %}</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div><div class="column" style="width:4%;">
-<center>
-<span>+</span>
-</center>
-</div><div class="column" style="width:48%;">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>render_jinja.py</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="render_jinja.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> jinja2 <span class="im">import</span> Template</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tmpl <span class="op">=</span> Template(<span class="st">'homepage.jinja'</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>tmpl.render(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    me <span class="op">=</span> {<span class="st">'name'</span>: <span class="st">'Jeff'</span>},</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    hobbies <span class="op">=</span> [</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"sleeping"</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"jetski"</span>,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"getting sturdy"</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-<hr>
-<center>
-↓
-</center>
-<hr>
-<div class="columns">
-<div class="column" style="width:48%;">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>rendered.html</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="rendered.html"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>Jeff's Favorite Hobbies<span class="dt">&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>sleeping<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>jetski<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span>getting sturdy<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div><div class="column" style="width:4%;">
-<p><span class="math inline">\(\leadsto\)</span></p>
-</div><div class="column" style="width:48%;">
-<h3 class="anchored">Jeff's Favorite Hobbies</h3>
-<ul>
-  <li>sleeping</li>
-  <li>jetski</li>
-  <li>getting sturdy</li>
-</ul>
-</div>
-</div>
-</section>
-</section>
-<section id="lab-time" class="level1" data-name="Lab">
-<h1 data-name="Lab">Lab Time!</h1>
-<ul>
-<li><a href="https://colab.research.google.com/drive/1hwBQcam-fGordWAvyEnbyK412CR1CQAV?usp=sharing" target="_blank">Week 9 Lab: Pipeline Orchestration with Prefect</a></li>
-</ul>
+<section id="references" class="level2">
+
+
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-cormen_introduction_2001" class="csl-entry" role="listitem">
+Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2001. <em>Introduction <span>To Algorithms</span></em>. MIT Press. <a href="https://books.google.com?id=NLngYyWFl_YC">https://books.google.com?id=NLngYyWFl_YC</a>.
+</div>
+<div id="ref-leskovec_mining_2014" class="csl-entry" role="listitem">
+Leskovec, Jure, Anand Rajaraman, and Jeffrey David Ullman. 2014. <em>Mining of <span>Massive Datasets</span></em>. Cambridge University Press. <a href="http://infolab.stanford.edu/~ullman/mmds/book.pdf">http://infolab.stanford.edu/~ullman/mmds/book.pdf</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
